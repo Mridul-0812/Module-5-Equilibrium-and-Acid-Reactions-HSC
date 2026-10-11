@@ -1,0 +1,1654 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18 Dissolution of Ionic Compounds | Module 5 Chemistry</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- MathJax 3 Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <style>
+        /* Ethereal Glassmorphism Custom UI Extensions */
+        :root {
+            --bg-dark: #080c14;
+            --bg-card: rgba(15, 23, 42, 0.75);
+            --bg-card-hover: rgba(30, 41, 59, 0.85);
+            --border-glow: rgba(124, 58, 237, 0.3);
+            --border-light: rgba(255, 255, 255, 0.08);
+            --border-cyan: rgba(6, 182, 212, 0.35);
+            --border-emerald: rgba(16, 185, 129, 0.35);
+            --accent-purple: #a78bfa;
+            --accent-cyan: #38bdf8;
+            --accent-emerald: #34d399;
+            --accent-amber: #fbbf24;
+            --accent-rose: #f43f5e;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-secondary: #cbd5e1;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'Fira Code', 'Cascadia Code', Consolas, monospace;
+            --shadow-glow: 0 0 30px rgba(124, 58, 237, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(124, 58, 237, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 90% 85%, rgba(6, 182, 212, 0.1) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.95) 0%, var(--bg-dark) 100%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.8;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 320px;
+            background: rgba(11, 15, 25, 0.92);
+            border-right: 1px solid var(--border-light);
+            backdrop-filter: blur(16px);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 2rem 1.5rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .badge-glow {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            color: var(--accent-purple);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.4rem;
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .sidebar-header .subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+
+        .progress-container {
+            margin-top: 1.25rem;
+            background: rgba(255, 255, 255, 0.06);
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            border-radius: 3px;
+        }
+
+        .score-card {
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav-menu {
+            padding: 1.25rem 1rem;
+        }
+
+        .nav-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            padding: 0 0.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 0.65rem 0.75rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            margin-bottom: 0.25rem;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            transform: translateX(3px);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(90deg, rgba(124, 58, 237, 0.25), rgba(6, 182, 212, 0.1));
+            border-left: 3px solid var(--accent-purple);
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+
+        .nav-num {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            margin-right: 0.75rem;
+            opacity: 0.7;
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            margin-left: 320px;
+            flex: 1;
+            padding: 2.5rem 3rem;
+            max-width: 1250px;
+        }
+
+        .hero-banner {
+            position: relative;
+            background: linear-gradient(135deg, rgba(24, 16, 48, 0.85) 0%, rgba(15, 23, 42, 0.95) 100%);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2.5rem;
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .ethereal-tag {
+            font-family: var(--font-mono);
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .ethereal-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin: 0.5rem 0 1rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ethereal-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 880px;
+        }
+
+        /* Content Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 2.25rem;
+            margin-bottom: 2.5rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            transition: border-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(124, 58, 237, 0.35);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.75rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .card-header h2 {
+            font-size: 1.6rem;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .pill-badge {
+            padding: 0.35rem 0.85rem;
+            background: rgba(124, 58, 237, 0.12);
+            border: 1px solid var(--border-glow);
+            color: var(--accent-purple);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pill-badge.emerald {
+            background: rgba(16, 185, 129, 0.12);
+            border-color: var(--border-emerald);
+            color: var(--accent-emerald);
+        }
+
+        .pill-badge.cyan {
+            background: rgba(56, 189, 248, 0.12);
+            border-color: var(--border-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .pill-badge.amber {
+            background: rgba(251, 191, 36, 0.12);
+            border-color: rgba(251, 191, 36, 0.35);
+            color: var(--accent-amber);
+        }
+
+        .pill-badge.rose {
+            background: rgba(244, 63, 94, 0.12);
+            border-color: rgba(244, 63, 94, 0.35);
+            color: var(--accent-rose);
+        }
+
+        /* Typography & Paragraphs */
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        strong {
+            color: #fff;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: var(--accent-purple);
+            margin: 1.85rem 0 0.85rem;
+            font-weight: 700;
+        }
+
+        h4 {
+            font-size: 1.12rem;
+            color: #fff;
+            margin: 1.35rem 0 0.55rem;
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin: 0 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.75rem;
+            padding-left: 0.25rem;
+        }
+
+        /* Grids & Feature Layouts */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-glow);
+        }
+
+        .feature-card h3 {
+            margin: 0 0 0.5rem 0;
+            color: #fff;
+        }
+
+        /* Callout Boxes */
+        .info-box {
+            background: rgba(124, 58, 237, 0.08);
+            border-left: 4px solid var(--accent-purple);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 1.35rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-box.cyan {
+            background: rgba(56, 189, 248, 0.08);
+            border-left-color: var(--accent-cyan);
+        }
+
+        .info-box.emerald {
+            background: rgba(52, 211, 153, 0.08);
+            border-left-color: var(--accent-emerald);
+        }
+
+        .info-box.amber {
+            background: rgba(251, 191, 36, 0.08);
+            border-left-color: var(--accent-amber);
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+        }
+
+        /* Tables */
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            margin: 1.75rem 0;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-glow);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        table.comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            background: rgba(15, 23, 42, 0.85);
+            font-size: 0.95rem;
+        }
+
+        table.comparison-table th {
+            background: rgba(30, 41, 59, 0.95);
+            color: var(--accent-cyan);
+            padding: 1rem 1.25rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border-glow);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+
+        table.comparison-table td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-main);
+            vertical-align: top;
+        }
+
+        /* SVG Graph Containers */
+        .graph-wrapper {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1.75rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .graph-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .svg-graph-container {
+            width: 100%;
+            max-width: 760px;
+            height: auto;
+        }
+
+        /* Interactive Simulator Module */
+        .sim-container {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            box-shadow: 0 0 35px rgba(124, 58, 237, 0.12);
+        }
+
+        .sim-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+            background: rgba(30, 41, 59, 0.5);
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-group label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .control-group select, .control-group input[type="range"] {
+            width: 100%;
+            padding: 0.55rem 0.75rem;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            font-size: 0.9rem;
+            accent-color: var(--accent-purple);
+        }
+
+        .sim-display-box {
+            background: rgba(10, 15, 28, 0.85);
+            border: 1px solid var(--border-cyan);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .telemetry-panel {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+
+        .telemetry-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .telemetry-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .telemetry-value {
+            font-family: var(--font-mono);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--accent-purple);
+            margin-top: 0.25rem;
+        }
+
+        /* Buttons & Actions */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-ethereal {
+            background: linear-gradient(135deg, #7c3aed, #06b6d4);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-ethereal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.45);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--border-light);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        /* Questions & Rubrics */
+        .question-container {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .marks-badge {
+            background: rgba(244, 63, 94, 0.15);
+            border: 1px solid rgba(244, 63, 94, 0.4);
+            color: var(--accent-rose);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .action-bar {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .drawer {
+            margin-top: 1rem;
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .drawer-hint {
+            background: rgba(251, 191, 36, 0.08);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            color: #fef08a;
+        }
+
+        .drawer-solution {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-glow);
+        }
+
+        .rubric-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--accent-purple);
+        }
+
+        .rubric-box h5 {
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .content-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; padding: 1.5rem; }
+            .grid-2col { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="ethereal-theme">
+    <div class="app-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="badge-glow">NESA Stage 6</span>
+                <h2>Module 5</h2>
+                <p class="subtitle">EQUILIBRIUM & ACID REACTIONS</p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="module-progress" style="width: 72%;"></div>
+                </div>
+                <div class="score-card">
+                    Total Mastery: <span id="total-marks">72</span> / 100 Marks
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-section">
+                    <span class="section-title">INTRODUCTION</span>
+                    <a href="index.html" class="nav-item">
+                        <span class="nav-num">—</span> Home & Guide
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE A: FOUNDATIONS OF EQUILIBRIUM</span>
+                    <a href="01-reversible-reactions.html" class="nav-item"><span class="nav-num">01</span> Reversible vs Irreversible</a>
+                    <a href="02-open-closed-systems.html" class="nav-item"><span class="nav-num">02</span> Open vs Closed Systems</a>
+                    <a href="03-static-dynamic-equilibrium.html" class="nav-item"><span class="nav-num">03</span> Static vs Dynamic Eq</a>
+                    <a href="04-non-equilibrium-systems.html" class="nav-item"><span class="nav-num">04</span> Non-Equilibrium Systems</a>
+                    <a href="05-collision-theory-equilibrium.html" class="nav-item"><span class="nav-num">05</span> Collision Theory in Eq</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE B: FACTORS AFFECTING EQUILIBRIUM</span>
+                    <a href="06-intro-le-chatelier.html" class="nav-item"><span class="nav-num">06</span> Le Chatelier's Principle</a>
+                    <a href="07-effect-of-concentration.html" class="nav-item"><span class="nav-num">07</span> Concentration Changes</a>
+                    <a href="08-effect-of-pressure-volume.html" class="nav-item"><span class="nav-num">08</span> Pressure & Volume</a>
+                    <a href="09-effect-of-temperature.html" class="nav-item"><span class="nav-num">09</span> Temperature Effects</a>
+                    <a href="10-collision-theory-lcp.html" class="nav-item"><span class="nav-num">10</span> Collision Theory & LCP</a>
+                    <a href="11-activation-energy-equilibrium.html" class="nav-item"><span class="nav-num">11</span> Activation Energy & $\Delta H$</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE C: THE EQUILIBRIUM CONSTANT</span>
+                    <a href="12-keq-expression.html" class="nav-item"><span class="nav-num">12</span> The $K_{\mathrm{eq}}$ Expression</a>
+                    <a href="13-keq-calculations-basic.html" class="nav-item"><span class="nav-num">13</span> Basic $K_{\mathrm{eq}}$ Calculations</a>
+                    <a href="14-keq-calculations-advanced.html" class="nav-item"><span class="nav-num">14</span> Advanced $K_{\mathrm{eq}}$ & $Q$</a>
+                    <a href="15-temperature-and-keq.html" class="nav-item"><span class="nav-num">15</span> Temperature & $K_{\mathrm{eq}}$</a>
+                    <a href="16-determining-keq-experiment.html" class="nav-item"><span class="nav-num">16</span> Practical Determination</a>
+                    <a href="17-keq-acid-base-dissociation.html" class="nav-item"><span class="nav-num">17</span> Dissociation Systems</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE D: SOLUTION EQUILIBRIA</span>
+                    <a href="18-dissolution-ionic-compounds.html" class="nav-item active"><span class="nav-num">18</span> Ionic Dissolution</a>
+                    <a href="19-indigenous-solubility-cycads.html" class="nav-item"><span class="nav-num">19</span> Indigenous Detoxification</a>
+                    <a href="20-solubility-rules.html" class="nav-item"><span class="nav-num">20</span> Solubility Rules</a>
+                    <a href="21-solubility-product-ksp.html" class="nav-item"><span class="nav-num">21</span> Solubility Product ($K_{\mathrm{sp}}$)</a>
+                    <a href="22-molar-solubility-calcs.html" class="nav-item"><span class="nav-num">22</span> Molar Solubility Calcs</a>
+                    <a href="23-predicting-precipitation.html" class="nav-item"><span class="nav-num">23</span> Predicting Precipitation</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE E: ASSESSMENT & REVIEW</span>
+                    <a href="24-formula-summary.html" class="nav-item"><span class="nav-num">24</span> Formula & Concept Guide</a>
+                    <a href="25-final-exam.html" class="nav-item"><span class="nav-num">25</span> Final Examination</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="hero-banner">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <span class="ethereal-tag">LESSON 18 • PHASE D: SOLUTION EQUILIBRIA & SOLUBILITY</span>
+                    <h1 class="ethereal-title">Dissolution of Ionic Compounds in Water</h1>
+                    <p class="ethereal-subtitle">Explore the sub-microscopic molecular mechanism of ionic dissolution. Analyse ion-dipole forces, hydration shells, lattice dissociation energy ($\Delta H_{\mathrm{lattice}}$), hydration enthalpy ($\Delta H_{\mathrm{hydration}}$), enthalpy of solution ($\Delta H_{\mathrm{soln}}$), entropy changes ($\Delta S_{\mathrm{soln}}$), and dynamic equilibrium in saturated aqueous systems.</p>
+                </div>
+            </header>
+
+            <!-- SYLLABUS ALIGNMENT CARD -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>NESA Syllabus Inquiry Focus</h2>
+                    <span class="pill-badge">Stage 6 Chemistry</span>
+                </div>
+                <p>
+                    <strong>Inquiry Question 4:</strong> <em>How does solubility relate to chemical equilibrium?</em>
+                </p>
+                <div class="info-box cyan" style="margin-top: 1rem;">
+                    <h3>Syllabus Outcomes Addressed (Outcome CH-12-01):</h3>
+                    <ul>
+                        <li>Describe and analyse the process of dissolution of ionic compounds in water in terms of:
+                            <ul>
+                                <li>Ion-dipole interactions</li>
+                                <li>Attraction between positive and negative ions (lattice energy)</li>
+                                <li>Hydration energy ($\Delta H_{\mathrm{hydration}}$)</li>
+                                <li>Enthalpy of solution ($\Delta H_{\mathrm{soln}}$)</li>
+                                <li>Entropy changes ($\Delta S_{\mathrm{soln}}$) and Gibbs free energy ($\Delta G_{\mathrm{soln}}$)</li>
+                            </ul>
+                        </li>
+                        <li>Analyse the establishment of dynamic equilibrium in saturated solutions where the rate of dissolution equals the rate of recrystallisation.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECTION 1: MOLECULAR STRUCTURE & INTERACTION FORCES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>1. Molecular Structure & Intermolecular Interaction Forces</h2>
+                    <span class="pill-badge">Foundational Mechanisms</span>
+                </div>
+
+                <p>
+                    To comprehend why ionic solid crystals dissolve in water, we must examine the sub-microscopic structural properties of both the solute (the ionic crystal lattice) and the solvent (liquid water).
+                </p>
+
+                <h3>1. The Structure and Polarity of Water ($\mathrm{H_2O}$)</h3>
+                <p>
+                    Liquid water consists of polar covalent molecules with a non-linear (bent) molecular geometry and a bond angle of approximately $104.5^\circ$.
+                </p>
+                <ul>
+                    <li><strong>Electronegativity Difference:</strong> Oxygen ($\text{EN} = 3.44$) is significantly more electronegative than hydrogen ($\text{EN} = 2.20$). As a result, electron density in each $\mathrm{O-H}$ covalent bond is drawn strongly towards the oxygen atom.</li>
+                    <li><strong>Permanent Dipole Moment:</strong> Due to its asymmetrical bent geometry, the two bond dipoles reinforce one another rather than cancelling out. This gives water a permanent molecular dipole with a partial negative charge ($\delta^-$) centered on the oxygen atom and partial positive charges ($\delta^+$) located on the two hydrogen atoms.</li>
+                </ul>
+
+                <h3>2. The Ionic Crystal Lattice</h3>
+                <p>
+                    An ionic solid (such as sodium chloride, $\mathrm{NaCl}$) exists as a rigid, highly ordered three-dimensional lattice composed of alternating cations ($\mathrm{Na^+}$) and anions ($\mathrm{Cl^-}$).
+                </p>
+                <p>
+                    The ions are held together in fixed lattice positions by strong, non-directional electrostatic forces of attraction between oppositely charged ions (ionic bonding). The energy required to break one mole of an ionic crystal lattice into its separated gaseous ions is termed the <strong>lattice dissociation enthalpy ($\Delta H_{\mathrm{lattice}}$)</strong>:
+                </p>
+                $$\mathrm{NaCl(s) \to Na^+(g) + Cl^-(g)} \quad \Delta H_{\mathrm{lattice}} = +787\text{ kJ mol}^{-1}$$
+
+                <!-- SVG Diagram 1: Water dipole and Ion-Dipole Orientations -->
+                <div class="graph-wrapper">
+                    <div class="graph-title">Figure 18.1: Sub-microscopic Ion-Dipole Orientations in Aqueous Hydration Shells</div>
+                    <div class="svg-graph-container">
+                        <svg viewBox="0 0 720 280" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="720" height="280" fill="#0b1329" rx="10"/>
+
+                            <!-- Cation Hydration Shell (Left) -->
+                            <g transform="translate(40, 20)">
+                                <rect width="300" height="240" fill="rgba(15, 23, 42, 0.8)" stroke="#38bdf8" stroke-width="1.5" rx="8"/>
+                                <text x="150" y="28" fill="#38bdf8" font-size="13" font-weight="700" text-anchor="middle">Hydrated Cation (Na⁺)</text>
+                                <text x="150" y="46" fill="#94a3b8" font-size="10" text-anchor="middle">δ⁻ Oxygen atoms face inward toward positive cation</text>
+
+                                <!-- Central Cation -->
+                                <circle cx="150" cy="140" r="22" fill="#38bdf8"/>
+                                <text x="150" y="145" fill="#000" font-size="14" font-weight="800" text-anchor="middle">Na⁺</text>
+
+                                <!-- Surrounding Water Molecules (4 representative) -->
+                                <!-- Top water -->
+                                <g transform="translate(150, 80)">
+                                    <circle cx="0" cy="12" r="10" fill="#f43f5e"/> <!-- O -->
+                                    <text x="0" y="15" fill="#fff" font-size="8" font-weight="700" text-anchor="middle">δ⁻</text>
+                                    <circle cx="-11" cy="-2" r="6" fill="#cbd5e1"/> <!-- H -->
+                                    <circle cx="11" cy="-2" r="6" fill="#cbd5e1"/> <!-- H -->
+                                </g>
+                                <!-- Bottom water -->
+                                <g transform="translate(150, 200)">
+                                    <circle cx="0" cy="-12" r="10" fill="#f43f5e"/>
+                                    <text x="0" y="-9" fill="#fff" font-size="8" font-weight="700" text-anchor="middle">δ⁻</text>
+                                    <circle cx="-11" cy="2" r="6" fill="#cbd5e1"/>
+                                    <circle cx="11" cy="2" r="6" fill="#cbd5e1"/>
+                                </g>
+                                <!-- Left water -->
+                                <g transform="translate(90, 140)">
+                                    <circle cx="12" cy="0" r="10" fill="#f43f5e"/>
+                                    <text x="12" y="3" fill="#fff" font-size="8" font-weight="700" text-anchor="middle">δ⁻</text>
+                                    <circle cx="-2" cy="-11" r="6" fill="#cbd5e1"/>
+                                    <circle cx="-2" cy="11" r="6" fill="#cbd5e1"/>
+                                </g>
+                                <!-- Right water -->
+                                <g transform="translate(210, 140)">
+                                    <circle cx="-12" cy="0" r="10" fill="#f43f5e"/>
+                                    <text x="-12" y="3" fill="#fff" font-size="8" font-weight="700" text-anchor="middle">δ⁻</text>
+                                    <circle cx="2" cy="-11" r="6" fill="#cbd5e1"/>
+                                    <circle cx="2" cy="11" r="6" fill="#cbd5e1"/>
+                                </g>
+                            </g>
+
+                            <!-- Anion Hydration Shell (Right) -->
+                            <g transform="translate(380, 20)">
+                                <rect width="300" height="240" fill="rgba(15, 23, 42, 0.8)" stroke="#a78bfa" stroke-width="1.5" rx="8"/>
+                                <text x="150" y="28" fill="#a78bfa" font-size="13" font-weight="700" text-anchor="middle">Hydrated Anion (Cl⁻)</text>
+                                <text x="150" y="46" fill="#94a3b8" font-size="10" text-anchor="middle">δ⁺ Hydrogen atoms face inward toward negative anion</text>
+
+                                <!-- Central Anion -->
+                                <circle cx="150" cy="140" r="26" fill="#a78bfa"/>
+                                <text x="150" y="145" fill="#000" font-size="14" font-weight="800" text-anchor="middle">Cl⁻</text>
+
+                                <!-- Surrounding Water Molecules (H inward) -->
+                                <!-- Top water -->
+                                <g transform="translate(150, 80)">
+                                    <circle cx="0" cy="-10" r="10" fill="#f43f5e"/>
+                                    <circle cx="-8" cy="8" r="6" fill="#38bdf8"/> <!-- H δ+ -->
+                                    <text x="-8" y="11" fill="#000" font-size="7" font-weight="800" text-anchor="middle">δ⁺</text>
+                                    <circle cx="8" cy="8" r="6" fill="#38bdf8"/> <!-- H δ+ -->
+                                    <text x="8" y="11" fill="#000" font-size="7" font-weight="800" text-anchor="middle">δ⁺</text>
+                                </g>
+                                <!-- Bottom water -->
+                                <g transform="translate(150, 200)">
+                                    <circle cx="0" cy="10" r="10" fill="#f43f5e"/>
+                                    <circle cx="-8" cy="-8" r="6" fill="#38bdf8"/>
+                                    <text x="-8" y="-5" fill="#000" font-size="7" font-weight="800" text-anchor="middle">δ⁺</text>
+                                    <circle cx="8" cy="-8" r="6" fill="#38bdf8"/>
+                                    <text x="8" y="-5" fill="#000" font-size="7" font-weight="800" text-anchor="middle">δ⁺</text>
+                                </g>
+                                <!-- Left water -->
+                                <g transform="translate(90, 140)">
+                                    <circle cx="-10" cy="0" r="10" fill="#f43f5e"/>
+                                    <circle cx="8" cy="-8" r="6" fill="#38bdf8"/>
+                                    <text x="8" y="-5" fill="#000" font-size="7" font-weight="800" text-anchor="middle">δ⁺</text>
+                                    <circle cx="8" cy="8" r="6" fill="#38bdf8"/>
+                                    <text x="8" y="11" fill="#000" font-size="7" font-weight="800" text-anchor="middle">δ⁺</text>
+                                </g>
+                                <!-- Right water -->
+                                <g transform="translate(210, 140)">
+                                    <circle cx="10" cy="0" r="10" fill="#f43f5e"/>
+                                    <circle cx="-8" cy="-8" r="6" fill="#38bdf8"/>
+                                    <text x="-8" y="-5" fill="#000" font-size="7" font-weight="800" text-anchor="middle">δ⁺</text>
+                                    <circle cx="-8" cy="8" r="6" fill="#38bdf8"/>
+                                    <text x="-8" y="11" fill="#000" font-size="7" font-weight="800" text-anchor="middle">δ⁺</text>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2: THE MOLECULAR STEP-BY-STEP DISSOLUTION MECHANISM -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>2. The Step-by-Step Molecular Dissolution Mechanism</h2>
+                    <span class="pill-badge emerald">Sub-microscopic Step Analysis</span>
+                </div>
+
+                <p>
+                    Dissolution is not a instantaneous single event; it is a progressive molecular process occurring at the solid-liquid interface. When an ionic solid is placed into water, dissolution occurs through three consecutive steps:
+                </p>
+
+                <div class="features-grid">
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-cyan);">
+                        <h3>Step 1: Water Molecular Orientation</h3>
+                        <p>
+                            Water molecules constantly undergoing random thermal motion collide with the surface of the ionic crystal. Polar water molecules reorient themselves according to electrostatic charge attraction:
+                        </p>
+                        <ul>
+                            <li>The partially negative oxygen atoms ($\delta^-$) align towards exposed surface cations ($\mathrm{Na^+}$).</li>
+                            <li>The partially positive hydrogen atoms ($\delta^+$) align towards exposed surface anions ($\mathrm{Cl^-}$).</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-amber);">
+                        <h3>Step 2: Ion Dislodgement & Lattice Breaking</h3>
+                        <p>
+                            As multiple water molecules cluster around a surface ion, the sum of the newly formed <strong>ion-dipole attractive forces</strong> exerts a pulling force on that ion.
+                        </p>
+                        <p>
+                            When the collective ion-dipole attractive energy overcomes the electrostatic ionic bonds holding the ion in the crystal lattice, the ion is dislodged from the surface and pulled into the liquid solvent phase.
+                        </p>
+                    </div>
+
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-purple);">
+                        <h3>Step 3: Solvation / Hydration Shell Formation</h3>
+                        <p>
+                            Once pulled into solution, the free ion is completely surrounded by a stable arrangement of water molecules, termed a <strong>hydration shell</strong> (or solvation shell).
+                        </p>
+                        <p>
+                            This exergonic process is called <strong>hydration</strong>. The formation of ion-dipole bonds releases energy into the system, stabilising the mobile hydrated ions ($\mathrm{Na^+(aq)}$ and $\mathrm{Cl^-(aq)}$) and preventing them from immediately recombining into the crystal lattice.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="info-box cyan">
+                    <h3>Chemical Equation for Ionic Dissolution</h3>
+                    <p>
+                        The overall dissolution process is written showing the solid ionic compound producing separated aqueous ions:
+                        $$\mathrm{NaCl(s) \xrightarrow{H_2O(l)} Na^+(aq) + Cl^-(aq)}$$
+                        Note that $\mathrm{H_2O(l)}$ is written above the reaction arrow to denote its role as the solvent medium rather than a stoichiometric reactant.
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 3: THERMODYNAMICS & ENTHALPY OF SOLUTION -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>3. Thermochemistry: Enthalpy of Solution ($\Delta H_{\mathrm{soln}}$)</h2>
+                    <span class="pill-badge rose">Hess's Law Energetics</span>
+                </div>
+
+                <p>
+                    The overall energy change accompanying dissolution is known as the <strong>molar enthalpy of solution ($\Delta H_{\mathrm{soln}}$)</strong>. It is defined as the enthalpy change when one mole of an ionic solute dissolves completely in an excess of solvent to form an infinitely dilute solution at standard pressure ($100\text{ kPa}$).
+                </p>
+
+                <p>
+                    Using Hess's Law, the dissolution process can be broken down into a two-step theoretical thermodynamic cycle:
+                </p>
+
+                <div class="info-box amber">
+                    <h3>The Thermochemical Dissolution Cycle</h3>
+                    <p>
+                        <strong>1. Lattice Separation ($\Delta H_{\mathrm{lattice}}$):</strong> Breaking the solid ionic lattice into gaseous ions. This step requires energy input to overcome ionic bonds and is strictly <strong>ENDOTHERMIC ($\Delta H_{\mathrm{lattice}} > 0$)</strong>:
+                        $$\mathrm{MX(s) \to M^+(g) + X^-(g)} \quad \Delta H_{\mathrm{lattice}} > 0$$
+                    </p>
+                    <p>
+                        <strong>2. Gaseous Ion Hydration ($\Delta H_{\mathrm{hydration}}$):</strong> Dissolving gaseous ions into water to form hydrated aqueous ions. This step forms strong ion-dipole attractions and is strictly <strong>EXOTHERMIC ($\Delta H_{\mathrm{hydration}} < 0$)</strong>:
+                        $$\mathrm{M^+(g) + X^-(g) \xrightarrow{H_2O(l)} M^+(aq) + X^-(aq)} \quad \Delta H_{\mathrm{hydration}} < 0$$
+                    </p>
+                    <p>
+                        <strong>3. Hess's Law Summation:</strong>
+                        $$\Delta H_{\mathrm{soln}} = \Delta H_{\mathrm{lattice}} + \Delta H_{\mathrm{hydration}}$$
+                    </p>
+                </div>
+
+                <h3>Exothermic vs Endothermic Dissolution</h3>
+                <p>
+                    Depending on the relative magnitudes of lattice enthalpy ($\Delta H_{\mathrm{lattice}}$) and hydration enthalpy ($\Delta H_{\mathrm{hydration}}$), the overall enthalpy of solution ($\Delta H_{\mathrm{soln}}$) can be negative or positive:
+                </p>
+
+                <div class="grid-2col">
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-emerald);">
+                        <h3>Exothermic Dissolution ($\Delta H_{\mathrm{soln}} < 0$)</h3>
+                        <p>
+                            Occurs when the energy released during ion hydration is greater than the energy required to break the crystal lattice:
+                            $$|\Delta H_{\mathrm{hydration}}| > |\Delta H_{\mathrm{lattice}}|$$
+                            Thermal energy is released to the surroundings, causing the solution temperature to <strong>increase</strong> (e.g. dissolution of $\mathrm{NaOH}$ or $\mathrm{CaCl_2}$).
+                        </p>
+                    </div>
+
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-rose);">
+                        <h3>Endothermic Dissolution ($\Delta H_{\mathrm{soln}} > 0$)</h3>
+                        <p>
+                            Occurs when the energy required to break the crystal lattice exceeds the energy released during ion hydration:
+                            $$|\Delta H_{\mathrm{lattice}}| > |\Delta H_{\mathrm{hydration}}|$$
+                            Thermal energy is absorbed from the surroundings, causing the solution temperature to <strong>decrease</strong> (e.g. dissolution of $\mathrm{NH_4NO_3}$ or $\mathrm{KNO_3}$).
+                        </p>
+                    </div>
+                </div>
+
+                <!-- SVG Graph 2: Enthalpy Level Diagrams -->
+                <div class="graph-wrapper">
+                    <div class="graph-title">Figure 18.2: Hess's Law Enthalpy Level Diagrams for Exothermic vs Endothermic Dissolution</div>
+                    <div class="svg-graph-container">
+                        <svg viewBox="0 0 720 300" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="720" height="300" fill="#0b1329" rx="10"/>
+
+                            <!-- Left: Exothermic Cycle -->
+                            <g transform="translate(30, 20)">
+                                <rect width="320" height="260" fill="rgba(15, 23, 42, 0.8)" stroke="#34d399" stroke-width="1.5" rx="8"/>
+                                <text x="160" y="26" fill="#34d399" font-size="13" font-weight="700" text-anchor="middle">Exothermic Dissolution (e.g. NaOH)</text>
+
+                                <!-- Energy axis -->
+                                <line x1="40" y1="220" x2="40" y2="50" stroke="#94a3b8" stroke-width="2"/>
+                                <polygon points="40,42 36,52 44,52" fill="#94a3b8"/>
+                                <text x="30" y="45" fill="#94a3b8" font-size="10" text-anchor="end">Energy</text>
+
+                                <!-- State Levels -->
+                                <!-- Level 1: MX(s) -->
+                                <line x1="60" y1="180" x2="150" y2="180" stroke="#f8fafc" stroke-width="3"/>
+                                <text x="105" y="196" fill="#f8fafc" font-size="11" font-weight="700" text-anchor="middle">MX(s)</text>
+
+                                <!-- Level 2: Gaseous ions (top) -->
+                                <line x1="120" y1="70" x2="220" y2="70" stroke="#fbbf24" stroke-width="3"/>
+                                <text x="170" y="62" fill="#fbbf24" font-size="11" font-weight="700" text-anchor="middle">M⁺(g) + X⁻(g)</text>
+
+                                <!-- Level 3: Aq ions (lower than solid) -->
+                                <line x1="200" y1="210" x2="290" y2="210" stroke="#34d399" stroke-width="3"/>
+                                <text x="245" y="226" fill="#34d399" font-size="11" font-weight="700" text-anchor="middle">M⁺(aq) + X⁻(aq)</text>
+
+                                <!-- Arrows -->
+                                <!-- Lattice arrow up -->
+                                <line x1="90" y1="175" x2="90" y2="75" stroke="#fbbf24" stroke-width="2" stroke-dasharray="4,3"/>
+                                <polygon points="90,72 86,80 94,80" fill="#fbbf24"/>
+                                <text x="82" y="125" fill="#fbbf24" font-size="9" text-anchor="end">ΔH_lattice (+)</text>
+
+                                <!-- Hydration arrow down -->
+                                <line x1="210" y1="75" x2="210" y2="205" stroke="#38bdf8" stroke-width="2"/>
+                                <polygon points="210,208 206,200 214,200" fill="#38bdf8"/>
+                                <text x="218" y="140" fill="#38bdf8" font-size="9">ΔH_hyd (-)</text>
+
+                                <!-- Solution net arrow down -->
+                                <line x1="270" y1="185" x2="270" y2="205" stroke="#34d399" stroke-width="2.5"/>
+                                <polygon points="270,208 266,200 274,200" fill="#34d399"/>
+                                <text x="280" y="198" fill="#34d399" font-size="10" font-weight="700">ΔH_soln (&lt; 0)</text>
+                            </g>
+
+                            <!-- Right: Endothermic Cycle -->
+                            <g transform="translate(370, 20)">
+                                <rect width="320" height="260" fill="rgba(15, 23, 42, 0.8)" stroke="#f43f5e" stroke-width="1.5" rx="8"/>
+                                <text x="160" y="26" fill="#f43f5e" font-size="13" font-weight="700" text-anchor="middle">Endothermic Dissolution (e.g. NH₄NO₃)</text>
+
+                                <!-- Energy axis -->
+                                <line x1="40" y1="220" x2="40" y2="50" stroke="#94a3b8" stroke-width="2"/>
+                                <polygon points="40,42 36,52 44,52" fill="#94a3b8"/>
+
+                                <!-- State Levels -->
+                                <!-- Level 1: MX(s) -->
+                                <line x1="60" y1="190" x2="150" y2="190" stroke="#f8fafc" stroke-width="3"/>
+                                <text x="105" y="206" fill="#f8fafc" font-size="11" font-weight="700" text-anchor="middle">MX(s)</text>
+
+                                <!-- Level 2: Gaseous ions (top) -->
+                                <line x1="120" y1="60" x2="220" y2="60" stroke="#fbbf24" stroke-width="3"/>
+                                <text x="170" y="52" fill="#fbbf24" font-size="11" font-weight="700" text-anchor="middle">M⁺(g) + X⁻(g)</text>
+
+                                <!-- Level 3: Aq ions (higher than solid) -->
+                                <line x1="200" y1="150" x2="290" y2="150" stroke="#f43f5e" stroke-width="3"/>
+                                <text x="245" y="142" fill="#f43f5e" font-size="11" font-weight="700" text-anchor="middle">M⁺(aq) + X⁻(aq)</text>
+
+                                <!-- Arrows -->
+                                <!-- Lattice arrow up -->
+                                <line x1="90" y1="185" x2="90" y2="65" stroke="#fbbf24" stroke-width="2" stroke-dasharray="4,3"/>
+                                <polygon points="90,62 86,70 94,70" fill="#fbbf24"/>
+                                <text x="82" y="125" fill="#fbbf24" font-size="9" text-anchor="end">ΔH_lattice (+)</text>
+
+                                <!-- Hydration arrow down -->
+                                <line x1="210" y1="65" x2="210" y2="145" stroke="#38bdf8" stroke-width="2"/>
+                                <polygon points="210,148 206,140 214,140" fill="#38bdf8"/>
+                                <text x="218" y="105" fill="#38bdf8" font-size="9">ΔH_hyd (-)</text>
+
+                                <!-- Solution net arrow up -->
+                                <line x1="270" y1="185" x2="270" y2="155" stroke="#f43f5e" stroke-width="2.5"/>
+                                <polygon points="270,152 266,160 274,160" fill="#f43f5e"/>
+                                <text x="280" y="172" fill="#f43f5e" font-size="10" font-weight="700">ΔH_soln (&gt; 0)</text>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: ENTROPY & GIBBS FREE ENERGY OF DISSOLUTION -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>4. Entropy ($\Delta S$) & Spontaneity ($\Delta G$) of Dissolution</h2>
+                    <span class="pill-badge emerald">Thermodynamic Spontaneity</span>
+                </div>
+
+                <p>
+                    A major inquiry question in Module 5 chemistry is: <em>Why do some ionic compounds dissolve endothermically ($\Delta H_{\mathrm{soln}} > 0$) even though endothermic processes absorb energy?</em>
+                </p>
+                <p>
+                    The answer lies in evaluating the <strong>change in entropy ($\Delta S_{\mathrm{soln}}$)</strong> and applying the Gibbs free energy equation:
+                </p>
+                $$\Delta G_{\mathrm{soln}} = \Delta H_{\mathrm{soln}} - T\Delta S_{\mathrm{soln}}$$
+
+                <h3>1. Entropy Changes during Dissolution ($\Delta S_{\mathrm{soln}}$)</h3>
+                <p>
+                    Entropy ($S$) is a measure of the degree of thermal disorder or distribution of energy among particles in a system. When an ionic solid dissolves in water, two opposing entropy factors occur:
+                </p>
+
+                <div class="grid-2col">
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-emerald);">
+                        <h3>1. Solute Entropy Increase ($\Delta S_{\mathrm{solute}} > 0$)</h3>
+                        <p>
+                            The rigid, highly ordered 3D ionic crystal lattice breaks apart, releasing individual mobile ions that disperse randomly throughout the liquid solution. This dispersion dramatically increases microstates and disorder ($\Delta S_{\mathrm{solute}} \gg 0$).
+                        </p>
+                    </div>
+
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-rose);">
+                        <h3>2. Solvent Entropy Decrease ($\Delta S_{\mathrm{solvent}} < 0$)</h3>
+                        <p>
+                            Water molecules that were previously free to move randomly in bulk liquid become restricted and ordered as they align into fixed hydration shells around separated ions. This structural ordering decreases solvent entropy ($\Delta S_{\mathrm{solvent}} < 0$).
+                        </p>
+                    </div>
+                </div>
+
+                <p>
+                    For the vast majority of simple ionic salts (e.g. $\mathrm{NaCl}$, $\mathrm{NH_4NO_3}$), the immense increase in solute disorder heavily outweighs the minor local ordering of water molecules. Thus, the <strong>net entropy change of dissolution is positive ($\Delta S_{\mathrm{soln}} > 0$)</strong>.
+                </p>
+
+                <div class="info-box purple">
+                    <h3>Explaining Spontaneous Endothermic Dissolution</h3>
+                    <p>
+                        For an endothermic salt such as ammonium nitrate ($\mathrm{NH_4NO_3}$), $\Delta H_{\mathrm{soln}} = +25.7\text{ kJ mol}^{-1}$.
+                    </p>
+                    <p>
+                        Despite $\Delta H_{\mathrm{soln}} > 0$ being energetically unfavourable, the large positive entropy change ($\Delta S_{\mathrm{soln}} > 0$) yields a large positive $T\Delta S_{\mathrm{soln}}$ term at room temperature ($298\text{ K}$).
+                    </p>
+                    <p>
+                        Because $T\Delta S_{\mathrm{soln}} > \Delta H_{\mathrm{soln}}$, the net Gibbs free energy change is negative:
+                        $$\Delta G_{\mathrm{soln}} = \Delta H_{\mathrm{soln}} - T\Delta S_{\mathrm{soln}} < 0$$
+                        Thus, the dissolution process is <strong>thermodynamically spontaneous ($\Delta G_{\mathrm{soln}} < 0$)</strong> driven by entropy!
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 5: SATURATED SOLUTIONS & DYNAMIC EQUILIBRIUM -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>5. Saturated Solutions & Molecular Dynamic Equilibrium</h2>
+                    <span class="pill-badge cyan">Solution Equilibrium</span>
+                </div>
+
+                <p>
+                    When an ionic solid is continuously added to water, the concentration of dissolved ions increases. Eventually, a point is reached where no further solute appears to dissolve. This system is termed a <strong>saturated solution</strong>.
+                </p>
+
+                <div class="info-box cyan">
+                    <h3>Definition of a Saturated Solution Equilibrium</h3>
+                    <p>
+                        A saturated solution is a dynamic equilibrium system established in a closed vessel (or vessel where solvent loss is prevented) at constant temperature, where undissolved solid ionic crystal coexists with dissolved aqueous ions:
+                        $$\mathrm{MX(s) \rightleftharpoons M^+(aq) + X^-(aq)}$$
+                    </p>
+                </div>
+
+                <h3>Sub-microscopic Reversibility: Dissolution vs Recrystallisation</h3>
+                <p>
+                    At the sub-microscopic level, a saturated solution is not static; it is in a state of <strong>dynamic equilibrium</strong> governed by two opposing kinetic rates:
+                </p>
+                <ul>
+                    <li><strong>Forward Process (Dissolution):</strong> Solid surface ions are dislodged by water collision and enter solution as hydrated ions ($\mathrm{MX(s) \to M^+(aq) + X^-(aq)}$).</li>
+                    <li><strong>Reverse Process (Recrystallisation / Precipitation):</strong> Hydrated ions in solution collide with the solid crystal surface, lose their hydration shell, and redeposit into the lattice ($\mathrm{M^+(aq) + X^-(aq) \to MX(s)}$).</li>
+                </ul>
+
+                <p>
+                    When a solution becomes saturated, the <strong>rate of dissolution equals the rate of recrystallisation</strong>:
+                </p>
+                $$\text{Rate}_{\text{dissolution}} = \text{Rate}_{\text{recrystallisation}}$$
+
+                <p>
+                    Because both processes occur simultaneously at identical rates, the macroscopic mass of undissolved solid and the molar concentrations of dissolved aqueous ions remain completely constant over time, fulfilling all criteria of dynamic equilibrium.
+                </p>
+            </section>
+
+            <!-- SECTION 6: INTERACTIVE SIMULATOR MODULE -->
+            <section class="card glass-card demo-card">
+                <div class="card-header">
+                    <h2>6. Interactive Ionic Dissolution & Energetics Visualiser</h2>
+                    <span class="pill-badge demo-pill">Virtual Solvation Engine</span>
+                </div>
+                <p>Select an ionic salt, adjust the solution temperature, and observe real-time thermochemical decomposition ($\Delta H_{\mathrm{lattice}}$, $\Delta H_{\mathrm{hydration}}$, $\Delta H_{\mathrm{soln}}$), entropy drive ($\Delta S$), Gibbs free energy ($\Delta G$), and dynamic saturated equilibrium state.</p>
+
+                <div class="sim-container">
+                    <div class="sim-controls">
+                        <div class="control-group">
+                            <label>Select Ionic Compound:</label>
+                            <select id="sim-salt-select" onchange="runSolvationEngine()">
+                                <option value="nacl">Sodium Chloride (NaCl) [Mildly Endothermic]</option>
+                                <option value="nh4no3">Ammonium Nitrate (NH4NO3) [Strongly Endothermic]</option>
+                                <option value="naoh">Sodium Hydroxide (NaOH) [Strongly Exothermic]</option>
+                                <option value="cacl2">Calcium Chloride (CaCl2) [Highly Exothermic]</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <label>Solution Temperature $T$: <span id="lbl-temp-val" style="color: var(--accent-cyan);">298 K (25 °C)</span></label>
+                            <input type="range" id="sim-temp" min="273" max="353" step="1" value="298" oninput="runSolvationEngine()">
+                        </div>
+                    </div>
+
+                    <div class="sim-display-box">
+                        <h4 style="font-size: 0.9rem; color: var(--accent-cyan); text-transform: uppercase; margin-bottom: 0.75rem;">Dissolution Equilibrium Equation & Thermochemical Profile</h4>
+                        <div id="sim-eq-display" style="font-size: 1.25rem; font-weight: 700; font-family: var(--font-mono); text-align: center; color: var(--accent-purple);">
+                            $\mathrm{NaCl(s) \rightleftharpoons Na^+(aq) + Cl^-(aq)}$
+                        </div>
+                    </div>
+
+                    <div class="telemetry-panel">
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Lattice Enthalpy ($\Delta H_{\mathrm{lattice}}$)</span>
+                            <span class="telemetry-value" id="tel-hlatt" style="color: var(--accent-amber);">+787 kJ/mol</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Hydration Enthalpy ($\Delta H_{\mathrm{hyd}}$)</span>
+                            <span class="telemetry-value" id="tel-mhyd" style="color: var(--accent-cyan);">-784 kJ/mol</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Enthalpy of Solution ($\Delta H_{\mathrm{soln}}$)</span>
+                            <span class="telemetry-value" id="tel-hsoln" style="color: var(--accent-emerald);">+3.0 kJ/mol</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Entropy Term ($T\Delta S_{\mathrm{soln}}$)</span>
+                            <span class="telemetry-value" id="tel-tds" style="color: var(--accent-purple);">+12.8 kJ/mol</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Gibbs Free Energy ($\Delta G_{\mathrm{soln}}$)</span>
+                            <span class="telemetry-value" id="tel-dg" style="color: var(--accent-emerald);">-9.8 kJ/mol (Spontaneous)</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 7: SCAFFOLDED WORKED EXAMPLES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>7. Scaffolded Worked Examples</h2>
+                    <span class="pill-badge">HSC Step-by-Step Solutions</span>
+                </div>
+
+                <!-- Example 1: Easy -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 1 (Easy): Ion-Dipole Orientation Description</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Describe the sub-microscopic orientation of water molecules as they form hydration shells around dissolved magnesium cations ($\mathrm{Mg^{2+}}$) and nitrate anions ($\mathrm{NO_3^-}$).
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Hydration around $\mathrm{Mg^{2+}}$ Cation:</strong>
+                        <br>Magnesium is a positively charged cation ($\mathrm{Mg^{2+}}$). Polar water molecules align with their partially negative oxygen atoms ($\delta^-$) directed inwards towards the cation, forming strong ion-dipole attractive forces.</p>
+
+                        <p><strong>2. Hydration around $\mathrm{NO_3^-}$ Anion:</strong>
+                        <br>Nitrate is a negatively charged oxoanion ($\mathrm{NO_3^-}$). Polar water molecules align with their partially positive hydrogen atoms ($\delta^+$) directed inwards towards the anion, forming ion-dipole attractions.</p>
+                    </div>
+                </div>
+
+                <!-- Example 2: Medium -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 2 (Medium): Calculating $\Delta H_{\mathrm{soln}}$ using Hess's Law Cycle</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        The lattice dissociation enthalpy for potassium chloride ($\mathrm{KCl}$) is $\Delta H_{\mathrm{lattice}} = +715\text{ kJ mol}^{-1}$.
+                        The combined hydration enthalpy for gaseous potassium ions ($\mathrm{K^+}(g)$) and chloride ions ($\mathrm{Cl^-}(g)$) is $\Delta H_{\mathrm{hydration}} = -698\text{ kJ mol}^{-1}$.
+                        <br><br>
+                        (a) Calculate the molar enthalpy of solution ($\Delta H_{\mathrm{soln}}$) for $\mathrm{KCl}$.
+                        <br>
+                        (b) State whether dissolving $\mathrm{KCl}$ in water causes the beaker temperature to increase or decrease.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>(a) Hess's Law Calculation:</strong>
+                        $$\Delta H_{\mathrm{soln}} = \Delta H_{\mathrm{lattice}} + \Delta H_{\mathrm{hydration}}$$
+                        $$\Delta H_{\mathrm{soln}} = (+715\text{ kJ mol}^{-1}) + (-698\text{ kJ mol}^{-1}) = \mathbf{+17\text{ kJ mol}^{-1}}$$</p>
+
+                        <p><strong>(b) Temperature Change:</strong>
+                        <br>Because $\Delta H_{\mathrm{soln}} = +17\text{ kJ mol}^{-1} > 0$, the dissolution of $\mathrm{KCl}$ is <strong>endothermic</strong>. Thermal energy is absorbed from the aqueous surroundings, causing the temperature of the beaker to <strong>decrease</strong>.</p>
+                    </div>
+                </div>
+
+                <!-- Example 3: Hard -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 3 (Hard): Thermodynamic Justification of Spontaneous Endothermic Dissolution</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        When solid ammonium chloride ($\mathrm{NH_4Cl}$) dissolves in water at $298\text{ K}$, the process absorbs heat ($\Delta H_{\mathrm{soln}} = +14.8\text{ kJ mol}^{-1}$). Yet, $\mathrm{NH_4Cl}$ dissolves rapidly and spontaneously up to high concentrations.
+                        <br><br>
+                        Using the concepts of entropy ($\Delta S_{\mathrm{soln}}$) and Gibbs free energy ($\Delta G_{\mathrm{soln}} = \Delta H_{\mathrm{soln}} - T\Delta S_{\mathrm{soln}}$), explain why this endothermic dissolution occurs spontaneously.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Analysis of Enthalpy ($\Delta H_{\mathrm{soln}}$):</strong>
+                        <br>Dissolution is endothermic ($\Delta H_{\mathrm{soln}} = +14.8\text{ kJ mol}^{-1} > 0$), which is energetically unfavourable for spontaneity.</p>
+
+                        <p><strong>2. Analysis of Entropy ($\Delta S_{\mathrm{soln}}$):</strong>
+                        <br>When solid $\mathrm{NH_4Cl(s)}$ dissolves, its rigid, highly ordered 3D crystalline lattice breaks apart, releasing free, mobile $\mathrm{NH_4^+}$ and $\mathrm{Cl^-}$ ions into solution. This ion dispersion creates a massive increase in system disorder, resulting in a large positive entropy change ($\Delta S_{\mathrm{soln}} > 0$).</p>
+
+                        <p><strong>3. Gibbs Free Energy Evaluation ($\Delta G_{\mathrm{soln}}$):</strong>
+                        <br>At $298\text{ K}$, the magnitude of the positive entropy term ($T\Delta S_{\mathrm{soln}}$) exceeds the positive enthalpy term ($\Delta H_{\mathrm{soln}}$):
+                        $$T\Delta S_{\mathrm{soln}} > \Delta H_{\mathrm{soln}}$$
+                        According to $\Delta G_{\mathrm{soln}} = \Delta H_{\mathrm{soln}} - T\Delta S_{\mathrm{soln}}$, this makes the overall Gibbs free energy change <strong>negative ($\Delta G_{\mathrm{soln}} < 0$)</strong>. Therefore, dissolution is driven entirely by entropy and occurs spontaneously.</p>
+                    </div>
+                </div>
+
+                <!-- Example 4: Extension -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 4 (Extension): Dynamic Equilibrium in Saturated Solutions & Temperature Dependence</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A saturated solution of an endothermic salt ($\Delta H_{\mathrm{soln}} > 0$) coexists with excess undissolved solid at $25^\circ\text{C}$.
+                        <br><br>
+                        (a) Explain why this system is described as a dynamic equilibrium at the sub-microscopic level. (2 Marks)
+                        <br>
+                        (b) Predict and explain the effect on dissolved ion concentration when the temperature of the saturated mixture is increased to $50^\circ\text{C}$, referencing Le Chatelier's Principle. (3 Marks)
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>(a) Sub-microscopic Dynamic Equilibrium:</strong>
+                        <br>At saturation, two opposing processes occur simultaneously at identical rates:
+                        $$\mathrm{MX(s) \rightleftharpoons M^+(aq) + X^-(aq)}$$
+                        The rate at which surface ions detach from the crystal and become hydrated ($\text{Rate}_{\text{dissolution}}$) equals the rate at which aqueous ions collide with the solid lattice and recrystallise ($\text{Rate}_{\text{recrystallisation}}$). Because both rates are equal and non-zero, macroscopic concentrations remain completely constant.</p>
+
+                        <p><strong>(b) Temperature Shift Explanation:</strong>
+                        <br>Dissolution is endothermic ($\mathrm{MX(s) + heat \rightleftharpoons M^+(aq) + X^-(aq)}, \Delta H_{\mathrm{soln}} > 0$).
+                        <br>Increasing temperature adds thermal energy to the system. By Le Chatelier's Principle, the system shifts equilibrium position in the <strong>FORWARD direction ($\to$)</strong> to absorb the added heat.
+                        <br>This forward shift increases the concentration of dissolved aqueous ions ($[\mathrm{M^+}]$ and $[\mathrm{X^-}]$) while consuming undissolved solid $\mathrm{MX(s)}$, thereby increasing salt solubility at $50^\circ\text{C}$.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 8: NESA PRACTICE QUESTIONS WITH RUBRICS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>8. NESA Examination Practice Questions</h2>
+                    <span class="pill-badge demo-pill">Self-Marking Engine</span>
+                </div>
+                <p>Solve the questions below, then toggle hints and model solutions to verify your answers against NESA marking rubrics.</p>
+
+                <!-- Practice Q1 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 1 (Easy): Ion-Dipole Force Formation</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Identify the type of intermolecular/interionic force formed when solid sodium bromide ($\mathrm{NaBr}$) dissolves in water, and explain how the partial charges of water interact with $\mathrm{Na^+}$ and $\mathrm{Br^-}$ ions.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq1-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq1-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq1-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Water has a permanent dipole with $\delta^-$ on oxygen and $\delta^+$ on hydrogens. The attractive force between an ion and a polar dipole is an <em>ion-dipole force</em>.</p>
+                    </div>
+
+                    <div id="pq1-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>• The interaction formed between dissolved ions and water molecules is an <strong>ion-dipole force</strong>.
+                            <br>• The partially negative oxygen atom ($\delta^-$) of water is electrostatically attracted to the positive sodium cation ($\mathrm{Na^+}$).
+                            <br>• The partially positive hydrogen atoms ($\delta^+$) of water are electrostatically attracted to the negative bromide anion ($\mathrm{Br^-}$).</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Correctly names ion-dipole interaction forces.</li>
+                                <li><strong>1 Mark:</strong> Correctly matches $\delta^-$ O with $\mathrm{Na^+}$ and $\delta^+$ H with $\mathrm{Br^-}$.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q2 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 2 (Medium): Enthalpy Cycle Calculation</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Lithium chloride ($\mathrm{LiCl}$) has a lattice dissociation enthalpy of $\Delta H_{\mathrm{lattice}} = +853\text{ kJ mol}^{-1}$ and an enthalpy of solution of $\Delta H_{\mathrm{soln}} = -37\text{ kJ mol}^{-1}$.
+                        <br><br>
+                        Calculate the combined hydration enthalpy ($\Delta H_{\mathrm{hydration}}$) for gaseous $\mathrm{Li^+}$ and $\mathrm{Cl^-}$ ions.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq2-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq2-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq2-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Use $\Delta H_{\mathrm{soln}} = \Delta H_{\mathrm{lattice}} + \Delta H_{\mathrm{hydration}} \implies \Delta H_{\mathrm{hydration}} = \Delta H_{\mathrm{soln}} - \Delta H_{\mathrm{lattice}}$.</p>
+                    </div>
+
+                    <div id="pq2-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>1. Rearrange the Hess's Law dissolution expression:
+                            $$\Delta H_{\mathrm{soln}} = \Delta H_{\mathrm{lattice}} + \Delta H_{\mathrm{hydration}}$$
+                            $$\Delta H_{\mathrm{hydration}} = \Delta H_{\mathrm{soln}} - \Delta H_{\mathrm{lattice}}$$
+                            <br>2. Substitute numerical values:
+                            $$\Delta H_{\mathrm{hydration}} = (-37\text{ kJ mol}^{-1}) - (+853\text{ kJ mol}^{-1}) = \mathbf{-890\text{ kJ mol}^{-1}}$$</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> States or applies the correct Hess's Law relationship for dissolution.</li>
+                                <li><strong>1 Mark:</strong> Correctly substitutes signed values into equation.</li>
+                                <li><strong>1 Mark:</strong> Obtains correct final answer $\Delta H_{\mathrm{hydration}} = -890\text{ kJ mol}^{-1}$ with correct sign and units.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q3 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 3 (Hard): Entropy & Enthalpy Interplay in Dissolution</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Account for the observation that calcium chloride ($\mathrm{CaCl_2}$) dissolves extremely exothermically ($\Delta H_{\mathrm{soln}} = -81.3\text{ kJ mol}^{-1}$), whereas sodium nitrate ($\mathrm{NaNO_3}$) dissolves endothermically ($\Delta H_{\mathrm{soln}} = +20.5\text{ kJ mol}^{-1}$), yet both salts dissolve readily and spontaneously in water at room temperature.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq3-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq3-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq3-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Evaluate both enthalpy ($\Delta H$) and entropy ($\Delta S$) for each salt using $\Delta G = \Delta H - T\Delta S$. For $\mathrm{CaCl_2}$, $\Delta H < 0$ drives spontaneity. For $\mathrm{NaNO_3}$, $\Delta S > 0$ drives spontaneity.</p>
+                    </div>
+
+                    <div id="pq3-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>• Spontaneity is determined by the Gibbs free energy change: $\Delta G_{\mathrm{soln}} = \Delta H_{\mathrm{soln}} - T\Delta S_{\mathrm{soln}}$. Dissolution is spontaneous when $\Delta G_{\mathrm{soln}} < 0$.
+                            <br><br>• <strong>Calcium Chloride ($\mathrm{CaCl_2}$):</strong>
+                            <br>Dissolution is strongly exothermic ($\Delta H_{\mathrm{soln}} = -81.3\text{ kJ mol}^{-1} < 0$) because the hydration enthalpy of small, highly charged $\mathrm{Ca^{2+}}$ ions is extremely negative. The large negative $\Delta H_{\mathrm{soln}}$ makes $\Delta G_{\mathrm{soln}}$ negative, so dissolution is enthalpy-driven.
+                            <br><br>• <strong>Sodium Nitrate ($\mathrm{NaNO_3}$):</strong>
+                            <br>Dissolution is endothermic ($\Delta H_{\mathrm{soln}} = +20.5\text{ kJ mol}^{-1} > 0$), which opposes spontaneity. However, breaking the rigid crystal lattice releases free mobile ions, creating a large increase in system disorder ($\Delta S_{\mathrm{soln}} > 0$). At room temperature ($298\text{ K}$), $T\Delta S_{\mathrm{soln}} > \Delta H_{\mathrm{soln}}$, yielding $\Delta G_{\mathrm{soln}} < 0$. Thus, $\mathrm{NaNO_3}$ dissolution is entropy-driven.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Introduces Gibbs free energy formula $\Delta G = \Delta H - T\Delta S$ and criterion for spontaneity ($\Delta G < 0$).</li>
+                                <li><strong>1 Mark:</strong> Explains that $\mathrm{CaCl_2}$ is enthalpy-driven due to large negative $\Delta H_{\mathrm{soln}}$ from strong $\mathrm{Ca^{2+}}$ ion hydration.</li>
+                                <li><strong>1 Mark:</strong> Explains that $\mathrm{NaNO_3}$ is entropy-driven due to ion dispersion ($\Delta S > 0$) overcoming positive $\Delta H$.</li>
+                                <li><strong>1 Mark:</strong> Concludes clearly that both achieve $\Delta G_{\mathrm{soln}} < 0$.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q4 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 4 (Extension): Dynamic Saturated Equilibrium Proof</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A student places excess solid lead(II) chloride ($\mathrm{PbCl_2}$) into water at $25^\circ\text{C}$ and stirs until equilibrium is established. Radioactively labelled $^{210}\mathrm{Pb^{2+}}$ ions are then added to the aqueous liquid without changing temperature or solution volume.
+                        <br><br>
+                        (a) Predict what will happen to the radioactivity of the undissolved solid over time. (1 Mark)
+                        <br>
+                        (b) Explain your prediction using the concept of dynamic equilibrium at the sub-microscopic level. (4 Marks)
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq4-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq4-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq4-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Dynamic equilibrium means forward (dissolution) and reverse (recrystallisation) processes continue at equal rates!</p>
+                    </div>
+
+                    <div id="pq4-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br><strong>(a) Prediction:</strong>
+                            <br>The undissolved solid $\mathrm{PbCl_2(s)}$ will become radioactive over time as radioactive $^{210}\mathrm{Pb^{2+}}$ ions are incorporated into the crystal lattice.
+
+                            <br><br><strong>(b) Molecular Dynamic Equilibrium Explanation:</strong>
+                            <br>• Although the system appears static macroscopically (no change in total mass of solid or ion concentration), dissolution and recrystallisation continue perpetually at equal rates at the sub-microscopic level:
+                            $$\mathrm{PbCl_2(s) \rightleftharpoons Pb^{2+}(aq) + 2Cl^-(aq)}$$
+                            <br>• Radioactively labelled $^{210}\mathrm{Pb^{2+}}$ ions in solution collide with the surface of the solid precipitate and undergo recrystallisation ($\mathrm{^{210}Pb^{2+}(aq) + 2Cl^-(aq) \to ^{210}PbCl_2(s)}$).
+                            <br>• Simultaneously, non-radioactive $\mathrm{Pb^{2+}}$ ions detach from the solid crystal lattice and enter solution at the exact same rate.
+                            <br>• This continuous exchange of ions between solid and aqueous phases proves that saturated solution equilibrium is dynamic rather than static.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark (a):</strong> Correctly predicts that the solid will become radioactive over time.</li>
+                                <li><strong>1 Mark (b):</strong> Identifies that dissolution and recrystallisation occur simultaneously at equal rates ($\text{Rate}_{\text{diss}} = \text{Rate}_{\text{recrys}}$).</li>
+                                <li><strong>1 Mark (b):</strong> Explains that labelled $^{210}\mathrm{Pb^{2+}}$ ions collide and deposit onto the solid lattice.</li>
+                                <li><strong>1 Mark (b):</strong> Explains that unlabelled ions detach into solution at an equal rate.</li>
+                                <li><strong>1 Mark (b):</strong> Explicitly connects this result as definitive proof of dynamic equilibrium at saturation.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation Footer -->
+            <footer class="content-footer">
+                <a href="17-keq-acid-base-dissociation.html" class="btn btn-outline">&larr; Back to Lesson 17</a>
+                <a href="19-indigenous-solubility-cycads.html" class="btn btn-ethereal">
+                    Proceed to Lesson 19: Indigenous Detoxification &rarr;
+                </a>
+            </footer>
+        </main>
+    </div>
+
+    <!-- INTERACTIVE SOLVATION ENGINE JAVASCRIPT -->
+    <script>
+        const saltDatabase = {
+            nacl: {
+                eqText: "\\mathrm{NaCl(s) \\rightleftharpoons Na^+(aq) + Cl^-(aq)}",
+                hLatt: 787,
+                hHyd: -784,
+                sSoln: 43.0 // J/mol K
+            },
+            nh4no3: {
+                eqText: "\\mathrm{NH_4NO_3(s) \\rightleftharpoons NH_4^+(aq) + NO_3^-(aq)}",
+                hLatt: 646,
+                hHyd: -620.3,
+                sSoln: 108.7
+            },
+            naoh: {
+                eqText: "\\mathrm{NaOH(s) \\rightleftharpoons Na^+(aq) + OH^-(aq)}",
+                hLatt: 887,
+                hHyd: -931.5,
+                sSoln: 38.0
+            },
+            cacl2: {
+                eqText: "\\mathrm{CaCl_2(s) \\rightleftharpoons Ca^{2+}(aq) + 2Cl^-(aq)}",
+                hLatt: 2258,
+                hHyd: -2339.3,
+                sSoln: 115.0
+            }
+        };
+
+        function runSolvationEngine() {
+            const saltKey = document.getElementById('sim-salt-select').value;
+            const tempK = parseFloat(document.getElementById('sim-temp').value);
+            const tempC = tempK - 273;
+
+            document.getElementById('lbl-temp-val').innerText = `${tempK} K (${tempC} °C)`;
+
+            const salt = saltDatabase[saltKey];
+            const hSoln = salt.hLatt + salt.hHyd;
+            const tdskJ = (tempK * salt.sSoln) / 1000.0;
+            const dgSoln = hSoln - tdskJ;
+
+            // Render equations and telemetry
+            const eqBox = document.getElementById('sim-eq-display');
+            eqBox.innerHTML = `$$${salt.eqText}$$`;
+
+            document.getElementById('tel-hlatt').innerText = `+${salt.hLatt} kJ/mol`;
+            document.getElementById('tel-mhyd').innerText = `${salt.hHyd} kJ/mol`;
+
+            const hSolnEl = document.getElementById('tel-hsoln');
+            hSolnEl.innerText = `${hSoln >= 0 ? '+' : ''}${hSoln.toFixed(1)} kJ/mol (${hSoln >= 0 ? 'Endothermic' : 'Exothermic'})`;
+            hSolnEl.style.color = hSoln >= 0 ? "var(--accent-rose)" : "var(--accent-emerald)";
+
+            document.getElementById('tel-tds').innerText = `+${tdskJ.toFixed(1)} kJ/mol`;
+
+            const dgEl = document.getElementById('tel-dg');
+            dgEl.innerText = `${dgSoln.toFixed(1)} kJ/mol (${dgSoln < 0 ? 'Spontaneous' : 'Non-spontaneous'})`;
+            dgEl.style.color = dgSoln < 0 ? "var(--accent-emerald)" : "var(--accent-rose)";
+
+            // MathJax re-typeset
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                if (window.MathJax.typesetClear) {
+                    window.MathJax.typesetClear([eqBox]);
+                }
+                MathJax.typesetPromise([eqBox]).catch(function (err) {
+                    console.warn('MathJax deferred:', err);
+                });
+            }
+        }
+
+        function toggleElement(id) {
+            const el = document.getElementById(id);
+            if (el.style.display === 'none' || el.style.display === '') {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            if (window.MathJax && window.MathJax.startup) {
+                window.MathJax.startup.promise.then(() => {
+                    runSolvationEngine();
+                });
+            } else {
+                runSolvationEngine();
+            }
+        });
+    </script>
+</body>
+</html>

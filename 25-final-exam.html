@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 5: Final Examination - Part A (MCQs) | HSC Chemistry</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- MathJax 3 Configuration (Must be declared before loading MathJax) -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <style>
+        /* Additional exam-specific component styling extending styles.css */
+        .source-tag {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.2rem 0.6rem;
+            border-radius: var(--radius-full);
+            background: rgba(100, 116, 139, 0.2);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-light);
+        }
+
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+            margin: 1.25rem 0;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            padding: 0.85rem 1rem;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            background: rgba(15, 23, 42, 0.5);
+            color: var(--text-primary);
+        }
+
+        .option-label:hover {
+            border-color: var(--border-glow);
+            background: rgba(124, 58, 237, 0.1);
+        }
+
+        .option-label input[type="radio"] {
+            margin-right: 0.85rem;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--accent-glow);
+            cursor: pointer;
+        }
+
+        .diagram-container {
+            text-align: center;
+            margin: 1.5rem 0;
+            padding: 1.25rem;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+        }
+
+        .diagram-container svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .solution-box {
+            display: none;
+            margin-top: 1.25rem;
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+            background: rgba(15, 23, 42, 0.75);
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+
+        .solution-box.visible {
+            display: block;
+        }
+
+        .solution-box.correct {
+            border-color: rgba(16, 185, 129, 0.4);
+            background: rgba(16, 185, 129, 0.08);
+        }
+
+        .solution-box.incorrect {
+            border-color: rgba(244, 63, 94, 0.4);
+            background: rgba(244, 63, 94, 0.08);
+        }
+
+        .solution-header {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .marking-criteria {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 0.85rem 1rem;
+            margin-top: 0.75rem;
+        }
+
+        .marking-criteria h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-emerald);
+            margin-bottom: 0.5rem;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.35rem;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            margin-top: 0.2rem;
+            accent-color: var(--accent-emerald);
+        }
+
+        .header-meta {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.925rem;
+            color: var(--text-secondary);
+            margin-top: 1rem;
+            border-top: 1px solid var(--border-light);
+            padding-top: 0.85rem;
+            flex-wrap: wrap;
+        }
+
+        .header-meta strong {
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body class="ethereal-theme">
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="badge-glow">NESA Stage 6</span>
+                <h2>Module 5</h2>
+                <p class="subtitle">EQUILIBRIUM & ACID REACTIONS</p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="module-progress" style="width: 100%;"></div>
+                </div>
+                <div class="score-card">
+                    Part A Score: <span id="total-score">0</span> / 20 Marks
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-section">
+                    <span class="section-title">INTRODUCTION</span>
+                    <a href="index.html" class="nav-item">
+                        <span class="nav-num">—</span> Home & Guide
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE A: FOUNDATIONS OF EQUILIBRIUM</span>
+                    <a href="01-reversible-reactions.html" class="nav-item"><span class="nav-num">01</span> Reversible vs Irreversible</a>
+                    <a href="02-open-closed-systems.html" class="nav-item"><span class="nav-num">02</span> Open vs Closed Systems</a>
+                    <a href="03-static-dynamic-equilibrium.html" class="nav-item"><span class="nav-num">03</span> Static vs Dynamic Eq</a>
+                    <a href="04-non-equilibrium-systems.html" class="nav-item"><span class="nav-num">04</span> Non-Equilibrium Systems</a>
+                    <a href="05-collision-theory-equilibrium.html" class="nav-item"><span class="nav-num">05</span> Collision Theory in Eq</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE B: FACTORS AFFECTING EQUILIBRIUM</span>
+                    <a href="06-intro-le-chatelier.html" class="nav-item"><span class="nav-num">06</span> Le Chatelier's Principle</a>
+                    <a href="07-effect-of-concentration.html" class="nav-item"><span class="nav-num">07</span> Concentration Changes</a>
+                    <a href="08-effect-of-pressure-volume.html" class="nav-item"><span class="nav-num">08</span> Pressure & Volume</a>
+                    <a href="09-effect-of-temperature.html" class="nav-item"><span class="nav-num">09</span> Temperature Effects</a>
+                    <a href="10-collision-theory-lcp.html" class="nav-item"><span class="nav-num">10</span> Collision Theory & LCP</a>
+                    <a href="11-activation-energy-equilibrium.html" class="nav-item"><span class="nav-num">11</span> Activation Energy & $\Delta H$</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE C: THE EQUILIBRIUM CONSTANT</span>
+                    <a href="12-keq-expression.html" class="nav-item"><span class="nav-num">12</span> The $K_{\mathrm{eq}}$ Expression</a>
+                    <a href="13-keq-calculations-basic.html" class="nav-item"><span class="nav-num">13</span> Basic $K_{\mathrm{eq}}$ Calculations</a>
+                    <a href="14-keq-calculations-advanced.html" class="nav-item"><span class="nav-num">14</span> Advanced $K_{\mathrm{eq}}$ & $Q$</a>
+                    <a href="15-temperature-and-keq.html" class="nav-item"><span class="nav-num">15</span> Temperature & $K_{\mathrm{eq}}$</a>
+                    <a href="16-determining-keq-experiment.html" class="nav-item"><span class="nav-num">16</span> Practical Determination</a>
+                    <a href="17-keq-acid-base-dissociation.html" class="nav-item"><span class="nav-num">17</span> Dissociation Systems</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE D: SOLUTION EQUILIBRIA</span>
+                    <a href="18-dissolution-ionic-compounds.html" class="nav-item"><span class="nav-num">18</span> Ionic Dissolution</a>
+                    <a href="19-indigenous-solubility-cycads.html" class="nav-item"><span class="nav-num">19</span> Indigenous Detoxification</a>
+                    <a href="20-solubility-rules.html" class="nav-item"><span class="nav-num">20</span> Solubility Rules</a>
+                    <a href="21-solubility-product-ksp.html" class="nav-item"><span class="nav-num">21</span> Solubility Product ($K_{\mathrm{sp}}$)</a>
+                    <a href="22-molar-solubility-calcs.html" class="nav-item"><span class="nav-num">22</span> Molar Solubility Calcs</a>
+                    <a href="23-predicting-precipitation.html" class="nav-item"><span class="nav-num">23</span> Predicting Precipitation</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE E: ASSESSMENT & REVIEW</span>
+                    <a href="24-formula-summary.html" class="nav-item"><span class="nav-num">24</span> Formula & Concept Guide</a>
+                    <a href="25-final-exam.html" class="nav-item active"><span class="nav-num">25</span> Final Examination</a>
+                    <a href="26-saqs.html" class="nav-item"><span class="nav-num">26</span> Part B: Short Answer Questions</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Hero Header -->
+            <header class="hero-banner">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <span class="ethereal-tag">HSC CHEMISTRY • STAGE 6 ASSESSMENT</span>
+                    <h1 class="ethereal-title">Final Examination — Part A</h1>
+                    <p class="ethereal-subtitle">Multiple Choice Section • Test your complete mastery across all Module 5 inquiry questions.</p>
+                    <div class="header-meta">
+                        <div><strong>Total Exam Weighting:</strong> 100 Marks</div>
+                        <div><strong>Part A:</strong> 20 Marks (MCQs)</div>
+                        <div><strong>Part B:</strong> 80 Marks (SAQs)</div>
+                        <div><strong>Suggested Time:</strong> 35 Minutes</div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Instructions Card -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>Section I Instructions</h2>
+                    <span class="pill-badge">20 Marks</span>
+                </div>
+                <ul style="color: var(--text-secondary); padding-left: 1.25rem; font-size: 0.95rem;">
+                    <li style="margin-bottom: 0.4rem;">Attempt Questions 1–20 (1 mark each).</li>
+                    <li style="margin-bottom: 0.4rem;">Select the single best response for each question.</li>
+                    <li style="margin-bottom: 0.4rem;">Click <strong>Check Answer</strong> to view detailed step-by-step worked solutions and automatically update your score tracker.</li>
+                </ul>
+            </section>
+
+            <!-- QUESTION 1 -->
+            <article class="card question-container" id="q1">
+                <div class="question-header">
+                    <h3>Question 1</h3>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <span class="source-tag">Hornsby Girls 2023</span>
+                        <span class="marks-badge">1 Mark</span>
+                    </div>
+                </div>
+                <p class="question-body">Which of the following may occur in a closed chemical system?</p>
+                
+                <div class="options-group" id="opts-q1">
+                    <label class="option-label"><input type="radio" name="q1" value="A"><span class="option-text">(A) Energy and matter are exchanged with the surroundings.</span></label>
+                    <label class="option-label"><input type="radio" name="q1" value="B"><span class="option-text">(B) Energy, but not matter, is exchanged with the surroundings.</span></label>
+                    <label class="option-label"><input type="radio" name="q1" value="C"><span class="option-text">(C) Matter, but not energy, is exchanged with the surroundings.</span></label>
+                    <label class="option-label"><input type="radio" name="q1" value="D"><span class="option-text">(D) Neither energy nor matter are exchanged with the surroundings.</span></label>
+                </div>
+
+                <div class="action-bar">
+                    <button class="btn btn-ethereal" onclick="checkAnswer('q1', 'B')">Check Answer</button>
+                    <button class="btn btn-outline" onclick="resetQuestion('q1')">Reset</button>
+                </div>
+
+                <div class="solution-box" id="sol-q1">
+                    <div class="solution-header"></div>
+                    <div class="solution-content">
+                        <p><strong>Correct Answer: (B)</strong></p>
+                        <p>A closed thermodynamic system permits the exchange of energy (e.g. heat or work) with its surroundings across its boundary, but prevents any exchange of matter. (An open system exchanges both energy and matter, whereas an isolated system exchanges neither).</p>
+                    </div>
+                    <div class="marking-criteria">
+                        <h4>NESA Marking Criteria Checklist</h4>
+                        <label class="checklist-item"><input type="checkbox" onchange="updateMark('q1', this)"> 1 Mark: Correctly identifies that a closed system exchanges energy, but not matter, with surroundings.</label>
+                    </div>
+                </div>
+            </article>
+
+            <!-- QUESTION 2 -->
+            <article class="card question-container" id="q2">
+                <div class="question-header">
+                    <h3>Question 2</h3>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <span class="source-tag">Hornsby Girls 2023</span>
+                        <span class="marks-badge">1 Mark</span>
+                    </div>
+                </div>
+                <p class="question-body">What are the conditions required for an effective collision between reactants?</p>
+
+                <div class="options-group" id="opts-q2">
+                    <label class="option-label"><input type="radio" name="q2" value="A"><span class="option-text">(A) Low temperature and correct orientation</span></label>
+                    <label class="option-label"><input type="radio" name="q2" value="B"><span class="option-text">(B) Low temperature and energy less than the activation energy</span></label>
+                    <label class="option-label"><input type="radio" name="q2" value="C"><span class="option-text">(C) High temperature and energy less than the activation energy</span></label>
+                    <label class="option-label"><input type="radio" name="q2" value="D"><span class="option-text">(D) Correct orientation and energy greater than or equal to the activation energy</span></label>
+                </div>
+
+                <div class="action-bar">
+                    <button class="btn btn-ethereal" onclick="checkAnswer('q2', 'D')">Check Answer</button>
+                    <button class="btn btn-outline" onclick="resetQuestion('q2')">Reset</button>
+                </div>
+
+                <div class="solution-box" id="sol-q2">
+                    <div class="solution-header"></div>
+                    <div class="solution-content">
+                        <p><strong>Correct Answer: (D)</strong></p>
+                        <p>According to collision theory, for a chemical collision to result in a reaction (a successful/effective collision), the colliding reactant particles must possess kinetic energy equal to or exceeding the activation energy ($E_a$) and collide with appropriate molecular orientation.</p>
+                    </div>
+                    <div class="marking-criteria">
+                        <h4>NESA Marking Criteria Checklist</h4>
+                        <label class="checklist-item"><input type="checkbox" onchange="updateMark('q2', this)"> 1 Mark: Identifies both correct molecular orientation and energy $\ge E_a$ as essential requirements.</label>
+                    </div>
+                </div>
+            </article>
+
+            <!-- QUESTION 3 -->
+            <article class="card question-container" id="q3">
+                <div class="question-header">
+                    <h3>Question 3</h3>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <span class="source-tag">Abbotsleigh 2025</span>
+                        <span class="marks-badge">1 Mark</span>
+                    </div>
+                </div>
+                <p class="question-body">Which of the following statements is always true of a system at dynamic equilibrium?</p>
+
+                <div class="options-group" id="opts-q3">
+                    <label class="option-label"><input type="radio" name="q3" value="A"><span class="option-text">(A) The rates of the forward and reverse reactions are equal.</span></label>
+                    <label class="option-label"><input type="radio" name="q3" value="B"><span class="option-text">(B) The concentrations of reactants and products are equal.</span></label>
+                    <label class="option-label"><input type="radio" name="q3" value="C"><span class="option-text">(C) The forward and reverse reactions are no longer occurring.</span></label>
+                    <label class="option-label"><input type="radio" name="q3" value="D"><span class="option-text">(D) The concentration of reactants and products changes constantly.</span></label>
+                </div>
+
+                <div class="action-bar">
+                    <button class="btn btn-ethereal" onclick="checkAnswer('q3', 'A')">Check Answer</button>
+                    <button class="btn btn-outline" onclick="resetQuestion('q3')">Reset</button>
+                </div>
+
+                <div class="solution-box" id="sol-q3">
+                    <div class="solution-header"></div>
+                    <div class="solution-content">
+                        <p><strong>Correct Answer: (A)</strong></p>
+                        <p>Dynamic equilibrium is defined as the state in a closed system where the rate of the forward reaction equals the rate of the reverse reaction ($r_{\text{forward}} = r_{\text{reverse}} > 0$). Consequently, macroscopic properties (like concentrations) remain constant over time, though reactant and product concentrations are rarely equal to each other.</p>
+                    </div>
+                    <div class="marking-criteria">
+                        <h4>NESA Marking Criteria Checklist</h4>
+                        <label class="checklist-item"><input type="checkbox" onchange="updateMark('q3', this)"> 1 Mark: Selects equal rates of forward and reverse reactions as the defining condition of dynamic equilibrium.</label>
+                    </div>
+                </div>
+            </article>
+
+            <!-- QUESTION 4 -->
+            <article class="card question-container" id="q4">
+                <div class="question-header">
+                    <h3>Question 4</h3>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <span class="source-tag">Abbotsleigh 2025</span>
+                        <span class="marks-badge">1 Mark</span>
+                    </div>
+                </div>
+                <p class="question-body">You have modelled examples of static and dynamic equilibrium. Which of the examples below is an example of a model of dynamic equilibrium?</p>
+
+                <div class="options-group" id="opts-q4">
+                    <label class="option-label"><input type="radio" name="q4" value="A"><span class="option-text">(A) Marbles rolling down a slope into a bucket.</span></label>
+                    <label class="option-label"><input type="radio" name="q4" value="B"><span class="option-text">(B) Water evaporating from a swimming pool being replaced with water from a hose.</span></label>
+                    <label class="option-label"><input type="radio" name="q4" value="C"><span class="option-text">(C) Water evaporating from a tree being replaced by water from the ground through the tree's roots.</span></label>
+                    <label class="option-label"><input type="radio" name="q4" value="D"><span class="option-text">(D) Two groups of students lining up opposite each other across a basketball court swapping sides one at a time.</span></label>
+                </div>
+
+                <div class="action-bar">
+                    <button class="btn btn-ethereal" onclick="checkAnswer('q4', 'D')">Check Answer</button>
+                    <button class="btn btn-outline" onclick="resetQuestion('q4')">Reset</button>
+                </div>
+
+                <div class="solution-box" id="sol-q4">
+                    <div class="solution-header"></div>
+                    <div class="solution-content">
+                        <p><strong>Correct Answer: (D)</strong></p>
+                        <p>Option (D) represents a closed system with two equal and opposing reversible processes occurring simultaneously at equal rates (students swapping sides 1 person at a time), keeping the total count on each side constant. Options (B) and (C) represent open steady-state systems (flow of matter in and out), not equilibrium.</p>
+                    </div>
+                    <div class="marking-criteria">
+                        <h4>NESA Marking Criteria Checklist</h4>
+                        <label class="checklist-item"><input type="checkbox" onchange="updateMark('q4', this)"> 1 Mark: Correctly identifies the closed reversible student exchange as a dynamic equilibrium model.</label>
+                    </div>
+                </div>
+            </article>
+
+            <!-- QUESTION 5 -->
+            <article class="card question-container" id="q5">
+                <div class="question-header">
+                    <h3>Question 5</h3>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <span class="source-tag">Hornsby Girls 2022</span>
+                        <span class="marks-badge">1 Mark</span>
+                    </div>
+                </div>
+                <p class="question-body">
+                    Consider the following reversible reaction:
+                    $$2\mathrm{NO_{(g)}} + \mathrm{Cl_{2(g)}} \rightleftharpoons 2\mathrm{NOCl_{(g)}} \quad K_{\mathrm{eq}} = 6.5 \times 10^4 \text{ at } 35^\circ\mathrm{C}$$
+                    Which of the following statements describes the relative concentrations of reactants and products in this system when equilibrium is established in a closed vessel at $35^\circ\mathrm{C}$?
+                </p>
+
+                <div class="options-group" id="opts-q5">
+                    <label class="option-label"><input type="radio" name="q5" value="A"><span class="option-text">(A) The concentration of reactants and products will be equal.</span></label>
+                    <label class="option-label"><input type="radio" name="q5" value="B"><span class="option-text">(B) There will be a greater concentration of products than reactants.</span></label>
+                    <label class="option-label"><input type="radio" name="q5" value="C"><span class="option-text">(C) The reactant concentration will be greater than that of the products.</span></label>
+                    <label class="option-label"><input type="radio" name="q5" value="D"><span class="option-text">(D) The concentrations of $\mathrm{NOCl}$ and $\mathrm{NO}$ will be double the concentration of $\mathrm{Cl_2}$.</span></label>
+                </div>
+
+                <div class="action-bar">
+                    <button class="btn btn-ethereal" onclick="checkAnswer('q5', 'B')">Check Answer</button>
+                    <button class="btn btn-outline" onclick="resetQuestion('q5')">Reset</button>
+                </div>
+
+                <div class="solution-box" id="sol-q5">
+                    <div class="solution-header"></div>
+                    <div class="solution-content">
+                        <p><strong>Correct Answer: (B)</strong></p>
+                        <p>The equilibrium constant $K_{\mathrm{eq}} = \frac{[\mathrm{NOCl}]^2}{[\mathrm{NO}]^2[\mathrm{Cl_2}]} = 6.5 \times 10^4 \gg 1$. A $K_{\mathrm{eq}}$ much greater than $1$ signifies that the equilibrium position lies strongly to the right, meaning product concentration significantly exceeds reactant concentration at equilibrium.</p>
+                    </div>
+                    <div class="marking-criteria">
+                        <h4>NESA Marking Criteria Checklist</h4>
+                        <label class="checklist-item"><input type="checkbox" onchange="updateMark('q5', this)"> 1 Mark: Relates $K_{\mathrm{eq}} \gg 1$ to a higher concentration of products than reactants.</label>
+                    </div>
+                </div>
+            </article>
+
+            <!-- QUESTION 6 -->
+            <article class="card question-container" id="q6">
+                <div class="question-header">
+                    <h3>Question 6</h3>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <span class="source-tag">Hornsby Girls 2022</span>
+                        <span class="marks-badge">1 Mark</span>
+                    </div>
+                </div>
+                <p class="question-body">
+                    Bromine and chlorine gases can react to form the compound $\mathrm{BrCl}$. The equation for the reaction is:
+                    $$\mathrm{Br_{2(g)}} + \mathrm{Cl_{2(g)}} \rightleftharpoons 2\mathrm{BrCl_{(g)}} \quad K_{\mathrm{eq}} = 225 \text{ at } 200^\circ\mathrm{C}$$
+                    Given the above information, what is the $K_{\mathrm{eq}}$ for the reaction $\mathrm{BrCl_{(g)}} \rightleftharpoons \frac{1}{2}\mathrm{Br_{2(g)}} + \frac{1}{2}\mathrm{Cl_{2(g)}}$ at $200^\circ\mathrm{C}$?
+                </p>
+
+                <div class="options-group" id="opts-q6">
+                    <label class="option-label"><input type="radio" name="q6" value="A"><span class="option-text">(A) 0.0044</span></label>
+                    <label class="option-label"><input type="radio" name="q6" value="B"><span class="option-text">(B) 15</span></label>
+                    <label class="option-label"><input type="radio" name="q6" value="C"><span class="option-text">(C) -225</span></label>
+                    <label class="option-label"><input type="radio" name="q6" value="D"><span class="option-text">(D) 0.067</span></label>
+                </div>
+
+                <div class="action-bar">
+                    <button class="btn btn-ethereal" onclick="checkAnswer('q6', 'D')">Check Answer</button>
+                    <button class="btn btn-outline" onclick="resetQuestion('q6')">Reset</button>
+                </div>
+
+                <div class="solution-box" id="sol-q6">
+                    <div class="solution-header"></div>
+                    <div class="solution-content">
+                        <p><strong>Correct Answer: (D)</strong></p>
+                        <p>Step-by-step mathematical derivation:</p>
+                        <ol style="padding-left: 1.25rem; color: var(--text-secondary);">
+                            <li>Reversing the equation inverts $K_{\mathrm{eq}}$: $K_{\text{reversed}} = \frac{1}{K_{\mathrm{eq}}} = \frac{1}{225}$.</li>
+                            <li>Halving all stoichiometric coefficients raises $K_{\text{reversed}}$ to the power of $\frac{1}{2}$ (square root):</li>
+                        </ol>
+                        $$K_{\text{new}} = \sqrt{\frac{1}{225}} = \frac{1}{15} \approx 0.0667 \approx 0.067$$
+                    </div>
+                    <div class="marking-criteria">
+                        <h4>NESA Marking Criteria Checklist</h4>
+                        <label class="checklist-item"><input type="checkbox" onchange="updateMark('q6', this)"> 1 Mark: Correctly applies reciprocal and square root rules to obtain 0.067.</label>
+                    </div>
+                </div>
+            </article>
+
+            <!-- QUESTION 7 -->
+            <article class="card question-container" id="q7">
+                <div class="question-header">
+                    <h3>Question 7</h3>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <span class="source-tag">Hornsby Girls 2022</span>
+                        <span class="marks-badge">1 Mark</span>
+                    </div>
+                </div>
+                <p class="question-body">
+                    A change is made to an equilibrium mixture of $\mathrm{Br_{2(g)}} + \mathrm{Cl_{2(g)}} \rightleftharpoons 2\mathrm{BrCl_{(g)}}$ ($\Delta H < 0, K_{\mathrm{eq}} = 225$). $\mathrm{Br_2}$ is dark brown, $\mathrm{Cl_2}$ is light green, and $\mathrm{BrCl}$ is colourless. The brown intensity is seen to increase as equilibrium is re-established. The change could have been:
+                </p>
+
+                <div class="options-group" id="opts-q7">
+                    <label class="option-label"><input type="radio" name="q7" value="A"><span class="option-text">(A) An increase in volume.</span></label>
+                    <label class="option-label"><input type="radio" name="q7" value="B"><span class="option-text">(B) The addition of further chlorine gas.</span></label>
+                    <label class="option-label"><input type="radio" name="q7" value="C"><span class="option-text">(C) An increase in temperature.</span></label>
+                    <label class="option-label"><input type="radio" name="q7" value="D"><span class="option-text">(D) A decrease in temperature.</span></label>
+                </div>
+
+                <div class="action-bar">
+                    <button class="btn btn-ethereal" onclick="checkAnswer('q7', 'C')">Check Answer</button>
+                    <button class="btn btn-outline" onclick="resetQuestion('q7')">Reset</button>
+                </div>
+
+                <div class="solution-box" id="sol-q7">
+                    <div class="solution-header"></div>
+                    <div class="solution-content">
+                        <p><strong>Correct Answer: (C)</strong></p>
+                        <p>An increase in brown colour intensity indicates an increase in $[\mathrm{Br_{2(g)}}]$, meaning the equilibrium shifted to the left. The forward reaction is exothermic ($\Delta H < 0$). By Le Chatelier's Principle, increasing the temperature drives the system in the endothermic (reverse) direction to absorb heat, generating more $\mathrm{Br_{2(g)}}$. (Note: Volume change does not shift equilibrium as moles of gas are equal on both sides: $2 \rightleftharpoons 2$).</p>
+                    </div>
+                    <div class="marking-criteria">
+                        <h4>NESA Marking Criteria Checklist</h4>
+                        <label class="checklist-item"><input type="checkbox" onchange="updateMark('q7', this)"> 1 Mark: Connects increased brown intensity to reverse shift caused by temperature increase in an exothermic reaction.</label>
+                    </div>
+                </div>
+            </article>
+
+            <!-- QUESTION 8 -->
+            <article class="card question-container" id="q8">
+                <div class="question-header">
+                    <h3>Question 8</h3>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <span class="source-tag">North Sydney Girls 2022</span>
+                        <span class="marks-badge">1 Mark</span>
+                    </div>
+                </div>
+                <p class="question-body">
+                    At elevated temperatures, hydrogen iodide decomposes into hydrogen gas and iodine gas: $2\mathrm{HI_{(g)}} \rightleftharpoons \mathrm{H_{2(g)}} + \mathrm{I_{2(g)}}$ ($K_{\mathrm{eq}} = 0.020$ at $500^\circ\mathrm{C}$). In a $1\text{ L}$ vessel, initial $\mathrm{HI} = 2.0\text{ mol}$ with no $\mathrm{H_2}$ or $\mathrm{I_2}$. At time $t$, $\mathrm{HI} = 1.16\text{ mol}$. Which statement describes the system at time $t$?
+                </p>
+
+                <div class="options-group" id="opts-q8">
+                    <label class="option-label"><input type="radio" name="q8" value="A"><span class="option-text">(A) The system is at equilibrium.</span></label>
+                    <label class="option-label"><input type="radio" name="q8" value="B"><span class="option-text">(B) The system is favouring the forward reaction.</span></label>
+                    <label class="option-label"><input type="radio" name="q8" value="C"><span class="option-text">(C) The system is favouring the reverse reaction.</span></label>
+                    <label class="option-label"><input type="radio" name="q8" value="D"><span class="option-text">(D) The system has reached static equilibrium.</span></label>
+                </div>
+
+                <div class="action-bar">
+                    <button class="btn btn-ethereal" onclick="checkAnswer('q8', 'C')">Check Answer</button>
+                    <button class="btn btn-outline" onclick="resetQuestion('q8')">Reset</button>
+                </div>
+
+                <div class="solution-box" id="sol-q8">
+                    <div class="solution-header"></div>
+                    <div class="solution-content">
+                        <p><strong>Correct Answer: (C)</strong></p>
+                        <p>Calculate reaction quotient $Q$ at time $t$:</p>
+                        <ul style="padding-left: 1.25rem; color: var(--text-secondary);">
+                            <li>Moles of $\mathrm{HI}$ decomposed $= 2.0 - 1.16 = 0.84\text{ mol}$.</li>
+                            <li>Stoichiometric production of $\mathrm{H_2}$ and $\mathrm{I_2} = \frac{0.84}{2} = 0.42\text{ mol}$ each.</li>
+                            <li>In $1\text{ L}$: $[\mathrm{HI}] = 1.16\text{ M}, [\mathrm{H_2}] = 0.42\text{ M}, [\mathrm{I_2}] = 0.42\text{ M}$.</li>
+                        </ul>
+                        $$Q = \frac{[\mathrm{H_2}][\mathrm{I_2}]}{[\mathrm{HI}]^2} = \frac{(0.42)^2}{(1.16)^2} = \frac{0.1764}{1.3456} \approx 0.131$$
+                        <p>Since $Q (0.131) > K_{\mathrm{eq}} (0.020)$, the concentration of products is higher than at equilibrium, so the system favours the <strong>reverse reaction</strong> to reach equilibrium.</p>
+                    </div>
+                    <div class="marking-criteria">
+                        <h4>NESA Marking Criteria Checklist</h4>
+                        <label class="checklist-item"><input type="checkbox" onchange="updateMark('q8', this)"> 1 Mark: Calculates $Q = 0.131$ and deduces $Q > K_{\mathrm{eq}}$ favours reverse reaction.</label>
+                    </div>
+                </div>
+            </article>
+
+            <!-- QUESTION 9 -->
+            <article class="card question-container" id="q9">
+                <div class="question-header">
+                    <h3>Question 9</h3>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <span class="source-tag">North Sydney Girls 2022</span>
+                        <span class="marks-badge">1 Mark</span>
+                    </div>
+                </div>
+                <p class="question-body">
+                    Hydrogen carbonate ions react with water: $\mathrm{HCO_{3(aq)}^-} + \mathrm{H_2O_{(l)}} \rightleftharpoons \mathrm{CO_{3(aq)}^{2-}} + \mathrm{H_3O_{(aq)}^+}$ ($\Delta H = +\text{ve}$). Predict the effects of: (1) adding $\mathrm{H_3O^+}$, (2) increasing temperature, (3) adding a catalyst.
+                </p>
+
+                <div class="options-group" id="opts-q9">
+                    <label class="option-label"><input type="radio" name="q9" value="A"><span class="option-text">(A) Forward favoured | Forward favoured | Forward favoured</span></label>
+                    <label class="option-label"><input type="radio" name="q9" value="B"><span class="option-text">(B) Reverse favoured | Forward favoured | Forward favoured</span></label>
+                    <label class="option-label"><input type="radio" name="q9" value="C"><span class="option-text">(C) Reverse favoured | Forward favoured | No change</span></label>
+                    <label class="option-label"><input type="radio" name="q9" value="D"><span class="option-text">(D) Reverse favoured | Reverse favoured | No change</span></label>
+                </div>
+
+                <div class="action-bar">
+                    <button class="btn btn-ethereal" onclick="checkAnswer('q9', 'C')">Check Answer</button>
+                    <button class="btn btn-outline" onclick="resetQuestion('q9')">Reset</button>
+                </div>
+
+                <div class="solution-box" id="sol-q9">
+                    <div class="solution-header"></div>
+                    <div class="solution-content">
+                        <p><strong>Correct Answer: (C)</strong></p>
+                        <ol style="padding-left: 1.25rem; color: var(--text-secondary);">
+                            <li>Adding $\mathrm{H_3O^+}$ increases product concentration, shifting equilibrium left (reverse favoured).</li>
+                            <li>Endothermic reaction ($\Delta H > 0$): increasing temperature shifts equilibrium right (forward favoured) to absorb heat.</li>
+                            <li>A catalyst increases forward and reverse rates equally; position of equilibrium undergoes no change.</li>
+                        </ol>
+                    </div>
+                    <div class="marking-criteria">
+                        <h4>NESA Marking Criteria Checklist</h4>
+                        <label class="checklist-item"><input type="checkbox" onchange="updateMark('q9', this)"> 1 Mark: Correctly evaluates all 3 disturbance effects on equilibrium position.</label>
+                    </div>
+                </div>
+            </article>
+
+            <!-- QUESTION 10 -->
+            <article class="card question-container" id="q10">
+                <div class="question-header">
+                    <h3>Question 10</h3>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <span class="source-tag">Hornsby Girls 2023</span>
+                        <span class="marks-badge">1 Mark</span>
+                    </div>
+                </div>
+                <p class="question-body">
+                    Consider the equilibrium: $2\mathrm{SO_{2(g)}} + \mathrm{O_{2(g)}} \rightleftharpoons 2\mathrm{SO_{3(g)}}$ ($\Delta H = -196\text{ kJ mol}^{-1}$). Which change will <em>initially decrease the rate</em> at which $\mathrm{SO_{2(g)}}$ is consumed?
+                </p>
+
+                <div class="options-group" id="opts-q10">
+                    <label class="option-label"><input type="radio" name="q10" value="A"><span class="option-text">(A) Decrease the volume of the reaction vessel.</span></label>
+                    <label class="option-label"><input type="radio" name="q10" value="B"><span class="option-text">(B) Decrease the partial pressure of $\mathrm{O_{2(g)}}$.</span></label>
+                    <label class="option-label"><input type="radio" name="q10" value="C"><span class="option-text">(C) Increase the temperature of the reaction vessel.</span></label>
+                    <label class="option-label"><input type="radio" name="q10" value="D"><span class="option-text">(D) Add an appropriate catalyst.</span></label>
+                </div>
+
+                <div class="action-bar">
+                    <button class="btn btn-ethereal" onclick="checkAnswer('q10', 'B')">Check Answer</button>
+                    <button class="btn btn-outline" onclick="resetQuestion('q10')">Reset</button>
+                </div>
+
+                <div class="solution-box" id="sol-q10">
+                    <div class="solution-header"></div>
+                    <div class="solution-content">
+                        <p><strong>Correct Answer: (B)</strong></p>
+                        <p>Decreasing partial pressure of $\mathrm{O_2}$ lowers its concentration. By collision theory, lower reactant concentration reduces collision frequency between $\mathrm{SO_2}$ and $\mathrm{O_2}$ particles, thereby decreasing the forward reaction rate ($\mathrm{SO_2}$ consumption).</p>
+                    </div>
+                    <div class="marking-criteria">
+                        <h4>NESA Marking Criteria Checklist</h4>
+                        <label class="checklist-item"><input type="checkbox" onchange="updateMark('q10', this)"> 1 Mark: Relates decreased partial pressure/concentration to lower collision rate and reduced forward reaction speed.</label>
+                    </div>
+                </div>
+            </article>
+
+            <!-- QUESTION 11 -->
+            <article class="card question-container" id="q11">
+                <div class="question-header">
+                    <h3>Question 11</h3>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <span class="source-tag">Hornsby Girls 2023</span>
+                        <span class="marks-badge">1 Mark</span>
+                    </div>
+                </div>
+                <p class="question-body">
+                    Which of the following changes will <em>increase the yield</em> of $\mathrm{SO_{3(g)}}$ in $2\mathrm{SO_{2(g)}} + \mathrm{O_{2(g)}} \rightleftharpoons 2\mathrm{SO_{3(g)}}$ ($\Delta H = -196\text{ kJ mol}^{-1}$)?
+                </p>
+
+                <div class="options-group" id="opts-q11">
+                    <label class="option-label"><input type="radio" name="q11" value="A"><span class="option-text">(A) Remove $\mathrm{O_{2(g)}}$ from the reaction vessel</span></label>
+                    <label class="option-label"><input type="radio" name="q11" value="B"><span class="option-text">(B) Add an inert gas to the reaction vessel</span></label>
+                    <label class="option-label"><input type="radio" name="q11" value="C"><span class="option-text">(C) Increase the volume of the reaction vessel</span></label>
+                    <label class="option-label"><input type="radio" name="q11" value="D"><span class="option-text">(D) Decrease the temperature of the reaction vessel</span></label>
+                </div>
+
+                <div class="action-bar">
+                    <button class="btn btn-ethereal" onclick="checkAnswer('q11', 'D')">Check Answer</button>
+                    <button class="btn btn-outline" onclick="resetQuestion('q11')">Reset</button>
+                </div>
+
+                <div class="solution-box" id="sol-q11">
+                    <div class="solution-header"></div>
+                    <div class="solution-content">
+                        <p><strong>Correct Answer: (D)</strong></p>
+                        <p>The forward synthesis of $\mathrm{SO_3}$ is exothermic ($\Delta H < 0$). Lowering the temperature removes thermal energy from the system, inducing a shift to the right (forward direction) to generate heat, thus increasing $\mathrm{SO_3}$ yield.</p>
+                    </div>
+                    <div class="marking-criteria">
+                        <h4>NESA Marking Criteria Checklist</h4>
+                        <label class="checklist-item"><input type="checkbox" onchange="updateMark('q11', this)"> 1 Mark: Identifies temperature reduction as the change that shifts equilibrium right for an exothermic reaction.</label>
+                    </div>
+                </div>
+            </article>
+
+            <!-- QUESTION 12 -->
+            <article class="card question-container" id="q12">
+                <div class="question-header">
+                    <h3>Question 12</h3>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <span class="source-tag">Hornsby Girls 2022</span>
+                        <span class="marks-badge">1 Mark</span>
+                    </div>
+                </div>
+                <p class="question-body">The solid curve in the graph shows the concentration of reactant vs time. Which diagram (dotted line) accurately depicts the reaction when repeated with a catalyst?</p>
+
+                <div class="diagram-container">
+                    <svg width="400" height="200" viewBox="0 0 400 200">
+                        <!-- Axes -->
+                        <line x1="50" y1="20" x2="50" y2="160" stroke="#94a3b8" stroke-width="2"/>
+                        <line x1="50" y1="160" x2="380" y2="160" stroke="#94a3b8" stroke-width="2"/>
+                        <text x="15" y="90" font-size="12" fill="#f8fafc" transform="rotate(-90 15 90)">Concentration</text>
+                        <text x="200" y="190" font-size="12" fill="#f8fafc">Time</text>
+
+                        <!-- Uncatalyzed curve (Solid) -->
+                        <path d="M 50 30 Q 120 120 360 120" fill="none" stroke="#38bdf8" stroke-width="2.5"/>
+                        <text x="280" y="110" font-size="11" fill="#38bdf8">Uncatalysed</text>
+
+                        <!-- Catalyzed curve (Dotted) -->
+                        <path d="M 50 30 Q 80 120 360 120" fill="none" stroke="#f43f5e" stroke-width="2.5" stroke-dasharray="5,5"/>
+                        <text x="210" y="135" font-size="11" fill="#f43f5e">Catalysed</text>
+                    </svg>
+                </div>
+
+                <div class="options-group" id="opts-q12">
+                    <label class="option-label"><input type="radio" name="q12" value="A"><span class="option-text">(A) Dotted curve levels off at a higher final concentration.</span></label>
+                    <label class="option-label"><input type="radio" name="q12" value="B"><span class="option-text">(B) Dotted curve drops more steeply initially and flattens out at the exact same equilibrium concentration in less time.</span></label>
+                    <label class="option-label"><input type="radio" name="q12" value="C"><span class="option-text">(C) Dotted curve drops to a lower final equilibrium concentration.</span></label>
+                    <label class="option-label"><input type="radio" name="q12" value="D"><span class="option-text">(D) Dotted curve drops with a gentler slope over a longer time.</span></label>
+                </div>
+
+                <div class="action-bar">
+                    <button class="btn btn-ethereal" onclick="checkAnswer('q12', 'B')">Check Answer</button>
+                    <button class="btn btn-outline" onclick="resetQuestion('q12')">Reset</button>
+                </div>
+
+                <div class="solution-box" id="sol-q12">
+                    <div class="solution-header"></div>
+                    <div class="solution-content">
+                        <p><strong>Correct Answer: (B)</strong></p>
+                        <p>A catalyst increases both forward and reverse reaction rates equally by offering an alternate pathway with lower activation energy. Equilibrium is attained faster (steeper initial rate/gradient), but final equilibrium concentrations remain unchanged.</p>
+                    </div>
+                    <div class="marking-criteria">
+                        <h4>NESA Marking Criteria Checklist</h4>
+                        <label class="checklist-item"><input type="checkbox" onchange="updateMark('q12', this)"> 1 Mark: Identifies faster rate of approach to the same final equilibrium concentration.</label>
+                    </div>
+                </div>
+            </article>
+
+            <!-- QUESTION 13 -->
+            <article class="card question-container" id="q13">
+                <div class="question-header">
+                    <h3>Question 13</h3>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <span class="source-tag">Hornsby Girls 2022</span>
+                        <span class="marks-badge">1 Mark</span>
+                    </div>
+                </div>
+                <p class="question-body">Gases X, Y, and Z exist in equilibrium. At 1.5 min, the system was placed in an ice bath:</p>
+
+                <div class="diagram-container">
+                    <svg width="420" height="230" viewBox="0 0 420 230">
+                        <!-- Grid Lines -->
+                        <line x1="60" y1="30" x2="380" y2="30" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                        <line x1="60" y1="70" x2="380" y2="70" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                        <line x1="60" y1="110" x2="380" y2="110" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                        <line x1="60" y1="150" x2="380" y2="150" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+                        <line x1="60" y1="190" x2="380" y2="190" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+
+                        <!-- Axes -->
+                        <line x1="60" y1="20" x2="60" y2="190" stroke="#94a3b8" stroke-width="2"/>
+                        <line x1="60" y1="190" x2="380" y2="190" stroke="#94a3b8" stroke-width="2"/>
+
+                        <!-- Y-Axis Labels -->
+                        <text x="25" y="35" font-size="11" fill="#f8fafc">0.4</text>
+                        <text x="25" y="75" font-size="11" fill="#f8fafc">0.3</text>
+                        <text x="25" y="115" font-size="11" fill="#f8fafc">0.2</text>
+                        <text x="25" y="155" font-size="11" fill="#f8fafc">0.1</text>
+                        <text x="25" y="195" font-size="11" fill="#f8fafc">0.0</text>
+
+                        <!-- Disturbance line at 1.5 min -->
+                        <line x1="180" y1="20" x2="180" y2="190" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4,4"/>
+                        <text x="165" y="15" font-size="10" fill="#a78bfa">1.5 min</text>
+
+                        <!-- Curves -->
+                        <!-- Y: 0.35 -> 0.29 -->
+                        <path d="M 60 50 L 180 50 Q 230 74 360 74" fill="none" stroke="#38bdf8" stroke-width="2.5"/>
+                        <text x="70" y="45" font-size="12" font-weight="bold" fill="#38bdf8">Y</text>
+
+                        <!-- Z: 0.20 -> 0.25 -->
+                        <path d="M 60 110 L 180 110 Q 230 90 360 90" fill="none" stroke="#10b981" stroke-width="2.5"/>
+                        <text x="70" y="105" font-size="12" font-weight="bold" fill="#10b981">Z</text>
+
+                        <!-- X: 0.05 -> 0.02 -->
+                        <path d="M 60 170 L 180 170 Q 230 182 360 182" fill="none" stroke="#f43f5e" stroke-width="2.5"/>
+                        <text x="70" y="165" font-size="12" font-weight="bold" fill="#f43f5e">X</text>
+                    </svg>
+                </div>
+
+                <p class="question-body">Which system best represents this response?</p>
+
+                <div class="options-group" id="opts-q13">
+                    <label class="option-label"><input type="radio" name="q13" value="A"><span class="option-text">(A) $2\mathrm{Z_{(g)}} \rightleftharpoons \mathrm{X_{(g)}} + 2\mathrm{Y_{(g)}}$, exothermic forward</span></label>
+                    <label class="option-label"><input type="radio" name="q13" value="B"><span class="option-text">(B) $\mathrm{X_{(g)}} \rightleftharpoons 2\mathrm{Z_{(g)}} + 2\mathrm{Y_{(g)}}$, endothermic forward</span></label>
+                    <label class="option-label"><input type="radio" name="q13" value="C"><span class="option-text">(C) $\mathrm{X_{(g)}} + 2\mathrm{Y_{(g)}} \rightleftharpoons 2\mathrm{Z_{(g)}}$, exothermic forward</span></label>
+                    <label class="option-label"><input type="radio" name="q13" value="D"><span class="option-text">(D) $\mathrm{X_{(g)}} + 2\mathrm{Y_{(g)}} \rightleftharpoons 2\mathrm{Z_{(g)}}$, endothermic forward</span></label>
+                </div>
+
+                <div class="action-bar">
+                    <button class="btn btn-ethereal" onclick="checkAnswer('q13', 'C')">Check Answer</button>
+                    <button class="btn btn-outline" onclick="resetQuestion('q13')">Reset</button>
+                </div>
+
+                <div class="solution-box" id="sol-q13">
+                    <div class="solution-header"></div>
+                    <div class="solution-content">
+                        <p><strong>Correct Answer: (C)</strong></p>
+                        <ul style="padding-left: 1.25rem; color: var(--text-secondary);">
+                            <li>Changes: $\Delta [\mathrm{X}] = -0.03\text{ M}, \Delta [\mathrm{Y}] = -0.06\text{ M}, \Delta [\mathrm{Z}] = +0.05 \approx +0.06\text{ M}$.</li>
+                            <li>Stoichiometric ratio $= \mathrm{X} : \mathrm{Y} : \mathrm{Z} = 1 : 2 : 2$, with reactants $\mathrm{X} + 2\mathrm{Y}$ producing $2\mathrm{Z}$.</li>
+                            <li>Placing in an ice bath (cooling) causes a shift to the right ($\mathrm{Z}$ increases). Since cooling favours the exothermic direction, the forward reaction is <strong>exothermic</strong>.</li>
+                        </ul>
+                    </div>
+                    <div class="marking-criteria">
+                        <h4>NESA Marking Criteria Checklist</h4>
+                        <label class="checklist-item"><input type="checkbox" onchange="updateMark('q13', this)"> 1 Mark: Correctly deduces stoichiometry $1:2:2$ and exothermic forward reaction.</label>
+                    </div>
+                </div>
+            </article>
+
+            <!-- QUESTION 14 -->
+            <article class="card question-container" id="q14">
+                <div class="question-header">
+                    <h3>Question 14</h3>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <span class="source-tag">Hornsby Girls 2022</span>
+                        <span class="marks-badge">1 Mark</span>
+                    </div>
+                </div>
+                <p class="question-body">
+                    An equilibrium is represented by $\mathrm{P_{(aq)}} + \mathrm{Z_{(aq)}} \rightleftharpoons 2\mathrm{R_{(aq)}} + \mathrm{S_{(aq)}}$ in a $1\text{ L}$ solution. Initial $[\mathrm{Z}] = 0.8\text{ mol L}^{-1}$. What is the new equilibrium $[\mathrm{Z}]$ if $0.4\text{ mol}$ of $\mathrm{Z}$ is added?
+                </p>
+
+                <div class="options-group" id="opts-q14">
+                    <label class="option-label"><input type="radio" name="q14" value="A"><span class="option-text">(A) $1.2\text{ mol L}^{-1}$</span></label>
+                    <label class="option-label"><input type="radio" name="q14" value="B"><span class="option-text">(B) Between $0.8\text{ mol L}^{-1}$ and $1.2\text{ mol L}^{-1}$</span></label>
+                    <label class="option-label"><input type="radio" name="q14" value="C"><span class="option-text">(C) $0.8\text{ mol L}^{-1}$</span></label>
+                    <label class="option-label"><input type="radio" name="q14" value="D"><span class="option-text">(D) Between $0.4\text{ mol L}^{-1}$ and $0.8\text{ mol L}^{-1}$</span></label>
+                </div>
+
+                <div class="action-bar">
+                    <button class="btn btn-ethereal" onclick="checkAnswer('q14', 'B')">Check Answer</button>
+                    <button class="btn btn-outline" onclick="resetQuestion('q14')">Reset</button>
+                </div>
+
+                <div class="solution-box" id="sol-q14">
+                    <div class="solution-header"></div>
+                    <div class="solution-content">
+                        <p><strong>Correct Answer: (B)</strong></p>
+                        <p>Adding $0.4\text{ mol}$ of $\mathrm{Z}$ instantly spikes $[\mathrm{Z}]$ to $0.8 + 0.4 = 1.2\text{ mol L}^{-1}$. By Le Chatelier's Principle, the equilibrium shifts right to consume <em>some</em> of the added $\mathrm{Z}$, partially counteracting the increase. Hence, the final $[\mathrm{Z}]$ will be reduced below $1.2\text{ M}$, but will remain greater than the original $0.8\text{ M}$.</p>
+                    </div>
+                    <div class="marking-criteria">
+                        <h4>NESA Marking Criteria Checklist</h4>
+                        <label class="checklist-item"><input type="checkbox" onchange="updateMark('q14', this)"> 1 Mark: Recognises partial counteraction under LCP results in a conc between $0.8$ and $1.2\text{ M}$.</label>
+                    </div>
+                </div>
+            </article>
+
+            <!-- QUESTION 15 -->
+            <article class="card question-container" id="q15">
+                <div class="question-header">
+                    <h3>Question 15</h3>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <span class="source-tag">Hornsby Girls 2022</span>
+                        <span class="marks-badge">1 Mark</span>
+                    </div>
+                </div>
+                <p class="question-body">The graph shows $\Delta G$ vs temperature $T$ for a reaction:</p>
+
+                <div class="diagram-container">
+                    <svg width="400" height="200" viewBox="0 0 400 200">
+                        <line x1="50" y1="20" x2="50" y2="170" stroke="#94a3b8" stroke-width="2"/>
+                        <line x1="50" y1="80" x2="380" y2="80" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+                        <line x1="50" y1="170" x2="380" y2="170" stroke="#94a3b8" stroke-width="2"/>
+                        
+                        <text x="25" y="85" font-size="11" fill="#f8fafc">0</text>
+                        <text x="15" y="30" font-size="11" fill="#f8fafc">+10</text>
+                        <text x="15" y="140" font-size="11" fill="#f8fafc">-50</text>
+                        <text x="15" y="110" font-size="11" fill="#f8fafc" transform="rotate(-90 15 110)">ΔG / kJ</text>
+                        
+                        <text x="150" y="188" font-size="11" fill="#f8fafc">300 K</text>
+                        <text x="320" y="188" font-size="11" fill="#f8fafc">600 K</text>
+                        <text x="200" y="198" font-size="11" fill="#f8fafc">Temperature T / K</text>
+
+                        <!-- Line passing (300, +5) and (600, -50) -->
+                        <line x1="150" y1="65" x2="320" y2="155" stroke="#f43f5e" stroke-width="2.5"/>
+                    </svg>
+                </div>
+
+                <p class="question-body">Which statement is correct?</p>
+
+                <div class="options-group" id="opts-q15">
+                    <label class="option-label"><input type="radio" name="q15" value="A"><span class="option-text">(A) The standard entropy of the reaction is negative.</span></label>
+                    <label class="option-label"><input type="radio" name="q15" value="B"><span class="option-text">(B) The standard enthalpy of the reaction is positive.</span></label>
+                    <label class="option-label"><input type="radio" name="q15" value="C"><span class="option-text">(C) At higher temperatures, the reaction becomes less spontaneous.</span></label>
+                    <label class="option-label"><input type="radio" name="q15" value="D"><span class="option-text">(D) The standard enthalpy change of the reaction is negative.</span></label>
+                </div>
+
+                <div class="action-bar">
+                    <button class="btn btn-ethereal" onclick="checkAnswer('q15', 'B')">Check Answer</button>
+                    <button class="btn btn-outline" onclick="resetQuestion('q15')">Reset</button>
+                </div>
+
+                <div class="solution-box" id="sol-q15">
+                    <div class="solution-header"></div>
+                    <div class="solution-content">
+                        <p><strong>Correct Answer: (B)</strong></p>
+                        <p>From $\Delta G = \Delta H - T\Delta S$, a plot of $\Delta G$ vs $T$ has y-intercept $= \Delta H$ and slope $= -\Delta S$. Extrapolating the line back to $T = 0\text{ K}$ yields a positive y-intercept ($\Delta H > 0$). (The negative slope indicates $\Delta S > 0$).</p>
+                    </div>
+                    <div class="marking-criteria">
+                        <h4>NESA Marking Criteria Checklist</h4>
+                        <label class="checklist-item"><input type="checkbox" onchange="updateMark('q15', this)"> 1 Mark: Deduces positive $\Delta H$ from y-intercept of $\Delta G = \Delta H - T\Delta S$.</label>
+                    </div>
+                </div>
+            </article>
+
+            <!-- QUESTION 16 -->
+            <article class="card question-container" id="q16">
+                <div class="question-header">
+                    <h3>Question 16</h3>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <span class="source-tag">Hornsby Girls 2023</span>
+                        <span class="marks-badge">1 Mark</span>
+                    </div>
+                </div>
+                <p class="question-body">
+                    Which of the following is the correct equilibrium constant expression for the dissolution of calcium hydroxide: $\mathrm{Ca(OH)_{2(s)}} \rightleftharpoons \mathrm{Ca_{(aq)}^{2+}} + 2\mathrm{OH_{(aq)}^-}$?
+                </p>
+
+                <div class="options-group" id="opts-q16">
+                    <label class="option-label"><input type="radio" name="q16" value="A"><span class="option-text">(A) $K = \frac{[\mathrm{Ca^{2+}}][\mathrm{OH^-}]^2}{[\mathrm{Ca(OH)_2}]}$</span></label>
+                    <label class="option-label"><input type="radio" name="q16" value="B"><span class="option-text">(B) $K = [\mathrm{Ca^{2+}}][2\mathrm{OH^-}]^2$</span></label>
+                    <label class="option-label"><input type="radio" name="q16" value="C"><span class="option-text">(C) $K = [\mathrm{Ca^{2+}}][\mathrm{OH^-}]^2$</span></label>
+                    <label class="option-label"><input type="radio" name="q16" value="D"><span class="option-text">(D) $K = \frac{1}{[\mathrm{Ca^{2+}}][\mathrm{OH^-}]^2}$</span></label>
+                </div>
+
+                <div class="action-bar">
+                    <button class="btn btn-ethereal" onclick="checkAnswer('q16', 'C')">Check Answer</button>
+                    <button class="btn btn-outline" onclick="resetQuestion('q16')">Reset</button>
+                </div>
+
+                <div class="solution-box" id="sol-q16">
+                    <div class="solution-header"></div>
+                    <div class="solution-content">
+                        <p><strong>Correct Answer: (C)</strong></p>
+                        <p>Pure solids (like $\mathrm{Ca(OH)_{2(s)}}$) have constant activity and are omitted from the equilibrium expression. The solubility product expression is $K_{\mathrm{sp}} = [\mathrm{Ca^{2+}}][\mathrm{OH^-}]^2$.</p>
+                    </div>
+                    <div class="marking-criteria">
+                        <h4>NESA Marking Criteria Checklist</h4>
+                        <label class="checklist-item"><input type="checkbox" onchange="updateMark('q16', this)"> 1 Mark: Correctly excludes solid phase to write $K_{\mathrm{sp}} = [\mathrm{Ca^{2+}}][\mathrm{OH^-}]^2$.</label>
+                    </div>
+                </div>
+            </article>
+
+            <!-- QUESTION 17 -->
+            <article class="card question-container" id="q17">
+                <div class="question-header">
+                    <h3>Question 17</h3>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <span class="source-tag">North Sydney Girls 2022</span>
+                        <span class="marks-badge">1 Mark</span>
+                    </div>
+                </div>
+                <p class="question-body">What is the solubility product ($K_{\mathrm{sp}}$) expression for magnesium phosphate, $\mathrm{Mg_3(PO_4)_2}$?</p>
+
+                <div class="options-group" id="opts-q17">
+                    <label class="option-label"><input type="radio" name="q17" value="A"><span class="option-text">(A) $[\mathrm{Mg^{2+}}][\mathrm{PO_4^{3-}}]$</span></label>
+                    <label class="option-label"><input type="radio" name="q17" value="B"><span class="option-text">(B) $2[\mathrm{Mg^{2+}}]3[\mathrm{PO_4^{3-}}]$</span></label>
+                    <label class="option-label"><input type="radio" name="q17" value="C"><span class="option-text">(C) $[\mathrm{Mg^{2+}}]^3[\mathrm{PO_4^{3-}}]^2$</span></label>
+                    <label class="option-label"><input type="radio" name="q17" value="D"><span class="option-text">(D) $[\mathrm{Mg^3}][(\mathrm{PO_4})^2]$</span></label>
+                </div>
+
+                <div class="action-bar">
+                    <button class="btn btn-ethereal" onclick="checkAnswer('q17', 'C')">Check Answer</button>
+                    <button class="btn btn-outline" onclick="resetQuestion('q17')">Reset</button>
+                </div>
+
+                <div class="solution-box" id="sol-q17">
+                    <div class="solution-header"></div>
+                    <div class="solution-content">
+                        <p><strong>Correct Answer: (C)</strong></p>
+                        <p>The dissolution equation is: $\mathrm{Mg_3(PO_4)_{2(s)}} \rightleftharpoons 3\mathrm{Mg_{(aq)}^{2+}} + 2\mathrm{PO_{4(aq)}^{3-}}$. Raising species concentrations to their stoichiometric powers yields $K_{\mathrm{sp}} = [\mathrm{Mg^{2+}}]^3[\mathrm{PO_4^{3-}}]^2$.</p>
+                    </div>
+                    <div class="marking-criteria">
+                        <h4>NESA Marking Criteria Checklist</h4>
+                        <label class="checklist-item"><input type="checkbox" onchange="updateMark('q17', this)"> 1 Mark: Correctly applies stoichiometric coefficients as powers in $K_{\mathrm{sp}}$.</label>
+                    </div>
+                </div>
+            </article>
+
+            <!-- QUESTION 18 -->
+            <article class="card question-container" id="q18">
+                <div class="question-header">
+                    <h3>Question 18</h3>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <span class="source-tag">Hornsby Girls 2023</span>
+                        <span class="marks-badge">1 Mark</span>
+                    </div>
+                </div>
+                <p class="question-body">
+                    The enthalpy change, $\Delta H$, of a reaction is $-30\text{ kJ mol}^{-1}$, and the entropy change, $\Delta S$, is $-90\text{ J K}^{-1}\text{mol}^{-1}$. At what temperature will this reaction change from spontaneous to non-spontaneous?
+                </p>
+
+                <div class="options-group" id="opts-q18">
+                    <label class="option-label"><input type="radio" name="q18" value="A"><span class="option-text">(A) $30^\circ\text{C}$</span></label>
+                    <label class="option-label"><input type="radio" name="q18" value="B"><span class="option-text">(B) $333^\circ\text{C}$</span></label>
+                    <label class="option-label"><input type="radio" name="q18" value="C"><span class="option-text">(C) $670\text{ K}$</span></label>
+                    <label class="option-label"><input type="radio" name="q18" value="D"><span class="option-text">(D) $333\text{ K}$</span></label>
+                </div>
+
+                <div class="action-bar">
+                    <button class="btn btn-ethereal" onclick="checkAnswer('q18', 'D')">Check Answer</button>
+                    <button class="btn btn-outline" onclick="resetQuestion('q18')">Reset</button>
+                </div>
+
+                <div class="solution-box" id="sol-q18">
+                    <div class="solution-header"></div>
+                    <div class="solution-content">
+                        <p><strong>Correct Answer: (D)</strong></p>
+                        <p>Transition point occurs where $\Delta G = 0$:</p>
+                        $$\Delta G = \Delta H - T\Delta S = 0 \implies T = \frac{\Delta H}{\Delta S}$$
+                        <p>Convert $\Delta H$ to $\text{J mol}^{-1}$: $\Delta H = -30,000\text{ J mol}^{-1}$.</p>
+                        $$T = \frac{-30,000\text{ J mol}^{-1}}{-90\text{ J K}^{-1}\text{mol}^{-1}} = 333.33\text{ K} \approx 333\text{ K}$$
+                    </div>
+                    <div class="marking-criteria">
+                        <h4>NESA Marking Criteria Checklist</h4>
+                        <label class="checklist-item"><input type="checkbox" onchange="updateMark('q18', this)"> 1 Mark: Converts units correctly and calculates $T = 333\text{ K}$.</label>
+                    </div>
+                </div>
+            </article>
+
+            <!-- QUESTION 19 -->
+            <article class="card question-container" id="q19">
+                <div class="question-header">
+                    <h3>Question 19</h3>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <span class="source-tag">Hornsby Girls 2023</span>
+                        <span class="marks-badge">1 Mark</span>
+                    </div>
+                </div>
+                <p class="question-body">
+                    Solutions of lead(II) nitrate ($\mathrm{Pb(NO_3)_{2(aq)}}$) and potassium iodide ($\mathrm{KI_{(aq)}}$) are mixed. Which row correctly identifies X (solution species) and Y (precipitate)?
+                </p>
+
+                <div class="options-group" id="opts-q19">
+                    <label class="option-label"><input type="radio" name="q19" value="A"><span class="option-text">(A) X: $\mathrm{PbI_{2(aq)}}$, Y: $\mathrm{KNO_{3(s)}}$</span></label>
+                    <label class="option-label"><input type="radio" name="q19" value="B"><span class="option-text">(B) X: $\mathrm{KNO_{3(aq)}}$, Y: $\mathrm{PbI_{2(s)}}$</span></label>
+                    <label class="option-label"><input type="radio" name="q19" value="C"><span class="option-text">(C) X: $\mathrm{PbI_{2(s)}}$, Y: $\mathrm{KNO_{3(aq)}}$</span></label>
+                    <label class="option-label"><input type="radio" name="q19" value="D"><span class="option-text">(D) X: $\mathrm{KNO_{3(s)}}$, Y: $\mathrm{PbI_{2(aq)}}$</span></label>
+                </div>
+
+                <div class="action-bar">
+                    <button class="btn btn-ethereal" onclick="checkAnswer('q19', 'B')">Check Answer</button>
+                    <button class="btn btn-outline" onclick="resetQuestion('q19')">Reset</button>
+                </div>
+
+                <div class="solution-box" id="sol-q19">
+                    <div class="solution-header"></div>
+                    <div class="solution-content">
+                        <p><strong>Correct Answer: (B)</strong></p>
+                        <p>Precipitation reaction: $\mathrm{Pb(NO_3)_{2(aq)}} + 2\mathrm{KI_{(aq)}} \rightarrow \mathrm{PbI_{2(s)}} + 2\mathrm{KNO_{3(aq)}}$. Lead(II) iodide is insoluble and forms the solid yellow precipitate (Y), while potassium nitrate remains dissolved as aqueous ions (X).</p>
+                    </div>
+                    <div class="marking-criteria">
+                        <h4>NESA Marking Criteria Checklist</h4>
+                        <label class="checklist-item"><input type="checkbox" onchange="updateMark('q19', this)"> 1 Mark: Identifies $\mathrm{PbI_{2(s)}}$ as precipitate and $\mathrm{KNO_{3(aq)}}$ as soluble product.</label>
+                    </div>
+                </div>
+            </article>
+
+            <!-- QUESTION 20 -->
+            <article class="card question-container" id="q20">
+                <div class="question-header">
+                    <h3>Question 20</h3>
+                    <div style="display: flex; gap: 0.5rem; align-items: center;">
+                        <span class="source-tag">Hornsby Girls 2023</span>
+                        <span class="marks-badge">1 Mark</span>
+                    </div>
+                </div>
+                <p class="question-body">
+                    Carbon monoxide reacts with steam: $\mathrm{CO_{(g)}} + \mathrm{H_2O_{(g)}} \rightleftharpoons \mathrm{CO_{2(g)}} + \mathrm{H_{2(g)}}$. $1.00\text{ mol}$ of $\mathrm{CO}$ reacts with $2.00\text{ mol}$ of $\mathrm{H_2O}$ in a $2.00\text{ L}$ vessel. At equilibrium, $[\mathrm{CO_2}] = 0.250\text{ mol L}^{-1}$. What is $K_{\mathrm{eq}}$?
+                </p>
+
+                <div class="options-group" id="opts-q20">
+                    <label class="option-label"><input type="radio" name="q20" value="A"><span class="option-text">(A) 0.0313</span></label>
+                    <label class="option-label"><input type="radio" name="q20" value="B"><span class="option-text">(B) 0.125</span></label>
+                    <label class="option-label"><input type="radio" name="q20" value="C"><span class="option-text">(C) 0.333</span></label>
+                    <label class="option-label"><input type="radio" name="q20" value="D"><span class="option-text">(D) 1.33</span></label>
+                </div>
+
+                <div class="action-bar">
+                    <button class="btn btn-ethereal" onclick="checkAnswer('q20', 'C')">Check Answer</button>
+                    <button class="btn btn-outline" onclick="resetQuestion('q20')">Reset</button>
+                </div>
+
+                <div class="solution-box" id="sol-q20">
+                    <div class="solution-header"></div>
+                    <div class="solution-content">
+                        <p><strong>Correct Answer: (C)</strong></p>
+                        <p>ICE Table calculation in $2.00\text{ L}$:</p>
+                        <ul style="padding-left: 1.25rem; color: var(--text-secondary);">
+                            <li>$[\mathrm{CO}]_{\text{initial}} = \frac{1.00}{2.00} = 0.500\text{ M}$, $[\mathrm{H_2O}]_{\text{initial}} = \frac{2.00}{2.00} = 1.000\text{ M}$.</li>
+                            <li>At equilibrium: $[\mathrm{CO_2}] = 0.250\text{ M} \implies [\mathrm{H_2}] = 0.250\text{ M}$.</li>
+                            <li>$[\mathrm{CO}]_{\text{eq}} = 0.500 - 0.250 = 0.250\text{ M}$.</li>
+                            <li>$[\mathrm{H_2O}]_{\text{eq}} = 1.000 - 0.250 = 0.750\text{ M}$.</li>
+                        </ul>
+                        $$K_{\mathrm{eq}} = \frac{[\mathrm{CO_2}][\mathrm{H_2}]}{[\mathrm{CO}][\mathrm{H_2O}]} = \frac{(0.250)(0.250)}{(0.250)(0.750)} = \frac{0.250}{0.750} = \frac{1}{3} \approx 0.333$$
+                    </div>
+                    <div class="marking-criteria">
+                        <h4>NESA Marking Criteria Checklist</h4>
+                        <label class="checklist-item"><input type="checkbox" onchange="updateMark('q20', this)"> 1 Mark: Shows complete ICE table calculation to arrive at $K_{\mathrm{eq}} = 0.333$.</label>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Navigation Footer -->
+            <footer class="content-footer">
+                <div class="footer-info">
+                    <p>Completed Part A? Proceed to Short Answer Questions.</p>
+                </div>
+                <a href="26-saqs.html" class="btn btn-next">
+                    Proceed to Part B: Short Answer Questions (26-saqs.html) &rarr;
+                </a>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        // State tracking
+        const userAnswers = {};
+        const userMarks = {};
+
+        function checkAnswer(qId, correctVal) {
+            const selectedOpt = document.querySelector(`input[name="${qId}"]:checked`);
+            const solBox = document.getElementById(`sol-${qId}`);
+            const header = solBox.querySelector('.solution-header');
+
+            if (!selectedOpt) {
+                alert("Please select an answer option first!");
+                return;
+            }
+
+            const isCorrect = selectedOpt.value === correctVal;
+            userAnswers[qId] = isCorrect;
+
+            solBox.className = `solution-box visible ${isCorrect ? 'correct' : 'incorrect'}`;
+            header.innerHTML = isCorrect 
+                ? `<span style="color: var(--accent-emerald);">✓ Correct</span>` 
+                : `<span style="color: var(--accent-rose);">✗ Incorrect</span>`;
+
+            // Auto tick/untick checklist item
+            const checkbox = solBox.querySelector('input[type="checkbox"]');
+            if (checkbox) {
+                checkbox.checked = isCorrect;
+                userMarks[qId] = isCorrect ? 1 : 0;
+            }
+
+            updateTotalScore();
+        }
+
+        function resetQuestion(qId) {
+            const options = document.querySelectorAll(`input[name="${qId}"]`);
+            options.forEach(opt => opt.checked = false);
+
+            const solBox = document.getElementById(`sol-${qId}`);
+            solBox.className = 'solution-box';
+
+            const checkbox = solBox.querySelector('input[type="checkbox"]');
+            if (checkbox) checkbox.checked = false;
+
+            delete userAnswers[qId];
+            delete userMarks[qId];
+            updateTotalScore();
+        }
+
+        function updateMark(qId, checkbox) {
+            userMarks[qId] = checkbox.checked ? 1 : 0;
+            updateTotalScore();
+        }
+
+        function updateTotalScore() {
+            let total = 0;
+            for (let q in userMarks) {
+                total += userMarks[q];
+            }
+            document.getElementById('total-score').innerText = total;
+        }
+    </script>
+</body>
+</html>

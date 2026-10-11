@@ -1,0 +1,1779 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05 Collision Theory in Equilibrium | Module 5 Chemistry</title>
+    
+    <!-- MathJax 3 Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <style>
+        /* Modern Ethereal Glassmorphism Extension Styling */
+        :root {
+            --bg-dark: #080c14;
+            --bg-card: rgba(15, 23, 42, 0.75);
+            --bg-card-hover: rgba(30, 41, 59, 0.85);
+            --border-glow: rgba(124, 58, 237, 0.3);
+            --border-light: rgba(255, 255, 255, 0.08);
+            --border-cyan: rgba(6, 182, 212, 0.35);
+            --border-emerald: rgba(16, 185, 129, 0.35);
+            --accent-purple: #a78bfa;
+            --accent-cyan: #38bdf8;
+            --accent-emerald: #34d399;
+            --accent-amber: #fbbf24;
+            --accent-rose: #f43f5e;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-secondary: #cbd5e1;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --font-main: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            --font-mono: 'Fira Code', 'Cascadia Code', Consolas, monospace;
+            --shadow-glow: 0 0 30px rgba(124, 58, 237, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(124, 58, 237, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 90% 85%, rgba(6, 182, 212, 0.1) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.95) 0%, var(--bg-dark) 100%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.7;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 320px;
+            background: rgba(11, 15, 25, 0.92);
+            border-right: 1px solid var(--border-light);
+            backdrop-filter: blur(16px);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 2rem 1.5rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .badge-glow {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            color: var(--accent-purple);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.4rem;
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .sidebar-header .subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+
+        .progress-container {
+            margin-top: 1.25rem;
+            background: rgba(255, 255, 255, 0.06);
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            border-radius: 3px;
+        }
+
+        .score-card {
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav-menu {
+            padding: 1.25rem 1rem;
+        }
+
+        .nav-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            padding: 0 0.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 0.65rem 0.75rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            margin-bottom: 0.25rem;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            transform: translateX(3px);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(90deg, rgba(124, 58, 237, 0.25), rgba(6, 182, 212, 0.1));
+            border-left: 3px solid var(--accent-purple);
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+
+        .nav-num {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            margin-right: 0.75rem;
+            opacity: 0.7;
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            margin-left: 320px;
+            flex: 1;
+            padding: 2.5rem 3rem;
+            max-width: 1250px;
+        }
+
+        .hero-banner {
+            position: relative;
+            background: linear-gradient(135deg, rgba(24, 16, 48, 0.85) 0%, rgba(15, 23, 42, 0.95) 100%);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2.5rem;
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .ethereal-tag {
+            font-family: var(--font-mono);
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .ethereal-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin: 0.5rem 0 1rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ethereal-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 850px;
+        }
+
+        /* Content Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 2.25rem;
+            margin-bottom: 2.5rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            transition: border-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(124, 58, 237, 0.35);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.75rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .card-header h2 {
+            font-size: 1.6rem;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .pill-badge {
+            padding: 0.35rem 0.85rem;
+            background: rgba(124, 58, 237, 0.12);
+            border: 1px solid var(--border-glow);
+            color: var(--accent-purple);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pill-badge.emerald {
+            background: rgba(16, 185, 129, 0.12);
+            border-color: var(--border-emerald);
+            color: var(--accent-emerald);
+        }
+
+        .pill-badge.cyan {
+            background: rgba(56, 189, 248, 0.12);
+            border-color: var(--border-cyan);
+            color: var(--accent-cyan);
+        }
+
+        /* Typography & Paragraphs */
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        strong {
+            color: #fff;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            color: var(--accent-purple);
+            margin: 1.75rem 0 0.85rem;
+            font-weight: 600;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            color: #fff;
+            margin: 1.25rem 0 0.5rem;
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin: 0 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.65rem;
+            padding-left: 0.25rem;
+        }
+
+        /* Grids & Feature Layouts */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-glow);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card h3 {
+            margin: 0 0 0.5rem 0;
+            color: #fff;
+        }
+
+        /* Callout Boxes */
+        .info-box {
+            background: rgba(124, 58, 237, 0.08);
+            border-left: 4px solid var(--accent-purple);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 1.35rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-box.cyan {
+            background: rgba(56, 189, 248, 0.08);
+            border-left-color: var(--accent-cyan);
+        }
+
+        .info-box.emerald {
+            background: rgba(52, 211, 153, 0.08);
+            border-left-color: var(--accent-emerald);
+        }
+
+        .info-box.amber {
+            background: rgba(251, 191, 36, 0.08);
+            border-left-color: var(--accent-amber);
+        }
+
+        .info-box.rose {
+            background: rgba(244, 63, 94, 0.08);
+            border-left-color: var(--accent-rose);
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+        }
+
+        /* Data & Comparison Tables */
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            margin: 1.75rem 0;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        table.comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            background: rgba(15, 23, 42, 0.7);
+            font-size: 0.95rem;
+        }
+
+        table.comparison-table th {
+            background: rgba(30, 41, 59, 0.9);
+            color: var(--accent-purple);
+            padding: 1rem 1.25rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border-light);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        table.comparison-table td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-secondary);
+            vertical-align: top;
+        }
+
+        table.comparison-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+            color: #fff;
+        }
+
+        /* SVG Graph Containers */
+        .graph-wrapper {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1.75rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .graph-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .svg-graph-container {
+            width: 100%;
+            max-width: 720px;
+            height: auto;
+        }
+
+        /* Interactive Visualiser Module */
+        .sim-container {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            box-shadow: 0 0 35px rgba(124, 58, 237, 0.12);
+        }
+
+        .sim-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+            background: rgba(30, 41, 59, 0.5);
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-group label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .control-group input[type="range"] {
+            width: 100%;
+            accent-color: var(--accent-purple);
+            cursor: pointer;
+        }
+
+        .sim-viewports {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .sim-viewports {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sim-box {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        canvas.sim-canvas-el {
+            background: #050811;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm);
+            width: 100%;
+            height: 240px;
+        }
+
+        .telemetry-panel {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+
+        .telemetry-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .telemetry-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .telemetry-value {
+            font-family: var(--font-mono);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--accent-purple);
+            margin-top: 0.25rem;
+        }
+
+        /* Buttons & Actions */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-ethereal {
+            background: linear-gradient(135deg, #7c3aed, #06b6d4);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-ethereal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.45);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--border-light);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        /* Questions & Rubrics */
+        .question-container {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .marks-badge {
+            background: rgba(244, 63, 94, 0.15);
+            border: 1px solid rgba(244, 63, 94, 0.4);
+            color: var(--accent-rose);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .action-bar {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .drawer {
+            margin-top: 1rem;
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .drawer-hint {
+            background: rgba(251, 191, 36, 0.08);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            color: #fef08a;
+        }
+
+        .drawer-solution {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-glow);
+        }
+
+        .rubric-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--accent-purple);
+        }
+
+        .rubric-box h5 {
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .content-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; padding: 1.5rem; }
+            .grid-2col { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="ethereal-theme">
+    <div class="app-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="badge-glow">NESA Stage 6</span>
+                <h2>Module 5</h2>
+                <p class="subtitle">EQUILIBRIUM & ACID REACTIONS</p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="module-progress" style="width: 20%;"></div>
+                </div>
+                <div class="score-card">
+                    Total Mastery: <span id="total-marks">20</span> / 100 Marks
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-section">
+                    <span class="section-title">INTRODUCTION</span>
+                    <a href="index.html" class="nav-item">
+                        <span class="nav-num">—</span> Home & Guide
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE A: FOUNDATIONS OF EQUILIBRIUM</span>
+                    <a href="01-reversible-reactions.html" class="nav-item"><span class="nav-num">01</span> Reversible vs Irreversible</a>
+                    <a href="02-open-closed-systems.html" class="nav-item"><span class="nav-num">02</span> Open vs Closed Systems</a>
+                    <a href="03-static-dynamic-equilibrium.html" class="nav-item"><span class="nav-num">03</span> Static vs Dynamic Eq</a>
+                    <a href="04-non-equilibrium-systems.html" class="nav-item"><span class="nav-num">04</span> Non-Equilibrium Systems</a>
+                    <a href="05-collision-theory-equilibrium.html" class="nav-item active"><span class="nav-num">05</span> Collision Theory in Eq</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE B: FACTORS AFFECTING EQUILIBRIUM</span>
+                    <a href="06-intro-le-chatelier.html" class="nav-item"><span class="nav-num">06</span> Le Chatelier's Principle</a>
+                    <a href="07-effect-of-concentration.html" class="nav-item"><span class="nav-num">07</span> Concentration Changes</a>
+                    <a href="08-effect-of-pressure-volume.html" class="nav-item"><span class="nav-num">08</span> Pressure & Volume</a>
+                    <a href="09-effect-of-temperature.html" class="nav-item"><span class="nav-num">09</span> Temperature Effects</a>
+                    <a href="10-collision-theory-lcp.html" class="nav-item"><span class="nav-num">10</span> Collision Theory & LCP</a>
+                    <a href="11-activation-energy-equilibrium.html" class="nav-item"><span class="nav-num">11</span> Activation Energy & $\Delta H$</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE C: THE EQUILIBRIUM CONSTANT</span>
+                    <a href="12-keq-expression.html" class="nav-item"><span class="nav-num">12</span> The $K_{\mathrm{eq}}$ Expression</a>
+                    <a href="13-keq-calculations-basic.html" class="nav-item"><span class="nav-num">13</span> Basic $K_{\mathrm{eq}}$ Calculations</a>
+                    <a href="14-keq-calculations-advanced.html" class="nav-item"><span class="nav-num">14</span> Advanced $K_{\mathrm{eq}}$ & $Q$</a>
+                    <a href="15-temperature-and-keq.html" class="nav-item"><span class="nav-num">15</span> Temperature & $K_{\mathrm{eq}}$</a>
+                    <a href="16-determining-keq-experiment.html" class="nav-item"><span class="nav-num">16</span> Practical Determination</a>
+                    <a href="17-keq-acid-base-dissociation.html" class="nav-item"><span class="nav-num">17</span> Dissociation Systems</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE D: SOLUTION EQUILIBRIA</span>
+                    <a href="18-dissolution-ionic-compounds.html" class="nav-item"><span class="nav-num">18</span> Ionic Dissolution</a>
+                    <a href="19-indigenous-solubility-cycads.html" class="nav-item"><span class="nav-num">19</span> Indigenous Detoxification</a>
+                    <a href="20-solubility-rules.html" class="nav-item"><span class="nav-num">20</span> Solubility Rules</a>
+                    <a href="21-solubility-product-ksp.html" class="nav-item"><span class="nav-num">21</span> Solubility Product ($K_{\mathrm{sp}}$)</a>
+                    <a href="22-molar-solubility-calcs.html" class="nav-item"><span class="nav-num">22</span> Molar Solubility Calcs</a>
+                    <a href="23-predicting-precipitation.html" class="nav-item"><span class="nav-num">23</span> Predicting Precipitation</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE E: ASSESSMENT & REVIEW</span>
+                    <a href="24-formula-summary.html" class="nav-item"><span class="nav-num">24</span> Formula & Concept Guide</a>
+                    <a href="25-final-exam.html" class="nav-item"><span class="nav-num">25</span> Final Examination</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="hero-banner">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <span class="ethereal-tag">LESSON 05 • PHASE A</span>
+                    <h1 class="ethereal-title">Collision Theory in Equilibrium</h1>
+                    <p class="ethereal-subtitle">Deconstructing reversible reaction rates at the sub-microscopic level through collision frequency, steric factors, Maxwell-Boltzmann kinetic energy distributions, and activation energy barriers under NESA Stage 6 Chemistry standards.</p>
+                </div>
+            </header>
+
+            <!-- SYLLABUS ALIGNMENT CARD -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>NESA Syllabus Inquiry Focus</h2>
+                    <span class="pill-badge">Stage 6 Chemistry</span>
+                </div>
+                <p>
+                    <strong>Inquiry Question 1:</strong> <em>What happens when chemical reactions do not go to completion?</em>
+                </p>
+                <div class="info-box cyan" style="margin-top: 1rem;">
+                    <h3>Syllabus Outcomes Addressed (Outcome CH-12-01 & CH-11-03):</h3>
+                    <ul>
+                        <li>Account for the characteristics of a dynamic equilibrium system using collision theory.</li>
+                        <li>Analyse how activation energy ($E_a$), molecular orientation (steric factor, $P$), and collision frequency ($Z$) govern the rate of successful particle collisions in reversible systems.</li>
+                        <li>Analyse how the rates of forward and reverse reactions change from initial mixing ($t=0$) until dynamic equilibrium ($t=t_{\mathrm{eq}}$) is established.</li>
+                        <li>Examine Maxwell-Boltzmann kinetic energy distribution curves and potential energy profile diagrams to contrast forward activation energy ($E_{a,\text{f}}$) and reverse activation energy ($E_{a,\text{r}}$).</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECTION 1: FUNDAMENTAL POSTULATES OF COLLISION THEORY -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>1. Fundamental Postulates of Collision Theory in Reversible Systems</h2>
+                    <span class="pill-badge">Microscopic Kinetics</span>
+                </div>
+
+                <p>
+                    In earlier lessons, we learned that dynamic equilibrium occurs in closed systems when the forward reaction rate equals the reverse reaction rate ($r_{\mathrm{forward}} = r_{\mathrm{reverse}} > 0$), resulting in constant macroscopic properties. To understand <em>why</em> and <em>how</em> this occurs at a molecular level, we must employ <strong>Collision Theory</strong>.
+                </p>
+
+                <p>
+                    Collision theory states that for a chemical reaction to occur, reacting species must physically collide. However, the vast majority of collisions between particles in gas or solution phases are completely ineffective—particles simply bounce off one another elastically without altering their atomic structures.
+                </p>
+
+                <p>
+                    A collision that successfully results in the breaking of existing chemical bonds and the formation of new chemical bonds is termed an <strong>effective (or successful) collision</strong>. For any collision between reactant or product species to be effective, it must satisfy three strict kinetic criteria simultaneously:
+                </p>
+
+                <div class="features-grid">
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-cyan);">
+                        <div class="feature-icon">💥</div>
+                        <h3>1. Physical Collision ($Z$)</h3>
+                        <p>
+                            Reacting particles must physically collide in space. The total number of collisions occurring per unit volume per unit time is defined as the <strong>collision frequency ($Z$)</strong>.
+                        </p>
+                    </div>
+
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-amber);">
+                        <div class="feature-icon">⚡</div>
+                        <h3>2. Activation Energy Threshold ($E \ge E_a$)</h3>
+                        <p>
+                            The colliding particles must possess a combined kinetic energy equal to or greater than the threshold <strong>activation energy ($E_a$)</strong> of the reaction ($E_{\mathrm{k}} \ge E_a$). This energy is necessary to overcome electrostatic electron-cloud repulsions and weaken existing bonds.
+                        </p>
+                    </div>
+
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-purple);">
+                        <div class="feature-icon">🎯</div>
+                        <h3>3. Correct Steric Orientation ($P$)</h3>
+                        <p>
+                            Particles must collide with a specific <strong>spatial orientation (steric factor, $P$)</strong> so that the reactive atomic centres align directly, permitting orbital overlap and transition state synthesis.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="info-box cyan">
+                    <h3>Symmetrical Application to Reversible Pathways</h3>
+                    <p>
+                        In a closed reversible reaction system, collision theory applies <strong>symmetrically</strong> to both forward and reverse pathways:
+                        <br>• <strong>Forward Pathway:</strong> Reactant particles collide with $E \ge E_{a,\text{f}}$ and correct steric orientation to form product molecules.
+                        <br>• <strong>Reverse Pathway:</strong> Product particles collide with $E \ge E_{a,\text{r}}$ and correct steric orientation to reform reactant molecules.
+                        <br>
+                        Because both forward and reverse collisions occur simultaneously in the same reaction vessel, the net chemical progression is governed entirely by the relative rates of effective forward and reverse collisions.
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 2: ACTIVATION ENERGY ARCHITECTURE & POTENTIAL ENERGY PROFILES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>2. Potential Energy Profiles & Activation Energy ($E_a$) Architecture</h2>
+                    <span class="pill-badge">Thermodynamic Profiles</span>
+                </div>
+
+                <p>
+                    The energetic pathway of a chemical reaction is represented visually using a <strong>Potential Energy Profile Diagram</strong>. This profile tracks the potential energy stored within chemical bonds as reacting species transform through a high-energy, short-lived arrangement known as the <strong>activated complex (or transition state, $\ddagger$)</strong>.
+                </p>
+
+                <p>
+                    For reversible reactions, two distinct activation energy barriers exist on the profile:
+                    <br>• <strong>Forward Activation Energy ($E_{a,\text{f}}$):</strong> The minimum energy required for reactants to reach the activated complex peak.
+                    <br>• <strong>Reverse Activation Energy ($E_{a,\text{r}}$):</strong> The minimum energy required for products to reach the same activated complex peak.
+                </p>
+
+                <!-- NESA SVG Graph: Reversible Energy Profile -->
+                <div class="graph-wrapper">
+                    <div class="graph-title">NESA Potential Energy Profile for a Reversible Exothermic Reaction</div>
+                    <div class="svg-graph-container">
+                        <svg viewBox="0 0 680 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background & Grid -->
+                            <rect width="680" height="400" fill="#0b1329" rx="10"/>
+                            <line x1="70" y1="350" x2="630" y2="350" stroke="#64748b" stroke-width="2"/>
+                            <line x1="70" y1="40" x2="70" y2="350" stroke="#64748b" stroke-width="2"/>
+                            
+                            <!-- Axis Labels -->
+                            <text x="350" y="385" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle">Progress of Reaction</text>
+                            <text x="25" y="195" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle" transform="rotate(-90 25 195)">Potential Energy, $E_{\mathrm{p}}$ ($\text{kJ mol}^{-1}$)</text>
+
+                            <!-- Reactant Level (y=160), Peak (y=70), Product Level (y=270) -->
+                            <line x1="90" y1="160" x2="200" y2="160" stroke="#38bdf8" stroke-width="3.5"/>
+                            <path d="M 200 160 C 260 160, 280 70, 350 70 C 420 70, 440 270, 500 270" fill="none" stroke="#a78bfa" stroke-width="3.5"/>
+                            <line x1="500" y1="270" x2="610" y2="270" stroke="#34d399" stroke-width="3.5"/>
+
+                            <!-- Reference Dashed Lines -->
+                            <line x1="90" y1="160" x2="520" y2="160" stroke="rgba(255,255,255,0.15)" stroke-dasharray="4,4"/>
+                            <line x1="350" y1="70" x2="350" y2="270" stroke="rgba(255,255,255,0.15)" stroke-dasharray="4,4"/>
+                            <line x1="500" y1="270" x2="610" y2="270" stroke="rgba(255,255,255,0.15)"/>
+
+                            <!-- Forward Ea Vector (Yellow) at x=250 -->
+                            <line x1="250" y1="160" x2="250" y2="70" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrow-yellow)"/>
+                            <text x="240" y="115" fill="#fbbf24" font-size="13" font-weight="700" text-anchor="end">$E_{a,\text{f}}$</text>
+
+                            <!-- Reverse Ea Vector (Rose) at x=420 -->
+                            <line x1="420" y1="270" x2="420" y2="70" stroke="#f43f5e" stroke-width="2.5" marker-end="url(#arrow-rose)"/>
+                            <text x="430" y="170" fill="#f43f5e" font-size="13" font-weight="700" text-anchor="start">$E_{a,\text{r}}$</text>
+
+                            <!-- Delta H Vector (Cyan) at x=560 -->
+                            <line x1="560" y1="160" x2="560" y2="270" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrow-cyan)"/>
+                            <text x="570" y="215" fill="#38bdf8" font-size="13" font-weight="700" text-anchor="start">$\Delta H < 0$</text>
+
+                            <!-- Species Labels -->
+                            <text x="145" y="145" fill="#38bdf8" font-size="13" font-weight="700" text-anchor="middle">Reactants ($\mathrm{A + B}$)</text>
+                            <text x="555" y="290" fill="#34d399" font-size="13" font-weight="700" text-anchor="middle">Products ($\mathrm{C + D}$)</text>
+                            <text x="350" y="52" fill="#a78bfa" font-size="13" font-weight="700" text-anchor="middle">Activated Complex ($\ddagger$)</text>
+
+                            <!-- Arrowheads -->
+                            <defs>
+                                <marker id="arrow-yellow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#fbbf24"/>
+                                </marker>
+                                <marker id="arrow-rose" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#f43f5e"/>
+                                </marker>
+                                <marker id="arrow-cyan" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/>
+                                </marker>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+
+                <h3>Enthalpy ($\Delta H$) and Activation Energy Relationships</h3>
+                <p>
+                    From the potential energy profile diagram, the mathematical connection between the enthalpy change ($\Delta H$), forward activation energy ($E_{a,\text{f}}$), and reverse activation energy ($E_{a,\text{r}}$) is defined by:
+                </p>
+                $$\Delta H = E_{a,\text{f}} - E_{a,\text{r}}$$
+
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Thermodynamic Classification</th>
+                                <th>Activation Energy Hierarchy</th>
+                                <th>Enthalpy Sign ($\Delta H$)</th>
+                                <th>Microscopic Barrier Consequence</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Exothermic Reaction</strong></td>
+                                <td>$E_{a,\text{f}} < E_{a,\text{r}}$</td>
+                                <td>$\Delta H < 0$ (Negative)</td>
+                                <td>The reverse activation energy barrier is higher than the forward barrier. At equal temperatures, a smaller fraction of product collisions possess $E \ge E_{a,\text{r}}$ compared to reactant collisions exceeding $E_{a,\text{f}}$.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Endothermic Reaction</strong></td>
+                                <td>$E_{a,\text{f}} > E_{a,\text{r}}$</td>
+                                <td>$\Delta H > 0$ (Positive)</td>
+                                <td>The forward activation energy barrier is higher than the reverse barrier. Reactants require a higher minimum collision energy to overcome $E_{a,\text{f}}$ than products reforming reactants via $E_{a,\text{r}}$.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box amber">
+                    <h3>Nature of the Activated Complex ($\ddagger$)</h3>
+                    <p>
+                        The <strong>activated complex</strong> (or transition state, $\ddagger$) represents a maximum potential energy arrangement of atoms where reactant bonds are in the process of breaking while product bonds are simultaneously forming.
+                        <br>
+                        Because the activated complex sits at the energy peak, it is highly unstable and possesses an equal probability of collapsing backward to reform reactants or collapsing forward to form products.
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 3: MAXWELL-BOLTZMANN KINETIC ENERGY DISTRIBUTIONS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>3. Maxwell-Boltzmann Kinetic Energy Distributions</h2>
+                    <span class="pill-badge">Statistical Thermodynamics</span>
+                </div>
+
+                <p>
+                    In any chemical system at a given temperature $T$, individual particles do not all move at the same speed. Random elastic collisions continually redistribute kinetic energy among particles. The spread of kinetic energies across the particle population is mathematically modelled by the <strong>Maxwell-Boltzmann Distribution Curve</strong>.
+                </p>
+
+                <h3>Anatomy of the Maxwell-Boltzmann Distribution Curve</h3>
+                <ul>
+                    <li><strong>Origin $(0,0)$:</strong> The curve begins at the origin because no particles possess zero kinetic energy at temperatures above absolute zero ($T > 0\text{ K}$).</li>
+                    <li><strong>Peak (Most Probable Energy, $E_{\mathrm{mp}}$):</strong> The peak represents the exact kinetic energy possessed by the largest single fraction of particles in the sample.</li>
+                    <li><strong>Average Energy ($E_{\mathrm{avg}}$):</strong> Because the curve is asymmetrical and skewed rightwards towards higher energies, the average kinetic energy ($E_{\mathrm{avg}}$) lies to the right of the peak ($E_{\mathrm{avg}} > E_{\mathrm{mp}}$).</li>
+                    <li><strong>Asymptotic High-Energy Tail:</strong> The curve approaches the horizontal axis at high kinetic energies but never touches it, reflecting a small but non-zero probability of finding extremely energetic particles.</li>
+                    <li><strong>Area Under the Curve:</strong> The total enclosed area beneath the curve represents the total number of particles present in the system.</li>
+                </ul>
+
+                <h3>Activation Energy Threshold ($E_a$) and Collision Fraction ($f$)</h3>
+                <p>
+                    When an activation energy threshold ($E_a$) is marked on the energy axis, the area under the curve to the right of $E_a$ represents the fraction of particles possessing $E \ge E_a$.
+                </p>
+
+                <!-- NESA SVG Graph: Maxwell-Boltzmann Energy Distribution -->
+                <div class="graph-wrapper">
+                    <div class="graph-title">NESA Maxwell-Boltzmann Energy Distribution for a Reversible Exothermic System</div>
+                    <div class="svg-graph-container">
+                        <svg viewBox="0 0 680 380" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background & Grid -->
+                            <rect width="680" height="380" fill="#0b1329" rx="10"/>
+                            <line x1="70" y1="330" x2="630" y2="330" stroke="#64748b" stroke-width="2"/>
+                            <line x1="70" y1="40" x2="70" y2="330" stroke="#64748b" stroke-width="2"/>
+                            
+                            <!-- Axis Labels -->
+                            <text x="350" y="365" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle">Particle Kinetic Energy, $E_{\mathrm{k}}$ ($\text{kJ mol}^{-1}$)</text>
+                            <text x="25" y="185" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle" transform="rotate(-90 25 185)">Number of Particles, $N(E)$</text>
+
+                            <!-- Maxwell-Boltzmann Curve (Cyan) -->
+                            <path d="M 70 330 C 100 240, 150 100, 210 100 C 280 100, 350 220, 630 320" fill="none" stroke="#38bdf8" stroke-width="3.5"/>
+
+                            <!-- Shaded Area for Ea(f) at x=410 to x=630 -->
+                            <path d="M 410 262 C 460 285, 530 308, 630 320 L 630 330 L 410 330 Z" fill="rgba(56, 189, 248, 0.35)"/>
+
+                            <!-- Shaded Area for Ea(r) at x=520 to x=630 -->
+                            <path d="M 520 305 C 560 314, 595 318, 630 320 L 630 330 L 520 330 Z" fill="rgba(244, 63, 94, 0.45)"/>
+
+                            <!-- Ea(f) Line (Yellow Dashed) at x=410 -->
+                            <line x1="410" y1="50" x2="410" y2="330" stroke="#fbbf24" stroke-width="2.5" stroke-dasharray="6,4"/>
+                            <text x="405" y="42" fill="#fbbf24" font-size="13" font-weight="700" text-anchor="end">$E_{a,\text{f}}$ (Forward)</text>
+
+                            <!-- Ea(r) Line (Rose Dashed) at x=520 -->
+                            <line x1="520" y1="50" x2="520" y2="330" stroke="#f43f5e" stroke-width="2.5" stroke-dasharray="6,4"/>
+                            <text x="525" y="42" fill="#f43f5e" font-size="13" font-weight="700" text-anchor="start">$E_{a,\text{r}}$ (Reverse)</text>
+
+                            <!-- Peak Annotation -->
+                            <circle cx="210" cy="100" r="4" fill="#38bdf8"/>
+                            <line x1="210" y1="100" x2="210" y2="330" stroke="rgba(255,255,255,0.2)" stroke-dasharray="3,3"/>
+                            <text x="210" y="348" fill="#a78bfa" font-size="11" text-anchor="middle">$E_{\mathrm{mp}}$</text>
+
+                            <!-- Area Labels -->
+                            <text x="450" y="240" fill="#38bdf8" font-size="11" font-weight="700">Fraction with $E \ge E_{a,\text{f}}$</text>
+                            <text x="560" y="280" fill="#f43f5e" font-size="11" font-weight="700">Fraction with $E \ge E_{a,\text{r}}$</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <h3>Temperature Effects on Collision Fractions</h3>
+                <p>
+                    When temperature increases from $T_1$ to $T_2$ ($T_2 > T_1$):
+                </p>
+                <ul>
+                    <li>The peak of the distribution shifts to the right (higher average kinetic energy) and flattens downwards (preserving total particle count/area).</li>
+                    <li>The high-energy tail elevates significantly.</li>
+                    <li>Consequently, the fraction of particles possessing kinetic energy exceeding <strong>both</strong> $E_{a,\text{f}}$ and $E_{a,\text{r}}$ increases, accelerating both forward and reverse rates.</li>
+                </ul>
+            </section>
+
+            <!-- SECTION 4: MOLECULAR ORIENTATION & STERIC FACTOR -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>4. Molecular Orientation & The Steric Factor ($P$)</h2>
+                    <span class="pill-badge cyan">Collision Geometry</span>
+                </div>
+
+                <p>
+                    Even if colliding particles possess kinetic energy exceeding activation energy ($E \ge E_a$), the collision will still be ineffective if the particles are improperly aligned in three-dimensional space. The probability that a collision occurs with a favourable geometric orientation is defined as the <strong>steric factor ($P$)</strong>.
+                </p>
+
+                <p>
+                    Complex molecules with intricate shapes or localised reactive sites possess small steric factors ($P \ll 1$) because only a small fraction of collision geometries allow reactive atoms to contact directly. Simple monatomic ions or spherical atoms possess steric factors approaching unity ($P \approx 1$).
+                </p>
+
+                <!-- NESA SVG Graph: Molecular Collision Geometry -->
+                <div class="graph-wrapper">
+                    <div class="graph-title">NESA Molecular Collision Geometry: Effective vs Ineffective Steric Alignment</div>
+                    <div class="svg-graph-container">
+                        <svg viewBox="0 0 680 260" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="680" height="260" fill="#0b1329" rx="10"/>
+                            
+                            <!-- Subpanel 1: Ineffective Collision -->
+                            <rect x="20" y="20" width="310" height="220" fill="rgba(244, 63, 94, 0.08)" stroke="rgba(244, 63, 94, 0.3)" rx="8"/>
+                            <text x="175" y="45" fill="#f43f5e" font-size="14" font-weight="700" text-anchor="middle">Ineffective Collision (Incorrect Orientation)</text>
+
+                            <!-- Molecules colliding side-on incorrectly -->
+                            <circle cx="110" cy="110" r="16" fill="#38bdf8"/>
+                            <circle cx="138" cy="110" r="12" fill="#a78bfa"/>
+                            
+                            <circle cx="240" cy="110" r="16" fill="#38bdf8"/>
+                            <circle cx="212" cy="110" r="12" fill="#a78bfa"/>
+
+                            <path d="M 160 110 L 190 110" stroke="#f43f5e" stroke-width="3" stroke-dasharray="4,2"/>
+                            <text x="175" y="100" fill="#f43f5e" font-size="18" text-anchor="middle">💥</text>
+
+                            <text x="175" y="170" fill="#cbd5e1" font-size="12" text-anchor="middle">Non-reactive atoms collide.</text>
+                            <text x="175" y="190" fill="#f43f5e" font-size="12" font-weight="700" text-anchor="middle">Particles rebound unreacted! ($r_{\text{f}} = 0$)</text>
+
+                            <!-- Subpanel 2: Effective Collision -->
+                            <rect x="350" y="20" width="310" height="220" fill="rgba(52, 211, 153, 0.08)" stroke="rgba(52, 211, 153, 0.3)" rx="8"/>
+                            <text x="505" y="45" fill="#34d399" font-size="14" font-weight="700" text-anchor="middle">Effective Collision (Correct Alignment)</text>
+
+                            <circle cx="440" cy="110" r="12" fill="#a78bfa"/>
+                            <circle cx="468" cy="110" r="16" fill="#38bdf8"/>
+
+                            <circle cx="570" cy="110" r="12" fill="#a78bfa"/>
+                            <circle cx="542" cy="110" r="16" fill="#38bdf8"/>
+
+                            <path d="M 490 110 L 520 110" stroke="#34d399" stroke-width="3"/>
+                            <text x="505" y="100" fill="#34d399" font-size="18" text-anchor="middle">✨</text>
+
+                            <text x="505" y="170" fill="#cbd5e1" font-size="12" text-anchor="middle">Reactive Nitrogen centres align directly.</text>
+                            <text x="505" y="190" fill="#34d399" font-size="12" font-weight="700" text-anchor="middle">Bonds form! ($\mathrm{N_2O_4}$ synthesised)</text>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 5: MICROSCOPIC KINETIC PROGRESSION TO DYNAMIC EQUILIBRIUM -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>5. Microscopic Kinetic Walkthrough to Dynamic Equilibrium</h2>
+                    <span class="pill-badge">Kinetic Progression</span>
+                </div>
+
+                <p>
+                    By combining collision frequency ($Z$), steric factor ($P$), and the fraction of collisions with $E \ge E_a$, we can trace how forward and reverse rates evolve over time in a sealed system.
+                </p>
+
+                <h3>Chronological Kinetic Evolution</h3>
+                <p>
+                    Consider adding pure reactant species $\mathrm{A}$ and $\mathrm{B}$ to a sealed vessel at constant temperature $T$:
+                </p>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>Stage 1: Initial Mixing ($t = 0$)</h3>
+                        <p>
+                            • Reactant concentrations $[\mathrm{A}]$ and $[\mathrm{B}]$ are at their maximum values.
+                            <br>• Collision frequency between reactants $Z_{\text{f}}$ is at its maximum peak, yielding the maximum forward reaction rate ($r_{\text{f}} = \text{Maximum}$).
+                            <br>• Zero product molecules exist ($[\mathrm{C}]=0$). Thus, reverse collision frequency $Z_{\text{r}} = 0$, making the reverse rate strictly zero ($r_{\text{r}} = 0$).
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>Stage 2: Approach to Equilibrium ($0 < t < t_{\text{eq}}$)</h3>
+                        <p>
+                            • As effective forward collisions transform reactants into products, $[\mathrm{A}]$ and $[\mathrm{B}]$ decrease.
+                            <br>• Declining reactant concentrations lower forward collision frequency ($Z_{\text{f}} \downarrow$), causing $r_{\text{f}}$ to decrease continuously.
+                            <br>• Concurrently, product molecules accumulate ($[\mathrm{C}] \uparrow$), increasing reverse collision frequency ($Z_{\text{r}} \uparrow$) and causing $r_{\text{r}}$ to rise from zero.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>Stage 3: Dynamic Equilibrium ($t \ge t_{\text{eq}}$)</h3>
+                        <p>
+                            • Eventually, the declining forward rate $r_{\text{f}}$ and rising reverse rate $r_{\text{r}}$ become equal:
+                            $$r_{\text{f}} = r_{\text{r}} > 0$$
+                            • Per unit time, the exact number of product molecules formed by forward collisions equals the number of product molecules converted back into reactants by reverse collisions.
+                            <br>• Macroscopic properties (colour, concentration, pressure) freeze while microscopic collisions continue indefinitely at equal non-zero rates.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- NESA SVG Graph: Rate vs Time Graph -->
+                <div class="graph-wrapper">
+                    <div class="graph-title">NESA Reaction Rate vs Time Graph showing Progression to Dynamic Equilibrium</div>
+                    <div class="svg-graph-container">
+                        <svg viewBox="0 0 680 320" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="680" height="320" fill="#0b1329" rx="10"/>
+                            <line x1="70" y1="270" x2="630" y2="270" stroke="#64748b" stroke-width="2"/>
+                            <line x1="70" y1="40" x2="70" y2="270" stroke="#64748b" stroke-width="2"/>
+                            
+                            <!-- Axis Labels -->
+                            <text x="350" y="305" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle">Time, $t$</text>
+                            <text x="25" y="155" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle" transform="rotate(-90 25 155)">Reaction Rate, $r$</text>
+
+                            <!-- Vertical Eq Marker (teq) at x=410 -->
+                            <line x1="410" y1="40" x2="410" y2="270" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4,4"/>
+                            <text x="410" y="32" fill="#fbbf24" font-size="12" font-weight="700" text-anchor="middle">$t_{\mathrm{eq}}$ (Equilibrium Achieved)</text>
+
+                            <!-- Forward Rate Curve (Cyan): Starts at y=60, decays to y=160 at x=410, then flat -->
+                            <path d="M 70 60 C 180 60, 310 160, 410 160 L 630 160" fill="none" stroke="#38bdf8" stroke-width="3.5"/>
+                            
+                            <!-- Reverse Rate Curve (Rose): Starts at y=270, rises to y=160 at x=410, then flat -->
+                            <path d="M 70 270 C 180 270, 310 160, 410 160 L 630 160" fill="none" stroke="#f43f5e" stroke-width="3.5"/>
+
+                            <!-- Annotations -->
+                            <text x="140" y="50" fill="#38bdf8" font-size="13" font-weight="700">Forward Rate ($r_{\text{f}}$)</text>
+                            <text x="140" y="255" fill="#f43f5e" font-size="13" font-weight="700">Reverse Rate ($r_{\text{r}}$)</text>
+                            <text x="520" y="145" fill="#34d399" font-size="13" font-weight="700">Dynamic Equilibrium ($r_{\text{f}} = r_{\text{r}} > 0$)</text>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 6: INTERACTIVE LABORATORY SIMULATOR -->
+            <section class="card glass-card demo-card">
+                <div class="card-header">
+                    <h2>6. Interactive Collision Kinetics & Distribution Modeller</h2>
+                    <span class="pill-badge demo-pill">Virtual Kinetics Sandbox</span>
+                </div>
+                <p>Adjust temperature, activation energy barriers, and initial particle counts below to simulate particle collisions, Maxwell-Boltzmann energy curve shifts, and real-time rate equilibration.</p>
+
+                <div class="sim-container">
+                    <div class="sim-controls">
+                        <div class="control-group">
+                            <label>Temperature ($T$): <span id="lbl-sim-t" style="color: var(--accent-amber);">300 K (27°C)</span></label>
+                            <input type="range" id="slider-sim-t" min="150" max="600" step="10" value="300" oninput="updateSimEngine()">
+                        </div>
+
+                        <div class="control-group">
+                            <label>Forward $E_{a,\text{f}}$: <span id="lbl-sim-eaf" style="color: var(--accent-cyan);">45 kJ/mol</span></label>
+                            <input type="range" id="slider-sim-eaf" min="10" max="90" step="2" value="45" oninput="updateSimEngine()">
+                        </div>
+
+                        <div class="control-group">
+                            <label>Reverse $E_{a,\text{r}}$: <span id="lbl-sim-ear" style="color: var(--accent-rose);">65 kJ/mol</span></label>
+                            <input type="range" id="slider-sim-ear" min="10" max="90" step="2" value="65" oninput="updateSimEngine()">
+                        </div>
+
+                        <div class="control-group">
+                            <label>Initial Reactants $[\mathrm{A}_2]$: <span id="lbl-sim-init" style="color: var(--accent-purple);">60</span></label>
+                            <input type="range" id="slider-sim-init" min="20" max="100" step="5" value="60" oninput="updateSimEngine()">
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 1.5rem;">
+                        <button class="btn btn-ethereal" id="btn-sim-play" onclick="toggleSimRun()">▶ Start Collision Engine</button>
+                        <button class="btn btn-outline" onclick="resetSimEngine()">🔄 Reset Reaction</button>
+                    </div>
+
+                    <div class="sim-viewports">
+                        <div class="sim-box">
+                            <h4 style="font-size: 0.85rem; color: var(--accent-cyan); margin-bottom: 0.5rem;">MICROSCOPIC PARTICLE COLLISION CHAMBER</h4>
+                            <canvas id="canvas-particles" class="sim-canvas-el" width="340" height="240"></canvas>
+                        </div>
+
+                        <div class="sim-box">
+                            <h4 style="font-size: 0.85rem; color: var(--accent-cyan); margin-bottom: 0.5rem;">LIVE MAXWELL-BOLTZMANN DISTRIBUTION</h4>
+                            <canvas id="canvas-mb" class="sim-canvas-el" width="340" height="240"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="telemetry-panel">
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Reactants ($\mathrm{A_2}$)</span>
+                            <span class="telemetry-value" id="tel-a2" style="color: var(--accent-cyan);">60</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Products ($\mathrm{B_2}$)</span>
+                            <span class="telemetry-value" id="tel-b2" style="color: var(--accent-emerald);">0</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Forward Rate ($r_{\text{f}}$)</span>
+                            <span class="telemetry-value" id="tel-rf" style="color: var(--accent-cyan);">0.00</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Reverse Rate ($r_{\text{r}}$)</span>
+                            <span class="telemetry-value" id="tel-rose" style="color: var(--accent-rose);">0.00</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Equilibrium Status</span>
+                            <span class="telemetry-value" id="tel-status" style="color: var(--accent-amber);">INITIAL UNBALANCED</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 7: WORKED EXAMPLES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>7. Worked Examples (SCAFFOLDED NESA EXAM SOLUTIONS)</h2>
+                    <span class="pill-badge">HSC Step-by-Step Solutions</span>
+                </div>
+
+                <!-- Example 1: Easy -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 1 (Easy): Identifying Collision Criteria for Reversibility</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        State the three criteria required for a collision between product particles to result in an effective reverse reaction, and explain why not all collisions between products reform reactants.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Three Collision Criteria:</strong> Product particles must (i) physically collide, (ii) possess kinetic energy equal to or exceeding the reverse activation energy ($E \ge E_{a,\text{r}}$), and (iii) collide with correct steric orientation/molecular alignment.</p>
+                        <p><strong>2. Explanation:</strong> Most collisions are ineffective because colliding particles either lack sufficient kinetic energy to overcome $E_{a,\text{r}}$ or collide at improper steric angles, causing them to rebound elastically without breaking chemical bonds.</p>
+                    </div>
+                </div>
+
+                <!-- Example 2: Medium -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 2 (Medium): Maxwell-Boltzmann Temperature Shift Analysis</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Explain, with reference to Maxwell-Boltzmann kinetic energy distribution curves, why increasing the temperature of a closed reversible system increases the rates of <strong>both</strong> the forward and reverse reactions.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Maxwell-Boltzmann Curve Shift:</strong> Raising temperature increases the average kinetic energy of all particles, causing the Maxwell-Boltzmann distribution curve to flatten and its peak to shift rightwards toward higher energy values.</p>
+                        <p><strong>2. Fraction of Effective Collisions:</strong> As the distribution shifts rightward, the area under the curve beyond both the forward activation energy ($E \ge E_{a,\text{f}}$) and reverse activation energy ($E \ge E_{a,\text{r}}$) increases significantly.</p>
+                        <p><strong>3. Rate Impact:</strong> A larger fraction of both reactant and product collisions possess $E \ge E_a$, increasing the frequency of successful collisions per second in both directions. Consequently, both $r_{\text{f}}$ and $r_{\text{r}}$ increase.</p>
+                    </div>
+                </div>
+
+                <!-- Example 3: Hard -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 3 (Hard): Quantitative Activation Energy & Enthalpy Profile Evaluation</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        For a generic gas-phase reversible reaction $\mathrm{X_2(g) + Y_2(g) \rightleftharpoons 2XY(g)}$, the forward activation energy is $E_{a,\text{f}} = 72\text{ kJ mol}^{-1}$ and the reaction enthalpy is $\Delta H = -38\text{ kJ mol}^{-1}$.
+                        <br>a) Calculate the reverse activation energy ($E_{a,\text{r}}$).
+                        <br>b) State whether the forward or reverse pathway has a higher kinetic energy barrier, justifying your answer using a potential energy relationship.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>a) Calculation:</strong></p>
+                        $$\Delta H = E_{a,\text{f}} - E_{a,\text{r}} \implies -38\text{ kJ mol}^{-1} = 72\text{ kJ mol}^{-1} - E_{a,\text{r}}$$
+                        $$E_{a,\text{r}} = 72 - (-38) = 110\text{ kJ mol}^{-1}$$
+
+                        <p><strong>b) Kinetic Barrier Evaluation:</strong> The reverse pathway possesses a higher activation energy barrier ($E_{a,\text{r}} = 110\text{ kJ mol}^{-1}$) than the forward pathway ($E_{a,\text{f}} = 72\text{ kJ mol}^{-1}$). Because $\Delta H < 0$ (exothermic), products sit at a lower potential energy state than reactants, requiring product particles to absorb more energy to reach the transition state activated complex peak.</p>
+                    </div>
+                </div>
+
+                <!-- Example 4: HSC Exam Style (Integrated Stoichiometry & Collision Kinetics) -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 4 (HSC Exam Style): Integrated Stoichiometry & Reversible Collision Kinetics</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A student investigates the reversible decomposition of gaseous nitrosyl chloride in a rigid $5.00\text{ L}$ sealed vessel at $250^\circ\text{C}$:
+                        $$\mathrm{2NOCl(g) \rightleftharpoons 2NO(g) + Cl_2(g)}$$
+                        The forward decomposition is endothermic with $\Delta H = +76.0\text{ kJ mol}^{-1}$ and forward activation energy $E_{a,\text{f}} = 98.0\text{ kJ mol}^{-1}$.
+                        <br><br>a) Calculate the reverse activation energy ($E_{a,\text{r}}$) for the recombination of $\mathrm{NO(g)}$ and $\mathrm{Cl_2(g)}$. (2 Marks)
+                        <br>b) An initial sample of $0.400\text{ mol}$ of $\mathrm{NOCl(g)}$ is introduced into the vessel. At dynamic equilibrium, analysis reveals that $0.150\text{ mol}$ of $\mathrm{Cl_2(g)}$ has formed. Calculate the percentage decomposition of $\mathrm{NOCl(g)}$ and account for why the forward reaction rate decreased while the reverse reaction rate increased until equilibrium was reached. (3 Marks)
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>a) Reverse Activation Energy Calculation:</strong></p>
+                        $$\Delta H = E_{a,\text{f}} - E_{a,\text{r}}$$
+                        $$+76.0\text{ kJ mol}^{-1} = 98.0\text{ kJ mol}^{-1} - E_{a,\text{r}}$$
+                        $$E_{a,\text{r}} = 98.0 - 76.0 = 22.0\text{ kJ mol}^{-1}$$
+                        <p>The reverse reaction has an activation energy threshold of $22.0\text{ kJ mol}^{-1}$.</p>
+
+                        <p><strong>b) Stoichiometric Percentage Decomposition & Kinetic Explanation:</strong></p>
+                        <p><strong>1. Stoichiometric Calculation:</strong>
+                        From the balanced equation, $1\text{ mol}$ of $\mathrm{Cl_2}$ formed corresponds to $2\text{ mol}$ of $\mathrm{NOCl}$ decomposed.
+                        $$\text{Moles of }\mathrm{NOCl}\text{ reacted} = 2 \times 0.150\text{ mol} = 0.300\text{ mol}$$
+                        $$\text{Percentage decomposition} = \left(\frac{0.300\text{ mol}}{0.400\text{ mol}}\right) \times 100\% = 75.0\%$$</p>
+
+                        <p><strong>2. Collision Theory Account of Rates:</strong>
+                        • <strong>Forward Rate ($r_{\text{f}}$):</strong> As $\mathrm{NOCl}$ decomposes, $[\mathrm{NOCl}]$ decreases from $0.0800\text{ mol L}^{-1}$ to $0.0200\text{ mol L}^{-1}$. This reduction lowers the collision frequency between $\mathrm{NOCl}$ molecules ($Z_{\text{f}} \downarrow$), causing $r_{\text{f}}$ to decrease over time.
+                        <br>• <strong>Reverse Rate ($r_{\text{r}}$):</strong> Initially, $[\mathrm{NO}] = 0$ and $[\mathrm{Cl_2}] = 0$, so reverse collision frequency $Z_{\text{r}} = 0$. As products accumulate ($0.300\text{ mol NO}$ and $0.150\text{ mol Cl_2}$ formed), collisions between $\mathrm{NO}$ and $\mathrm{Cl_2}$ with $E \ge 22.0\text{ kJ mol}^{-1}$ become frequent ($Z_{\text{r}} \uparrow$), causing $r_{\text{r}}$ to rise from zero.
+                        <br>• <strong>Equilibrium:</strong> Net concentration changes cease when $r_{\text{f}} = r_{\text{r}} > 0$.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 8: PRACTICE QUESTIONS WITH RUBRICS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>8. NESA Examination Practice Questions</h2>
+                    <span class="pill-badge demo-pill">Self-Marking Engine</span>
+                </div>
+                <p>Solve the questions below, then toggle hints and model solutions to verify your understanding against NESA criteria.</p>
+
+                <!-- Practice Q1 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 1 (Easy): Activation Energy Barriers in Exothermic Systems</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Contrast the magnitude of the forward activation energy ($E_{a,\text{f}}$) and reverse activation energy ($E_{a,\text{r}}$) for an exothermic reversible reaction, and state which pathway requires higher collision energy.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq1-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq1-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq1-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Recall $\Delta H = E_{a,\text{f}} - E_{a,\text{r}}$. If $\Delta H < 0$, which $E_a$ must be larger?</p>
+                    </div>
+
+                    <div id="pq1-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong> For an exothermic reaction ($\Delta H < 0$), the potential energy of products is lower than that of reactants. Consequently, the reverse activation energy barrier is greater than the forward activation energy barrier ($E_{a,\text{r}} > E_{a,\text{f}}$). Product particles require a higher minimum collision energy to reform reactants than reactant particles require to yield products.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Correctly identifies that $E_{a,\text{r}} > E_{a,\text{f}}$ for an exothermic reaction.</li>
+                                <li><strong>1 Mark:</strong> Explains that product collisions require higher kinetic energy to overcome the reverse barrier.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q2 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 2 (Medium): Microscopic Catalyst Action on Reversible Collision Rates</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Explain, using collision theory and energy profiles, why adding a catalyst increases the forward and reverse reaction rates equally without altering the position of dynamic equilibrium.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq2-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq2-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq2-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> How does a catalyst affect the transition state peak height for forward vs reverse pathways?</p>
+                    </div>
+
+                    <div id="pq2-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong> A catalyst provides an alternative reaction pathway with a lower activated complex peak ($\ddagger$), lowering both $E_{a,\text{f}}$ and $E_{a,\text{r}}$ by the exact same numerical quantity ($\Delta E_a$). According to Maxwell-Boltzmann distributions, lowering activation energy increases the fraction of particles possessing sufficient kinetic energy to react in both directions equally. Because $r_{\text{f}}$ and $r_{\text{r}}$ are accelerated by identical proportional factors, dynamic equilibrium is established faster without shifting relative reactant/product concentrations.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> States catalyst lowers both $E_{a,\text{f}}$ and $E_{a,\text{r}}$ equally via an alternative pathway.</li>
+                                <li><strong>1 Mark:</strong> Uses Maxwell-Boltzmann principles to explain equal increase in effective collision fraction.</li>
+                                <li><strong>1 Mark:</strong> Concludes rates increase equally, preserving equilibrium position.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q3 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 3 (Hard): Kinetic Progression upon Volume Compression</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        An equilibrium mixture of gas-phase nitrogen dioxide and dinitrogen tetroxide ($\mathrm{2NO_2(g) \rightleftharpoons N_2O_4(g)}$) is contained in a sealed syringe. The syringe volume is suddenly halved at constant temperature.
+                        <br>Analyse the immediate effect of this compression on molecular collision frequency ($Z_{\text{f}}$ vs $Z_{\text{r}}$) and explain microscopically how the system moves toward a new equilibrium state.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq3-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq3-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq3-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Look at the stoichiometry: $2\text{ moles of reactant gas} \rightleftharpoons 1\text{ mole of product gas}$. How does doubling concentration ($C = n/V$) affect bimolecular vs unimolecular collision frequency?</p>
+                    </div>
+
+                    <div id="pq3-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong> Halving the volume doubles the concentration of all gas species ($C \propto 1/V$).
+                            <br>• <strong>Forward Rate ($r_{\text{f}}$):</strong> The forward reaction requires collision between two $\mathrm{NO_2}$ molecules. Doubling $[\mathrm{NO_2}]$ quadruples the collision frequency $Z_{\text{f}}$ between $\mathrm{NO_2}$ particles.
+                            <br>• <strong>Reverse Rate ($r_{\text{r}}$):</strong> The reverse reaction involves unimolecular decomposition of $\mathrm{N_2O_4}$. Doubling $[\mathrm{N_2O_4}]$ doubles the reverse collision frequency $Z_{\text{r}}$.
+                            <br>Because $Z_{\text{f}}$ quadruples while $Z_{\text{r}}$ only doubles, $r_{\text{f}} > r_{\text{r}}$ immediately after compression. More $\mathrm{NO_2}$ molecules collide and combine per second than $\mathrm{N_2O_4}$ molecules decompose, driving the reaction forward until $r_{\text{f}} = r_{\text{r}}$ is restored at a new equilibrium.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>4 Marks:</strong> Comprehensive microscopic analysis: identifies $C \propto 1/V$, contrasts 4x increase in bimolecular $Z_{\text{f}}$ with 2x increase in $Z_{\text{r}}$, deduces $r_{\text{f}} > r_{\text{r}}$, and explains progression to new equilibrium.</li>
+                                <li><strong>2-3 Marks:</strong> Identifies collision frequency increases but fails to mathematically contrast bimolecular vs unimolecular rate dependencies.</li>
+                                <li><strong>1 Mark:</strong> States that pressure increases collisions.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q4 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 4 (HSC Challenge): Collision Mechanics & Thermal Equilibrium Shifts</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        An endothermic reversible reaction $\mathrm{A_2(g) + B_2(g) \rightleftharpoons 2AB(g)}$ ($\Delta H > 0$) is initially at dynamic equilibrium in a closed vessel. The temperature of the container is increased.
+                        <br>Synthesise collision frequency ($Z$), Maxwell-Boltzmann energy fractions, and activation energies ($E_{a,\text{f}}$ vs $E_{a,\text{r}}$) to explain why raising temperature causes the forward reaction rate to increase by a greater proportional factor than the reverse reaction rate, shifting the system to favour products.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq4-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq4-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq4-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Endothermic reaction $\implies E_{a,\text{f}} > E_{a,\text{r}}$. Connect Maxwell-Boltzmann distribution tail expansion to higher vs lower energy thresholds.</p>
+                    </div>
+
+                    <div id="pq4-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong></p>
+                            <p><strong>1. Activation Energy Hierarchy:</strong> Because the reaction is endothermic ($\Delta H > 0$), the forward activation energy is greater than the reverse activation energy ($E_{a,\text{f}} > E_{a,\text{r}}$).</p>
+                            <p><strong>2. Maxwell-Boltzmann Tail Expansion:</strong> Raising the temperature shifts the Maxwell-Boltzmann kinetic energy distribution curve to the right and flattens its peak, expanding the population of particles in the high-energy tail.</p>
+                            <p><strong>3. Relative Fractional Increase:</strong> Because $E_{a,\text{f}}$ sits further out along the high-energy tail than $E_{a,\text{r}}$, the proportional increase in the fraction of particles gaining energy $E \ge E_{a,\text{f}}$ is significantly greater than the proportional increase in particles gaining $E \ge E_{a,\text{r}}$.</p>
+                            <p><strong>4. Kinetic Outcome:</strong> Although collision frequency $Z$ rises for all species, the forward rate $r_{\text{f}}$ accelerates more than the reverse rate $r_{\text{r}}$ ($r_{\text{f}} > r_{\text{r}}$). Net forward reaction occurs until reactant consumption and product accumulation re-equalise rates ($r_{\text{f}} = r_{\text{r}}$) at a higher product yield.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>5 Marks:</strong> Complete rigorous synthesis: establishes $E_{a,\text{f}} > E_{a,\text{r}}$ for endothermic systems, uses Maxwell-Boltzmann tail expansion to explain greater proportional increase for higher $E_a$, deduces $r_{\text{f}} > r_{\text{r}}$, and details progression to higher product yield.</li>
+                                <li><strong>3-4 Marks:</strong> Correctly identifies $E_{a,\text{f}} > E_{a,\text{r}}$ and states forward rate increases more, but lacks Maxwell-Boltzmann tail justification.</li>
+                                <li><strong>1-2 Marks:</strong> Basic statement that heating favours endothermic reactions without collision theory depth.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation Footer -->
+            <footer class="content-footer">
+                <a href="04-non-equilibrium-systems.html" class="btn btn-outline">&larr; Back to Lesson 04</a>
+                <a href="06-intro-le-chatelier.html" class="btn btn-ethereal">
+                    Proceed to Lesson 06: Le Chatelier's Principle &rarr;
+                </a>
+            </footer>
+        </main>
+    </div>
+
+    <!-- INTERACTIVE SIMULATOR ENGINE (JAVASCRIPT) -->
+    <script>
+        // Simulation Engine State Variables
+        let simRunning = false;
+        let simTimer = null;
+
+        let simT = 300;
+        let simEaf = 45;
+        let simEar = 65;
+        let countA2 = 60;
+        let countB2 = 0;
+
+        // Canvas Contexts
+        const canvasParticles = document.getElementById('canvas-particles');
+        const ctxP = canvasParticles.getContext('2d');
+
+        const canvasMB = document.getElementById('canvas-mb');
+        const ctxMB = canvasMB.getContext('2d');
+
+        // Particle Class
+        class SimParticle {
+            constructor(type) {
+                this.type = type; // 'A2' (Reactant) or 'B2' (Product)
+                this.x = Math.random() * (canvasParticles.width - 20) + 10;
+                this.y = Math.random() * (canvasParticles.height - 20) + 10;
+                
+                // Speed depends on Temperature
+                const speed = Math.sqrt(simT / 100) * (0.8 + Math.random() * 0.8);
+                const angle = Math.random() * Math.PI * 2;
+                this.vx = Math.cos(angle) * speed;
+                this.vy = Math.sin(angle) * speed;
+                this.radius = type === 'A2' ? 5 : 6;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < this.radius || this.x > canvasParticles.width - this.radius) this.vx *= -1;
+                if (this.y < this.radius || this.y > canvasParticles.height - this.radius) this.vy *= -1;
+            }
+
+            draw() {
+                ctxP.beginPath();
+                ctxP.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctxP.fillStyle = this.type === 'A2' ? '#38bdf8' : '#34d399';
+                ctxP.shadowBlur = 6;
+                ctxP.shadowColor = this.type === 'A2' ? '#38bdf8' : '#34d399';
+                ctxP.fill();
+                ctxP.shadowBlur = 0;
+            }
+        }
+
+        let particlesList = [];
+
+        function initParticleSet() {
+            particlesList = [];
+            for (let i = 0; i < countA2; i++) particlesList.push(new SimParticle('A2'));
+            for (let i = 0; i < countB2; i++) particlesList.push(new SimParticle('B2'));
+        }
+
+        function updateSimEngine() {
+            simT = parseFloat(document.getElementById('slider-sim-t').value);
+            simEaf = parseFloat(document.getElementById('slider-sim-eaf').value);
+            simEar = parseFloat(document.getElementById('slider-sim-ear').value);
+            
+            document.getElementById('lbl-sim-t').innerText = `${simT} K (${(simT - 273.15).toFixed(0)}°C)`;
+            document.getElementById('lbl-sim-eaf').innerText = `${simEaf} kJ/mol`;
+            document.getElementById('lbl-sim-ear').innerText = `${simEar} kJ/mol`;
+
+            if (!simRunning) {
+                countA2 = parseInt(document.getElementById('slider-sim-init').value);
+                countB2 = 0;
+                document.getElementById('lbl-sim-init').innerText = countA2;
+                initParticleSet();
+                renderAllSimViews();
+            }
+        }
+
+        function toggleSimRun() {
+            const btn = document.getElementById('btn-sim-play');
+            if (simRunning) {
+                simRunning = false;
+                clearInterval(simTimer);
+                btn.innerText = '▶ Resume Engine';
+                btn.className = 'btn btn-ethereal';
+            } else {
+                simRunning = true;
+                simTimer = setInterval(stepSimTick, 100);
+                btn.innerText = '⏸ Pause Engine';
+                btn.className = 'btn btn-outline';
+            }
+        }
+
+        function resetSimEngine() {
+            simRunning = false;
+            clearInterval(simTimer);
+            document.getElementById('btn-sim-play').innerText = '▶ Start Collision Engine';
+            document.getElementById('btn-sim-play').className = 'btn btn-ethereal';
+
+            countA2 = parseInt(document.getElementById('slider-sim-init').value);
+            countB2 = 0;
+
+            initParticleSet();
+            renderAllSimViews();
+            updateTelemetryUI(0, 0);
+        }
+
+        function stepSimTick() {
+            // Maxwell-Boltzmann Effective Fractions
+            const R = 0.008314; // kJ/mol/K
+            const fracF = Math.exp(-simEaf / (R * simT));
+            const fracR = Math.exp(-simEar / (R * simT));
+
+            // Rates proportional to concentration * fraction
+            const rf = countA2 * fracF * 0.15;
+            const rr = countB2 * fracR * 0.15;
+
+            // Stochastic interconversion
+            let numF = 0;
+            let numR = 0;
+
+            for (let i = 0; i < countA2; i++) {
+                if (Math.random() < (fracF * 0.15)) numF++;
+            }
+            for (let i = 0; i < countB2; i++) {
+                if (Math.random() < (fracR * 0.15)) numR++;
+            }
+
+            countA2 = countA2 - numF + numR;
+            countB2 = countB2 + numF - numR;
+
+            // Sync Particles Array
+            let currA2 = particlesList.filter(p => p.type === 'A2').length;
+            if (countA2 < currA2) {
+                let diff = currA2 - countA2;
+                for (let p of particlesList) {
+                    if (p.type === 'A2' && diff > 0) { p.type = 'B2'; diff--; }
+                }
+            } else if (countA2 > currA2) {
+                let diff = countA2 - currA2;
+                for (let p of particlesList) {
+                    if (p.type === 'B2' && diff > 0) { p.type = 'A2'; diff--; }
+                }
+            }
+
+            renderAllSimViews();
+            updateTelemetryUI(rf, rr);
+        }
+
+        function renderAllSimViews() {
+            // 1. Render Particles Canvas
+            ctxP.clearRect(0, 0, canvasParticles.width, canvasParticles.height);
+            for (let p of particlesList) {
+                p.update();
+                p.draw();
+            }
+
+            // 2. Render Maxwell-Boltzmann Canvas
+            ctxMB.clearRect(0, 0, canvasMB.width, canvasMB.height);
+
+            // Axes
+            ctxMB.strokeStyle = 'rgba(255,255,255,0.15)';
+            ctxMB.lineWidth = 1;
+            ctxMB.beginPath();
+            ctxMB.moveTo(30, 20); ctxMB.lineTo(30, 210);
+            ctxMB.moveTo(30, 210); ctxMB.lineTo(320, 210);
+            ctxMB.stroke();
+
+            // Draw Maxwell-Boltzmann Curve based on T
+            ctxMB.strokeStyle = '#38bdf8';
+            ctxMB.lineWidth = 2.5;
+            ctxMB.beginPath();
+
+            const peakX = 30 + (simT / 600) * 120;
+            const peakY = 210 - (600 / simT) * 110;
+
+            ctxMB.moveTo(30, 210);
+            ctxMB.quadraticCurveTo(peakX, peakY, 320, 205);
+            ctxMB.stroke();
+
+            // Draw Ea(f) Line
+            const xEaf = 30 + (simEaf / 100) * 280;
+            ctxMB.strokeStyle = '#fbbf24';
+            ctxMB.setLineDash([4, 3]);
+            ctxMB.beginPath();
+            ctxMB.moveTo(xEaf, 20); ctxMB.lineTo(xEaf, 210);
+            ctxMB.stroke();
+
+            // Draw Ea(r) Line
+            const xEar = 30 + (simEar / 100) * 280;
+            ctxMB.strokeStyle = '#f43f5e';
+            ctxMB.beginPath();
+            ctxMB.moveTo(xEar, 20); ctxMB.lineTo(xEar, 210);
+            ctxMB.stroke();
+            ctxMB.setLineDash([]);
+
+            // Labels
+            ctxMB.fillStyle = '#fbbf24';
+            ctxMB.font = '10px Segoe UI, sans-serif';
+            ctxMB.fillText('Ea(f)', xEaf - 12, 15);
+
+            ctxMB.fillStyle = '#f43f5e';
+            ctxMB.fillText('Ea(r)', xEar + 2, 15);
+        }
+
+        function updateTelemetryUI(rf, rr) {
+            document.getElementById('tel-a2').innerText = countA2;
+            document.getElementById('tel-b2').innerText = countB2;
+            document.getElementById('tel-rf').innerText = rf.toFixed(2);
+            document.getElementById('tel-rose').innerText = rr.toFixed(2);
+
+            const statusEl = document.getElementById('tel-status');
+            const diff = Math.abs(rf - rr);
+
+            if (rf > 0 && diff < 0.12) {
+                statusEl.innerText = 'DYNAMIC EQUILIBRIUM ACHIEVED';
+                statusEl.style.color = '#34d399';
+            } else if (rf === 0 && rr === 0) {
+                statusEl.innerText = 'INITIAL UNBALANCED';
+                statusEl.style.color = '#fbbf24';
+            } else {
+                statusEl.innerText = 'APPROACHING EQUILIBRIUM';
+                statusEl.style.color = '#38bdf8';
+            }
+        }
+
+        function toggleElement(id) {
+            const el = document.getElementById(id);
+            if (el.style.display === 'none' || el.style.display === '') {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            updateSimEngine();
+        });
+    </script>
+</body>
+</html>

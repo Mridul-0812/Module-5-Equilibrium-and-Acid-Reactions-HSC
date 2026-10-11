@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09 Effect of Temperature | Module 5 Chemistry</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- MathJax 3 Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <style>
+        /* Modern Ethereal Glassmorphism Styling */
+        :root {
+            --bg-dark: #080c14;
+            --bg-card: rgba(15, 23, 42, 0.75);
+            --bg-card-hover: rgba(30, 41, 59, 0.85);
+            --border-glow: rgba(124, 58, 237, 0.3);
+            --border-light: rgba(255, 255, 255, 0.08);
+            --border-cyan: rgba(6, 182, 212, 0.35);
+            --border-emerald: rgba(16, 185, 129, 0.35);
+            --accent-purple: #a78bfa;
+            --accent-cyan: #38bdf8;
+            --accent-emerald: #34d399;
+            --accent-amber: #fbbf24;
+            --accent-rose: #f43f5e;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-secondary: #cbd5e1;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'Fira Code', 'Cascadia Code', Consolas, monospace;
+            --shadow-glow: 0 0 30px rgba(124, 58, 237, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(124, 58, 237, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 90% 85%, rgba(6, 182, 212, 0.1) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.95) 0%, var(--bg-dark) 100%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.8;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 320px;
+            background: rgba(11, 15, 25, 0.92);
+            border-right: 1px solid var(--border-light);
+            backdrop-filter: blur(16px);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 2rem 1.5rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .badge-glow {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            color: var(--accent-purple);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.4rem;
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .sidebar-header .subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+
+        .progress-container {
+            margin-top: 1.25rem;
+            background: rgba(255, 255, 255, 0.06);
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            border-radius: 3px;
+        }
+
+        .score-card {
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav-menu {
+            padding: 1.25rem 1rem;
+        }
+
+        .nav-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            padding: 0 0.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 0.65rem 0.75rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            margin-bottom: 0.25rem;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            transform: translateX(3px);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(90deg, rgba(124, 58, 237, 0.25), rgba(6, 182, 212, 0.1));
+            border-left: 3px solid var(--accent-purple);
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+
+        .nav-num {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            margin-right: 0.75rem;
+            opacity: 0.7;
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            margin-left: 320px;
+            flex: 1;
+            padding: 2.5rem 3rem;
+            max-width: 1250px;
+        }
+
+        .hero-banner {
+            position: relative;
+            background: linear-gradient(135deg, rgba(24, 16, 48, 0.85) 0%, rgba(15, 23, 42, 0.95) 100%);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2.5rem;
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .ethereal-tag {
+            font-family: var(--font-mono);
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .ethereal-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin: 0.5rem 0 1rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ethereal-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 880px;
+        }
+
+        /* Content Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 2.25rem;
+            margin-bottom: 2.5rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            transition: border-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(124, 58, 237, 0.35);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.75rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .card-header h2 {
+            font-size: 1.6rem;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .pill-badge {
+            padding: 0.35rem 0.85rem;
+            background: rgba(124, 58, 237, 0.12);
+            border: 1px solid var(--border-glow);
+            color: var(--accent-purple);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pill-badge.emerald {
+            background: rgba(16, 185, 129, 0.12);
+            border-color: var(--border-emerald);
+            color: var(--accent-emerald);
+        }
+
+        .pill-badge.cyan {
+            background: rgba(56, 189, 248, 0.12);
+            border-color: var(--border-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .pill-badge.rose {
+            background: rgba(244, 63, 94, 0.12);
+            border-color: rgba(244, 63, 94, 0.35);
+            color: var(--accent-rose);
+        }
+
+        .pill-badge.amber {
+            background: rgba(251, 191, 36, 0.12);
+            border-color: rgba(251, 191, 36, 0.35);
+            color: var(--accent-amber);
+        }
+
+        /* Typography & Paragraphs */
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        strong {
+            color: #fff;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: var(--accent-purple);
+            margin: 1.85rem 0 0.85rem;
+            font-weight: 700;
+        }
+
+        h4 {
+            font-size: 1.12rem;
+            color: #fff;
+            margin: 1.35rem 0 0.55rem;
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin: 0 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.75rem;
+            padding-left: 0.25rem;
+        }
+
+        /* Grids & Feature Layouts */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-glow);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card h3 {
+            margin: 0 0 0.5rem 0;
+            color: #fff;
+        }
+
+        /* Callout Boxes */
+        .info-box {
+            background: rgba(124, 58, 237, 0.08);
+            border-left: 4px solid var(--accent-purple);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 1.35rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-box.cyan {
+            background: rgba(56, 189, 248, 0.08);
+            border-left-color: var(--accent-cyan);
+        }
+
+        .info-box.emerald {
+            background: rgba(52, 211, 153, 0.08);
+            border-left-color: var(--accent-emerald);
+        }
+
+        .info-box.amber {
+            background: rgba(251, 191, 36, 0.08);
+            border-left-color: var(--accent-amber);
+        }
+
+        .info-box.rose {
+            background: rgba(244, 63, 94, 0.08);
+            border-left-color: var(--accent-rose);
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+        }
+
+        /* Data & Comparison Tables */
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            margin: 1.75rem 0;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        table.comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            background: rgba(15, 23, 42, 0.7);
+            font-size: 0.95rem;
+        }
+
+        table.comparison-table th {
+            background: rgba(30, 41, 59, 0.9);
+            color: var(--accent-purple);
+            padding: 1rem 1.25rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border-light);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        table.comparison-table td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-secondary);
+            vertical-align: top;
+        }
+
+        table.comparison-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+            color: #fff;
+        }
+
+        /* SVG Graph Containers */
+        .graph-wrapper {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1.75rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .graph-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .svg-graph-container {
+            width: 100%;
+            max-width: 720px;
+            height: auto;
+        }
+
+        /* Interactive Visualiser Module */
+        .sim-container {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            box-shadow: 0 0 35px rgba(124, 58, 237, 0.12);
+        }
+
+        .sim-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+            background: rgba(30, 41, 59, 0.5);
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-group label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .control-group input[type="range"] {
+            width: 100%;
+            accent-color: var(--accent-purple);
+            cursor: pointer;
+        }
+
+        .sim-viewports {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .sim-viewports {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sim-box {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        canvas.sim-canvas-el {
+            background: #050811;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm);
+            width: 100%;
+            height: 260px;
+        }
+
+        .telemetry-panel {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+
+        .telemetry-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .telemetry-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .telemetry-value {
+            font-family: var(--font-mono);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--accent-purple);
+            margin-top: 0.25rem;
+        }
+
+        /* Buttons & Actions */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-ethereal {
+            background: linear-gradient(135deg, #7c3aed, #06b6d4);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-ethereal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.45);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--border-light);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        /* Questions & Rubrics */
+        .question-container {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .marks-badge {
+            background: rgba(244, 63, 94, 0.15);
+            border: 1px solid rgba(244, 63, 94, 0.4);
+            color: var(--accent-rose);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .action-bar {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .drawer {
+            margin-top: 1rem;
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .drawer-hint {
+            background: rgba(251, 191, 36, 0.08);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            color: #fef08a;
+        }
+
+        .drawer-solution {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-glow);
+        }
+
+        .rubric-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--accent-purple);
+        }
+
+        .rubric-box h5 {
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .content-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; padding: 1.5rem; }
+            .grid-2col { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="ethereal-theme">
+    <div class="app-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="badge-glow">NESA Stage 6</span>
+                <h2>Module 5</h2>
+                <p class="subtitle">EQUILIBRIUM & ACID REACTIONS</p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="module-progress" style="width: 36%;"></div>
+                </div>
+                <div class="score-card">
+                    Total Mastery: <span id="total-marks">36</span> / 100 Marks
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-section">
+                    <span class="section-title">INTRODUCTION</span>
+                    <a href="index.html" class="nav-item">
+                        <span class="nav-num">—</span> Home & Guide
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE A: FOUNDATIONS OF EQUILIBRIUM</span>
+                    <a href="01-reversible-reactions.html" class="nav-item"><span class="nav-num">01</span> Reversible vs Irreversible</a>
+                    <a href="02-open-closed-systems.html" class="nav-item"><span class="nav-num">02</span> Open vs Closed Systems</a>
+                    <a href="03-static-dynamic-equilibrium.html" class="nav-item"><span class="nav-num">03</span> Static vs Dynamic Eq</a>
+                    <a href="04-non-equilibrium-systems.html" class="nav-item"><span class="nav-num">04</span> Non-Equilibrium Systems</a>
+                    <a href="05-collision-theory-equilibrium.html" class="nav-item"><span class="nav-num">05</span> Collision Theory in Eq</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE B: FACTORS AFFECTING EQUILIBRIUM</span>
+                    <a href="06-intro-le-chatelier.html" class="nav-item"><span class="nav-num">06</span> Le Chatelier's Principle</a>
+                    <a href="07-effect-of-concentration.html" class="nav-item"><span class="nav-num">07</span> Concentration Changes</a>
+                    <a href="08-effect-of-pressure-volume.html" class="nav-item"><span class="nav-num">08</span> Pressure & Volume</a>
+                    <a href="09-effect-of-temperature.html" class="nav-item active"><span class="nav-num">09</span> Temperature Effects</a>
+                    <a href="10-collision-theory-lcp.html" class="nav-item"><span class="nav-num">10</span> Collision Theory & LCP</a>
+                    <a href="11-activation-energy-equilibrium.html" class="nav-item"><span class="nav-num">11</span> Activation Energy & $\Delta H$</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE C: THE EQUILIBRIUM CONSTANT</span>
+                    <a href="12-keq-expression.html" class="nav-item"><span class="nav-num">12</span> The $K_{\mathrm{eq}}$ Expression</a>
+                    <a href="13-keq-calculations-basic.html" class="nav-item"><span class="nav-num">13</span> Basic $K_{\mathrm{eq}}$ Calculations</a>
+                    <a href="14-keq-calculations-advanced.html" class="nav-item"><span class="nav-num">14</span> Advanced $K_{\mathrm{eq}}$ & $Q$</a>
+                    <a href="15-temperature-and-keq.html" class="nav-item"><span class="nav-num">15</span> Temperature & $K_{\mathrm{eq}}$</a>
+                    <a href="16-determining-keq-experiment.html" class="nav-item"><span class="nav-num">16</span> Practical Determination</a>
+                    <a href="17-keq-acid-base-dissociation.html" class="nav-item"><span class="nav-num">17</span> Dissociation Systems</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE D: SOLUTION EQUILIBRIA</span>
+                    <a href="18-dissolution-ionic-compounds.html" class="nav-item"><span class="nav-num">18</span> Ionic Dissolution</a>
+                    <a href="19-indigenous-solubility-cycads.html" class="nav-item"><span class="nav-num">19</span> Indigenous Detoxification</a>
+                    <a href="20-solubility-rules.html" class="nav-item"><span class="nav-num">20</span> Solubility Rules</a>
+                    <a href="21-solubility-product-ksp.html" class="nav-item"><span class="nav-num">21</span> Solubility Product ($K_{\mathrm{sp}}$)</a>
+                    <a href="22-molar-solubility-calcs.html" class="nav-item"><span class="nav-num">22</span> Molar Solubility Calcs</a>
+                    <a href="23-predicting-precipitation.html" class="nav-item"><span class="nav-num">23</span> Predicting Precipitation</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE E: ASSESSMENT & REVIEW</span>
+                    <a href="24-formula-summary.html" class="nav-item"><span class="nav-num">24</span> Formula & Concept Guide</a>
+                    <a href="25-final-exam.html" class="nav-item"><span class="nav-num">25</span> Final Examination</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="hero-banner">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <span class="ethereal-tag">LESSON 09 • PHASE B: FACTORS AFFECTING EQUILIBRIUM</span>
+                    <h1 class="ethereal-title">Effect of Temperature on Endothermic & Exothermic Systems</h1>
+                    <p class="ethereal-subtitle">Master thermochemical principles, enthalpy changes ($\Delta H$), Maxwell-Boltzmann activation energy tail mechanics ($E_{a,\text{f}}$ vs $E_{a,\text{r}}$), benchmark cobalt(II) complex and $\mathrm{NO_2/N_2O_4}$ thermal shifts, and the fundamental uniqueness of temperature as the sole modifier of $K_{\mathrm{eq}}$.</p>
+                </div>
+            </header>
+
+            <!-- SYLLABUS ALIGNMENT CARD -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>NESA Syllabus Inquiry Focus</h2>
+                    <span class="pill-badge">Stage 6 Chemistry</span>
+                </div>
+                <p>
+                    <strong>Inquiry Question 2:</strong> <em>What factors affect equilibrium and how?</em>
+                </p>
+                <div class="info-box cyan" style="margin-top: 1rem;">
+                    <h3>Syllabus Outcomes Addressed (Outcome CH-12-01):</h3>
+                    <ul>
+                        <li>Investigate the effect of temperature changes on endothermic ($\Delta H > 0$) and exothermic ($\Delta H < 0$) reactions at dynamic equilibrium.</li>
+                        <li>Analyse mandatory NESA practical systems under varying thermal conditions:
+                            <br>• Cobalt(II) hexaaqua / tetrachlorocobaltate(II) complex equilibrium ($\mathrm{[Co(H_2O)_6]^{2+} / [CoCl_4]^{2-}}$).
+                            <br>• Nitrogen dioxide / dinitrogen tetroxide gas system ($\mathrm{2NO_{2(g)} \rightleftharpoons N_2O_{4(g)}}$).
+                        </li>
+                        <li>Apply Collision Theory at the sub-microscopic level using Maxwell-Boltzmann distribution curves to explain differential rates ($r_{\mathrm{f}}$ vs $r_{\mathrm{r}}$) based on forward ($E_{a,\text{f}}$) and reverse ($E_{a,\text{r}}$) activation energy barriers.</li>
+                        <li>Analyse concentration-time ($c\text{ vs }t$) and rate-time ($r\text{ vs }t$) graphs for temperature perturbations, highlighting the absence of instantaneous vertical concentration step-changes.</li>
+                        <li>Understand the fundamental uniqueness of temperature as the <strong>ONLY disturbance variable that alters the numerical value of the Equilibrium Constant ($K_{\mathrm{eq}}$)</strong>.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECTION 1: THERMODYNAMIC FOUNDATIONS & THERMOCHEMICAL EQUATIONS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>1. Thermodynamic Foundations & Conceptualising "Heat" in Equilibria</h2>
+                    <span class="pill-badge">Thermodynamic Mechanics</span>
+                </div>
+
+                <p>
+                    In previous lessons, we examined how concentration, volume, and pressure disturb dynamic equilibrium by altering particle spacing or overall molarities. Temperature perturbations, however, act through a fundamentally different physical mechanism: <strong>modifying the average kinetic energy ($\bar{E}_k$) of all particles in the system</strong>.
+                </p>
+
+                <p>
+                    Every chemical reaction involves an enthalpy change ($\Delta H$), defined as the difference between the enthalpy of products and the enthalpy of reactants:
+                </p>
+                $$\Delta H = H_{\text{products}} - H_{\text{reactants}}$$
+
+                <h3>Endothermic vs Exothermic Classifications</h3>
+                <div class="grid-2col">
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-rose);">
+                        <div class="feature-icon">🔥</div>
+                        <h3>1. Exothermic Forward Reaction ($\Delta H < 0$)</h3>
+                        <p>
+                            • <strong>Energy Transfer:</strong> Thermal energy is <strong>released</strong> to the surroundings as chemical bonds are formed.
+                            <br>
+                            • <strong>Enthalpy Profile:</strong> Products possess lower potential energy than reactants ($H_{\text{products}} < H_{\text{reactants}}$).
+                            <br>
+                            • <strong>Conceptual Model:</strong> Treat "Heat" as a <strong>PRODUCT</strong> on the right-hand side:
+                            $$\mathrm{\text{Reactants} \rightleftharpoons \text{Products} + \text{Heat}} \quad (\Delta H < 0)$$
+                        </p>
+                    </div>
+
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-cyan);">
+                        <div class="feature-icon">❄️</div>
+                        <h3>2. Endothermic Forward Reaction ($\Delta H > 0$)</h3>
+                        <p>
+                            • <strong>Energy Transfer:</strong> Thermal energy is <strong>absorbed</strong> from the surroundings to break chemical bonds.
+                            <br>
+                            • <strong>Enthalpy Profile:</strong> Products possess higher potential energy than reactants ($H_{\text{products}} > H_{\text{reactants}}$).
+                            <br>
+                            • <strong>Conceptual Model:</strong> Treat "Heat" as a <strong>REACTANT</strong> on the left-hand side:
+                            $$\mathrm{\text{Reactants} + \text{Heat} \rightleftharpoons \text{Products}} \quad (\Delta H > 0)$$
+                        </p>
+                    </div>
+                </div>
+
+                <!-- SVG Graph 1: Enthalpy Profile & Activation Energies -->
+                <div class="graph-wrapper">
+                    <div class="graph-title">NESA Enthalpy Profile: Asymmetry between Forward ($E_{a,\text{f}}$) and Reverse ($E_{a,\text{r}}$) Activation Energies</div>
+                    <div class="svg-graph-container">
+                        <svg viewBox="0 0 700 340" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="700" height="340" fill="#0b1329" rx="10"/>
+                            <!-- Axes -->
+                            <line x1="70" y1="300" x2="650" y2="300" stroke="#64748b" stroke-width="2"/>
+                            <line x1="70" y1="40" x2="70" y2="300" stroke="#64748b" stroke-width="2"/>
+
+                            <!-- Axes Labels -->
+                            <text x="360" y="328" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle">Reaction Progress ($\to$)</text>
+                            <text x="25" y="170" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle" transform="rotate(-90 25 170)">Potential Energy, $H$ ($\text{kJ mol}^{-1}$)</text>
+
+                            <!-- Energy Levels: Endothermic Pathway -->
+                            <!-- Reactants y=220, Products y=120, Transition State y=60 -->
+                            <line x1="90" y1="220" x2="210" y2="220" stroke="#38bdf8" stroke-width="3.5"/>
+                            <line x1="490" y1="120" x2="610" y2="120" stroke="#34d399" stroke-width="3.5"/>
+
+                            <!-- Smooth Curve -->
+                            <path d="M 210 220 C 280 220, 310 60, 350 60 C 390 60, 420 120, 490 120" fill="none" stroke="#a78bfa" stroke-width="3"/>
+
+                            <!-- Dashed Reference Lines -->
+                            <line x1="210" y1="60" x2="490" y2="60" stroke="#64748b" stroke-width="1" stroke-dasharray="3,3"/>
+                            <line x1="210" y1="220" x2="350" y2="220" stroke="#64748b" stroke-width="1" stroke-dasharray="3,3"/>
+                            <line x1="350" y1="120" x2="490" y2="120" stroke="#64748b" stroke-width="1" stroke-dasharray="3,3"/>
+
+                            <!-- Arrow Ea(f): y=220 to y=60 -->
+                            <line x1="280" y1="220" x2="280" y2="60" stroke="#f43f5e" stroke-width="2"/>
+                            <polygon points="280,60 275,70 285,70" fill="#f43f5e"/>
+                            <polygon points="280,220 275,210 285,210" fill="#f43f5e"/>
+                            <text x="270" y="145" fill="#f43f5e" font-size="12" font-weight="700" text-anchor="end">$E_{a,\text{f}}$ (Large)</text>
+
+                            <!-- Arrow Ea(r): y=120 to y=60 -->
+                            <line x1="430" y1="120" x2="430" y2="60" stroke="#fbbf24" stroke-width="2"/>
+                            <polygon points="430,60 425,70 435,70" fill="#fbbf24"/>
+                            <polygon points="430,120 425,110 435,110" fill="#fbbf24"/>
+                            <text x="440" y="95" fill="#fbbf24" font-size="12" font-weight="700" text-anchor="start">$E_{a,\text{r}}$ (Small)</text>
+
+                            <!-- Arrow Delta H: y=220 to y=120 -->
+                            <line x1="560" y1="220" x2="560" y2="120" stroke="#34d399" stroke-width="2"/>
+                            <polygon points="560,120 555,130 565,130" fill="#34d399"/>
+                            <polygon points="560,220 555,210 565,210" fill="#34d399"/>
+                            <text x="570" y="175" fill="#34d399" font-size="12" font-weight="700" text-anchor="start">$\Delta H > 0$ (Endothermic)</text>
+
+                            <!-- Labels -->
+                            <text x="150" y="245" fill="#38bdf8" font-size="13" font-weight="700" text-anchor="middle">Reactants</text>
+                            <text x="550" y="105" fill="#34d399" font-size="13" font-weight="700" text-anchor="middle">Products</text>
+                            <text x="350" y="45" fill="#a78bfa" font-size="13" font-weight="700" text-anchor="middle">Transition State ($\ddagger$)</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="info-box amber">
+                    <h3>The Key Thermodynamic Rule for Activation Energies</h3>
+                    <p>
+                        Notice the mathematical relationship between activation energy barriers and reaction enthalpy:
+                        $$\Delta H = E_{a,\text{f}} - E_{a,\text{r}}$$
+                        <br>
+                        • <strong>For Endothermic Reactions ($\Delta H > 0$):</strong> The forward activation energy is strictly greater than the reverse activation energy ($E_{a,\text{f}} > E_{a,\text{r}}$).
+                        <br>
+                        • <strong>For Exothermic Reactions ($\Delta H < 0$):</strong> The reverse activation energy is strictly greater than the forward activation energy ($E_{a,\text{r}} > E_{a,\text{f}}$).
+                        <br>
+                        • <em>This barrier height asymmetry is the fundamental physical reason why temperature changes alter forward and reverse reaction rates unequally!</em>
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 2: LE CHATELIER SHIFT RULES FOR TEMPERATURE -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>2. Qualitative Shift Rules Under Le Chatelier's Principle</h2>
+                    <span class="pill-badge cyan">System Adjustments</span>
+                </div>
+
+                <p>
+                    By applying Le Chatelier's Principle, we treat thermal energy ("heat") as a chemical entity in the reaction equation to determine shift directions.
+                </p>
+
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Thermochemical Type</th>
+                                <th>Temperature Disturbance</th>
+                                <th>System Objective (LCP)</th>
+                                <th>Equilibrium Shift Direction</th>
+                                <th>Impact on Product Yield</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background: rgba(244, 63, 94, 0.12); border-left: 3px solid var(--accent-rose);">
+                                <td><strong>Exothermic Forward ($\Delta H < 0$)</strong></td>
+                                <td>Heating ($T \uparrow$)</td>
+                                <td>Absorb excess added thermal energy</td>
+                                <td>Shifts <strong>REVERSE ($\leftarrow$)</strong> in endothermic direction</td>
+                                <td>Product yield <strong>DECREASES</strong></td>
+                            </tr>
+                            <tr style="background: rgba(56, 189, 248, 0.12); border-left: 3px solid var(--accent-cyan);">
+                                <td><strong>Exothermic Forward ($\Delta H < 0$)</strong></td>
+                                <td>Cooling ($T \downarrow$)</td>
+                                <td>Release additional thermal energy to replace loss</td>
+                                <td>Shifts <strong>FORWARD ($\to$)</strong> in exothermic direction</td>
+                                <td>Product yield <strong>INCREASES</strong></td>
+                            </tr>
+                            <tr style="background: rgba(52, 211, 153, 0.12); border-left: 3px solid var(--accent-emerald);">
+                                <td><strong>Endothermic Forward ($\Delta H > 0$)</strong></td>
+                                <td>Heating ($T \uparrow$)</td>
+                                <td>Absorb excess added thermal energy</td>
+                                <td>Shifts <strong>FORWARD ($\to$)</strong> in endothermic direction</td>
+                                <td>Product yield <strong>INCREASES</strong></td>
+                            </tr>
+                            <tr style="background: rgba(251, 191, 36, 0.12); border-left: 3px solid var(--accent-amber);">
+                                <td><strong>Endothermic Forward ($\Delta H > 0$)</strong></td>
+                                <td>Cooling ($T \downarrow$)</td>
+                                <td>Release additional thermal energy to replace loss</td>
+                                <td>Shifts <strong>REVERSE ($\leftarrow$)</strong> in exothermic direction</td>
+                                <td>Product yield <strong>DECREASES</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box cyan">
+                    <h3>Summary Rule for HSC Memory</h3>
+                    <p>
+                        • <strong>Heating ($T \uparrow$):</strong> ALWAYS favours the <strong>ENDOTHERMIC direction</strong> ($\Delta H > 0$) to absorb thermal energy.
+                        <br>
+                        • <strong>Cooling ($T \downarrow$):</strong> ALWAYS favours the <strong>EXOTHERMIC direction</strong> ($\Delta H < 0$) to release thermal energy.
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 3: COLLISION THEORY & MAXWELL-BOLTZMANN DISTRIBUTIONS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>3. Sub-Microscopic Mechanism: Collision Theory & Maxwell-Boltzmann Distributions</h2>
+                    <span class="pill-badge purple">Microscopic Kinetics</span>
+                </div>
+
+                <p>
+                    Why does heating an endothermic reaction cause a net forward shift at the molecular level? To answer this with full NESA precision, we must combine <strong>Maxwell-Boltzmann kinetic energy distribution curves</strong> with activation energy barriers ($E_a$).
+                </p>
+
+                <h3>Maxwell-Boltzmann Distribution Shifts Upon Heating</h3>
+                <p>
+                    Temperature is a direct measure of the average kinetic energy of gas or solution particles ($\bar{E}_k = \frac{3}{2} k_B T$). At any given temperature, particles possess a distribution of kinetic energies ranging from near zero to extremely high values.
+                </p>
+
+                <!-- SVG Graph 2: Maxwell-Boltzmann Distribution Shift -->
+                <div class="graph-wrapper">
+                    <div class="graph-title">NESA Maxwell-Boltzmann Distribution: Effect of Temperature Increase ($T_1 \to T_2$) on Kinetic Energy Tail</div>
+                    <div class="svg-graph-container">
+                        <svg viewBox="0 0 700 340" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="700" height="340" fill="#0b1329" rx="10"/>
+                            <!-- Axes -->
+                            <line x1="70" y1="300" x2="650" y2="300" stroke="#64748b" stroke-width="2"/>
+                            <line x1="70" y1="40" x2="70" y2="300" stroke="#64748b" stroke-width="2"/>
+
+                            <!-- Axes Labels -->
+                            <text x="360" y="328" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle">Kinetic Energy, $E_k$ ($\text{kJ mol}^{-1}$)</text>
+                            <text x="25" y="170" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle" transform="rotate(-90 25 170)">Number of Molecules, $N$</text>
+
+                            <!-- Curve T1 (Cold - Cyan): High Peak, Left-Shifted -->
+                            <path d="M 70 300 Q 150 50, 220 180 T 600 300" fill="none" stroke="#38bdf8" stroke-width="3"/>
+
+                            <!-- Curve T2 (Hot - Rose): Lower Peak, Flattened, Extended Tail Right -->
+                            <path d="M 70 300 Q 200 130, 310 220 T 650 300" fill="none" stroke="#f43f5e" stroke-width="3"/>
+
+                            <!-- Activation Energy Threshold Line Ea(r) -->
+                            <line x1="420" y1="40" x2="420" y2="300" stroke="#fbbf24" stroke-width="2" stroke-dasharray="4,4"/>
+                            <text x="415" y="35" fill="#fbbf24" font-size="12" font-weight="700" text-anchor="end">$E_{a,\text{r}}$ (Lower)</text>
+
+                            <!-- Activation Energy Threshold Line Ea(f) -->
+                            <line x1="520" y1="40" x2="520" y2="300" stroke="#34d399" stroke-width="2" stroke-dasharray="4,4"/>
+                            <text x="525" y="35" fill="#34d399" font-size="12" font-weight="700" text-anchor="start">$E_{a,\text{f}}$ (Higher)</text>
+
+                            <!-- Legend -->
+                            <text x="230" y="100" fill="#38bdf8" font-size="13" font-weight="700">Lower Temperature ($T_1$)</text>
+                            <text x="350" y="150" fill="#f43f5e" font-size="13" font-weight="700">Higher Temperature ($T_2 > T_1$)</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <h3>Sub-Microscopic Kinetic Justification (4-Step NESA Structure)</h3>
+                <p>
+                    When temperature is increased from $T_1$ to $T_2$:
+                </p>
+                <ol>
+                    <li><strong>Kinetic Energy Shift:</strong> The average kinetic energy of all particles increases. The Maxwell-Boltzmann distribution flattens and shifts to the right, expanding the high-energy tail of molecules with $E \ge E_a$.</li>
+                    <li><strong>Overall Collision Frequency Increase:</strong> Particles move faster, so the overall collision rate between all reacting species increases. Therefore, <strong>BOTH forward ($r_{\mathrm{f}}$) and reverse ($r_{\mathrm{r}}$) reaction rates increase</strong>!</li>
+                    <li><strong>Differential Percentage Increase:</strong>
+                        <br>• For an endothermic forward reaction, $E_{a,\text{f}} > E_{a,\text{r}}$.
+                        <br>• Raising temperature increases the fraction of collisions exceeding the <em>higher</em> activation energy barrier ($E_{a,\text{f}}$) by a <strong>GREATER PROPORTIONAL PERCENTAGE FACTOR</strong> than those exceeding the lower barrier ($E_{a,\text{r}}$).
+                    </li>
+                    <li><strong>Rate Imbalance & Net Shift:</strong> Because $r_{\mathrm{f}}$ increases by a larger factor than $r_{\mathrm{r}}$, we get $r_{\mathrm{f}} > r_{\mathrm{r}}$. The forward reaction proceeds faster than the reverse reaction, causing a <strong>net forward shift ($\to$)</strong> until product accumulation accelerates $r_{\mathrm{r}}$ to equal $r_{\mathrm{f}}'$ at a new, higher equal rate!</li>
+                </ol>
+
+                <div class="info-box rose">
+                    <h3>Critical Exam Distinction: Heating Increases BOTH Rates!</h3>
+                    <p>
+                        A very common student misconception is writing that "heating slows down the reverse reaction" when an endothermic shift occurs.
+                        <br><br>
+                        • <strong>Fact:</strong> Heating increases the kinetic energy of ALL particles, so <strong>BOTH $r_{\mathrm{f}}$ and $r_{\mathrm{r}}$ ALWAYS INCREASE upon heating</strong>!
+                        <br>
+                        • <strong>Why a Shift Occurs:</strong> A shift occurs because the reaction with the higher activation energy increases by a <em>larger magnitude</em> than the other, creating a temporary rate imbalance ($r_{\mathrm{f}} > r_{\mathrm{r}}$ or $r_{\mathrm{r}} > r_{\mathrm{f}}$)!
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 4: MANDATORY NESA BENCHMARK PRACTICAL SYSTEMS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>4. Mandatory NESA Benchmark Practical Systems</h2>
+                    <span class="pill-badge emerald">Syllabus Mandated Practical Studies</span>
+                </div>
+
+                <p>
+                    The NESA Stage 6 Chemistry syllabus explicitly highlights two primary reversible chemical systems for investigating thermal disturbances in the laboratory.
+                </p>
+
+                <h3>1. System A: Cobalt(II) Complex Equilibrium ($\mathrm{[Co(H_2O)_6]^{2+} / [CoCl_4]^{2-}}$)</h3>
+                <p>
+                    When cobalt(II) chloride is dissolved in a mixture of water and concentrated hydrochloric acid, an equilibrium is established between the pink hexaaquacobalt(II) ion and the deep blue tetrachlorocobaltate(II) ion:
+                </p>
+                $$\mathrm{\underset{\text{Pink}}{[Co(H_2O)_6]^{2+}(aq)} + 4Cl^-(aq) \rightleftharpoons \underset{\text{Deep Blue}}{[CoCl_4]^{2-}(aq)} + 6H_2O(l)} \quad \Delta H > 0 \text{ (Endothermic)}$$
+
+                <div class="grid-2col">
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-rose);">
+                        <h3>Hot Water Bath Test ($T \uparrow$)</h3>
+                        <p>
+                            • <strong>Disturbance:</strong> Temperature is increased ($T \uparrow$).
+                            <br>• <strong>LCP Application:</strong> System shifts in the endothermic direction ($\Delta H > 0$) to absorb added heat.
+                            <br>• <strong>Shift Direction:</strong> <strong>Net Forward Shift ($\to$)</strong>.
+                            <br>• <strong>Observable Change:</strong> The pink solution <strong>turns deep violet-blue</strong> as $[\mathrm{[CoCl_4]^{2-}}]$ increases.
+                        </p>
+                    </div>
+
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-cyan);">
+                        <h3>Ice Water Bath Test ($T \downarrow$)</h3>
+                        <p>
+                            • <strong>Disturbance:</strong> Temperature is decreased ($T \downarrow$).
+                            <br>• <strong>LCP Application:</strong> System shifts in the exothermic direction ($\Delta H < 0$) to release thermal energy.
+                            <br>• <strong>Shift Direction:</strong> <strong>Net Reverse Shift ($\leftarrow$)</strong>.
+                            <br>• <strong>Observable Change:</strong> The blue solution <strong>turns pale pink</strong> as $[\mathrm{[Co(H_2O)_6]^{2+}}]$ increases.
+                        </p>
+                    </div>
+                </div>
+
+                <h3>2. System B: Nitrogen Dioxide / Dinitrogen Tetroxide Gas System ($\mathrm{2NO_{2(g)} \rightleftharpoons N_2O_{4(g)}}$)</h3>
+                <p>
+                    The reversible gas equilibrium between dark brown $\mathrm{NO_2}$ and colourless $\mathrm{N_2O_4}$ is exothermic in the forward direction:
+                </p>
+                $$\mathrm{\underset{\text{Dark Brown Gas}}{2NO_{2(g)}} \rightleftharpoons \underset{\text{Colourless Gas}}{N_2O_{4(g)}}} \quad \Delta H = -57.2\text{ kJ mol}^{-1} \text{ (Exothermic)}$$
+
+                <ul>
+                    <li><strong>Heating in Hot Water Bath ($T \uparrow$):</strong> System shifts in the endothermic reverse direction ($\leftarrow$) to absorb heat. Complex converts colourless $\mathrm{N_2O_4}$ back into brown $\mathrm{NO_2}$. <strong>Observation: Gas inside ampoule turns INTENSE DARK BROWN.</strong></li>
+                    <li><strong>Cooling in Ice Water Bath ($T \downarrow$):</strong> System shifts in the exothermic forward direction ($\to$) to release heat. Brown $\mathrm{NO_2}$ combines into colourless $\mathrm{N_2O_4}$. <strong>Observation: Gas inside ampoule FADES TO VERY PALE YELLOW / COLOURLESS.</strong></li>
+                </ul>
+            </section>
+
+            <!-- SECTION 5: TEMPERATURE IS THE ONLY MODIFIER OF KEQ -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>5. Fundamental Uniqueness: Temperature as the SOLE Modifier of $K_{\mathrm{eq}}$</h2>
+                    <span class="pill-badge rose">Core Thermodynamic Pillar</span>
+                </div>
+
+                <p>
+                    One of the most important concepts in Module 5 Chemistry is distinguishing how temperature perturbations differ mathematically from concentration, volume, or pressure perturbations.
+                </p>
+
+                <div class="info-box rose">
+                    <h3>The Golden Rule of Equilibrium Constants</h3>
+                    <p>
+                        <strong>"The numerical value of the Equilibrium Constant ($K_{\mathrm{eq}}$) for a given reaction is DEPENDENT ONLY ON TEMPERATURE."</strong>
+                        <br><br>
+                        • <strong>Concentration Changes:</strong> $K_{\mathrm{eq}}$ remains strictly constant.
+                        <br>
+                        • <strong>Pressure / Volume Changes:</strong> $K_{\mathrm{eq}}$ remains strictly constant.
+                        <br>
+                        • <strong>Adding a Catalyst:</strong> $K_{\mathrm{eq}}$ remains strictly constant.
+                        <br>
+                        • <strong>TEMPERATURE CHANGES:</strong> <strong>$K_{\mathrm{eq}}$ NUMERICALLY CHANGES!</strong>
+                    </p>
+                </div>
+
+                <h3>Mathematical Relationship Between Temperature and $K_{\mathrm{eq}}$</h3>
+                <p>
+                    The equilibrium constant expression represents the ratio of product concentrations to reactant concentrations at equilibrium:
+                </p>
+                $$K_{\mathrm{eq}} = \frac{[\text{Products}]_{\text{eq}}^p}{[\text{Reactants}]_{\text{eq}}^r}$$
+
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Reaction Enthalpy ($\Delta H$)</th>
+                                <th>Temperature Change</th>
+                                <th>Net Shift Direction</th>
+                                <th>Numerical Effect on $K_{\mathrm{eq}}$ Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Endothermic ($\Delta H > 0$)</strong></td>
+                                <td>Heating ($T \uparrow$)</td>
+                                <td>Forward ($\to$) $\implies$ Products rise, Reactants fall</td>
+                                <td><strong>$K_{\mathrm{eq}}$ INCREASES</strong> ($\uparrow$)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Endothermic ($\Delta H > 0$)</strong></td>
+                                <td>Cooling ($T \downarrow$)</td>
+                                <td>Reverse ($\leftarrow$) $\implies$ Products fall, Reactants rise</td>
+                                <td><strong>$K_{\mathrm{eq}}$ DECREASES</strong> ($\downarrow$)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Exothermic ($\Delta H < 0$)</strong></td>
+                                <td>Heating ($T \uparrow$)</td>
+                                <td>Reverse ($\leftarrow$) $\implies$ Products fall, Reactants rise</td>
+                                <td><strong>$K_{\mathrm{eq}}$ DECREASES</strong> ($\downarrow$)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Exothermic ($\Delta H < 0$)</strong></td>
+                                <td>Cooling ($T \downarrow$)</td>
+                                <td>Forward ($\to$) $\implies$ Products rise, Reactants fall</td>
+                                <td><strong>$K_{\mathrm{eq}}$ INCREASES</strong> ($\uparrow$)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION 6: GRAPHICAL SIGNATURES OF TEMPERATURE DISTURBANCES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>6. Graphical Signatures of Temperature Disturbances ($c\text{ vs }t$ and $r\text{ vs }t$)</h2>
+                    <span class="pill-badge emerald">Graph Interpretation</span>
+                </div>
+
+                <p>
+                    NESA examination questions frequently assess whether students can distinguish temperature disturbances from concentration or volume disturbances on concentration-time ($c\text{ vs }t$) and rate-time ($r\text{ vs }t$) graphs.
+                </p>
+
+                <h3>Visual Signature Rules for Temperature Disturbances</h3>
+                <ol>
+                    <li><strong>Concentration-Time ($c\text{ vs }t$) Graph:</strong>
+                        <br>• <strong>NO INSTANTANEOUS VERTICAL STEP-CHANGES OR SPIKES AT $t_1$!</strong>
+                        <br>• Unlike adding a reagent (single spike) or compressing volume (simultaneous spikes across all gases), a temperature change alters kinetic rates smoothly. All concentration lines remain perfectly continuous at $t_1$, transitioning into smooth exponential curves starting directly from $t_1$.
+                    </li>
+                    <li><strong>Rate-Time ($r\text{ vs }t$) Graph:</strong>
+                        <br>• At $t_1$, <strong>BOTH forward ($r_{\mathrm{f}}$) and reverse ($r_{\mathrm{r}}$) rates instantly jump UP upon heating</strong> (or drop DOWN upon cooling).
+                        <br>• However, they jump to <em>different heights</em> due to $E_{a,\text{f}} \neq E_{a,\text{r}}$, creating an instantaneous rate gap ($r_{\mathrm{f}} \neq r_{\mathrm{r}}$) that gradually closes as the shift completes.
+                    </li>
+                </ol>
+
+                <!-- SVG Graph 3: Rate-Time Profile for Heating an Endothermic System -->
+                <div class="graph-wrapper">
+                    <div class="graph-title">NESA Rate-Time Graph: Response to Heating an Endothermic Reaction ($\Delta H > 0$)</div>
+                    <div class="svg-graph-container">
+                        <svg viewBox="0 0 700 340" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="700" height="340" fill="#0b1329" rx="10"/>
+                            <!-- Axes -->
+                            <line x1="70" y1="290" x2="650" y2="290" stroke="#64748b" stroke-width="2"/>
+                            <line x1="70" y1="40" x2="70" y2="290" stroke="#64748b" stroke-width="2"/>
+
+                            <!-- Dashed Time Markers -->
+                            <line x1="250" y1="40" x2="250" y2="290" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4,4"/>
+                            <line x1="500" y1="40" x2="500" y2="290" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4,4"/>
+
+                            <!-- Axes Labels -->
+                            <text x="360" y="322" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle">Time, $t$</text>
+                            <text x="25" y="165" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle" transform="rotate(-90 25 165)">Reaction Rate, $r$</text>
+
+                            <!-- Domain Text Labels -->
+                            <text x="160" y="25" fill="#cbd5e1" font-size="12" font-weight="700" text-anchor="middle">Initial Eq 1 ($T_1$)</text>
+                            <text x="250" y="25" fill="#fbbf24" font-size="12" font-weight="700" text-anchor="middle">$t_1$ (Heating)</text>
+                            <text x="375" y="25" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">Transition Shift ($\to$)</text>
+                            <text x="575" y="25" fill="#34d399" font-size="12" font-weight="700" text-anchor="middle">New Eq 2 ($T_2 > T_1$)</text>
+
+                            <!-- Initial Equal Rate y=220 -->
+                            <line x1="70" y1="220" x2="250" y2="220" stroke="#a78bfa" stroke-width="3.5"/>
+
+                            <!-- Forward Rate Jumps UP significantly to y=70 at t1 (Higher Ea) -->
+                            <line x1="250" y1="220" x2="250" y2="70" stroke="#38bdf8" stroke-width="3" stroke-dasharray="2,2"/>
+                            <path d="M 250 70 C 320 95, 420 120, 500 120" fill="none" stroke="#38bdf8" stroke-width="3"/>
+
+                            <!-- Reverse Rate Jumps UP moderately to y=150 at t1 (Lower Ea) -->
+                            <line x1="250" y1="220" x2="250" y2="150" stroke="#f43f5e" stroke-width="3" stroke-dasharray="2,2"/>
+                            <path d="M 250 150 C 320 140, 420 120, 500 120" fill="none" stroke="#f43f5e" stroke-width="3"/>
+
+                            <!-- Merged New Equal Rate y=120 for t > t2 -->
+                            <line x1="500" y1="120" x2="650" y2="120" stroke="#34d399" stroke-width="3.5"/>
+
+                            <!-- Labels -->
+                            <text x="310" y="80" fill="#38bdf8" font-size="12" font-weight="700">Forward Rate ($r_{\mathrm{f}}$ jumps higher)</text>
+                            <text x="310" y="160" fill="#f43f5e" font-size="12" font-weight="700">Reverse Rate ($r_{\mathrm{r}}$ jumps lower)</text>
+                            <text x="540" y="105" fill="#34d399" font-size="12" font-weight="700">New Higher Equal Rate ($r_{\mathrm{f}}' = r_{\mathrm{r}}'$)</text>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 7: INTERACTIVE TEMPERATURE & MAXWELL-BOLTZMANN LABORATORY -->
+            <section class="card glass-card demo-card">
+                <div class="card-header">
+                    <h2>7. Interactive Temperature & Maxwell-Boltzmann Visualiser Engine</h2>
+                    <span class="pill-badge demo-pill">Virtual Thermodynamics Lab</span>
+                </div>
+                <p>Adjust the thermal temperature slider below to heat or cool the virtual reaction vessel. Observe live Maxwell-Boltzmann energy tail shifts, solution color changes, concentration-time graphs, and real-time $K_{\mathrm{eq}}$ telemetry.</p>
+
+                <div class="sim-container">
+                    <div class="sim-controls">
+                        <div class="control-group">
+                            <label>System Thermal Temperature: <span id="lbl-temp" style="color: var(--accent-purple);">25.0 °C (298 K)</span></label>
+                            <input type="range" id="slider-temp" min="0" max="100" step="1" value="25" oninput="runTempSim()">
+                        </div>
+
+                        <div class="control-group">
+                            <label>Select Reaction System:</label>
+                            <select id="sim-temp-system" class="btn btn-outline" style="width: 100%; color: #fff; background: rgba(30,41,59,0.9);" onchange="runTempSim()">
+                                <option value="cobalt">Cobalt Complex: [Co(H₂O)₆]²⁺ (Pink) ⇌ [CoCl₄]²⁻ (Blue) [ΔH > 0]</option>
+                                <option value="no2_gas">Gas System: 2NO₂ (Brown) ⇌ N₂O₄ (Clear) [ΔH < 0]</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="sim-viewports">
+                        <div class="sim-box">
+                            <h4 style="font-size: 0.85rem; color: var(--accent-cyan); margin-bottom: 0.5rem;">MAXWELL-BOLTZMANN ENERGY DISTRIBUTION</h4>
+                            <canvas id="canvas-mb" class="sim-canvas-el" width="340" height="260"></canvas>
+                        </div>
+
+                        <div class="sim-box">
+                            <h4 style="font-size: 0.85rem; color: var(--accent-cyan); margin-bottom: 0.5rem;">REACTION CHAMBER & COLOR VIEW</h4>
+                            <canvas id="canvas-temp-flask" class="sim-canvas-el" width="340" height="260"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="telemetry-panel">
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">System Temperature</span>
+                            <span class="telemetry-value" id="tel-temp-val" style="color: var(--accent-amber);">298 K</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Reaction Enthalpy $\Delta H$</span>
+                            <span class="telemetry-value" id="tel-enthalpy" style="color: var(--accent-cyan);">+50.0 kJ/mol</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Equilibrium Constant $K_{\mathrm{eq}}$</span>
+                            <span class="telemetry-value" id="tel-keq-val" style="color: var(--accent-emerald);">15.00</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Favoured Direction</span>
+                            <span class="telemetry-value" id="tel-temp-shift" style="color: var(--accent-purple);">DYNAMIC EQUILIBRIUM</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 8: WORKED EXAMPLES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>8. Scaffolded Worked Examples</h2>
+                    <span class="pill-badge">HSC Step-by-Step Solutions</span>
+                </div>
+
+                <!-- Example 1: Easy -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 1 (Easy): Qualitative Shift Prediction for Heating</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Predict the direction of the equilibrium shift when an equilibrium mixture of $\mathrm{2SO_{2(g)} + O_{2(g)} \rightleftharpoons 2SO_{3(g)}} \quad (\Delta H = -197\text{ kJ mol}^{-1})$ is heated at constant volume.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Identify Enthalpy Type:</strong> The forward reaction is exothermic ($\Delta H < 0$), meaning heat is released in the forward direction.</p>
+                        <p><strong>2. Apply Le Chatelier's Principle:</strong> Heating adds thermal energy to the system. To counteract this addition of heat, the system shifts in the endothermic direction ($\Delta H > 0$) to absorb energy.</p>
+                        <p><strong>3. Conclusion:</strong> The system undergoes a <strong>net reverse shift ($\leftarrow$)</strong>, increasing the concentrations of reactants $\mathrm{SO_2}$ and $\mathrm{O_2}$ while decreasing product $\mathrm{SO_3}$.</p>
+                    </div>
+                </div>
+
+                <!-- Example 2: Medium -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 2 (Medium): Experimental Observation Analysis</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A test tube containing an aqueous mixture of cobalt(II) ions ($\mathrm{[Co(H_2O)_6]^{2+}}$, pink) and chloride complex ($\mathrm{[CoCl_4]^{2-}}$, blue) is placed into a hot water bath ($80^\circ\text{C}$). The solution turns from purple-pink to deep blue.
+                        <br>Deduce whether the forward complexation reaction is endothermic or exothermic, justifying your reasoning using Le Chatelier's Principle.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Analyse Observation:</strong> Heating causes the solution to turn deep blue, indicating an increase in the concentration of blue $\mathrm{[CoCl_4]^{2-}}$ product (a net forward shift, $\to$).</p>
+                        <p><strong>2. Apply LCP Logic:</strong> According to Le Chatelier's Principle, heating a system causes it to shift in the endothermic direction to absorb excess thermal energy.</p>
+                        <p><strong>3. Deduce Enthalpy ($\Delta H$):</strong> Because heating drove a net forward shift, the <strong>forward reaction MUST be ENDOTHERMIC ($\Delta H > 0$)</strong>.</p>
+                    </div>
+                </div>
+
+                <!-- Example 3: Hard -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 3 (Hard): Collision Theory Justification for Temperature Shifts</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Explain, using Collision Theory at the sub-microscopic level and Maxwell-Boltzmann kinetic energy distributions, why raising the temperature of an endothermic equilibrium system causes a net forward shift.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Maxwell-Boltzmann Shift:</strong> Heating increases the average kinetic energy of all particles, shifting the Maxwell-Boltzmann distribution curve to the right and expanding the high-energy tail.</p>
+                        <p><strong>2. Activation Energy Asymmetry:</strong> For an endothermic reaction ($\Delta H > 0$), the forward activation energy is greater than the reverse activation energy ($E_{a,\text{f}} > E_{a,\text{r}}$).</p>
+                        <p><strong>3. Differential Rate Increase:</strong> Because $E_{a,\text{f}}$ is higher, raising the temperature increases the fraction of collisions with $E \ge E_{a,\text{f}}$ by a <strong>larger proportional percentage factor</strong> than those with $E \ge E_{a,\text{r}}$.</p>
+                        <p><strong>4. Net Shift & Re-equalisation:</strong> Consequently, the forward reaction rate accelerates more than the reverse rate ($r_{\mathrm{f}} > r_{\mathrm{r}}$), producing a <strong>net forward shift ($\to$)</strong> until product accumulation increases $r_{\mathrm{r}}$ to equal $r_{\mathrm{f}}'$ at a new, higher rate.</p>
+                    </div>
+                </div>
+
+                <!-- Example 4: Extension -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 4 (Extension): Synthesis of Temperature, $K_{\mathrm{eq}}$ & Rate Law Kinetics</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        An equilibrium reaction $\mathrm{A_{(g)} \rightleftharpoons 2B_{(g)}}$ has $K_{\mathrm{eq}} = 4.0\text{ M}$ at $298\text{ K}$. When heated to $400\text{ K}$, the new equilibrium constant becomes $K_{\mathrm{eq}} = 25.0\text{ M}$.
+                        <br>a) Determine whether the forward reaction is endothermic or exothermic.
+                        <br>b) Explain the effect of this temperature increase on the numerical ratio of product to reactant concentrations at equilibrium.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>a) Determine Enthalpy Classification:</strong>
+                        <br>• As temperature increased from $298\text{ K} \to 400\text{ K}$, $K_{\mathrm{eq}}$ increased from $4.0 \to 25.0$.
+                        <br>• An increase in $K_{\mathrm{eq}} = \frac{[\mathrm{B}]_{\text{eq}}^2}{[\mathrm{A}]_{\text{eq}}}$ indicates an increase in product concentration relative to reactant concentration (a net forward shift).
+                        <br>• According to Le Chatelier's Principle, heating favours the endothermic direction. Because heating caused a net forward shift, the <strong>forward reaction is ENDOTHERMIC ($\Delta H > 0$)</strong>.</p>
+
+                        <p><strong>b) Concentration Ratio Effect:</strong>
+                        <br>• $K_{\mathrm{eq}} = \frac{[\mathrm{B}]_{\text{eq}}^2}{[\mathrm{A}]_{\text{eq}}}$.
+                        <br>• Increasing $K_{\mathrm{eq}}$ from $4.0$ to $25.0$ means the equilibrium position lies significantly further to the right at $400\text{ K}$.
+                        <br>• At the higher temperature, the equilibrium mixture contains a substantially higher ratio of $[\mathrm{B}]$ to $[\mathrm{A}]$, representing a higher equilibrium conversion yield.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 9: PRACTICE QUESTIONS WITH RUBRICS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>9. NESA Examination Practice Questions</h2>
+                    <span class="pill-badge demo-pill">Self-Marking Engine</span>
+                </div>
+                <p>Solve the questions below, then toggle hints and model solutions to verify your answers against NESA marking rubrics.</p>
+
+                <!-- Practice Q1 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 1 (Easy): Qualitative Temperature Shift Prediction</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Predict the direction of the equilibrium shift when a sealed container of nitrogen dioxide gas ($\mathrm{2NO_{2(g)} \rightleftharpoons N_2O_{4(g)}}, \, \Delta H = -57.2\text{ kJ mol}^{-1}$) is placed into an ice-water bath, and state the expected color change.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq1-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq1-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq1-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Is the forward reaction exothermic or endothermic? What colour is $\mathrm{NO_2}$ compared to $\mathrm{N_2O_4}$?</p>
+                    </div>
+
+                    <div id="pq1-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong> The system undergoes a <strong>net forward shift ($\to$)</strong>, and the brown gas <strong>fades to a very pale yellow or colourless tint</strong>. Cooling removes thermal energy. According to Le Chatelier's Principle, the system shifts in the exothermic direction ($\Delta H < 0$) to release heat, converting brown $\mathrm{NO_2}$ into colourless $\mathrm{N_2O_4}$.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Correctly predicts net forward shift ($\to$).</li>
+                                <li><strong>1 Mark:</strong> States expected colour change (fades/decolourises) and justifies using LCP exothermic rule.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q2 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 2 (Medium): Graph Feature Identification for Temperature</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A student examines a concentration-time graph for a gas system at dynamic equilibrium. At time $t_1$, all species concentrations begin changing smoothly without any vertical step-changes or spikes.
+                        <br>Explain why this graphical signature uniquely identifies a temperature disturbance rather than a concentration or volume disturbance.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq2-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq2-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq2-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Contrast temperature changes (which alter kinetic rates smoothly without altering instant particle counts) with concentration or volume additions (which alter instant molarities).</p>
+                    </div>
+
+                    <div id="pq2-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>• <strong>Absence of Vertical Spikes:</strong> Temperature changes do not instantaneously alter the number of gas molecules or container volume at $t_1$. Thus, species concentrations cannot change instantaneously, resulting in continuous curves at $t_1$.
+                            <br>• <strong>Distinction from Reagent Addition:</strong> Reagent additions cause a single vertical concentration spike for the added species at $t_1$.
+                            <br>• <strong>Distinction from Volume Compression:</strong> Volume changes cause simultaneous vertical step-changes across ALL gaseous species at $t_1$.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Explains that temperature alters thermal energy without instantly changing species mole counts/volume.</li>
+                                <li><strong>1 Mark:</strong> Contrasts with reagent addition (single spike).</li>
+                                <li><strong>1 Mark:</strong> Contrasts with volume change (simultaneous spikes across all gases).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q3 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 3 (Hard): Collision Theory Analysis of Cooling Exothermic Reactions</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Use Collision Theory and Maxwell-Boltzmann distributions to explain why cooling an exothermic reaction ($\Delta H < 0$) causes a net forward shift.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq3-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq3-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq3-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> For an exothermic reaction, which activation energy barrier is higher ($E_{a,\text{f}}$ or $E_{a,\text{r}}$)? How does cooling affect the higher $E_a$ barrier?</p>
+                    </div>
+
+                    <div id="pq3-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>• <strong>Maxwell-Boltzmann Shift:</strong> Cooling reduces the average kinetic energy of all particles, shifting the Maxwell-Boltzmann distribution curve left and contracting the high-energy tail ($E \ge E_a$).
+                            <br>• <strong>Overall Collision Rate:</strong> BOTH forward ($r_{\mathrm{f}}$) and reverse ($r_{\mathrm{r}}$) rates decrease upon cooling.
+                            <br>• <strong>Activation Energy Asymmetry:</strong> For an exothermic reaction ($\Delta H < 0$), the reverse activation energy is higher than the forward activation energy ($E_{a,\text{r}} > E_{a,\text{f}}$).
+                            <br>• <strong>Differential Decrease:</strong> Cooling reduces the fraction of collisions exceeding the <em>higher</em> barrier ($E_{a,\text{r}}$) by a <strong>larger proportional percentage factor</strong> than those exceeding $E_{a,\text{f}}$. Thus, $r_{\mathrm{r}}$ drops more severely than $r_{\mathrm{f}}$, making $r_{\mathrm{f}} > r_{\mathrm{r}}$ and causing a <strong>net forward shift ($\to$)</strong>.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Identifies leftward shift in Maxwell-Boltzmann distribution and states BOTH rates decrease.</li>
+                                <li><strong>1 Mark:</strong> Correctly states $E_{a,\text{r}} > E_{a,\text{f}}$ for exothermic reactions.</li>
+                                <li><strong>1 Mark:</strong> Explains cooling reduces the higher barrier ($E_{a,\text{r}}$) fraction by a larger proportional percentage.</li>
+                                <li><strong>1 Mark:</strong> Concludes $r_{\mathrm{f}} > r_{\mathrm{r}}$, causing a net forward shift ($\to$).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q4 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 4 (Extension): Industrial Temperature Strategy Synthesis</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        In the Haber process ($\mathrm{N_{2(g)} + 3H_{2(g)} \rightleftharpoons 2NH_{3(g)}}, \, \Delta H = -92\text{ kJ mol}^{-1}$), a chemical engineer must choose an operating temperature.
+                        <br>Analyse the conflict between equilibrium yield (thermodynamics) and reaction rate (kinetics) regarding temperature selection, and explain how industrial plants resolve this conflict.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq4-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq4-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq4-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Low temperature gives high yield (LCP) but slow rate. High temperature gives fast rate but low yield. What is the compromise solution?</p>
+                    </div>
+
+                    <div id="pq4-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br><strong>1. Thermodynamic Yield Conflict:</strong> Because the forward reaction is exothermic ($\Delta H = -92\text{ kJ mol}^{-1}$), Le Chatelier's Principle predicts that <strong>low temperature favours a net forward shift</strong>, maximising $K_{\mathrm{eq}}$ and $\mathrm{NH_3}$ yield.
+                            <br><strong>2. Kinetic Rate Conflict:</strong> However, at low temperatures, average kinetic energy is low, and very few collisions exceed $E_a$. The reaction rate is impractically slow, taking months to reach equilibrium.
+                            <br><strong>3. Industrial Resolution (Compromise Conditions):</strong> Industrial processing plants use a <strong>moderate compromise temperature ($\sim 400\text{--}450^\circ\text{C}$)</strong> paired with an <strong>iron-based catalyst</strong>. The moderate temperature ensures an economically viable reaction rate while maintaining an acceptable yield, and the catalyst accelerates both rates equally without shifting the equilibrium position.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Explains low temperature favours forward shift ($\Delta H < 0$) to maximize yield via LCP.</li>
+                                <li><strong>1 Mark:</strong> Explains low temperature results in impractically slow collision rates.</li>
+                                <li><strong>1 Mark:</strong> Explains high temperature increases collision rate but severely lowers $K_{\mathrm{eq}}$ and yield.</li>
+                                <li><strong>2 Marks:</strong> Synthesises the solution: moderate compromise temperature ($400\text{--}450^\circ\text{C}$) paired with a catalyst to balance rate and yield.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation Footer -->
+            <footer class="content-footer">
+                <a href="08-effect-of-pressure-volume.html" class="btn btn-outline">&larr; Back to Lesson 08</a>
+                <a href="10-collision-theory-lcp.html" class="btn btn-ethereal">
+                    Proceed to Lesson 10: Collision Theory & LCP Integration &rarr;
+                </a>
+            </footer>
+        </main>
+    </div>
+
+    <!-- INTERACTIVE TEMPERATURE SIMULATOR JAVASCRIPT ENGINE -->
+    <script>
+        let currentTempC = 25; // Default 25°C
+
+        function runTempSim() {
+            currentTempC = parseFloat(document.getElementById('slider-temp').value);
+            const tempK = currentTempC + 273.15;
+            document.getElementById('lbl-temp').innerText = `${currentTempC.toFixed(1)} °C (${tempK.toFixed(0)} K)`;
+            document.getElementById('tel-temp-val').innerText = `${tempK.toFixed(0)} K`;
+
+            const systemMode = document.getElementById('sim-temp-system').value;
+
+            let enthalpyText = "";
+            let KeqVal = 0;
+            let shiftText = "";
+            let shiftColor = "";
+
+            if (systemMode === 'cobalt') {
+                // [Co(H2O)6]2+ (pink) <=> [CoCl4]2- (blue), ΔH = +50 kJ/mol (Endothermic)
+                enthalpyText = "+50.0 kJ/mol";
+                // Keq increases with Temp
+                KeqVal = 0.5 * Math.exp((tempK - 273) / 30.0);
+
+                if (currentTempC > 25) {
+                    shiftText = "NET FORWARD (→) [Blue]";
+                    shiftColor = "#38bdf8";
+                } else if (currentTempC < 25) {
+                    shiftText = "NET REVERSE (←) [Pink]";
+                    shiftColor = "#f43f5e";
+                } else {
+                    shiftText = "DYNAMIC EQUILIBRIUM";
+                    shiftColor = "#34d399";
+                }
+            } else if (systemMode === 'no2_gas') {
+                // 2NO2 (brown) <=> N2O4 (clear), ΔH = -57.2 kJ/mol (Exothermic)
+                enthalpyText = "-57.2 kJ/mol";
+                // Keq decreases with Temp
+                KeqVal = 50.0 * Math.exp(-(tempK - 273) / 35.0);
+
+                if (currentTempC > 25) {
+                    shiftText = "NET REVERSE (←) [Brown]";
+                    shiftColor = "#f43f5e";
+                } else if (currentTempC < 25) {
+                    shiftText = "NET FORWARD (→) [Clear]";
+                    shiftColor = "#38bdf8";
+                } else {
+                    shiftText = "DYNAMIC EQUILIBRIUM";
+                    shiftColor = "#34d399";
+                }
+            }
+
+            document.getElementById('tel-enthalpy').innerText = enthalpyText;
+            document.getElementById('tel-keq-val').innerText = KeqVal.toFixed(2);
+
+            const shiftEl = document.getElementById('tel-temp-shift');
+            shiftEl.innerText = shiftText;
+            shiftEl.style.color = shiftColor;
+
+            renderMBCanvas(currentTempC);
+            renderTempFlaskCanvas(systemMode, currentTempC);
+        }
+
+        function renderMBCanvas(tempC) {
+            const canvas = document.getElementById('canvas-mb');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Axes
+            ctx.strokeStyle = "rgba(255,255,255,0.15)";
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(35, 15); ctx.lineTo(35, 230);
+            ctx.moveTo(35, 230); ctx.lineTo(320, 230);
+            ctx.stroke();
+
+            ctx.fillStyle = "#94a3b8";
+            ctx.font = "10px Inter, sans-serif";
+            ctx.fillText("Energy (Ek)", 260, 245);
+            ctx.fillText("N Molecules", 5, 12);
+
+            // Curve Parameters shift with Temp
+            // Higher Temp -> lower peak, wider right tail
+            const peakX = 80 + (tempC * 0.8);
+            const peakY = 230 - (160 - tempC * 0.8);
+
+            ctx.strokeStyle = "#a78bfa";
+            ctx.lineWidth = 2.5;
+            ctx.beginPath();
+            ctx.moveTo(35, 230);
+            ctx.quadraticCurveTo(peakX, peakY, 320, 225);
+            ctx.stroke();
+
+            // Ea Threshold Line
+            const eaX = 220;
+            ctx.strokeStyle = "#fbbf24";
+            ctx.setLineDash([3, 3]);
+            ctx.beginPath();
+            ctx.moveTo(eaX, 15); ctx.lineTo(eaX, 230);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            ctx.fillStyle = "#fbbf24";
+            ctx.font = "bold 10px Inter, sans-serif";
+            ctx.fillText("Ea Barrier", eaX + 5, 25);
+
+            // Fill area past Ea
+            ctx.fillStyle = "rgba(167, 139, 250, 0.25)";
+            ctx.beginPath();
+            ctx.moveTo(eaX, 230);
+            ctx.quadraticCurveTo(peakX, peakY, 320, 225);
+            ctx.lineTo(320, 230);
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        function renderTempFlaskCanvas(mode, tempC) {
+            const canvas = document.getElementById('canvas-temp-flask');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Erlenmeyer Flask Outline
+            ctx.strokeStyle = "rgba(255,255,255,0.4)";
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(140, 40); ctx.lineTo(200, 40);
+            ctx.moveTo(150, 40); ctx.lineTo(150, 90);
+            ctx.lineTo(90, 210);
+            ctx.quadraticCurveTo(80, 230, 110, 230);
+            ctx.lineTo(230, 230);
+            ctx.quadraticCurveTo(260, 230, 250, 210);
+            ctx.lineTo(190, 90);
+            ctx.lineTo(190, 40);
+            ctx.stroke();
+
+            // Solution / Gas Colour Interpolation
+            let colorStr = "";
+
+            if (mode === 'cobalt') {
+                // Pink at 0°C -> Blue at 100°C
+                const blueFactor = tempC / 100.0;
+                const r = Math.round(244 * (1 - blueFactor) + 56 * blueFactor);
+                const g = Math.round(63 * (1 - blueFactor) + 189 * blueFactor);
+                const b = Math.round(94 * (1 - blueFactor) + 248 * blueFactor);
+                colorStr = `rgba(${r}, ${g}, ${b}, 0.75)`;
+            } else if (mode === 'no2_gas') {
+                // Clear/Pale at 0°C -> Dark Brown at 100°C
+                const brownFactor = tempC / 100.0;
+                const r = Math.round(180 + 60 * brownFactor);
+                const g = Math.round(100 * (1 - brownFactor));
+                const b = Math.round(20 * (1 - brownFactor));
+                const alpha = Math.max(0.1, brownFactor * 0.85);
+                colorStr = `rgba(${r}, ${g}, ${b}, ${alpha})`;
+            }
+
+            // Fill Liquid/Gas
+            ctx.fillStyle = colorStr;
+            ctx.beginPath();
+            ctx.moveTo(150, 100);
+            ctx.lineTo(95, 210);
+            ctx.quadraticCurveTo(85, 228, 110, 228);
+            ctx.lineTo(230, 228);
+            ctx.quadraticCurveTo(255, 228, 245, 210);
+            ctx.lineTo(190, 100);
+            ctx.closePath();
+            ctx.fill();
+
+            // Thermal Glow Effect around Flask Base
+            const heatGlow = tempC / 100.0;
+            ctx.fillStyle = `rgba(244, 63, 94, ${heatGlow * 0.4})`;
+            ctx.beginPath();
+            ctx.ellipse(170, 235, 90, 12, 0, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Text Label
+            ctx.fillStyle = "#cbd5e1";
+            ctx.font = "bold 12px Inter, sans-serif";
+            ctx.fillText(`Bath Temp: ${tempC}°C`, 120, 252);
+        }
+
+        function toggleElement(id) {
+            const el = document.getElementById(id);
+            if (el.style.display === 'none' || el.style.display === '') {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            runTempSim();
+        });
+    </script>
+</body>
+</html>

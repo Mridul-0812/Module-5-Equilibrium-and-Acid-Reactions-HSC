@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17 Keq in Dissociation Systems | Module 5 Chemistry</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Corrected MathJax 3 Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <style>
+        /* Ethereal Glassmorphism Custom UI Extensions */
+        :root {
+            --bg-dark: #080c14;
+            --bg-card: rgba(15, 23, 42, 0.75);
+            --bg-card-hover: rgba(30, 41, 59, 0.85);
+            --border-glow: rgba(124, 58, 237, 0.3);
+            --border-light: rgba(255, 255, 255, 0.08);
+            --border-cyan: rgba(6, 182, 212, 0.35);
+            --border-emerald: rgba(16, 185, 129, 0.35);
+            --accent-purple: #a78bfa;
+            --accent-cyan: #38bdf8;
+            --accent-emerald: #34d399;
+            --accent-amber: #fbbf24;
+            --accent-rose: #f43f5e;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-secondary: #cbd5e1;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'Fira Code', 'Cascadia Code', Consolas, monospace;
+            --shadow-glow: 0 0 30px rgba(124, 58, 237, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(124, 58, 237, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 90% 85%, rgba(6, 182, 212, 0.1) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.95) 0%, var(--bg-dark) 100%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.8;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 320px;
+            background: rgba(11, 15, 25, 0.92);
+            border-right: 1px solid var(--border-light);
+            backdrop-filter: blur(16px);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 2rem 1.5rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .badge-glow {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            color: var(--accent-purple);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.4rem;
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .sidebar-header .subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+
+        .progress-container {
+            margin-top: 1.25rem;
+            background: rgba(255, 255, 255, 0.06);
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            border-radius: 3px;
+        }
+
+        .score-card {
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav-menu {
+            padding: 1.25rem 1rem;
+        }
+
+        .nav-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            padding: 0 0.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 0.65rem 0.75rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            margin-bottom: 0.25rem;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            transform: translateX(3px);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(90deg, rgba(124, 58, 237, 0.25), rgba(6, 182, 212, 0.1));
+            border-left: 3px solid var(--accent-purple);
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+
+        .nav-num {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            margin-right: 0.75rem;
+            opacity: 0.7;
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            margin-left: 320px;
+            flex: 1;
+            padding: 2.5rem 3rem;
+            max-width: 1250px;
+        }
+
+        .hero-banner {
+            position: relative;
+            background: linear-gradient(135deg, rgba(24, 16, 48, 0.85) 0%, rgba(15, 23, 42, 0.95) 100%);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2.5rem;
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .ethereal-tag {
+            font-family: var(--font-mono);
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .ethereal-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin: 0.5rem 0 1rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ethereal-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 880px;
+        }
+
+        /* Content Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 2.25rem;
+            margin-bottom: 2.5rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            transition: border-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(124, 58, 237, 0.35);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.75rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .card-header h2 {
+            font-size: 1.6rem;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .pill-badge {
+            padding: 0.35rem 0.85rem;
+            background: rgba(124, 58, 237, 0.12);
+            border: 1px solid var(--border-glow);
+            color: var(--accent-purple);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pill-badge.emerald {
+            background: rgba(16, 185, 129, 0.12);
+            border-color: var(--border-emerald);
+            color: var(--accent-emerald);
+        }
+
+        .pill-badge.cyan {
+            background: rgba(56, 189, 248, 0.12);
+            border-color: var(--border-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .pill-badge.rose {
+            background: rgba(244, 63, 94, 0.12);
+            border-color: rgba(244, 63, 94, 0.35);
+            color: var(--accent-rose);
+        }
+
+        .pill-badge.amber {
+            background: rgba(251, 191, 36, 0.12);
+            border-color: rgba(251, 191, 36, 0.35);
+            color: var(--accent-amber);
+        }
+
+        /* Typography & Paragraphs */
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        strong {
+            color: #fff;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: var(--accent-purple);
+            margin: 1.85rem 0 0.85rem;
+            font-weight: 700;
+        }
+
+        h4 {
+            font-size: 1.12rem;
+            color: #fff;
+            margin: 1.35rem 0 0.55rem;
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin: 0 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.75rem;
+            padding-left: 0.25rem;
+        }
+
+        /* Grids & Feature Layouts */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-glow);
+        }
+
+        .feature-card h3 {
+            margin: 0 0 0.5rem 0;
+            color: #fff;
+        }
+
+        /* Callout Boxes */
+        .info-box {
+            background: rgba(124, 58, 237, 0.08);
+            border-left: 4px solid var(--accent-purple);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 1.35rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-box.cyan {
+            background: rgba(56, 189, 248, 0.08);
+            border-left-color: var(--accent-cyan);
+        }
+
+        .info-box.emerald {
+            background: rgba(52, 211, 153, 0.08);
+            border-left-color: var(--accent-emerald);
+        }
+
+        .info-box.amber {
+            background: rgba(251, 191, 36, 0.08);
+            border-left-color: var(--accent-amber);
+        }
+
+        .info-box.rose {
+            background: rgba(244, 63, 94, 0.08);
+            border-left-color: var(--accent-rose);
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+        }
+
+        /* Comparison & Data Tables */
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            margin: 1.75rem 0;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-glow);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        table.comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            background: rgba(15, 23, 42, 0.85);
+            font-size: 0.95rem;
+        }
+
+        table.comparison-table th {
+            background: rgba(30, 41, 59, 0.95);
+            color: var(--accent-cyan);
+            padding: 1rem 1.25rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border-glow);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+
+        table.comparison-table td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-main);
+            vertical-align: top;
+        }
+
+        /* ICE Tables */
+        table.ice-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            background: rgba(15, 23, 42, 0.85);
+            font-size: 0.95rem;
+            font-family: var(--font-mono);
+        }
+
+        table.ice-table th {
+            background: rgba(30, 41, 59, 0.95);
+            color: var(--accent-cyan);
+            padding: 1rem 1.25rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border-glow);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+
+        table.ice-table th.row-label-col {
+            text-align: left;
+            color: var(--accent-purple);
+            width: 180px;
+        }
+
+        table.ice-table td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-main);
+            vertical-align: middle;
+        }
+
+        table.ice-table td.row-label {
+            text-align: left;
+            font-weight: 700;
+            color: var(--accent-purple);
+            background: rgba(30, 41, 59, 0.4);
+            font-family: var(--font-main);
+        }
+
+        table.ice-table tr.row-initial td {
+            background: rgba(56, 189, 248, 0.05);
+            color: var(--accent-cyan);
+        }
+
+        table.ice-table tr.row-change td {
+            background: rgba(251, 191, 36, 0.05);
+            color: var(--accent-amber);
+            font-weight: 700;
+        }
+
+        table.ice-table tr.row-equilibrium td {
+            background: rgba(52, 211, 153, 0.08);
+            color: var(--accent-emerald);
+            font-weight: 700;
+        }
+
+        /* SVG Graph Containers */
+        .graph-wrapper {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1.75rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .graph-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .svg-graph-container {
+            width: 100%;
+            max-width: 760px;
+            height: auto;
+        }
+
+        /* Interactive Simulator Module */
+        .sim-container {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            box-shadow: 0 0 35px rgba(124, 58, 237, 0.12);
+        }
+
+        .sim-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+            background: rgba(30, 41, 59, 0.5);
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-group label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .control-group select, .control-group input[type="number"], .control-group input[type="range"] {
+            width: 100%;
+            padding: 0.55rem 0.75rem;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            font-size: 0.9rem;
+            accent-color: var(--accent-purple);
+        }
+
+        .sim-display-box {
+            background: rgba(10, 15, 28, 0.85);
+            border: 1px solid var(--border-cyan);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .telemetry-panel {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+
+        .telemetry-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .telemetry-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .telemetry-value {
+            font-family: var(--font-mono);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--accent-purple);
+            margin-top: 0.25rem;
+        }
+
+        /* Buttons & Actions */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-ethereal {
+            background: linear-gradient(135deg, #7c3aed, #06b6d4);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-ethereal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.45);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--border-light);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        /* Questions & Rubrics */
+        .question-container {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .marks-badge {
+            background: rgba(244, 63, 94, 0.15);
+            border: 1px solid rgba(244, 63, 94, 0.4);
+            color: var(--accent-rose);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .action-bar {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .drawer {
+            margin-top: 1rem;
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .drawer-hint {
+            background: rgba(251, 191, 36, 0.08);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            color: #fef08a;
+        }
+
+        .drawer-solution {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-glow);
+        }
+
+        .rubric-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--accent-purple);
+        }
+
+        .rubric-box h5 {
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .content-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; padding: 1.5rem; }
+            .grid-2col { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="ethereal-theme">
+    <div class="app-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="badge-glow">NESA Stage 6</span>
+                <h2>Module 5</h2>
+                <p class="subtitle">EQUILIBRIUM & ACID REACTIONS</p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="module-progress" style="width: 68%;"></div>
+                </div>
+                <div class="score-card">
+                    Total Mastery: <span id="total-marks">68</span> / 100 Marks
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-section">
+                    <span class="section-title">INTRODUCTION</span>
+                    <a href="index.html" class="nav-item">
+                        <span class="nav-num">—</span> Home & Guide
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE A: FOUNDATIONS OF EQUILIBRIUM</span>
+                    <a href="01-reversible-reactions.html" class="nav-item"><span class="nav-num">01</span> Reversible vs Irreversible</a>
+                    <a href="02-open-closed-systems.html" class="nav-item"><span class="nav-num">02</span> Open vs Closed Systems</a>
+                    <a href="03-static-dynamic-equilibrium.html" class="nav-item"><span class="nav-num">03</span> Static vs Dynamic Eq</a>
+                    <a href="04-non-equilibrium-systems.html" class="nav-item"><span class="nav-num">04</span> Non-Equilibrium Systems</a>
+                    <a href="05-collision-theory-equilibrium.html" class="nav-item"><span class="nav-num">05</span> Collision Theory in Eq</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE B: FACTORS AFFECTING EQUILIBRIUM</span>
+                    <a href="06-intro-le-chatelier.html" class="nav-item"><span class="nav-num">06</span> Le Chatelier's Principle</a>
+                    <a href="07-effect-of-concentration.html" class="nav-item"><span class="nav-num">07</span> Concentration Changes</a>
+                    <a href="08-effect-of-pressure-volume.html" class="nav-item"><span class="nav-num">08</span> Pressure & Volume</a>
+                    <a href="09-effect-of-temperature.html" class="nav-item"><span class="nav-num">09</span> Temperature Effects</a>
+                    <a href="10-collision-theory-lcp.html" class="nav-item"><span class="nav-num">10</span> Collision Theory & LCP</a>
+                    <a href="11-activation-energy-equilibrium.html" class="nav-item"><span class="nav-num">11</span> Activation Energy & $\Delta H$</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE C: THE EQUILIBRIUM CONSTANT</span>
+                    <a href="12-keq-expression.html" class="nav-item"><span class="nav-num">12</span> The $K_{\mathrm{eq}}$ Expression</a>
+                    <a href="13-keq-calculations-basic.html" class="nav-item"><span class="nav-num">13</span> Basic $K_{\mathrm{eq}}$ Calculations</a>
+                    <a href="14-keq-calculations-advanced.html" class="nav-item"><span class="nav-num">14</span> Advanced $K_{\mathrm{eq}}$ & $Q$</a>
+                    <a href="15-temperature-and-keq.html" class="nav-item"><span class="nav-num">15</span> Temperature & $K_{\mathrm{eq}}$</a>
+                    <a href="16-determining-keq-experiment.html" class="nav-item"><span class="nav-num">16</span> Practical Determination</a>
+                    <a href="17-keq-acid-base-dissociation.html" class="nav-item active"><span class="nav-num">17</span> Dissociation Systems</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE D: SOLUTION EQUILIBRIA</span>
+                    <a href="18-dissolution-ionic-compounds.html" class="nav-item"><span class="nav-num">18</span> Ionic Dissolution</a>
+                    <a href="19-indigenous-solubility-cycads.html" class="nav-item"><span class="nav-num">19</span> Indigenous Detoxification</a>
+                    <a href="20-solubility-rules.html" class="nav-item"><span class="nav-num">20</span> Solubility Rules</a>
+                    <a href="21-solubility-product-ksp.html" class="nav-item"><span class="nav-num">21</span> Solubility Product ($K_{\mathrm{sp}}$)</a>
+                    <a href="22-molar-solubility-calcs.html" class="nav-item"><span class="nav-num">22</span> Molar Solubility Calcs</a>
+                    <a href="23-predicting-precipitation.html" class="nav-item"><span class="nav-num">23</span> Predicting Precipitation</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE E: ASSESSMENT & REVIEW</span>
+                    <a href="24-formula-summary.html" class="nav-item"><span class="nav-num">24</span> Formula & Concept Guide</a>
+                    <a href="25-final-exam.html" class="nav-item"><span class="nav-num">25</span> Final Examination</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="hero-banner">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <span class="ethereal-tag">LESSON 17 • PHASE C: THE EQUILIBRIUM CONSTANT</span>
+                    <h1 class="ethereal-title">Application of $K_{\mathrm{eq}}$ to Dissociation Systems</h1>
+                    <p class="ethereal-subtitle">Apply core Module 5 equilibrium principles to aqueous dissociation systems. Master the formulation of mass action expressions for weak acids ($K_a$), weak bases, and ionic dissolution, understand the solvent water omission rule, master ICE tables via direct subtraction arithmetic, and explore sub-microscopic electrostatic trends in polyprotic step-wise equilibria.</p>
+                </div>
+            </header>
+
+            <!-- SYLLABUS ALIGNMENT CARD -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>NESA Syllabus Inquiry Focus</h2>
+                    <span class="pill-badge">Stage 6 Chemistry</span>
+                </div>
+                <p>
+                    <strong>Inquiry Question 3:</strong> <em>How are equilibrium positions expressed quantitatively?</em>
+                </p>
+                <div class="info-box cyan" style="margin-top: 1rem;">
+                    <h3>Syllabus Outcomes Addressed (Outcome CH-12-01):</h3>
+                    <ul>
+                        <li>Apply the equilibrium constant ($K_{\mathrm{eq}}$) framework to aqueous dissociation reactions involving weak acids ($K_a$), weak bases, and ionic substances.</li>
+                        <li>Formulate mass action expressions for the acid dissociation constant ($K_a$) and weak base dissociation systems, justifying why pure liquid solvent water ($\mathrm{H_2O(l)}$) is omitted from the denominator.</li>
+                        <li>Analyse the qualitative distinction between electrolyte strength (degree of ionisation) and solution concentration (moles per unit volume).</li>
+                        <li>Explain amphiprotic behaviour of water and account for step-wise polyprotic ionisation trends ($K_{a1} \gg K_{a2} \gg K_{a3}$) using sub-microscopic electrostatic attraction models.</li>
+                        <li>Perform straightforward Module 5 arithmetic ICE table calculations to solve for raw $K_a$ values or equilibrium species concentrations without requiring complex quadratic or approximation shortcuts.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECTION 1: DISSOCIATION EQUILIBRIA FUNDAMENTALS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>1. Dissociation Equilibria Fundamentals & Solvent Water Omission</h2>
+                    <span class="pill-badge">Foundational Principles</span>
+                </div>
+
+                <p>
+                    In previous lessons, we evaluated homogeneous gaseous reactions and aqueous complex ion syntheses using the equilibrium law. We now extend these exact same thermodynamic principles to <strong>aqueous dissociation systems</strong>.
+                </p>
+
+                <p>
+                    In aqueous chemistry, <strong>dissociation</strong> describes the process in which a dissolved substance separates or reacts with water to produce mobile hydrated ions. Dissociation processes fall into two fundamental chemical pathways:
+                </p>
+
+                <div class="grid-2col">
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-cyan);">
+                        <h3>1. Physical Ionic Dissolution</h3>
+                        <p>
+                            Solid crystalline ionic lattices break apart into mobile hydrated cations and anions when dissolved in water:
+                            $$\mathrm{NaCl(s) \xrightarrow{H_2O(l)} Na^+(aq) + Cl^-(aq)}$$
+                            For highly soluble ionic compounds, this process proceeds to completion. For sparingly soluble salts (such as $\mathrm{AgCl(s)}$), a heterogeneous equilibrium is established between the solid crystal lattice and dissolved ions, governed by the solubility product constant ($K_{\mathrm{sp}}$) covered in Phase D.
+                        </p>
+                    </div>
+
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-purple);">
+                        <h3>2. Covalent Ionisation / Proton Transfer</h3>
+                        <p>
+                            Neutral molecular compounds react chemically with water molecules via proton transfer to generate ions:
+                            $$\mathrm{HA(aq) + H_2O(l) \rightleftharpoons H_3O^+(aq) + A^-(aq)}$$
+                            When a weak acid ($\mathrm{HA}$) or weak base ($\mathrm{B}$) dissolves in water, only a small fraction of the neutral molecules react to form ions. This dynamic chemical equilibrium is quantified using the equilibrium law.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="info-box purple">
+                    <h3>The Solvent Water Omission Rule</h3>
+                    <p>
+                        In dilute aqueous solutions ($< 1.0\text{ mol L}^{-1}$), liquid water ($\mathrm{H_2O(l)}$) acts as the solvent. Its molar concentration is extraordinarily large and virtually constant:
+                        $$[\mathrm{H_2O}] = \frac{1000\text{ g L}^{-1}}{18.016\text{ g mol}^{-1}} \approx 55.5\text{ mol L}^{-1}$$
+                        Because the concentration of liquid solvent water remains essentially unchanged during dilute dissociation reactions, $[\mathrm{H_2O}]$ is incorporated directly into the numerical value of $K_{\mathrm{eq}}$. 
+                        <br><br>
+                        <strong>Pure liquid solvent water ($\mathrm{H_2O(l)}$) is ALWAYS omitted from the denominator of aqueous mass action expressions!</strong>
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 2: THE ACID DISSOCIATION CONSTANT (Ka) -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>2. The Acid Dissociation Constant ($K_a$)</h2>
+                    <span class="pill-badge emerald">Quantitative Acid Equilibrium</span>
+                </div>
+
+                <p>
+                    When a monoprotic weak acid ($\mathrm{HA}$) dissolves in water, it donates a proton ($\mathrm{H^+}$) to a water molecule to establish a dynamic equilibrium involving the hydronium ion ($\mathrm{H_3O^+}$) and the conjugate base anion ($\mathrm{A^-}$):
+                </p>
+                $$\mathrm{HA(aq) + H_2O(l) \rightleftharpoons H_3O^+(aq) + A^-(aq)}$$
+
+                <p>
+                    Applying the equilibrium law and omitting the solvent water concentration yields the standard mass action expression for the <strong>acid dissociation constant ($K_a$)</strong>:
+                </p>
+
+                <div class="info-box cyan">
+                    <h3>The Acid Dissociation Constant Expression ($K_a$)</h3>
+                    $$K_a = \frac{[\mathrm{H_3O^+}][\mathrm{A^-}]}{[\mathrm{HA}]}$$
+                    <p>
+                        Where $[\mathrm{H_3O^+}]$, $[\mathrm{A^-}]$, and $[\mathrm{HA}]$ represent the molar concentrations ($\text{mol L}^{-1}$) of the respective species measured strictly at dynamic equilibrium.
+                    </p>
+                </div>
+
+                <h3>Electrolyte Strength vs Solution Concentration: The Core Distinction</h3>
+                <p>
+                    A vital concept in Module 5 is distinguishing between acid <strong>strength</strong> (degree of ionisation) and solution <strong>concentration</strong> (stoichiometric solute amount):
+                </p>
+
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Acid Strength (Thermodynamic Feature)</th>
+                                <th>Solution Concentration (Stoichiometric Feature)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Definition</strong></td>
+                                <td>Refers to the intrinsic tendency of acid molecules to donate protons to water ($100\%$ complete ionisation vs partial equilibrium).</td>
+                                <td>Refers to the total moles of acid dissolved per litre of solution ($c = \frac{n}{V}$).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Quantitative Metric</strong></td>
+                                <td>Reflected by the numerical magnitude of <strong>$K_a$</strong> (strong acids have $K_a \gg 1$; weak acids have $K_a \ll 1$).</td>
+                                <td>Measured in <strong>$\text{mol L}^{-1}$</strong> (e.g. $10.0\text{ M}$ concentrated vs $0.001\text{ M}$ dilute).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Strong Acid Behaviour</strong></td>
+                                <td>$\mathrm{HCl}$, $\mathrm{HNO_3}$, $\mathrm{H_2SO_4}$ ($100\%$ ionised, single arrow $\rightarrow$, no unreacted molecules).</td>
+                                <td>$10.0\text{ M} \mathrm{HCl}$ is <em>concentrated strong</em>; $0.001\text{ M} \mathrm{HCl}$ is <em>dilute strong</em>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Weak Acid Behaviour</strong></td>
+                                <td>$\mathrm{CH_3COOH}$, $\mathrm{HF}$, $\mathrm{HNO_2}$ (partial equilibrium, reversible arrow $\rightleftharpoons$, predominantly unreacted).</td>
+                                <td>$10.0\text{ M} \mathrm{CH_3COOH}$ is <em>concentrated weak</em>; $0.001\text{ M} \mathrm{CH_3COOH}$ is <em>dilute weak</em>.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- SVG Graph 1: Acid Strength Comparison Molecular Representation -->
+                <div class="graph-wrapper">
+                    <div class="graph-title">Figure 17.1: Sub-microscopic Comparison of Complete Ionisation (Strong Acid) vs Partial Equilibrium Ionisation (Weak Acid)</div>
+                    <div class="svg-graph-container">
+                        <svg viewBox="0 0 720 280" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="720" height="280" fill="#0b1329" rx="10"/>
+
+                            <!-- Left Box: Strong Acid -->
+                            <g transform="translate(30, 20)">
+                                <rect width="310" height="240" fill="rgba(15, 23, 42, 0.8)" stroke="#f43f5e" stroke-width="2" rx="8"/>
+                                <text x="155" y="30" fill="#f43f5e" font-size="14" font-weight="700" text-anchor="middle">Strong Acid ($\mathrm{HCl}$): Complete Ionisation</text>
+                                <text x="155" y="50" fill="#cbd5e1" font-size="11" text-anchor="middle">$K_a \gg 1 \quad (100\% \text{ ionised}, \text{single arrow } \rightarrow)$</text>
+
+                                <!-- Ions in beaker -->
+                                <circle cx="80" cy="100" r="14" fill="#38bdf8"/>
+                                <text x="80" y="104" fill="#000" font-size="10" font-weight="800" text-anchor="middle">H₃O⁺</text>
+
+                                <circle cx="140" cy="160" r="14" fill="#f43f5e"/>
+                                <text x="140" y="164" fill="#fff" font-size="10" font-weight="800" text-anchor="middle">Cl⁻</text>
+
+                                <circle cx="220" cy="110" r="14" fill="#38bdf8"/>
+                                <text x="220" y="114" fill="#000" font-size="10" font-weight="800" text-anchor="middle">H₃O⁺</text>
+
+                                <circle cx="100" cy="200" r="14" fill="#f43f5e"/>
+                                <text x="100" y="204" fill="#fff" font-size="10" font-weight="800" text-anchor="middle">Cl⁻</text>
+
+                                <circle cx="240" cy="190" r="14" fill="#38bdf8"/>
+                                <text x="240" y="194" fill="#000" font-size="10" font-weight="800" text-anchor="middle">H₃O⁺</text>
+
+                                <circle cx="170" cy="90" r="14" fill="#f43f5e"/>
+                                <text x="170" y="94" fill="#fff" font-size="10" font-weight="800" text-anchor="middle">Cl⁻</text>
+                            </g>
+
+                            <!-- Right Box: Weak Acid -->
+                            <g transform="translate(380, 20)">
+                                <rect width="310" height="240" fill="rgba(15, 23, 42, 0.8)" stroke="#a78bfa" stroke-width="2" rx="8"/>
+                                <text x="155" y="30" fill="#a78bfa" font-size="14" font-weight="700" text-anchor="middle">Weak Acid ($\mathrm{CH_3COOH}$): Partial Eq</text>
+                                <text x="155" y="50" fill="#cbd5e1" font-size="11" text-anchor="middle">$K_a \ll 1 \quad (\text{reversible equilibrium } \rightleftharpoons)$</text>
+
+                                <!-- Unreacted neutral molecules (Predominant) -->
+                                <rect x="50" y="80" width="65" height="28" fill="#475569" rx="14"/>
+                                <text x="82" y="98" fill="#fff" font-size="10" font-weight="700" text-anchor="middle">CH₃COOH</text>
+
+                                <rect x="180" y="90" width="65" height="28" fill="#475569" rx="14"/>
+                                <text x="212" y="108" fill="#fff" font-size="10" font-weight="700" text-anchor="middle">CH₃COOH</text>
+
+                                <rect x="110" y="140" width="65" height="28" fill="#475569" rx="14"/>
+                                <text x="142" y="158" fill="#fff" font-size="10" font-weight="700" text-anchor="middle">CH₃COOH</text>
+
+                                <rect x="200" y="180" width="65" height="28" fill="#475569" rx="14"/>
+                                <text x="232" y="198" fill="#fff" font-size="10" font-weight="700" text-anchor="middle">CH₃COOH</text>
+
+                                <!-- Few dissociated ions -->
+                                <circle cx="60" cy="190" r="13" fill="#38bdf8"/>
+                                <text x="60" y="194" fill="#000" font-size="9" font-weight="800" text-anchor="middle">H₃O⁺</text>
+
+                                <circle cx="130" cy="200" r="13" fill="#a78bfa"/>
+                                <text x="130" y="204" fill="#fff" font-size="8" font-weight="800" text-anchor="middle">CH₃COO⁻</text>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: WEAK BASE EQUILIBRIA & POLYPROTIC STEP-WISE TRENDS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>3. Weak Base Dissociation & Polyprotic Step-wise Extent Trends</h2>
+                    <span class="pill-badge cyan">Conceptual Dynamics</span>
+                </div>
+
+                <h3>1. Weak Base Dissociation Systems</h3>
+                <p>
+                    When a weak base ($\mathrm{B}$) dissolves in water, it accepts a proton ($\mathrm{H^+}$) from a solvent water molecule to produce the conjugate acid ($\mathrm{BH^+}$) and hydroxide ions ($\mathrm{OH^-}$):
+                </p>
+                $$\mathrm{B(aq) + H_2O(l) \rightleftharpoons BH^+(aq) + OH^-(aq)}$$
+
+                <p>
+                    Applying the equilibrium law and omitting pure solvent liquid water yields the mass action expression:
+                </p>
+                $$K_{\mathrm{eq}} = \frac{[\mathrm{BH^+}][\mathrm{OH^-}]}{[\mathrm{B}]}$$
+
+                <p>
+                    For example, the weak base ammonia ($\mathrm{NH_3}$) establishes the following aqueous equilibrium:
+                </p>
+                $$\mathrm{NH_3(aq) + H_2O(l) \rightleftharpoons NH_4^+(aq) + OH^-(aq)} \quad K_{\mathrm{eq}} = \frac{[\mathrm{NH_4^+}][\mathrm{OH^-}]}{[\mathrm{NH_3}]}$$
+
+                <h3>2. Polyprotic Step-wise Ionisation Trends ($K_{a1} \gg K_{a2} \gg K_{a3}$)</h3>
+                <p>
+                    Polyprotic acids possess two or more ionisable hydrogen atoms per molecule. Rather than releasing all protons simultaneously, they ionise in successive step-wise equilibria:
+                </p>
+
+                <div class="info-box amber">
+                    <h3>Step-wise Ionisation of Phosphoric Acid ($\mathrm{H_3PO_4}$)</h3>
+                    <p>
+                        • <strong>Step 1:</strong> $$\mathrm{H_3PO_4(aq) + H_2O(l) \rightleftharpoons H_3O^+(aq) + H_2PO_4^-(aq)} \quad K_{a1} = \frac{[\mathrm{H_3O^+}][\mathrm{H_2PO_4^-}]}{[\mathrm{H_3PO_4}]} = 7.1 \times 10^{-3}$$
+                        <br>
+                        • <strong>Step 2:</strong> $$\mathrm{H_2PO_4^-(aq) + H_2O(l) \rightleftharpoons H_3O^+(aq) + HPO_4^{2-}(aq)} \quad K_{a2} = \frac{[\mathrm{H_3O^+}][\mathrm{HPO_4^{2-}}]}{[\mathrm{H_2PO_4^-}]} = 6.3 \times 10^{-8}$$
+                        <br>
+                        • <strong>Step 3:</strong> $$\mathrm{HPO_4^{2-}(aq) + H_2O(l) \rightleftharpoons H_3O^+(aq) + PO_4^{3-}(aq)} \quad K_{a3} = \frac{[\mathrm{H_3O^+}][\mathrm{PO_4^{3-}}]}{[\mathrm{HPO_4^{2-}}]} = 4.5 \times 10^{-13}$$
+                    </p>
+                </div>
+
+                <h3>Sub-microscopic Electrostatic Justification for $K_{a1} \gg K_{a2} \gg K_{a3}$</h3>
+                <p>
+                    Why does the numerical value of $K_a$ drop so dramatically across successive ionisation steps?
+                </p>
+                <ol>
+                    <li><strong>Step 1 ($K_{a1}$):</strong> A positively charged proton ($\mathrm{H^+}$) is being removed from a <em>neutral</em> molecule ($\mathrm{H_3PO_4}$). The electrostatic attraction between $\mathrm{H^+}$ and the neutral species is relatively small.</li>
+                    <li><strong>Step 2 ($K_{a2}$):</strong> A positively charged proton ($\mathrm{H^+}$) is being removed from a <em>singly negatively charged anion</em> ($\mathrm{H_2PO_4^-}$). Strong electrostatic attraction opposes the separation of positive charge from a negative ion.</li>
+                    <li><strong>Step 3 ($K_{a3}$):</strong> A positively charged proton ($\mathrm{H^+}$) is being removed from a <em>doubly negatively charged anion</em> ($\mathrm{HPO_4^{2-}}$). The electrostatic attraction is immense, making proton loss extremely unfavorable.</li>
+                </ol>
+            </section>
+
+            <!-- SECTION 4: MODULE 5 ICE TABLE ARITHMETIC PROTOCOL -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>4. Module 5 Quantitative ICE Calculations (Direct Arithmetic)</h2>
+                    <span class="pill-badge emerald">Syllabus-Aligned Quantitative Method</span>
+                </div>
+
+                <p>
+                    In Module 5, quantitative questions test your ability to construct an ICE (Initial, Change, Equilibrium) table and apply basic subtraction and multiplication arithmetic to calculate raw $K_a$ values or equilibrium species concentrations.
+                </p>
+
+                <div class="info-box cyan">
+                    <h3>The Direct Module 5 ICE Procedure</h3>
+                    <p>
+                        When given the initial acid concentration $[\mathrm{HA}]_0$ and the measured unreacted acid concentration $[\mathrm{HA}]_{\text{eq}}$ at equilibrium:
+                        <br><br>
+                        1. Calculate the change in concentration $x$:
+                        $$x = [\mathrm{HA}]_0 - [\mathrm{HA}]_{\text{eq}}$$
+                        2. Use 1:1 stoichiometry to deduce equilibrium ion concentrations:
+                        $$[\mathrm{H_3O^+}]_{\text{eq}} = x \quad \text{and} \quad [\mathrm{A^-}]_{\text{eq}} = x$$
+                        3. Substitute these values directly into the mass action expression:
+                        $$K_a = \frac{x^2}{[\mathrm{HA}]_{\text{eq}}}$$
+                    </p>
+                </div>
+
+                <p>
+                    This direct arithmetic method requires no quadratic formulas or weak-acid approximation shortcuts, keeping calculations perfectly within Module 5 scope while thoroughly testing mass action principles.
+                </p>
+            </section>
+
+            <!-- SECTION 5: INTERACTIVE DISSOCIATION & ICE VISUALISER -->
+            <section class="card glass-card demo-card">
+                <div class="card-header">
+                    <h2>5. Interactive Weak Acid ICE & Ionisation Visualiser</h2>
+                    <span class="pill-badge demo-pill">Virtual Equilibrium Engine</span>
+                </div>
+                <p>Adjust the initial concentration $[\mathrm{HA}]_0$ and the equilibrium unreacted concentration $[\mathrm{HA}]_{\text{eq}}$ to generate live ICE tables, species distribution profiles, and calculated raw $K_a$ values.</p>
+
+                <div class="sim-container">
+                    <div class="sim-controls">
+                        <div class="control-group">
+                            <label>Initial Acid Concentration $[\mathrm{HA}]_0$: <span id="lbl-ha-init" style="color: var(--accent-cyan);">0.100 M</span></label>
+                            <input type="range" id="sim-ha-init" min="0.050" max="0.500" step="0.010" value="0.100" oninput="runModule5Engine()">
+                        </div>
+
+                        <div class="control-group">
+                            <label>Unreacted $[\mathrm{HA}]_{\text{eq}}$ at Equilibrium: <span id="lbl-ha-eq" style="color: var(--accent-purple);">0.095 M</span></label>
+                            <input type="range" id="sim-ha-eq" min="0.040" max="0.495" step="0.001" value="0.095" oninput="runModule5Engine()">
+                        </div>
+                    </div>
+
+                    <div class="sim-display-box">
+                        <h4 style="font-size: 0.9rem; color: var(--accent-cyan); text-transform: uppercase; margin-bottom: 0.75rem;">Equilibrium Mass Action System: $\mathrm{HA(aq) + H_2O(l) \rightleftharpoons H_3O^+(aq) + A^-(aq)}$</h4>
+                        
+                        <div class="comparison-table-wrapper" style="margin-top: 1rem;">
+                            <table class="ice-table" id="module5-ice-render">
+                                <!-- Dynamically generated by JS -->
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="telemetry-panel">
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Extent of Ionisation ($x$)</span>
+                            <span class="telemetry-value" id="tel-x-val" style="color: var(--accent-amber);">0.0050 M</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Equilibrium $[\mathrm{H_3O^+}]_{\text{eq}}$</span>
+                            <span class="telemetry-value" id="tel-h3o-val" style="color: var(--accent-cyan);">0.0050 M</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Percentage Ionised ($\alpha$)</span>
+                            <span class="telemetry-value" id="tel-pct-val" style="color: var(--accent-emerald);">5.00 %</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Calculated Raw $K_a$</span>
+                            <span class="telemetry-value" id="tel-ka-val" style="color: var(--accent-purple);">2.63 × 10⁻⁴</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 6: SCAFFOLDED WORKED EXAMPLES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>6. Scaffolded Worked Examples</h2>
+                    <span class="pill-badge">HSC Step-by-Step Solutions</span>
+                </div>
+
+                <!-- Example 1: Easy -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 1 (Easy): Writing Mass Action Expressions with Solvent Omission</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Write the balanced chemical equation and mass action equilibrium expression ($K_a$) for the aqueous dissociation of nitrous acid ($\mathrm{HNO_2(aq)}$), explicitly justifying the treatment of liquid water.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Balanced Equation:</strong>
+                        $$\mathrm{HNO_2(aq) + H_2O(l) \rightleftharpoons H_3O^+(aq) + NO_2^-(aq)}$$</p>
+
+                        <p><strong>2. Mass Action Expression ($K_a$):</strong>
+                        $$K_a = \frac{[\mathrm{H_3O^+}][\mathrm{NO_2^-}]}{[\mathrm{HNO_2}]}$$</p>
+
+                        <p><strong>3. Justification of Water Omission:</strong>
+                        <br>Liquid water ($\mathrm{H_2O(l)}$) is the solvent in dilute aqueous solution. Its concentration is extremely large ($\approx 55.5\text{ mol L}^{-1}$) and remains essentially constant during reaction. Therefore, $[\mathrm{H_2O}]$ is incorporated directly into the value of $K_a$ and omitted from the denominator.</p>
+                    </div>
+                </div>
+
+                <!-- Example 2: Medium -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 2 (Medium): Calculating Raw $K_a$ from Known Equilibrium Concentrations</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A sample of hypochlorous acid ($\mathrm{HClO}$) is allowed to reach dynamic equilibrium at $25^\circ\text{C}$. Analysis reveals the equilibrium concentrations are $[\mathrm{HClO}] = 0.040\text{ mol L}^{-1}$, $[\mathrm{H_3O^+}] = 3.5 \times 10^{-5}\text{ mol L}^{-1}$, and $[\mathrm{ClO^-}] = 3.5 \times 10^{-5}\text{ mol L}^{-1}$.
+                        <br>Calculate the value of the acid dissociation constant ($K_a$) for hypochlorous acid.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Write mass action expression:</strong>
+                        $$K_a = \frac{[\mathrm{H_3O^+}][\mathrm{ClO^-}]}{[\mathrm{HClO}]}$$</p>
+
+                        <p><strong>2. Substitute equilibrium values:</strong>
+                        $$K_a = \frac{(3.5 \times 10^{-5}) \times (3.5 \times 10^{-5})}{0.040} = \frac{1.225 \times 10^{-9}}{0.040} = \mathbf{3.1 \times 10^{-8}} \quad (2\text{ sig. figs.})$$</p>
+                    </div>
+                </div>
+
+                <!-- Example 3: Hard -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 3 (Hard): Molar ICE Table Calculation for Weak Monoprotic Acid</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A $0.100\text{ M}$ solution of a generic weak monoprotic acid $\mathrm{HA}$ is prepared and allowed to reach dynamic equilibrium. The equilibrium concentration of the unreacted acid $[\mathrm{HA}]$ is found to be $0.095\text{ M}$.
+                        <br>Construct an ICE table and compute the raw value of $K_a$.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Determine extent of ionisation ($x$):</strong>
+                        $$x = [\mathrm{HA}]_0 - [\mathrm{HA}]_{\text{eq}} = 0.100\text{ M} - 0.095\text{ M} = 0.005\text{ M}$$</p>
+
+                        <p><strong>2. Construct the ICE Table:</strong></p>
+                        <div class="comparison-table-wrapper">
+                            <table class="ice-table">
+                                <thead>
+                                    <tr>
+                                        <th class="row-label-col">ICE Row</th>
+                                        <th>$\mathrm{HA(aq)}$</th>
+                                        <th>$\mathrm{H_3O^+(aq)}$</th>
+                                        <th>$\mathrm{A^-(aq)}$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="row-initial">
+                                        <td class="row-label">Initial ($\text{M}$)</td>
+                                        <td>$0.100$</td>
+                                        <td>$0.000$</td>
+                                        <td>$0.000$</td>
+                                    </tr>
+                                    <tr class="row-change">
+                                        <td class="row-label">Change ($\text{M}$)</td>
+                                        <td>$-0.005$</td>
+                                        <td>$+0.005$</td>
+                                        <td>$+0.005$</td>
+                                    </tr>
+                                    <tr class="row-equilibrium">
+                                        <td class="row-label">Equilibrium ($\text{M}$)</td>
+                                        <td>$0.095$</td>
+                                        <td>$0.005$</td>
+                                        <td>$0.005$</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p><strong>3. Substitute into $K_a$ expression:</strong>
+                        $$K_a = \frac{[\mathrm{H_3O^+}][\mathrm{A^-}]}{[\mathrm{HA}]} = \frac{(0.005) \times (0.005)}{0.095} = \frac{0.000025}{0.095} = \mathbf{2.6 \times 10^{-4}} \quad (2\text{ sig. figs.})$$</p>
+                    </div>
+                </div>
+
+                <!-- Example 4: Extension -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 4 (Extension): Polyprotic Step-wise Extent Short Answer</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Phosphoric acid ($\mathrm{H_3PO_4}$) undergoes step-wise ionisation where $K_{a1} \gg K_{a2} \gg K_{a3}$ ($7.1 \times 10^{-3} \gg 6.3 \times 10^{-8} \gg 4.5 \times 10^{-13}$).
+                        <br>Explain this trend using sub-microscopic electrostatic behaviours.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Write the step-wise ionisation equations:</strong>
+                        <br>• Step 1: $$\mathrm{H_3PO_4(aq) + H_2O(l) \rightleftharpoons H_3O^+(aq) + H_2PO_4^-(aq)} \quad (K_{a1} = 7.1 \times 10^{-3})$$
+                        <br>• Step 2: $$\mathrm{H_2PO_4^-(aq) + H_2O(l) \rightleftharpoons H_3O^+(aq) + HPO_4^{2-}(aq)} \quad (K_{a2} = 6.3 \times 10^{-8})$$
+                        <br>• Step 3: $$\mathrm{HPO_4^{2-}(aq) + H_2O(l) \rightleftharpoons H_3O^+(aq) + PO_4^{3-}(aq)} \quad (K_{a3} = 4.5 \times 10^{-13})$$</p>
+
+                        <p><strong>2. Electrostatic Sub-microscopic Explanation:</strong>
+                        <br>• <strong>In Step 1 ($K_{a1}$):</strong> A positively charged proton ($\mathrm{H^+}$) is lost from a <em>neutral</em> $\mathrm{H_3PO_4}$ molecule. Electrostatic attractive forces opposing proton removal are minimal, so this step proceeds to the greatest relative extent.
+                        <br>• <strong>In Step 2 ($K_{a2}$):</strong> A positively charged proton ($\mathrm{H^+}$) must be separated from a <em>singly negatively charged anion</em> ($\mathrm{H_2PO_4^-}$). Strong electrostatic attraction between $\mathrm{H^+}$ and $\mathrm{H_2PO_4^-}$ opposes dissociation, dramatically reducing $K_{a2}$.
+                        <br>• <strong>In Step 3 ($K_{a3}$):</strong> A positively charged proton ($\mathrm{H^+}$) must be separated from a <em>doubly negatively charged anion</em> ($\mathrm{HPO_4^{2-}}$). Intense electrostatic attraction strongly resists charge separation, making $K_{a3}$ exceptionally small.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 7: PRACTICE QUESTIONS WITH RUBRICS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>7. NESA Examination Practice Questions</h2>
+                    <span class="pill-badge demo-pill">Self-Marking Engine</span>
+                </div>
+                <p>Solve the questions below, then toggle hints and model solutions to verify your answers against NESA marking rubrics.</p>
+
+                <!-- Practice Q1 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 1 (Easy): The Solvent Water Omission Rule</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Explain why pure liquid water ($\mathrm{H_2O(l)}$) is omitted from the denominator of mass action expressions when evaluating weak acid dissociation equilibria in dilute aqueous solutions.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq1-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq1-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq1-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Consider the magnitude of water's concentration in dilute aqueous solution ($\approx 55.5\text{ M}$) and how its constancy is handled in $K_a$.</p>
+                    </div>
+
+                    <div id="pq1-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>• In dilute aqueous solutions, water is the solvent and its concentration is extraordinarily large ($\approx 55.5\text{ mol L}^{-1}$).
+                            <br>• Because the amount of water consumed during partial dissociation is negligible, $[\mathrm{H_2O}]$ remains essentially constant and is incorporated directly into the numerical value of $K_a$, allowing pure liquid water to be omitted from the mass action denominator.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Identifies that water is the solvent in vast excess ($\approx 55.5\text{ M}$) whose concentration remains constant.</li>
+                                <li><strong>1 Mark:</strong> Explains that constant $[\mathrm{H_2O}]$ is incorporated directly into the numerical equilibrium constant ($K_a$).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q2 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 2 (Medium): Distinguishing Strength from Concentration</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A student claims: <em>"A $0.001\text{ M}$ solution of ethanoic acid ($\mathrm{CH_3COOH}$) is weaker than a $1.0\text{ M}$ solution of ethanoic acid."</em>
+                        <br>Evaluate this statement, correcting any chemical misconceptions using Module 5 terminology.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq2-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq2-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq2-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Distinguish between acid strength (degree of ionisation / $K_a$) and solution concentration (moles per litre).</p>
+                    </div>
+
+                    <div id="pq2-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>• The student's statement is INCORRECT. Acid strength is an intrinsic thermodynamic property defined by the acid dissociation constant ($K_a$), which reflects the degree of ionisation at equilibrium. Both solutions contain ethanoic acid and therefore have the EXACT SAME acid strength ($K_a = 1.74 \times 10^{-5}$ at $25^\circ\text{C}$).
+                            <br>• The student has confused acid <em>strength</em> with solution <em>concentration</em>. The $0.001\text{ M}$ solution is a <strong>dilute weak acid</strong>, whereas the $1.0\text{ M}$ solution is a <strong>concentrated weak acid</strong>.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Correctly identifies that both solutions have identical acid strength because $K_a$ is constant for ethanoic acid.</li>
+                                <li><strong>1 Mark:</strong> Clarifies that strength refers to degree of ionisation while concentration refers to dissolved solute amount ($c = n/V$).</li>
+                                <li><strong>1 Mark:</strong> Uses correct Module 5 terminology (dilute weak vs concentrated weak).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q3 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 3 (Hard): Molar ICE Table Calculation</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A $0.100\text{ M}$ solution of a generic weak monoprotic acid $\mathrm{HA}$ is allowed to reach equilibrium. The equilibrium concentration of the unreacted acid $[\mathrm{HA}]$ is found to be $0.095\text{ M}$.
+                        <br>Write the mass action expression and compute the raw value of $K_a$.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq3-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq3-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq3-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Change in concentration $x = 0.100 - 0.095 = 0.005\text{ M}$. Thus $[\mathrm{H_3O^+}] = [\mathrm{A^-}] = 0.005\text{ M}$.</p>
+                    </div>
+
+                    <div id="pq3-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>1. Write mass action expression:
+                            $$K_a = \frac{[\mathrm{H_3O^+}][\mathrm{A^-}]}{[\mathrm{HA}]}$$
+                            <br>2. Calculate extent of ionisation ($x$):
+                            $$x = [\mathrm{HA}]_0 - [\mathrm{HA}]_{\text{eq}} = 0.100\text{ M} - 0.095\text{ M} = 0.005\text{ M}$$
+                            <br>3. Determine equilibrium species concentrations:
+                            $$[\mathrm{H_3O^+}]_{\text{eq}} = 0.005\text{ M}, \quad [\mathrm{A^-}]_{\text{eq}} = 0.005\text{ M}, \quad [\mathrm{HA}]_{\text{eq}} = 0.095\text{ M}$$
+                            <br>4. Compute $K_a$:
+                            $$K_a = \frac{(0.005) \times (0.005)}{0.095} = \frac{0.000025}{0.095} = \mathbf{2.6 \times 10^{-4}} \quad (2\text{ sig. figs.})$$</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Formulates correct mass action expression for $K_a$.</li>
+                                <li><strong>1 Mark:</strong> Calculates extent of ionisation $x = 0.005\text{ M}$ via subtraction arithmetic.</li>
+                                <li><strong>1 Mark:</strong> Deduces $1:1$ stoichiometry for equilibrium ion concentrations ($0.005\text{ M}$).</li>
+                                <li><strong>1 Mark:</strong> Obtains correct final value $K_a = 2.6 \times 10^{-4}$ (or $2.63 \times 10^{-4}$).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q4 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 4 (Extension): Polyprotic Successive Extent Short Answer</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Phosphoric acid ($\mathrm{H_3PO_4}$) undergoes step-wise ionisation where $K_{a1} \gg K_{a2} \gg K_{a3}$.
+                        <br>Explain this trend using sub-microscopic electrostatic behaviours.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq4-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq4-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq4-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Compare removing $\mathrm{H^+}$ from neutral $\mathrm{H_3PO_4}$ vs anion $\mathrm{H_2PO_4^-}$ vs anion $\mathrm{HPO_4^{2-}}$.</p>
+                    </div>
+
+                    <div id="pq4-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>• <strong>Step-wise Equations:</strong>
+                            <br>1. $$\mathrm{H_3PO_4(aq) + H_2O(l) \rightleftharpoons H_3O^+(aq) + H_2PO_4^-(aq)} \quad (K_{a1})$$
+                            <br>2. $$\mathrm{H_2PO_4^-(aq) + H_2O(l) \rightleftharpoons H_3O^+(aq) + HPO_4^{2-}(aq)} \quad (K_{a2})$$
+                            <br>3. $$\mathrm{HPO_4^{2-}(aq) + H_2O(l) \rightleftharpoons H_3O^+(aq) + PO_4^{3-}(aq)} \quad (K_{a3})$$
+                            <br>• <strong>Sub-microscopic Electrostatic Explanation:</strong>
+                            <br>In Step 1 ($K_{a1}$), a positively charged proton ($\mathrm{H^+}$) is separated from a <em>neutral</em> molecule ($\mathrm{H_3PO_4}$), where electrostatic attraction is minimal.
+                            <br>In Step 2 ($K_{a2}$), a proton ($\mathrm{H^+}$) must be removed from a <em>singly charged anion</em> ($\mathrm{H_2PO_4^-}$). Electrostatic attraction between opposite charges strongly resists proton loss.
+                            <br>In Step 3 ($K_{a3}$), a proton ($\mathrm{H^+}$) must be removed from a <em>doubly charged anion</em> ($\mathrm{HPO_4^{2-}}$). Intense electrostatic attraction makes proton loss extremely unfavorable, resulting in $K_{a1} \gg K_{a2} \gg K_{a3}$.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Identifies the three step-wise chemical equilibria.</li>
+                                <li><strong>1 Mark:</strong> Explains $K_{a1}$ in terms of proton removal from a neutral molecule.</li>
+                                <li><strong>1 Mark:</strong> Explains $K_{a2}$ in terms of electrostatic attraction when removing a proton from a $-1$ anion.</li>
+                                <li><strong>1 Mark:</strong> Explains $K_{a3}$ in terms of intense electrostatic attraction when removing a proton from a $-2$ anion.</li>
+                                <li><strong>1 Mark:</strong> Provides a cohesive summary linking electrostatic force magnitude to decreasing dissociation extent.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation Footer -->
+            <footer class="content-footer">
+                <a href="16-determining-keq-experiment.html" class="btn btn-outline">&larr; Back to Lesson 16</a>
+                <a href="18-dissolution-ionic-compounds.html" class="btn btn-ethereal">
+                    Proceed to Lesson 18: Ionic Dissolution &rarr;
+                </a>
+            </footer>
+        </main>
+    </div>
+
+    <!-- INTERACTIVE MODULE 5 ENGINE JAVASCRIPT -->
+    <script>
+        function runModule5Engine() {
+            const haInit = parseFloat(document.getElementById('sim-ha-init').value);
+            const haEqInput = parseFloat(document.getElementById('sim-ha-eq').value);
+
+            // Clamp equilibrium HA to be slightly less than initial HA
+            const haEq = Math.min(haInit - 0.001, haEqInput);
+
+            document.getElementById('lbl-ha-init').innerText = `${haInit.toFixed(3)} M`;
+            document.getElementById('lbl-ha-eq').innerText = `${haEq.toFixed(3)} M`;
+
+            const x = haInit - haEq;
+            const pctIonised = (x / haInit) * 100;
+            const ka = (x * x) / haEq;
+
+            // Build ICE Table HTML
+            const table = document.getElementById('module5-ice-render');
+            let html = `<thead><tr><th class="row-label-col">ICE Row</th>`;
+            html += `<th>$\\mathrm{HA(aq)}$</th><th>$\\mathrm{H_3O^+(aq)}$</th><th>$\\mathrm{A^-(aq)}$</th></tr></thead><tbody>`;
+
+            // Initial Row
+            html += `<tr class="row-initial"><td class="row-label">Initial ($\text{M}$)</td>`;
+            html += `<td>${haInit.toFixed(3)}</td><td>0.000</td><td>0.000</td></tr>`;
+
+            // Change Row
+            html += `<tr class="row-change"><td class="row-label">Change ($\text{M}$)</td>`;
+            html += `<td>-${x.toFixed(4)}</td><td>+${x.toFixed(4)}</td><td>+${x.toFixed(4)}</td></tr>`;
+
+            // Equilibrium Row
+            html += `<tr class="row-equilibrium"><td class="row-label">Equilibrium ($\text{M}$)</td>`;
+            html += `<td>${haEq.toFixed(3)}</td><td>${x.toFixed(4)}</td><td>${x.toFixed(4)}</td></tr></tbody>`;
+
+            table.innerHTML = html;
+
+            // Telemetry updates
+            document.getElementById('tel-x-val').innerText = `${x.toFixed(4)} M`;
+            document.getElementById('tel-h3o-val').innerText = `${x.toFixed(4)} M`;
+            document.getElementById('tel-pct-val').innerText = `${pctIonised.toFixed(2)} %`;
+            document.getElementById('tel-ka-val').innerText = ka < 0.0001 ? ka.toExponential(2) : ka.toFixed(5);
+
+            // Typeset MathJax
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                if (window.MathJax.typesetClear) {
+                    window.MathJax.typesetClear([table]);
+                }
+                MathJax.typesetPromise([table]).catch(function (err) {
+                    console.warn('MathJax deferred:', err);
+                });
+            }
+        }
+
+        function toggleElement(id) {
+            const el = document.getElementById(id);
+            if (el.style.display === 'none' || el.style.display === '') {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            if (window.MathJax && window.MathJax.startup) {
+                window.MathJax.startup.promise.then(() => {
+                    runModule5Engine();
+                });
+            } else {
+                runModule5Engine();
+            }
+        });
+    </script>
+</body>
+</html>

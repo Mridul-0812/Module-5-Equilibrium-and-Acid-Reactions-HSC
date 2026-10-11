@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03 Static vs Dynamic Equilibrium | Module 5 Chemistry</title>
+    
+    <!-- MathJax 3 Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <style>
+        /* Modern Ethereal Dark Theme System Styling */
+        :root {
+            --bg-dark: #090d16;
+            --bg-card: rgba(17, 24, 39, 0.75);
+            --bg-card-hover: rgba(30, 41, 59, 0.85);
+            --border-glow: rgba(56, 189, 248, 0.25);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --border-cyan: rgba(6, 182, 212, 0.4);
+            --accent-cyan: #38bdf8;
+            --accent-blue: #60a5fa;
+            --accent-magenta: #e879f9;
+            --accent-green: #4ade80;
+            --accent-amber: #facc15;
+            --accent-red: #f87171;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --text-secondary: #cbd5e1;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --font-main: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+            --font-mono: 'Fira Code', 'Cascadia Code', Consolas, monospace;
+            --shadow-glow: 0 0 25px rgba(56, 189, 248, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 85%, rgba(232, 121, 249, 0.06) 0%, transparent 40%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.7;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 320px;
+            background: rgba(13, 19, 33, 0.95);
+            border-right: 1px solid var(--border-light);
+            backdrop-filter: blur(12px);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 2rem 1.5rem 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .badge-glow {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(56, 189, 248, 0.15);
+            border: 1px solid var(--border-cyan);
+            border-radius: 20px;
+            color: var(--accent-cyan);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.4rem;
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .sidebar-header .subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+
+        .progress-container {
+            margin-top: 1.25rem;
+            background: rgba(255, 255, 255, 0.05);
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-magenta));
+            border-radius: 3px;
+        }
+
+        .score-card {
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav-menu {
+            padding: 1.25rem 1rem;
+        }
+
+        .nav-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            padding: 0 0.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 0.65rem 0.75rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            margin-bottom: 0.25rem;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            transform: translateX(3px);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(90deg, rgba(56, 189, 248, 0.2), rgba(56, 189, 248, 0.05));
+            border-left: 3px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+
+        .nav-num {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            margin-right: 0.75rem;
+            opacity: 0.7;
+        }
+
+        /* Main Layout */
+        .main-content {
+            margin-left: 320px;
+            flex: 1;
+            padding: 2.5rem 3rem;
+            max-width: 1300px;
+        }
+
+        .hero-banner {
+            position: relative;
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2.5rem;
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .ethereal-tag {
+            font-family: var(--font-mono);
+            color: var(--accent-cyan);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .ethereal-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin: 0.5rem 0 1rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ethereal-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 850px;
+        }
+
+        /* Content Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 2.25rem;
+            margin-bottom: 2.5rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: border-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.75rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .card-header h2 {
+            font-size: 1.6rem;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .pill-badge {
+            padding: 0.35rem 0.85rem;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid var(--border-cyan);
+            color: var(--accent-cyan);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Typography & Content Formatting */
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+
+        strong {
+            color: #fff;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            color: var(--accent-cyan);
+            margin: 1.75rem 0 0.85rem;
+            font-weight: 600;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            color: #fff;
+            margin: 1.25rem 0 0.5rem;
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin: 0 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.65rem;
+            padding-left: 0.25rem;
+        }
+
+        /* Feature & Comparison Grids */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-cyan);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card h3 {
+            margin: 0 0 0.5rem 0;
+            color: #fff;
+        }
+
+        /* Callout Boxes */
+        .info-box {
+            background: rgba(14, 165, 233, 0.08);
+            border-left: 4px solid var(--accent-cyan);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 1.35rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-box.warning {
+            background: rgba(245, 158, 11, 0.08);
+            border-left-color: var(--accent-amber);
+        }
+
+        .info-box.danger {
+            background: rgba(239, 68, 68, 0.08);
+            border-left-color: var(--accent-red);
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+        }
+
+        /* Comparison Table */
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            margin: 1.75rem 0;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        table.comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            background: rgba(15, 23, 42, 0.7);
+            font-size: 0.95rem;
+        }
+
+        table.comparison-table th {
+            background: rgba(30, 41, 59, 0.9);
+            color: var(--accent-cyan);
+            padding: 1rem 1.25rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border-light);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        table.comparison-table td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-secondary);
+            vertical-align: top;
+        }
+
+        table.comparison-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+            color: #fff;
+        }
+
+        /* Graph Card and SVG Graph Containers */
+        .graph-wrapper {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1.75rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .graph-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .svg-graph-container {
+            width: 100%;
+            max-width: 720px;
+            height: auto;
+        }
+
+        /* Interactive Simulator Styles */
+        .sim-container {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-cyan);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            box-shadow: 0 0 30px rgba(6, 182, 212, 0.1);
+        }
+
+        .sim-mode-selector {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .sim-mode-btn {
+            padding: 0.5rem 1rem;
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid var(--border-light);
+            color: var(--text-secondary);
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .sim-mode-btn.active {
+            background: rgba(56, 189, 248, 0.2);
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .sim-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+            background: rgba(30, 41, 59, 0.5);
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-group label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .control-group input[type="range"] {
+            width: 100%;
+            accent-color: var(--accent-cyan);
+            cursor: pointer;
+        }
+
+        .sim-btn-row {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-ethereal {
+            background: linear-gradient(135deg, #0284c7, #06b6d4);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+        }
+
+        .btn-ethereal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(6, 182, 212, 0.45);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--border-light);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .sim-viewports {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .sim-viewports {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sim-box {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        canvas#particle-canvas {
+            background: #050811;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm);
+            width: 100%;
+            height: 240px;
+        }
+
+        canvas#live-graph-canvas {
+            background: #050811;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm);
+            width: 100%;
+            height: 240px;
+        }
+
+        .telemetry-panel {
+            grid-column: 1 / -1;
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1rem 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .telemetry-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .telemetry-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .telemetry-value {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+        }
+
+        /* Questions & Solutions Styling */
+        .question-container {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .marks-badge {
+            background: rgba(232, 121, 249, 0.15);
+            border: 1px solid rgba(232, 121, 249, 0.4);
+            color: var(--accent-magenta);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .action-bar {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+        }
+
+        .drawer {
+            margin-top: 1rem;
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .drawer-hint {
+            background: rgba(250, 204, 21, 0.08);
+            border: 1px solid rgba(250, 204, 21, 0.3);
+            color: #fef08a;
+        }
+
+        .drawer-solution {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-cyan);
+        }
+
+        .rubric-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--accent-magenta);
+        }
+
+        .rubric-box h5 {
+            color: var(--accent-magenta);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .content-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; padding: 1.5rem; }
+            .grid-2col { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="ethereal-theme">
+    <div class="app-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="badge-glow">NESA Stage 6</span>
+                <h2>Module 5</h2>
+                <p class="subtitle">EQUILIBRIUM & ACID REACTIONS</p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="module-progress" style="width: 12%;"></div>
+                </div>
+                <div class="score-card">
+                    Total Mastery: <span id="total-marks">12</span> / 100 Marks
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-section">
+                    <span class="section-title">INTRODUCTION</span>
+                    <a href="index.html" class="nav-item">
+                        <span class="nav-num">—</span> Home & Guide
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE A: FOUNDATIONS OF EQUILIBRIUM</span>
+                    <a href="01-reversible-reactions.html" class="nav-item"><span class="nav-num">01</span> Reversible vs Irreversible</a>
+                    <a href="02-open-closed-systems.html" class="nav-item"><span class="nav-num">02</span> Open vs Closed Systems</a>
+                    <a href="03-static-dynamic-equilibrium.html" class="nav-item active"><span class="nav-num">03</span> Static vs Dynamic Eq</a>
+                    <a href="04-non-equilibrium-systems.html" class="nav-item"><span class="nav-num">04</span> Non-Equilibrium Systems</a>
+                    <a href="05-collision-theory-equilibrium.html" class="nav-item"><span class="nav-num">05</span> Collision Theory in Eq</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE B: FACTORS AFFECTING EQUILIBRIUM</span>
+                    <a href="06-intro-le-chatelier.html" class="nav-item"><span class="nav-num">06</span> Le Chatelier's Principle</a>
+                    <a href="07-effect-of-concentration.html" class="nav-item"><span class="nav-num">07</span> Concentration Changes</a>
+                    <a href="08-effect-of-pressure-volume.html" class="nav-item"><span class="nav-num">08</span> Pressure & Volume</a>
+                    <a href="09-effect-of-temperature.html" class="nav-item"><span class="nav-num">09</span> Temperature Effects</a>
+                    <a href="10-collision-theory-lcp.html" class="nav-item"><span class="nav-num">10</span> Collision Theory & LCP</a>
+                    <a href="11-activation-energy-equilibrium.html" class="nav-item"><span class="nav-num">11</span> Activation Energy & $\Delta H$</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE C: THE EQUILIBRIUM CONSTANT</span>
+                    <a href="12-keq-expression.html" class="nav-item"><span class="nav-num">12</span> The $K_{\mathrm{eq}}$ Expression</a>
+                    <a href="13-keq-calculations-basic.html" class="nav-item"><span class="nav-num">13</span> Basic $K_{\mathrm{eq}}$ Calculations</a>
+                    <a href="14-keq-calculations-advanced.html" class="nav-item"><span class="nav-num">14</span> Advanced $K_{\mathrm{eq}}$ & $Q$</a>
+                    <a href="15-temperature-and-keq.html" class="nav-item"><span class="nav-num">15</span> Temperature & $K_{\mathrm{eq}}$</a>
+                    <a href="16-determining-keq-experiment.html" class="nav-item"><span class="nav-num">16</span> Practical Determination</a>
+                    <a href="17-keq-acid-base-dissociation.html" class="nav-item"><span class="nav-num">17</span> Dissociation Systems</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE D: SOLUTION EQUILIBRIA</span>
+                    <a href="18-dissolution-ionic-compounds.html" class="nav-item"><span class="nav-num">18</span> Ionic Dissolution</a>
+                    <a href="19-indigenous-solubility-cycads.html" class="nav-item"><span class="nav-num">19</span> Indigenous Detoxification</a>
+                    <a href="20-solubility-rules.html" class="nav-item"><span class="nav-num">20</span> Solubility Rules</a>
+                    <a href="21-solubility-product-ksp.html" class="nav-item"><span class="nav-num">21</span> Solubility Product ($K_{\mathrm{sp}}$)</a>
+                    <a href="22-molar-solubility-calcs.html" class="nav-item"><span class="nav-num">22</span> Molar Solubility Calcs</a>
+                    <a href="23-predicting-precipitation.html" class="nav-item"><span class="nav-num">23</span> Predicting Precipitation</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE E: ASSESSMENT & REVIEW</span>
+                    <a href="24-formula-summary.html" class="nav-item"><span class="nav-num">24</span> Formula & Concept Guide</a>
+                    <a href="25-final-exam.html" class="nav-item"><span class="nav-num">25</span> Final Examination</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="hero-banner">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <span class="ethereal-tag">LESSON 03 • PHASE A</span>
+                    <h1 class="ethereal-title">Static vs Dynamic Equilibrium</h1>
+                    <p class="ethereal-subtitle">Deconstructing reaction rates, microscopic kinetic activity, macroscopic constancy, collision mechanics, and graphical representations under NESA Stage 6 Chemistry standards.</p>
+                </div>
+            </header>
+
+            <!-- SYLLABUS ALIGNMENT CARD -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>NESA Syllabus Inquiry Focus</h2>
+                    <span class="pill-badge">Stage 6 Chemistry</span>
+                </div>
+                <p>
+                    <strong>Inquiry Question:</strong> <em>What happens when chemical reactions do not go through completion?</em>
+                </p>
+                <div class="info-box cyan" style="margin-top: 1rem;">
+                    <h3>Syllabus Outcomes Addressed:</h3>
+                    <ul>
+                        <li>Account for the characteristics of a dynamic equilibrium system using collision theory (CH-12-01).</li>
+                        <li>Explain why macroscopic properties remain constant at equilibrium.</li>
+                        <li>Compare static and dynamic equilibrium systems using chemical and physical exemplars.</li>
+                        <li>Analyse graphical representations of reaction rate vs time and concentration vs time for equilibrium systems.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECTION 1: DETAILED THEORETICAL FOUNDATIONS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>1. Defining Chemical Equilibrium States</h2>
+                    <span class="pill-badge">Thermodynamic Mechanics</span>
+                </div>
+
+                <p>
+                    In HSC Chemistry, understanding equilibrium requires categorising systems based on whether molecular activity continues once observable macroscopic changes cease. A system is said to be in <strong>equilibrium</strong> when its macroscopic properties—such as concentration, colour intensity, gas pressure, temperature, and total mass—remain completely constant over time.
+                </p>
+                <p>
+                    However, the underlying physical and chemical processes occurring at the sub-microscopic level can differ fundamentally. We classify equilibrium into two primary forms: <strong>Dynamic Equilibrium</strong> and <strong>Static Equilibrium</strong>.
+                </p>
+
+                <div class="grid-2col">
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-cyan);">
+                        <div class="feature-icon">🔄</div>
+                        <h3>Dynamic Equilibrium</h3>
+                        <p>
+                            A state achieved in a closed system when the rate of the forward reaction ($r_{\mathrm{f}}$) equals the rate of the reverse reaction ($r_{\mathrm{r}}$), and both rates are strictly non-zero ($r_{\mathrm{f}} = r_{\mathrm{r}} > 0$).
+                        </p>
+                        <ul>
+                            <li><strong>Microscopic Activity:</strong> Continuous and ongoing in both directions simultaneously. Reactants transform into products while products recombine into reactants at identical speeds.</li>
+                            <li><strong>Macroscopic Properties:</strong> Strictly constant over time because the net rates of change for all species are zero.</li>
+                            <li><strong>Requirement:</strong> Must take place in a closed system where neither matter nor energy escapes unhindered, and the reaction must be reversible.</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-amber);">
+                        <div class="feature-icon">⏸️</div>
+                        <h3>Static Equilibrium</h3>
+                        <p>
+                            A state achieved when the rate of the forward reaction and the rate of the reverse reaction both equal zero ($r_{\mathrm{f}} = r_{\mathrm{r}} = 0$).
+                        </p>
+                        <ul>
+                            <li><strong>Microscopic Activity:</strong> Complete cessation of chemical movement or interconversion between chemical species. No forward or reverse collisions occur.</li>
+                            <li><strong>Macroscopic Properties:</strong> Strictly constant over time, but purely because no microscopic reaction is occurring in either direction.</li>
+                            <li><strong>Context:</strong> Common in irreversible chemical processes that have gone to $100\%$ completion, or physical systems with insurmountable activation energy barriers.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h3>Essential Distinction: Dynamic Equilibrium vs Steady State</h3>
+                    <p>
+                        Do not confuse <strong>Dynamic Equilibrium</strong> with a <strong>Steady State</strong>. 
+                        In a steady state (such as a flowing river, a continuous industrial reactor, or metabolic pathways in living organisms), system properties remain constant over time because matter and energy enter and leave the system at equal rates. However, a steady state occurs in an <strong>open system</strong> and requires a continuous flux of energy and matter. Dynamic equilibrium occurs strictly in a <strong>closed system</strong> where energy exchange may occur, but mass exchange cannot ($\Delta m = 0$).
+                    </p>
+                </div>
+
+                <h3>Comprehensive Comparison Matrix</h3>
+                <p>
+                    The table below provides a detailed comparison required for multi-mark NESA analytical questions:
+                </p>
+
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Property / Feature</th>
+                                <th>Dynamic Equilibrium</th>
+                                <th>Static Equilibrium</th>
+                                <th>Steady State (Non-Equilibrium)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Forward & Reverse Rates</strong></td>
+                                <td>Equal and non-zero ($r_{\mathrm{f}} = r_{\mathrm{r}} > 0$)</td>
+                                <td>Equal to zero ($r_{\mathrm{f}} = r_{\mathrm{r}} = 0$)</td>
+                                <td>Inflow rate equals outflow rate ($r_{\mathrm{in}} = r_{\mathrm{out}}$)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Microscopic Kinetic Motion</strong></td>
+                                <td>Active, continuous interconversion of species</td>
+                                <td>Completely halted; no interconversion occurs</td>
+                                <td>Active, continuous flow through boundaries</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Macroscopic Observations</strong></td>
+                                <td>Constant (Concentration, pressure, colour, etc.)</td>
+                                <td>Constant (No observable change)</td>
+                                <td>Constant within internal system domain</td>
+                            </tr>
+                            <tr>
+                                <td><strong>System Boundary Requirement</strong></td>
+                                <td>Closed System mandatory ($\Delta m = 0$)</td>
+                                <td>Can occur in Open or Closed Systems</td>
+                                <td>Open System mandatory (Continuous flux)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Chemical Reversibility</strong></td>
+                                <td>Reversible reactions only ($\rightleftharpoons$)</td>
+                                <td>Typically irreversible reactions ($\rightarrow$)</td>
+                                <td>Can involve reversible or irreversible steps</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Gibbs Free Energy ($\Delta G$)</strong></td>
+                                <td>$\Delta G = 0$ (Thermodynamic minimum)</td>
+                                <td>$\Delta G = 0$ at complete rest state</td>
+                                <td>$\Delta G \neq 0$ (Requires constant energy input)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION 2: MICROSCOPIC MECHANICS & COLLISION THEORY -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>2. Microscopic Kinetics & Collision Theory Progression</h2>
+                    <span class="pill-badge">Molecular Dynamics</span>
+                </div>
+
+                <p>
+                    To understand how dynamic equilibrium is established from a mixture of pure reactants, we analyse the system chronologically using <strong>Collision Theory</strong>. Consider a generic reversible gas-phase reaction inside a sealed container at constant temperature:
+                </p>
+                $$\mathrm{A(g) + B(g) \rightleftharpoons C(g) + D(g)}$$
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>1. Initial State ($t = 0$)</h3>
+                        <p>
+                            At the start of the reaction, only reactants $\mathrm{A}$ and $\mathrm{B}$ are present in high concentrations.
+                        </p>
+                        <ul>
+                            <li>Collision frequency between $\mathrm{A}$ and $\mathrm{B}$ is at its maximum value.</li>
+                            <li>Forward reaction rate is at its highest point ($r_{\mathrm{f}} = \text{Maximum}$).</li>
+                            <li>Because no product molecules ($\mathrm{C}$ and $\mathrm{D}$) exist yet, $[\mathrm{C}] = 0$ and $[\mathrm{D}] = 0$.</li>
+                            <li>The reverse reaction rate is strictly zero ($r_{\mathrm{r}} = 0$).</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>2. Intermediate State ($0 < t < t_{\mathrm{eq}}$)</h3>
+                        <p>
+                            As reactant molecules collide successfully, they transform into products over time.
+                        </p>
+                        <ul>
+                            <li>Concentrations of $\mathrm{A}$ and $\mathrm{B}$ decrease ($[\mathrm{A}], [\mathrm{B}] \downarrow$). Forward collision frequency drops, so $r_{\mathrm{f}}$ decreases continuously.</li>
+                            <li>Concentrations of $\mathrm{C}$ and $\mathrm{D}$ accumulate ($[\mathrm{C}], [\mathrm{D}] \uparrow$).</li>
+                            <li>Collisions between product molecules start occurring, initiating the reverse reaction. Thus, $r_{\mathrm{r}}$ increases continuously from zero.</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>3. Dynamic Equilibrium ($t \ge t_{\mathrm{eq}}$)</h3>
+                        <p>
+                            Eventually, the decreasing forward rate matches the rising reverse rate.
+                        </p>
+                        <ul>
+                            <li>The rate of product formation exactly matches the rate of product consumption ($r_{\mathrm{f}} = r_{\mathrm{r}}$).</li>
+                            <li>Every second, the exact number of reactant molecules converted to products is replenished by product molecules reforming reactants.</li>
+                            <li>Macroscopic properties freeze into a constant steady appearance, despite intense microscopic molecular activity.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="info-box danger">
+                    <h3>Common Misconception Warning (Crucial NESA Exam Focus!)</h3>
+                    <p>
+                        <strong>Misconception:</strong> "At equilibrium, the concentrations of reactants and products must be equal ($[\text{Reactants}] = [\text{Products}]$)."
+                        <br>
+                        <strong>Fact:</strong> At dynamic equilibrium, the <strong>RATES</strong> of forward and reverse reactions are equal ($r_{\mathrm{f}} = r_{\mathrm{r}}$). The <strong>CONCENTRATIONS</strong> of reactants and products are <strong>CONSTANT</strong>, but they are almost never equal to each other! 
+                        <br>
+                        Depending on the activation energy and thermodynamic stability of species, a system at equilibrium may consist of $99\%$ products and $1\%$ reactants, or vice versa, while maintaining $r_{\mathrm{f}} = r_{\mathrm{r}}$.
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 3: GRAPHICAL REPRESENTATIONS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>3. Graphical Representations (NESA HSC Standards)</h2>
+                    <span class="pill-badge">Standard Visualisations</span>
+                </div>
+
+                <p>
+                    NESA HSC Chemistry examinations frequently require students to interpret, construct, or identify errors in rate vs time and concentration vs time graphs. Below are precise vector graphics depicting standard equilibrium scenarios.
+                </p>
+
+                <!-- GRAPH 1: Reaction Rate vs Time -->
+                <div class="graph-wrapper">
+                    <div class="graph-title">Graph 1: Reaction Rate ($r$) vs Time ($t$) for Dynamic Equilibrium</div>
+                    <div class="svg-graph-container">
+                        <svg viewBox="0 0 650 360" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Axes Grid & Background -->
+                            <rect width="650" height="360" fill="#0b1329" rx="10"/>
+                            <line x1="70" y1="300" x2="600" y2="300" stroke="#64748b" stroke-width="2"/>
+                            <line x1="70" y1="40" x2="70" y2="300" stroke="#64748b" stroke-width="2"/>
+                            
+                            <!-- Grid lines -->
+                            <line x1="70" y1="170" x2="600" y2="170" stroke="rgba(255,255,255,0.08)" stroke-dasharray="4,4"/>
+                            <line x1="320" y1="40" x2="320" y2="300" stroke="rgba(255,255,255,0.15)" stroke-dasharray="6,6"/>
+
+                            <!-- Axis Labels -->
+                            <text x="335" y="340" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle">Time ($t$)</text>
+                            <text x="25" y="170" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle" transform="rotate(-90 25 170)">Reaction Rate ($r$)</text>
+
+                            <!-- Equilibrium Time Marker -->
+                            <text x="320" y="320" fill="#38bdf8" font-size="12" font-family="monospace" text-anchor="middle">t_eq</text>
+                            
+                            <!-- Forward Rate Curve (Cyan): starts at top y=60, decays exponentially to y=170 at x=320, then horizontal -->
+                            <path d="M 70 60 Q 180 170 320 170 L 600 170" fill="none" stroke="#38bdf8" stroke-width="3.5"/>
+                            
+                            <!-- Reverse Rate Curve (Magenta): starts at y=300, increases exponentially to y=170 at x=320, then horizontal -->
+                            <path d="M 70 300 Q 180 170 320 170 L 600 170" fill="none" stroke="#e879f9" stroke-width="3.5"/>
+
+                            <!-- Dynamic Equilibrium Plateau Annotation Line -->
+                            <text x="460" y="155" fill="#4ade80" font-size="13" font-weight="700" text-anchor="middle">r_forward = r_reverse > 0</text>
+                            <text x="460" y="190" fill="#cbd5e1" font-size="12" text-anchor="middle">(Dynamic Equilibrium Established)</text>
+
+                            <!-- Legend -->
+                            <line x1="90" y1="60" x2="120" y2="60" stroke="#38bdf8" stroke-width="3.5"/>
+                            <text x="128" y="64" fill="#38bdf8" font-size="12" font-weight="700">Forward Rate (r_f)</text>
+
+                            <line x1="90" y1="280" x2="120" y2="280" stroke="#e879f9" stroke-width="3.5"/>
+                            <text x="128" y="284" fill="#e879f9" font-size="12" font-weight="700">Reverse Rate (r_r)</text>
+                        </svg>
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.75rem; text-align: center;">
+                        <strong>Key NESA Feature:</strong> $r_{\mathrm{f}}$ starts high and decays; $r_{\mathrm{r}}$ starts at zero and rises. Both curves merge at $t_{\mathrm{eq}}$ into a single non-zero horizontal plateau.
+                    </p>
+                </div>
+
+                <!-- GRAPH 2: Concentration vs Time -->
+                <div class="graph-wrapper">
+                    <div class="graph-title">Graph 2: Concentration ($C$) vs Time ($t$) for Dynamic Equilibrium</div>
+                    <div class="svg-graph-container">
+                        <svg viewBox="0 0 650 360" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Axes Grid & Background -->
+                            <rect width="650" height="360" fill="#0b1329" rx="10"/>
+                            <line x1="70" y1="300" x2="600" y2="300" stroke="#64748b" stroke-width="2"/>
+                            <line x1="70" y1="40" x2="70" y2="300" stroke="#64748b" stroke-width="2"/>
+                            
+                            <line x1="320" y1="40" x2="320" y2="300" stroke="rgba(255,255,255,0.15)" stroke-dasharray="6,6"/>
+
+                            <!-- Axis Labels -->
+                            <text x="335" y="340" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle">Time ($t$)</text>
+                            <text x="25" y="170" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle" transform="rotate(-90 25 170)">Concentration ($\mathrm{mol\,L^{-1}}$)</text>
+
+                            <!-- Equilibrium Time Marker -->
+                            <text x="320" y="320" fill="#38bdf8" font-size="12" font-family="monospace" text-anchor="middle">t_eq</text>
+
+                            <!-- Reactant Curve (Cyan): starts at y=70, decreases to y=210 at x=320, then horizontal -->
+                            <path d="M 70 70 Q 180 210 320 210 L 600 210" fill="none" stroke="#38bdf8" stroke-width="3.5"/>
+                            
+                            <!-- Product Curve (Green): starts at y=300, increases to y=110 at x=320, then horizontal -->
+                            <path d="M 70 300 Q 180 110 320 110 L 600 110" fill="none" stroke="#4ade80" stroke-width="3.5"/>
+
+                            <!-- Annotations -->
+                            <text x="460" y="100" fill="#4ade80" font-size="13" font-weight="700" text-anchor="middle">[Products] Constant</text>
+                            <text x="460" y="200" fill="#38bdf8" font-size="13" font-weight="700" text-anchor="middle">[Reactants] Constant</text>
+
+                            <!-- Legend -->
+                            <line x1="90" y1="60" x2="120" y2="60" stroke="#38bdf8" stroke-width="3.5"/>
+                            <text x="128" y="64" fill="#38bdf8" font-size="12" font-weight="700">Reactants [A]</text>
+
+                            <line x1="90" y1="280" x2="120" y2="280" stroke="#4ade80" stroke-width="3.5"/>
+                            <text x="128" y="284" fill="#4ade80" font-size="12" font-weight="700">Products [B]</text>
+                        </svg>
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.75rem; text-align: center;">
+                        <strong>Key NESA Feature:</strong> At $t_{\mathrm{eq}}$, concentrations plateau horizontally. Notice that $[\text{Products}]$ and $[\text{Reactants}]$ are <strong>constant</strong>, but NOT equal!
+                    </p>
+                </div>
+
+                <!-- GRAPH 3: Static Equilibrium Comparison -->
+                <div class="graph-wrapper">
+                    <div class="graph-title">Graph 3: Reaction Rate ($r$) vs Time ($t$) for Static Equilibrium</div>
+                    <div class="svg-graph-container">
+                        <svg viewBox="0 0 650 360" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Axes Grid & Background -->
+                            <rect width="650" height="360" fill="#0b1329" rx="10"/>
+                            <line x1="70" y1="300" x2="600" y2="300" stroke="#64748b" stroke-width="2"/>
+                            <line x1="70" y1="40" x2="70" y2="300" stroke="#64748b" stroke-width="2"/>
+                            
+                            <line x1="320" y1="40" x2="320" y2="300" stroke="rgba(255,255,255,0.15)" stroke-dasharray="6,6"/>
+
+                            <!-- Axis Labels -->
+                            <text x="335" y="340" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle">Time ($t$)</text>
+                            <text x="25" y="170" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle" transform="rotate(-90 25 170)">Reaction Rate ($r$)</text>
+
+                            <!-- Forward Rate Curve dropping to exactly zero on the x-axis -->
+                            <path d="M 70 70 Q 180 300 320 300 L 600 300" fill="none" stroke="#f87171" stroke-width="3.5"/>
+                            
+                            <!-- Reverse Rate flatlining on the x-axis at 0 -->
+                            <path d="M 70 300 L 600 300" fill="none" stroke="#facc15" stroke-width="3.5" stroke-dasharray="4,4"/>
+
+                            <!-- Annotations -->
+                            <text x="460" y="275" fill="#f87171" font-size="13" font-weight="700" text-anchor="middle">r_forward = r_reverse = 0</text>
+                            <text x="460" y="250" fill="#cbd5e1" font-size="12" text-anchor="middle">(All Reaction Activity Stopped)</text>
+
+                            <!-- Legend -->
+                            <line x1="90" y1="60" x2="120" y2="60" stroke="#f87171" stroke-width="3.5"/>
+                            <text x="128" y="64" fill="#f87171" font-size="12" font-weight="700">Forward Rate (Irreversible)</text>
+
+                            <line x1="90" y1="90" x2="120" y2="90" stroke="#facc15" stroke-width="3.5" stroke-dasharray="4,4"/>
+                            <text x="128" y="94" fill="#facc15" font-size="12" font-weight="700">Reverse Rate = 0</text>
+                        </svg>
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.75rem; text-align: center;">
+                        <strong>Key NESA Feature:</strong> In static equilibrium, the forward rate drops to zero as limiting reactants are completely consumed, and the reverse rate remains zero throughout. Both rates flatline at $r = 0$.
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 4: REAL-WORLD CHEMICAL & PHYSICAL EXAMPLES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>4. Real-World Exemplars of Chemical & Physical Systems</h2>
+                    <span class="pill-badge">HSC Syllabus Depth</span>
+                </div>
+
+                <p>
+                    NESA syllabus directives require students to analyse specific chemical and physical examples for both dynamic and static equilibrium states.
+                </p>
+
+                <h3>Category A: Dynamic Equilibrium Exemplars</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>1. Liquid–Vapour Phase Equilibrium</h3>
+                        <p><strong>System:</strong> Water in a stoppered conical flask at constant temperature.</p>
+                        $$\mathrm{H_2O(l) \rightleftharpoons H_2O(g)}$$
+                        <p>
+                            In a closed container, liquid water vaporises into the air space above it. As gaseous water vapour accumulates, the rate of condensation ($r_{\mathrm{cond}}$) increases until it equals the rate of evaporation ($r_{\mathrm{evap}}$). Liquid level and vapour pressure remain constant, but water molecules continuously cycle between phase states.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>2. Saturated Solution Equilibrium</h3>
+                        <p><strong>System:</strong> Undissolved solid sodium chloride in contact with a saturated solution.</p>
+                        $$\mathrm{NaCl(s) \rightleftharpoons Na^+(aq) + Cl^-(aq)}$$
+                        <p>
+                            Solid $\mathrm{NaCl}$ dissolves into aqueous ions at rate $r_{\mathrm{dissolution}}$. Simultaneously, dissolved $\mathrm{Na}^+$ and $\mathrm{Cl}^-$ ions collide with the solid crystal lattice and precipitate out at rate $r_{\mathrm{crystallisation}}$. When $r_{\mathrm{dissolution}} = r_{\mathrm{crystallisation}}$, mass of undissolved solid and ion concentration remain constant.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>3. Dinitrogen Tetroxide Gas Equilibrium</h3>
+                        <p><strong>System:</strong> Colourless $\mathrm{N_2O_4}$ gas decomposing into brown $\mathrm{NO_2}$ gas in a sealed syringe.</p>
+                        $$\mathrm{\underset{(Colourless)}{N_2O_4(g)} \rightleftharpoons \underset{(Brown)}{2NO_2(g)}}$$
+                        <p>
+                            $\mathrm{N_2O_4}$ breaks down to form brown $\mathrm{NO_2}$. As $[\mathrm{NO_2}]$ builds up, two $\mathrm{NO_2}$ molecules collide to reform $\mathrm{N_2O_4}$. At equilibrium, the intensity of the brown colour remains perfectly constant, showing macroscopically frozen visual properties while microscopic interconversion continues at equal rates.
+                        </p>
+                    </div>
+                </div>
+
+                <h3>Category B: Static Equilibrium Exemplars</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>1. Irreversible Complete Reactions</h3>
+                        <p><strong>System:</strong> Combustion of magnesium ribbon in oxygen.</p>
+                        $$\mathrm{2Mg(s) + O_2(g) \rightarrow 2MgO(s)}$$
+                        <p>
+                            Once all magnesium ribbon is consumed, the reaction stops entirely. The forward reaction rate drops to zero ($r_{\mathrm{f}} = 0$). Magnesium oxide does not spontaneously decompose back into magnesium and oxygen gas ($r_{\mathrm{r}} = 0$). The system reaches static equilibrium where macroscopically nothing changes because microscopic chemical activity has completely ceased.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>2. Solid Carbon Allotrope Conversion</h3>
+                        <p><strong>System:</strong> Diamond transforming into Graphite at standard ambient temperature and pressure.</p>
+                        $$\mathrm{C(diamond) \rightarrow C(graphite)}$$
+                        <p>
+                            Although graphite is thermodynamically more stable than diamond ($\Delta G^\circ < 0$), the activation energy barrier for breaking covalent network tetrahedral bonds is extremely high. At room temperature, the rate of transformation is practically zero ($r_{\mathrm{f}} \approx 0, r_{\mathrm{r}} \approx 0$). The system remains locked in a static equilibrium state.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 5: INTERACTIVE LABORATORY SIMULATOR -->
+            <section class="card glass-card demo-card">
+                <div class="card-header">
+                    <h2>5. Interactive Equilibrium Kinetics Simulator</h2>
+                    <span class="pill-badge demo-pill">Virtual Kinetics Sandbox</span>
+                </div>
+                <p>
+                    Select a system boundary mode and adjust initial species counts and collision probabilities to observe real-time collision dynamics, micro-particle interconversion, live rate curves, and concentration plateaus.
+                </p>
+
+                <div class="sim-container">
+                    <div class="sim-mode-selector">
+                        <button class="sim-mode-btn active" id="mode-dynamic" onclick="setSimMode('dynamic')">Dynamic Equilibrium (Closed System)</button>
+                        <button class="sim-mode-btn" id="mode-static" onclick="setSimMode('static')">Static Equilibrium (100% Complete)</button>
+                        <button class="sim-mode-btn" id="mode-open" onclick="setSimMode('open')">Open System (Mass Loss)</button>
+                    </div>
+
+                    <div class="sim-controls">
+                        <div class="control-group">
+                            <label>Initial Reactants [A]: <span id="lbl-init-a">100</span></label>
+                            <input type="range" id="slider-init-a" min="20" max="200" value="100" oninput="updateSimParams()">
+                        </div>
+
+                        <div class="control-group">
+                            <label>Initial Products [B]: <span id="lbl-init-b">0</span></label>
+                            <input type="range" id="slider-init-b" min="0" max="100" value="0" oninput="updateSimParams()">
+                        </div>
+
+                        <div class="control-group">
+                            <label>Forward Collision Prob: <span id="lbl-kf">0.050</span></label>
+                            <input type="range" id="slider-kf" min="0.005" max="0.1" step="0.005" value="0.05" oninput="updateSimParams()">
+                        </div>
+
+                        <div class="control-group">
+                            <label>Reverse Collision Prob: <span id="lbl-kr">0.020</span></label>
+                            <input type="range" id="slider-kr" min="0.000" max="0.1" step="0.005" value="0.02" oninput="updateSimParams()">
+                        </div>
+                    </div>
+
+                    <div class="sim-btn-row">
+                        <button class="btn btn-ethereal" id="btn-play-pause" onclick="toggleSim()">▶ Start Simulation</button>
+                        <button class="btn btn-outline" onclick="resetSim()">🔄 Reset System</button>
+                    </div>
+
+                    <div class="sim-viewports">
+                        <div class="sim-box">
+                            <h4 style="font-size: 0.85rem; color: var(--accent-cyan); margin-bottom: 0.5rem;">MICROSCOPIC MOLECULAR CHAMBER</h4>
+                            <canvas id="particle-canvas" width="340" height="240"></canvas>
+                        </div>
+
+                        <div class="sim-box">
+                            <h4 style="font-size: 0.85rem; color: var(--accent-cyan); margin-bottom: 0.5rem;">LIVE CONCENTRATION & RATE CURVES</h4>
+                            <canvas id="live-graph-canvas" width="340" height="240"></canvas>
+                        </div>
+
+                        <div class="telemetry-panel">
+                            <div class="telemetry-item">
+                                <span class="telemetry-label">Reactants [A]</span>
+                                <span class="telemetry-value" id="val-a" style="color: #38bdf8;">100</span>
+                            </div>
+                            <div class="telemetry-item">
+                                <span class="telemetry-label">Products [B]</span>
+                                <span class="telemetry-value" id="val-b" style="color: #4ade80;">0</span>
+                            </div>
+                            <div class="telemetry-item">
+                                <span class="telemetry-label">Forward Rate ($r_f$)</span>
+                                <span class="telemetry-value" id="val-rf" style="color: #38bdf8;">5.00</span>
+                            </div>
+                            <div class="telemetry-item">
+                                <span class="telemetry-label">Reverse Rate ($r_r$)</span>
+                                <span class="telemetry-value" id="val-rr" style="color: #e879f9;">0.00</span>
+                            </div>
+                            <div class="telemetry-item">
+                                <span class="telemetry-label">System State</span>
+                                <span class="telemetry-value" id="val-state" style="color: #facc15;">INITIAL UNBALANCED</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 6: WORKED EXAMPLES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>6. Worked Examples (SCAFFOLDED NESA EXAM SOLUTIONS)</h2>
+                    <span class="pill-badge">HSC Step-by-Step Solutions</span>
+                </div>
+
+                <!-- Example 1: Easy -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 1 (Easy): Classifying Physical & Chemical Equilibrium</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Classify each of the following scenarios as either a dynamic equilibrium, a static equilibrium, or a non-equilibrium state:
+                        <br>a) A sealed bottle of sparkling water kept in a refrigerator at constant temperature.
+                        <br>b) Complete combustion of propane gas ($\mathrm{C_3H_8}$) in excess oxygen in an open barbecue grill.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>a) Dynamic Equilibrium:</strong> The sealed bottle is a closed system containing dissolved carbon dioxide gas and gaseous carbon dioxide in the headspace ($\mathrm{CO_{2}(aq) \rightleftharpoons CO_{2}(g)}$). Dissolution and gas release occur at equal, non-zero rates ($r_{\mathrm{f}} = r_{\mathrm{r}} > 0$).</p>
+                        <p><strong>b) Non-Equilibrium State (Irreversible Completion):</strong> Combustion of propane is an irreversible reaction ($\mathrm{C_3H_8 + 5O_2 \rightarrow 3CO_2 + 4H_2O}$) in an open system where products escape into the air. Once fuel is depleted, rates drop to zero ($r_{\mathrm{f}} = r_{\mathrm{r}} = 0$).</p>
+                    </div>
+                </div>
+
+                <!-- Example 2: Medium -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 2 (Medium): Interpreting Equilibrium Rate Graphs</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A student recorded the forward and reverse rates of a gas reaction $\mathrm{2X(g) \rightleftharpoons Y(g)}$ inside a $1.0\text{ L}$ rigid sealed container over $10\text{ minutes}$.
+                        <br>• At $t = 0\text{ min}$, $r_{\mathrm{forward}} = 0.80\text{ mol L}^{-1}\text{s}^{-1}$ and $r_{\mathrm{reverse}} = 0$.
+                        <br>• At $t = 4\text{ min}$, $r_{\mathrm{forward}} = 0.35\text{ mol L}^{-1}\text{s}^{-1}$ and $r_{\mathrm{reverse}} = 0.35\text{ mol L}^{-1}\text{s}^{-1}$.
+                        <br>• At $t = 8\text{ min}$, $r_{\mathrm{forward}} = 0.35\text{ mol L}^{-1}\text{s}^{-1}$ and $r_{\mathrm{reverse}} = 0.35\text{ mol L}^{-1}\text{s}^{-1}$.
+                        <br>Explain what state the system reaches at $t = 4\text{ min}$ and justify why concentration remains constant between $t = 4\text{ min}$ and $t = 8\text{ min}$.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. System State Identification:</strong> At $t = 4\text{ min}$, the system reaches <strong>dynamic equilibrium</strong> because $r_{\mathrm{forward}} = r_{\mathrm{reverse}} = 0.35\text{ mol L}^{-1}\text{s}^{-1} > 0$.</p>
+                        <p><strong>2. Justification using Kinetics:</strong> Between $t = 4\text{ min}$ and $t = 8\text{ min}$, species $\mathrm{X}$ is being consumed by the forward reaction at the exact same rate ($0.35\text{ mol L}^{-1}\text{s}^{-1}$) that it is being produced by the reverse reaction. Because the rate of formation equals the rate of consumption, the net rate of change for all concentrations is zero ($\frac{\mathrm{d}[\mathrm{X}]}{\mathrm{d}t} = 0$). Thus, concentrations remain strictly constant over this time interval.</p>
+                    </div>
+                </div>
+
+                <!-- Example 3: Hard -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 3 (Hard): Radioactive Isotope Tracer Proof of Dynamic Equilibrium</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A chemist prepares a saturated solution of sodium chloride ($\mathrm{NaCl}$) in contact with undissolved solid $\mathrm{NaCl(s)}$ at $25^\circ\text{C}$.
+                        <br>She then adds a tiny quantity of solid radioactive sodium chloride containing the isotope Chlorine-36 ($\mathrm{Na^{36}Cl(s)}$) to the flask without altering the temperature or liquid volume.
+                        <br>Predict and explain what will happen to the radioactivity level in the liquid solution over time, and explain how this experiment proves that the saturated solution is in dynamic equilibrium rather than static equilibrium.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Prediction:</strong> The radioactivity level in the aqueous solution will initially be zero, but will continuously increase over time until it reaches a constant, stable maximum reading.</p>
+                        <p><strong>2. Microscopic Dynamic Explanation:</strong> In a saturated solution, dynamic dissolution equilibrium exists between undissolved solid crystal lattice and dissolved ions:
+                        $$\mathrm{NaCl(s) \rightleftharpoons Na^+(aq) + Cl^-(aq)}$$
+                        Because the system is in dynamic equilibrium ($r_{\mathrm{dissolution}} = r_{\mathrm{crystallisation}} > 0$), solid radioactive $\mathrm{Na^{36}Cl(s)}$ dissolves into the liquid phase at rate $r_{\mathrm{dissolution}}$. Simultaneously, non-radioactive ions in solution crystallise back onto the solid lattice at rate $r_{\mathrm{crystallisation}}$.</p>
+                        <p><strong>3. Proof of Dynamic vs Static State:</strong> If the equilibrium were static ($r_{\mathrm{dissolution}} = r_{\mathrm{crystallisation}} = 0$), no radioactive $\mathrm{^{36}Cl^-}$ ions could enter the liquid phase, and the solution would remain non-radioactive indefinitely. The continuous appearance and redistribution of radioactivity in the aqueous phase proves conclusively that dissolution and crystallisation are ongoing microscopic processes occurring at equal rates.</p>
+                    </div>
+                </div>
+
+                <!-- Example 4: HSC Exam Challenge -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 4 (HSC Exam Challenge): Stoichiometry, Vessel Boundaries, and Static vs Dynamic Equilibrium</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A chemistry student investigates the thermal decomposition of solid calcium carbonate in two separate $2.00\text{ L}$ vessels at $800^\circ\text{C}$:
+                        $$\mathrm{CaCO_3(s) \rightleftharpoons CaO(s) + CO_2(g)}$$
+                        • Vessel 1 is an unsealed, open vessel containing an initial $10.0\text{ g}$ sample of $\mathrm{CaCO_3(s)}$.
+                        <br>• Vessel 2 is a sealed, rigid $2.00\text{ L}$ vessel containing an initial $10.0\text{ g}$ sample of $\mathrm{CaCO_3(s)}$.
+                        <br><br>After heating both vessels for 60 minutes:
+                        <br>• In Vessel 1, the mass of remaining solid is $5.60\text{ g}$ and remains constant thereafter.
+                        <br>• In Vessel 2, the mass of remaining solid is $7.50\text{ g}$ and remains constant thereafter.
+                        <br><br>a) Calculate the mass of $\mathrm{CO_2(g)}$ produced in Vessel 1 at the end of 60 minutes, and identify the equilibrium state (static, dynamic, or non-equilibrium) reached in Vessel 1. Justify your answer. (2 Marks)
+                        <br>b) Account for why Vessel 2 contains a larger mass of remaining solid ($7.50\text{ g}$) than Vessel 1 ($5.60\text{ g}$), and explain using collision theory how Vessel 2 established dynamic equilibrium rather than static equilibrium. (3 Marks)
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>a) Mass Calculation & Vessel 1 State:</strong></p>
+                        <p>Molar mass of $\mathrm{CaCO_3} = 40.08 + 12.01 + 3(16.00) = 100.09\text{ g mol}^{-1}$.
+                        <br>Molar mass of $\mathrm{CaO} = 40.08 + 16.00 = 56.08\text{ g mol}^{-1}$.
+                        <br>Initial moles of $\mathrm{CaCO_3} = \frac{10.0\text{ g}}{100.09\text{ g mol}^{-1}} = 0.09991\text{ mol}$.
+                        <br>If all $\mathrm{CaCO_3}$ decomposes completely: mass of $\mathrm{CaO}$ formed = $0.09991\text{ mol} \times 56.08\text{ g mol}^{-1} = 5.603\text{ g} \approx 5.60\text{ g}$.
+                        <br>Because the remaining solid in Vessel 1 is exactly $5.60\text{ g}$, $100\%$ of the $10.0\text{ g}$ sample decomposed into $\mathrm{CaO(s)}$ solid.
+                        <br>Mass of $\mathrm{CO_2(g)}$ evolved and lost = $10.0\text{ g} - 5.60\text{ g} = 4.40\text{ g}$.
+                        <br><strong>Equilibrium State:</strong> Vessel 1 has reached a <strong>non-equilibrium complete completion state (or static state)</strong>. Because the open system allowed $\mathrm{CO_2(g)}$ to escape freely, no product gas remained to undergo reverse collisions. Once all $\mathrm{CaCO_3}$ was consumed, $r_{\mathrm{forward}} = r_{\mathrm{reverse}} = 0$.</p>
+
+                        <p><strong>b) Analysis of Vessel 2 (Closed System Dynamic Equilibrium):</strong></p>
+                        <p>In Vessel 2, the sealed container prevented $\mathrm{CO_2(g)}$ from escaping ($\Delta m = 0$). As $\mathrm{CO_2(g)}$ gas accumulated inside the sealed space, collision frequency between gaseous $\mathrm{CO_2}$ and solid $\mathrm{CaO}$ increased, initiating the reverse reaction.
+                        <br>Equilibrium was reached when the rate of reverse recombination matched the rate of forward decomposition ($r_{\mathrm{forward}} = r_{\mathrm{reverse}} > 0$). At this point, net decomposition stopped, leaving $7.50\text{ g}$ of solid mixture ($5.69\text{ g}$ decomposed $\mathrm{CaCO_3}$ and $4.31\text{ g}$ unreacted $\mathrm{CaCO_3}$). In contrast, Vessel 1 proceeded to $100\%$ completion ($5.60\text{ g}$ solid remaining) because continuous product escape prevented reverse collisions from occurring.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 7: PRACTICE QUESTIONS WITH RUBRICS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>7. NESA Examination Practice Questions</h2>
+                    <span class="pill-badge demo-pill">Self-Marking Engine</span>
+                </div>
+                <p>Test your knowledge under timed conditions. Reveal hints and complete NESA marking guidelines to evaluate your responses.</p>
+
+                <!-- Practice Q1 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 1 (Easy): Distinguishing Equilibrium Types</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Distinguish between static equilibrium and dynamic equilibrium in terms of microscopic processes and forward/reverse reaction rates.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq1-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq1-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq1-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Focus on whether microscopic chemical interconversion is still occurring, and express the relationship between $r_{\mathrm{f}}$ and $r_{\mathrm{r}}$ using mathematical symbols ($> 0$ vs $= 0$).</p>
+                    </div>
+
+                    <div id="pq1-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong> In a dynamic equilibrium, microscopic forward and reverse processes continue constantly at equal, non-zero rates ($r_{\mathrm{f}} = r_{\mathrm{r}} > 0$). In contrast, in a static equilibrium, all microscopic chemical interconversions have completely ceased, and both forward and reverse reaction rates drop to zero ($r_{\mathrm{f}} = r_{\mathrm{r}} = 0$). Both states exhibit constant macroscopic properties.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>2 Marks:</strong> Correctly contrasts microscopic activity AND rate equations ($r_{\mathrm{f}} = r_{\mathrm{r}} > 0$ vs $r_{\mathrm{f}} = r_{\mathrm{r}} = 0$) for both systems.</li>
+                                <li><strong>1 Mark:</strong> Provides a partial description without explicitly contrasting rates or microscopic details.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q2 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 2 (Medium): Macroscopic Constancy via Collision Theory</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Explain, using collision theory, why the colour intensity of a sealed flask containing $\mathrm{N_2O_4(g) \rightleftharpoons 2NO_2(g)}$ remains completely unchanged once dynamic equilibrium is established.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq2-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq2-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq2-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Connect the colour intensity directly to the concentration of brown $\mathrm{NO_2(g)}$ molecules and state why $[\mathrm{NO_2}]$ stops changing in terms of collision frequency.</p>
+                    </div>
+
+                    <div id="pq2-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong> Colour intensity depends directly on the concentration of brown $\mathrm{NO_2(g)}$ molecules inside the vessel. At dynamic equilibrium, the forward collision rate of colourless $\mathrm{N_2O_4}$ molecules breaking apart equals the reverse collision rate of brown $\mathrm{NO_2}$ molecules recombining ($r_{\mathrm{forward}} = r_{\mathrm{reverse}}$). Because $\mathrm{NO_2}$ is produced and consumed at identical rates, its net concentration remains perfectly constant ($\Delta [\mathrm{NO_2}] = 0$). Consequently, the macroscopic colour intensity remains completely unchanged over time.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>3 Marks:</strong> Identifies $\mathrm{NO_2}$ as the coloured species, links constant colour to equal forward and reverse collision rates, and concludes net rate of concentration change is zero.</li>
+                                <li><strong>2 Marks:</strong> Connects equilibrium to equal rates, but omits explicit collision theory phrasing or concentration details.</li>
+                                <li><strong>1 Mark:</strong> States that colour is constant because the system is at equilibrium.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q3 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 3 (Hard): Graph Analysis & Misconception Evaluation</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A student draws a concentration vs time graph for a reaction $\mathrm{A(g) \rightleftharpoons B(g)}$ where the curve for reactant $\mathrm{A}$ decreases and crosses the curve for product $\mathrm{B}$ at $t = 3\text{ minutes}$. The student claims: <em>"The reaction reached dynamic equilibrium at $t = 3\text{ minutes}$ because the concentration lines intersect."</em>
+                        <br>Evaluate the student's statement, correct any errors, and describe what feature on a concentration graph actually indicates the achievement of equilibrium.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq3-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq3-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq3-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> What does an intersection point on a concentration graph signify? Is $[\mathrm{A}] = [\mathrm{B}]$ required for equilibrium?</p>
+                    </div>
+
+                    <div id="pq3-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Evaluation:</strong> The student's claim is incorrect.</p>
+                            <p><strong>Correction:</strong> The intersection point at $t = 3\text{ minutes}$ merely indicates the moment when $[\mathrm{A}] = [\mathrm{B}]$. Dynamic equilibrium does NOT require reactant and product concentrations to be equal; it only requires forward and reverse reaction rates to be equal ($r_{\mathrm{f}} = r_{\mathrm{r}}$).</p>
+                            <p><strong>Identifying Feature on Graph:</strong> On a concentration vs time graph, dynamic equilibrium is indicated when concentration curves for all species become completely horizontal (plateau), showing that concentrations have become constant over time ($\frac{\mathrm{d}C}{\mathrm{d}t} = 0$). This horizontal plateau occurs after $t = 3\text{ minutes}$ when rates equilibrate.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>4 Marks:</strong> Correctly evaluates statement as false; explains that curve intersection means $[\mathrm{A}]=[\mathrm{B}]$ not $r_f=r_r$; clarifies that concentrations need only be constant; explicitly identifies horizontal plateaus as the true graphical marker.</li>
+                                <li><strong>2-3 Marks:</strong> Identifies that concentrations do not need to be equal, but gives an incomplete explanation of graphical plateaus.</li>
+                                <li><strong>1 Mark:</strong> States that the student is wrong without clear justification.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation Footer -->
+            <footer class="content-footer">
+                <a href="02-open-closed-systems.html" class="btn btn-outline">&larr; Back to Lesson 02</a>
+                <a href="04-non-equilibrium-systems.html" class="btn btn-ethereal">
+                    Proceed to Lesson 04: Non-Equilibrium Systems &rarr;
+                </a>
+            </footer>
+        </main>
+    </div>
+
+    <!-- SIMULATOR LOGIC (JAVASCRIPT) -->
+    <script>
+        // Interactive Simulator Engine
+        let simRunning = false;
+        let simInterval = null;
+        let simMode = 'dynamic'; // 'dynamic', 'static', or 'open'
+
+        // System Variables
+        let countA = 100;
+        let countB = 0;
+        let kf = 0.05;
+        let kr = 0.02;
+
+        // Canvas Graphics Setup
+        const particleCanvas = document.getElementById('particle-canvas');
+        const pCtx = particleCanvas.getContext('2d');
+
+        const graphCanvas = document.getElementById('live-graph-canvas');
+        const gCtx = graphCanvas.getContext('2d');
+
+        // History Data Arrays
+        let historyA = [];
+        let historyB = [];
+        let historyRf = [];
+        let historyRr = [];
+        const maxHistoryLen = 100;
+
+        let particles = [];
+
+        class Particle {
+            constructor(type) {
+                this.type = type; // 'A' or 'B'
+                this.x = Math.random() * (particleCanvas.width - 20) + 10;
+                this.y = Math.random() * (particleCanvas.height - 20) + 10;
+                this.vx = (Math.random() - 0.5) * 3;
+                this.vy = (Math.random() - 0.5) * 3;
+                this.radius = 4;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Bounce off boundaries
+                if (this.x < this.radius || this.x > particleCanvas.width - this.radius) this.vx *= -1;
+                if (this.y < this.radius || this.y > particleCanvas.height - this.radius) this.vy *= -1;
+            }
+
+            draw() {
+                pCtx.beginPath();
+                pCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                pCtx.fillStyle = this.type === 'A' ? '#38bdf8' : '#4ade80';
+                pCtx.shadowBlur = 8;
+                pCtx.shadowColor = this.type === 'A' ? '#38bdf8' : '#4ade80';
+                pCtx.fill();
+                pCtx.shadowBlur = 0;
+            }
+        }
+
+        function setSimMode(mode) {
+            simMode = mode;
+            document.querySelectorAll('.sim-mode-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`mode-${mode}`).classList.add('active');
+
+            if (mode === 'static') {
+                document.getElementById('slider-kr').value = 0.000;
+            } else if (mode === 'dynamic') {
+                document.getElementById('slider-kr').value = 0.020;
+            } else if (mode === 'open') {
+                document.getElementById('slider-kr').value = 0.000;
+            }
+            updateSimParams();
+        }
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < countA; i++) particles.push(new Particle('A'));
+            for (let i = 0; i < countB; i++) particles.push(new Particle('B'));
+        }
+
+        function updateSimParams() {
+            countA = parseInt(document.getElementById('slider-init-a').value);
+            countB = parseInt(document.getElementById('slider-init-b').value);
+            kf = parseFloat(document.getElementById('slider-kf').value);
+            kr = parseFloat(document.getElementById('slider-kr').value);
+
+            document.getElementById('lbl-init-a').innerText = countA;
+            document.getElementById('lbl-init-b').innerText = countB;
+            document.getElementById('lbl-kf').innerText = kf.toFixed(3);
+            document.getElementById('lbl-kr').innerText = kr.toFixed(3);
+
+            if (!simRunning) resetSim();
+        }
+
+        function toggleSim() {
+            const btn = document.getElementById('btn-play-pause');
+            if (simRunning) {
+                simRunning = false;
+                clearInterval(simInterval);
+                btn.innerHTML = '▶ Resume Simulation';
+                btn.className = 'btn btn-ethereal';
+            } else {
+                simRunning = true;
+                simInterval = setInterval(stepSimulation, 100);
+                btn.innerHTML = '⏸ Pause Simulation';
+                btn.className = 'btn btn-outline';
+            }
+        }
+
+        function resetSim() {
+            simRunning = false;
+            clearInterval(simInterval);
+            document.getElementById('btn-play-pause').innerHTML = '▶ Start Simulation';
+            document.getElementById('btn-play-pause').className = 'btn btn-ethereal';
+
+            countA = parseInt(document.getElementById('slider-init-a').value);
+            countB = parseInt(document.getElementById('slider-init-b').value);
+
+            historyA = [countA];
+            historyB = [countB];
+            historyRf = [countA * kf];
+            historyRr = [countB * kr];
+
+            initParticles();
+            renderParticles();
+            renderGraph();
+            updateTelemetry(countA, countB, countA * kf, countB * kr);
+        }
+
+        function stepSimulation() {
+            let rf = countA * kf;
+            let rr = simMode === 'dynamic' ? countB * kr : 0;
+
+            let numConvertedA = 0;
+            let numConvertedB = 0;
+
+            for (let i = 0; i < countA; i++) {
+                if (Math.random() < kf) numConvertedA++;
+            }
+
+            if (simMode === 'dynamic') {
+                for (let i = 0; i < countB; i++) {
+                    if (Math.random() < kr) numConvertedB++;
+                }
+            } else if (simMode === 'open') {
+                // In open mode, product particles escape the vessel
+                countB = Math.max(0, countB - Math.floor(countB * 0.1));
+            }
+
+            countA = Math.max(0, countA - numConvertedA + numConvertedB);
+            countB = Math.max(0, countB + numConvertedA - numConvertedB);
+
+            // Synchronise particles array
+            let currentA = particles.filter(p => p.type === 'A').length;
+            if (countA < currentA) {
+                let toRemove = currentA - countA;
+                for (let p of particles) {
+                    if (p.type === 'A' && toRemove > 0) { p.type = 'B'; toRemove--; }
+                }
+            } else if (countA > currentA) {
+                let toAdd = countA - currentA;
+                for (let p of particles) {
+                    if (p.type === 'B' && toAdd > 0) { p.type = 'A'; toAdd--; }
+                }
+            }
+
+            historyA.push(countA);
+            historyB.push(countB);
+            historyRf.push(rf);
+            historyRr.push(rr);
+
+            if (historyA.length > maxHistoryLen) {
+                historyA.shift(); historyB.shift();
+                historyRf.shift(); historyRr.shift();
+            }
+
+            renderParticles();
+            renderGraph();
+            updateTelemetry(countA, countB, rf, rr);
+        }
+
+        function renderParticles() {
+            pCtx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
+            for (let p of particles) {
+                p.update();
+                p.draw();
+            }
+        }
+
+        function renderGraph() {
+            gCtx.clearRect(0, 0, graphCanvas.width, graphCanvas.height);
+
+            // Draw Axes Grid
+            gCtx.strokeStyle = 'rgba(255,255,255,0.1)';
+            gCtx.lineWidth = 1;
+            gCtx.beginPath();
+            gCtx.moveTo(30, 10); gCtx.lineTo(30, 210);
+            gCtx.moveTo(30, 210); gCtx.lineTo(330, 210);
+            gCtx.stroke();
+
+            if (historyA.length < 2) return;
+
+            // Draw [A] Curve (Cyan)
+            gCtx.strokeStyle = '#38bdf8';
+            gCtx.lineWidth = 2;
+            gCtx.beginPath();
+            for (let i = 0; i < historyA.length; i++) {
+                let x = 30 + (i / maxHistoryLen) * 300;
+                let y = 210 - (historyA[i] / 200) * 190;
+                if (i === 0) gCtx.moveTo(x, y);
+                else gCtx.lineTo(x, y);
+            }
+            gCtx.stroke();
+
+            // Draw [B] Curve (Green)
+            gCtx.strokeStyle = '#4ade80';
+            gCtx.lineWidth = 2;
+            gCtx.beginPath();
+            for (let i = 0; i < historyB.length; i++) {
+                let x = 30 + (i / maxHistoryLen) * 300;
+                let y = 210 - (historyB[i] / 200) * 190;
+                if (i === 0) gCtx.moveTo(x, y);
+                else gCtx.lineTo(x, y);
+            }
+            gCtx.stroke();
+        }
+
+        function updateTelemetry(ca, cb, rf, rr) {
+            document.getElementById('val-a').innerText = ca;
+            document.getElementById('val-b').innerText = cb;
+            document.getElementById('val-rf').innerText = rf.toFixed(2);
+            document.getElementById('val-rr').innerText = rr.toFixed(2);
+
+            const stateElem = document.getElementById('val-state');
+            const diff = Math.abs(rf - rr);
+
+            if (simMode === 'dynamic' && diff < 0.25 && (rf > 0.05)) {
+                stateElem.innerText = 'DYNAMIC EQUILIBRIUM (CLOSED)';
+                stateElem.style.color = '#38bdf8';
+            } else if (simMode === 'static' || (ca === 0 && rf === 0)) {
+                stateElem.innerText = 'STATIC EQUILIBRIUM (COMPLETE)';
+                stateElem.style.color = '#f87171';
+            } else if (simMode === 'open') {
+                stateElem.innerText = 'OPEN SYSTEM (MASS LOSS)';
+                stateElem.style.color = '#e879f9';
+            } else {
+                stateElem.innerText = 'APPROACHING EQUILIBRIUM';
+                stateElem.style.color = '#facc15';
+            }
+        }
+
+        function toggleElement(id) {
+            const el = document.getElementById(id);
+            if (el.style.display === 'none' || el.style.display === '') {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            resetSim();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1777 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20 Solubility Rules & Precipitation | Module 5 Chemistry</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- MathJax 3 Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <style>
+        /* Ethereal Glassmorphism Custom UI Extensions */
+        :root {
+            --bg-dark: #080c14;
+            --bg-card: rgba(15, 23, 42, 0.75);
+            --bg-card-hover: rgba(30, 41, 59, 0.85);
+            --border-glow: rgba(124, 58, 237, 0.3);
+            --border-light: rgba(255, 255, 255, 0.08);
+            --border-cyan: rgba(6, 182, 212, 0.35);
+            --border-emerald: rgba(16, 185, 129, 0.35);
+            --accent-purple: #a78bfa;
+            --accent-cyan: #38bdf8;
+            --accent-emerald: #34d399;
+            --accent-amber: #fbbf24;
+            --accent-rose: #f43f5e;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-secondary: #cbd5e1;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'Fira Code', 'Cascadia Code', Consolas, monospace;
+            --shadow-glow: 0 0 30px rgba(124, 58, 237, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(124, 58, 237, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 90% 85%, rgba(6, 182, 212, 0.1) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.95) 0%, var(--bg-dark) 100%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.8;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 320px;
+            background: rgba(11, 15, 25, 0.92);
+            border-right: 1px solid var(--border-light);
+            backdrop-filter: blur(16px);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 2rem 1.5rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .badge-glow {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            color: var(--accent-purple);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.4rem;
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .sidebar-header .subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+
+        .progress-container {
+            margin-top: 1.25rem;
+            background: rgba(255, 255, 255, 0.06);
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            border-radius: 3px;
+        }
+
+        .score-card {
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav-menu {
+            padding: 1.25rem 1rem;
+        }
+
+        .nav-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            padding: 0 0.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 0.65rem 0.75rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            margin-bottom: 0.25rem;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            transform: translateX(3px);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(90deg, rgba(124, 58, 237, 0.25), rgba(6, 182, 212, 0.1));
+            border-left: 3px solid var(--accent-purple);
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+
+        .nav-num {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            margin-right: 0.75rem;
+            opacity: 0.7;
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            margin-left: 320px;
+            flex: 1;
+            padding: 2.5rem 3rem;
+            max-width: 1250px;
+        }
+
+        .hero-banner {
+            position: relative;
+            background: linear-gradient(135deg, rgba(24, 16, 48, 0.85) 0%, rgba(15, 23, 42, 0.95) 100%);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2.5rem;
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .ethereal-tag {
+            font-family: var(--font-mono);
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .ethereal-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin: 0.5rem 0 1rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ethereal-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 880px;
+        }
+
+        /* Content Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 2.25rem;
+            margin-bottom: 2.5rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            transition: border-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(124, 58, 237, 0.35);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.75rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .card-header h2 {
+            font-size: 1.6rem;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .pill-badge {
+            padding: 0.35rem 0.85rem;
+            background: rgba(124, 58, 237, 0.12);
+            border: 1px solid var(--border-glow);
+            color: var(--accent-purple);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pill-badge.emerald {
+            background: rgba(16, 185, 129, 0.12);
+            border-color: var(--border-emerald);
+            color: var(--accent-emerald);
+        }
+
+        .pill-badge.cyan {
+            background: rgba(56, 189, 248, 0.12);
+            border-color: var(--border-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .pill-badge.amber {
+            background: rgba(251, 191, 36, 0.12);
+            border-color: rgba(251, 191, 36, 0.35);
+            color: var(--accent-amber);
+        }
+
+        .pill-badge.rose {
+            background: rgba(244, 63, 94, 0.12);
+            border-color: rgba(244, 63, 94, 0.35);
+            color: var(--accent-rose);
+        }
+
+        /* Typography & Paragraphs */
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        strong {
+            color: #fff;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: var(--accent-purple);
+            margin: 1.85rem 0 0.85rem;
+            font-weight: 700;
+        }
+
+        h4 {
+            font-size: 1.12rem;
+            color: #fff;
+            margin: 1.35rem 0 0.55rem;
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin: 0 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.75rem;
+            padding-left: 0.25rem;
+        }
+
+        /* Grids & Feature Layouts */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-glow);
+        }
+
+        .feature-card h3 {
+            margin: 0 0 0.5rem 0;
+            color: #fff;
+        }
+
+        /* Callout Boxes */
+        .info-box {
+            background: rgba(124, 58, 237, 0.08);
+            border-left: 4px solid var(--accent-purple);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 1.35rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-box.cyan {
+            background: rgba(56, 189, 248, 0.08);
+            border-left-color: var(--accent-cyan);
+        }
+
+        .info-box.emerald {
+            background: rgba(52, 211, 153, 0.08);
+            border-left-color: var(--accent-emerald);
+        }
+
+        .info-box.amber {
+            background: rgba(251, 191, 36, 0.08);
+            border-left-color: var(--accent-amber);
+        }
+
+        .info-box.rose {
+            background: rgba(244, 63, 94, 0.08);
+            border-left-color: var(--accent-rose);
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+        }
+
+        /* Tables */
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            margin: 1.75rem 0;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-glow);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        table.comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            background: rgba(15, 23, 42, 0.85);
+            font-size: 0.95rem;
+        }
+
+        table.comparison-table th {
+            background: rgba(30, 41, 59, 0.95);
+            color: var(--accent-cyan);
+            padding: 1rem 1.25rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border-glow);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+
+        table.comparison-table td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-main);
+            vertical-align: top;
+        }
+
+        /* SVG Graph Containers */
+        .graph-wrapper {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1.75rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .graph-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .svg-graph-container {
+            width: 100%;
+            max-width: 760px;
+            height: auto;
+        }
+
+        /* Interactive Simulator Module */
+        .sim-container {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            box-shadow: 0 0 35px rgba(124, 58, 237, 0.12);
+        }
+
+        .sim-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+            background: rgba(30, 41, 59, 0.5);
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-group label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .control-group select, .control-group input[type="range"] {
+            width: 100%;
+            padding: 0.55rem 0.75rem;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            font-size: 0.9rem;
+            accent-color: var(--accent-purple);
+        }
+
+        .sim-display-box {
+            background: rgba(10, 15, 28, 0.85);
+            border: 1px solid var(--border-cyan);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .telemetry-panel {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+
+        .telemetry-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .telemetry-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .telemetry-value {
+            font-family: var(--font-mono);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--accent-purple);
+            margin-top: 0.25rem;
+        }
+
+        /* Buttons & Actions */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-ethereal {
+            background: linear-gradient(135deg, #7c3aed, #06b6d4);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-ethereal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.45);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--border-light);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        /* Questions & Rubrics */
+        .question-container {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .marks-badge {
+            background: rgba(244, 63, 94, 0.15);
+            border: 1px solid rgba(244, 63, 94, 0.4);
+            color: var(--accent-rose);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .action-bar {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .drawer {
+            margin-top: 1rem;
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .drawer-hint {
+            background: rgba(251, 191, 36, 0.08);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            color: #fef08a;
+        }
+
+        .drawer-solution {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-glow);
+        }
+
+        .rubric-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--accent-purple);
+        }
+
+        .rubric-box h5 {
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .content-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; padding: 1.5rem; }
+            .grid-2col { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="ethereal-theme">
+    <div class="app-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="badge-glow">NESA Stage 6</span>
+                <h2>Module 5</h2>
+                <p class="subtitle">EQUILIBRIUM & ACID REACTIONS</p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="module-progress" style="width: 80%;"></div>
+                </div>
+                <div class="score-card">
+                    Total Mastery: <span id="total-marks">80</span> / 100 Marks
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-section">
+                    <span class="section-title">INTRODUCTION</span>
+                    <a href="index.html" class="nav-item">
+                        <span class="nav-num">—</span> Home & Guide
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE A: FOUNDATIONS OF EQUILIBRIUM</span>
+                    <a href="01-reversible-reactions.html" class="nav-item"><span class="nav-num">01</span> Reversible vs Irreversible</a>
+                    <a href="02-open-closed-systems.html" class="nav-item"><span class="nav-num">02</span> Open vs Closed Systems</a>
+                    <a href="03-static-dynamic-equilibrium.html" class="nav-item"><span class="nav-num">03</span> Static vs Dynamic Eq</a>
+                    <a href="04-non-equilibrium-systems.html" class="nav-item"><span class="nav-num">04</span> Non-Equilibrium Systems</a>
+                    <a href="05-collision-theory-equilibrium.html" class="nav-item"><span class="nav-num">05</span> Collision Theory in Eq</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE B: FACTORS AFFECTING EQUILIBRIUM</span>
+                    <a href="06-intro-le-chatelier.html" class="nav-item"><span class="nav-num">06</span> Le Chatelier's Principle</a>
+                    <a href="07-effect-of-concentration.html" class="nav-item"><span class="nav-num">07</span> Concentration Changes</a>
+                    <a href="08-effect-of-pressure-volume.html" class="nav-item"><span class="nav-num">08</span> Pressure & Volume</a>
+                    <a href="09-effect-of-temperature.html" class="nav-item"><span class="nav-num">09</span> Temperature Effects</a>
+                    <a href="10-collision-theory-lcp.html" class="nav-item"><span class="nav-num">10</span> Collision Theory & LCP</a>
+                    <a href="11-activation-energy-equilibrium.html" class="nav-item"><span class="nav-num">11</span> Activation Energy & $\Delta H$</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE C: THE EQUILIBRIUM CONSTANT</span>
+                    <a href="12-keq-expression.html" class="nav-item"><span class="nav-num">12</span> The $K_{\mathrm{eq}}$ Expression</a>
+                    <a href="13-keq-calculations-basic.html" class="nav-item"><span class="nav-num">13</span> Basic $K_{\mathrm{eq}}$ Calculations</a>
+                    <a href="14-keq-calculations-advanced.html" class="nav-item"><span class="nav-num">14</span> Advanced $K_{\mathrm{eq}}$ & $Q$</a>
+                    <a href="15-temperature-and-keq.html" class="nav-item"><span class="nav-num">15</span> Temperature & $K_{\mathrm{eq}}$</a>
+                    <a href="16-determining-keq-experiment.html" class="nav-item"><span class="nav-num">16</span> Practical Determination</a>
+                    <a href="17-keq-acid-base-dissociation.html" class="nav-item"><span class="nav-num">17</span> Dissociation Systems</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE D: SOLUTION EQUILIBRIA</span>
+                    <a href="18-dissolution-ionic-compounds.html" class="nav-item"><span class="nav-num">18</span> Ionic Dissolution</a>
+                    <a href="19-indigenous-solubility-cycads.html" class="nav-item"><span class="nav-num">19</span> Indigenous Detoxification</a>
+                    <a href="20-solubility-rules.html" class="nav-item active"><span class="nav-num">20</span> Solubility Rules</a>
+                    <a href="21-solubility-product-ksp.html" class="nav-item"><span class="nav-num">21</span> Solubility Product ($K_{\mathrm{sp}}$)</a>
+                    <a href="22-molar-solubility-calcs.html" class="nav-item"><span class="nav-num">22</span> Molar Solubility Calcs</a>
+                    <a href="23-predicting-precipitation.html" class="nav-item"><span class="nav-num">23</span> Predicting Precipitation</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE E: ASSESSMENT & REVIEW</span>
+                    <a href="24-formula-summary.html" class="nav-item"><span class="nav-num">24</span> Formula & Concept Guide</a>
+                    <a href="25-final-exam.html" class="nav-item"><span class="nav-num">25</span> Final Examination</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="hero-banner">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <span class="ethereal-tag">LESSON 20 • PHASE D: SOLUTION EQUILIBRIA & SOLUBILITY</span>
+                    <h1 class="ethereal-title">Solubility Rules & Precipitation Reactions</h1>
+                    <p class="ethereal-subtitle">Master the NESA Stage 6 solubility rules and ionic precipitation mechanics. Predict compound solubilities using systematic heuristics, construct full formula, complete ionic, and net ionic equations, identify spectator ions, and explore qualitative ion identification protocols.</p>
+                </div>
+            </header>
+
+            <!-- SYLLABUS ALIGNMENT CARD -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>NESA Syllabus Inquiry Focus</h2>
+                    <span class="pill-badge">Stage 6 Chemistry</span>
+                </div>
+                <p>
+                    <strong>Inquiry Question 4:</strong> <em>How does solubility relate to chemical equilibrium?</em>
+                </p>
+                <div class="info-box cyan" style="margin-top: 1rem;">
+                    <h3>Syllabus Outcomes Addressed (Outcome CH-12-01):</h3>
+                    <ul>
+                        <li>Predict the formation of a precipitate when two aqueous ionic solutions are mixed, using standard NESA solubility rules.</li>
+                        <li>Write balanced chemical equations for ionic precipitation reactions, including:
+                            <ul>
+                                <li>Full formula (molecular) equations</li>
+                                <li>Complete ionic equations showing all dissociated mobile ions</li>
+                                <li>Net ionic equations highlighting the essential precipitating species</li>
+                            </ul>
+                        </li>
+                        <li>Identify spectator ions and explain their thermodynamic role as unreactive dissolved species.</li>
+                        <li>Design qualitative precipitation protocols to sequentially separate and identify specific cations and anions in unknown aqueous mixtures.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECTION 1: THE NESA STAGE 6 SOLUBILITY RULES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>1. The NESA Stage 6 Solubility Rules & Mnemonic Framework</h2>
+                    <span class="pill-badge">Core Heuristics</span>
+                </div>
+
+                <p>
+                    In aqueous chemistry, ionic compounds exhibit vastly different degrees of solubility. While some salts dissolve completely to form concentrated solutions ($> 0.1\text{ mol L}^{-1}$), others are so sparingly soluble that mixing their constituent ions immediately produces an insoluble solid compound called a <strong>precipitate</strong>.
+                </p>
+
+                <p>
+                    To accurately predict whether mixing two aqueous electrolyte solutions will yield a precipitate, HSC Chemistry students must memorise and apply the NESA Stage 6 Solubility Rules.
+                </p>
+
+                <div class="info-box purple">
+                    <h3>The NAGSAG Mnemonic for Soluble Compounds</h3>
+                    <p>
+                        The acronym <strong>NAGSAG</strong> summarizes the six main classes of ionic compounds that are <strong>ALWAYS SOLUBLE</strong> in water with very few specific exceptions:
+                    </p>
+                    <ul>
+                        <li><strong>N — Nitrates ($\mathrm{NO_3^-}$):</strong> All nitrate salts are soluble. Zero exceptions!</li>
+                        <li><strong>A — Acetates ($\mathrm{CH_3COO^-}$):</strong> All acetate / ethanoate salts are soluble.</li>
+                        <li><strong>G — Group 1 Alkali Metals ($\mathrm{Li^+}, \mathrm{Na^+}, \mathrm{K^+}, \text{etc.}$):</strong> All alkali metal salts are soluble. Zero exceptions!</li>
+                        <li><strong>S — Sulfates ($\mathrm{SO_4^{2-}}$):</strong> Soluble EXCEPT when paired with $\mathrm{Pb^{2+}}, \mathrm{Ba^{2+}}, \mathrm{Sr^{2+}}, \mathrm{Ca^{2+}}, \mathrm{Ag^+}$ (PMS / Castro Bear exceptions).</li>
+                        <li><strong>A — Ammonium ($\mathrm{NH_4^+}$):</strong> All ammonium salts are soluble. Zero exceptions!</li>
+                        <li><strong>G — Group 17 Halides ($\mathrm{Cl^-}, \mathrm{Br^-}, \mathrm{I^-}$):</strong> Soluble EXCEPT when paired with $\mathrm{Pb^{2+}}$ or $\mathrm{Ag^+}$ (PMS exceptions).</li>
+                    </ul>
+                </div>
+
+                <h3>Comprehensive NESA Stage 6 Solubility Reference Table</h3>
+                <p>
+                    The table below provides the full, formal NESA classification scheme for soluble, sparingly soluble, and insoluble ionic species:
+                </p>
+
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Anion Class</th>
+                                <th>Soluble Compounds (Solubility $> 0.1\text{ M}$)</th>
+                                <th>Insoluble / Precipitating Compounds (Solubility $< 0.01\text{ M}$)</th>
+                                <th>Key HSC Exceptions & Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Nitrates ($\mathrm{NO_3^-}$)</strong></td>
+                                <td><span style="color: var(--accent-emerald); font-weight:700;">ALL soluble</span></td>
+                                <td>None</td>
+                                <td>Nitrates never form precipitates in aqueous solution. Excellent source of soluble cations!</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Acetates ($\mathrm{CH_3COO^-}$)</strong></td>
+                                <td><span style="color: var(--accent-emerald); font-weight:700;">ALL soluble</span></td>
+                                <td>$\mathrm{AgCH_3COO}$ (Slightly soluble)</td>
+                                <td>Essentially all acetates remain fully aqueous in standard reactions.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Halides ($\mathrm{Cl^-}, \mathrm{Br^-}, \mathrm{I^-}$)</strong></td>
+                                <td>Most halides are soluble</td>
+                                <td><span style="color: var(--accent-rose); font-weight:700;">$\mathrm{Ag^+}, \mathrm{Pb^{2+}}$ halides</span></td>
+                                <td>$\mathrm{AgCl}$ (white ppt), $\mathrm{AgBr}$ (cream ppt), $\mathrm{AgI}$ (yellow ppt), $\mathrm{PbCl_2}$ (white ppt, soluble in hot water).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sulfates ($\mathrm{SO_4^{2-}}$)</strong></td>
+                                <td>Most sulfates are soluble</td>
+                                <td><span style="color: var(--accent-rose); font-weight:700;">$\mathrm{BaSO_4}, \mathrm{PbSO_4}, \mathrm{SrSO_4}$</span></td>
+                                <td>$\mathrm{CaSO_4}$ and $\mathrm{Ag_2SO_4}$ are slightly soluble. $\mathrm{BaSO_4}$ is extremely insoluble (white ppt).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Hydroxides ($\mathrm{OH^-}$)</strong></td>
+                                <td>Group 1 ($\mathrm{Li^+, Na^+, K^+}$), $\mathrm{NH_4^+}, \mathrm{Ba^{2+}}$</td>
+                                <td><span style="color: var(--accent-rose); font-weight:700;">Most transition metals & heavy cations</span></td>
+                                <td>$\mathrm{Ca(OH)_2}$ is slightly soluble (limewater). Transition metal hydroxides form distinct coloured ppts (e.g. $\mathrm{Cu(OH)_2}$ blue).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Carbonates ($\mathrm{CO_3^{2-}}$) & Phosphates ($\mathrm{PO_4^{3-}}$)</strong></td>
+                                <td>Group 1 ($\mathrm{Li^+, Na^+, K^+}$), $\mathrm{NH_4^+}$</td>
+                                <td><span style="color: var(--accent-rose); font-weight:700;">All other metal cations</span></td>
+                                <td>Almost all metal carbonates and phosphates are highly insoluble in neutral/basic water.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sulfides ($\mathrm{S^{2-}}$)</strong></td>
+                                <td>Group 1, Group 2, $\mathrm{NH_4^+}$</td>
+                                <td><span style="color: var(--accent-rose); font-weight:700;">All transition metal sulfides</span></td>
+                                <td>Transition metal sulfides form very insoluble dark precipitates (e.g. $\mathrm{FeS}, \mathrm{CuS}, \mathrm{PbS}$).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION 2: MOLECULAR MECHANISM OF PRECIPITATION -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>2. Sub-Microscopic Mechanism of Precipitation</h2>
+                    <span class="pill-badge emerald">Dynamic Collision Kinetics</span>
+                </div>
+
+                <p>
+                    When two clear aqueous salt solutions are poured together, why does a cloudy solid precipitate form almost instantaneously?
+                </p>
+
+                <p>
+                    Prior to mixing, each starting solution contains fully dissociated, mobile hydrated cations and anions surrounded by water hydration shells. For instance, mixing aqueous silver nitrate ($\mathrm{AgNO_{3(aq)}}$) and sodium chloride ($\mathrm{NaCl_{(aq)}}$) introduces four mobile ion species into a single vessel:
+                    $$\mathrm{Ag^+_{(aq)}}, \quad \mathrm{NO_{3(aq)}^-}, \quad \mathrm{Na^+_{(aq)}}, \quad \mathrm{Cl^-_{(aq)}}$$
+                </p>
+
+                <div class="features-grid">
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-cyan);">
+                        <h3>1. Random Thermal Collision</h3>
+                        <p>
+                            Hydrated ions move randomly throughout the liquid phase driven by thermal kinetic energy. As solution mixing occurs, ion collisions occur rapidly across all combination pairs ($\mathrm{Ag^+}$ with $\mathrm{Cl^-}$, and $\mathrm{Na^+}$ with $\mathrm{NO_3^-}$).
+                        </p>
+                    </div>
+
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-amber);">
+                        <h3>2. Electrostatic Competition</h3>
+                        <p>
+                            For $\mathrm{Na^+}$ and $\mathrm{NO_3^-}$, the ion-dipole attraction with solvent water molecules is significantly stronger than the electrostatic attraction between the ions themselves. They remain hydrated and mobile.
+                        </p>
+                    </div>
+
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-rose);">
+                        <h3>3. Lattice Nucleation & Precipitation</h3>
+                        <p>
+                            For $\mathrm{Ag^+}$ and $\mathrm{Cl^-}$, the mutual electrostatic attraction between opposite ionic charges is immensely powerful ($\Delta H_{\mathrm{lattice}}$ is extremely negative). Upon collision, the ion-ion attraction overcomes the hydration shells, expelling water molecules to form solid crystalline nuclei:
+                            $$\mathrm{Ag^+_{(aq)} + Cl^-_{(aq)} \to AgCl_{(s)}}$$
+                        </p>
+                    </div>
+                </div>
+
+                <!-- SVG Diagram 1: Sub-microscopic Mixing & Precipitation -->
+                <div class="graph-wrapper">
+                    <div class="graph-title">Figure 20.1: Sub-microscopic Collision Mechanics during Precipitation of Silver Chloride</div>
+                    <div class="svg-graph-container">
+                        <svg viewBox="0 0 720 280" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="720" height="280" fill="#0b1329" rx="10"/>
+
+                            <!-- Container Box -->
+                            <rect x="30" y="20" width="660" height="240" fill="rgba(15, 23, 42, 0.85)" stroke="#38bdf8" stroke-width="1.5" rx="8"/>
+
+                            <!-- Spectator Ions (Floating isolated) -->
+                            <!-- Na+ -->
+                            <g transform="translate(100, 70)">
+                                <circle cx="0" cy="0" r="16" fill="#38bdf8"/>
+                                <text x="0" y="5" fill="#000" font-size="11" font-weight="800" text-anchor="middle">Na⁺</text>
+                                <text x="0" y="28" fill="#cbd5e1" font-size="9" text-anchor="middle">Hydrated Spectator</text>
+                            </g>
+                            <!-- NO3- -->
+                            <g transform="translate(600, 80)">
+                                <circle cx="0" cy="0" r="18" fill="#a78bfa"/>
+                                <text x="0" y="5" fill="#000" font-size="10" font-weight="800" text-anchor="middle">NO₃⁻</text>
+                                <text x="0" y="30" fill="#cbd5e1" font-size="9" text-anchor="middle">Hydrated Spectator</text>
+                            </g>
+                            <!-- Na+ 2 -->
+                            <g transform="translate(580, 200)">
+                                <circle cx="0" cy="0" r="16" fill="#38bdf8"/>
+                                <text x="0" y="5" fill="#000" font-size="11" font-weight="800" text-anchor="middle">Na⁺</text>
+                            </g>
+                            <!-- NO3- 2 -->
+                            <g transform="translate(120, 210)">
+                                <circle cx="0" cy="0" r="18" fill="#a78bfa"/>
+                                <text x="0" y="5" fill="#000" font-size="10" font-weight="800" text-anchor="middle">NO₃⁻</text>
+                            </g>
+
+                            <!-- Precipitating AgCl Lattice Cluster in Center -->
+                            <g transform="translate(360, 140)">
+                                <rect x="-110" y="-70" width="220" height="140" fill="rgba(244, 63, 94, 0.12)" stroke="#f43f5e" stroke-width="1.5" stroke-dasharray="4,3" rx="8"/>
+                                <text x="0" y="-80" fill="#f43f5e" font-size="12" font-weight="700" text-anchor="middle">AgCl(s) Insoluble Crystal Lattice Precipitate</text>
+
+                                <!-- Grid of Ag+ and Cl- -->
+                                <!-- Row 1 -->
+                                <circle cx="-60" cy="-35" r="16" fill="#fbbf24"/>
+                                <text x="-60" y="-30" fill="#000" font-size="10" font-weight="800" text-anchor="middle">Ag⁺</text>
+
+                                <circle cx="0" cy="-35" r="18" fill="#34d399"/>
+                                <text x="0" y="-30" fill="#000" font-size="10" font-weight="800" text-anchor="middle">Cl⁻</text>
+
+                                <circle cx="60" cy="-35" r="16" fill="#fbbf24"/>
+                                <text x="60" y="-30" fill="#000" font-size="10" font-weight="800" text-anchor="middle">Ag⁺</text>
+
+                                <!-- Row 2 -->
+                                <circle cx="-60" cy="25" r="18" fill="#34d399"/>
+                                <text x="-60" y="30" fill="#000" font-size="10" font-weight="800" text-anchor="middle">Cl⁻</text>
+
+                                <circle cx="0" cy="25" r="16" fill="#fbbf24"/>
+                                <text x="0" y="30" fill="#000" font-size="10" font-weight="800" text-anchor="middle">Ag⁺</text>
+
+                                <circle cx="60" cy="25" r="18" fill="#34d399"/>
+                                <text x="60" y="30" fill="#000" font-size="10" font-weight="800" text-anchor="middle">Cl⁻</text>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: WRITING CHEMICAL EQUATIONS FOR PRECIPITATION -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>3. Writing Chemical Equations for Precipitation</h2>
+                    <span class="pill-badge cyan">Formal Equation Hierarchy</span>
+                </div>
+
+                <p>
+                    In HSC Chemistry examinations, you are required to write three distinct levels of chemical equations to represent precipitation reactions. Mastering the step-by-step conversion between these levels is critical for securing full marks.
+                </p>
+
+                <div class="info-box cyan">
+                    <h3>The Three Equation Levels (Illustrated with $\mathrm{Pb(NO_3)_2}$ + $\mathrm{KI}$)</h3>
+                    
+                    <h4>1. Full Formula (Molecular) Equation</h4>
+                    <p>
+                        Shows all reactants and products written as neutral chemical formulas with correct stoichiometric balancing and state symbols ($\text{aq}$ or $\text{s}$):
+                        $$\mathrm{Pb(NO_3)_{2(aq)} + 2KI_{(aq)} \to PbI_{2(s)} + 2KNO_{3(aq)}}$$
+                    </p>
+
+                    <h4>2. Complete Ionic Equation</h4>
+                    <p>
+                        Expands all strong soluble electrolytes ($\text{aq}$) into their individual dissociated aqueous ions, while keeping insoluble solid precipitates ($\text{s}$) together as intact chemical formulas:
+                        $$\mathrm{Pb^{2+}_{(aq)} + 2NO_{3(aq)}^- + 2K^+_{(aq)} + 2I^-_{(aq)} \to PbI_{2(s)} + 2K^+_{(aq)} + 2NO_{3(aq)}^-}$$
+                    </p>
+
+                    <h4>3. Net Ionic Equation</h4>
+                    <p>
+                        Cancels out all <strong>spectator ions</strong> (species that appear unchanged on both sides of the reaction arrow in the aqueous phase) to highlight the essential chemical change:
+                        $$\mathrm{Pb^{2+}_{(aq)} + 2I^-_{(aq)} \to PbI_{2(s)}}$$
+                    </p>
+                </div>
+
+                <h3>Spectator Ions: Definition & Diagnostic Rules</h3>
+                <p>
+                    <strong>Spectator ions</strong> are ionic species that remain dissolved in the aqueous solution throughout the course of a chemical reaction without undergoing any change in oxidation state, physical state, or chemical bonding.
+                </p>
+                <ul>
+                    <li>In the reaction above, $\mathrm{K^+_{(aq)}}$ and $\mathrm{NO_{3(aq)}^-}$ enter as mobile aqueous ions and remain as mobile aqueous ions. They do not participate in forming the $\mathrm{PbI_{2(s)}}$ crystal lattice.</li>
+                    <li><strong>Exam Rule:</strong> Spectator ions MUST be completely omitted when asked to write a net ionic equation! Including spectator ions in a net ionic equation is a frequent source of mark deduction in HSC exams.</li>
+                </ul>
+            </section>
+
+            <!-- SECTION 4: QUALITATIVE PRECIPITATION PROTOCOLS & SEPARATION -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>4. Qualitative Precipitation Protocols & Gravimetric Foundations</h2>
+                    <span class="pill-badge emerald">Analytical Flowcharts</span>
+                </div>
+
+                <p>
+                    A classic application of solubility rules in NESA Module 5 is designing a systematic <strong>qualitative analysis scheme</strong> to identify or separate specific metal cations or anions present in an unknown aqueous sample.
+                </p>
+
+                <h3>Golden Rules for Designing Sequential Separation Flowcharts</h3>
+                <ol>
+                    <li><strong>Add Reagents Sequentially:</strong> Add a precipitation reagent that reacts selectively with ONLY ONE target cation in the mixture, leaving all other cations dissolved.</li>
+                    <li><strong>Filtration Step:</strong> After precipitating the first ion, the mixture MUST be filtered to physically remove the solid precipitate. If unfiltered, adding subsequent testing reagents will cause confusing secondary side-reactions with the solid!</li>
+                    <li><strong>Test Filtrate for Completeness:</strong> Ensure all of the target ion has been completely precipitated before adding the next analytical reagent.</li>
+                </ol>
+
+                <div class="info-box amber">
+                    <h3>Example Protocol: Separating $\mathrm{Pb^{2+}}$, $\mathrm{Ba^{2+}}$, and $\mathrm{Cu^{2+}}$ Cations</h3>
+                    <p>
+                        Suppose a solution contains a mixture of $\mathrm{Pb^{2+}_{(aq)}}$, $\mathrm{Ba^{2+}_{(aq)}}$, and $\mathrm{Cu^{2+}_{(aq)}}$ cations.
+                    </p>
+                    <ol>
+                        <li><strong>Step 1 (Precipitate $\mathrm{Pb^{2+}}$):</strong> Add dilute hydrochloric acid ($\mathrm{HCl_{(aq)}}$).
+                            <br>• $\mathrm{Pb^{2+}}$ reacts to form a white precipitate: $\mathrm{Pb^{2+}_{(aq)} + 2Cl^-_{(aq)} \to PbCl_{2(s)}}$.
+                            <br>• $\mathrm{Ba^{2+}}$ and $\mathrm{Cu^{2+}}$ remain fully soluble as chlorides.
+                            <br>• <strong>Action:</strong> Filter off the $\mathrm{PbCl_{2(s)}}$ solid residue. Collect the liquid filtrate.
+                        </li>
+                        <li><strong>Step 2 (Precipitate $\mathrm{Ba^{2+}}$):</strong> To the clear filtrate, add sodium sulfate solution ($\mathrm{Na_2SO_{4(aq)}}$).
+                            <br>• $\mathrm{Ba^{2+}}$ reacts to form a dense white precipitate: $\mathrm{Ba^{2+}_{(aq)} + SO_{4(aq)}^{2-} \to BaSO_{4(s)}}$.
+                            <br>• $\mathrm{Cu^{2+}}$ remains fully soluble ($\mathrm{CuSO_4}$ is soluble).
+                            <br>• <strong>Action:</strong> Filter off the $\mathrm{BaSO_{4(s)}}$ solid residue.
+                        </li>
+                        <li><strong>Step 3 (Precipitate / Confirm $\mathrm{Cu^{2+}}$):</strong> To the remaining filtrate, add sodium hydroxide ($\mathrm{NaOH_{(aq)}}$).
+                            <br>• $\mathrm{Cu^{2+}}$ reacts to form a characteristic blue precipitate: $\mathrm{Cu^{2+}_{(aq)} + 2OH^-_{(aq)} \to Cu(OH)_{2(s)}}$.
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- SECTION 5: INTERACTIVE PRECIPITATION PREDICTOR & NET IONIC VISUALISER -->
+            <section class="card glass-card demo-card">
+                <div class="card-header">
+                    <h2>5. Interactive Precipitation Predictor & Net Ionic Engine</h2>
+                    <span class="pill-badge demo-pill">Virtual Reaction Engine</span>
+                </div>
+                <p>Select two aqueous electrolyte solutions to simulate mixing. The engine applies NESA solubility rules in real-time to evaluate compound solubilities, predict precipitate formation, identify spectator ions, and generate full molecular, complete ionic, and net ionic equations.</p>
+
+                <div class="sim-container">
+                    <div class="sim-controls">
+                        <div class="control-group">
+                            <label>Select Solution A (Cation Source):</label>
+                            <select id="sim-sol-a" onchange="runPrecipitationEngine()">
+                                <option value="AgNO3">Silver Nitrate [AgNO3(aq)]</option>
+                                <option value="Pb(NO3)2">Lead(II) Nitrate [Pb(NO3)2(aq)]</option>
+                                <option value="Ba(NO3)2">Barium Nitrate [Ba(NO3)2(aq)]</option>
+                                <option value="Cu(NO3)2">Copper(II) Nitrate [Cu(NO3)2(aq)]</option>
+                                <option value="NaNO3">Sodium Nitrate [NaNO3(aq)]</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <label>Select Solution B (Anion Source):</label>
+                            <select id="sim-sol-b" onchange="runPrecipitationEngine()">
+                                <option value="NaCl">Sodium Chloride [NaCl(aq)]</option>
+                                <option value="KI">Potassium Iodide [KI(aq)]</option>
+                                <option value="Na2SO4">Sodium Sulfate [Na2SO4(aq)]</option>
+                                <option value="NaOH">Sodium Hydroxide [NaOH(aq)]</option>
+                                <option value="K2CO3">Potassium Carbonate [K2CO3(aq)]</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="sim-display-box">
+                        <h4 style="font-size: 0.9rem; color: var(--accent-cyan); text-transform: uppercase; margin-bottom: 0.75rem;">Predicted Reaction Result & State Analysis</h4>
+                        <div id="sim-result-banner" style="font-size: 1.2rem; font-weight: 700; text-anchor: center; text-align: center; color: var(--accent-purple); margin-bottom: 1rem;">
+                            <!-- Dynamic JS insertion -->
+                        </div>
+
+                        <div id="sim-equation-output" style="background: rgba(15, 23, 42, 0.9); padding: 1.25rem; border-radius: var(--radius-sm); border: 1px solid var(--border-light); font-family: var(--font-mono); font-size: 0.95rem;">
+                            <!-- Equations rendered here -->
+                        </div>
+                    </div>
+
+                    <div class="telemetry-panel">
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Precipitate Formed?</span>
+                            <span class="telemetry-value" id="tel-ppt-formed" style="color: var(--accent-emerald);">YES</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Precipitate Formula</span>
+                            <span class="telemetry-value" id="tel-ppt-formula" style="color: var(--accent-rose);">AgCl(s)</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Precipitate Appearance</span>
+                            <span class="telemetry-value" id="tel-ppt-color" style="color: #fff;">Dense White Solid</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Spectator Ions</span>
+                            <span class="telemetry-value" id="tel-spectators" style="color: var(--accent-cyan);">Na⁺(aq), NO₃⁻(aq)</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 6: SCAFFOLDED WORKED EXAMPLES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>6. Scaffolded Worked Examples</h2>
+                    <span class="pill-badge">HSC Step-by-Step Solutions</span>
+                </div>
+
+                <!-- Example 1: Easy -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 1 (Easy): Predicting Solubility using NESA Rules</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Using standard NESA solubility rules, classify each of the following four ionic compounds as either <strong>soluble</strong> or <strong>insoluble</strong> in water at $25^\circ\text{C}$:
+                        <br>
+                        (a) Barium nitrate ($\mathrm{Ba(NO_3)_2}$)
+                        <br>
+                        (b) Lead(II) chloride ($\mathrm{PbCl_2}$)
+                        <br>
+                        (c) Ammonium carbonate ($(\mathrm{NH_4)_2CO_3}$)
+                        <br>
+                        (d) Copper(II) hydroxide ($\mathrm{Cu(OH)_2}$)
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>(a) Barium nitrate ($\mathrm{Ba(NO_3)_2}$): SOLUBLE.</strong> Nitrates ($\mathrm{NO_3^-}$) are unconditionally soluble without exception.</p>
+                        <p><strong>(b) Lead(II) chloride ($\mathrm{PbCl_2}$): INSOLUBLE.</strong> Most chlorides are soluble, but $\mathrm{Pb^{2+}}$ chloride is a key exception and precipitates as a white solid.</p>
+                        <p><strong>(c) Ammonium carbonate ($(\mathrm{NH_4)_2CO_3}$): SOLUBLE.</strong> Although most carbonates are insoluble, all ammonium ($\mathrm{NH_4^+}$) salts are soluble without exception.</p>
+                        <p><strong>(d) Copper(II) hydroxide ($\mathrm{Cu(OH)_2}$): INSOLUBLE.</strong> Most transition metal hydroxides are insoluble in water, forming a pale blue precipitate.</p>
+                    </div>
+                </div>
+
+                <!-- Example 2: Medium -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 2 (Medium): Writing Full, Ionic, and Net Ionic Equations</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        An aqueous solution of sodium hydroxide ($\mathrm{NaOH_{(aq)}}$) is added to an aqueous solution of iron(III) nitrate ($\mathrm{Fe(NO_3)_{3(aq)}}$). A dark rust-brown precipitate forms immediately.
+                        <br><br>
+                        Write balanced chemical equations for this reaction:
+                        <br>
+                        (a) Full formula (molecular) equation (1 Mark)
+                        <br>
+                        (b) Complete ionic equation (1 Mark)
+                        <br>
+                        (c) Net ionic equation (1 Mark)
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>(a) Full Formula Equation:</strong>
+                        $$\mathrm{Fe(NO_3)_{3(aq)} + 3NaOH_{(aq)} \to Fe(OH)_{3(s)} + 3NaNO_{3(aq)}}$$</p>
+
+                        <p><strong>(b) Complete Ionic Equation:</strong>
+                        $$\mathrm{Fe^{3+}_{(aq)} + 3NO_{3(aq)}^- + 3Na^+_{(aq)} + 3OH^-_{(aq)} \to Fe(OH)_{3(s)} + 3Na^+_{(aq)} + 3NO_{3(aq)}^-}$$</p>
+
+                        <p><strong>(c) Net Ionic Equation:</strong>
+                        $$\mathrm{Fe^{3+}_{(aq)} + 3OH^-_{(aq)} \to Fe(OH)_{3(s)}}$$</p>
+                    </div>
+                </div>
+
+                <!-- Example 3: Hard -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 3 (Hard): Identifying Spectator Ions and Predicting Mass Changes</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A student mixes $100.0\text{ mL}$ of $0.200\text{ M}$ barium chloride solution ($\mathrm{BaCl_{2(aq)}}$) with $100.0\text{ mL}$ of $0.200\text{ M}$ sodium sulfate solution ($\mathrm{Na_2SO_{4(aq)}}$).
+                        <br><br>
+                        (a) Identify the spectator ions present in the final mixture. (1 Mark)
+                        <br>
+                        (b) Write the net ionic equation for the reaction. (1 Mark)
+                        <br>
+                        (c) Calculate the theoretical mass of solid precipitate formed after filtering and drying. (2 Marks)
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>(a) Spectator Ions:</strong>
+                        <br>The spectator ions are $\mathrm{Na^+_{(aq)}}$ and $\mathrm{Cl^-_{(aq)}}$.</p>
+
+                        <p><strong>(b) Net Ionic Equation:</strong>
+                        $$\mathrm{Ba^{2+}_{(aq)} + SO_{4(aq)}^{2-} \to BaSO_{4(s)}}$$</p>
+
+                        <p><strong>(c) Mass Calculation:</strong>
+                        <br>1. Calculate moles of $\mathrm{Ba^{2+}}$ and $\mathrm{SO_4^{2-}}$:
+                        $$n(\mathrm{Ba^{2+}}) = c \times V = 0.200\text{ mol L}^{-1} \times 0.1000\text{ L} = 0.0200\text{ mol}$$
+                        $$n(\mathrm{SO_4^{2-}}) = c \times V = 0.200\text{ mol L}^{-1} \times 0.1000\text{ L} = 0.0200\text{ mol}$$
+                        <br>2. Both reactants are in exact $1:1$ stoichiometric proportion, producing $0.0200\text{ mol}$ of $\mathrm{BaSO_{4(s)}}$.
+                        <br>3. Molar mass of $\mathrm{BaSO_4} = 137.33 + 32.06 + (4 \times 16.00) = 233.39\text{ g mol}^{-1}$.
+                        <br>4. Mass of precipitate:
+                        $$m = n \times M = 0.0200\text{ mol} \times 233.39\text{ g mol}^{-1} = \mathbf{4.67\text{ g}} \quad (3\text{ sig. figs.})$$</p>
+                    </div>
+                </div>
+
+                <!-- Example 4: Extension -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 4 (Extension): Designing a Cation Separation Flowchart</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        An unlabelled aqueous solution is known to contain a mixture of $\mathrm{Ag^+_{(aq)}}$, $\mathrm{Ba^{2+}_{(aq)}}$, and $\mathrm{Mg^{2+}_{(aq)}}$ cations at concentrations of $0.10\text{ M}$.
+                        <br><br>
+                        Design a step-by-step experimental procedure to sequentially separate and isolate all three cations as solid precipitates. For each step, state the reagent added, the net ionic equation, and the necessary physical separation technique.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>Step 1 (Isolate $\mathrm{Ag^+}$):</strong>
+                        <br>• <strong>Reagent:</strong> Add excess dilute sodium chloride solution ($\mathrm{NaCl_{(aq)}}$).
+                        <br>• <strong>Net Ionic Equation:</strong> $\mathrm{Ag^+_{(aq)} + Cl^-_{(aq)} \to AgCl_{(s)}}$ (white precipitate).
+                        <br>• <strong>Separation:</strong> Filter the mixture to collect solid $\mathrm{AgCl_{(s)}}$ residue. Retain filtrate containing $\mathrm{Ba^{2+}}$ and $\mathrm{Mg^{2+}}$.</p>
+
+                        <p><strong>Step 2 (Isolate $\mathrm{Ba^{2+}}$):</strong>
+                        <br>• <strong>Reagent:</strong> To the filtrate, add excess sodium sulfate solution ($\mathrm{Na_2SO_{4(aq)}}$).
+                        <br>• <strong>Net Ionic Equation:</strong> $\mathrm{Ba^{2+}_{(aq)} + SO_{4(aq)}^{2-} \to BaSO_{4(s)}}$ (dense white precipitate).
+                        <br>• <strong>Separation:</strong> Filter the mixture to collect solid $\mathrm{BaSO_{4(s)}}$ residue. Retain filtrate containing $\mathrm{Mg^{2+}}$.</p>
+
+                        <p><strong>Step 3 (Isolate $\mathrm{Mg^{2+}}$):</strong>
+                        <br>• <strong>Reagent:</strong> To the remaining filtrate, add excess sodium hydroxide solution ($\mathrm{NaOH_{(aq)}}$).
+                        <br>• <strong>Net Ionic Equation:</strong> $\mathrm{Mg^{2+}_{(aq)} + 2OH^-_{(aq)} \to Mg(OH)_{2(s)}}$ (white gel-like precipitate).
+                        <br>• <strong>Separation:</strong> Filter to collect solid $\mathrm{Mg(OH)_{2(s)}}$ residue.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 7: NESA EXAMINATION PRACTICE QUESTIONS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>7. NESA Examination Practice Questions</h2>
+                    <span class="pill-badge demo-pill">Self-Marking Engine</span>
+                </div>
+                <p>Solve the questions below, then toggle hints and model solutions to verify your answers against NESA marking rubrics.</p>
+
+                <!-- Practice Q1 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 1 (Easy): Precipitate Identification</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A student mixes aqueous solutions of potassium carbonate ($\mathrm{K_2CO_{3(aq)}}$) and calcium nitrate ($\mathrm{Ca(NO_3)_{2(aq)}}$).
+                        <br>Identify the solid precipitate formed and state its chemical formula.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq1-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq1-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq1-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Check solubility rules for nitrates ($\mathrm{NO_3^-}$) vs carbonates ($\mathrm{CO_3^{2-}}$).</p>
+                    </div>
+
+                    <div id="pq1-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>• The solid precipitate formed is <strong>calcium carbonate</strong>.
+                            <br>• Chemical formula: $\mathrm{CaCO_{3(s)}}$.
+                            <br>(Potassium nitrate, $\mathrm{KNO_3}$, remains fully soluble as spectator ions).</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Correctly names calcium carbonate as the precipitate.</li>
+                                <li><strong>1 Mark:</strong> Gives the correct chemical formula $\mathrm{CaCO_3}$ (or $\mathrm{CaCO_{3(s)}}$).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q2 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 2 (Medium): Net Ionic Equation & Spectator Removal</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        When aqueous lead(II) nitrate ($\mathrm{Pb(NO_3)_{2(aq)}}$) is mixed with aqueous sodium chromate ($\mathrm{Na_2CrO_{4(aq)}}$), a bright yellow precipitate of lead(II) chromate forms.
+                        <br><br>
+                        (a) Write the net ionic equation for this reaction. (2 Marks)
+                        <br>
+                        (b) Name the spectator ions present in the mixture. (1 Mark)
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq2-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq2-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq2-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> The net ionic equation only includes species that form the solid $\mathrm{PbCrO_{4(s)}}$.</p>
+                    </div>
+
+                    <div id="pq2-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>(a) Net Ionic Equation:
+                            $$\mathrm{Pb^{2+}_{(aq)} + CrO_{4(aq)}^{2-} \to PbCrO_{4(s)}}$$
+                            <br>(b) Spectator Ions:
+                            <br>Sodium ions ($\mathrm{Na^+_{(aq)}}$) and nitrate ions ($\mathrm{NO_{3(aq)}^-}$).</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>2 Marks:</strong> Correctly balanced net ionic equation with correct charges and state symbols ($\mathrm{Pb^{2+}_{(aq)} + CrO_{4(aq)}^{2-} \to PbCrO_{4(s)}}$).</li>
+                                <li><strong>1 Mark:</strong> Correctly identifies both spectator ions ($\mathrm{Na^+}$ and $\mathrm{NO_3^-}$).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q3 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 3 (Hard): Stoichiometric Precipitation Calculation</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A technician mixes $250.0\text{ mL}$ of $0.150\text{ M}$ silver nitrate solution ($\mathrm{AgNO_{3(aq)}}$) with $150.0\text{ mL}$ of $0.200\text{ M}$ magnesium chloride solution ($\mathrm{MgCl_{2(aq)}}$).
+                        <br><br>
+                        Calculate the mass of silver chloride precipitate formed, identifying any limiting reagent.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq3-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq3-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq3-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> $n(\mathrm{Ag^+}) = c \times V$. Note that 1 mole of $\mathrm{MgCl_2}$ yields 2 moles of $\mathrm{Cl^-}$! Calculate $n(\mathrm{Cl^-}) = 2 \times c \times V$.</p>
+                    </div>
+
+                    <div id="pq3-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>1. Net ionic equation:
+                            $$\mathrm{Ag^+_{(aq)} + Cl^-_{(aq)} \to AgCl_{(s)}}$$
+                            <br>2. Calculate initial moles of ions:
+                            $$n(\mathrm{Ag^+}) = 0.150\text{ mol L}^{-1} \times 0.2500\text{ L} = 0.0375\text{ mol}$$
+                            $$n(\mathrm{MgCl_2}) = 0.200\text{ mol L}^{-1} \times 0.1500\text{ L} = 0.0300\text{ mol}$$
+                            $$n(\mathrm{Cl^-}) = 2 \times n(\mathrm{MgCl_2}) = 2 \times 0.0300\text{ mol} = 0.0600\text{ mol}$$
+                            <br>3. Identify Limiting Reagent:
+                            <br>Stoichiometry is $1:1$. We have $0.0375\text{ mol } \mathrm{Ag^+}$ and $0.0600\text{ mol } \mathrm{Cl^-}$.
+                            <br>Therefore, $\mathrm{Ag^+}$ is the **limiting reagent**.
+                            <br><br>4. Calculate mass of $\mathrm{AgCl_{(s)}}$ formed:
+                            $$n(\mathrm{AgCl}) = n(\mathrm{Ag^+}) = 0.0375\text{ mol}$$
+                            $$M(\mathrm{AgCl}) = 107.87 + 35.45 = 143.32\text{ g mol}^{-1}$$
+                            $$m(\mathrm{AgCl}) = 0.0375\text{ mol} \times 143.32\text{ g mol}^{-1} = \mathbf{5.37\text{ g}} \quad (3\text{ sig. figs.})$$</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Calculates correct initial moles of $\mathrm{Ag^+}$ ($0.0375\text{ mol}$) and $\mathrm{Cl^-}$ ($0.0600\text{ mol}$).</li>
+                                <li><strong>1 Mark:</strong> Correctly identifies $\mathrm{Ag^+}$ as the limiting reagent.</li>
+                                <li><strong>1 Mark:</strong> Deduces that $0.0375\text{ mol}$ of $\mathrm{AgCl}$ precipitate is formed.</li>
+                                <li><strong>1 Mark:</strong> Calculates correct final mass $m = 5.37\text{ g}$ with correct units and significant figures.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q4 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 4 (Extension): Evaluating Qualitative Separation Protocols</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A student is given a solution containing an unknown mixture of two cations: either ($\mathrm{Ba^{2+}}$ and $\mathrm{Pb^{2+}}$) OR ($\mathrm{Ba^{2+}}$ and $\mathrm{Ca^{2+}}$).
+                        <br><br>
+                        Construct an experimental flowchart testing protocol using standard laboratory reagents ($\mathrm{HCl_{(aq)}}$, $\mathrm{Na_2SO_{4(aq)}}$, $\mathrm{NaOH_{(aq)}}$) to unambiguously identify which pair of cations is present in the unknown mixture.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq4-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq4-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq4-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Compare chloride solubilities ($\mathrm{PbCl_2}$ is insoluble, $\mathrm{BaCl_2}$ and $\mathrm{CaCl_2}$ are soluble) and sulfate/hydroxide solubilities.</p>
+                    </div>
+
+                    <div id="pq4-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>• <strong>Step 1 (Test for $\mathrm{Pb^{2+}}$):</strong>
+                            <br>Add dilute $\mathrm{HCl_{(aq)}}$ to a portion of the unknown sample.
+                            <br>— <strong>Observation A:</strong> If a white precipitate forms ($\mathrm{PbCl_{2(s)}}$), $\mathrm{Pb^{2+}}$ is PRESENT. The mixture MUST be ($\mathrm{Ba^{2+}}$ and $\mathrm{Pb^{2+}}$).
+                            <br>— <strong>Observation B:</strong> If NO precipitate forms, $\mathrm{Pb^{2+}}$ is ABSENT. The mixture MUST be ($\mathrm{Ba^{2+}}$ and $\mathrm{Ca^{2+}}$).
+                            <br><br>• <strong>Step 2 (Differentiate $\mathrm{Ba^{2+}}$ vs $\mathrm{Ca^{2+}}$ if no chloride ppt):</strong>
+                            <br>If no precipitate formed in Step 1, take a fresh sample of the unknown and add sodium hydroxide solution ($\mathrm{NaOH_{(aq)}}$).
+                            <br>— $\mathrm{Ca^{2+}}$ forms a white precipitate ($\mathrm{Ca(OH)_{2(s)}}$, slightly soluble / insoluble).
+                            <br>— $\mathrm{Ba^{2+}}$ remains fully soluble ($\mathrm{Ba(OH)_2}$ is soluble).
+                            <br>This confirms the presence of $\mathrm{Ca^{2+}}$ alongside $\mathrm{Ba^{2+}}$.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Proposes adding $\mathrm{HCl}$ first to selectively precipitate $\mathrm{Pb^{2+}}$ as $\mathrm{PbCl_2}$.</li>
+                                <li><strong>1 Mark:</strong> Correctly interprets white precipitate with $\mathrm{HCl}$ as confirming the ($\mathrm{Ba^{2+}}/\mathrm{Pb^{2+}}$) pair.</li>
+                                <li><strong>1 Mark:</strong> Explains that absence of precipitate with $\mathrm{HCl}$ eliminates $\mathrm{Pb^{2+}}$ and indicates the ($\mathrm{Ba^{2+}}/\mathrm{Ca^{2+}}$) pair.</li>
+                                <li><strong>1 Mark:</strong> Proposes a valid secondary test ($\mathrm{NaOH}$ or flame test) to confirm $\mathrm{Ca^{2+}}$.</li>
+                                <li><strong>1 Mark:</strong> Presents a clear, logically structured diagnostic pathway or flowchart.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation Footer -->
+            <footer class="content-footer">
+                <a href="19-indigenous-solubility-cycads.html" class="btn btn-outline">&larr; Back to Lesson 19</a>
+                <a href="21-solubility-product-ksp.html" class="btn btn-ethereal">
+                    Proceed to Lesson 21: Solubility Product ($K_{\mathrm{sp}}$) &rarr;
+                </a>
+            </footer>
+        </main>
+    </div>
+
+    <!-- INTERACTIVE PRECIPITATION ENGINE JAVASCRIPT -->
+    <script>
+        const precipitationDatabase = {
+            "AgNO3+NaCl": {
+                ppt: true,
+                formula: "AgCl(s)",
+                color: "Dense White Solid",
+                molecular: "\\mathrm{AgNO_{3(aq)} + NaCl_{(aq)} \\to AgCl_{(s)} + NaNO_{3(aq)}}",
+                complete: "\\mathrm{Ag^+_{(aq)} + NO_{3(aq)}^- + Na^+_{(aq)} + Cl^-_{(aq)} \\to AgCl_{(s)} + Na^+_{(aq)} + NO_{3(aq)}^-}",
+                net: "\\mathrm{Ag^+_{(aq)} + Cl^-_{(aq)} \\to AgCl_{(s)}}",
+                spectators: "Na⁺(aq), NO₃⁻(aq)"
+            },
+            "AgNO3+KI": {
+                ppt: true,
+                formula: "AgI(s)",
+                color: "Pale Yellow Precipitate",
+                molecular: "\\mathrm{AgNO_{3(aq)} + KI_{(aq)} \\to AgI_{(s)} + KNO_{3(aq)}}",
+                complete: "\\mathrm{Ag^+_{(aq)} + NO_{3(aq)}^- + K^+_{(aq)} + I^-_{(aq)} \\to AgI_{(s)} + K^+_{(aq)} + NO_{3(aq)}^-}",
+                net: "\\mathrm{Ag^+_{(aq)} + I^-_{(aq)} \\to AgI_{(s)}}",
+                spectators: "K⁺(aq), NO₃⁻(aq)"
+            },
+            "AgNO3+Na2SO4": {
+                ppt: false,
+                formula: "None (Ag2SO4 is slightly soluble)",
+                color: "Clear Solution (No Precipitate)",
+                molecular: "\\mathrm{2AgNO_{3(aq)} + Na_2SO_{4(aq)} \\rightleftharpoons Ag_2SO_{4(aq)} + 2NaNO_{3(aq)}}",
+                complete: "All ions remain dissociated in dilute solution",
+                net: "No Net Ionic Reaction",
+                spectators: "Ag⁺(aq), NO₃⁻(aq), Na⁺(aq), SO₄²⁻(aq)"
+            },
+            "AgNO3+NaOH": {
+                ppt: true,
+                formula: "Ag2O(s) / AgOH(s)",
+                color: "Dark Brown Solid",
+                molecular: "\\mathrm{2AgNO_{3(aq)} + 2NaOH_{(aq)} \\to Ag_2O_{(s)} + H_2O_{(l)} + 2NaNO_{3(aq)}}",
+                complete: "\\mathrm{2Ag^+_{(aq)} + 2OH^-_{(aq)} \\to Ag_2O_{(s)} + H_2O_{(l)}}",
+                net: "\\mathrm{2Ag^+_{(aq)} + 2OH^-_{(aq)} \\to Ag_2O_{(s)} + H_2O_{(l)}}",
+                spectators: "Na⁺(aq), NO₃⁻(aq)"
+            },
+            "AgNO3+K2CO3": {
+                ppt: true,
+                formula: "Ag2CO3(s)",
+                color: "Yellow-Grey Precipitate",
+                molecular: "\\mathrm{2AgNO_{3(aq)} + K_2CO_{3(aq)} \\to Ag_2CO_{3(s)} + 2KNO_{3(aq)}}",
+                complete: "\\mathrm{2Ag^+_{(aq)} + CO_{3(aq)}^{2-} \\to Ag_2CO_{3(s)}}",
+                net: "\\mathrm{2Ag^+_{(aq)} + CO_{3(aq)}^{2-} \\to Ag_2CO_{3(s)}}",
+                spectators: "K⁺(aq), NO₃⁻(aq)"
+            },
+            "Pb(NO3)2+NaCl": {
+                ppt: true,
+                formula: "PbCl2(s)",
+                color: "White Crystalline Solid",
+                molecular: "\\mathrm{Pb(NO_3)_{2(aq)} + 2NaCl_{(aq)} \\to PbCl_{2(s)} + 2NaNO_{3(aq)}}",
+                complete: "\\mathrm{Pb^{2+}_{(aq)} + 2Cl^-_{(aq)} \\to PbCl_{2(s)}}",
+                net: "\\mathrm{Pb^{2+}_{(aq)} + 2Cl^-_{(aq)} \\to PbCl_{2(s)}}",
+                spectators: "Na⁺(aq), NO₃⁻(aq)"
+            },
+            "Pb(NO3)2+KI": {
+                ppt: true,
+                formula: "PbI2(s)",
+                color: "Bright Golden-Yellow Solid",
+                molecular: "\\mathrm{Pb(NO_3)_{2(aq)} + 2KI_{(aq)} \\to PbI_{2(s)} + 2KNO_{3(aq)}}",
+                complete: "\\mathrm{Pb^{2+}_{(aq)} + 2I^-_{(aq)} \\to PbI_{2(s)}}",
+                net: "\\mathrm{Pb^{2+}_{(aq)} + 2I^-_{(aq)} \\to PbI_{2(s)}}",
+                spectators: "K⁺(aq), NO₃⁻(aq)"
+            },
+            "Pb(NO3)2+Na2SO4": {
+                ppt: true,
+                formula: "PbSO4(s)",
+                color: "Dense White Solid",
+                molecular: "\\mathrm{Pb(NO_3)_{2(aq)} + Na_2SO_{4(aq)} \\to PbSO_{4(s)} + 2NaNO_{3(aq)}}",
+                complete: "\\mathrm{Pb^{2+}_{(aq)} + SO_{4(aq)}^{2-} \\to PbSO_{4(s)}}",
+                net: "\\mathrm{Pb^{2+}_{(aq)} + SO_{4(aq)}^{2-} \\to PbSO_{4(s)}}",
+                spectators: "Na⁺(aq), NO₃⁻(aq)"
+            },
+            "Pb(NO3)2+NaOH": {
+                ppt: true,
+                formula: "Pb(OH)2(s)",
+                color: "Chalky White Solid",
+                molecular: "\\mathrm{Pb(NO_3)_{2(aq)} + 2NaOH_{(aq)} \\to Pb(OH)_{2(s)} + 2NaNO_{3(aq)}}",
+                complete: "\\mathrm{Pb^{2+}_{(aq)} + 2OH^-_{(aq)} \\to Pb(OH)_{2(s)}}",
+                net: "\\mathrm{Pb^{2+}_{(aq)} + 2OH^-_{(aq)} \\to Pb(OH)_{2(s)}}",
+                spectators: "Na⁺(aq), NO₃⁻(aq)"
+            },
+            "Pb(NO3)2+K2CO3": {
+                ppt: true,
+                formula: "PbCO3(s)",
+                color: "White Solid",
+                molecular: "\\mathrm{Pb(NO_3)_{2(aq)} + K_2CO_{3(aq)} \\to PbCO_{3(s)} + 2KNO_{3(aq)}}",
+                complete: "\\mathrm{Pb^{2+}_{(aq)} + CO_{3(aq)}^{2-} \\to PbCO_{3(s)}}",
+                net: "\\mathrm{Pb^{2+}_{(aq)} + CO_{3(aq)}^{2-} \\to PbCO_{3(s)}}",
+                spectators: "K⁺(aq), NO₃⁻(aq)"
+            },
+            "Ba(NO3)2+NaCl": {
+                ppt: false,
+                formula: "None",
+                color: "Clear Solution (No Reaction)",
+                molecular: "No Reaction (All species remain dissolved)",
+                complete: "Ba²⁺(aq) + 2NO₃⁻(aq) + 2Na⁺(aq) + 2Cl⁻(aq)",
+                net: "No Net Ionic Reaction",
+                spectators: "Ba²⁺(aq), NO₃⁻(aq), Na⁺(aq), Cl⁻(aq)"
+            },
+            "Ba(NO3)2+KI": {
+                ppt: false,
+                formula: "None",
+                color: "Clear Solution (No Reaction)",
+                molecular: "No Reaction (All species remain dissolved)",
+                complete: "Ba²⁺(aq) + 2NO₃⁻(aq) + 2K⁺(aq) + 2I⁻(aq)",
+                net: "No Net Ionic Reaction",
+                spectators: "Ba²⁺(aq), NO₃⁻(aq), K⁺(aq), I⁻(aq)"
+            },
+            "Ba(NO3)2+Na2SO4": {
+                ppt: true,
+                formula: "BaSO4(s)",
+                color: "Dense White Solid",
+                molecular: "\\mathrm{Ba(NO_3)_{2(aq)} + Na_2SO_{4(aq)} \\to BaSO_{4(s)} + 2NaNO_{3(aq)}}",
+                complete: "\\mathrm{Ba^{2+}_{(aq)} + SO_{4(aq)}^{2-} \\to BaSO_{4(s)}}",
+                net: "\\mathrm{Ba^{2+}_{(aq)} + SO_{4(aq)}^{2-} \\to BaSO_{4(s)}}",
+                spectators: "Na⁺(aq), NO₃⁻(aq)"
+            },
+            "Ba(NO3)2+NaOH": {
+                ppt: false,
+                formula: "None (Ba(OH)2 is soluble)",
+                color: "Clear Solution",
+                molecular: "No Reaction (Ba(OH)2 is a soluble strong base)",
+                complete: "Ba²⁺(aq) + 2OH⁻(aq) remain dissolved",
+                net: "No Net Ionic Reaction",
+                spectators: "Ba²⁺(aq), NO₃⁻(aq), Na⁺(aq), OH⁻(aq)"
+            },
+            "Ba(NO3)2+K2CO3": {
+                ppt: true,
+                formula: "BaCO3(s)",
+                color: "White Solid",
+                molecular: "\\mathrm{Ba(NO_3)_{2(aq)} + K_2CO_{3(aq)} \\to BaCO_{3(s)} + 2KNO_{3(aq)}}",
+                complete: "\\mathrm{Ba^{2+}_{(aq)} + CO_{3(aq)}^{2-} \\to BaCO_{3(s)}}",
+                net: "\\mathrm{Ba^{2+}_{(aq)} + CO_{3(aq)}^{2-} \\to BaCO_{3(s)}}",
+                spectators: "K⁺(aq), NO₃⁻(aq)"
+            },
+            "Cu(NO3)2+NaCl": {
+                ppt: false,
+                formula: "None",
+                color: "Clear Blue Solution",
+                molecular: "No Reaction (CuCl2 is fully soluble)",
+                complete: "Cu²⁺(aq) + 2Cl⁻(aq) remain dissolved",
+                net: "No Net Ionic Reaction",
+                spectators: "Cu²⁺(aq), NO₃⁻(aq), Na⁺(aq), Cl⁻(aq)"
+            },
+            "Cu(NO3)2+KI": {
+                ppt: true,
+                formula: "CuI(s) + I2(aq)",
+                color: "Brown Mixture (White CuI ppt in Brown Iodine)",
+                molecular: "\\mathrm{2Cu(NO_3)_{2(aq)} + 4KI_{(aq)} \\to 2CuI_{(s)} + I_{2(aq)} + 4KNO_{3(aq)}}",
+                complete: "\\mathrm{2Cu^{2+}_{(aq)} + 4I^-_{(aq)} \\to 2CuI_{(s)} + I_{2(aq)}}",
+                net: "\\mathrm{2Cu^{2+}_{(aq)} + 4I^-_{(aq)} \\to 2CuI_{(s)} + I_{2(aq)}}",
+                spectators: "K⁺(aq), NO₃⁻(aq)"
+            },
+            "Cu(NO3)2+Na2SO4": {
+                ppt: false,
+                formula: "None",
+                color: "Clear Blue Solution",
+                molecular: "No Reaction (CuSO4 is soluble)",
+                complete: "Cu²⁺(aq) + SO₄²⁻(aq) remain dissolved",
+                net: "No Net Ionic Reaction",
+                spectators: "Cu²⁺(aq), NO₃⁻(aq), Na⁺(aq), SO₄²⁻(aq)"
+            },
+            "Cu(NO3)2+NaOH": {
+                ppt: true,
+                formula: "Cu(OH)2(s)",
+                color: "Pale Blue Gelatinous Precipitate",
+                molecular: "\\mathrm{Cu(NO_3)_{2(aq)} + 2NaOH_{(aq)} \\to Cu(OH)_{2(s)} + 2NaNO_{3(aq)}}",
+                complete: "\\mathrm{Cu^{2+}_{(aq)} + 2OH^-_{(aq)} \\to Cu(OH)_{2(s)}}",
+                net: "\\mathrm{Cu^{2+}_{(aq)} + 2OH^-_{(aq)} \\to Cu(OH)_{2(s)}}",
+                spectators: "Na⁺(aq), NO₃⁻(aq)"
+            },
+            "Cu(NO3)2+K2CO3": {
+                ppt: true,
+                formula: "CuCO3(s)",
+                color: "Blue-Green Precipitate",
+                molecular: "\\mathrm{Cu(NO_3)_{2(aq)} + K_2CO_{3(aq)} \\to CuCO_{3(s)} + 2KNO_{3(aq)}}",
+                complete: "\\mathrm{Cu^{2+}_{(aq)} + CO_{3(aq)}^{2-} \\to CuCO_{3(s)}}",
+                net: "\\mathrm{Cu^{2+}_{(aq)} + CO_{3(aq)}^{2-} \\to CuCO_{3(s)}}",
+                spectators: "K⁺(aq), NO₃⁻(aq)"
+            },
+            "NaNO3+NaCl": {
+                ppt: false,
+                formula: "None",
+                color: "Clear Colorless Solution",
+                molecular: "No Reaction",
+                complete: "All ions remain fully dissolved",
+                net: "No Net Ionic Reaction",
+                spectators: "Na⁺(aq), NO₃⁻(aq), Cl⁻(aq)"
+            },
+            "NaNO3+KI": {
+                ppt: false,
+                formula: "None",
+                color: "Clear Colorless Solution",
+                molecular: "No Reaction",
+                complete: "All ions remain fully dissolved",
+                net: "No Net Ionic Reaction",
+                spectators: "Na⁺(aq), NO₃⁻(aq), K⁺(aq), I⁻(aq)"
+            },
+            "NaNO3+Na2SO4": {
+                ppt: false,
+                formula: "None",
+                color: "Clear Colorless Solution",
+                molecular: "No Reaction",
+                complete: "All ions remain fully dissolved",
+                net: "No Net Ionic Reaction",
+                spectators: "Na⁺(aq), NO₃⁻(aq), SO₄²⁻(aq)"
+            },
+            "NaNO3+NaOH": {
+                ppt: false,
+                formula: "None",
+                color: "Clear Colorless Solution",
+                molecular: "No Reaction",
+                complete: "All ions remain fully dissolved",
+                net: "No Net Ionic Reaction",
+                spectators: "Na⁺(aq), NO₃⁻(aq), OH⁻(aq)"
+            },
+            "NaNO3+K2CO3": {
+                ppt: false,
+                formula: "None",
+                color: "Clear Colorless Solution",
+                molecular: "No Reaction",
+                complete: "All ions remain fully dissolved",
+                net: "No Net Ionic Reaction",
+                spectators: "Na⁺(aq), NO₃⁻(aq), K⁺(aq), CO₃²⁻(aq)"
+            }
+        };
+
+        function runPrecipitationEngine() {
+            const solA = document.getElementById('sim-sol-a').value;
+            const solB = document.getElementById('sim-sol-b').value;
+            const pairKey = `${solA}+${solB}`;
+
+            const data = precipitationDatabase[pairKey] || {
+                ppt: false,
+                formula: "None",
+                color: "Clear Solution",
+                molecular: "No Reaction",
+                complete: "All ions dissolved",
+                net: "No Net Ionic Reaction",
+                spectators: "All species are spectators"
+            };
+
+            // Banner update
+            const banner = document.getElementById('sim-result-banner');
+            if (data.ppt) {
+                banner.innerHTML = `<span style="color: var(--accent-rose);">PRECIPITATION OCCURS: ${data.formula} (${data.color})</span>`;
+            } else {
+                banner.innerHTML = `<span style="color: var(--accent-cyan);">NO PRECIPITATION: All ions remain soluble in aqueous solution.</span>`;
+            }
+
+            // Equations display
+            const eqBox = document.getElementById('sim-equation-output');
+            let eqHtml = `<div style="margin-bottom:0.75rem;"><strong style="color:var(--accent-purple);">Full Formula Equation:</strong><br>$$${data.molecular}$$</div>`;
+            eqHtml += `<div style="margin-bottom:0.75rem;"><strong style="color:var(--accent-cyan);">Complete Ionic Equation:</strong><br>$$${data.complete}$$</div>`;
+            eqHtml += `<div><strong style="color:var(--accent-emerald);">Net Ionic Equation:</strong><br>$$${data.net}$$</div>`;
+            eqBox.innerHTML = eqHtml;
+
+            // Telemetry updates
+            document.getElementById('tel-ppt-formed').innerText = data.ppt ? "YES" : "NO";
+            document.getElementById('tel-ppt-formed').style.color = data.ppt ? "var(--accent-rose)" : "var(--accent-cyan)";
+            
+            document.getElementById('tel-ppt-formula').innerText = data.formula;
+            document.getElementById('tel-ppt-color').innerText = data.color;
+            document.getElementById('tel-spectators').innerText = data.spectators;
+
+            // MathJax re-typeset
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                if (window.MathJax.typesetClear) {
+                    window.MathJax.typesetClear([eqBox]);
+                }
+                MathJax.typesetPromise([eqBox]).catch(function (err) {
+                    console.warn('MathJax deferred:', err);
+                });
+            }
+        }
+
+        function toggleElement(id) {
+            const el = document.getElementById(id);
+            if (el.style.display === 'none' || el.style.display === '') {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            if (window.MathJax && window.MathJax.startup) {
+                window.MathJax.startup.promise.then(() => {
+                    runPrecipitationEngine();
+                });
+            } else {
+                runPrecipitationEngine();
+            }
+        });
+    </script>
+</body>
+</html>

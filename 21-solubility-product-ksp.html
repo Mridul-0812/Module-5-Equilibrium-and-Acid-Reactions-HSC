@@ -1,0 +1,1888 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21 Solubility Product Constant (Ksp) | Module 5 Chemistry</title>
+    
+    <!-- MathJax 3 Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <style>
+        /* Ethereal Glassmorphism Custom UI Extensions */
+        :root {
+            --bg-dark: #080c14;
+            --bg-card: rgba(15, 23, 42, 0.75);
+            --bg-card-hover: rgba(30, 41, 59, 0.85);
+            --border-glow: rgba(124, 58, 237, 0.3);
+            --border-light: rgba(255, 255, 255, 0.08);
+            --border-cyan: rgba(6, 182, 212, 0.35);
+            --border-emerald: rgba(16, 185, 129, 0.35);
+            --accent-purple: #a78bfa;
+            --accent-cyan: #38bdf8;
+            --accent-emerald: #34d399;
+            --accent-amber: #fbbf24;
+            --accent-rose: #f43f5e;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-secondary: #cbd5e1;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'Fira Code', 'Cascadia Code', Consolas, monospace;
+            --shadow-glow: 0 0 30px rgba(124, 58, 237, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(124, 58, 237, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 90% 85%, rgba(6, 182, 212, 0.1) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.95) 0%, var(--bg-dark) 100%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.8;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 320px;
+            background: rgba(11, 15, 25, 0.92);
+            border-right: 1px solid var(--border-light);
+            backdrop-filter: blur(16px);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 2rem 1.5rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .badge-glow {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            color: var(--accent-purple);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.4rem;
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .sidebar-header .subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+
+        .progress-container {
+            margin-top: 1.25rem;
+            background: rgba(255, 255, 255, 0.06);
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            border-radius: 3px;
+        }
+
+        .score-card {
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav-menu {
+            padding: 1.25rem 1rem;
+        }
+
+        .nav-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            padding: 0 0.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 0.65rem 0.75rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            margin-bottom: 0.25rem;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            transform: translateX(3px);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(90deg, rgba(124, 58, 237, 0.25), rgba(6, 182, 212, 0.1));
+            border-left: 3px solid var(--accent-purple);
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+
+        .nav-num {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            margin-right: 0.75rem;
+            opacity: 0.7;
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            margin-left: 320px;
+            flex: 1;
+            padding: 2.5rem 3rem;
+            max-width: 1250px;
+        }
+
+        .hero-banner {
+            position: relative;
+            background: linear-gradient(135deg, rgba(24, 16, 48, 0.85) 0%, rgba(15, 23, 42, 0.95) 100%);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2.5rem;
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .ethereal-tag {
+            font-family: var(--font-mono);
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .ethereal-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin: 0.5rem 0 1rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ethereal-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 880px;
+        }
+
+        /* Content Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 2.25rem;
+            margin-bottom: 2.5rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            transition: border-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(124, 58, 237, 0.35);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.75rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .card-header h2 {
+            font-size: 1.6rem;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .pill-badge {
+            padding: 0.35rem 0.85rem;
+            background: rgba(124, 58, 237, 0.12);
+            border: 1px solid var(--border-glow);
+            color: var(--accent-purple);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pill-badge.emerald {
+            background: rgba(16, 185, 129, 0.12);
+            border-color: var(--border-emerald);
+            color: var(--accent-emerald);
+        }
+
+        .pill-badge.cyan {
+            background: rgba(56, 189, 248, 0.12);
+            border-color: var(--border-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .pill-badge.amber {
+            background: rgba(251, 191, 36, 0.12);
+            border-color: rgba(251, 191, 36, 0.35);
+            color: var(--accent-amber);
+        }
+
+        .pill-badge.rose {
+            background: rgba(244, 63, 94, 0.12);
+            border-color: rgba(244, 63, 94, 0.35);
+            color: var(--accent-rose);
+        }
+
+        .pill-badge.demo-pill {
+            background: rgba(124, 58, 237, 0.15);
+            border-color: var(--border-glow);
+            color: var(--accent-purple);
+        }
+
+        /* Typography & Paragraphs */
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        strong {
+            color: #fff;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: var(--accent-purple);
+            margin: 1.85rem 0 0.85rem;
+            font-weight: 700;
+        }
+
+        h4 {
+            font-size: 1.12rem;
+            color: #fff;
+            margin: 1.35rem 0 0.55rem;
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin: 0 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.75rem;
+            padding-left: 0.25rem;
+        }
+
+        /* Grids & Feature Layouts */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-glow);
+        }
+
+        .feature-card h3 {
+            margin: 0 0 0.5rem 0;
+            color: #fff;
+        }
+
+        /* Callout Boxes */
+        .info-box {
+            background: rgba(124, 58, 237, 0.08);
+            border-left: 4px solid var(--accent-purple);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 1.35rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-box.cyan {
+            background: rgba(56, 189, 248, 0.08);
+            border-left-color: var(--accent-cyan);
+        }
+
+        .info-box.emerald {
+            background: rgba(52, 211, 153, 0.08);
+            border-left-color: var(--accent-emerald);
+        }
+
+        .info-box.amber {
+            background: rgba(251, 191, 36, 0.08);
+            border-left-color: var(--accent-amber);
+        }
+
+        .info-box.rose {
+            background: rgba(244, 63, 94, 0.08);
+            border-left-color: var(--accent-rose);
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+        }
+
+        /* Tables */
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            margin: 1.75rem 0;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-glow);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        table.comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            background: rgba(15, 23, 42, 0.85);
+            font-size: 0.95rem;
+        }
+
+        table.comparison-table th {
+            background: rgba(30, 41, 59, 0.95);
+            color: var(--accent-cyan);
+            padding: 1rem 1.25rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border-glow);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+
+        table.comparison-table td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-main);
+            vertical-align: top;
+        }
+
+        /* SVG Graph Containers */
+        .graph-wrapper {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1.75rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .graph-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .svg-graph-container {
+            width: 100%;
+            max-width: 760px;
+            height: auto;
+        }
+
+        /* Interactive Simulator Module */
+        .sim-container {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            box-shadow: 0 0 35px rgba(124, 58, 237, 0.12);
+        }
+
+        .sim-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+            background: rgba(30, 41, 59, 0.5);
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-group label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .control-group select, .control-group input[type="range"] {
+            width: 100%;
+            padding: 0.55rem 0.75rem;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            font-size: 0.9rem;
+            accent-color: var(--accent-purple);
+        }
+
+        .sim-display-box {
+            background: rgba(10, 15, 28, 0.85);
+            border: 1px solid var(--border-cyan);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .sim-canvas-wrapper {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        canvas.sim-canvas-el {
+            background: #050811;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm);
+            width: 100%;
+            max-width: 760px;
+            height: 280px;
+        }
+
+        .telemetry-panel {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+
+        .telemetry-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .telemetry-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .telemetry-value {
+            font-family: var(--font-mono);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--accent-purple);
+            margin-top: 0.25rem;
+        }
+
+        /* Buttons & Actions */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-ethereal {
+            background: linear-gradient(135deg, #7c3aed, #06b6d4);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-ethereal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.45);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--border-light);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        /* Questions & Rubrics */
+        .question-container {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .marks-badge {
+            background: rgba(244, 63, 94, 0.15);
+            border: 1px solid rgba(244, 63, 94, 0.4);
+            color: var(--accent-rose);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .action-bar {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .drawer {
+            margin-top: 1rem;
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .drawer-hint {
+            background: rgba(251, 191, 36, 0.08);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            color: #fef08a;
+        }
+
+        .drawer-solution {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-glow);
+        }
+
+        .rubric-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--accent-purple);
+        }
+
+        .rubric-box h5 {
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .content-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; padding: 1.5rem; }
+            .grid-2col { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="ethereal-theme">
+    <div class="app-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="badge-glow">NESA Stage 6</span>
+                <h2>Module 5</h2>
+                <p class="subtitle">EQUILIBRIUM & ACID REACTIONS</p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="module-progress" style="width: 84%;"></div>
+                </div>
+                <div class="score-card">
+                    Total Mastery: <span id="total-marks">84</span> / 100 Marks
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-section">
+                    <span class="section-title">INTRODUCTION</span>
+                    <a href="index.html" class="nav-item">
+                        <span class="nav-num">—</span> Home & Guide
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE A: FOUNDATIONS OF EQUILIBRIUM</span>
+                    <a href="01-reversible-reactions.html" class="nav-item"><span class="nav-num">01</span> Reversible vs Irreversible</a>
+                    <a href="02-open-closed-systems.html" class="nav-item"><span class="nav-num">02</span> Open vs Closed Systems</a>
+                    <a href="03-static-dynamic-equilibrium.html" class="nav-item"><span class="nav-num">03</span> Static vs Dynamic Eq</a>
+                    <a href="04-non-equilibrium-systems.html" class="nav-item"><span class="nav-num">04</span> Non-Equilibrium Systems</a>
+                    <a href="05-collision-theory-equilibrium.html" class="nav-item"><span class="nav-num">05</span> Collision Theory in Eq</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE B: FACTORS AFFECTING EQUILIBRIUM</span>
+                    <a href="06-intro-le-chatelier.html" class="nav-item"><span class="nav-num">06</span> Le Chatelier's Principle</a>
+                    <a href="07-effect-of-concentration.html" class="nav-item"><span class="nav-num">07</span> Concentration Changes</a>
+                    <a href="08-effect-of-pressure-volume.html" class="nav-item"><span class="nav-num">08</span> Pressure & Volume</a>
+                    <a href="09-effect-of-temperature.html" class="nav-item"><span class="nav-num">09</span> Temperature Effects</a>
+                    <a href="10-collision-theory-lcp.html" class="nav-item"><span class="nav-num">10</span> Collision Theory & LCP</a>
+                    <a href="11-activation-energy-equilibrium.html" class="nav-item"><span class="nav-num">11</span> Activation Energy & $\Delta H$</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE C: THE EQUILIBRIUM CONSTANT</span>
+                    <a href="12-keq-expression.html" class="nav-item"><span class="nav-num">12</span> The $K_{\mathrm{eq}}$ Expression</a>
+                    <a href="13-keq-calculations-basic.html" class="nav-item"><span class="nav-num">13</span> Basic $K_{\mathrm{eq}}$ Calculations</a>
+                    <a href="14-keq-calculations-advanced.html" class="nav-item"><span class="nav-num">14</span> Advanced $K_{\mathrm{eq}}$ & $Q$</a>
+                    <a href="15-temperature-and-keq.html" class="nav-item"><span class="nav-num">15</span> Temperature & $K_{\mathrm{eq}}$</a>
+                    <a href="16-determining-keq-experiment.html" class="nav-item"><span class="nav-num">16</span> Practical Determination</a>
+                    <a href="17-keq-acid-base-dissociation.html" class="nav-item"><span class="nav-num">17</span> Dissociation Systems</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE D: SOLUTION EQUILIBRIA</span>
+                    <a href="18-dissolution-ionic-compounds.html" class="nav-item"><span class="nav-num">18</span> Ionic Dissolution</a>
+                    <a href="19-indigenous-solubility-cycads.html" class="nav-item"><span class="nav-num">19</span> Indigenous Detoxification</a>
+                    <a href="20-solubility-rules.html" class="nav-item"><span class="nav-num">20</span> Solubility Rules</a>
+                    <a href="21-solubility-product-ksp.html" class="nav-item active"><span class="nav-num">21</span> Solubility Product ($K_{\mathrm{sp}}$)</a>
+                    <a href="22-molar-solubility-calcs.html" class="nav-item"><span class="nav-num">22</span> Molar Solubility Calcs</a>
+                    <a href="23-predicting-precipitation.html" class="nav-item"><span class="nav-num">23</span> Predicting Precipitation</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE E: ASSESSMENT & REVIEW</span>
+                    <a href="24-formula-summary.html" class="nav-item"><span class="nav-num">24</span> Formula & Concept Guide</a>
+                    <a href="25-final-exam.html" class="nav-item"><span class="nav-num">25</span> Final Examination</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="hero-banner">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <span class="ethereal-tag">LESSON 21 • PHASE D: SOLUTION EQUILIBRIA & SOLUBILITY</span>
+                    <h1 class="ethereal-title">Solubility Product Constant ($K_{\mathrm{sp}}$)</h1>
+                    <p class="ethereal-subtitle">Master the theoretical derivation, thermodynamic meaning, and systematic formulation of the solubility product constant ($K_{\mathrm{sp}}$) for saturated aqueous solutions. Understand how heterogeneous dissolution equilibria work at the sub-microscopic level and derive mathematical expressions across all stoichiometric ratios.</p>
+                </div>
+            </header>
+
+            <!-- SYLLABUS ALIGNMENT CARD -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>NESA Syllabus Inquiry Focus</h2>
+                    <span class="pill-badge">Stage 6 Chemistry</span>
+                </div>
+                <p>
+                    <strong>Inquiry Question 4:</strong> <em>How does solubility relate to chemical equilibrium?</em>
+                </p>
+                <div class="info-box cyan" style="margin-top: 1rem;">
+                    <h3>Syllabus Outcomes Addressed (Outcome CH-12-01):</h3>
+                    <ul>
+                        <li>Write mathematical expressions for the solubility product constant ($K_{\mathrm{sp}}$) of sparingly soluble ionic compounds in saturated aqueous solutions.</li>
+                        <li>Derive $K_{\mathrm{sp}}$ expressions from the general equilibrium constant expression ($K_{\mathrm{eq}}$) by recognising that the activity and concentration of a pure solid phase remains constant ($[\text{solid}] = 1$).</li>
+                        <li>Analyze the sub-microscopic dynamic equilibrium established between solid ionic lattices and hydrated mobile ions in saturated solutions.</li>
+                        <li>Apply stoichiometric exponent rules ($[A^{m+}]^a [B^{n-}]^b$) across diverse salt stoichiometry classes ($1:1$, $1:2$, $2:1$, $1:3$, and $2:3$ salts).</li>
+                        <li>Explain the thermodynamic significance of $K_{\mathrm{sp}}$ as a temperature-dependent equilibrium constant.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECTION 1: THE SATURATED SOLUTION STATE & HETEROGENEOUS EQUILIBRIUM -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>1. The Saturated Solution State & Dynamic Heterogeneous Equilibrium</h2>
+                    <span class="pill-badge">Fundamental Concepts</span>
+                </div>
+
+                <p>
+                    In earlier lessons, ionic dissolution was introduced as a physical process where solvent water molecules hydrate individual cations and anions, pulling them away from an ionic crystal lattice. However, when an excess of a sparingly soluble ionic salt (such as silver chloride, $\mathrm{AgCl}$, or lead(II) iodide, $\mathrm{PbI_2}$) is added to water, the solution rapidly reaches a state known as a <strong>saturated solution</strong>.
+                </p>
+
+                <p>
+                    A <strong>saturated solution</strong> is defined as a solution containing the maximum possible concentration of dissolved solute in stable thermodynamic equilibrium with undissolved solid solute at a specified temperature.
+                </p>
+
+                <div class="info-box purple">
+                    <h3>Sub-Microscopic Dynamic Equilibrium in Saturated Solutions</h3>
+                    <p>
+                        Macro-scopically, a saturated solution containing excess solid precipitate appears completely static; the mass of undissolved solid and the concentration of dissolved ions remain completely unchanged over time.
+                        <br><br>
+                        However, at the sub-microscopic level, the system is in a state of continuous, vigorous <strong>dynamic equilibrium</strong>! Two opposing processes occur at identical rates:
+                    </p>
+                    <ol>
+                        <li><strong>Forward Process (Dissolution):</strong> Surface ions in the undissolved solid lattice break their ionic bonds and enter the aqueous phase as hydrated ions:
+                            $$\text{Rate}_{\mathrm{dissolution}} = k_{\mathrm{fwd}} \times (\text{Surface Area})$$
+                        </li>
+                        <li><strong>Reverse Process (Crystallisation / Precipitation):</strong> Hydrated mobile ions in solution collide with the solid surface, re-integrating into the crystalline ionic lattice:
+                            $$\text{Rate}_{\mathrm{crystallisation}} = k_{\mathrm{rev}} \times [\text{Cation}]^a [\text{Anion}]^b$$
+                        </li>
+                    </ol>
+                    <p>
+                        At saturation, $\text{Rate}_{\mathrm{dissolution}} = \text{Rate}_{\mathrm{crystallisation}}$. Ions continuously enter and leave the solid phase at equal speeds, keeping macroscopic concentrations perfectly constant!
+                    </p>
+                </div>
+
+                <!-- SVG Graph 1: Dynamic Equilibrium Rate vs Time for Saturated Solution -->
+                <div class="graph-wrapper">
+                    <div class="graph-title">Figure 21.1: Kinetic Rate Profile Leading to Heterogeneous Saturated Solution Equilibrium</div>
+                    <div class="svg-graph-container">
+                        <svg viewBox="0 0 720 280" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="720" height="280" fill="#0b1329" rx="10"/>
+
+                            <!-- Axes -->
+                            <line x1="70" y1="230" x2="660" y2="230" stroke="#94a3b8" stroke-width="2"/>
+                            <line x1="70" y1="230" x2="70" y2="40" stroke="#94a3b8" stroke-width="2"/>
+                            <text x="365" y="268" fill="#94a3b8" font-size="12" font-weight="700" text-anchor="middle">Time Elapsed</text>
+                            <text x="25" y="135" fill="#94a3b8" font-size="12" font-weight="700" text-anchor="middle" transform="rotate(-90 25 135)">Process Rate</text>
+
+                            <!-- Equilibrium dashed line -->
+                            <line x1="380" y1="30" x2="380" y2="230" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="5,4"/>
+                            <text x="385" y="45" fill="#a78bfa" font-size="10" font-weight="700">Dynamic Equilibrium Established (Saturation)</text>
+
+                            <!-- Rate of Dissolution Curve (Constant top value) -->
+                            <path d="M 70 80 L 660 80" fill="none" stroke="#38bdf8" stroke-width="3"/>
+                            <text x="80" y="70" fill="#38bdf8" font-size="11" font-weight="700">Forward Rate: Solid Dissolution (Constant Surface Area)</text>
+
+                            <!-- Rate of Crystallisation Curve (Starts at 0, rises to meet dissolution) -->
+                            <path d="M 70 230 Q 200 120 380 80 L 660 80" fill="none" stroke="#f43f5e" stroke-width="3"/>
+                            <text x="140" y="190" fill="#f43f5e" font-size="11" font-weight="700">Reverse Rate: Ion Crystallisation (Increases with [Ions])</text>
+
+                            <!-- Equivalence Highlight -->
+                            <circle cx="380" cy="80" r="6" fill="#34d399"/>
+                            <text x="400" y="95" fill="#34d399" font-size="11" font-weight="800">Rate(dissolution) = Rate(crystallisation)</text>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2: RIGOROUS DERIVATION OF THE Ksp EXPRESSION -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>2. Deriving the $K_{\mathrm{sp}}$ Expression from General $K_{\mathrm{eq}}$</h2>
+                    <span class="pill-badge emerald">Mathematical Foundation</span>
+                </div>
+
+                <p>
+                    Consider a general sparingly soluble ionic compound with the chemical formula $A_x B_y$, where $x$ and $y$ represent the stoichiometric coefficients of cation $A^{m+}$ and anion $B^{n-}$ respectively.
+                </p>
+
+                <p>
+                    When solid $A_x B_{y(s)}$ is placed in pure water, it establishes the following heterogeneous solubility equilibrium in a saturated solution:
+                    $$A_x B_{y(s)} \rightleftharpoons x A^{m+}_{(aq)} + y B^{n-}_{(aq)}$$
+                </p>
+
+                <h3>Step 1: Write the Standard Equilibrium Constant ($K_{\mathrm{eq}}$) Expression</h3>
+                <p>
+                    Applying the Law of Mass Action (covered in Lesson 12), the general equilibrium constant expression for this reversible system is:
+                    $$K_{\mathrm{eq}} = \frac{[A^{m+}_{(aq)}]^x [B^{n-}_{(aq)}]^y}{[A_x B_{y(s)}]}$$
+                </p>
+
+                <h3>Step 2: Apply the Pure Solid Concentration Rule</h3>
+                <p>
+                    Notice the term $[A_x B_{y(s)}]$ in the denominator. $[A_x B_{y(s)}]$ represents the molar concentration (density divided by molar mass) of the <strong>pure solid phase</strong>.
+                </p>
+
+                <div class="info-box cyan">
+                    <h3>Why is the Concentration of a Pure Solid Constant?</h3>
+                    <p>
+                        The molar concentration of a pure solid is defined as the amount of substance in moles per unit volume of the solid itself ($\text{mol L}^{-1}$):
+                        $$[\text{solid}] = \frac{n}{V} = \frac{m / M}{m / \rho} = \frac{\rho}{M}$$
+                        where $\rho$ is the density ($\text{g L}^{-1}$) and $M$ is the molar mass ($\text{g mol}^{-1}$) of the compound.
+                        <br><br>
+                        Since density and molar mass are intrinsic physical constants of a solid substance at a given temperature, the concentration of a pure solid $[A_x B_{y(s)}]$ is a fixed constant, regardless of how much solid precipitate is sitting at the bottom of the beaker!
+                    </p>
+                </div>
+
+                <h3>Step 3: Combine Constants to Define $K_{\mathrm{sp}}$</h3>
+                <p>
+                    Because $[A_x B_{y(s)}]$ is constant, we multiply both sides of the $K_{\mathrm{eq}}$ equation by $[A_x B_{y(s)}]$ to group all constant terms on the left-hand side:
+                    $$K_{\mathrm{eq}} \times [A_x B_{y(s)}] = [A^{m+}_{(aq)}]^x [B^{n-}_{(aq)}]^y$$
+                </p>
+
+                <p>
+                    The product of the two constants ($K_{\mathrm{eq}} \times [A_x B_{y(s)}]$) is defined as a new, specialized equilibrium constant called the <strong>Solubility Product Constant ($K_{\mathrm{sp}}$)</strong>:
+                </p>
+
+                <div class="info-box emerald" style="text-align: center;">
+                    <h3 style="font-size: 1.4rem;">The General $K_{\mathrm{sp}}$ Mathematical Definition</h3>
+                    $$K_{\mathrm{sp}} = [A^{m+}_{(aq)}]^x [B^{n-}_{(aq)}]^y$$
+                    <p style="margin-top: 0.5rem; color: #cbd5e1;">
+                        where $[A^{m+}]$ and $[B^{n-}]$ represent the equilibrium molar concentrations ($\text{mol L}^{-1}$) of the dissolved constituent ions in a saturated solution, raised to the power of their stoichiometric coefficients $x$ and $y$.
+                    </p>
+                </div>
+
+                <div class="info-box amber">
+                    <h3>Crucial NESA Exam Rules for $K_{\mathrm{sp}}$ Expressions</h3>
+                    <ul>
+                        <li><strong>1. No Denominator:</strong> Pure solid reactants are assigned an activity of 1 and are NEVER included in a $K_{\mathrm{sp}}$ expression. $K_{\mathrm{sp}}$ is strictly a product of aqueous ion concentrations!</li>
+                        <li><strong>2. Saturated Solutions Only:</strong> A $K_{\mathrm{sp}}$ expression applies EXCLUSIVELY when the solution is saturated and in dynamic equilibrium with undissolved solid.</li>
+                        <li><strong>3. Units of $K_{\mathrm{sp}}$:</strong> In the NESA Stage 6 Chemistry syllabus, $K_{\mathrm{sp}}$ is treated as a dimensionless thermodynamic constant (or expressed without explicit units) because ion concentrations are formally divided by standard state concentration ($c^\circ = 1\text{ mol L}^{-1}$).</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECTION 3: SYSTEMATIC DERIVATION ACROSS ALL SALT STOICHIOMETRIC RATIOS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>3. Systematic Derivations Across Salt Stoichiometric Classes</h2>
+                    <span class="pill-badge cyan">Stoichiometric Exponent Rules</span>
+                </div>
+
+                <p>
+                    The powers in a $K_{\mathrm{sp}}$ expression are determined entirely by the stoichiometry of the salt's balanced ionic dissociation equation. Below is a comprehensive breakdown of derivations across all five major salt ratio classes tested by NESA:
+                </p>
+
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Salt Class & Stoichiometry</th>
+                                <th>Representative Example</th>
+                                <th>Balanced Dissociation Equation in Water</th>
+                                <th>Derivation of $K_{\mathrm{sp}}$ Expression</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1 : 1 Salt</strong><br>($AB$ stoichiometry)</td>
+                                <td>Silver chloride ($\mathrm{AgCl}$)<br>Barium sulfate ($\mathrm{BaSO_4}$)</td>
+                                <td>$$\mathrm{AgCl_{(s)} \rightleftharpoons Ag^+_{(aq)} + Cl^-_{(aq)}}$$</td>
+                                <td>$$K_{\mathrm{sp}} = [\mathrm{Ag^+}][\mathrm{Cl^-}]$$</td>
+                            </tr>
+                            <tr>
+                                <td><strong>1 : 2 Salt</strong><br>($AB_2$ stoichiometry)</td>
+                                <td>Lead(II) chloride ($\mathrm{PbCl_2}$)<br>Calcium fluoride ($\mathrm{CaF_2}$)</td>
+                                <td>$$\mathrm{PbCl_{2(s)} \rightleftharpoons Pb^{2+}_{(aq)} + 2Cl^-_{(aq)}}$$</td>
+                                <td>$$K_{\mathrm{sp}} = [\mathrm{Pb^{2+}}][\mathrm{Cl^-}]^2$$<br><span style="color:var(--accent-amber); font-size:0.85rem;">(Note the square power on $[\mathrm{Cl^-}]$!)</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>2 : 1 Salt</strong><br>($A_2B$ stoichiometry)</td>
+                                <td>Silver chromate ($\mathrm{Ag_2CrO_4}$)<br>Silver sulfate ($\mathrm{Ag_2SO_4}$)</td>
+                                <td>$$\mathrm{Ag_2CrO_{4(s)} \rightleftharpoons 2Ag^+_{(aq)} + CrO_{4(aq)}^{2-}}$$</td>
+                                <td>$$K_{\mathrm{sp}} = [\mathrm{Ag^+}]^2 [\mathrm{CrO_4^{2-}}]$$<br><span style="color:var(--accent-amber); font-size:0.85rem;">(Note the square power on $[\mathrm{Ag^+}]$!)</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>1 : 3 Salt</strong><br>($AB_3$ stoichiometry)</td>
+                                <td>Iron(III) hydroxide ($\mathrm{Fe(OH)_3}$)<br>Aluminium hydroxide ($\mathrm{Al(OH)_3}$)</td>
+                                <td>$$\mathrm{Fe(OH)_{3(s)} \rightleftharpoons Fe^{3+}_{(aq)} + 3OH^-_{(aq)}}$$</td>
+                                <td>$$K_{\mathrm{sp}} = [\mathrm{Fe^{3+}}][\mathrm{OH^-}]^3$$<br><span style="color:var(--accent-amber); font-size:0.85rem;">(Note the cubic power on $[\mathrm{OH^-}]$!)</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>2 : 3 Salt</strong><br>($A_2B_3$ stoichiometry)</td>
+                                <td>Calcium phosphate ($\mathrm{Ca_3(PO_4)_2}$)<br>Bismuth(III) sulfide ($\mathrm{Bi_2S_3}$)</td>
+                                <td>$$\mathrm{Ca_3(PO_4)_{2(s)} \rightleftharpoons 3Ca^{2+}_{(aq)} + 2PO_{4(aq)}^{3-}}$$</td>
+                                <td>$$K_{\mathrm{sp}} = [\mathrm{Ca^{2+}}]^3 [\mathrm{PO_4^{3-}}]^2$$<br><span style="color:var(--accent-amber); font-size:0.85rem;">(Note cubic and square powers!)</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- SVG Diagram 2: Sub-microscopic Lattice vs Dissolved Ions in 1:2 Salt -->
+                <div class="graph-wrapper">
+                    <div class="graph-title">Figure 21.2: Sub-Microscopic Stoichiometric Dispersal for a 1:2 Salt ($\mathrm{PbCl_2}$) in Saturated Solution</div>
+                    <div class="svg-graph-container">
+                        <svg viewBox="0 0 720 260" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="720" height="260" fill="#0b1329" rx="10"/>
+
+                            <!-- Solid Crystal Lattice Phase (Left) -->
+                            <g transform="translate(40, 30)">
+                                <rect width="260" height="200" fill="rgba(15, 23, 42, 0.85)" stroke="#f43f5e" stroke-width="2" rx="8"/>
+                                <text x="130" y="25" fill="#f43f5e" font-size="12" font-weight="700" text-anchor="middle">Undissolved Solid PbCl₂ Phase</text>
+
+                                <!-- Lattice Grid -->
+                                <circle cx="70" cy="70" r="16" fill="#a78bfa"/><text x="70" y="75" fill="#000" font-size="10" font-weight="800" text-anchor="middle">Pb²⁺</text>
+                                <circle cx="130" cy="70" r="13" fill="#34d399"/><text x="130" y="74" fill="#000" font-size="9" font-weight="800" text-anchor="middle">Cl⁻</text>
+                                <circle cx="190" cy="70" r="13" fill="#34d399"/><text x="190" y="74" fill="#000" font-size="9" font-weight="800" text-anchor="middle">Cl⁻</text>
+
+                                <circle cx="70" cy="130" r="13" fill="#34d399"/><text x="70" y="134" fill="#000" font-size="9" font-weight="800" text-anchor="middle">Cl⁻</text>
+                                <circle cx="130" cy="130" r="16" fill="#a78bfa"/><text x="130" y="135" fill="#000" font-size="10" font-weight="800" text-anchor="middle">Pb²⁺</text>
+                                <circle cx="190" cy="130" r="13" fill="#34d399"/><text x="190" y="134" fill="#000" font-size="9" font-weight="800" text-anchor="middle">Cl⁻</text>
+
+                                <text x="130" y="180" fill="#cbd5e1" font-size="10" text-anchor="middle">Pure Solid Activity = 1</text>
+                            </g>
+
+                            <!-- Equilibrium Arrows (Center) -->
+                            <g transform="translate(315, 120)">
+                                <line x1="0" y1="-10" x2="60" y2="-10" stroke="#38bdf8" stroke-width="3"/>
+                                <polygon points="60,-15 72,-10 60,-5" fill="#38bdf8"/>
+
+                                <line x1="12" y1="10" x2="72" y2="10" stroke="#f43f5e" stroke-width="3"/>
+                                <polygon points="12,5 0,10 12,15" fill="#f43f5e"/>
+
+                                <text x="36" y="-20" fill="#38bdf8" font-size="9" font-weight="700" text-anchor="middle">Dissolution</text>
+                                <text x="36" y="28" fill="#f43f5e" font-size="9" font-weight="700" text-anchor="middle">Crystallisation</text>
+                            </g>
+
+                            <!-- Aqueous Phase (Right) -->
+                            <g transform="translate(420, 30)">
+                                <rect width="260" height="200" fill="rgba(15, 23, 42, 0.85)" stroke="#38bdf8" stroke-width="2" rx="8"/>
+                                <text x="130" y="25" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">Saturated Solution Phase</text>
+
+                                <!-- 1 Pb2+ ion -->
+                                <circle cx="80" cy="90" r="18" fill="#a78bfa"/>
+                                <text x="80" y="95" fill="#000" font-size="11" font-weight="800" text-anchor="middle">Pb²⁺</text>
+
+                                <!-- 2 Cl- ions -->
+                                <circle cx="170" cy="70" r="14" fill="#34d399"/>
+                                <text x="170" y="74" fill="#000" font-size="10" font-weight="800" text-anchor="middle">Cl⁻</text>
+
+                                <circle cx="190" cy="120" r="14" fill="#34d399"/>
+                                <text x="190" y="124" fill="#000" font-size="10" font-weight="800" text-anchor="middle">Cl⁻</text>
+
+                                <text x="130" y="175" fill="#38bdf8" font-size="11" font-weight="700" text-anchor="middle">Ksp = [Pb²⁺][Cl⁻]²</text>
+                                <text x="130" y="192" fill="#fbbf24" font-size="9" text-anchor="middle">1 Pb²⁺ ion releases 2 Cl⁻ ions!</text>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: THERMODYNAMIC SIGNIFICANCE, TEMPERATURE DEPENDENCE & COMPARISON LIMITATIONS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>4. Physical & Thermodynamic Significance of $K_{\mathrm{sp}}$</h2>
+                    <span class="pill-badge amber">Thermodynamic Analysis</span>
+                </div>
+
+                <p>
+                    The numerical magnitude of the solubility product constant ($K_{\mathrm{sp}}$) serves as a direct quantitative measure of a compound's intrinsic solubility in water at a given temperature:
+                </p>
+
+                <div class="grid-2col">
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-emerald);">
+                        <h3>Large $K_{\mathrm{sp}}$ Value ($K_{\mathrm{sp}} > 10^{-2}$)</h3>
+                        <p>
+                            Indicates that the dissolution equilibrium lies relatively far to the **RIGHT ($\to$)**. The compound dissolves to a significant extent, yielding high equilibrium ion concentrations before saturation occurs.
+                        </p>
+                    </div>
+
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-rose);">
+                        <h3>Very Small $K_{\mathrm{sp}}$ Value ($K_{\mathrm{sp}} < 10^{-10}$)</h3>
+                        <p>
+                            Indicates that the dissolution equilibrium lies heavily to the **LEFT ($\leftarrow$)**. The compound is extremely insoluble in water, reaching saturation at minute trace concentrations of dissolved ions (e.g. $\mathrm{AgI}$ with $K_{\mathrm{sp}} = 8.5 \times 10^{-17}$).
+                        </p>
+                    </div>
+                </div>
+
+                <h3>1. Temperature Dependence of $K_{\mathrm{sp}}$</h3>
+                <p>
+                    Like all chemical equilibrium constants ($K_{\mathrm{eq}}$), the value of $K_{\mathrm{sp}}$ for a given compound is **STRICTLY TEMPERATURE DEPENDENT**.
+                </p>
+                <p>
+                    For the vast majority of sparingly soluble ionic salts, the forward dissolution process is <strong>endothermic</strong> ($\Delta H_{\mathrm{dissolution}} > 0$), as the lattice enthalpy required to break ionic bonds exceeds the hydration enthalpy released when ions bond with water:
+                    $$\mathrm{Salt_{(s)} + Heat \rightleftharpoons Cation^+_{(aq)} + Anion^-_{(aq)}} \quad (\Delta H > 0)$$
+                </p>
+
+                <div class="info-box cyan">
+                    <h3>Applying Le Chatelier's Principle to Temperature Changes</h3>
+                    <p>
+                        • <strong>Increasing Temperature:</strong> Adding thermal energy shifts the endothermic dissolution equilibrium to the <strong>RIGHT ($\to$)</strong> according to Le Chatelier's Principle. As a result, equilibrium ion concentrations $[A^{m+}]$ and $[B^{n-}]$ increase, causing the numerical value of $K_{\mathrm{sp}}$ to <strong>INCREASE</strong>.
+                        <br><br>
+                        • <strong>Decreasing Temperature:</strong> Removing thermal energy shifts the equilibrium to the <strong>LEFT ($\leftarrow$)</strong>, causing ions to crystallise out of solution and $K_{\mathrm{sp}}$ to <strong>DECREASE</strong>.
+                        <br><br>
+                        • <strong>Exam Warning:</strong> Always state the temperature (typically $25^\circ\text{C}$ / $298\text{ K}$) when citing experimental $K_{\mathrm{sp}}$ values!
+                    </p>
+                </div>
+
+                <h3>2. Critical Exam Pitfall: Comparing $K_{\mathrm{sp}}$ Values Across Different Stoichiometry Classes</h3>
+                <p>
+                    A very common conceptual trap in HSC Chemistry is directly comparing the $K_{\mathrm{sp}}$ values of two different salts to determine which salt is more soluble.
+                </p>
+
+                <div class="info-box rose">
+                    <h3>The Golden Rule of $K_{\mathrm{sp}}$ Comparison</h3>
+                    <p>
+                        You can ONLY directly compare $K_{\mathrm{sp}}$ values to rank solubility if the salts have the <strong>EXACT SAME STOICHIOMETRIC RATIO</strong> (i.e. same ion ratio)!
+                    </p>
+                    <ul>
+                        <li><strong>Valid Direct Comparison ($1:1$ vs $1:1$):</strong>
+                            <br>$\mathrm{AgCl}$ ($K_{\mathrm{sp}} = 1.77 \times 10^{-10}$) versus $\mathrm{AgI}$ ($K_{\mathrm{sp}} = 8.52 \times 10^{-17}$).
+                            <br>Since both are $1:1$ salts, $\mathrm{AgCl}$ has a larger $K_{\mathrm{sp}}$ and is unambiguously <strong>more soluble</strong> than $\mathrm{AgI}$.
+                        </li>
+                        <li><strong>INVALID Direct Comparison ($1:1$ vs $1:2$):</strong>
+                            <br>$\mathrm{AgCl}$ ($1:1$ salt, $K_{\mathrm{sp}} = 1.77 \times 10^{-10}$) versus $\mathrm{Ag_2CrO_4}$ ($2:1$ salt, $K_{\mathrm{sp}} = 1.12 \times 10^{-12}$).
+                            <br>Looking strictly at $K_{\mathrm{sp}}$, $\mathrm{AgCl}$ appears to have a larger constant ($10^{-10} > 10^{-12}$). However, calculating their actual molar solubilities reveals that $\mathrm{Ag_2CrO_4}$ ($s = 6.5 \times 10^{-5}\text{ M}$) is actually <strong>MORE SOLUBLE</strong> than $\mathrm{AgCl}$ ($s = 1.33 \times 10^{-5}\text{ M}$)!
+                            <br><em>Why? Because the squared term in $K_{\mathrm{sp}} = [\mathrm{Ag^+}]^2 [\mathrm{CrO_4^{2-}}] = 4s^3$ alters the mathematical scaling relationship between $s$ and $K_{\mathrm{sp}}$!</em>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECTION 5: INTERACTIVE Ksp EXPRESSION & CALCULATOR SIMULATOR -->
+            <section class="card glass-card demo-card">
+                <div class="card-header">
+                    <h2>5. Interactive $K_{\mathrm{sp}}$ Expression & Interactive Diagram Visualiser</h2>
+                    <span class="pill-badge demo-pill">Virtual Chemistry Engine</span>
+                </div>
+                <p>Select an ionic compound from the database or adjust system temperature to observe sub-microscopic lattice dissolution, dynamic ion dispersal stoichiometry, real-time $K_{\mathrm{sp}}$ expression formulation, and thermodynamic equilibrium telemetry.</p>
+
+                <div class="sim-container">
+                    <div class="sim-controls">
+                        <div class="control-group">
+                            <label>Select Sparingly Soluble Salt:</label>
+                            <select id="sim-salt-select" onchange="runKspEngine()">
+                                <option value="AgCl">Silver Chloride [AgCl] (1:1 Salt)</option>
+                                <option value="PbI2">Lead(II) Iodide [PbI2] (1:2 Salt)</option>
+                                <option value="Ag2CrO4">Silver Chromate [Ag2CrO4] (2:1 Salt)</option>
+                                <option value="Fe(OH)3">Iron(III) Hydroxide [Fe(OH)3] (1:3 Salt)</option>
+                                <option value="Ca3(PO4)2">Calcium Phosphate [Ca3(PO4)2] (2:3 Salt)</option>
+                                <option value="BaSO4">Barium Sulfate [BaSO4] (1:1 Salt)</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <label>System Temperature ($T$): <span id="lbl-temp-val" style="color: var(--accent-cyan);">25 °C (298 K)</span></label>
+                            <input type="range" id="sim-temp" min="5" max="80" step="5" value="25" oninput="runKspEngine()">
+                        </div>
+                    </div>
+
+                    <div class="sim-display-box">
+                        <h4 style="font-size: 0.9rem; color: var(--accent-cyan); text-transform: uppercase; margin-bottom: 0.75rem;">Saturated Solution Heterogeneous Equilibrium Equation</h4>
+                        <div id="sim-eq-display" style="font-size: 1.2rem; font-weight: 700; text-align: center; color: var(--accent-purple); margin-bottom: 1rem;">
+                            <!-- Dynamic LaTeX Insertion -->
+                        </div>
+
+                        <div id="sim-ksp-expression-box" style="background: rgba(15, 23, 42, 0.9); padding: 1.25rem; border-radius: var(--radius-sm); border: 1px solid var(--border-light); font-family: var(--font-mono); font-size: 1.05rem;">
+                            <!-- Expressions rendered here -->
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Interactive Sub-Microscopic Diagram Canvas -->
+                    <div class="sim-canvas-wrapper">
+                        <h4 style="font-size: 0.85rem; color: var(--accent-cyan); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Interactive Sub-Microscopic Dissolution & Ion Dispersal Diagram</h4>
+                        <canvas id="canvas-ksp-diagram" class="sim-canvas-el" width="720" height="280"></canvas>
+                    </div>
+
+                    <div class="telemetry-panel">
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Salt Ratio Class</span>
+                            <span class="telemetry-value" id="tel-ratio-class" style="color: var(--accent-cyan);">1 : 1</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">$K_{\mathrm{sp}}$ Value at Selected $T$</span>
+                            <span class="telemetry-value" id="tel-ksp-val" style="color: var(--accent-rose);">1.77 × 10⁻¹⁰</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Dissolution Enthalpy ($\Delta H$)</span>
+                            <span class="telemetry-value" id="tel-dh-val" style="color: var(--accent-amber);">Endothermic (+65.5 kJ)</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Relative Solute Dissolution</span>
+                            <span class="telemetry-value" id="tel-sol-status" style="color: var(--accent-emerald);">Very Low (Sparingly Soluble)</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 6: SCAFFOLDED WORKED EXAMPLES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>6. Scaffolded Worked Examples</h2>
+                    <span class="pill-badge">HSC Step-by-Step Solutions</span>
+                </div>
+
+                <!-- Example 1: Easy -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 1 (Easy): Writing $K_{\mathrm{sp}}$ Expressions for $1:1$ and $1:2$ Salts</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Write the balanced ionic dissociation equations and the corresponding $K_{\mathrm{sp}}$ mathematical expressions for saturated aqueous solutions of:
+                        <br>
+                        (a) Barium sulfate ($\mathrm{BaSO_{4(s)}}$)
+                        <br>
+                        (b) Calcium fluoride ($\mathrm{CaF_{2(s)}}$)
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>(a) Barium sulfate ($\mathrm{BaSO_4}$):</strong>
+                        <br>• Dissociation equation:
+                        $$\mathrm{BaSO_{4(s)} \rightleftharpoons Ba^{2+}_{(aq)} + SO_{4(aq)}^{2-}}$$
+                        • $K_{\mathrm{sp}}$ expression:
+                        $$K_{\mathrm{sp}} = [\mathrm{Ba^{2+}}][\mathrm{SO_4^{2-}}]$$</p>
+
+                        <p><strong>(b) Calcium fluoride ($\mathrm{CaF_2}$):</strong>
+                        <br>• Dissociation equation:
+                        $$\mathrm{CaF_{2(s)} \rightleftharpoons Ca^{2+}_{(aq)} + 2F^-_{(aq)}}$$
+                        • $K_{\mathrm{sp}}$ expression:
+                        $$K_{\mathrm{sp}} = [\mathrm{Ca^{2+}}][\mathrm{F^-}]^2$$</p>
+                    </div>
+                </div>
+
+                <!-- Example 2: Medium -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 2 (Medium): Deriving $K_{\mathrm{sp}}$ for Complex $2:3$ Stoichiometry</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Solid bismuth(III) sulfide ($\mathrm{Bi_2S_{3(s)}}$) dissolves in pure water to form a saturated solution.
+                        <br><br>
+                        (a) Formulate the balanced heterogeneous equilibrium equation for the dissolution of $\mathrm{Bi_2S_{3(s)}}$. (1 Mark)
+                        <br>
+                        (b) Derive the $K_{\mathrm{sp}}$ expression starting from the general equilibrium constant expression $K_{\mathrm{eq}}$, explicitly explaining why the solid phase is omitted. (2 Marks)
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>(a) Balanced Equilibrium Equation:</strong>
+                        $$\mathrm{Bi_2S_{3(s)} \rightleftharpoons 2Bi^{3+}_{(aq)} + 3S^{2-}_{(aq)}}$$</p>
+
+                        <p><strong>(b) Derivation from $K_{\mathrm{eq}}$:</strong>
+                        <br>1. Write the general $K_{\mathrm{eq}}$ expression:
+                        $$K_{\mathrm{eq}} = \frac{[\mathrm{Bi^{3+}}]^2 [\mathrm{S^{2-}}]^3}{[\mathrm{Bi_2S_{3(s)}}]}$$
+                        2. Since $\mathrm{Bi_2S_{3(s)}}$ is a pure solid phase, its chemical activity and molar concentration $[\mathrm{Bi_2S_{3(s)}}]$ are constant at a given temperature.
+                        <br>3. Multiplying $K_{\mathrm{eq}}$ by $[\mathrm{Bi_2S_{3(s)}}]$ yields the solubility product constant $K_{\mathrm{sp}}$:
+                        $$K_{\mathrm{sp}} = K_{\mathrm{eq}} \times [\mathrm{Bi_2S_{3(s)}}] = [\mathrm{Bi^{3+}}]^2 [\mathrm{S^{2-}}]^3$$</p>
+                    </div>
+                </div>
+
+                <!-- Example 3: Hard -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 3 (Hard): Calculating $K_{\mathrm{sp}}$ from Equilibrium Ion Concentrations</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        An chemical analyst prepares a saturated solution of lead(II) iodide ($\mathrm{PbI_2}$) at $25^\circ\text{C}$ by shaking solid $\mathrm{PbI_2}$ in distilled water until equilibrium is established.
+                        <br><br>
+                        Spectrophotometric analysis of the clear supernatant solution reveals that the equilibrium concentration of iodide ions is $[\mathrm{I^-}] = 2.60 \times 10^{-3}\text{ mol L}^{-1}$.
+                        <br><br>
+                        Calculate the experimental value of $K_{\mathrm{sp}}$ for $\mathrm{PbI_2}$ at $25^\circ\text{C}$.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Write the balanced dissociation equation:</strong>
+                        $$\mathrm{PbI_{2(s)} \rightleftharpoons Pb^{2+}_{(aq)} + 2I^-_{(aq)}}$$</p>
+
+                        <p><strong>2. State the $K_{\mathrm{sp}}$ expression:</strong>
+                        $$K_{\mathrm{sp}} = [\mathrm{Pb^{2+}}][\mathrm{I^-}]^2$$</p>
+
+                        <p><strong>3. Determine $[\mathrm{Pb^{2+}}]$ using stoichiometry:</strong>
+                        <br>From the balanced equation, every $1\text{ mole}$ of $\mathrm{PbI_2}$ that dissolves produces $1\text{ mole}$ of $\mathrm{Pb^{2+}}$ and $2\text{ moles}$ of $\mathrm{I^-}$.
+                        <br>Therefore, the concentration of $\mathrm{Pb^{2+}}$ is exactly half the concentration of $\mathrm{I^-}$:
+                        $$[\mathrm{Pb^{2+}}] = \frac{1}{2} [\mathrm{I^-}] = \frac{2.60 \times 10^{-3}\text{ M}}{2} = 1.30 \times 10^{-3}\text{ mol L}^{-1}$$</p>
+
+                        <p><strong>4. Substitute equilibrium concentrations into $K_{\mathrm{sp}}$:</strong>
+                        $$K_{\mathrm{sp}} = (1.30 \times 10^{-3}) \times (2.60 \times 10^{-3})^2$$
+                        $$K_{\mathrm{sp}} = (1.30 \times 10^{-3}) \times (6.76 \times 10^{-6}) = \mathbf{8.79 \times 10^{-9}} \quad (3\text{ sig. figs.})$$</p>
+                    </div>
+                </div>
+
+                <!-- Example 4: Extension -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 4 (Extension): Evaluating Temperature Shift & Le Chatelier's Principle</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        The dissolution of silver chromate in water is an endothermic process:
+                        $$\mathrm{Ag_2CrO_{4(s)} \rightleftharpoons 2Ag^+_{(aq)} + CrO_{4(aq)}^{2-}} \quad (\Delta H = +61.2\text{ kJ mol}^{-1})$$
+                        
+                        At $25^\circ\text{C}$, $K_{\mathrm{sp}} = 1.12 \times 10^{-12}$.
+                        <br><br>
+                        (a) Predict and justify the effect on the numerical value of $K_{\mathrm{sp}}$ when the temperature of the saturated solution is increased to $60^\circ\text{C}$. (3 Marks)
+                        <br>
+                        (b) Explain why a direct comparison between the $K_{\mathrm{sp}}$ of $\mathrm{Ag_2CrO_4}$ ($1.12 \times 10^{-12}$) and $\mathrm{AgCl}$ ($1.77 \times 10^{-10}$) cannot be used to conclude which salt has greater molar solubility. (2 Marks)
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>(a) Temperature Effect on $K_{\mathrm{sp}}$:</strong>
+                        <br>• <strong>Prediction:</strong> $K_{\mathrm{sp}}$ will **INCREASE** at $60^\circ\text{C}$.
+                        <br>• <strong>Justification:</strong> Since $\Delta H > 0$, the forward dissolution reaction absorbs thermal energy (endothermic). According to Le Chatelier's Principle, increasing system temperature causes the equilibrium position to shift in the **FORWARD direction ($\to$)** to absorb added heat.
+                        <br>• As a result, the equilibrium concentrations of products $[\mathrm{Ag^+}]$ and $[\mathrm{CrO_4^{2-}}]$ both increase. Because $K_{\mathrm{sp}} = [\mathrm{Ag^+}]^2 [\mathrm{CrO_4^{2-}}]$, an increase in product concentrations directly increases the numerical magnitude of $K_{\mathrm{sp}}$.</p>
+
+                        <p><strong>(b) Explanation of Comparison Limitations:</strong>
+                        <br>• $\mathrm{AgCl}$ is a $1:1$ salt ($K_{\mathrm{sp}} = [\mathrm{Ag^+}][\mathrm{Cl^-}] = s^2$).
+                        <br>• $\mathrm{Ag_2CrO_4}$ is a $2:1$ salt ($K_{\mathrm{sp}} = [\mathrm{Ag^+}]^2 [\mathrm{CrO_4^{2-}}] = 4s^3$).
+                        <br>• Because the two salts have different stoichiometric ratios, their $K_{\mathrm{sp}}$ expressions have different mathematical forms and powers. Consequently, $K_{\mathrm{sp}}$ values scale differently with respect to molar solubility ($s$), making a direct raw comparison of $K_{\mathrm{sp}}$ values mathematically invalid.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 7: NESA EXAMINATION PRACTICE QUESTIONS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>7. NESA Examination Practice Questions</h2>
+                    <span class="pill-badge demo-pill">Self-Marking Engine</span>
+                </div>
+                <p>Solve the questions below, then toggle hints and model solutions to verify your answers against NESA marking rubrics.</p>
+
+                <!-- Practice Q1 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 1 (Easy): Formulating $K_{\mathrm{sp}}$ Expressions</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Write the $K_{\mathrm{sp}}$ expression for iron(III) hydroxide ($\mathrm{Fe(OH)_{3(s)}}$) in a saturated aqueous solution.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq1-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq1-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq1-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> First balance the ionic dissociation equation $\mathrm{Fe(OH)_3 \rightleftharpoons Fe^{3+} + 3OH^-}$. Remember that stoichiometric coefficients become exponents!</p>
+                    </div>
+
+                    <div id="pq1-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>Dissociation equation: $\mathrm{Fe(OH)_{3(s)} \rightleftharpoons Fe^{3+}_{(aq)} + 3OH^-_{(aq)}}$
+                            <br><br>
+                            $K_{\mathrm{sp}}$ expression:
+                            $$K_{\mathrm{sp}} = [\mathrm{Fe^{3+}}][\mathrm{OH^-}]^3$$</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Writes correct balanced ionic dissociation equation.</li>
+                                <li><strong>1 Mark:</strong> Formulates correct $K_{\mathrm{sp}}$ expression with $[\mathrm{OH^-}]$ cubed and no denominator.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q2 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 2 (Medium): Deriving $K_{\mathrm{sp}}$ and Explaining Solid Omission</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Explain why the undissolved solid is omitted from the $K_{\mathrm{sp}}$ expression of a saturated lead(II) chloride solution ($\mathrm{PbCl_{2(s)} \rightleftharpoons Pb^{2+}_{(aq)} + 2Cl^-_{(aq)}}$).
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq2-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq2-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq2-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Define molar concentration of a pure solid in terms of density ($\rho$) and molar mass ($M$).</p>
+                    </div>
+
+                    <div id="pq2-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>• In a saturated solution, undissolved $\mathrm{PbCl_{2(s)}}$ exists as a pure solid phase.
+                            <br>• The molar concentration of a pure solid is given by $[\text{solid}] = \frac{\rho}{M}$ (density divided by molar mass). Because density and molar mass are constant physical properties of a solid at constant temperature, the concentration $[\mathrm{PbCl_{2(s)}}]$ remains invariant regardless of the amount of solid present.
+                            <br>• Consequently, $[\mathrm{PbCl_{2(s)}}]$ is incorporated into the equilibrium constant ($K_{\mathrm{eq}} \times [\mathrm{PbCl_{2(s)}}] = K_{\mathrm{sp}}$), yielding $K_{\mathrm{sp}} = [\mathrm{Pb^{2+}}][\mathrm{Cl^-}]^2$ with no denominator term.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> States that undissolved salt exists as a pure solid phase.</li>
+                                <li><strong>1 Mark:</strong> Explains that the density and concentration of a pure solid remain constant at constant temperature.</li>
+                                <li><strong>1 Mark:</strong> Shows how constant solid concentration is combined with $K_{\mathrm{eq}}$ to form $K_{\mathrm{sp}}$.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q3 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 3 (Hard): Quantitative $K_{\mathrm{sp}}$ Calculation from Equilibrium Data</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        At $25^\circ\text{C}$, the concentration of calcium ions in a saturated solution of calcium hydroxide ($\mathrm{Ca(OH)_2}$) is found to be $1.15 \times 10^{-2}\text{ mol L}^{-1}$.
+                        <br><br>
+                        Calculate the solubility product constant ($K_{\mathrm{sp}}$) of $\mathrm{Ca(OH)_2}$ at $25^\circ\text{C}$.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq3-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq3-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq3-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Dissociation: $\mathrm{Ca(OH)_2 \rightleftharpoons Ca^{2+} + 2OH^-}$. If $[\mathrm{Ca^{2+}}] = x$, then $[\mathrm{OH^-}] = 2x$.</p>
+                    </div>
+
+                    <div id="pq3-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>1. Balanced dissociation equation:
+                            $$\mathrm{Ca(OH)_{2(s)} \rightleftharpoons Ca^{2+}_{(aq)} + 2OH^-_{(aq)}}$$
+                            <br>2. Determine hydroxide ion concentration $[\mathrm{OH^-}]$:
+                            <br>From stoichiometry, $[\mathrm{OH^-}] = 2 \times [\mathrm{Ca^{2+}}]$
+                            $$[\mathrm{OH^-}] = 2 \times (1.15 \times 10^{-2}\text{ M}) = 2.30 \times 10^{-2}\text{ mol L}^{-1}$$
+                            <br>3. Formulate $K_{\mathrm{sp}}$ expression and calculate:
+                            $$K_{\mathrm{sp}} = [\mathrm{Ca^{2+}}][\mathrm{OH^-}]^2$$
+                            $$K_{\mathrm{sp}} = (1.15 \times 10^{-2}) \times (2.30 \times 10^{-2})^2$$
+                            $$K_{\mathrm{sp}} = (1.15 \times 10^{-2}) \times (5.29 \times 10^{-4}) = \mathbf{6.08 \times 10^{-6}} \quad (3\text{ sig. figs.})$$</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Writes correct balanced ionic dissociation equation.</li>
+                                <li><strong>1 Mark:</strong> Deduces correct hydroxide concentration $[\mathrm{OH^-}] = 2.30 \times 10^{-2}\text{ M}$.</li>
+                                <li><strong>1 Mark:</strong> Correctly substitutes values into $K_{\mathrm{sp}} = [\mathrm{Ca^{2+}}][\mathrm{OH^-}]^2$.</li>
+                                <li><strong>1 Mark:</strong> Obtains final answer $K_{\mathrm{sp}} = 6.08 \times 10^{-6}$ with correct significant figures.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q4 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 4 (Extension): Evaluating Thermodynamic Equilibrium & Dissolution Dynamics</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A student places $5.0\text{ g}$ of solid silver chloride ($\mathrm{AgCl}$) into $1.0\text{ L}$ of distilled water in a sealed, insulated flask at $25^\circ\text{C}$ and stirs vigorously.
+                        <br><br>
+                        (a) Explain why the mass of undissolved $\mathrm{AgCl_{(s)}}$ eventually stops decreasing, even though dynamic ionic exchanges continue occurring at the crystal surface. (3 Marks)
+                        <br>
+                        (b) Describe what would happen to the value of $K_{\mathrm{sp}}$ if an additional $10.0\text{ g}$ of solid $\mathrm{AgCl_{(s)}}$ were added to the saturated mixture at constant temperature. Justify your answer. (2 Marks)
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq4-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq4-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq4-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Focus on dynamic equilibrium rates ($\text{Rate}_{\mathrm{dissolution}} = \text{Rate}_{\mathrm{crystallisation}}$) and the intensive nature of equilibrium constants.</p>
+                    </div>
+
+                    <div id="pq4-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br><strong>(a) Explanation of Dynamic Equilibrium:</strong>
+                            <br>• Initially, solid $\mathrm{AgCl}$ dissolves rapidly ($\text{Rate}_{\mathrm{dissolution}} > \text{Rate}_{\mathrm{crystallisation}}$), causing $[\mathrm{Ag^+}]$ and $[\mathrm{Cl^-}]$ to rise.
+                            <br>• As aqueous ion concentrations increase, the rate of ion collisions with the solid surface increases, accelerating the reverse rate of crystallisation.
+                            <br>• When the solution becomes saturated, the rate of crystallisation equals the rate of dissolution ($\text{Rate}_{\mathrm{crystallisation}} = \text{Rate}_{\mathrm{dissolution}}$).
+                            <br>• At this dynamic equilibrium point, the macroscopic mass of solid undissolved $\mathrm{AgCl}$ remains constant, even though individual ions continually dissolve and recrystallise at equal rates.</p>
+
+                            <p><strong>(b) Effect of Adding Excess Solid:</strong>
+                            <br>• <strong>Effect:</strong> The numerical value of $K_{\mathrm{sp}}$ will **REMAIN ENTIRELY UNCHANGED**.
+                            <br>• <strong>Justification:</strong> $K_{\mathrm{sp}}$ is an intensive thermodynamic equilibrium constant that depends strictly on temperature. Adding more pure solid $\mathrm{AgCl_{(s)}}$ does not change the activity of the solid phase (activity = 1) nor does it change the equilibrium ion concentrations in an already saturated solution. Thus, $K_{\mathrm{sp}}$ remains constant.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Explains initial dissolution rate exceeding crystallisation rate.</li>
+                                <li><strong>1 Mark:</strong> Identifies saturation condition where $\text{Rate}_{\mathrm{dissolution}} = \text{Rate}_{\mathrm{crystallisation}}$.</li>
+                                <li><strong>1 Mark:</strong> Clarifies that macroscopic constancy masks microscopic dynamic exchange.</li>
+                                <li><strong>1 Mark:</strong> Correctly states that $K_{\mathrm{sp}}$ remains unchanged upon adding extra solid.</li>
+                                <li><strong>1 Mark:</strong> Justifies that $K_{\mathrm{sp}}$ depends strictly on temperature and solid activity remains 1.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation Footer -->
+            <footer class="content-footer">
+                <a href="20-solubility-rules.html" class="btn btn-outline">&larr; Back to Lesson 20</a>
+                <a href="22-molar-solubility-calcs.html" class="btn btn-ethereal">
+                    Proceed to Lesson 22: Molar Solubility Calculations &rarr;
+                </a>
+            </footer>
+        </main>
+    </div>
+
+    <!-- INTERACTIVE Ksp ENGINE JAVASCRIPT -->
+    <script>
+        const kspDatabase = {
+            "AgCl": {
+                ratioClass: "1 : 1",
+                cationSymbol: "Ag⁺",
+                anionSymbol: "Cl⁻",
+                cationCharge: 1,
+                anionCharge: 1,
+                cationRatio: 1,
+                anionRatio: 1,
+                eqLatex: "\\mathrm{AgCl_{(s)} \\rightleftharpoons Ag^+_{(aq)} + Cl^-_{(aq)}}",
+                expressionLatex: "K_{\\mathrm{sp}} = [\\mathrm{Ag^+}][\\mathrm{Cl^-}] = s^2",
+                baseKsp: 1.77e-10,
+                dhText: "Endothermic (+65.5 kJ mol⁻¹)",
+                solStatus: "Very Low (Sparingly Soluble)"
+            },
+            "PbI2": {
+                ratioClass: "1 : 2",
+                cationSymbol: "Pb²⁺",
+                anionSymbol: "I⁻",
+                cationCharge: 2,
+                anionCharge: 1,
+                cationRatio: 1,
+                anionRatio: 2,
+                eqLatex: "\\mathrm{PbI_{2(s)} \\rightleftharpoons Pb^{2+}_{(aq)} + 2I^-_{(aq)}}",
+                expressionLatex: "K_{\\mathrm{sp}} = [\\mathrm{Pb^{2+}}][\\mathrm{I^-}]^2 = 4s^3",
+                baseKsp: 8.79e-9,
+                dhText: "Endothermic (+46.3 kJ mol⁻¹)",
+                solStatus: "Low (Sparingly Soluble)"
+            },
+            "Ag2CrO4": {
+                ratioClass: "2 : 1",
+                cationSymbol: "Ag⁺",
+                anionSymbol: "CrO₄²⁻",
+                cationCharge: 1,
+                anionCharge: 2,
+                cationRatio: 2,
+                anionRatio: 1,
+                eqLatex: "\\mathrm{Ag_2CrO_{4(s)} \\rightleftharpoons 2Ag^+_{(aq)} + CrO_{4(aq)}^{2-}}",
+                expressionLatex: "K_{\\mathrm{sp}} = [\\mathrm{Ag^+}]^2 [\\mathrm{CrO_4^{2-}}] = 4s^3",
+                baseKsp: 1.12e-12,
+                dhText: "Endothermic (+61.2 kJ mol⁻¹)",
+                solStatus: "Very Low (Sparingly Soluble)"
+            },
+            "Fe(OH)3": {
+                ratioClass: "1 : 3",
+                cationSymbol: "Fe³⁺",
+                anionSymbol: "OH⁻",
+                cationCharge: 3,
+                anionCharge: 1,
+                cationRatio: 1,
+                anionRatio: 3,
+                eqLatex: "\\mathrm{Fe(OH)_{3(s)} \\rightleftharpoons Fe^{3+}_{(aq)} + 3OH^-_{(aq)}}",
+                expressionLatex: "K_{\\mathrm{sp}} = [\\mathrm{Fe^{3+}}][\\mathrm{OH^-}]^3 = 27s^4",
+                baseKsp: 2.79e-39,
+                dhText: "Endothermic (+85.0 kJ mol⁻¹)",
+                solStatus: "Extremely Insoluble"
+            },
+            "Ca3(PO4)2": {
+                ratioClass: "2 : 3",
+                cationSymbol: "Ca²⁺",
+                anionSymbol: "PO₄³⁻",
+                cationCharge: 2,
+                anionCharge: 3,
+                cationRatio: 3,
+                anionRatio: 2,
+                eqLatex: "\\mathrm{Ca_3(PO_4)_{2(s)} \\rightleftharpoons 3Ca^{2+}_{(aq)} + 2PO_{4(aq)}^{3-}}",
+                expressionLatex: "K_{\\mathrm{sp}} = [\\mathrm{Ca^{2+}}]^3 [\\mathrm{PO_4^{3-}}]^2 = 108s^5",
+                baseKsp: 2.07e-33,
+                dhText: "Endothermic (+92.4 kJ mol⁻¹)",
+                solStatus: "Extremely Insoluble"
+            },
+            "BaSO4": {
+                ratioClass: "1 : 1",
+                cationSymbol: "Ba²⁺",
+                anionSymbol: "SO₄²⁻",
+                cationCharge: 2,
+                anionCharge: 2,
+                cationRatio: 1,
+                anionRatio: 1,
+                eqLatex: "\\mathrm{BaSO_{4(s)} \\rightleftharpoons Ba^{2+}_{(aq)} + SO_{4(aq)}^{2-}}",
+                expressionLatex: "K_{\\mathrm{sp}} = [\\mathrm{Ba^{2+}}][\\mathrm{SO_4^{2-}}] = s^2",
+                baseKsp: 1.08e-10,
+                dhText: "Endothermic (+26.3 kJ mol⁻¹)",
+                solStatus: "Extremely Low (Insoluble Reagent)"
+            }
+        };
+
+        function drawKspDiagram(saltKey, tempC, currentKsp, data) {
+            const canvas = document.getElementById('canvas-ksp-diagram');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            const w = canvas.width;
+            const h = canvas.height;
+
+            // Background & Beaker Container
+            ctx.fillStyle = "#050811";
+            ctx.fillRect(0, 0, w, h);
+
+            // Draw Beaker Glass Structure
+            const bX = 140;
+            const bY = 30;
+            const bW = 440;
+            const bH = 210;
+
+            // Liquid Solution Fill
+            const grad = ctx.createLinearGradient(0, bY + 20, 0, bY + bH);
+            grad.addColorStop(0, "rgba(56, 189, 248, 0.18)");
+            grad.addColorStop(1, "rgba(124, 58, 237, 0.25)");
+            ctx.fillStyle = grad;
+            ctx.fillRect(bX + 10, bY + 30, bW - 20, bH - 35);
+
+            // Beaker Outline
+            ctx.strokeStyle = "rgba(56, 189, 248, 0.6)";
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(bX, bY);
+            ctx.lineTo(bX, bY + bH);
+            ctx.lineTo(bX + bW, bY + bH);
+            ctx.lineTo(bX + bW, bY);
+            ctx.stroke();
+
+            // Solution Level Line
+            ctx.strokeStyle = "rgba(56, 189, 248, 0.4)";
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.moveTo(bX + 5, bY + 30);
+            ctx.lineTo(bX + bW - 5, bY + 30);
+            ctx.stroke();
+
+            ctx.fillStyle = "#38bdf8";
+            ctx.font = "11px Segoe UI, sans-serif";
+            ctx.textAlign = "right";
+            ctx.fillText("Saturated Supernatant Solution", bX + bW - 15, bY + 22);
+
+            // Solid Precipitate Lattice at the Bottom Left
+            const pX = bX + 30;
+            const pY = bY + bH - 45;
+            const pW = 140;
+            const pH = 40;
+
+            ctx.fillStyle = "rgba(15, 23, 42, 0.9)";
+            ctx.fillRect(pX, pY, pW, pH);
+            ctx.strokeStyle = "rgba(244, 63, 94, 0.6)";
+            ctx.lineWidth = 2;
+            ctx.strokeRect(pX, pY, pW, pH);
+
+            // Draw Lattice Grid Particles inside Precipitate
+            const rows = 3;
+            const cols = 6;
+            for (let r = 0; r < rows; r++) {
+                for (let c = 0; c < cols; c++) {
+                    let isCation = (r + c) % 2 === 0;
+                    let px = pX + 12 + c * 22;
+                    let py = pY + 8 + r * 12;
+
+                    ctx.beginPath();
+                    ctx.arc(px, py, isCation ? 5 : 4, 0, Math.PI * 2);
+                    ctx.fillStyle = isCation ? "#a78bfa" : "#34d399";
+                    ctx.fill();
+                }
+            }
+
+            ctx.fillStyle = "#f43f5e";
+            ctx.font = "bold 11px Segoe UI, sans-serif";
+            ctx.textAlign = "center";
+            ctx.fillText(`Excess Undissolved Solid ${saltKey}`, pX + pW / 2, pY + pH + 15);
+
+            // Draw Dissolved Hydrated Mobile Ions in Solution
+            // Base ion count scales with temperature & stoichiometric ratios
+            let numCations = data.cationRatio * (tempC >= 45 ? 3 : 2);
+            let numAnions = data.anionRatio * (tempC >= 45 ? 3 : 2);
+
+            // Render Cations (Purple)
+            const cPositions = [
+                {x: bX + 220, y: bY + 80},
+                {x: bX + 330, y: bY + 120},
+                {x: bX + 260, y: bY + 160},
+                {x: bX + 380, y: bY + 70},
+                {x: bX + 190, y: bY + 110},
+                {x: bX + 310, y: bY + 175}
+            ];
+
+            for (let i = 0; i < Math.min(numCations, cPositions.length); i++) {
+                let pos = cPositions[i];
+                // Hydration Shell aura
+                ctx.beginPath();
+                ctx.arc(pos.x, pos.y, 14, 0, Math.PI * 2);
+                ctx.fillStyle = "rgba(167, 139, 250, 0.25)";
+                ctx.fill();
+
+                // Core Cation
+                ctx.beginPath();
+                ctx.arc(pos.x, pos.y, 8, 0, Math.PI * 2);
+                ctx.fillStyle = "#a78bfa";
+                ctx.fill();
+
+                ctx.fillStyle = "#000";
+                ctx.font = "bold 9px Segoe UI, sans-serif";
+                ctx.textAlign = "center";
+                ctx.fillText(data.cationSymbol, pos.x, pos.y + 3);
+            }
+
+            // Render Anions (Emerald / Cyan)
+            const aPositions = [
+                {x: bX + 270, y: bY + 70},
+                {x: bX + 370, y: bY + 130},
+                {x: bX + 210, y: bY + 150},
+                {x: bX + 310, y: bY + 90},
+                {x: bX + 240, y: bY + 120},
+                {x: bX + 410, y: bY + 160},
+                {x: bX + 180, y: bY + 65},
+                {x: bX + 350, y: bY + 175},
+                {x: bX + 290, y: bY + 140}
+            ];
+
+            for (let i = 0; i < Math.min(numAnions, aPositions.length); i++) {
+                let pos = aPositions[i];
+                // Hydration Shell aura
+                ctx.beginPath();
+                ctx.arc(pos.x, pos.y, 13, 0, Math.PI * 2);
+                ctx.fillStyle = "rgba(52, 211, 153, 0.25)";
+                ctx.fill();
+
+                // Core Anion
+                ctx.beginPath();
+                ctx.arc(pos.x, pos.y, 7, 0, Math.PI * 2);
+                ctx.fillStyle = "#34d399";
+                ctx.fill();
+
+                ctx.fillStyle = "#000";
+                ctx.font = "bold 9px Segoe UI, sans-serif";
+                ctx.textAlign = "center";
+                ctx.fillText(data.anionSymbol, pos.x, pos.y + 3);
+            }
+
+            // Dynamic Equilibrium Exchange Arrows (Center Left)
+            let arrX = bX + 160;
+            let arrY = pY - 20;
+
+            ctx.strokeStyle = "#38bdf8";
+            ctx.lineWidth = 2.5;
+            ctx.beginPath();
+            ctx.moveTo(arrX, arrY);
+            ctx.lineTo(arrX + 35, arrY - 25);
+            ctx.stroke();
+
+            // Arrow head forward
+            ctx.fillStyle = "#38bdf8";
+            ctx.beginPath();
+            ctx.moveTo(arrX + 35, arrY - 25);
+            ctx.lineTo(arrX + 25, arrY - 25);
+            ctx.lineTo(arrX + 32, arrY - 17);
+            ctx.fill();
+
+            ctx.strokeStyle = "#f43f5e";
+            ctx.lineWidth = 2.5;
+            ctx.beginPath();
+            ctx.moveTo(arrX + 40, arrY - 15);
+            ctx.lineTo(arrX + 5, arrY + 10);
+            ctx.stroke();
+
+            // Arrow head reverse
+            ctx.fillStyle = "#f43f5e";
+            ctx.beginPath();
+            ctx.moveTo(arrX + 5, arrY + 10);
+            ctx.lineTo(arrX + 15, arrY + 10);
+            ctx.lineTo(arrX + 8, arrY + 2);
+            ctx.fill();
+
+            ctx.fillStyle = "#a78bfa";
+            ctx.font = "bold 10px Segoe UI, sans-serif";
+            ctx.textAlign = "left";
+            ctx.fillText("Dynamic Equilibrium:", arrX + 50, arrY - 15);
+            ctx.fillText("Rate(dissolution) = Rate(crystallisation)", arrX + 50, arrY);
+
+            // Stoichiometry Info Box on Diagram Right
+            ctx.fillStyle = "rgba(30, 41, 59, 0.75)";
+            ctx.fillRect(bX + bW - 135, bY + 50, 125, 110);
+            ctx.strokeStyle = "rgba(255, 255, 255, 0.1)";
+            ctx.lineWidth = 1;
+            ctx.strokeRect(bX + bW - 135, bY + 50, 125, 110);
+
+            ctx.fillStyle = "#38bdf8";
+            ctx.font = "bold 10px Segoe UI, sans-serif";
+            ctx.textAlign = "left";
+            ctx.fillText("Stoichiometric Ratio:", bX + bW - 128, bY + 68);
+
+            ctx.fillStyle = "#a78bfa";
+            ctx.fillText(`• ${data.cationRatio} × ${data.cationSymbol} Cations`, bX + bW - 128, bY + 88);
+
+            ctx.fillStyle = "#34d399";
+            ctx.fillText(`• ${data.anionRatio} × ${data.anionSymbol} Anions`, bX + bW - 128, bY + 108);
+
+            ctx.fillStyle = "#fbbf24";
+            ctx.fillText(`Ratio = ${data.ratioClass}`, bX + bW - 128, bY + 138);
+        }
+
+        function runKspEngine() {
+            const salt = document.getElementById('sim-salt-select').value;
+            const tempC = parseFloat(document.getElementById('sim-temp').value);
+
+            document.getElementById('lbl-temp-val').innerText = `${tempC} °C (${tempC + 273} K)`;
+
+            const data = kspDatabase[salt] || kspDatabase["AgCl"];
+
+            // Calculate temperature-shifted Ksp using van 't Hoff scaling
+            const tempKelvin = tempC + 273.15;
+            const refKelvin = 298.15;
+            const tempFactor = Math.exp(12.0 * ((1 / refKelvin) - (1 / tempKelvin)));
+            const currentKsp = data.baseKsp * tempFactor;
+
+            // Render equations safely without extra close braces
+            const eqBox = document.getElementById('sim-eq-display');
+            eqBox.innerHTML = `$$${data.eqLatex}$$`;
+
+            const expBox = document.getElementById('sim-ksp-expression-box');
+            expBox.innerHTML = `
+                <div style="margin-bottom:0.5rem;"><strong style="color:var(--accent-cyan);">Solubility Product Expression:</strong></div>
+                $$${data.expressionLatex}$$
+            `;
+
+            // Draw Sub-microscopic Canvas Interactive Diagram
+            drawKspDiagram(salt, tempC, currentKsp, data);
+
+            // Telemetry updates
+            document.getElementById('tel-ratio-class').innerText = data.ratioClass;
+            document.getElementById('tel-ksp-val').innerText = currentKsp.toExponential(2);
+            document.getElementById('tel-dh-val').innerText = data.dhText;
+            document.getElementById('tel-sol-status').innerText = data.solStatus;
+
+            // MathJax re-typeset
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                if (window.MathJax.typesetClear) {
+                    window.MathJax.typesetClear([eqBox, expBox]);
+                }
+                MathJax.typesetPromise([eqBox, expBox]).catch(function (err) {
+                    console.warn('MathJax deferred:', err);
+                });
+            }
+        }
+
+        function toggleElement(id) {
+            const el = document.getElementById(id);
+            if (el.style.display === 'none' || el.style.display === '') {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            if (window.MathJax && window.MathJax.startup) {
+                window.MathJax.startup.promise.then(() => {
+                    runKspEngine();
+                });
+            } else {
+                runKspEngine();
+            }
+        });
+    </script>
+</body>
+</html>

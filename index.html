@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 5: Equilibrium and Acid Reactions | Home & Guide</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- MathJax 3 Configuration (Must be declared before loading MathJax) -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body class="ethereal-theme">
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="badge-glow">NESA Stage 6</span>
+                <h2>Module 5</h2>
+                <p class="subtitle">EQUILIBRIUM & ACID REACTIONS</p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="module-progress" style="width: 0%;"></div>
+                </div>
+                <div class="score-card">
+                    Total Mastery: <span id="total-marks">0</span> / 100 Marks
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-section">
+                    <span class="section-title">INTRODUCTION</span>
+                    <a href="index.html" class="nav-item active">
+                        <span class="nav-num">—</span> Home & Guide
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE A: FOUNDATIONS OF EQUILIBRIUM</span>
+                    <a href="01-reversible-reactions.html" class="nav-item"><span class="nav-num">01</span> Reversible vs Irreversible</a>
+                    <a href="02-open-closed-systems.html" class="nav-item"><span class="nav-num">02</span> Open vs Closed Systems</a>
+                    <a href="03-static-dynamic-equilibrium.html" class="nav-item"><span class="nav-num">03</span> Static vs Dynamic Eq</a>
+                    <a href="04-non-equilibrium-systems.html" class="nav-item"><span class="nav-num">04</span> Non-Equilibrium Systems</a>
+                    <a href="05-collision-theory-equilibrium.html" class="nav-item"><span class="nav-num">05</span> Collision Theory in Eq</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE B: FACTORS AFFECTING EQUILIBRIUM</span>
+                    <a href="06-intro-le-chatelier.html" class="nav-item"><span class="nav-num">06</span> Le Chatelier's Principle</a>
+                    <a href="07-effect-of-concentration.html" class="nav-item"><span class="nav-num">07</span> Concentration Changes</a>
+                    <a href="08-effect-of-pressure-volume.html" class="nav-item"><span class="nav-num">08</span> Pressure & Volume</a>
+                    <a href="09-effect-of-temperature.html" class="nav-item"><span class="nav-num">09</span> Temperature Effects</a>
+                    <a href="10-collision-theory-lcp.html" class="nav-item"><span class="nav-num">10</span> Collision Theory & LCP</a>
+                    <a href="11-activation-energy-equilibrium.html" class="nav-item"><span class="nav-num">11</span> Activation Energy & $\Delta H$</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE C: THE EQUILIBRIUM CONSTANT</span>
+                    <a href="12-keq-expression.html" class="nav-item"><span class="nav-num">12</span> The $K_{\mathrm{eq}}$ Expression</a>
+                    <a href="13-keq-calculations-basic.html" class="nav-item"><span class="nav-num">13</span> Basic $K_{\mathrm{eq}}$ Calculations</a>
+                    <a href="14-keq-calculations-advanced.html" class="nav-item"><span class="nav-num">14</span> Advanced $K_{\mathrm{eq}}$ & $Q$</a>
+                    <a href="15-temperature-and-keq.html" class="nav-item"><span class="nav-num">15</span> Temperature & $K_{\mathrm{eq}}$</a>
+                    <a href="16-determining-keq-experiment.html" class="nav-item"><span class="nav-num">16</span> Practical Determination</a>
+                    <a href="17-keq-acid-base-dissociation.html" class="nav-item"><span class="nav-num">17</span> Dissociation Systems</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE D: SOLUTION EQUILIBRIA</span>
+                    <a href="18-dissolution-ionic-compounds.html" class="nav-item"><span class="nav-num">18</span> Ionic Dissolution</a>
+                    <a href="19-indigenous-solubility-cycads.html" class="nav-item"><span class="nav-num">19</span> Indigenous Detoxification</a>
+                    <a href="20-solubility-rules.html" class="nav-item"><span class="nav-num">20</span> Solubility Rules</a>
+                    <a href="21-solubility-product-ksp.html" class="nav-item"><span class="nav-num">21</span> Solubility Product ($K_{\mathrm{sp}}$)</a>
+                    <a href="22-molar-solubility-calcs.html" class="nav-item"><span class="nav-num">22</span> Molar Solubility Calcs</a>
+                    <a href="23-predicting-precipitation.html" class="nav-item"><span class="nav-num">23</span> Predicting Precipitation</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE E: ASSESSMENT & REVIEW</span>
+                    <a href="24-formula-summary.html" class="nav-item"><span class="nav-num">24</span> Formula & Concept Guide</a>
+                    <a href="25-final-exam.html" class="nav-item"><span class="nav-num">25</span> Final Examination</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Ethereal Hero Header -->
+            <header class="hero-banner">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <span class="ethereal-tag">HSC CHEMISTRY • STAGE 6</span>
+                    <h1 class="ethereal-title">Equilibrium and Acid Reactions</h1>
+                    <p class="ethereal-subtitle">An interactive learning environment for mastering reversible systems, dynamic constants, and solution chemistry.</p>
+                </div>
+            </header>
+
+            <!-- Section 1: Overview -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>Module Overview</h2>
+                    <span class="pill-badge">Syllabus Scope</span>
+                </div>
+                <p>
+                    Module 5 transitions your study of chemistry from static stoichiometry to dynamic systems in flux. Standard chemical reactions are often modelled as one-way transformations, but physical reality frequently involves reversible processes where reactants and products exist in continuous exchange.
+                </p>
+                <div class="grid-2col">
+                    <div class="info-box">
+                        <h3>Core Inquiry Questions</h3>
+                        <ul>
+                            <li><strong>What happens when chemical reactions do not go to completion?</strong></li>
+                            <li><strong>How can dynamic equilibrium be manipulated qualitatively and quantitatively?</strong></li>
+                            <li><strong>How does solubility control chemical reactions in aqueous environments?</strong></li>
+                        </ul>
+                    </div>
+                    <div class="info-box">
+                        <h3>Mathematical Foundations</h3>
+                        <p>You will derive and compute equilibrium constants ($K_{\mathrm{eq}}$ and $K_{\mathrm{sp}}$), evaluate reaction quotients ($Q$), and model concentrations through algebraic ICE tables:</p>
+                        $$\Delta G^\circ = -RT \ln K_{\mathrm{eq}}$$
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Platform Interface & Features -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>Platform Interface & Navigation</h2>
+                    <span class="pill-badge">Guide</span>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🧭</div>
+                        <h3>Structured Phases</h3>
+                        <p>23 targeted lesson modules organised chronologically into 5 cohesive phases matching NESA syllabus outcomes.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🧪</div>
+                        <h3>Interactive Simulations</h3>
+                        <p>Dynamic visual tools to test Le Chatelier's shifts, collision trajectories, and precipitation thresholds.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Graded HSC Scaffolding</h3>
+                        <p>Worked examples divided into Easy, Medium, Hard, and Extension difficulty tiers with exact marking rubrics.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Self-Marking Engine</h3>
+                        <p>Practice exam conditions with instant criterion-referenced feedback and cumulative mark tracking.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Interactive Interface Demonstration -->
+            <section class="card glass-card demo-card">
+                <div class="card-header">
+                    <h2>Platform Feature Interface Demo</h2>
+                    <span class="pill-badge demo-pill">Interactive Demo</span>
+                </div>
+                <p>Try out the answer verification system and interactive marking rubric below:</p>
+
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Sample HSC Question: Dynamic Equilibrium Expression</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Consider the homogeneous gas-phase synthesis of ammonia:
+                        $$\mathrm{N_2(g) + 3H_2(g) \rightleftharpoons 2NH_3(g)} \quad \Delta H = -92.4\text{ kJ/mol}$$
+                        Write the equilibrium constant expression ($K_{\mathrm{eq}}$) for this system and state the impact of adding a solid catalyst on $K_{\mathrm{eq}}$.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('demo-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('demo-solution')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="demo-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Remember that $K_{\mathrm{eq}} = \frac{[\text{products}]^p}{[\text{reactants}]^r}$. A catalyst lowers activation energy equally for both forward and reverse pathways.</p>
+                    </div>
+
+                    <div id="demo-solution" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            $$K_{\mathrm{eq}} = \frac{[\mathrm{NH_3}]^2}{[\mathrm{N_2}][\mathrm{H_2}]^3}$$
+                            <p><strong>Catalyst Effect:</strong> Addition of a catalyst speeds up both forward and reverse reaction rates equally by providing an alternate reaction pathway with lower activation energy ($E_a$). Consequently, a catalyst has <strong>no effect</strong> on the equilibrium position or the magnitude of $K_{\mathrm{eq}}$.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Correct $K_{\mathrm{eq}}$ expression with products over reactants and accurate stoichiometric exponents.</li>
+                                <li><strong>1 Mark:</strong> Correctly states that a catalyst does not alter $K_{\mathrm{eq}}$.</li>
+                                <li><strong>1 Mark:</strong> Explains catalyst effect using activation energy and equal rate increases in both directions.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation Footer -->
+            <footer class="content-footer">
+                <div class="footer-info">
+                    <p>Ready to start the course?</p>
+                </div>
+                <a href="01-reversible-reactions.html" class="btn btn-next">
+                    Begin Lesson 01: Reversible Reactions &rarr;
+                </a>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        function toggleElement(id) {
+            const el = document.getElementById(id);
+            if (el.style.display === 'none' || el.style.display === '') {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13 Basic Keq Calculations | Module 5 Chemistry</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- MathJax 3 Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <style>
+        /* Ethereal Glassmorphism Extension Styling */
+        :root {
+            --bg-dark: #080c14;
+            --bg-card: rgba(15, 23, 42, 0.75);
+            --bg-card-hover: rgba(30, 41, 59, 0.85);
+            --border-glow: rgba(124, 58, 237, 0.3);
+            --border-light: rgba(255, 255, 255, 0.08);
+            --border-cyan: rgba(6, 182, 212, 0.35);
+            --border-emerald: rgba(16, 185, 129, 0.35);
+            --accent-purple: #a78bfa;
+            --accent-cyan: #38bdf8;
+            --accent-emerald: #34d399;
+            --accent-amber: #fbbf24;
+            --accent-rose: #f43f5e;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-secondary: #cbd5e1;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'Fira Code', 'Cascadia Code', Consolas, monospace;
+            --shadow-glow: 0 0 30px rgba(124, 58, 237, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(124, 58, 237, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 90% 85%, rgba(6, 182, 212, 0.1) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.95) 0%, var(--bg-dark) 100%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.8;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 320px;
+            background: rgba(11, 15, 25, 0.92);
+            border-right: 1px solid var(--border-light);
+            backdrop-filter: blur(16px);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 2rem 1.5rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .badge-glow {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            color: var(--accent-purple);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.4rem;
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .sidebar-header .subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+
+        .progress-container {
+            margin-top: 1.25rem;
+            background: rgba(255, 255, 255, 0.06);
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            border-radius: 3px;
+        }
+
+        .score-card {
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav-menu {
+            padding: 1.25rem 1rem;
+        }
+
+        .nav-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            padding: 0 0.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 0.65rem 0.75rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            margin-bottom: 0.25rem;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            transform: translateX(3px);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(90deg, rgba(124, 58, 237, 0.25), rgba(6, 182, 212, 0.1));
+            border-left: 3px solid var(--accent-purple);
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+
+        .nav-num {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            margin-right: 0.75rem;
+            opacity: 0.7;
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            margin-left: 320px;
+            flex: 1;
+            padding: 2.5rem 3rem;
+            max-width: 1250px;
+        }
+
+        .hero-banner {
+            position: relative;
+            background: linear-gradient(135deg, rgba(24, 16, 48, 0.85) 0%, rgba(15, 23, 42, 0.95) 100%);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2.5rem;
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .ethereal-tag {
+            font-family: var(--font-mono);
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .ethereal-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin: 0.5rem 0 1rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ethereal-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 880px;
+        }
+
+        /* Content Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 2.25rem;
+            margin-bottom: 2.5rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            transition: border-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(124, 58, 237, 0.35);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.75rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .card-header h2 {
+            font-size: 1.6rem;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .pill-badge {
+            padding: 0.35rem 0.85rem;
+            background: rgba(124, 58, 237, 0.12);
+            border: 1px solid var(--border-glow);
+            color: var(--accent-purple);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pill-badge.emerald {
+            background: rgba(16, 185, 129, 0.12);
+            border-color: var(--border-emerald);
+            color: var(--accent-emerald);
+        }
+
+        .pill-badge.cyan {
+            background: rgba(56, 189, 248, 0.12);
+            border-color: var(--border-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .pill-badge.rose {
+            background: rgba(244, 63, 94, 0.12);
+            border-color: rgba(244, 63, 94, 0.35);
+            color: var(--accent-rose);
+        }
+
+        .pill-badge.amber {
+            background: rgba(251, 191, 36, 0.12);
+            border-color: rgba(251, 191, 36, 0.35);
+            color: var(--accent-amber);
+        }
+
+        /* Typography & Paragraphs */
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        strong {
+            color: #fff;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: var(--accent-purple);
+            margin: 1.85rem 0 0.85rem;
+            font-weight: 700;
+        }
+
+        h4 {
+            font-size: 1.12rem;
+            color: #fff;
+            margin: 1.35rem 0 0.55rem;
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin: 0 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.75rem;
+            padding-left: 0.25rem;
+        }
+
+        /* Grids & Feature Layouts */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-glow);
+        }
+
+        /* Callout Boxes */
+        .info-box {
+            background: rgba(124, 58, 237, 0.08);
+            border-left: 4px solid var(--accent-purple);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 1.35rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-box.cyan {
+            background: rgba(56, 189, 248, 0.08);
+            border-left-color: var(--accent-cyan);
+        }
+
+        .info-box.emerald {
+            background: rgba(52, 211, 153, 0.08);
+            border-left-color: var(--accent-emerald);
+        }
+
+        .info-box.amber {
+            background: rgba(251, 191, 36, 0.08);
+            border-left-color: var(--accent-amber);
+        }
+
+        .info-box.rose {
+            background: rgba(244, 63, 94, 0.08);
+            border-left-color: var(--accent-rose);
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+        }
+
+        /* Data & Comparison Tables */
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            margin: 1.75rem 0;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        table.comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            background: rgba(15, 23, 42, 0.7);
+            font-size: 0.95rem;
+        }
+
+        table.comparison-table th {
+            background: rgba(30, 41, 59, 0.9);
+            color: var(--accent-purple);
+            padding: 1rem 1.25rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border-light);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        table.comparison-table td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-secondary);
+            vertical-align: top;
+        }
+
+        table.comparison-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+            color: #fff;
+        }
+
+        /* Custom ICE Table Styling */
+        .ice-table-wrapper {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-cyan);
+            background: rgba(10, 15, 28, 0.85);
+        }
+
+        table.ice-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--font-mono);
+            font-size: 0.95rem;
+        }
+
+        table.ice-table th {
+            background: rgba(6, 182, 212, 0.15);
+            color: var(--accent-cyan);
+            padding: 0.85rem 1.1rem;
+            text-align: center;
+            border-bottom: 2px solid var(--border-cyan);
+            font-family: var(--font-main);
+        }
+
+        table.ice-table td {
+            padding: 0.85rem 1.1rem;
+            border-bottom: 1px solid var(--border-light);
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        table.ice-table tr.ice-row-i { background: rgba(124, 58, 237, 0.05); }
+        table.ice-table tr.ice-row-c { background: rgba(251, 191, 36, 0.05); }
+        table.ice-table tr.ice-row-e { background: rgba(52, 211, 153, 0.08); font-weight: bold; color: var(--accent-emerald); }
+
+        table.ice-table td.row-label {
+            text-align: left;
+            font-weight: 700;
+            color: #fff;
+            font-family: var(--font-main);
+            width: 180px;
+        }
+
+        /* SVG Graph Containers */
+        .graph-wrapper {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1.75rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .graph-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .svg-graph-container {
+            width: 100%;
+            max-width: 760px;
+            height: auto;
+        }
+
+        /* Interactive Simulator Module */
+        .sim-container {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            box-shadow: 0 0 35px rgba(124, 58, 237, 0.12);
+        }
+
+        .sim-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+            background: rgba(30, 41, 59, 0.5);
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-group label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .control-group input, .control-group select {
+            width: 100%;
+            padding: 0.55rem 0.75rem;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            color: var(--text-main);
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+        }
+
+        .sim-display-box {
+            background: rgba(10, 15, 28, 0.85);
+            border: 1px solid var(--border-cyan);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .telemetry-panel {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+
+        .telemetry-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .telemetry-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .telemetry-value {
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent-purple);
+            margin-top: 0.25rem;
+        }
+
+        /* Buttons & Actions */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-ethereal {
+            background: linear-gradient(135deg, #7c3aed, #06b6d4);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-ethereal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.45);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--border-light);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        /* Questions & Rubrics */
+        .question-container {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .marks-badge {
+            background: rgba(244, 63, 94, 0.15);
+            border: 1px solid rgba(244, 63, 94, 0.4);
+            color: var(--accent-rose);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .action-bar {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .drawer {
+            margin-top: 1rem;
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .drawer-hint {
+            background: rgba(251, 191, 36, 0.08);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            color: #fef08a;
+        }
+
+        .drawer-solution {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-glow);
+        }
+
+        .rubric-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--accent-purple);
+        }
+
+        .rubric-box h5 {
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .content-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; padding: 1.5rem; }
+            .grid-2col { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="ethereal-theme">
+    <div class="app-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="badge-glow">NESA Stage 6</span>
+                <h2>Module 5</h2>
+                <p class="subtitle">EQUILIBRIUM & ACID REACTIONS</p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="module-progress" style="width: 52%;"></div>
+                </div>
+                <div class="score-card">
+                    Total Mastery: <span id="total-marks">52</span> / 100 Marks
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-section">
+                    <span class="section-title">INTRODUCTION</span>
+                    <a href="index.html" class="nav-item">
+                        <span class="nav-num">—</span> Home & Guide
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE A: FOUNDATIONS OF EQUILIBRIUM</span>
+                    <a href="01-reversible-reactions.html" class="nav-item"><span class="nav-num">01</span> Reversible vs Irreversible</a>
+                    <a href="02-open-closed-systems.html" class="nav-item"><span class="nav-num">02</span> Open vs Closed Systems</a>
+                    <a href="03-static-dynamic-equilibrium.html" class="nav-item"><span class="nav-num">03</span> Static vs Dynamic Eq</a>
+                    <a href="04-non-equilibrium-systems.html" class="nav-item"><span class="nav-num">04</span> Non-Equilibrium Systems</a>
+                    <a href="05-collision-theory-equilibrium.html" class="nav-item"><span class="nav-num">05</span> Collision Theory in Eq</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE B: FACTORS AFFECTING EQUILIBRIUM</span>
+                    <a href="06-intro-le-chatelier.html" class="nav-item"><span class="nav-num">06</span> Le Chatelier's Principle</a>
+                    <a href="07-effect-of-concentration.html" class="nav-item"><span class="nav-num">07</span> Concentration Changes</a>
+                    <a href="08-effect-of-pressure-volume.html" class="nav-item"><span class="nav-num">08</span> Pressure & Volume</a>
+                    <a href="09-effect-of-temperature.html" class="nav-item"><span class="nav-num">09</span> Temperature Effects</a>
+                    <a href="10-collision-theory-lcp.html" class="nav-item"><span class="nav-num">10</span> Collision Theory & LCP</a>
+                    <a href="11-activation-energy-equilibrium.html" class="nav-item"><span class="nav-num">11</span> Activation Energy & $\Delta H$</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE C: THE EQUILIBRIUM CONSTANT</span>
+                    <a href="12-keq-expression.html" class="nav-item"><span class="nav-num">12</span> The $K_{\mathrm{eq}}$ Expression</a>
+                    <a href="13-keq-calculations-basic.html" class="nav-item active"><span class="nav-num">13</span> Basic $K_{\mathrm{eq}}$ Calculations</a>
+                    <a href="14-keq-calculations-advanced.html" class="nav-item"><span class="nav-num">14</span> Advanced $K_{\mathrm{eq}}$ & $Q$</a>
+                    <a href="15-temperature-and-keq.html" class="nav-item"><span class="nav-num">15</span> Temperature & $K_{\mathrm{eq}}$</a>
+                    <a href="16-determining-keq-experiment.html" class="nav-item"><span class="nav-num">16</span> Practical Determination</a>
+                    <a href="17-keq-acid-base-dissociation.html" class="nav-item"><span class="nav-num">17</span> Dissociation Systems</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE D: SOLUTION EQUILIBRIA</span>
+                    <a href="18-dissolution-ionic-compounds.html" class="nav-item"><span class="nav-num">18</span> Ionic Dissolution</a>
+                    <a href="19-indigenous-solubility-cycads.html" class="nav-item"><span class="nav-num">19</span> Indigenous Detoxification</a>
+                    <a href="20-solubility-rules.html" class="nav-item"><span class="nav-num">20</span> Solubility Rules</a>
+                    <a href="21-solubility-product-ksp.html" class="nav-item"><span class="nav-num">21</span> Solubility Product ($K_{\mathrm{sp}}$)</a>
+                    <a href="22-molar-solubility-calcs.html" class="nav-item"><span class="nav-num">22</span> Molar Solubility Calcs</a>
+                    <a href="23-predicting-precipitation.html" class="nav-item"><span class="nav-num">23</span> Predicting Precipitation</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE E: ASSESSMENT & REVIEW</span>
+                    <a href="24-formula-summary.html" class="nav-item"><span class="nav-num">24</span> Formula & Concept Guide</a>
+                    <a href="25-final-exam.html" class="nav-item"><span class="nav-num">25</span> Final Examination</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="hero-banner">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <span class="ethereal-tag">LESSON 13 • PHASE C: THE EQUILIBRIUM CONSTANT</span>
+                    <h1 class="ethereal-title">Basic $K_{\mathrm{eq}}$ Calculations and Equilibrium Concentrations</h1>
+                    <p class="ethereal-subtitle">Master the quantitative framework of chemical equilibrium. Deconstruct the ICE (Initial, Change, Equilibrium) table method, convert between mole quantities and molarities, evaluate $K_{\mathrm{eq}}$ from experimental data, and solve for unknown species concentrations at equilibrium.</p>
+                </div>
+            </header>
+
+            <!-- SYLLABUS ALIGNMENT CARD -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>NESA Syllabus Inquiry Focus</h2>
+                    <span class="pill-badge">Stage 6 Chemistry</span>
+                </div>
+                <p>
+                    <strong>Inquiry Question 3:</strong> <em>How are equilibrium positions expressed quantitatively?</em>
+                </p>
+                <div class="info-box cyan" style="margin-top: 1rem;">
+                    <h3>Syllabus Outcomes Addressed (Outcome CH-12-01):</h3>
+                    <ul>
+                        <li>Perform calculations to determine the value of $K_{\mathrm{eq}}$ and equilibrium concentrations of reactants and products for homogeneous reactions.</li>
+                        <li>Construct and utilize ICE (Initial, Change, Equilibrium) tables to track stoichiometric molar changes during reaction progression.</li>
+                        <li>Convert gas mole quantities or aqueous solute masses into equilibrium molarities ($c = \frac{n}{V}$) before substituting into $K_{\mathrm{eq}}$ expressions.</li>
+                        <li>Solve algebraic equations for single unknown species concentrations given $K_{\mathrm{eq}}$ and other equilibrium parameters.</li>
+                        <li>Verify that calculated concentration values adhere to physical constraints ($c > 0$) and stoichiometric ratios.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECTION 1: THE MATHEMATICAL FOUNDATIONS OF QUANTITATIVE EQUILIBRIUM -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>1. Foundations of Quantitative Equilibrium Calculations</h2>
+                    <span class="pill-badge">Stoichiometric Logic</span>
+                </div>
+
+                <p>
+                    In Lesson 12, we established that the equilibrium constant expression reflects the stoichiometric ratio of reactants and products at dynamic equilibrium:
+                </p>
+                $$K_{\mathrm{eq}} = \frac{[\mathrm{C}]^c [\mathrm{D}]^d}{[\mathrm{A}]^a [\mathrm{B}]^b}$$
+
+                <p>
+                    In practical laboratory or industrial scenarios, however, we rarely measure all equilibrium concentrations directly. Instead, chemists typically measure the <strong>initial amounts</strong> of reactants mixed in a vessel of volume $V$, and then measure the <strong>equilibrium concentration of ONE single species</strong> once the system comes to rest.
+                </p>
+
+                <p>
+                    To bridge the gap between initial state and final equilibrium state, we must apply the law of conservation of mass via <strong>stoichiometric proportions</strong>. Every mole of product formed requires the consumption of a mathematically defined stoichiometric number of moles of reactants!
+                </p>
+
+                <div class="info-box purple">
+                    <h3>The Molar Concentration Imperative ($c = \frac{n}{V}$)</h3>
+                    <p>
+                        Square brackets in a $K_{\mathrm{eq}}$ expression represent <strong>molar concentrations in $\text{mol L}^{-1}$</strong>.
+                        <br><br>
+                        • If a problem provides quantities in <strong>moles ($n$)</strong>, <strong>grams ($m$)</strong>, or <strong>partial pressures ($p$)</strong>, you MUST convert them to concentration in $\text{mol L}^{-1}$ before substituting into $K_{\mathrm{eq}}$!
+                        <br><br>
+                        • Always divide the number of moles by the container volume in Litres ($V$):
+                        $$c = \frac{n}{V}$$
+                        <br>
+                        • <em>Crucial Exception:</em> If container volume $V = 1.0\text{ L}$, then $c = n$. However, if $V = 2.0\text{ L}$ or $V = 500\text{ mL}$, failing to divide by $V$ will lead to incorrect values for non-equal mole systems!
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 2: THE ICE TABLE METHODOLOGY -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>2. The ICE Table Framework (Initial, Change, Equilibrium)</h2>
+                    <span class="pill-badge cyan">Systematic Tool</span>
+                </div>
+
+                <p>
+                    The <strong>ICE Table</strong> (an acronym for <strong>I</strong>nitial, <strong>C</strong>hange, <strong>E</strong>quilibrium) is the standard tool used in chemistry to organise stoichiometric changes in reversible reactions.
+                </p>
+
+                <h3>Anatomy of an ICE Table</h3>
+                <p>
+                    Consider the general homogeneous gas-phase reaction:
+                    $$\mathrm{a A_{(g)} + b B_{(g)} \rightleftharpoons c C_{(g)}}$$
+                </p>
+
+                <div class="ice-table-wrapper">
+                    <table class="ice-table">
+                        <thead>
+                            <tr>
+                                <th class="row-label">Reaction Row</th>
+                                <th>$\mathrm{a A_{(g)}}$</th>
+                                <th>$\mathrm{b B_{(g)}}$</th>
+                                <th>$\mathrm{c C_{(g)}}$</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="ice-row-i">
+                                <td class="row-label">Initial Concentration ($\text{mol L}^{-1}$)</td>
+                                <td>$[\mathrm{A}]_0$</td>
+                                <td>$[\mathrm{B}]_0$</td>
+                                <td>$[\mathrm{C}]_0$ (usually $0$)</td>
+                            </tr>
+                            <tr class="ice-row-c">
+                                <td class="row-label">Change in Concentration ($\text{mol L}^{-1}$)</td>
+                                <td>$-a x$</td>
+                                <td>$-b x$</td>
+                                <td>$+c x$</td>
+                            </tr>
+                            <tr class="ice-row-e">
+                                <td class="row-label">Equilibrium Concentration ($\text{mol L}^{-1}$)</td>
+                                <td>$[\mathrm{A}]_{\text{eq}} = [\mathrm{A}]_0 - a x$</td>
+                                <td>$[\mathrm{B}]_{\text{eq}} = [\mathrm{B}]_0 - b x$</td>
+                                <td>$[\mathrm{C}]_{\text{eq}} = [\mathrm{C}]_0 + c x$</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="grid-2col">
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-cyan);">
+                        <h3>Row 1: Initial Concentration ($\text{I}$)</h3>
+                        <p>
+                            • Represents molarities <em>immediately upon mixing</em>, before any chemical reaction occurs ($t = 0$).
+                            <br>• Usually, product concentrations are zero ($0\text{ M}$) unless products were intentionally added to the starting mixture.
+                            <br>• Must be expressed in $\text{mol L}^{-1}$ ($c = \frac{n}{V}$).
+                        </p>
+                    </div>
+
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-amber);">
+                        <h3>Row 2: Change in Concentration ($\text{C}$)</h3>
+                        <p>
+                            • Tracks the gain or loss of species as the reaction moves toward equilibrium.
+                            <br>• <strong>Reactants are lost</strong> (assigned negative sign, $-a x$).
+                            <br>• <strong>Products are gained</strong> (assigned positive sign, $+c x$).
+                            <br>• Coefficients of $x$ MUST match the mole ratio in the balanced chemical equation!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="info-box emerald">
+                    <h3>Row 3: Equilibrium Concentration ($\text{E}$)</h3>
+                    <p>
+                        The equilibrium row is simply the algebraic sum of the Initial row and Change row:
+                        $$\text{Equilibrium} = \text{Initial} + \text{Change}$$
+                        $$\text{e.g., } [\mathrm{A}]_{\text{eq}} = [\mathrm{A}]_0 + (-a x) = [\mathrm{A}]_0 - a x$$
+                        <br>
+                        These algebraic expressions in the $\text{E}$-row are then substituted directly into the $K_{\mathrm{eq}}$ expression to solve for $x$ or $K_{\mathrm{eq}}$!
+                    </p>
+                </div>
+
+                <!-- SVG Graph 1: Concentration vs Time Progressing to Equilibrium -->
+                <div class="graph-wrapper">
+                    <div class="graph-title">Figure 13.1: Concentration-Time Graph Illustrating Initial, Change ($\Delta c$), and Equilibrium Plateaus</div>
+                    <div class="svg-graph-container">
+                        <svg viewBox="0 0 720 320" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="720" height="320" fill="#0b1329" rx="10"/>
+
+                            <!-- Grid Lines -->
+                            <line x1="80" y1="270" x2="670" y2="270" stroke="#475569" stroke-width="2"/>
+                            <line x1="80" y1="40" x2="80" y2="270" stroke="#475569" stroke-width="2"/>
+
+                            <!-- Dashed Line for Equilibrium Time -->
+                            <line x1="420" y1="40" x2="420" y2="270" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="4,4"/>
+                            <text x="420" y="30" fill="#a78bfa" font-size="12" font-weight="700" text-anchor="middle">Equilibrium Established ($t_{\text{eq}}$)</text>
+
+                            <!-- Axis Labels -->
+                            <text x="375" y="305" fill="#cbd5e1" font-size="13" font-weight="600" text-anchor="middle">Time ($t$)</text>
+                            <text x="30" y="155" fill="#cbd5e1" font-size="13" font-weight="600" text-anchor="middle" transform="rotate(-90 30 155)">Concentration ($\text{mol L}^{-1}$)</text>
+
+                            <!-- Reactant Curve (A): Drops from 1.0 M to 0.4 M -->
+                            <path d="M 80 70 C 200 70, 300 180, 420 180 L 670 180" fill="none" stroke="#38bdf8" stroke-width="3.5"/>
+                            <!-- Reactant Initial & Eq Dots -->
+                            <circle cx="80" cy="70" r="5" fill="#38bdf8"/>
+                            <circle cx="420" cy="180" r="5" fill="#38bdf8"/>
+
+                            <!-- Product Curve (C): Rises from 0.0 M to 0.6 M -->
+                            <path d="M 80 270 C 200 270, 300 150, 420 150 L 670 150" fill="none" stroke="#34d399" stroke-width="3.5"/>
+                            <!-- Product Initial & Eq Dots -->
+                            <circle cx="80" cy="270" r="5" fill="#34d399"/>
+                            <circle cx="420" cy="150" r="5" fill="#34d399"/>
+
+                            <!-- Annotations for ICE Rows -->
+                            <!-- Initial Column Annotation -->
+                            <line x1="85" y1="75" x2="85" y2="265" stroke="#a78bfa" stroke-width="1" stroke-dasharray="2,2"/>
+                            <text x="95" y="65" fill="#38bdf8" font-size="11" font-weight="700">$[\mathrm{A}]_0 = 1.0\text{ M}$ (Row I)</text>
+                            <text x="95" y="265" fill="#34d399" font-size="11" font-weight="700">$[\mathrm{C}]_0 = 0.0\text{ M}$ (Row I)</text>
+
+                            <!-- Change Row Arrows -->
+                            <line x1="250" y1="75" x2="250" y2="150" stroke="#f43f5e" stroke-width="1.5"/>
+                            <polygon points="250,150 246,140 254,140" fill="#f43f5e"/>
+                            <text x="258" y="115" fill="#f43f5e" font-size="11" font-weight="700">$\Delta c = -0.6\text{ M}$ (Row C)</text>
+
+                            <line x1="250" y1="265" x2="250" y2="195" stroke="#34d399" stroke-width="1.5"/>
+                            <polygon points="250,195 246,205 254,205" fill="#34d399"/>
+                            <text x="258" y="235" fill="#34d399" font-size="11" font-weight="700">$\Delta c = +0.6\text{ M}$ (Row C)</text>
+
+                            <!-- Equilibrium Plateaus Annotation -->
+                            <text x="520" y="170" fill="#38bdf8" font-size="12" font-weight="700">$[\mathrm{A}]_{\text{eq}} = 0.4\text{ M}$ (Row E)</text>
+                            <text x="520" y="140" fill="#34d399" font-size="12" font-weight="700">$[\mathrm{C}]_{\text{eq}} = 0.6\text{ M}$ (Row E)</text>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: SCENARIO TYPE A - CALCULATING Keq FROM EXPERIMENTAL DATA -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>3. Scenario Type A: Calculating $K_{\mathrm{eq}}$ from Initial and Equilibrium Data</h2>
+                    <span class="pill-badge emerald">Calculation Type 1</span>
+                </div>
+
+                <p>
+                    In Scenario Type A, you are given the initial amounts of starting reactants and the equilibrium amount of <em>at least one species</em>. Your objective is to find $K_{\mathrm{eq}}$.
+                </p>
+
+                <div class="info-box cyan">
+                    <h3>Standard 4-Step Solution Algorithm (Type A):</h3>
+                    <p>
+                        <strong>Step 1: Write the balanced chemical equation</strong> and deduce the corresponding $K_{\mathrm{eq}}$ expression.
+                        <br><br>
+                        <strong>Step 2: Convert all given quantities to molar concentrations ($\text{mol L}^{-1}$)</strong> using $c = \frac{n}{V}$. Enter these initial values into Row $\text{I}$ of the ICE table.
+                        <br><br>
+                        <strong>Step 3: Determine the value of $x$ (the extent of change)</strong> by comparing the initial concentration $[\text{X}]_0$ and equilibrium concentration $[\text{X}]_{\text{eq}}$ of the known species:
+                        $$\Delta [\text{X}] = [\text{X}]_{\text{eq}} - [\text{X}]_0$$
+                        Use stoichiometry (the mole ratios in the balanced equation) to complete the rest of Row $\text{C}$ and calculate all remaining values in Row $\text{E}$.
+                        <br><br>
+                        <strong>Step 4: Substitute the final Row $\text{E}$ concentrations into $K_{\mathrm{eq}}$</strong> and compute the numerical answer.
+                    </p>
+                </div>
+
+                <h4>Detailed Walkthrough Demonstration</h4>
+                <p>
+                    Suppose $2.00\text{ moles}$ of $\mathrm{SO_{2(g)}}$ and $1.00\text{ mole}$ of $\mathrm{O_{2(g)}}$ are placed in a $2.00\text{ L}$ sealed flask at $1000\text{ K}$. At equilibrium, $0.80\text{ moles}$ of $\mathrm{SO_{3(g)}}$ is present. Calculate $K_{\mathrm{eq}}$.
+                </p>
+
+                <p><strong>1. Convert to initial molar concentrations ($c = \frac{n}{V}$):</strong></p>
+                <ul>
+                    <li>$[\mathrm{SO_2}]_0 = \frac{2.00\text{ mol}}{2.00\text{ L}} = 1.00\text{ M}$</li>
+                    <li>$[\mathrm{O_2}]_0 = \frac{1.00\text{ mol}}{2.00\text{ L}} = 0.50\text{ M}$</li>
+                    <li>$[\mathrm{SO_3}]_0 = 0.00\text{ M}$</li>
+                    <li>$[\mathrm{SO_3}]_{\text{eq}} = \frac{0.80\text{ mol}}{2.00\text{ L}} = 0.40\text{ M}$</li>
+                </ul>
+
+                <p><strong>2. Construct the ICE Table for $\mathrm{2SO_{2(g)} + O_{2(g)} \rightleftharpoons 2SO_{3(g)}}$:</strong></p>
+
+                <div class="ice-table-wrapper">
+                    <table class="ice-table">
+                        <thead>
+                            <tr>
+                                <th class="row-label">ICE Component</th>
+                                <th>$\mathrm{2SO_{2(g)}}$</th>
+                                <th>$\mathrm{O_{2(g)}}$</th>
+                                <th>$\mathrm{2SO_{3(g)}}$</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="ice-row-i">
+                                <td class="row-label">Initial ($\text{M}$)</td>
+                                <td>$1.00$</td>
+                                <td>$0.50$</td>
+                                <td>$0.00$</td>
+                            </tr>
+                            <tr class="ice-row-c">
+                                <td class="row-label">Change ($\text{M}$)</td>
+                                <td>$-2x = -0.40$</td>
+                                <td>$-x = -0.20$</td>
+                                <td>$+2x = +0.40$</td>
+                            </tr>
+                            <tr class="ice-row-e">
+                                <td class="row-label">Equilibrium ($\text{M}$)</td>
+                                <td>$1.00 - 0.40 = \mathbf{0.60}$</td>
+                                <td>$0.50 - 0.20 = \mathbf{0.30}$</td>
+                                <td>$0.00 + 0.40 = \mathbf{0.40}$</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p><strong>3. Substitute Row $\text{E}$ into $K_{\mathrm{eq}}$ expression:</strong></p>
+                $$K_{\mathrm{eq}} = \frac{[\mathrm{SO_3}]^2}{[\mathrm{SO_2}]^2 [\mathrm{O_2}]} = \frac{(0.40)^2}{(0.60)^2 \times (0.30)} = \frac{0.16}{0.36 \times 0.30} = \frac{0.16}{0.108} = 1.4815 \dots \approx 1.48$$
+            </section>
+
+            <!-- SECTION 4: SCENARIO TYPE B - CALCULATING EQUILIBRIUM CONCENTRATIONS FROM Keq -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>4. Scenario Type B: Calculating Unknown Equilibrium Concentrations from $K_{\mathrm{eq}}$</h2>
+                    <span class="pill-badge rose">Calculation Type 2</span>
+                </div>
+
+                <p>
+                    In Scenario Type B, you are given the value of $K_{\mathrm{eq}}$ alongside initial concentrations, and you must calculate the equilibrium concentration of reactants or products.
+                </p>
+
+                <div class="info-box amber">
+                    <h3>Algebraic Solving Strategies (Type B):</h3>
+                    <p>
+                        1. <strong>Single Unknown Direct Substitution:</strong> When all equilibrium concentrations except one are known, substitute directly into $K_{\mathrm{eq}}$ and solve linearly.
+                        <br><br>
+                        2. <strong>Perfect Square Simplification:</strong> If the reaction stoichiometry yields a perfect square in the $K_{\mathrm{eq}}$ expression (e.g., $K_{\mathrm{eq}} = \frac{(2x)^2}{(1.0 - x)^2}$), take the <strong>square root of both sides ($\sqrt{\phantom{X}}$)</strong> to convert the quadratic equation into a simple linear equation!
+                        <br><br>
+                        3. <strong>Quadratic Formula Application:</strong> If the expression cannot be simplified as a perfect square, expand into standard quadratic form $a x^2 + b x + c = 0$ and solve using:
+                        $$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
+                        Discard roots that give physically impossible negative equilibrium concentrations ($c < 0$)!
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 5: COMMON PITFALLS IN HSC EXAMINATIONS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>5. High-Frequency HSC Examination Pitfalls</h2>
+                    <span class="pill-badge rose">Examiner Insights</span>
+                </div>
+
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Common Student Error</th>
+                                <th>Why it Loses Marks in HSC</th>
+                                <th>Correct NESA Methodology</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background: rgba(244, 63, 94, 0.08);">
+                                <td><strong>Using Mole Quantities Instead of Molarity</strong></td>
+                                <td>Placing moles directly into $K_{\mathrm{eq}}$ gives incorrect numerical values whenever sum of reactant powers $\neq$ sum of product powers.</td>
+                                <td>Always divide moles by vessel volume ($c = \frac{n}{V}$) before inserting into $K_{\mathrm{eq}}$ or ICE table rows!</td>
+                            </tr>
+                            <tr style="background: rgba(251, 191, 36, 0.08);">
+                                <td><strong>Confusing Initial Amounts with Equilibrium Amounts</strong></td>
+                                <td>Placing initial starting concentrations directly into the $K_{\mathrm{eq}}$ expression instead of constructing an ICE table.</td>
+                                <td>Initial concentrations belong in Row $\text{I}$. Only Row $\text{E}$ concentrations can be substituted into $K_{\mathrm{eq}}$!</td>
+                            </tr>
+                            <tr style="background: rgba(124, 58, 237, 0.08);">
+                                <td><strong>Incorrect Coefficient Multiplication in Change Row</strong></td>
+                                <td>Writing $-x$ for a reactant with coefficient $3$ instead of $-3x$.</td>
+                                <td>The Change row ($\text{C}$) MUST explicitly multiply $x$ by the stoichiometric coefficient ($e.g., -3x$ for $\mathrm{3H_2}$)!</td>
+                            </tr>
+                            <tr style="background: rgba(56, 189, 248, 0.08);">
+                                <td><strong>Selecting the Wrong Quadratic Root</strong></td>
+                                <td>Selecting a mathematical root for $x$ that results in a negative equilibrium concentration ($c < 0$).</td>
+                                <td>Explicitly state "Reject $x = \dots$ as $[\text{X}]_{\text{eq}}$ cannot be negative" and choose the physically valid root.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION 6: INTERACTIVE ICE TABLE CALCULATOR & SIMULATOR -->
+            <section class="card glass-card demo-card">
+                <div class="card-header">
+                    <h2>6. Interactive ICE Table & $K_{\mathrm{eq}}$ Calculator</h2>
+                    <span class="pill-badge demo-pill">Virtual Chemistry Tool</span>
+                </div>
+                <p>Simulate the synthesis of ammonia ($\mathrm{N_{2(g)} + 3H_{2(g)} \rightleftharpoons 2NH_{3(g)}}$) by adjusting starting mole quantities, vessel volume, and equilibrium yield. Observe the live generation of the populated ICE table and mathematical derivation of $K_{\mathrm{eq}}$.</p>
+
+                <div class="sim-container">
+                    <div class="sim-controls">
+                        <div class="control-group">
+                            <label>Vessel Volume $V$ (L):</label>
+                            <input type="number" id="sim-vol" value="2.0" step="0.5" min="0.5" max="10.0" oninput="runIceSimulation()">
+                        </div>
+
+                        <div class="control-group">
+                            <label>Initial Moles $\mathrm{N_{2(g)}}$ ($n_0$):</label>
+                            <input type="number" id="sim-n-n2" value="2.0" step="0.1" min="0.1" max="10.0" oninput="runIceSimulation()">
+                        </div>
+
+                        <div class="control-group">
+                            <label>Initial Moles $\mathrm{H_{2(g)}}$ ($n_0$):</label>
+                            <input type="number" id="sim-n-h2" value="5.0" step="0.1" min="0.1" max="10.0" oninput="runIceSimulation()">
+                        </div>
+
+                        <div class="control-group">
+                            <label>Equilibrium Moles $\mathrm{NH_{3(g)}}$ ($n_{\text{eq}}$):</label>
+                            <input type="number" id="sim-n-nh3-eq" value="1.2" step="0.1" min="0.1" max="3.0" oninput="runIceSimulation()">
+                        </div>
+                    </div>
+
+                    <div class="sim-display-box">
+                        <h4 style="font-size: 0.9rem; color: var(--accent-cyan); text-transform: uppercase; margin-bottom: 0.75rem;">Dynamically Generated ICE Table ($\text{mol L}^{-1}$)</h4>
+                        
+                        <div class="ice-table-wrapper" style="margin: 0;">
+                            <table class="ice-table">
+                                <thead>
+                                    <tr>
+                                        <th class="row-label">ICE Component</th>
+                                        <th>$\mathrm{N_{2(g)}}$</th>
+                                        <th>$\mathrm{3H_{2(g)}}$</th>
+                                        <th>$\mathrm{2NH_{3(g)}}$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="ice-row-i">
+                                        <td class="row-label">Initial ($\text{M}$)</td>
+                                        <td id="cell-i-n2">1.000</td>
+                                        <td id="cell-i-h2">2.500</td>
+                                        <td id="cell-i-nh3">0.000</td>
+                                    </tr>
+                                    <tr class="ice-row-c">
+                                        <td class="row-label">Change ($\text{M}$)</td>
+                                        <td id="cell-c-n2">-0.300</td>
+                                        <td id="cell-c-h2">-0.900</td>
+                                        <td id="cell-c-nh3">+0.600</td>
+                                    </tr>
+                                    <tr class="ice-row-e">
+                                        <td class="row-label">Equilibrium ($\text{M}$)</td>
+                                        <td id="cell-e-n2">0.700</td>
+                                        <td id="cell-e-h2">1.600</td>
+                                        <td id="cell-e-nh3">0.600</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="telemetry-panel">
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Extent of Change $x$</span>
+                            <span class="telemetry-value" id="tel-x-val" style="color: var(--accent-amber);">0.300 M</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Product $[\mathrm{NH_3}]_{\text{eq}}$</span>
+                            <span class="telemetry-value" id="tel-nh3-eq" style="color: var(--accent-emerald);">0.600 M</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Calculated $K_{\mathrm{eq}}$</span>
+                            <span class="telemetry-value" id="tel-keq-calc" style="color: var(--accent-purple);">0.126</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Dominant Species</span>
+                            <span class="telemetry-value" id="tel-favoured" style="color: var(--accent-cyan);">Reactants</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 7: WORKED EXAMPLES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>7. Scaffolded Worked Examples</h2>
+                    <span class="pill-badge">HSC Step-by-Step Solutions</span>
+                </div>
+
+                <!-- Example 1: Easy -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 1 (Easy): Direct $K_{\mathrm{eq}}$ Substitution</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        At equilibrium in a $1.00\text{ L}$ vessel at $448^\circ\text{C}$, a gas mixture contains $0.106\text{ mol}$ of $\mathrm{H_{2(g)}}$, $0.038\text{ mol}$ of $\mathrm{I_{2(g)}}$, and $0.420\text{ mol}$ of $\mathrm{HI_{(g)}}$.
+                        <br>Calculate $K_{\mathrm{eq}}$ for the reaction: $\mathrm{H_{2(g)} + I_{2(g)} \rightleftharpoons 2HI_{(g)}}$.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Calculate concentrations ($c = \frac{n}{V}$ with $V = 1.00\text{ L}$):</strong>
+                        <br>• $[\mathrm{H_2}] = 0.106\text{ M}$
+                        <br>• $[\mathrm{I_2}] = 0.038\text{ M}$
+                        <br>• $[\mathrm{HI}] = 0.420\text{ M}$</p>
+                        <p><strong>2. Substitute directly into $K_{\mathrm{eq}}$ expression:</strong>
+                        $$K_{\mathrm{eq}} = \frac{[\mathrm{HI}]^2}{[\mathrm{H_2}][\mathrm{I_2}]} = \frac{(0.420)^2}{(0.106) \times (0.038)} = \frac{0.1764}{0.004028} = 43.79 \approx \mathbf{43.8} \quad (3\text{ sig. figs.})$$</p>
+                    </div>
+                </div>
+
+                <!-- Example 2: Medium -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 2 (Medium): ICE Table with Volume Adjustment</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A $5.00\text{ L}$ vessel is initially charged with $3.00\text{ mol}$ of $\mathrm{NO_{2(g)}}$ at $25^\circ\text{C}$. Once equilibrium is established according to $\mathrm{2NO_{2(g)} \rightleftharpoons N_2O_{4(g)}}$, $0.400\text{ mol}$ of $\mathrm{N_2O_{4(g)}}$ is found in the container.
+                        <br>Calculate $K_{\mathrm{eq}}$ for this reaction.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Convert moles to molarity ($c = \frac{n}{5.00\text{ L}}$):</strong>
+                        <br>• $[\mathrm{NO_2}]_0 = \frac{3.00\text{ mol}}{5.00\text{ L}} = 0.600\text{ M}$
+                        <br>• $[\mathrm{N_2O_4}]_{\text{eq}} = \frac{0.400\text{ mol}}{5.00\text{ L}} = 0.0800\text{ M}$</p>
+
+                        <p><strong>2. Construct ICE Table:</strong></p>
+                        <div class="ice-table-wrapper">
+                            <table class="ice-table">
+                                <thead>
+                                    <tr>
+                                        <th class="row-label">ICE Component</th>
+                                        <th>$\mathrm{2NO_{2(g)}}$</th>
+                                        <th>$\mathrm{N_2O_{4(g)}}$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="ice-row-i">
+                                        <td class="row-label">Initial ($\text{M}$)</td>
+                                        <td>$0.600$</td>
+                                        <td>$0.000$</td>
+                                    </tr>
+                                    <tr class="ice-row-c">
+                                        <td class="row-label">Change ($\text{M}$)</td>
+                                        <td>$-2x = -0.160$</td>
+                                        <td>$+x = +0.0800$</td>
+                                    </tr>
+                                    <tr class="ice-row-e">
+                                        <td class="row-label">Equilibrium ($\text{M}$)</td>
+                                        <td>$0.600 - 0.160 = \mathbf{0.440}$</td>
+                                        <td>$\mathbf{0.0800}$</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p><strong>3. Compute $K_{\mathrm{eq}}$:</strong>
+                        $$K_{\mathrm{eq}} = \frac{[\mathrm{N_2O_4}]}{[\mathrm{NO_2}]^2} = \frac{0.0800}{(0.440)^2} = \frac{0.0800}{0.1936} = \mathbf{0.413} \quad (3\text{ sig. figs.})$$</p>
+                    </div>
+                </div>
+
+                <!-- Example 3: Hard -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 3 (Hard): Perfect Square Algebraic Solution</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        At $425^\circ\text{C}$, $K_{\mathrm{eq}} = 54.0$ for the reaction: $\mathrm{H_{2(g)} + I_{2(g)} \rightleftharpoons 2HI_{(g)}}$.
+                        <br>If $1.00\text{ mol}$ of $\mathrm{H_{2(g)}}$ and $1.00\text{ mol}$ of $\mathrm{I_{2(g)}}$ are sealed in a $1.00\text{ L}$ flask, calculate the equilibrium concentrations of all three gases.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Initial Concentrations:</strong> $[\mathrm{H_2}]_0 = 1.00\text{ M}$, $[\mathrm{I_2}]_0 = 1.00\text{ M}$, $[\mathrm{HI}]_0 = 0\text{ M}$.</p>
+                        <p><strong>2. ICE Table:</strong></p>
+                        <div class="ice-table-wrapper">
+                            <table class="ice-table">
+                                <thead>
+                                    <tr>
+                                        <th class="row-label">ICE Row</th>
+                                        <th>$\mathrm{H_{2(g)}}$</th>
+                                        <th>$\mathrm{I_{2(g)}}$</th>
+                                        <th>$\mathrm{2HI_{(g)}}$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="ice-row-i"><td class="row-label">Initial ($\text{M}$)</td><td>1.00</td><td>1.00</td><td>0</td></tr>
+                                    <tr class="ice-row-c"><td class="row-label">Change ($\text{M}$)</td><td>$-x$</td><td>$-x$</td><td>$+2x$</td></tr>
+                                    <tr class="ice-row-e"><td class="row-label">Equilibrium ($\text{M}$)</td><td>$1.00 - x$</td><td>$1.00 - x$</td><td>$2x$</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p><strong>3. Substitute into $K_{\mathrm{eq}}$ expression:</strong>
+                        $$K_{\mathrm{eq}} = \frac{[\mathrm{HI}]^2}{[\mathrm{H_2}][\mathrm{I_2}]} \implies 54.0 = \frac{(2x)^2}{(1.00 - x)(1.00 - x)} = \frac{(2x)^2}{(1.00 - x)^2}$$</p>
+
+                        <p><strong>4. Take square root of both sides ($\sqrt{\phantom{X}}$):</strong>
+                        $$\sqrt{54.0} = \frac{2x}{1.00 - x} \implies 7.3485 = \frac{2x}{1.00 - x}$$
+                        $$7.3485 (1.00 - x) = 2x \implies 7.3485 - 7.3485x = 2x$$
+                        $$9.3485x = 7.3485 \implies x = 0.786\text{ M}$$</p>
+
+                        <p><strong>5. Final Equilibrium Concentrations:</strong>
+                        <br>• $[\mathrm{H_2}]_{\text{eq}} = 1.00 - 0.786 = \mathbf{0.214\text{ M}}$
+                        <br>• $[\mathrm{I_2}]_{\text{eq}} = 1.00 - 0.786 = \mathbf{0.214\text{ M}}$
+                        <br>• $[\mathrm{HI}]_{\text{eq}} = 2(0.786) = \mathbf{1.572\text{ M}} \approx \mathbf{1.57\text{ M}}$</p>
+                    </div>
+                </div>
+
+                <!-- Example 4: Extension -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 4 (Extension): Quadratic Formula Equilibrium Solution</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        At $250^\circ\text{C}$, $K_{\mathrm{eq}} = 0.0420$ for the decomposition: $\mathrm{PCl_{5(g)} \rightleftharpoons PCl_{3(g)} + Cl_{2(g)}}$.
+                        <br>If $0.500\text{ mol}$ of pure $\mathrm{PCl_{5(g)}}$ is placed in a $2.00\text{ L}$ rigid flask, determine the equilibrium concentration of $\mathrm{Cl_{2(g)}}$.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Initial Concentration:</strong> $[\mathrm{PCl_5}]_0 = \frac{0.500\text{ mol}}{2.00\text{ L}} = 0.250\text{ M}$.</p>
+                        <p><strong>2. ICE Table:</strong></p>
+                        <div class="ice-table-wrapper">
+                            <table class="ice-table">
+                                <thead>
+                                    <tr>
+                                        <th class="row-label">ICE Row</th>
+                                        <th>$\mathrm{PCl_{5(g)}}$</th>
+                                        <th>$\mathrm{PCl_{3(g)}}$</th>
+                                        <th>$\mathrm{Cl_{2(g)}}$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="ice-row-i"><td class="row-label">Initial ($\text{M}$)</td><td>0.250</td><td>0</td><td>0</td></tr>
+                                    <tr class="ice-row-c"><td class="row-label">Change ($\text{M}$)</td><td>$-x$</td><td>$+x$</td><td>$+x$</td></tr>
+                                    <tr class="ice-row-e"><td class="row-label">Equilibrium ($\text{M}$)</td><td>$0.250 - x$</td><td>$x$</td><td>$x$</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p><strong>3. Substitute into $K_{\mathrm{eq}}$ expression:</strong>
+                        $$0.0420 = \frac{x \cdot x}{0.250 - x} = \frac{x^2}{0.250 - x}$$
+                        $$0.0420 (0.250 - x) = x^2 \implies 0.0105 - 0.0420x = x^2$$
+                        $$x^2 + 0.0420x - 0.0105 = 0$$</p>
+
+                        <p><strong>4. Apply Quadratic Formula ($a=1, b=0.0420, c=-0.0105$):</strong>
+                        $$x = \frac{-0.0420 \pm \sqrt{(0.0420)^2 - 4(1)(-0.0105)}}{2(1)} = \frac{-0.0420 \pm \sqrt{0.001764 + 0.0420}}{2}$$
+                        $$x = \frac{-0.0420 \pm \sqrt{0.043764}}{2} = \frac{-0.0420 \pm 0.2092}{2}$$
+                        <br>• $x_1 = \frac{0.1672}{2} = 0.0836\text{ M}$
+                        <br>• $x_2 = \frac{-0.2512}{2} = -0.1256\text{ M}$ (Reject: concentration cannot be negative!)</p>
+
+                        <p><strong>5. Conclusion:</strong>
+                        $$[\mathrm{Cl_2}]_{\text{eq}} = x = \mathbf{0.0836\text{ M}}$$</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 8: PRACTICE QUESTIONS WITH RUBRICS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>8. NESA Examination Practice Questions</h2>
+                    <span class="pill-badge demo-pill">Self-Marking Engine</span>
+                </div>
+                <p>Solve the questions below, then toggle hints and model solutions to verify your answers against NESA marking rubrics.</p>
+
+                <!-- Practice Q1 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 1 (Easy): Evaluating $K_{\mathrm{eq}}$ from Equilibrium Molarities</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        An equilibrium mixture for the gas reaction $\mathrm{2NO_{(g)} + O_{2(g)} \rightleftharpoons 2NO_{2(g)}}$ at $230^\circ\text{C}$ in a $1.00\text{ L}$ vessel contains $[\mathrm{NO}] = 0.054\text{ M}$, $[\mathrm{O_2}] = 0.12\text{ M}$, and $[\mathrm{NO_2}] = 0.38\text{ M}$.
+                        <br>Calculate the value of $K_{\mathrm{eq}}$.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq1-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq1-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq1-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Substitute concentrations directly into $K_{\mathrm{eq}} = \frac{[\mathrm{NO_2}]^2}{[\mathrm{NO}]^2[\mathrm{O_2}]}$. Don't forget to square $[\mathrm{NO_2}]$ and $[\mathrm{NO}]$!</p>
+                    </div>
+
+                    <div id="pq1-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            $$K_{\mathrm{eq}} = \frac{[\mathrm{NO_2}]^2}{[\mathrm{NO}]^2[\mathrm{O_2}]} = \frac{(0.38)^2}{(0.054)^2 \times (0.12)} = \frac{0.1444}{0.002916 \times 0.12} = \frac{0.1444}{0.00034992} = 412.66 \approx 410 \quad (2\text{ sig. figs.})$$</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Correctly writes $K_{\mathrm{eq}}$ expression with accurate exponents.</li>
+                                <li><strong>1 Mark:</strong> Calculates correct final numerical value ($410$ or $4.1 \times 10^2$).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q2 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 2 (Medium): ICE Table Calculation with Vessel Scaling</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A $2.00\text{ L}$ flask is filled with $1.60\text{ mol}$ of $\mathrm{COCl_{2(g)}}$ (phosgene). At equilibrium according to $\mathrm{COCl_{2(g)} \rightleftharpoons CO_{(g)} + Cl_{2(g)}}$, the flask contains $0.400\text{ mol}$ of $\mathrm{CO_{(g)}}$.
+                        <br>Calculate $K_{\mathrm{eq}}$ for this decomposition.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq2-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq2-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq2-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> First divide moles by $2.00\text{ L}$ to get initial $[\mathrm{COCl_2}]_0 = 0.800\text{ M}$ and $[\mathrm{CO}]_{\text{eq}} = 0.200\text{ M}$. Construct the ICE table.</p>
+                    </div>
+
+                    <div id="pq2-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>1. Initial Molarities: $[\mathrm{COCl_2}]_0 = \frac{1.60\text{ mol}}{2.00\text{ L}} = 0.800\text{ M}$.
+                            <br>2. Equilibrium $[\mathrm{CO}]_{\text{eq}} = \frac{0.400\text{ mol}}{2.00\text{ L}} = 0.200\text{ M}$.
+                            <br>3. ICE Row E: $[\mathrm{COCl_2}]_{\text{eq}} = 0.800 - 0.200 = 0.600\text{ M}$; $[\mathrm{Cl_2}]_{\text{eq}} = 0.200\text{ M}$.
+                            <br>4. Substitution:
+                            $$K_{\mathrm{eq}} = \frac{[\mathrm{CO}][\mathrm{Cl_2}]}{[\mathrm{COCl_2}]} = \frac{(0.200) \times (0.200)}{0.600} = \frac{0.0400}{0.600} = \mathbf{0.0667} \quad (3\text{ sig. figs.})$$</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Correctly converts initial and equilibrium mole quantities to molar concentrations ($\text{M}$).</li>
+                                <li><strong>1 Mark:</strong> Populates ICE table accurately using $1:1:1$ stoichiometry.</li>
+                                <li><strong>1 Mark:</strong> Calculates correct final $K_{\mathrm{eq}}$ value ($0.0667$ or $6.67 \times 10^{-2}$).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q3 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 3 (Hard): Solving for Unknown Equilibrium Reactant</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        The reaction $\mathrm{2A_{(g)} \rightleftharpoons B_{(g)} + C_{(g)}}$ has $K_{\mathrm{eq}} = 0.250$ at $300\text{ K}$.
+                        <br>A reaction vessel initially contains $[\mathrm{A}]_0 = 2.00\text{ M}$, $[\mathrm{B}]_0 = 0\text{ M}$, and $[\mathrm{C}]_0 = 0\text{ M}$.
+                        <br>Calculate the concentration of reactant $\mathrm{A}$ remaining at equilibrium.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq3-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq3-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq3-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Let Change for $\mathrm{A}$ be $-2x$. Then $[\mathrm{B}]_{\text{eq}} = x$ and $[\mathrm{C}]_{\text{eq}} = x$. Take the square root of both sides!</p>
+                    </div>
+
+                    <div id="pq3-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>1. ICE Table: $[\mathrm{A}]_{\text{eq}} = 2.00 - 2x$, $[\mathrm{B}]_{\text{eq}} = x$, $[\mathrm{C}]_{\text{eq}} = x$.
+                            <br>2. Substitute into $K_{\mathrm{eq}}$:
+                            $$K_{\mathrm{eq}} = \frac{[\mathrm{B}][\mathrm{C}]}{[\mathrm{A}]^2} \implies 0.250 = \frac{x^2}{(2.00 - 2x)^2}$$
+                            <br>3. Take square root ($\sqrt{\phantom{X}}$):
+                            $$\sqrt{0.250} = \frac{x}{2.00 - 2x} \implies 0.500 = \frac{x}{2.00 - 2x}$$
+                            $$0.500 (2.00 - 2x) = x \implies 1.00 - 1.00x = x \implies 2.00x = 1.00 \implies x = 0.500\text{ M}$$
+                            <br>4. Calculate $[\mathrm{A}]_{\text{eq}}$:
+                            $$[\mathrm{A}]_{\text{eq}} = 2.00 - 2(0.500) = 2.00 - 1.00 = \mathbf{1.00\text{ M}}$$</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Constructs correct ICE table with Change row matching $-2x$, $+x$, $+x$.</li>
+                                <li><strong>1 Mark:</strong> Sets up correct algebraic expression $0.250 = \frac{x^2}{(2.00 - 2x)^2}$.</li>
+                                <li><strong>1 Mark:</strong> Solves for $x = 0.500\text{ M}$ using square root method.</li>
+                                <li><strong>1 Mark:</strong> Correctly calculates final equilibrium concentration $[\mathrm{A}]_{\text{eq}} = 1.00\text{ M}$.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q4 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 4 (Extension): Quadratic Analysis with Non-Zero Starting Products</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        At a high temperature, $K_{\mathrm{eq}} = 1.00$ for $\mathrm{H_{2(g)} + CO_{2(g)} \rightleftharpoons H_2O_{(g)} + CO_{(g)}}$.
+                        <br>A $1.00\text{ L}$ container is charged with $1.00\text{ mol}$ of $\mathrm{H_2}$, $2.00\text{ mol}$ of $\mathrm{CO_2}$, and $1.00\text{ mol}$ of $\mathrm{H_2O}$.
+                        <br>Determine the equilibrium concentration of carbon monoxide gas ($\mathrm{CO_{(g)}}$).
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq4-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq4-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq4-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Initial concentrations: $[\mathrm{H_2}]_0 = 1.00$, $[\mathrm{CO_2}]_0 = 2.00$, $[\mathrm{H_2O}]_0 = 1.00$, $[\mathrm{CO}]_0 = 0$. Expand the expression and solve the quadratic.</p>
+                    </div>
+
+                    <div id="pq4-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>1. ICE Table ($V = 1.00\text{ L}$):
+                            <br>• $[\mathrm{H_2}]_{\text{eq}} = 1.00 - x$
+                            <br>• $[\mathrm{CO_2}]_{\text{eq}} = 2.00 - x$
+                            <br>• $[\mathrm{H_2O}]_{\text{eq}} = 1.00 + x$
+                            <br>• $[\mathrm{CO}]_{\text{eq}} = x$
+
+                            <br>2. Substitute into $K_{\mathrm{eq}} = 1.00$:
+                            $$1.00 = \frac{(1.00 + x)(x)}{(1.00 - x)(2.00 - x)} = \frac{x + x^2}{2.00 - 3.00x + x^2}$$
+                            $$2.00 - 3.00x + x^2 = x + x^2$$
+                            $$2.00 - 4.00x = 0 \implies 4.00x = 2.00 \implies x = 0.500\text{ M}$$
+
+                            <br>3. Conclusion:
+                            $$[\mathrm{CO}]_{\text{eq}} = x = \mathbf{0.500\text{ M}}$$</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Identifies non-zero initial concentration for product $[\mathrm{H_2O}]_0 = 1.00\text{ M}$.</li>
+                                <li><strong>1 Mark:</strong> Populates ICE table correctly ($+x$ for products, $-x$ for reactants).</li>
+                                <li><strong>1 Mark:</strong> Sets up full $K_{\mathrm{eq}}$ algebraic equation correctly.</li>
+                                <li><strong>1 Mark:</strong> Simplifies algebraic terms accurately (note: quadratic terms $x^2$ cancel out!).</li>
+                                <li><strong>1 Mark:</strong> Obtains correct final answer $[\mathrm{CO}]_{\text{eq}} = 0.500\text{ M}$.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation Footer -->
+            <footer class="content-footer">
+                <a href="12-keq-expression.html" class="btn btn-outline">&larr; Back to Lesson 12</a>
+                <a href="14-keq-calculations-advanced.html" class="btn btn-ethereal">
+                    Proceed to Lesson 14: Advanced $K_{\mathrm{eq}}$ & $Q$ &rarr;
+                </a>
+            </footer>
+        </main>
+    </div>
+
+    <!-- INTERACTIVE SIMULATOR SCRIPT -->
+    <script>
+        function runIceSimulation() {
+            const v = parseFloat(document.getElementById('sim-vol').value) || 1.0;
+            const nN2 = parseFloat(document.getElementById('sim-n-n2').value) || 0.0;
+            const nH2 = parseFloat(document.getElementById('sim-n-h2').value) || 0.0;
+            const nNh3Eq = parseFloat(document.getElementById('sim-n-nh3-eq').value) || 0.0;
+
+            // Initial concentrations (M)
+            const cN2_0 = nN2 / v;
+            const cH2_0 = nH2 / v;
+            const cNh3_0 = 0.0;
+
+            // Equilibrium NH3 (M)
+            const cNh3_eq = nNh3Eq / v;
+
+            // Change x for NH3 = 2x -> x = cNh3_eq / 2
+            const x = cNh3_eq / 2.0;
+
+            // Change values
+            const dN2 = -x;
+            const dH2 = -3.0 * x;
+            const dNh3 = +2.0 * x;
+
+            // Equilibrium concentrations
+            const cN2_eq = cN2_0 + dN2;
+            const cH2_eq = cH2_0 + dH2;
+
+            // Update ICE Table UI
+            document.getElementById('cell-i-n2').innerText = cN2_0.toFixed(3);
+            document.getElementById('cell-i-h2').innerText = cH2_0.toFixed(3);
+            document.getElementById('cell-i-nh3').innerText = cNh3_0.toFixed(3);
+
+            document.getElementById('cell-c-n2').innerText = dN2.toFixed(3);
+            document.getElementById('cell-c-h2').innerText = dH2.toFixed(3);
+            document.getElementById('cell-c-nh3').innerText = `+${dNh3.toFixed(3)}`;
+
+            document.getElementById('cell-e-n2').innerText = cN2_eq > 0 ? cN2_eq.toFixed(3) : "Invalid (<0)";
+            document.getElementById('cell-e-h2').innerText = cH2_eq > 0 ? cH2_eq.toFixed(3) : "Invalid (<0)";
+            document.getElementById('cell-e-nh3').innerText = cNh3_eq.toFixed(3);
+
+            // Telemetry
+            document.getElementById('tel-x-val').innerText = `${x.toFixed(3)} M`;
+            document.getElementById('tel-nh3-eq').innerText = `${cNh3_eq.toFixed(3)} M`;
+
+            // Calculate Keq = [NH3]^2 / ([N2] * [H2]^3)
+            let keq = 0;
+            if (cN2_eq > 0 && cH2_eq > 0) {
+                keq = (Math.pow(cNh3_eq, 2)) / (cN2_eq * Math.pow(cH2_eq, 3));
+                document.getElementById('tel-keq-calc').innerText = keq.toFixed(3);
+                document.getElementById('tel-favoured').innerText = keq > 1.0 ? "Products" : "Reactants";
+                document.getElementById('tel-favoured').style.color = keq > 1.0 ? "#34d399" : "#38bdf8";
+            } else {
+                document.getElementById('tel-keq-calc').innerText = "N/A (Invalid)";
+                document.getElementById('tel-favoured').innerText = "Impossible State";
+                document.getElementById('tel-favoured').style.color = "#f43f5e";
+            }
+        }
+
+        function toggleElement(id) {
+            const el = document.getElementById(id);
+            if (el.style.display === 'none' || el.style.display === '') {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            runIceSimulation();
+        });
+    </script>
+</body>
+</html>

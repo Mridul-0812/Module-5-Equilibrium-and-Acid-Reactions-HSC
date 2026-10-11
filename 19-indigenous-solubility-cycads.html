@@ -1,0 +1,1479 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>19 Indigenous Knowledge & Detoxification | Module 5 Chemistry</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- MathJax 3 Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <style>
+        /* Ethereal Glassmorphism Custom UI Extensions */
+        :root {
+            --bg-dark: #080c14;
+            --bg-card: rgba(15, 23, 42, 0.75);
+            --bg-card-hover: rgba(30, 41, 59, 0.85);
+            --border-glow: rgba(124, 58, 237, 0.3);
+            --border-light: rgba(255, 255, 255, 0.08);
+            --border-cyan: rgba(6, 182, 212, 0.35);
+            --border-emerald: rgba(16, 185, 129, 0.35);
+            --accent-purple: #a78bfa;
+            --accent-cyan: #38bdf8;
+            --accent-emerald: #34d399;
+            --accent-amber: #fbbf24;
+            --accent-rose: #f43f5e;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-secondary: #cbd5e1;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'Fira Code', 'Cascadia Code', Consolas, monospace;
+            --shadow-glow: 0 0 30px rgba(124, 58, 237, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(124, 58, 237, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 90% 85%, rgba(6, 182, 212, 0.1) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.95) 0%, var(--bg-dark) 100%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.8;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 320px;
+            background: rgba(11, 15, 25, 0.92);
+            border-right: 1px solid var(--border-light);
+            backdrop-filter: blur(16px);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 2rem 1.5rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .badge-glow {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            color: var(--accent-purple);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.4rem;
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .sidebar-header .subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+
+        .progress-container {
+            margin-top: 1.25rem;
+            background: rgba(255, 255, 255, 0.06);
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            border-radius: 3px;
+        }
+
+        .score-card {
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav-menu {
+            padding: 1.25rem 1rem;
+        }
+
+        .nav-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            padding: 0 0.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 0.65rem 0.75rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            margin-bottom: 0.25rem;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            transform: translateX(3px);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(90deg, rgba(124, 58, 237, 0.25), rgba(6, 182, 212, 0.1));
+            border-left: 3px solid var(--accent-purple);
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+
+        .nav-num {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            margin-right: 0.75rem;
+            opacity: 0.7;
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            margin-left: 320px;
+            flex: 1;
+            padding: 2.5rem 3rem;
+            max-width: 1250px;
+        }
+
+        .hero-banner {
+            position: relative;
+            background: linear-gradient(135deg, rgba(24, 16, 48, 0.85) 0%, rgba(15, 23, 42, 0.95) 100%);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2.5rem;
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .ethereal-tag {
+            font-family: var(--font-mono);
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .ethereal-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin: 0.5rem 0 1rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ethereal-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 880px;
+        }
+
+        /* Content Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 2.25rem;
+            margin-bottom: 2.5rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            transition: border-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(124, 58, 237, 0.35);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.75rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .card-header h2 {
+            font-size: 1.6rem;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .pill-badge {
+            padding: 0.35rem 0.85rem;
+            background: rgba(124, 58, 237, 0.12);
+            border: 1px solid var(--border-glow);
+            color: var(--accent-purple);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pill-badge.emerald {
+            background: rgba(16, 185, 129, 0.12);
+            border-color: var(--border-emerald);
+            color: var(--accent-emerald);
+        }
+
+        .pill-badge.cyan {
+            background: rgba(56, 189, 248, 0.12);
+            border-color: var(--border-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .pill-badge.amber {
+            background: rgba(251, 191, 36, 0.12);
+            border-color: rgba(251, 191, 36, 0.35);
+            color: var(--accent-amber);
+        }
+
+        .pill-badge.rose {
+            background: rgba(244, 63, 94, 0.12);
+            border-color: rgba(244, 63, 94, 0.35);
+            color: var(--accent-rose);
+        }
+
+        /* Typography & Paragraphs */
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        strong {
+            color: #fff;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: var(--accent-purple);
+            margin: 1.85rem 0 0.85rem;
+            font-weight: 700;
+        }
+
+        h4 {
+            font-size: 1.12rem;
+            color: #fff;
+            margin: 1.35rem 0 0.55rem;
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin: 0 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.75rem;
+            padding-left: 0.25rem;
+        }
+
+        /* Grids & Feature Layouts */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-glow);
+        }
+
+        .feature-card h3 {
+            margin: 0 0 0.5rem 0;
+            color: #fff;
+        }
+
+        /* Callout Boxes */
+        .info-box {
+            background: rgba(124, 58, 237, 0.08);
+            border-left: 4px solid var(--accent-purple);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 1.35rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-box.cyan {
+            background: rgba(56, 189, 248, 0.08);
+            border-left-color: var(--accent-cyan);
+        }
+
+        .info-box.emerald {
+            background: rgba(52, 211, 153, 0.08);
+            border-left-color: var(--accent-emerald);
+        }
+
+        .info-box.amber {
+            background: rgba(251, 191, 36, 0.08);
+            border-left-color: var(--accent-amber);
+        }
+
+        .info-box.rose {
+            background: rgba(244, 63, 94, 0.08);
+            border-left-color: var(--accent-rose);
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+        }
+
+        /* Comparison Tables */
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            margin: 1.75rem 0;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-glow);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        table.comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            background: rgba(15, 23, 42, 0.85);
+            font-size: 0.95rem;
+        }
+
+        table.comparison-table th {
+            background: rgba(30, 41, 59, 0.95);
+            color: var(--accent-cyan);
+            padding: 1rem 1.25rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border-glow);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+
+        table.comparison-table td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-main);
+            vertical-align: top;
+        }
+
+        /* SVG Graph Containers */
+        .graph-wrapper {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1.75rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .graph-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .svg-graph-container {
+            width: 100%;
+            max-width: 760px;
+            height: auto;
+        }
+
+        /* Interactive Simulator Module */
+        .sim-container {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            box-shadow: 0 0 35px rgba(124, 58, 237, 0.12);
+        }
+
+        .sim-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+            background: rgba(30, 41, 59, 0.5);
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-group label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .control-group select, .control-group input[type="range"] {
+            width: 100%;
+            padding: 0.55rem 0.75rem;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            font-size: 0.9rem;
+            accent-color: var(--accent-purple);
+        }
+
+        .sim-display-box {
+            background: rgba(10, 15, 28, 0.85);
+            border: 1px solid var(--border-cyan);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .telemetry-panel {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+
+        .telemetry-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .telemetry-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .telemetry-value {
+            font-family: var(--font-mono);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--accent-purple);
+            margin-top: 0.25rem;
+        }
+
+        /* Buttons & Actions */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-ethereal {
+            background: linear-gradient(135deg, #7c3aed, #06b6d4);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-ethereal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.45);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--border-light);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        /* Questions & Rubrics */
+        .question-container {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .marks-badge {
+            background: rgba(244, 63, 94, 0.15);
+            border: 1px solid rgba(244, 63, 94, 0.4);
+            color: var(--accent-rose);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .action-bar {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .drawer {
+            margin-top: 1rem;
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .drawer-hint {
+            background: rgba(251, 191, 36, 0.08);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            color: #fef08a;
+        }
+
+        .drawer-solution {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-glow);
+        }
+
+        .rubric-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--accent-purple);
+        }
+
+        .rubric-box h5 {
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .content-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; padding: 1.5rem; }
+            .grid-2col { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="ethereal-theme">
+    <div class="app-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="badge-glow">NESA Stage 6</span>
+                <h2>Module 5</h2>
+                <p class="subtitle">EQUILIBRIUM & ACID REACTIONS</p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="module-progress" style="width: 76%;"></div>
+                </div>
+                <div class="score-card">
+                    Total Mastery: <span id="total-marks">76</span> / 100 Marks
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-section">
+                    <span class="section-title">INTRODUCTION</span>
+                    <a href="index.html" class="nav-item">
+                        <span class="nav-num">—</span> Home & Guide
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE A: FOUNDATIONS OF EQUILIBRIUM</span>
+                    <a href="01-reversible-reactions.html" class="nav-item"><span class="nav-num">01</span> Reversible vs Irreversible</a>
+                    <a href="02-open-closed-systems.html" class="nav-item"><span class="nav-num">02</span> Open vs Closed Systems</a>
+                    <a href="03-static-dynamic-equilibrium.html" class="nav-item"><span class="nav-num">03</span> Static vs Dynamic Eq</a>
+                    <a href="04-non-equilibrium-systems.html" class="nav-item"><span class="nav-num">04</span> Non-Equilibrium Systems</a>
+                    <a href="05-collision-theory-equilibrium.html" class="nav-item"><span class="nav-num">05</span> Collision Theory in Eq</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE B: FACTORS AFFECTING EQUILIBRIUM</span>
+                    <a href="06-intro-le-chatelier.html" class="nav-item"><span class="nav-num">06</span> Le Chatelier's Principle</a>
+                    <a href="07-effect-of-concentration.html" class="nav-item"><span class="nav-num">07</span> Concentration Changes</a>
+                    <a href="08-effect-of-pressure-volume.html" class="nav-item"><span class="nav-num">08</span> Pressure & Volume</a>
+                    <a href="09-effect-of-temperature.html" class="nav-item"><span class="nav-num">09</span> Temperature Effects</a>
+                    <a href="10-collision-theory-lcp.html" class="nav-item"><span class="nav-num">10</span> Collision Theory & LCP</a>
+                    <a href="11-activation-energy-equilibrium.html" class="nav-item"><span class="nav-num">11</span> Activation Energy & $\Delta H$</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE C: THE EQUILIBRIUM CONSTANT</span>
+                    <a href="12-keq-expression.html" class="nav-item"><span class="nav-num">12</span> The $K_{\mathrm{eq}}$ Expression</a>
+                    <a href="13-keq-calculations-basic.html" class="nav-item"><span class="nav-num">13</span> Basic $K_{\mathrm{eq}}$ Calculations</a>
+                    <a href="14-keq-calculations-advanced.html" class="nav-item"><span class="nav-num">14</span> Advanced $K_{\mathrm{eq}}$ & $Q$</a>
+                    <a href="15-temperature-and-keq.html" class="nav-item"><span class="nav-num">15</span> Temperature & $K_{\mathrm{eq}}$</a>
+                    <a href="16-determining-keq-experiment.html" class="nav-item"><span class="nav-num">16</span> Practical Determination</a>
+                    <a href="17-keq-acid-base-dissociation.html" class="nav-item"><span class="nav-num">17</span> Dissociation Systems</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE D: SOLUTION EQUILIBRIA</span>
+                    <a href="18-dissolution-ionic-compounds.html" class="nav-item"><span class="nav-num">18</span> Ionic Dissolution</a>
+                    <a href="19-indigenous-solubility-cycads.html" class="nav-item active"><span class="nav-num">19</span> Indigenous Detoxification</a>
+                    <a href="20-solubility-rules.html" class="nav-item"><span class="nav-num">20</span> Solubility Rules</a>
+                    <a href="21-solubility-product-ksp.html" class="nav-item"><span class="nav-num">21</span> Solubility Product ($K_{\mathrm{sp}}$)</a>
+                    <a href="22-molar-solubility-calcs.html" class="nav-item"><span class="nav-num">22</span> Molar Solubility Calcs</a>
+                    <a href="23-predicting-precipitation.html" class="nav-item"><span class="nav-num">23</span> Predicting Precipitation</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE E: ASSESSMENT & REVIEW</span>
+                    <a href="24-formula-summary.html" class="nav-item"><span class="nav-num">24</span> Formula & Concept Guide</a>
+                    <a href="25-final-exam.html" class="nav-item"><span class="nav-num">25</span> Final Examination</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="hero-banner">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <span class="ethereal-tag">LESSON 19 • PHASE D: SOLUTION EQUILIBRIA & SOLUBILITY</span>
+                    <h1 class="ethereal-title">Indigenous Knowledge & Cycad Detoxification</h1>
+                    <p class="ethereal-subtitle">Bridge Year 11 Preliminary Module 3 (Water as Solvent) with Year 12 HSC Module 5 (Solution Equilibria). Explore how First Nations Peoples applied physical leaching equilibria, surface area optimisation, open vs closed system dynamics, thermal decomposition, and micro-organism fermentation to extract lethal toxins (cycasin) from cycad fruits.</p>
+                </div>
+            </header>
+
+            <!-- SYLLABUS ALIGNMENT CARD -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>NESA Syllabus Inquiry Focus & Exam Boundaries</h2>
+                    <span class="pill-badge">Stage 6 Chemistry</span>
+                </div>
+                <p>
+                    <strong>Inquiry Question 4:</strong> <em>How does solubility relate to chemical equilibrium?</em>
+                </p>
+                <div class="info-box cyan" style="margin-top: 1rem;">
+                    <h3>Syllabus Mandate (Outcome CH-12-01):</h3>
+                    <p style="font-style: italic; color: #f8fafc; margin-bottom: 0.5rem;">
+                        "Investigate the use of solubility equilibria by Aboriginal and Torres Strait Islander Peoples when removing toxicity from foods, for example: toxins in cycad fruit."
+                    </p>
+                    <ul>
+                        <li><strong>Preliminary Year 11 Module 3 Context:</strong> Introduces water as a universal polar solvent, physical solubility of organic compounds, and basic separation techniques.</li>
+                        <li><strong>HSC Year 12 Module 5 Focus:</strong> Explores the chemical application of <strong>Le Chatelier's Principle in open vs closed systems</strong>, solubility equilibria ($\mathrm{Toxin_{(seed)} \rightleftharpoons Toxin_{(aq)}}$), reaction kinetics (surface area effects via grinding/slicing), and equilibrium disturbance mechanisms.</li>
+                    </ul>
+                </div>
+
+                <div class="info-box amber">
+                    <h3>HSC Examination Reality Check: What You ARE and ARE NOT Expected to Memorise</h3>
+                    <p>
+                        • <strong>WHAT YOU ARE NOT EXPECTED TO MEMORISE:</strong> You will <em>never</em> be asked in an HSC Chemistry exam to recall obscure botanical Latin names (e.g. <em>Cycas media</em> or <em>Macrozamia spiralis</em>) or write out complex organic structural diagrams of cycasin molecules.
+                        <br><br>
+                        • <strong>WHAT NESA DOES EXPECT YOU TO MEMORISE AND APPLY:</strong> You MUST be able to describe the general process of <strong>leaching in running water</strong> versus <strong>fermentation/roasting</strong>, explain the molecular solubility of water-soluble toxins, and justify why flowing river water drives the leaching equilibrium continuously to completion ($\to$) using <strong>Le Chatelier's Principle</strong>!
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 1: CYCAD FRUIT CHEMISTRY & TOXIN MOLECULAR PROPERTIES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>1. Cycad Fruit Chemistry & Toxin Molecular Structure</h2>
+                    <span class="pill-badge">Biochemical Foundations</span>
+                </div>
+
+                <p>
+                    Cycads are ancient palm-like seed plants native to tropical and subtropical regions of Australia. Their large seeds are exceptionally rich in carbohydrates and starches, making them an valuable, abundant food source for Aboriginal and Torres Strait Islander Peoples for over 10,000 years.
+                </p>
+
+                <p>
+                    However, untreated cycad seeds contain high concentrations of potent, naturally occurring secondary metabolites that render them highly toxic and carcinogenic:
+                </p>
+
+                <div class="grid-2col">
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-rose);">
+                        <h3>1. Cycasin ($\mathrm{C_8H_{16}N_2O_7}$)</h3>
+                        <p>
+                            Cycasin is an azoxy glycoside molecule comprising a toxic methylazoxymethanol core bound to a glucose sugar unit.
+                            <br><br>
+                            • <strong>Toxicity:</strong> Potent neurotoxin and hepatotoxin. Upon ingestion, gut microflora cleave the glucose bond, releasing carcinogenic methylazoxymethanol.
+                            <br>
+                            • <strong>Solubility:</strong> Contains multiple polar hydroxyl groups ($-\mathrm{OH}$) and ether linkages. Consequently, cycasin is <strong>highly water-soluble</strong> due to extensive hydrogen bonding with polar water molecules!
+                        </p>
+                    </div>
+
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-amber);">
+                        <h3>2. BMAA ($\beta$-methylamino-L-alanine)</h3>
+                        <p>
+                            A non-protein amino acid produced by symbiotic cyanobacteria residing in the coralloid roots of cycads.
+                            <br><br>
+                            • <strong>Toxicity:</strong> Severe neurotoxin implicated in neurodegenerative diseases.
+                            <br>
+                            • <strong>Solubility:</strong> Contains polar amine ($-\mathrm{NH_2}$) and carboxylic acid ($-\mathrm{COOH}$) functional groups, rendering it <strong>water-soluble</strong> under aqueous leaching conditions.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- SVG Graph 1: Cycasin Molecular Polarity & Water Interaction -->
+                <div class="graph-wrapper">
+                    <div class="graph-title">Figure 19.1: Sub-microscopic Hydrogen Bonding between Water-Soluble Cycasin Toxin and Solvent Water</div>
+                    <div class="svg-graph-container">
+                        <svg viewBox="0 0 720 260" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="720" height="260" fill="#0b1329" rx="10"/>
+
+                            <!-- Cycasin Schematic Box -->
+                            <g transform="translate(40, 30)">
+                                <rect width="360" height="200" fill="rgba(15, 23, 42, 0.85)" stroke="#a78bfa" stroke-width="2" rx="8"/>
+                                <text x="180" y="30" fill="#a78bfa" font-size="14" font-weight="700" text-anchor="middle">Polar Cycasin Toxin Molecule</text>
+
+                                <!-- Glucose Ring Representation -->
+                                <polygon points="120,80 170,60 220,80 220,130 170,150 120,130" fill="#475569" stroke="#cbd5e1" stroke-width="2"/>
+                                <text x="170" y="110" fill="#fff" font-size="12" font-weight="700" text-anchor="middle">Glucose Unit</text>
+
+                                <!-- Azoxy tail -->
+                                <rect x="220" y="95" width="80" height="20" fill="#f43f5e" rx="4"/>
+                                <text x="260" y="110" fill="#fff" font-size="10" font-weight="800" text-anchor="middle">Azoxy Core</text>
+
+                                <!-- Hydroxyl groups with delta- charges -->
+                                <circle cx="105" cy="80" r="12" fill="#38bdf8"/>
+                                <text x="105" y="84" fill="#000" font-size="9" font-weight="800" text-anchor="middle">OH</text>
+
+                                <circle cx="105" cy="130" r="12" fill="#38bdf8"/>
+                                <text x="105" y="134" fill="#000" font-size="9" font-weight="800" text-anchor="middle">OH</text>
+
+                                <circle cx="170" cy="165" r="12" fill="#38bdf8"/>
+                                <text x="170" y="169" fill="#000" font-size="9" font-weight="800" text-anchor="middle">OH</text>
+                            </g>
+
+                            <!-- Attaching Water Molecules -->
+                            <g transform="translate(440, 30)">
+                                <rect width="240" height="200" fill="rgba(15, 23, 42, 0.85)" stroke="#38bdf8" stroke-width="2" rx="8"/>
+                                <text x="120" y="30" fill="#38bdf8" font-size="13" font-weight="700" text-anchor="middle">Hydrogen Bonding Solvation</text>
+                                <text x="120" y="50" fill="#cbd5e1" font-size="10" text-anchor="middle">Polar H₂O surrounds toxin</text>
+
+                                <!-- Water molecule 1 -->
+                                <g transform="translate(60, 100)">
+                                    <circle cx="0" cy="0" r="12" fill="#f43f5e"/> <!-- O -->
+                                    <circle cx="-12" cy="12" r="7" fill="#38bdf8"/> <!-- H -->
+                                    <circle cx="12" cy="12" r="7" fill="#38bdf8"/> <!-- H -->
+                                </g>
+
+                                <!-- H-bond dashed line -->
+                                <line x1="72" y1="100" x2="140" y2="100" stroke="#fbbf24" stroke-width="2" stroke-dasharray="4,3"/>
+                                <text x="106" y="92" fill="#fbbf24" font-size="9" font-weight="700" text-anchor="middle">H-Bond</text>
+
+                                <!-- Dissolved Solute Hydration Shell -->
+                                <circle cx="170" cy="100" r="22" fill="#a78bfa"/>
+                                <text x="170" y="104" fill="#000" font-size="10" font-weight="800" text-anchor="middle">Toxin(aq)</text>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2: PHYSICAL LEACHING EQUILIBRIA & LE CHATELIER'S PRINCIPLE -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>2. Physical Leaching Equilibria & Le Chatelier's Shift</h2>
+                    <span class="pill-badge emerald">HSC Module 5 Core Theory</span>
+                </div>
+
+                <p>
+                    The primary Indigenous technique for detoxifying cycad seeds relies on <strong>water leaching</strong> (physical extraction by dissolution).
+                </p>
+
+                <p>
+                    The physical dissolution of water-soluble cycasin from the fibrous seed matrix into surrounding water establishes a dynamic solubility equilibrium:
+                </p>
+                $$\mathrm{Cycasin_{(seed)} \rightleftharpoons Cycasin_{(aq)}} \quad K_{\mathrm{eq}} = \frac{[\mathrm{Cycasin_{(aq)}}]}{[\mathrm{Cycasin_{(seed)}}]}$$
+
+                <h3>Comparative Analysis: Stagnant Pool vs Flowing Stream Leaching</h3>
+                <p>
+                    To understand the chemical genius of Indigenous technology, we compare leaching in a closed/stagnant container versus an open, flowing river system:
+                </p>
+
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>System Variable</th>
+                                <th>Scenario A: Stagnant Water Container (Closed System)</th>
+                                <th>Scenario B: Flowing Stream / River (Open System)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Thermodynamic System Type</strong></td>
+                                <td><strong>Closed System</strong> with respect to solute (dissolved toxin cannot leave the container).</td>
+                                <td><strong>Open System</strong> with respect to solute (flowing water continuously sweeps dissolved solute away).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Reaction Quotient ($Q$) Trend</strong></td>
+                                <td>$[\mathrm{Cycasin_{(aq)}}]$ accumulates rapidly until $Q = K_{\mathrm{eq}}$. Net dissolution stops!</td>
+                                <td>Fresh water constantly replaces saturated water, ensuring $[\mathrm{Cycasin_{(aq)}}] \approx 0$. Thus $Q < K_{\mathrm{eq}}$ perpetually!</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Le Chatelier's Principle Response</strong></td>
+                                <td>System reaches dynamic equilibrium. Reverse recrystallisation rate equals forward dissolution rate ($\text{Rate}_{\mathrm{fwd}} = \text{Rate}_{\mathrm{rev}}$).</td>
+                                <td>By Le Chatelier's Principle, the continuous removal of product $[\mathrm{Cycasin_{(aq)}}]$ forces the equilibrium position to shift <strong>PERPETUALLY TO THE RIGHT ($\to$)</strong>!</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Final Toxin Removal Efficiency</strong></td>
+                                <td><strong>POOR ($< 30\%$)</strong>. Seeds remain dangerously toxic regardless of how long they sit in the same bucket!</td>
+                                <td><strong>NEAR $100\%$ DETOXIFICATION</strong>. Seeds become completely safe for consumption after several days to weeks.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- SVG Graph 2: Stagnant vs Flowing River Leaching Curves -->
+                <div class="graph-wrapper">
+                    <div class="graph-title">Figure 19.2: NESA-Aligned Concentration vs Time Profile: Stagnant Equilibrium vs Continuous Flowing Shift</div>
+                    <div class="svg-graph-container">
+                        <svg viewBox="0 0 720 300" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="720" height="300" fill="#0b1329" rx="10"/>
+
+                            <!-- Axes -->
+                            <line x1="60" y1="240" x2="660" y2="240" stroke="#94a3b8" stroke-width="2"/>
+                            <line x1="60" y1="240" x2="60" y2="40" stroke="#94a3b8" stroke-width="2"/>
+                            <text x="360" y="280" fill="#94a3b8" font-size="12" font-weight="700" text-anchor="middle">Leaching Time (Days)</text>
+                            <text x="25" y="140" fill="#94a3b8" font-size="12" font-weight="700" text-anchor="middle" transform="rotate(-90 25 140)">Residual Seed Toxin Conc. [%]</text>
+
+                            <!-- Y-axis markings -->
+                            <text x="50" y="245" fill="#94a3b8" font-size="10" text-anchor="end">0%</text>
+                            <text x="50" y="145" fill="#94a3b8" font-size="10" text-anchor="end">50%</text>
+                            <text x="50" y="50" fill="#94a3b8" font-size="10" text-anchor="end">100%</text>
+
+                            <!-- Curve A: Stagnant Pool (Plateaus early) -->
+                            <path d="M 60 50 Q 120 160 220 170 L 650 170" fill="none" stroke="#f43f5e" stroke-width="3"/>
+                            <text x="350" y="160" fill="#f43f5e" font-size="11" font-weight="700">Stagnant Water: Equilibrium Reached (Q = Keq, Toxic!)</text>
+
+                            <!-- Curve B: Flowing River (Drives to 0%) -->
+                            <path d="M 60 50 Q 150 180 320 230 L 650 238" fill="none" stroke="#34d399" stroke-width="3"/>
+                            <text x="350" y="220" fill="#34d399" font-size="11" font-weight="700">Flowing River: LCP Shift Right (Q < Keq, Safe!)</text>
+
+                            <!-- Key threshold line -->
+                            <line x1="60" y1="230" x2="660" y2="230" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="5,4"/>
+                            <text x="655" y="225" fill="#fbbf24" font-size="9" text-anchor="end">Safe Consumption Threshold (&lt; 1%)</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <h3>3. Kinetic Optimisation: Surface Area via Slicing and Grinding</h3>
+                <p>
+                    Aboriginal Peoples did not submerge whole, intact cycad nuts directly into streams. Whole nuts possess a thick, impermeable fibrous seed coat that severely restricts water penetration and limits the surface area available for dissolution.
+                </p>
+
+                <div class="info-box cyan">
+                    <h3>Collision Theory & Surface Area Kinetics</h3>
+                    <p>
+                        Prior to leaching, the seeds were systematically <strong>cracked, sliced, or ground into a fine coarse meal</strong> using stone tools:
+                        <br><br>
+                        • <strong>Increased Surface Area ($A$):</strong> Grinding the seed kernel exposes millions of internal starch cells and toxin molecules directly to solvent water.
+                        <br>
+                        • <strong>Increased Collision Frequency:</strong> According to collision theory, increasing surface area dramatically increases the frequency of collisions between polar water molecules and cycasin solute molecules per unit time.
+                        <br>
+                        • <strong>Accelerated Dissolution Rate:</strong> This reduces the required leaching period from several months down to just a few days!
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 3: ALTERNATIVE INDIGENOUS DETOXIFICATION METHODS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>3. Alternative Indigenous Methods: Fermentation & Thermal Treatment</h2>
+                    <span class="pill-badge amber">Biochemical & Thermal Processing</span>
+                </div>
+
+                <p>
+                    Depending on seasonal water availability and geographic location (e.g. arid inland regions lacking permanent flowing rivers), Aboriginal groups utilized alternative chemical and biological processing techniques to detoxify cycad seeds:
+                </p>
+
+                <div class="features-grid">
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-amber);">
+                        <h3>1. Fermentation / Moulding (Fermentation Pits)</h3>
+                        <p>
+                            Cycad seeds were cooked, sliced, and buried in moist, dark earth pits or leaf-lined trenches for several weeks or months.
+                        </p>
+                        <ul>
+                            <li><strong>Biological Degradation:</strong> Naturally occurring soil fungi (e.g. <em>Aspergillus</em> species) and bacteria proliferate on the moist starch kernels.</li>
+                            <li><strong>Enzymatic Hydrolysis:</strong> Micro-organisms secrete $\beta$-glucosidase enzymes that hydrolyse the azoxy glycoside bond of cycasin, breaking it down into volatile, harmless organic by-products and glucose.</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-purple);">
+                        <h3>2. Thermal Decomposition (Roasting / Baking)</h3>
+                        <p>
+                            Seeds were roasted in hot ash embers or earth ovens before or after leaching.
+                        </p>
+                        <ul>
+                            <li><strong>Heat Instability:</strong> Cycasin is thermolabile at elevated temperatures. Heat thermal energy disrupts the glycosidic bonds, decomposing the toxin molecule into non-toxic compounds.</li>
+                            <li><strong>Matrix Porosity:</strong> Heating denatures seed proteins and disrupts cell walls, making the starch kernel porous and significantly increasing subsequent water leaching rates.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: INTERACTIVE SIMULATOR MODULE -->
+            <section class="card glass-card demo-card">
+                <div class="card-header">
+                    <h2>4. Virtual Indigenous Leaching & Detoxification Simulator</h2>
+                    <span class="pill-badge demo-pill">Virtual Extraction Laboratory</span>
+                </div>
+                <p>Configure leaching conditions (Water Flow State, Seed Particle Size, and Treatment Time) to model real-time $Q$ vs $K_{\mathrm{eq}}$ shifts, cycasin concentration decay, and consumption safety status.</p>
+
+                <div class="sim-container">
+                    <div class="sim-controls">
+                        <div class="control-group">
+                            <label>Water Flow System Condition:</label>
+                            <select id="sim-water-flow" onchange="runLeachingEngine()">
+                                <option value="flowing">Flowing River / Stream (Open System - Product Removed)</option>
+                                <option value="stagnant">Stagnant Water Pool (Closed System - Product Accumulates)</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <label>Seed Preparation Method:</label>
+                            <select id="sim-prep-method" onchange="runLeachingEngine()">
+                                <option value="ground">Ground Seed Meal (Maximum Surface Area)</option>
+                                <option value="sliced">Thinly Sliced Kernels (Moderate Surface Area)</option>
+                                <option value="whole">Whole Intact Seeds (Low Surface Area / Outer Shell)</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <label>Leaching Duration $t$: <span id="lbl-time-val" style="color: var(--accent-cyan);">5.0 Days</span></label>
+                            <input type="range" id="sim-time" min="0.5" max="14.0" step="0.5" value="5.0" oninput="runLeachingEngine()">
+                        </div>
+                    </div>
+
+                    <div class="sim-display-box">
+                        <h4 style="font-size: 0.9rem; color: var(--accent-cyan); text-transform: uppercase; margin-bottom: 0.75rem;">Leaching System Equilibrium Reaction: $\mathrm{Cycasin_{(seed)} \rightleftharpoons Cycasin_{(aq)}}$</h4>
+                        <div id="sim-status-banner" style="font-size: 1.15rem; font-weight: 700; font-family: var(--font-mono); text-align: center; color: var(--accent-purple);">
+                            <!-- Dynamic JS insertion -->
+                        </div>
+                    </div>
+
+                    <div class="telemetry-panel">
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Aqueous Toxin $[\mathrm{Cycasin_{(aq)}}]$</span>
+                            <span class="telemetry-value" id="tel-caq" style="color: var(--accent-cyan);">0.00 M</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Residual Seed Toxin Concentration</span>
+                            <span class="telemetry-value" id="tel-cseed" style="color: var(--accent-rose);">12.5 %</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Reaction Quotient vs $K_{\mathrm{eq}}$</span>
+                            <span class="telemetry-value" id="tel-q-status" style="color: var(--accent-amber);">Q &lt; Keq (Shift Right →)</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Detoxification Status</span>
+                            <span class="telemetry-value" id="tel-safety-status" style="color: var(--accent-emerald);">SAFE FOR CONSUMPTION</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 5: SCAFFOLDED WORKED EXAMPLES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>5. Scaffolded Worked Examples</h2>
+                    <span class="pill-badge">HSC Step-by-Step Solutions</span>
+                </div>
+
+                <!-- Example 1: Easy -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 1 (Easy): Identifying the Solvation Mechanism</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Identify the primary chemical property of cycasin that enables its removal from cycad seeds by water washing, and name the intermolecular force formed between cycasin and water.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Primary Chemical Property:</strong>
+                        <br>Cycasin is a highly <strong>water-soluble polar organic glycoside</strong>.</p>
+
+                        <p><strong>2. Intermolecular Force:</strong>
+                        <br>The primary intermolecular forces formed between the polar hydroxyl ($-\mathrm{OH}$) groups of cycasin and solvent water molecules are <strong>hydrogen bonds</strong> (and dipole-dipole interactions).</p>
+                    </div>
+                </div>
+
+                <!-- Example 2: Medium -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 2 (Medium): Le Chatelier's Shift in Flowing Water</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Aboriginal Peoples submerged woven bags of sliced cycad seeds in flowing streams rather than stagnant water holes.
+                        <br>Explain this practice using Le Chatelier's Principle and reaction quotient ($Q$) concepts.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Equilibrium System:</strong>
+                        $$\mathrm{Cycasin_{(seed)} \rightleftharpoons Cycasin_{(aq)}}$$</p>
+
+                        <p><strong>2. Stagnant Water Limitations ($Q = K_{\mathrm{eq}}$):</strong>
+                        <br>In stagnant water (a closed system), dissolved toxin $[\mathrm{Cycasin_{(aq)}}]$ accumulates until the reaction quotient equals the equilibrium constant ($Q = K_{\mathrm{eq}}$), stopping net leaching.</p>
+
+                        <p><strong>3. Flowing Water Shift ($Q < K_{\mathrm{eq}}$):</strong>
+                        <br>In a flowing stream (an open system), continuous water movement washes away dissolved $[\mathrm{Cycasin_{(aq)}}]$, maintaining product concentration near zero ($Q < K_{\mathrm{eq}}$). By Le Chatelier's Principle, the system continually shifts in the <strong>FORWARD direction ($\to$)</strong> to replace removed product, driving toxin extraction to near $100\%$ completion.</p>
+                    </div>
+                </div>
+
+                <!-- Example 3: Hard -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 3 (Hard): Kinetic Impact of Seed Preparation</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Before leaching, Indigenous Peoples systematically pounded or sliced cycad seeds rather than placing intact whole nuts into rivers.
+                        <br>Analyse the effect of this preparation method on the rate of leaching using collision theory.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Surface Area Effect:</strong>
+                        <br>Intact cycad nuts have a hard, water-impermeable outer seed coat that restricts water contact. Crushing, slicing, or pounding seeds breaks open the fibrous kernel, dramatically increasing the exposed <strong>surface area to volume ratio</strong> of the starch matrix.</p>
+
+                        <p><strong>2. Collision Theory Application:</strong>
+                        <br>According to collision theory, increasing exposed surface area increases the frequency of contact and collisions between polar solvent water molecules and solid cycasin molecules per unit time.</p>
+
+                        <p><strong>3. Impact on Rate of Leaching:</strong>
+                        <br>The higher collision rate increases the initial rate of dissolution ($\text{Rate}_{\mathrm{dissolution}}$), drastically reducing the required leaching time from several months to a few days, making food production far more efficient.</p>
+                    </div>
+                </div>
+
+                <!-- Example 4: Extension -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 4 (Extension): Evaluating Multi-Step Indigenous Technologies</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        In some regions, Indigenous Peoples subjected cycad seeds to a multi-stage process involving roasting, slicing, leaching in running water, and subsequent fermentation.
+                        <br>Evaluate the chemical and biological justification for combining these distinct processing steps.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Stage 1: Roasting / Thermal Processing:</strong>
+                        <br>Heat thermally decomposes thermolabile cycasin molecules by breaking glycosidic bonds. Additionally, roasting ruptures fibrous cellular walls, increasing kernel porosity for subsequent water penetration.</p>
+
+                        <p><strong>2. Stage 2: Slicing / Mechanical Fractionation:</strong>
+                        <br>Mechanically increases surface area, maximising solvent-solute contact for rapid leaching kinetics.</p>
+
+                        <p><strong>3. Stage 3: Running Water Leaching:</strong>
+                        <br>Utilises open system equilibria ($Q < K_{\mathrm{eq}}$) to continuously shift the dissolution equilibrium ($\mathrm{Cycasin_{(seed)} \rightleftharpoons Cycasin_{(aq)}}$) to the right ($\to$), physically extracting remaining water-soluble toxins.</p>
+
+                        <p><strong>4. Stage 4: Fermentation / Ageing:</strong>
+                        <br>Fungal and bacterial enzymes ($\beta$-glucosidases) enzymatically hydrolyse any trace residual water-insoluble or bound toxins, guaranteeing complete safety while enhancing starch digestibility.</p>
+
+                        <p><strong>5. Conclusion:</strong>
+                        <br>Combining these steps provides a multi-barrier safety approach combining thermal decomposition, kinetic acceleration, equilibrium extraction, and biological hydrolysis to ensure complete detoxification.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 6: NESA EXAMINATION PRACTICE QUESTIONS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>6. NESA Examination Practice Questions</h2>
+                    <span class="pill-badge demo-pill">Self-Marking Engine</span>
+                </div>
+                <p>Solve the questions below, then toggle hints and model solutions to verify your answers against NESA marking rubrics.</p>
+
+                <!-- Practice Q1 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 1 (Easy): Open System Definition in Leaching</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Define an open system in the context of leaching cycad seeds in a flowing river, and state why a stagnant container represents a closed system with respect to dissolved solute.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq1-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq1-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq1-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> An open system allows mass (dissolved solute) to enter or leave the system boundary.</p>
+                    </div>
+
+                    <div id="pq1-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>• In a flowing river, the system is <strong>open</strong> because mass (dissolved cycasin solute) is continuously carried away across the system boundary by water flow.
+                            <br>• A stagnant container is a <strong>closed system</strong> with respect to solute because dissolved cycasin cannot leave the container, causing it to accumulate until dynamic equilibrium ($Q = K_{\mathrm{eq}}$) is established.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Correctly defines an open system as one allowing solute mass transfer across boundaries.</li>
+                                <li><strong>1 Mark:</strong> Correctly explains that a stagnant container traps dissolved solute, reaching dynamic equilibrium.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q2 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 2 (Medium): Explaining Fermentation Detoxification</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        In arid inland regions without permanent rivers, Aboriginal groups buried prepared cycad seeds in moist earth pits for several months.
+                        <br>Explain the chemical or biological mechanism of toxin removal during this fermentation process.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq2-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq2-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq2-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Soil micro-organisms secrete enzymes ($\beta$-glucosidases) that break down glycoside bonds.</p>
+                    </div>
+
+                    <div id="pq2-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>• In moist fermentation pits, naturally occurring soil fungi and micro-organisms proliferate on the seed kernels.
+                            <br>• These micro-organisms secrete microbial enzymes (such as $\beta$-glucosidase) that catalytically hydrolyse the chemical bonds within cycasin glycosides.
+                            <br>• This enzymatic decomposition converts the toxic cycasin molecule into non-toxic glucose, volatile organic by-products, and harmless metabolites, successfully detoxifying the food without requiring large volumes of running water.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Identifies the role of soil micro-organisms/fungi in moist earth pits.</li>
+                                <li><strong>1 Mark:</strong> Explains that microbial enzymes chemically hydrolyse glycosidic bonds in cycasin.</li>
+                                <li><strong>1 Mark:</strong> States that toxins are decomposed into non-toxic harmless metabolites.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q3 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 3 (Hard): Predicting Toxin Removal in Stagnant vs Flowing Water</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A student sets up two laboratory models to simulate cycad leaching:
+                        <br>• <strong>Beaker A:</strong> 50 g crushed cycad seed submerged in 1 L of still, unstirred water.
+                        <br>• <strong>Beaker B:</strong> 50 g crushed cycad seed submerged under a continuous, running tap supply (1 L/min).
+                        <br><br>
+                        Predict and compare the final concentration of toxin remaining in the seeds after 48 hours, justifying your answer using Le Chatelier's Principle.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq3-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq3-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq3-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Compare $Q = K_{\mathrm{eq}}$ in Beaker A vs $Q < K_{\mathrm{eq}}$ (continuous product removal) in Beaker B.</p>
+                    </div>
+
+                    <div id="pq3-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>• <strong>Prediction:</strong> Beaker B (running water) will achieve near $100\%$ toxin removal, leaving seeds safe. Beaker A (still water) will retain high concentrations of toxin in the seeds, remaining toxic.
+                            <br><br>• <strong>Chemical Justification:</strong>
+                            <br>The dissolution equilibrium is $\mathrm{Toxin_{(seed)} \rightleftharpoons Toxin_{(aq)}}$.
+                            <br>In <strong>Beaker A</strong>, dissolved toxin accumulates in the static 1 L volume until $Q = K_{\mathrm{eq}}$, establishing dynamic equilibrium where the rate of dissolution equals the rate of recrystallisation. Dissolution ceases, leaving significant toxin trapped in the seeds.
+                            <br>In <strong>Beaker B</strong>, continuous running water flushes dissolved toxin out of the system, keeping $[\mathrm{Toxin_{(aq)}}] \approx 0$ ($Q < K_{\mathrm{eq}}$). By Le Chatelier's Principle, the system continuously shifts to the **RIGHT ($\to$)** to replace lost product, driving dissolution to completion.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Accurately predicts high detoxification in Beaker B and incomplete detoxification in Beaker A.</li>
+                                <li><strong>1 Mark:</strong> Formulates correct solubility equilibrium equation $\mathrm{Toxin_{(seed)} \rightleftharpoons Toxin_{(aq)}}$.</li>
+                                <li><strong>1 Mark:</strong> Explains Beaker A equilibrium saturation ($Q = K_{\mathrm{eq}}$) in a closed volume.</li>
+                                <li><strong>1 Mark:</strong> Applies Le Chatelier's Principle to Beaker B ($Q < K_{\mathrm{eq}}$ continuous forward shift).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q4 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 4 (Extension): Synthesising Indigenous Scientific Innovation</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Evaluate the statement: <em>"Aboriginal and Torres Strait Islander Peoples demonstrated an advanced empirical understanding of chemical equilibrium principles long before Western scientific formulation."</em>
+                        <br><br>
+                        Support your answer with detailed references to cycad fruit processing techniques.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq4-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq4-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq4-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Connect traditional practices (flowing water leaching, crushing for surface area, fermentation) to modern chemical concepts (open systems, LCP, collision theory, enzymatic hydrolysis).</p>
+                    </div>
+
+                    <div id="pq4-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>• The statement is **HIGHLY ACCURATE**. Through thousands of years of empirical observation and refinement, First Nations Peoples developed sophisticated chemical technologies that directly exploit physical solubility equilibria, kinetics, and biochemistry.
+                            <br><br>• <strong>Exploiting Open-System Equilibria (Le Chatelier's Principle):</strong>
+                            <br>Indigenous Peoples deliberately selected flowing streams rather than standing water. Without formal modern terminology, they recognised that stagnant water became "saturated" and stopped extracting toxins, whereas running water continually removed dissolved toxin, driving extraction to completion ($\mathrm{Toxin_{(seed)} \rightleftharpoons Toxin_{(aq)}}$).
+                            <br><br>• <strong>Kinetic Optimisation (Collision Theory):</strong>
+                            <br>Pounding and slicing seeds before washing demonstrates an understanding of surface area kinetics, maximising water-solute collision frequency to accelerate leaching rates.
+                            <br><br>• <strong>Biochemical Manipulation (Fermentation/Roasting):</strong>
+                            <br>In dry seasons, utilising microbial fermentation in earth pits or thermal roasting demonstrates sophisticated multi-step chemical processing to decompose complex organic glycosides.
+                            <br><br>• <strong>Conclusion:</strong>
+                            <br>These practices demonstrate a rigorous, empirical application of chemical principles that effectively transformed lethal plant material into a primary sustainable food staple.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Provides a clear, justified judgment supporting the statement.</li>
+                                <li><strong>1 Mark:</strong> Links flowing water leaching to open-system equilibria and Le Chatelier's Principle.</li>
+                                <li><strong>1 Mark:</strong> Links crushing/slicing seeds to surface area optimisation and collision theory.</li>
+                                <li><strong>1 Mark:</strong> References alternative processing (fermentation/roasting) for dry season adaptation.</li>
+                                <li><strong>1 Mark:</strong> Synthesises points into a coherent, high-level evaluation of Indigenous chemical technology.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation Footer -->
+            <footer class="content-footer">
+                <a href="18-dissolution-ionic-compounds.html" class="btn btn-outline">&larr; Back to Lesson 18</a>
+                <a href="20-solubility-rules.html" class="btn btn-ethereal">
+                    Proceed to Lesson 20: Solubility Rules &rarr;
+                </a>
+            </footer>
+        </main>
+    </div>
+
+    <!-- INTERACTIVE LEACHING ENGINE JAVASCRIPT -->
+    <script>
+        function runLeachingEngine() {
+            const flowState = document.getElementById('sim-water-flow').value;
+            const prepMethod = document.getElementById('sim-prep-method').value;
+            const days = parseFloat(document.getElementById('sim-time').value);
+
+            document.getElementById('lbl-time-val').innerText = `${days.toFixed(1)} Days`;
+
+            // Surface area rate factor
+            let rateFactor = 0.8; // default sliced
+            if (prepMethod === 'ground') rateFactor = 1.8;
+            if (prepMethod === 'whole') rateFactor = 0.2;
+
+            let residualToxinPct = 100.0;
+            let caq = 0.0;
+            let qStatusText = "";
+
+            if (flowState === 'flowing') {
+                // Open system: Exponential decay to ~0%
+                residualToxinPct = 100.0 * Math.exp(-0.5 * rateFactor * days);
+                caq = 0.0001; // Water flushes it continuously
+                qStatusText = "Q < Keq (Perpetual Forward Shift →)";
+            } else {
+                // Stagnant pool: Reaches equilibrium plateau (~35% remaining depending on SA)
+                const equilibriumLimit = 35.0 / (rateFactor * 0.8);
+                const decay = 100.0 * Math.exp(-0.4 * rateFactor * days);
+                residualToxinPct = Math.max(equilibriumLimit, decay);
+                caq = ((100.0 - residualToxinPct) / 100.0) * 0.050; // Accumulates in stagnant volume
+                if (residualToxinPct <= equilibriumLimit + 1.0) {
+                    qStatusText = "Q = Keq (Equilibrium Reached - Shift Stopped!)";
+                } else {
+                    qStatusText = "Q Approaching Keq";
+                }
+            }
+
+            const isSafe = residualToxinPct < 1.0;
+
+            // Render telemetry
+            document.getElementById('tel-caq').innerText = `${caq.toFixed(4)} M`;
+            
+            const cseedEl = document.getElementById('tel-cseed');
+            cseedEl.innerText = `${residualToxinPct.toFixed(1)} %`;
+            cseedEl.style.color = residualToxinPct > 5.0 ? "var(--accent-rose)" : "var(--accent-emerald)";
+
+            const qEl = document.getElementById('tel-q-status');
+            qEl.innerText = qStatusText;
+            qEl.style.color = flowState === 'flowing' ? "var(--accent-emerald)" : "var(--accent-amber)";
+
+            const safeEl = document.getElementById('tel-safety-status');
+            if (isSafe) {
+                safeEl.innerText = "SAFE FOR CONSUMPTION (< 1%)";
+                safeEl.style.color = "var(--accent-emerald)";
+            } else {
+                safeEl.innerText = "TOXIC! DO NOT CONSUME";
+                safeEl.style.color = "var(--accent-rose)";
+            }
+
+            // Banner text
+            const banner = document.getElementById('sim-status-banner');
+            if (flowState === 'flowing') {
+                banner.innerHTML = `<span style="color: var(--accent-emerald);">Flowing Stream System: Product Toxin(aq) Removed &rarr; LCP Forces 100% Leaching!</span>`;
+            } else {
+                banner.innerHTML = `<span style="color: var(--accent-rose);">Stagnant Container System: Toxin(aq) Trapped &rarr; Q = Keq Reached (Seeds Remain Toxic)</span>`;
+            }
+        }
+
+        function toggleElement(id) {
+            const el = document.getElementById(id);
+            if (el.style.display === 'none' || el.style.display === '') {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            runLeachingEngine();
+        });
+    </script>
+</body>
+</html>

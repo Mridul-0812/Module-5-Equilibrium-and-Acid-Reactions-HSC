@@ -1,0 +1,1670 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04 Non-Equilibrium Systems | Module 5 Chemistry</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- MathJax 3 Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <style>
+        /* Modern Ethereal Glassmorphism Styling Extensions */
+        :root {
+            --bg-dark: #080c14;
+            --bg-card: rgba(15, 23, 42, 0.75);
+            --bg-card-hover: rgba(30, 41, 59, 0.85);
+            --border-glow: rgba(124, 58, 237, 0.3);
+            --border-light: rgba(255, 255, 255, 0.08);
+            --border-cyan: rgba(6, 182, 212, 0.35);
+            --border-emerald: rgba(16, 185, 129, 0.35);
+            --accent-purple: #a78bfa;
+            --accent-cyan: #38bdf8;
+            --accent-emerald: #34d399;
+            --accent-amber: #fbbf24;
+            --accent-rose: #f43f5e;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-secondary: #cbd5e1;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'Fira Code', 'Cascadia Code', Consolas, monospace;
+            --shadow-glow: 0 0 30px rgba(124, 58, 237, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(124, 58, 237, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 90% 85%, rgba(6, 182, 212, 0.1) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.95) 0%, var(--bg-dark) 100%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.7;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 320px;
+            background: rgba(11, 15, 25, 0.92);
+            border-right: 1px solid var(--border-light);
+            backdrop-filter: blur(16px);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 2rem 1.5rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .badge-glow {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            color: var(--accent-purple);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.4rem;
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .sidebar-header .subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+
+        .progress-container {
+            margin-top: 1.25rem;
+            background: rgba(255, 255, 255, 0.06);
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            border-radius: 3px;
+        }
+
+        .score-card {
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav-menu {
+            padding: 1.25rem 1rem;
+        }
+
+        .nav-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            padding: 0 0.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 0.65rem 0.75rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            margin-bottom: 0.25rem;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            transform: translateX(3px);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(90deg, rgba(124, 58, 237, 0.25), rgba(6, 182, 212, 0.1));
+            border-left: 3px solid var(--accent-purple);
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+
+        .nav-num {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            margin-right: 0.75rem;
+            opacity: 0.7;
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            margin-left: 320px;
+            flex: 1;
+            padding: 2.5rem 3rem;
+            max-width: 1250px;
+        }
+
+        .hero-banner {
+            position: relative;
+            background: linear-gradient(135deg, rgba(24, 16, 48, 0.85) 0%, rgba(15, 23, 42, 0.95) 100%);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2.5rem;
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .ethereal-tag {
+            font-family: var(--font-mono);
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .ethereal-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin: 0.5rem 0 1rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ethereal-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 850px;
+        }
+
+        /* Content Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 2.25rem;
+            margin-bottom: 2.5rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            transition: border-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(124, 58, 237, 0.35);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.75rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .card-header h2 {
+            font-size: 1.6rem;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .pill-badge {
+            padding: 0.35rem 0.85rem;
+            background: rgba(124, 58, 237, 0.12);
+            border: 1px solid var(--border-glow);
+            color: var(--accent-purple);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pill-badge.emerald {
+            background: rgba(16, 185, 129, 0.12);
+            border-color: var(--border-emerald);
+            color: var(--accent-emerald);
+        }
+
+        .pill-badge.rose {
+            background: rgba(244, 63, 94, 0.12);
+            border-color: rgba(244, 63, 94, 0.4);
+            color: var(--accent-rose);
+        }
+
+        /* Typography & Paragraphs */
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        strong {
+            color: #fff;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            color: var(--accent-purple);
+            margin: 1.75rem 0 0.85rem;
+            font-weight: 600;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            color: #fff;
+            margin: 1.25rem 0 0.5rem;
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin: 0 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.65rem;
+            padding-left: 0.25rem;
+        }
+
+        /* Grids & Feature Layouts */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-glow);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card h3 {
+            margin: 0 0 0.5rem 0;
+            color: #fff;
+        }
+
+        /* Callout Boxes */
+        .info-box {
+            background: rgba(124, 58, 237, 0.08);
+            border-left: 4px solid var(--accent-purple);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 1.35rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-box.cyan {
+            background: rgba(56, 189, 248, 0.08);
+            border-left-color: var(--accent-cyan);
+        }
+
+        .info-box.emerald {
+            background: rgba(52, 211, 153, 0.08);
+            border-left-color: var(--accent-emerald);
+        }
+
+        .info-box.rose {
+            background: rgba(244, 63, 94, 0.08);
+            border-left-color: var(--accent-rose);
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+        }
+
+        /* Data & Comparison Tables */
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            margin: 1.75rem 0;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        table.comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            background: rgba(15, 23, 42, 0.7);
+            font-size: 0.95rem;
+        }
+
+        table.comparison-table th {
+            background: rgba(30, 41, 59, 0.9);
+            color: var(--accent-purple);
+            padding: 1rem 1.25rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border-light);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        table.comparison-table td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-secondary);
+            vertical-align: top;
+        }
+
+        table.comparison-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+            color: #fff;
+        }
+
+        /* SVG Graph Containers */
+        .graph-wrapper {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1.75rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .graph-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .svg-graph-container {
+            width: 100%;
+            max-width: 700px;
+            height: auto;
+        }
+
+        /* Interactive Visualiser Module */
+        .sim-container {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            box-shadow: 0 0 35px rgba(124, 58, 237, 0.12);
+        }
+
+        .preset-btn-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .sim-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+            background: rgba(30, 41, 59, 0.5);
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-group label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .control-group input[type="range"] {
+            width: 100%;
+            accent-color: var(--accent-purple);
+            cursor: pointer;
+        }
+
+        .telemetry-panel {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+
+        .telemetry-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .telemetry-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .telemetry-value {
+            font-family: var(--font-mono);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--accent-purple);
+            margin-top: 0.25rem;
+        }
+
+        /* Buttons & Actions */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-ethereal {
+            background: linear-gradient(135deg, #7c3aed, #06b6d4);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-ethereal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.45);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--border-light);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        /* Questions & Rubrics */
+        .question-container {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .marks-badge {
+            background: rgba(244, 63, 94, 0.15);
+            border: 1px solid rgba(244, 63, 94, 0.4);
+            color: var(--accent-rose);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .action-bar {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .drawer {
+            margin-top: 1rem;
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .drawer-hint {
+            background: rgba(251, 191, 36, 0.08);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            color: #fef08a;
+        }
+
+        .drawer-solution {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-glow);
+        }
+
+        .rubric-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--accent-purple);
+        }
+
+        .rubric-box h5 {
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .content-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; padding: 1.5rem; }
+            .grid-2col { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="ethereal-theme">
+    <div class="app-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="badge-glow">NESA Stage 6</span>
+                <h2>Module 5</h2>
+                <p class="subtitle">EQUILIBRIUM & ACID REACTIONS</p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="module-progress" style="width: 16%;"></div>
+                </div>
+                <div class="score-card">
+                    Total Mastery: <span id="total-marks">16</span> / 100 Marks
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-section">
+                    <span class="section-title">INTRODUCTION</span>
+                    <a href="index.html" class="nav-item">
+                        <span class="nav-num">—</span> Home & Guide
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE A: FOUNDATIONS OF EQUILIBRIUM</span>
+                    <a href="01-reversible-reactions.html" class="nav-item"><span class="nav-num">01</span> Reversible vs Irreversible</a>
+                    <a href="02-open-closed-systems.html" class="nav-item"><span class="nav-num">02</span> Open vs Closed Systems</a>
+                    <a href="03-static-dynamic-equilibrium.html" class="nav-item"><span class="nav-num">03</span> Static vs Dynamic Eq</a>
+                    <a href="04-non-equilibrium-systems.html" class="nav-item active"><span class="nav-num">04</span> Non-Equilibrium Systems</a>
+                    <a href="05-collision-theory-equilibrium.html" class="nav-item"><span class="nav-num">05</span> Collision Theory in Eq</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE B: FACTORS AFFECTING EQUILIBRIUM</span>
+                    <a href="06-intro-le-chatelier.html" class="nav-item"><span class="nav-num">06</span> Le Chatelier's Principle</a>
+                    <a href="07-effect-of-concentration.html" class="nav-item"><span class="nav-num">07</span> Concentration Changes</a>
+                    <a href="08-effect-of-pressure-volume.html" class="nav-item"><span class="nav-num">08</span> Pressure & Volume</a>
+                    <a href="09-effect-of-temperature.html" class="nav-item"><span class="nav-num">09</span> Temperature Effects</a>
+                    <a href="10-collision-theory-lcp.html" class="nav-item"><span class="nav-num">10</span> Collision Theory & LCP</a>
+                    <a href="11-activation-energy-equilibrium.html" class="nav-item"><span class="nav-num">11</span> Activation Energy & $\Delta H$</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE C: THE EQUILIBRIUM CONSTANT</span>
+                    <a href="12-keq-expression.html" class="nav-item"><span class="nav-num">12</span> The $K_{\mathrm{eq}}$ Expression</a>
+                    <a href="13-keq-calculations-basic.html" class="nav-item"><span class="nav-num">13</span> Basic $K_{\mathrm{eq}}$ Calculations</a>
+                    <a href="14-keq-calculations-advanced.html" class="nav-item"><span class="nav-num">14</span> Advanced $K_{\mathrm{eq}}$ & $Q$</a>
+                    <a href="15-temperature-and-keq.html" class="nav-item"><span class="nav-num">15</span> Temperature & $K_{\mathrm{eq}}$</a>
+                    <a href="16-determining-keq-experiment.html" class="nav-item"><span class="nav-num">16</span> Practical Determination</a>
+                    <a href="17-keq-acid-base-dissociation.html" class="nav-item"><span class="nav-num">17</span> Dissociation Systems</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE D: SOLUTION EQUILIBRIA</span>
+                    <a href="18-dissolution-ionic-compounds.html" class="nav-item"><span class="nav-num">18</span> Ionic Dissolution</a>
+                    <a href="19-indigenous-solubility-cycads.html" class="nav-item"><span class="nav-num">19</span> Indigenous Detoxification</a>
+                    <a href="20-solubility-rules.html" class="nav-item"><span class="nav-num">20</span> Solubility Rules</a>
+                    <a href="21-solubility-product-ksp.html" class="nav-item"><span class="nav-num">21</span> Solubility Product ($K_{\mathrm{sp}}$)</a>
+                    <a href="22-molar-solubility-calcs.html" class="nav-item"><span class="nav-num">22</span> Molar Solubility Calcs</a>
+                    <a href="23-predicting-precipitation.html" class="nav-item"><span class="nav-num">23</span> Predicting Precipitation</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE E: ASSESSMENT & REVIEW</span>
+                    <a href="24-formula-summary.html" class="nav-item"><span class="nav-num">24</span> Formula & Concept Guide</a>
+                    <a href="25-final-exam.html" class="nav-item"><span class="nav-num">25</span> Final Examination</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="hero-banner">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <span class="ethereal-tag">LESSON 04 • PHASE A</span>
+                    <h1 class="ethereal-title">Non-Equilibrium Systems</h1>
+                    <p class="ethereal-subtitle">Evaluating Enthalpy ($\Delta H^\circ$), Entropy ($\Delta S^\circ$), and Standard Gibbs Free Energy ($\Delta G^\circ = \Delta H^\circ - T\Delta S^\circ$) in Combustion and Photosynthesis under NESA Stage 6 Chemistry Standards.</p>
+                </div>
+            </header>
+
+            <!-- SYLLABUS ALIGNMENT CARD -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>NESA Syllabus Inquiry Focus</h2>
+                    <span class="pill-badge">Stage 6 Chemistry</span>
+                </div>
+                <p>
+                    <strong>Inquiry Question:</strong> <em>What happens when chemical reactions do not go through completion?</em>
+                </p>
+                <div class="info-box cyan" style="margin-top: 1rem;">
+                    <h3>Syllabus Outcomes Addressed:</h3>
+                    <ul>
+                        <li>Investigate non-equilibrium systems in terms of enthalpy ($\Delta H^\circ$) and entropy ($\Delta S^\circ$), including:
+                            <ul>
+                                <li>Combustion of fuels (hydrocarbons, alcohols).</li>
+                                <li>Photosynthesis in photoautotrophic organisms.</li>
+                            </ul>
+                        </li>
+                        <li>Model reaction spontaneity and dynamic constraints using the standard Gibbs free energy relationship:
+                            $$\Delta G^\circ = \Delta H^\circ - T\Delta S^\circ$$
+                        </li>
+                        <li>Explain why certain processes proceed irreversibly to completion, making chemical equilibrium impossible.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECTION 1: DETAILED THEORETICAL EXPLANATION -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>1. Reversibility Spectrum & Non-Equilibrium Boundaries</h2>
+                    <span class="pill-badge">Thermodynamic Foundations</span>
+                </div>
+
+                <p>
+                    In earlier lessons of Module 5, we established that many chemical reactions are reversible and proceed in closed systems to establish a state of dynamic equilibrium. At dynamic equilibrium, the rates of the forward and reverse reactions are equal and non-zero ($r_{\mathrm{forward}} = r_{\mathrm{reverse}} > 0$), resulting in constant macroscopic concentrations of both reactants and products.
+                </p>
+                <p>
+                    However, a vast array of vital biological, environmental, and industrial chemical reactions do <strong>NOT</strong> reach dynamic chemical equilibrium. These systems are classified as <strong>non-equilibrium systems</strong>. A non-equilibrium system is one that proceeds virtually in one direction until at least one limiting reactant is completely consumed. Such reactions are effectively <em>irreversible</em> under ambient physical conditions.
+                </p>
+
+                <div class="grid-2col">
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-purple);">
+                        <div class="feature-icon">⛓️</div>
+                        <h3>Equilibrium Systems</h3>
+                        <p>
+                            Reactions where the activation energies for both forward and reverse pathways ($E_{a,\text{f}}$ and $E_{a,\text{r}}$) are moderately accessible at ambient temperatures, occurring inside a closed system boundary.
+                        </p>
+                        <ul>
+                            <li><strong>State:</strong> Dynamic equilibrium ($r_{\mathrm{f}} = r_{\mathrm{r}} > 0$).</li>
+                            <li><strong>Gibbs Free Energy:</strong> System seeks minimum free energy; at equilibrium, $\Delta G = 0$.</li>
+                            <li><strong>Reversibility:</strong> Both reactants and products are present simultaneously in non-zero concentrations.</li>
+                            <li><strong>Example:</strong> $\mathrm{N_2O_4(g) \rightleftharpoons 2NO_2(g)}$ in a sealed glass vessel.</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-rose);">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Non-Equilibrium Systems</h3>
+                        <p>
+                            Reactions driven continuously in one direction by extreme thermodynamic enthalpy/entropy changes or open system boundary mass losses.
+                        </p>
+                        <ul>
+                            <li><strong>State:</strong> Driven to 100% completion ($r_{\mathrm{f}} \gg r_{\mathrm{r}} \approx 0$).</li>
+                            <li><strong>Gibbs Free Energy:</strong> Unidirectional free energy change ($\Delta G^\circ \ll 0$ or continuously coupled solar photon input).</li>
+                            <li><strong>Reversibility:</strong> Effectively irreversible; reverse rate is practically zero.</li>
+                            <li><strong>Examples:</strong> Complete combustion of hydrocarbons; biological photosynthesis in autotrophs.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="info-box cyan">
+                    <h3>System Boundary Influence on Non-Equilibrium Behaviour</h3>
+                    <p>
+                        System boundaries dictate whether matter can escape:
+                        <br>• <strong>Open Systems:</strong> Permit the exchange of both matter and energy with surroundings. If gaseous or volatile products escape into the room atmosphere, their effective concentration inside the reaction vessel drops toward zero. Without product molecules present, reverse collision rates become zero ($r_{\mathrm{reverse}} = 0$), forcing the forward reaction to proceed to completion.
+                        <br>• <strong>Closed Systems:</strong> Permit energy transfer but prevent mass exchange ($\Delta m = 0$). Even inside a closed system, certain reactions fail to establish equilibrium because the thermodynamic driving forces ($\Delta H^\circ$ and $\Delta S^\circ$) generate an immensely negative $\Delta G^\circ$, creating a reverse activation energy barrier ($E_{a,\text{reverse}}$) so large that no reverse collisions possess sufficient energy to react.
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 2: THERMODYNAMIC DRIVING FORCES: ENTHALPY & ENTROPY -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>2. Enthalpy ($\Delta H^\circ$) and Entropy ($\Delta S^\circ$) Mechanics</h2>
+                    <span class="pill-badge">Thermodynamic Laws</span>
+                </div>
+
+                <p>
+                    Every chemical transformation is governed by two fundamental thermodynamic driving forces defined by the Laws of Thermodynamics:
+                </p>
+
+                <h3>1. The Enthalpy Drive ($\Delta H^\circ$)</h3>
+                <p>
+                    Enthalpy ($H$) represents the total internal heat energy stored within chemical bonds and intermolecular forces at constant pressure. The change in standard enthalpy ($\Delta H^\circ$) during a chemical reaction represents the net heat absorbed or evolved:
+                </p>
+                $$\Delta H^\circ = H_{\text{products}}^\circ - H_{\text{reactants}}^\circ = \sum \text{Bond Energies (Broken)} - \sum \text{Bond Energies (Formed)}$$
+
+                <ul>
+                    <li><strong>Exothermic Processes ($\Delta H^\circ < 0$):</strong> Energy released when forming product bonds is greater than the energy required to break reactant bonds. Heat is released to the surroundings. Systems naturally tend toward states of lower potential energy, making exothermic processes thermodynamically <em>favourable</em>.</li>
+                    <li><strong>Endothermic Processes ($\Delta H^\circ > 0$):</strong> Energy required to break reactant bonds exceeds the energy released upon forming product bonds. Heat is absorbed from surroundings. Endothermic processes are thermodynamically <em>unfavourable</em> unless compensated by entropy increases.</li>
+                </ul>
+
+                <h3>2. The Entropy Drive ($\Delta S^\circ$)</h3>
+                <p>
+                    Entropy ($S$) is a quantitative measure of the degree of randomness, molecular disorder, or energy dispersal among constituent particles within a system, measured in units of $\text{J K}^{-1}\text{ mol}^{-1}$. According to statistical mechanics, entropy increases as the number of available microstates ($\Omega$) for distributing energy increases.
+                </p>
+                $$\Delta S^\circ = \sum S^\circ(\text{products}) - \sum S^\circ(\text{reactants})$$
+
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Physical / Chemical Transformation</th>
+                                <th>Sign of $\Delta S^\circ$</th>
+                                <th>Microscopic Kinetic Explanation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Phase Changes: $\text{Solid} \rightarrow \text{Liquid} \rightarrow \text{Gas}$</strong></td>
+                                <td>$\Delta S^\circ > 0$ (Positive)</td>
+                                <td>Particles move from highly ordered crystal lattices into free translational, rotational, and vibrational gas motion, drastically increasing microstates.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Increase in Moles of Gas ($\Delta n_{\text{gas}} > 0$)</strong></td>
+                                <td>$\Delta S^\circ > 0$ (Positive)</td>
+                                <td>Gas particles possess vastly greater spatial freedom than solids or liquids. Producing more gas moles expands system configuration entropy.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Decrease in Moles of Gas ($\Delta n_{\text{gas}} < 0$)</strong></td>
+                                <td>$\Delta S^\circ < 0$ (Negative)</td>
+                                <td>Consolidating multiple free gas molecules into fewer structured liquid or solid species restricts spatial disorder.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Dissolution of Solid Solute ($\text{Solid} \rightarrow \text{Aqueous}$)</strong></td>
+                                <td>$\Delta S^\circ > 0$ (Positive)</td>
+                                <td>Solute particles separate from rigid lattices and disperse throughout solvent molecules, increasing mixture disorder.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Thermal Heating ($\Delta T > 0$)</strong></td>
+                                <td>$\Delta S^\circ > 0$ (Positive)</td>
+                                <td>Higher thermal kinetic energy spreads particles across a broader continuum of molecular velocity distributions.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION 3: DEEP DIVE: COMBUSTION REACTIONS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>3. Deep Dive 1: Hydrocarbon & Fuel Combustion</h2>
+                    <span class="pill-badge rose">Exothermic & Entropy-Driven</span>
+                </div>
+
+                <p>
+                    Combustion is a rapid high-temperature exothermic redox reaction between a fuel (such as a hydrocarbon or alcohol) and an oxidant (typically atmospheric oxygen gas, $\mathrm{O_2}$), producing oxidised gaseous products ($\mathrm{CO_2}$ and $\mathrm{H_2O}$), light, and substantial thermal energy.
+                </p>
+
+                <h3>Chemical Model Equations</h3>
+                <p>Consider two standard combustion systems studied in Stage 6 Chemistry:</p>
+                $$\mathrm{CH_4(g) + 2O_2(g) \rightarrow CO_2(g) + 2H_2O(g)} \quad \Delta H^\circ = -802.3\text{ kJ mol}^{-1}$$
+                $$\mathrm{2C_8H_{18}(l) + 25O_2(g) \rightarrow 16CO_2(g) + 18H_2O(g)} \quad \Delta H^\circ = -10940\text{ kJ mol}^{-1}$$
+
+                <h3>Thermodynamic & Molecular Breakdown</h3>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>1. Enthalpy Change ($\Delta H^\circ \ll 0$)</h3>
+                        <p>
+                            Combustion is intensely exothermic. The bond enthalpy absorbed to cleave relatively weak reactant bonds ($\text{C-H}$ single bonds at $\sim 414\text{ kJ/mol}$; $\text{O=O}$ double bonds at $\sim 498\text{ kJ/mol}$) is vastly smaller than the immense energy released upon synthesising double covalent $\text{C=O}$ bonds in $\mathrm{CO_2}$ ($\sim 804\text{ kJ/mol}$) and polar covalent $\text{O-H}$ bonds in $\mathrm{H_2O}$ ($\sim 464\text{ kJ/mol}$). This massive net surplus of energy is released as heat.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>2. Entropy Change ($\Delta S^\circ > 0$)</h3>
+                        <p>
+                            Entropy increases during combustion due to two primary mechanisms:
+                            <br>• <strong>Molar Expansion ($\Delta n_{\text{gas}} > 0$):</strong> In liquid octane combustion, $27\text{ moles}$ of liquid/gas reactants yield $34\text{ moles}$ of high-temperature gaseous products ($\Delta n_{\text{gas}} = +9$), vastly expanding spatial microstates.
+                            <br>• <strong>Thermal Energy Dissipation:</strong> Enormous heat emission ($\Delta H^\circ \ll 0$) floods the surrounding air with thermal kinetic energy, increasing entropy of the surroundings ($\Delta S_{\text{surroundings}} = -\frac{\Delta H^\circ}{T} \gg 0$).
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Energy Profile Diagram: Combustion -->
+                <div class="graph-wrapper">
+                    <div class="graph-title">Stage 6 Energy Profile Diagram: Complete Combustion Reaction</div>
+                    <div class="svg-graph-container">
+                        <svg viewBox="0 0 650 380" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background & Grid -->
+                            <rect width="650" height="380" fill="#0b1329" rx="10"/>
+                            <line x1="70" y1="330" x2="600" y2="330" stroke="#64748b" stroke-width="2"/>
+                            <line x1="70" y1="40" x2="70" y2="330" stroke="#64748b" stroke-width="2"/>
+                            
+                            <!-- Axis Labels -->
+                            <text x="335" y="365" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle">Progress of Reaction</text>
+                            <text x="25" y="185" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle" transform="rotate(-90 25 185)">Enthalpy, $H$ ($\text{kJ mol}^{-1}$)</text>
+
+                            <!-- Reactant Level (y=150), Transition Peak (y=60), Product Level (y=280) -->
+                            <line x1="90" y1="150" x2="200" y2="150" stroke="#38bdf8" stroke-width="3"/>
+                            <path d="M 200 150 C 260 150, 280 60, 330 60 C 380 60, 400 280, 460 280" fill="none" stroke="#f43f5e" stroke-width="3.5"/>
+                            <line x1="460" y1="280" x2="570" y2="280" stroke="#34d399" stroke-width="3"/>
+
+                            <!-- Reference Dashed Lines -->
+                            <line x1="90" y1="150" x2="480" y2="150" stroke="rgba(255,255,255,0.15)" stroke-dasharray="4,4"/>
+                            <line x1="330" y1="60" x2="330" y2="150" stroke="rgba(255,255,255,0.15)" stroke-dasharray="4,4"/>
+
+                            <!-- Activation Energy Vector (Ea) -->
+                            <line x1="250" y1="150" x2="250" y2="60" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrow-yellow)"/>
+                            <text x="240" y="110" fill="#fbbf24" font-size="13" font-weight="700" text-anchor="end">$E_a$ (Forward)</text>
+
+                            <!-- Enthalpy Change Vector (Delta H) -->
+                            <line x1="510" y1="150" x2="510" y2="280" stroke="#f43f5e" stroke-width="2" marker-end="url(#arrow-red)"/>
+                            <text x="520" y="220" fill="#f43f5e" font-size="13" font-weight="700" text-anchor="start">$\Delta H^\circ < 0$ (Exothermic)</text>
+
+                            <!-- Species Labels -->
+                            <text x="145" y="135" fill="#38bdf8" font-size="13" font-weight="700" text-anchor="middle">$\mathrm{CH_4(g) + 2O_2(g)}$</text>
+                            <text x="515" y="300" fill="#34d399" font-size="13" font-weight="700" text-anchor="middle">$\mathrm{CO_2(g) + 2H_2O(g)}$</text>
+                            <text x="330" y="45" fill="#a78bfa" font-size="12" font-weight="700" text-anchor="middle">Activated Complex ($\ddagger$)</text>
+
+                            <!-- Arrowhead Markers -->
+                            <defs>
+                                <marker id="arrow-yellow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#fbbf24"/>
+                                </marker>
+                                <marker id="arrow-red" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#f43f5e"/>
+                                </marker>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+
+                <h3>Why Combustion Reactions Never Reach Dynamic Equilibrium</h3>
+                <p>NESA examinations frequently test why combustion reactions proceed strictly to completion. Three definitive reasons account for this behaviour:</p>
+                <ol>
+                    <li><strong>Open System Mass Escape:</strong> Combustion typically occurs in open air (e.g., engines, bushfires, Bunsen burners). Gaseous products ($\mathrm{CO_2}$ and water vapour) escape into the room atmosphere, preventing product accumulation and reducing reverse collision rates to zero ($r_{\mathrm{reverse}} = 0$).</li>
+                    <li><strong>Extreme Gibbs Free Energy Driving Force ($\Delta G^\circ \ll 0$):</strong> Because $\Delta H^\circ$ is heavily negative and $\Delta S^\circ$ is positive, $\Delta G^\circ = \Delta H^\circ - T\Delta S^\circ$ is immensely negative under all physical conditions, making the process highly exergonic and spontaneous.</li>
+                    <li><strong>Insurmountable Reverse Activation Energy ($E_{a,\text{reverse}}$):</strong> The reverse reaction requires recombining $\mathrm{CO_2(g)}$ and $\mathrm{H_2O(g)}$ to reform methane and oxygen. The reverse activation energy barrier ($E_{a,\text{reverse}} = E_{a,\text{forward}} + \vert{}\Delta H^\circ\vert{}$) is extremely high. At room temperature, no gaseous collisions possess sufficient kinetic energy to overcome $E_{a,\text{reverse}}$.</li>
+                </ol>
+            </section>
+
+            <!-- SECTION 4: DEEP DIVE: PHOTOSYNTHESIS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>4. Deep Dive 2: Photosynthesis in Autotrophs</h2>
+                    <span class="pill-badge emerald">Endothermic & Non-Spontaneous</span>
+                </div>
+
+                <p>
+                    Photosynthesis is the fundamental bio-energetic biochemical pathway whereby photoautotrophic organisms (such as plants and algae) convert light energy from solar photons into chemical energy stored within glucose molecules.
+                </p>
+
+                <h3>Chemical Model Equation</h3>
+                $$\mathrm{6CO_2(g) + 6H_2O(l) \xrightarrow{\text{light, chlorophyll}} C_6H_{12}O_6(aq) + 6O_2(g)} \quad \Delta H^\circ = +2803\text{ kJ mol}^{-1}$$
+
+                <h3>Thermodynamic & Molecular Breakdown</h3>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>1. Enthalpy Change ($\Delta H^\circ \gg 0$)</h3>
+                        <p>
+                            Photosynthesis is strongly endothermic ($\Delta H^\circ = +2803\text{ kJ mol}^{-1}$). Cleaving highly stable $\mathrm{C=O}$ double bonds in $\mathrm{CO_2}$ and $\text{O-H}$ bonds in water requires absorbing $2803\text{ kJ}$ of energy per mole of glucose synthesised. This energy is supplied by absorbing solar photons ($h\nu$) via chlorophyll pigments.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>2. Entropy Change ($\Delta S^\circ < 0$)</h3>
+                        <p>
+                            Photosynthesis results in a significant <em>decrease</em> in system entropy ($\Delta S^\circ = -212\text{ J K}^{-1}\text{ mol}^{-1}$):
+                            <br>• <strong>Structural Ordering:</strong> 12 small fluid reactant molecules (6 gaseous $\mathrm{CO_2}$ + 6 liquid $\mathrm{H_2O}$) are organised into 1 large, highly structured aqueous glucose molecule ($\mathrm{C_6H_{12}O_6}$) and 6 gas molecules.
+                            <br>• <strong>Restriction of Degrees of Freedom:</strong> Locking unbound carbon atoms into ring-structured hexose sugar chains severely reduces spatial and vibrational microstates ($\Delta S_{\text{system}}^\circ < 0$).
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Energy Profile Diagram: Photosynthesis -->
+                <div class="graph-wrapper">
+                    <div class="graph-title">Stage 6 Energy Profile Diagram: Endothermic Photosynthesis Pathway</div>
+                    <div class="svg-graph-container">
+                        <svg viewBox="0 0 650 380" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background & Grid -->
+                            <rect width="650" height="380" fill="#0b1329" rx="10"/>
+                            <line x1="70" y1="330" x2="600" y2="330" stroke="#64748b" stroke-width="2"/>
+                            <line x1="70" y1="40" x2="70" y2="330" stroke="#64748b" stroke-width="2"/>
+                            
+                            <!-- Axis Labels -->
+                            <text x="335" y="365" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle">Progress of Reaction</text>
+                            <text x="25" y="185" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle" transform="rotate(-90 25 185)">Enthalpy, $H$ ($\text{kJ mol}^{-1}$)</text>
+
+                            <!-- Reactant Level (y=280), Transition Peak (y=60), Product Level (y=150) -->
+                            <line x1="90" y1="280" x2="200" y2="280" stroke="#38bdf8" stroke-width="3"/>
+                            <path d="M 200 280 C 260 280, 270 60, 330 60 C 390 60, 400 150, 460 150" fill="none" stroke="#34d399" stroke-width="3.5"/>
+                            <line x1="460" y1="150" x2="570" y2="150" stroke="#a78bfa" stroke-width="3"/>
+
+                            <!-- Reference Dashed Lines -->
+                            <line x1="90" y1="280" x2="520" y2="280" stroke="rgba(255,255,255,0.15)" stroke-dasharray="4,4"/>
+                            <line x1="330" y1="60" x2="330" y2="280" stroke="rgba(255,255,255,0.15)" stroke-dasharray="4,4"/>
+
+                            <!-- Activation Energy Vector (Ea) -->
+                            <line x1="250" y1="280" x2="250" y2="60" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrow-yellow)"/>
+                            <text x="240" y="170" fill="#fbbf24" font-size="13" font-weight="700" text-anchor="end">$E_a$ (Overall)</text>
+
+                            <!-- Enthalpy Change Vector (Delta H) -->
+                            <line x1="490" y1="280" x2="490" y2="150" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow-blue)"/>
+                            <text x="500" y="220" fill="#38bdf8" font-size="13" font-weight="700" text-anchor="start">$\Delta H^\circ > 0$ (Endothermic)</text>
+
+                            <!-- Species Labels -->
+                            <text x="145" y="265" fill="#38bdf8" font-size="13" font-weight="700" text-anchor="middle">$\mathrm{6CO_2(g) + 6H_2O(l)}$</text>
+                            <text x="515" y="135" fill="#a78bfa" font-size="13" font-weight="700" text-anchor="middle">$\mathrm{C_6H_{12}O_6(aq) + 6O_2(g)}$</text>
+                            <text x="330" y="45" fill="#34d399" font-size="12" font-weight="700" text-anchor="middle">Photon-Excited Complex ($\ddagger$)</text>
+
+                            <!-- Arrowhead Marker -->
+                            <defs>
+                                <marker id="arrow-blue" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/>
+                                </marker>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+
+                <h3>Why Photosynthesis is a Non-Equilibrium Steady-State System</h3>
+                <p>
+                    With $\Delta H^\circ > 0$ and $\Delta S^\circ < 0$, standard Gibbs free energy change is positive ($\Delta G^\circ = +2866\text{ kJ/mol} > 0$), rendering photosynthesis thermodynamically non-spontaneous under isolated conditions. How does it occur continuously in plants without establishing equilibrium?
+                </p>
+                <ol>
+                    <li><strong>Continuous Radiant Solar Coupling:</strong> Photosynthesis is driven by an external energy flux. Chlorophyll absorbs solar photons ($h\nu$), generating high-energy electrons that power ATP and NADPH synthesis, driving endergonic carbon fixation in the Calvin cycle.</li>
+                    <li><strong>Biochemical Product Sinks:</strong> Synthesised glucose is immediately consumed or transformed. Plants rapidly polymerise glucose into insoluble starch (for storage) or cellulose (for cell walls), or consume it in cellular respiration ($\mathrm{C_6H_{12}O_6 + 6O_2 \rightarrow 6CO_2 + 6H_2O}$). By continuously removing free aqueous glucose ($[\mathrm{C_6H_{12}O_6}] \to 0$), the reaction is continually pulled forward, preventing reverse equilibrium.</li>
+                    <li><strong>Multi-Step Enzymatic Control:</strong> Photosynthesis is mediated by biological catalysts (such as RuBisCO). These enzymes enforce unidirectional metabolic flux through regulated irreversible biochemical control steps.</li>
+                </ol>
+            </section>
+
+            <!-- SECTION 5: GIBBS FREE ENERGY & SPONTANEITY MECHANICS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>5. Gibbs Free Energy ($\Delta G^\circ$) & Spontaneity Analysis</h2>
+                    <span class="pill-badge">Mathematical Thermodynamics</span>
+                </div>
+
+                <p>
+                    The overall spontaneity of any chemical system at constant temperature ($T$, in Kelvin) and pressure is defined by the <strong>Gibbs Free Energy Equation</strong>:
+                </p>
+                $$\Delta G^\circ = \Delta H^\circ - T\Delta S^\circ$$
+
+                <div class="info-box rose">
+                    <h3>Essential Unit Conversion Warning!</h3>
+                    <p>
+                        In NESA examinations, $\Delta H^\circ$ is typically given in kilojoules per mole ($\text{kJ mol}^{-1}$), whereas $\Delta S^\circ$ is provided in joules per kelvin per mole ($\text{J K}^{-1}\text{ mol}^{-1}$).
+                        <br>
+                        <strong>You MUST convert $\Delta S^\circ$ to $\text{kJ K}^{-1}\text{ mol}^{-1}$ by dividing by 1000 before substituting into $\Delta G^\circ = \Delta H^\circ - T\Delta S^\circ$!</strong>
+                        <br>
+                        Additionally, temperature $T$ MUST be expressed in Kelvin: $T(\text{K}) = T(^\circ\text{C}) + 273.15$.
+                    </p>
+                </div>
+
+                <h3>Criteria for Reaction Spontaneity</h3>
+                <ul>
+                    <li><strong>$\Delta G^\circ < 0$ (Exergonic):</strong> The reaction is <strong>thermodynamically spontaneous</strong> in the forward direction under standard conditions.</li>
+                    <li><strong>$\Delta G^\circ > 0$ (Endergonic):</strong> The reaction is <strong>non-spontaneous</strong> in the forward direction. External energy input is required.</li>
+                    <li><strong>$\Delta G^\circ = 0$:</strong> The system is at <strong>dynamic equilibrium</strong> under standard state conditions.</li>
+                </ul>
+
+                <h3>The Four Thermodynamic Combinations Matrix</h3>
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Case</th>
+                                <th>Enthalpy ($\Delta H^\circ$)</th>
+                                <th>Entropy ($\Delta S^\circ$)</th>
+                                <th>Gibbs Free Energy ($\Delta G^\circ = \Delta H^\circ - T\Delta S^\circ$)</th>
+                                <th>Spontaneity Condition</th>
+                                <th>Representative Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1</strong></td>
+                                <td>$\Delta H^\circ < 0$ (Exothermic)</td>
+                                <td>$\Delta S^\circ > 0$ (Disorder increases)</td>
+                                <td>Always $\Delta G^\circ < 0$ (Negative)</td>
+                                <td><strong>Spontaneous at all temperatures</strong></td>
+                                <td>Combustion of fuels ($\mathrm{CH_4}, \mathrm{C_8H_{18}}$)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2</strong></td>
+                                <td>$\Delta H^\circ > 0$ (Endothermic)</td>
+                                <td>$\Delta S^\circ < 0$ (Disorder decreases)</td>
+                                <td>Always $\Delta G^\circ > 0$ (Positive)</td>
+                                <td><strong>Non-spontaneous at all temperatures</strong></td>
+                                <td>Photosynthesis (requires solar photon coupling)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3</strong></td>
+                                <td>$\Delta H^\circ < 0$ (Exothermic)</td>
+                                <td>$\Delta S^\circ < 0$ (Disorder decreases)</td>
+                                <td>$\Delta G^\circ < 0$ at low $T$; $\Delta G^\circ > 0$ at high $T$</td>
+                                <td><strong>Spontaneous at low temperatures</strong></td>
+                                <td>Haber process forward step ($\mathrm{N_2 + 3H_2 \rightleftharpoons 2NH_3}$)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>4</strong></td>
+                                <td>$\Delta H^\circ > 0$ (Endothermic)</td>
+                                <td>$\Delta S^\circ > 0$ (Disorder increases)</td>
+                                <td>$\Delta G^\circ > 0$ at low $T$; $\Delta G^\circ < 0$ at high $T$</td>
+                                <td><strong>Spontaneous at high temperatures</strong></td>
+                                <td>Thermal decomposition of $\mathrm{CaCO_3(s) \rightarrow CaO(s) + CO_2(g)}$</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box emerald">
+                    <h3>Temperature Threshold for Spontaneity Switch ($\Delta G^\circ = 0$)</h3>
+                    <p>
+                        For systems where $\Delta H^\circ$ and $\Delta S^\circ$ share the same algebraic sign (Cases 3 and 4), setting $\Delta G^\circ = 0$ allows us to calculate the exact threshold temperature ($T_{\text{threshold}}$) above or below which spontaneity changes:
+                    </p>
+                    $$0 = \Delta H^\circ - T_{\text{threshold}}\Delta S^\circ \implies T_{\text{threshold}} = \frac{\Delta H^\circ}{\Delta S^\circ}$$
+                </div>
+            </section>
+
+            <!-- SECTION 6: INTERACTIVE THERMODYNAMIC MODELLER -->
+            <section class="card glass-card demo-card">
+                <div class="card-header">
+                    <h2>6. Interactive Thermodynamic Modeller & Visualiser</h2>
+                    <span class="pill-badge demo-pill">Virtual Thermodynamics Lab</span>
+                </div>
+                <p>Adjust enthalpy ($\Delta H^\circ$), entropy ($\Delta S^\circ$), and temperature ($T$) sliders below to model reaction spontaneity ($\Delta G^\circ$) and observe live energy profiles.</p>
+
+                <div class="sim-container">
+                    <div class="preset-btn-row">
+                        <button class="btn btn-ethereal" onclick="loadPreset('methane')">Methane Combustion</button>
+                        <button class="btn btn-ethereal" onclick="loadPreset('octane')">Octane Combustion</button>
+                        <button class="btn btn-ethereal" onclick="loadPreset('photosynthesis')">Photosynthesis</button>
+                        <button class="btn btn-ethereal" onclick="loadPreset('limestone')">Limestone Decomposition</button>
+                    </div>
+
+                    <div class="sim-controls">
+                        <div class="control-group">
+                            <label>Enthalpy ($\Delta H^\circ$): <span id="lbl-h" style="color: var(--accent-purple);">-802.3 kJ/mol</span></label>
+                            <input type="range" id="slider-h" min="-1200" max="1200" step="10" value="-802" oninput="updateSim()">
+                        </div>
+
+                        <div class="control-group">
+                            <label>Entropy ($\Delta S^\circ$): <span id="lbl-s" style="color: var(--accent-cyan);">-5.2 J/K/mol</span></label>
+                            <input type="range" id="slider-s" min="-300" max="300" step="1" value="-5" oninput="updateSim()">
+                        </div>
+
+                        <div class="control-group">
+                            <label>Temperature ($T$): <span id="lbl-t" style="color: var(--accent-amber);">298 K (25°C)</span></label>
+                            <input type="range" id="slider-t" min="100" max="1500" step="10" value="298" oninput="updateSim()">
+                        </div>
+                    </div>
+
+                    <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid var(--border-light); border-radius: var(--radius-sm); padding: 1rem; display: flex; justify-content: center;">
+                        <canvas id="sim-canvas" width="600" height="240" style="max-width: 100%; height: auto; background: #050811; border-radius: 6px;"></canvas>
+                    </div>
+
+                    <div class="telemetry-panel">
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Gibbs Free Energy ($\Delta G^\circ$)</span>
+                            <span class="telemetry-value" id="telemetry-g" style="color: var(--accent-emerald);">-800.7 kJ/mol</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Spontaneity Verdict</span>
+                            <span class="telemetry-value" id="telemetry-verdict" style="color: var(--accent-emerald);">SPONTANEOUS</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Dominant Driving Force</span>
+                            <span class="telemetry-value" id="telemetry-driver" style="color: var(--accent-cyan);">Enthalpy-Driven ($\Delta H^\circ \ll 0$)</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 7: WORKED EXAMPLES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>7. Worked Examples (SCAFFOLDED NESA EXAM SOLUTIONS)</h2>
+                    <span class="pill-badge">HSC Step-by-Step Solutions</span>
+                </div>
+
+                <!-- Example 1: Easy -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 1 (Easy): Classifying Thermodynamic Driving Forces</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Classify the signs of enthalpy change ($\Delta H^\circ$) and entropy change ($\Delta S^\circ$) for the complete combustion of liquid ethanol:
+                        $$\mathrm{C_2H_5OH(l) + 3O_2(g) \rightarrow 2CO_2(g) + 3H_2O(g)}$$
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Enthalpy Change ($\Delta H^\circ < 0$):</strong> The reaction is highly exothermic because ethanol combustion releases significant thermal energy as strong product covalent bonds ($\text{C=O}$ and $\text{O-H}$) are formed.</p>
+                        <p><strong>2. Entropy Change ($\Delta S^\circ > 0$):</strong> The reaction experiences a net increase in entropy. The reactants contain $3\text{ moles}$ of gas and $1\text{ mole}$ of liquid ($3\text{ moles of gas total}$), while the products consist of $5\text{ moles}$ of high-temperature gas ($2\text{CO}_2 + 3\text{H}_2\text{O}$). Because $\Delta n_{\text{gas}} = +2$, spatial microstates increase ($\Delta S^\circ > 0$).</p>
+                    </div>
+                </div>
+
+                <!-- Example 2: Medium -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 2 (Medium): Quantitative $\Delta G^\circ$ & Temperature Calculations</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Propane gas undergoes complete combustion according to:
+                        $$\mathrm{C_3H_8(g) + 5O_2(g) \rightarrow 3CO_2(g) + 4H_2O(g)} \quad \Delta H^\circ = -2043\text{ kJ mol}^{-1}$$
+                        Given that $\Delta S^\circ = +100.5\text{ J K}^{-1}\text{ mol}^{-1}$ at $25^\circ\text{C}$:
+                        <br>a) Calculate the standard Gibbs free energy change ($\Delta G^\circ$) at $298.15\text{ K}$.
+                        <br>b) State with justification whether this reaction is spontaneous at room temperature.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>a) Calculation:</strong></p>
+                        <p>Step 1: Convert entropy change from $\text{J K}^{-1}\text{ mol}^{-1}$ to $\text{kJ K}^{-1}\text{ mol}^{-1}$:</p>
+                        $$\Delta S^\circ = \frac{+100.5\text{ J K}^{-1}\text{ mol}^{-1}}{1000} = +0.1005\text{ kJ K}^{-1}\text{ mol}^{-1}$$
+                        <p>Step 2: Substitute into Gibbs Free Energy equation:</p>
+                        $$\Delta G^\circ = \Delta H^\circ - T\Delta S^\circ$$
+                        $$\Delta G^\circ = -2043\text{ kJ mol}^{-1} - (298.15\text{ K} \times +0.1005\text{ kJ K}^{-1}\text{ mol}^{-1})$$
+                        $$\Delta G^\circ = -2043 - 29.96 = -2072.96\text{ kJ mol}^{-1}$$
+
+                        <p><strong>b) Spontaneity Verdict:</strong></p>
+                        <p>Because $\Delta G^\circ = -2073\text{ kJ mol}^{-1} < 0$, the reaction is highly exergonic and <strong>thermodynamically spontaneous</strong> in the forward direction at $25^\circ\text{C}$.</p>
+                    </div>
+                </div>
+
+                <!-- Example 3: Hard -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 3 (Hard): Photosynthesis Thermodynamic & Biochemical Non-Equilibrium Analysis</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        The overall equation for photosynthesis is:
+                        $$\mathrm{6CO_2(g) + 6H_2O(l) \rightarrow C_6H_{12}O_6(aq) + 6O_2(g)} \quad \Delta H^\circ = +2803\text{ kJ mol}^{-1}, \ \Delta S^\circ = -212\text{ J K}^{-1}\text{ mol}^{-1}$$
+                        a) Calculate $\Delta G^\circ$ at $298\text{ K}$.
+                        <br>b) Explain why photosynthesis occurs continuously in living plants despite the sign of $\Delta G^\circ$, and state why it never reaches dynamic chemical equilibrium.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>a) Calculation:</strong></p>
+                        $$\Delta S^\circ = \frac{-212}{1000} = -0.212\text{ kJ K}^{-1}\text{ mol}^{-1}$$
+                        $$\Delta G^\circ = +2803\text{ kJ mol}^{-1} - [298\text{ K} \times (-0.212\text{ kJ K}^{-1}\text{ mol}^{-1})]$$
+                        $$\Delta G^\circ = +2803 - (-63.176) = +2866.18\text{ kJ mol}^{-1}$$
+
+                        <p><strong>b) Biological Non-Equilibrium Explanation:</strong></p>
+                        <p>Because $\Delta G^\circ = +2866\text{ kJ mol}^{-1} \gg 0$, photosynthesis is non-spontaneous in isolated systems. However, plants continuously couple the reaction to an external energy source by absorbing solar photons ($h\nu$) via chlorophyll pigments. Furthermore, photosynthesis fails to reach dynamic equilibrium because glucose product is rapidly polymerised into insoluble starch/cellulose or consumed in respiration ($[\mathrm{C_6H_{12}O_6}] \to 0$), continually driving the reaction forward as a non-equilibrium steady state.</p>
+                    </div>
+                </div>
+
+                <!-- Example 4: HSC Extension Challenge -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 4 (HSC Extension Challenge): Calorimetry, Stoichiometry, and Thermodynamic Irreversibility</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A student burnt $0.922\text{ g}$ of liquid ethanol ($\mathrm{C_2H_5OH(l)}$, $M = 46.07\text{ g mol}^{-1}$) in a spirit burner to heat $200.0\text{ g}$ of water in a copper calorimeter from $21.5^\circ\text{C}$ to $48.0^\circ\text{C}$.
+                        $$\mathrm{C_2H_5OH(l) + 3O_2(g) \rightarrow 2CO_2(g) + 3H_2O(g)}$$
+                        <br>a) Calculate the experimental enthalpy of combustion ($\Delta H^\circ$) in $\text{kJ mol}^{-1}$ (assuming no heat loss, $c_{\text{water}} = 4.18\text{ J g}^{-1}\text{ K}^{-1}$).
+                        <br>b) Using the theoretical literature enthalpy of combustion ($\Delta H^\circ = -1367\text{ kJ mol}^{-1}$) and theoretical entropy change ($\Delta S^\circ = +217.6\text{ J K}^{-1}\text{ mol}^{-1}$), calculate the standard Gibbs free energy change ($\Delta G^\circ$) at $298.15\text{ K}$.
+                        <br>c) Using collision theory, system boundaries, and activation energy concepts, explain why ethanol combustion in an open spirit burner is an irreversible non-equilibrium process.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>a) Experimental Calorimetry Calculation:</strong></p>
+                        $$q = m c \Delta T = 200.0\text{ g} \times 4.18\text{ J g}^{-1}\text{ K}^{-1} \times (48.0 - 21.5)^\circ\text{C} = 22154\text{ J} = 22.154\text{ kJ}$$
+                        $$n(\mathrm{C_2H_5OH}) = \frac{m}{M} = \frac{0.922\text{ g}}{46.07\text{ g mol}^{-1}} = 0.02001\text{ mol}$$
+                        $$\Delta H^\circ = -\frac{q}{n} = -\frac{22.154\text{ kJ}}{0.02001\text{ mol}} = -1107\text{ kJ mol}^{-1}$$
+
+                        <p><strong>b) Theoretical Gibbs Free Energy Calculation:</strong></p>
+                        $$\Delta S^\circ = \frac{+217.6\text{ J K}^{-1}\text{ mol}^{-1}}{1000} = +0.2176\text{ kJ K}^{-1}\text{ mol}^{-1}$$
+                        $$\Delta G^\circ = \Delta H^\circ - T\Delta S^\circ = -1367\text{ kJ mol}^{-1} - (298.15\text{ K} \times +0.2176\text{ kJ K}^{-1}\text{ mol}^{-1})$$
+                        $$\Delta G^\circ = -1367 - 64.88 = -1431.88\text{ kJ mol}^{-1} \quad (\text{or } -1432\text{ kJ mol}^{-1})$$
+
+                        <p><strong>c) Non-Equilibrium Explanation:</strong></p>
+                        <p>1. <em>System Boundary:</em> In an open spirit burner, gaseous products ($\mathrm{CO_2}$ and $\mathrm{H_2O}$ vapour) escape freely into the atmosphere ($\Delta m < 0$). Without product gases in the reaction zone, reverse collision frequency drops to zero ($r_{\text{reverse}} = 0$).
+                        <br>2. <em>Activation Energy:</em> Because combustion is intensely exothermic ($\Delta H^\circ = -1367\text{ kJ mol}^{-1}$), the reverse activation energy barrier ($E_{a,\text{reverse}} = E_{a,\text{forward}} + \vert{}\Delta H^\circ\vert{}$) is insurmountable at ambient temperatures. No product molecules possess sufficient kinetic energy to overcome $E_{a,\text{reverse}}$, ensuring complete irreversibility.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 8: PRACTICE QUESTIONS WITH RUBRICS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>8. NESA Examination Practice Questions</h2>
+                    <span class="pill-badge demo-pill">Self-Marking Engine</span>
+                </div>
+                <p>Solve the examination questions below, then toggle hints and model solutions to check your answers against NESA marking rubrics.</p>
+
+                <!-- Practice Q1 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 1 (Easy): Open Boundary & Combustion Irreversibility</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Explain why burning a piece of wood in an open fireplace does not establish chemical equilibrium.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq1-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq1-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq1-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Focus on system boundaries and what happens to gaseous $\mathrm{CO_2}$ and water vapour products.</p>
+                    </div>
+
+                    <div id="pq1-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong> An open fireplace represents an open system. Gaseous combustion products ($\mathrm{CO_2}$ and $\mathrm{H_2O}$ vapour) escape freely into the external atmosphere, preventing product accumulation. Without product molecules present in the reaction zone, the reverse collision rate drops to zero ($r_{\mathrm{reverse}} = 0$), preventing equal forward and reverse rates ($r_f = r_r$) required for dynamic equilibrium.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Identifies the fireplace as an open system where gaseous products escape.</li>
+                                <li><strong>1 Mark:</strong> Connects gas escape to zero reverse collision frequency ($r_{\mathrm{reverse}} = 0$), preventing equilibrium.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q2 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 2 (Medium): Thermodynamic Comparison of Combustion and Photosynthesis</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Compare combustion and photosynthesis in terms of their enthalpy change ($\Delta H^\circ$) and entropy change ($\Delta S^\circ$).
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq2-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq2-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq2-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Address both reactions systematically, stating the sign ($>0$ or $<0$) and brief molecular reason for both $\Delta H^\circ$ and $\Delta S^\circ$.</p>
+                    </div>
+
+                    <div id="pq2-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong></p>
+                            <p>• <strong>Combustion:</strong> Exothermic ($\Delta H^\circ < 0$) because energy released forming product bonds exceeds energy absorbed breaking fuel bonds. Entropy increases ($\Delta S^\circ > 0$) due to gaseous expansion ($\Delta n_{\text{gas}} > 0$) and thermal heat release to surroundings.</p>
+                            <p>• <strong>Photosynthesis:</strong> Endothermic ($\Delta H^\circ > 0$) as it absorbs solar radiant energy to break stable $\mathrm{CO_2}$ and $\mathrm{H_2O}$ bonds. Entropy decreases ($\Delta S^\circ < 0$) as small fluid molecules are ordered into complex hexose sugar crystals ($\mathrm{C_6H_{12}O_6}$).</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>3 Marks:</strong> Correctly contrasts signs of $\Delta H^\circ$ AND $\Delta S^\circ$ for both processes with clear molecular/energetic justifications.</li>
+                                <li><strong>2 Marks:</strong> States correct signs for $\Delta H^\circ$ and $\Delta S^\circ$ but lacks justification.</li>
+                                <li><strong>1 Mark:</strong> Identifies enthalpy signs only (exothermic vs endothermic).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q3 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 3 (Hard): Quantitative $\Delta G^\circ$ and Threshold Temperature Calculation</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        The decomposition of calcium carbonate occurs according to:
+                        $$\mathrm{CaCO_3(s) \rightleftharpoons CaO(s) + CO_2(g)}$$
+                        Given $\Delta H^\circ = +178.3\text{ kJ mol}^{-1}$ and $\Delta S^\circ = +160.5\text{ J K}^{-1}\text{ mol}^{-1}$:
+                        <br>a) Calculate $\Delta G^\circ$ at $298.15\text{ K}$ and explain why calcium carbonate is stable at room temperature.
+                        <br>b) Calculate the minimum temperature (in $^\circ\text{C}$) required for the decomposition to become spontaneous ($\Delta G^\circ \le 0$).
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq3-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq3-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq3-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Convert $\Delta S^\circ$ to $\text{kJ K}^{-1}\text{ mol}^{-1}$. Set $\Delta G^\circ = 0$ to find $T_{\text{threshold}} = \frac{\Delta H^\circ}{\Delta S^\circ}$, then subtract $273.15$ to get $^\circ\text{C}$.</p>
+                    </div>
+
+                    <div id="pq3-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>a) Calculation at 298.15 K:</strong></p>
+                            $$\Delta S^\circ = \frac{+160.5\text{ J K}^{-1}\text{ mol}^{-1}}{1000} = +0.1605\text{ kJ K}^{-1}\text{ mol}^{-1}$$
+                            $$\Delta G^\circ = +178.3\text{ kJ mol}^{-1} - (298.15\text{ K} \times +0.1605\text{ kJ K}^{-1}\text{ mol}^{-1})$$
+                            $$\Delta G^\circ = +178.3 - 47.85 = +130.45\text{ kJ mol}^{-1}$$
+                            <p>Because $\Delta G^\circ = +130.5\text{ kJ mol}^{-1} > 0$, the reaction is endergonic and non-spontaneous at room temperature, making limestone stable.</p>
+
+                            <p><strong>b) Minimum Spontaneity Temperature:</strong></p>
+                            $$\text{Set } \Delta G^\circ = 0 \implies \Delta H^\circ - T_{\text{threshold}}\Delta S^\circ = 0$$
+                            $$T_{\text{threshold}} = \frac{\Delta H^\circ}{\Delta S^\circ} = \frac{178.3\text{ kJ mol}^{-1}}{0.1605\text{ kJ K}^{-1}\text{ mol}^{-1}} = 1110.9\text{ K}$$
+                            $$T(^\circ\text{C}) = 1110.9\text{ K} - 273.15 = 837.75^\circ\text{C} \quad (\text{or } 838^\circ\text{C})$$
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Converts $\Delta S^\circ$ to $\text{kJ K}^{-1}\text{ mol}^{-1}$ ($0.1605$).</li>
+                                <li><strong>1 Mark:</strong> Calculates $\Delta G^\circ = +130.5\text{ kJ mol}^{-1}$ and concludes non-spontaneous at $298\text{ K}$.</li>
+                                <li><strong>1 Mark:</strong> Correctly sets $\Delta G^\circ = 0$ and calculates threshold temperature in Kelvin ($1110.9\text{ K}$).</li>
+                                <li><strong>1 Mark:</strong> Converts threshold temperature to $838^\circ\text{C}$.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q4 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 4 (Advanced Extended Synthesis): Non-Equilibrium Analysis</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Analyse why neither combustion nor photosynthesis reaches dynamic chemical equilibrium in natural environments. Support your answer using enthalpy ($\Delta H^\circ$), entropy ($\Delta S^\circ$), standard Gibbs free energy ($\Delta G^\circ = \Delta H^\circ - T\Delta S^\circ$), and system boundary conditions.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq4-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq4-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq4-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Structure your response into two distinct sections: (1) Combustion thermodynamics & open boundaries, and (2) Photosynthesis endergonic nature, photon coupling, and metabolic sinks.</p>
+                    </div>
+
+                    <div id="pq4-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong></p>
+                            <p>Combustion and photosynthesis represent thermodynamic extremes of non-equilibrium systems:</p>
+                            <p><strong>1. Combustion Systems:</strong> Combustion is strongly exothermic ($\Delta H^\circ < 0$) and exhibits positive entropy ($\Delta S^\circ > 0$) due to gas production ($\Delta n_{\text{gas}} > 0$). Substituting into $\Delta G^\circ = \Delta H^\circ - T\Delta S^\circ$ yields an immensely negative $\Delta G^\circ \ll 0$ at all temperatures, making the reaction heavily exergonic and spontaneous. In natural open systems, escaping gaseous products drop reverse rates to zero ($r_{\text{reverse}} = 0$). Furthermore, the reverse activation energy barrier ($E_{a,\text{reverse}}$) is insurmountable at room temperature, driving the reaction irreversibly to 100% completion.</p>
+                            <p><strong>2. Photosynthesis Systems:</strong> Photosynthesis is endothermic ($\Delta H^\circ > 0$) and involves an entropy decrease ($\Delta S^\circ < 0$) as small gas/liquid molecules are structured into glucose. This yields $\Delta G^\circ \gg 0$, making it non-spontaneous in isolated systems. Photosynthesis operates as a non-equilibrium steady state because it is continually driven by absorbing solar light energy ($h\nu$). Additionally, plants continuously consume or polymerise glucose into starch and cellulose ($[\mathrm{C_6H_{12}O_6}] \to 0$), removing products and preventing reverse equilibrium.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>5 Marks:</strong> Detailed analysis covering $\Delta H^\circ$, $\Delta S^\circ$, $\Delta G^\circ$ equations, open system mass escape for combustion, and photon energy coupling/metabolic sinks for photosynthesis.</li>
+                                <li><strong>3-4 Marks:</strong> Correctly addresses thermodynamics ($\Delta H^\circ$, $\Delta S^\circ$, $\Delta G^\circ$) for both reactions, but provides incomplete boundary or biochemical sink explanations.</li>
+                                <li><strong>1-2 Marks:</strong> Basic description of combustion being exothermic and photosynthesis needing light without thermodynamic rigor.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation Footer -->
+            <footer class="content-footer">
+                <a href="03-static-dynamic-equilibrium.html" class="btn btn-outline">&larr; Back to Lesson 03</a>
+                <a href="05-collision-theory-equilibrium.html" class="btn btn-ethereal">
+                    Proceed to Lesson 05: Collision Theory in Equilibrium &rarr;
+                </a>
+            </footer>
+        </main>
+    </div>
+
+    <!-- INTERACTIVE SIMULATOR JAVASCRIPT -->
+    <script>
+        // Preset Reactions Data
+        const presets = {
+            methane: { h: -802, s: -5, t: 298, name: "Methane Combustion" },
+            octane: { h: -10940, s: 720, t: 298, name: "Octane Combustion" },
+            photosynthesis: { h: 2803, s: -212, t: 298, name: "Photosynthesis" },
+            limestone: { h: 178, s: 160, t: 1200, name: "Limestone Decomposition" }
+        };
+
+        function loadPreset(key) {
+            const data = presets[key];
+            document.getElementById('slider-h').value = data.h;
+            document.getElementById('slider-s').value = data.s;
+            document.getElementById('slider-t').value = data.t;
+            updateSim();
+        }
+
+        function updateSim() {
+            const h = parseFloat(document.getElementById('slider-h').value);
+            const s = parseFloat(document.getElementById('slider-s').value);
+            const t = parseFloat(document.getElementById('slider-t').value);
+
+            // Update Label Text
+            document.getElementById('lbl-h').innerText = `${h} kJ/mol`;
+            document.getElementById('lbl-s').innerText = `${s} J/K/mol`;
+            document.getElementById('lbl-t').innerText = `${t} K (${(t - 273.15).toFixed(0)}°C)`;
+
+            // Calculate Delta G (convert s from J to kJ)
+            const s_kJ = s / 1000.0;
+            const g = h - (t * s_kJ);
+
+            // Update Telemetry Panel
+            const gElem = document.getElementById('telemetry-g');
+            const verdictElem = document.getElementById('telemetry-verdict');
+            const driverElem = document.getElementById('telemetry-driver');
+
+            gElem.innerText = `${g.toFixed(1)} kJ/mol`;
+
+            if (g < 0) {
+                verdictElem.innerText = "SPONTANEOUS (EXERGONIC)";
+                verdictElem.style.color = "#34d399";
+                gElem.style.color = "#34d399";
+            } else if (g > 0) {
+                verdictElem.innerText = "NON-SPONTANEOUS (ENDERGONIC)";
+                verdictElem.style.color = "#f43f5e";
+                gElem.style.color = "#f43f5e";
+            } else {
+                verdictElem.innerText = "DYNAMIC EQUILIBRIUM";
+                verdictElem.style.color = "#fbbf24";
+                gElem.style.color = "#fbbf24";
+            }
+
+            // Determine dominant factor
+            if (h < 0 && s > 0) {
+                driverElem.innerText = "Enthalpy & Entropy Favourable";
+                driverElem.style.color = "#34d399";
+            } else if (h > 0 && s < 0) {
+                driverElem.innerText = "Unfavourable (Requires Solar Input)";
+                driverElem.style.color = "#f43f5e";
+            } else if (Math.abs(h) > Math.abs(t * s_kJ)) {
+                driverElem.innerText = `Enthalpy Dominant (${h < 0 ? 'Exothermic' : 'Endothermic'})`;
+                driverElem.style.color = "#38bdf8";
+            } else {
+                driverElem.innerText = `Entropy Dominant (T·ΔS = ${(t * s_kJ).toFixed(1)} kJ)`;
+                driverElem.style.color = "#a78bfa";
+            }
+
+            renderCanvasGraph(h, g);
+        }
+
+        function renderCanvasGraph(h, g) {
+            const canvas = document.getElementById('sim-canvas');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Canvas Grid & Axes
+            ctx.strokeStyle = "rgba(255,255,255,0.1)";
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(50, 20); ctx.lineTo(50, 210);
+            ctx.moveTo(50, 210); ctx.lineTo(570, 210);
+            ctx.stroke();
+
+            // Labels
+            ctx.fillStyle = "#cbd5e1";
+            ctx.font = "12px Inter, sans-serif";
+            ctx.fillText("Reactants", 90, 230);
+            ctx.fillText("Products", 490, 230);
+
+            // Reactant Baseline (y=140)
+            const y1 = 140;
+            let y2 = y1 - (h * 0.08);
+
+            // Clamp Y2 inside canvas
+            if (y2 < 40) y2 = 40;
+            if (y2 > 190) y2 = 190;
+
+            let yPeak = Math.min(y1, y2) - 30;
+            if (yPeak < 25) yPeak = 25;
+
+            // Draw Energy Profile Curve
+            ctx.strokeStyle = h < 0 ? "#f43f5e" : "#38bdf8";
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(70, y1);
+            ctx.lineTo(130, y1);
+            ctx.bezierCurveTo(220, y1, 250, yPeak, 310, yPeak);
+            ctx.bezierCurveTo(370, yPeak, 400, y2, 470, y2);
+            ctx.lineTo(550, y2);
+            ctx.stroke();
+
+            // Reference Lines
+            ctx.setLineDash([4, 4]);
+            ctx.strokeStyle = "rgba(255,255,255,0.2)";
+            ctx.beginPath();
+            ctx.moveTo(130, y1); ctx.lineTo(550, y1);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Annotations on Canvas
+            ctx.fillStyle = "#a78bfa";
+            ctx.font = "bold 12px Inter, sans-serif";
+            ctx.fillText(`ΔH° = ${h} kJ/mol`, 310, Math.max(25, (y1 + y2) / 2));
+            
+            ctx.fillStyle = g < 0 ? "#34d399" : "#f43f5e";
+            ctx.fillText(`ΔG° = ${g.toFixed(1)} kJ/mol`, 310, Math.max(42, ((y1 + y2) / 2) + 16));
+        }
+
+        function toggleElement(id) {
+            const el = document.getElementById(id);
+            if (el.style.display === 'none' || el.style.display === '') {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            updateSim();
+        });
+    </script>
+</body>
+</html>

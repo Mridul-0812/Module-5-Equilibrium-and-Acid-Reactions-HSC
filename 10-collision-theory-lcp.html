@@ -1,0 +1,1716 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 Collision Theory & Le Chatelier | Module 5 Chemistry</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- MathJax 3 Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <style>
+        /* Modern Ethereal Glassmorphism Styling */
+        :root {
+            --bg-dark: #080c14;
+            --bg-card: rgba(15, 23, 42, 0.75);
+            --bg-card-hover: rgba(30, 41, 59, 0.85);
+            --border-glow: rgba(124, 58, 237, 0.3);
+            --border-light: rgba(255, 255, 255, 0.08);
+            --border-cyan: rgba(6, 182, 212, 0.35);
+            --border-emerald: rgba(16, 185, 129, 0.35);
+            --accent-purple: #a78bfa;
+            --accent-cyan: #38bdf8;
+            --accent-emerald: #34d399;
+            --accent-amber: #fbbf24;
+            --accent-rose: #f43f5e;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-secondary: #cbd5e1;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'Fira Code', 'Cascadia Code', Consolas, monospace;
+            --shadow-glow: 0 0 30px rgba(124, 58, 237, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(124, 58, 237, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 90% 85%, rgba(6, 182, 212, 0.1) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.95) 0%, var(--bg-dark) 100%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.8;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 320px;
+            background: rgba(11, 15, 25, 0.92);
+            border-right: 1px solid var(--border-light);
+            backdrop-filter: blur(16px);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 2rem 1.5rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .badge-glow {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            color: var(--accent-purple);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.4rem;
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .sidebar-header .subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+
+        .progress-container {
+            margin-top: 1.25rem;
+            background: rgba(255, 255, 255, 0.06);
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            border-radius: 3px;
+        }
+
+        .score-card {
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav-menu {
+            padding: 1.25rem 1rem;
+        }
+
+        .nav-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            padding: 0 0.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 0.65rem 0.75rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            margin-bottom: 0.25rem;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            transform: translateX(3px);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(90deg, rgba(124, 58, 237, 0.25), rgba(6, 182, 212, 0.1));
+            border-left: 3px solid var(--accent-purple);
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+
+        .nav-num {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            margin-right: 0.75rem;
+            opacity: 0.7;
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            margin-left: 320px;
+            flex: 1;
+            padding: 2.5rem 3rem;
+            max-width: 1250px;
+        }
+
+        .hero-banner {
+            position: relative;
+            background: linear-gradient(135deg, rgba(24, 16, 48, 0.85) 0%, rgba(15, 23, 42, 0.95) 100%);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2.5rem;
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .ethereal-tag {
+            font-family: var(--font-mono);
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .ethereal-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin: 0.5rem 0 1rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ethereal-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 880px;
+        }
+
+        /* Content Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 2.25rem;
+            margin-bottom: 2.5rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            transition: border-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(124, 58, 237, 0.35);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.75rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .card-header h2 {
+            font-size: 1.6rem;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .pill-badge {
+            padding: 0.35rem 0.85rem;
+            background: rgba(124, 58, 237, 0.12);
+            border: 1px solid var(--border-glow);
+            color: var(--accent-purple);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pill-badge.emerald {
+            background: rgba(16, 185, 129, 0.12);
+            border-color: var(--border-emerald);
+            color: var(--accent-emerald);
+        }
+
+        .pill-badge.cyan {
+            background: rgba(56, 189, 248, 0.12);
+            border-color: var(--border-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .pill-badge.rose {
+            background: rgba(244, 63, 94, 0.12);
+            border-color: rgba(244, 63, 94, 0.35);
+            color: var(--accent-rose);
+        }
+
+        .pill-badge.amber {
+            background: rgba(251, 191, 36, 0.12);
+            border-color: rgba(251, 191, 36, 0.35);
+            color: var(--accent-amber);
+        }
+
+        /* Typography & Paragraphs */
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        strong {
+            color: #fff;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: var(--accent-purple);
+            margin: 1.85rem 0 0.85rem;
+            font-weight: 700;
+        }
+
+        h4 {
+            font-size: 1.12rem;
+            color: #fff;
+            margin: 1.35rem 0 0.55rem;
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin: 0 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.75rem;
+            padding-left: 0.25rem;
+        }
+
+        /* Grids & Feature Layouts */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-glow);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card h3 {
+            margin: 0 0 0.5rem 0;
+            color: #fff;
+        }
+
+        /* Callout Boxes */
+        .info-box {
+            background: rgba(124, 58, 237, 0.08);
+            border-left: 4px solid var(--accent-purple);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 1.35rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-box.cyan {
+            background: rgba(56, 189, 248, 0.08);
+            border-left-color: var(--accent-cyan);
+        }
+
+        .info-box.emerald {
+            background: rgba(52, 211, 153, 0.08);
+            border-left-color: var(--accent-emerald);
+        }
+
+        .info-box.amber {
+            background: rgba(251, 191, 36, 0.08);
+            border-left-color: var(--accent-amber);
+        }
+
+        .info-box.rose {
+            background: rgba(244, 63, 94, 0.08);
+            border-left-color: var(--accent-rose);
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+        }
+
+        /* Data & Comparison Tables */
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            margin: 1.75rem 0;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        table.comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            background: rgba(15, 23, 42, 0.7);
+            font-size: 0.95rem;
+        }
+
+        table.comparison-table th {
+            background: rgba(30, 41, 59, 0.9);
+            color: var(--accent-purple);
+            padding: 1rem 1.25rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border-light);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        table.comparison-table td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-secondary);
+            vertical-align: top;
+        }
+
+        table.comparison-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+            color: #fff;
+        }
+
+        /* SVG Graph Containers */
+        .graph-wrapper {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1.75rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .graph-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .svg-graph-container {
+            width: 100%;
+            max-width: 720px;
+            height: auto;
+        }
+
+        /* Interactive Visualiser Module */
+        .sim-container {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            box-shadow: 0 0 35px rgba(124, 58, 237, 0.12);
+        }
+
+        .sim-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+            background: rgba(30, 41, 59, 0.5);
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-group label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .control-group input[type="range"] {
+            width: 100%;
+            accent-color: var(--accent-purple);
+            cursor: pointer;
+        }
+
+        .sim-viewports {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .sim-viewports {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sim-box {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        canvas.sim-canvas-el {
+            background: #050811;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm);
+            width: 100%;
+            height: 260px;
+        }
+
+        .telemetry-panel {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+
+        .telemetry-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .telemetry-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .telemetry-value {
+            font-family: var(--font-mono);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--accent-purple);
+            margin-top: 0.25rem;
+        }
+
+        /* Buttons & Actions */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-ethereal {
+            background: linear-gradient(135deg, #7c3aed, #06b6d4);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-ethereal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.45);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--border-light);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        /* Questions & Rubrics */
+        .question-container {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .marks-badge {
+            background: rgba(244, 63, 94, 0.15);
+            border: 1px solid rgba(244, 63, 94, 0.4);
+            color: var(--accent-rose);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .action-bar {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .drawer {
+            margin-top: 1rem;
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .drawer-hint {
+            background: rgba(251, 191, 36, 0.08);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            color: #fef08a;
+        }
+
+        .drawer-solution {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-glow);
+        }
+
+        .rubric-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--accent-purple);
+        }
+
+        .rubric-box h5 {
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .content-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; padding: 1.5rem; }
+            .grid-2col { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="ethereal-theme">
+    <div class="app-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="badge-glow">NESA Stage 6</span>
+                <h2>Module 5</h2>
+                <p class="subtitle">EQUILIBRIUM & ACID REACTIONS</p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="module-progress" style="width: 40%;"></div>
+                </div>
+                <div class="score-card">
+                    Total Mastery: <span id="total-marks">40</span> / 100 Marks
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-section">
+                    <span class="section-title">INTRODUCTION</span>
+                    <a href="index.html" class="nav-item">
+                        <span class="nav-num">—</span> Home & Guide
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE A: FOUNDATIONS OF EQUILIBRIUM</span>
+                    <a href="01-reversible-reactions.html" class="nav-item"><span class="nav-num">01</span> Reversible vs Irreversible</a>
+                    <a href="02-open-closed-systems.html" class="nav-item"><span class="nav-num">02</span> Open vs Closed Systems</a>
+                    <a href="03-static-dynamic-equilibrium.html" class="nav-item"><span class="nav-num">03</span> Static vs Dynamic Eq</a>
+                    <a href="04-non-equilibrium-systems.html" class="nav-item"><span class="nav-num">04</span> Non-Equilibrium Systems</a>
+                    <a href="05-collision-theory-equilibrium.html" class="nav-item"><span class="nav-num">05</span> Collision Theory in Eq</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE B: FACTORS AFFECTING EQUILIBRIUM</span>
+                    <a href="06-intro-le-chatelier.html" class="nav-item"><span class="nav-num">06</span> Le Chatelier's Principle</a>
+                    <a href="07-effect-of-concentration.html" class="nav-item"><span class="nav-num">07</span> Concentration Changes</a>
+                    <a href="08-effect-of-pressure-volume.html" class="nav-item"><span class="nav-num">08</span> Pressure & Volume</a>
+                    <a href="09-effect-of-temperature.html" class="nav-item"><span class="nav-num">09</span> Temperature Effects</a>
+                    <a href="10-collision-theory-lcp.html" class="nav-item active"><span class="nav-num">10</span> Collision Theory & LCP</a>
+                    <a href="11-activation-energy-equilibrium.html" class="nav-item"><span class="nav-num">11</span> Activation Energy & $\Delta H$</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE C: THE EQUILIBRIUM CONSTANT</span>
+                    <a href="12-keq-expression.html" class="nav-item"><span class="nav-num">12</span> The $K_{\mathrm{eq}}$ Expression</a>
+                    <a href="13-keq-calculations-basic.html" class="nav-item"><span class="nav-num">13</span> Basic $K_{\mathrm{eq}}$ Calculations</a>
+                    <a href="14-keq-calculations-advanced.html" class="nav-item"><span class="nav-num">14</span> Advanced $K_{\mathrm{eq}}$ & $Q$</a>
+                    <a href="15-temperature-and-keq.html" class="nav-item"><span class="nav-num">16</span> Temperature & $K_{\mathrm{eq}}$</a>
+                    <a href="16-determining-keq-experiment.html" class="nav-item"><span class="nav-num">16</span> Practical Determination</a>
+                    <a href="17-keq-acid-base-dissociation.html" class="nav-item"><span class="nav-num">17</span> Dissociation Systems</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE D: SOLUTION EQUILIBRIA</span>
+                    <a href="18-dissolution-ionic-compounds.html" class="nav-item"><span class="nav-num">18</span> Ionic Dissolution</a>
+                    <a href="19-indigenous-solubility-cycads.html" class="nav-item"><span class="nav-num">19</span> Indigenous Detoxification</a>
+                    <a href="20-solubility-rules.html" class="nav-item"><span class="nav-num">20</span> Solubility Rules</a>
+                    <a href="21-solubility-product-ksp.html" class="nav-item"><span class="nav-num">21</span> Solubility Product ($K_{\mathrm{sp}}$)</a>
+                    <a href="22-molar-solubility-calcs.html" class="nav-item"><span class="nav-num">22</span> Molar Solubility Calcs</a>
+                    <a href="23-predicting-precipitation.html" class="nav-item"><span class="nav-num">23</span> Predicting Precipitation</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE E: ASSESSMENT & REVIEW</span>
+                    <a href="24-formula-summary.html" class="nav-item"><span class="nav-num">24</span> Formula & Concept Guide</a>
+                    <a href="25-final-exam.html" class="nav-item"><span class="nav-num">25</span> Final Examination</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="hero-banner">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <span class="ethereal-tag">LESSON 10 • PHASE B: FACTORS AFFECTING EQUILIBRIUM</span>
+                    <h1 class="ethereal-title">Collision Theory & Le Chatelier's Principle Integration</h1>
+                    <p class="ethereal-subtitle">Reconcile thermodynamic predictions (Le Chatelier's Principle) with sub-microscopic kinetic mechanics (Collision Theory). Master differential rate laws ($r_{\mathrm{f}}$ vs $r_{\mathrm{r}}$), collision frequency scaling ($Z$), energy barrier factors ($E_a$), and the kinetic impact of catalysts on reversible systems.</p>
+                </div>
+            </header>
+
+            <!-- SYLLABUS ALIGNMENT CARD -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>NESA Syllabus Inquiry Focus</h2>
+                    <span class="pill-badge">Stage 6 Chemistry</span>
+                </div>
+                <p>
+                    <strong>Inquiry Question 2:</strong> <em>What factors affect equilibrium and how?</em>
+                </p>
+                <div class="info-box cyan" style="margin-top: 1rem;">
+                    <h3>Syllabus Outcomes Addressed (Outcome CH-12-01):</h3>
+                    <ul>
+                        <li>Explain overall equilibrium shift directions by integrating sub-microscopic collision theory with Le Chatelier's Principle.</li>
+                        <li>Analyse kinetic rate imbalances ($r_{\mathrm{f}}$ vs $r_{\mathrm{r}}$) resulting from concentration disturbances, pressure/volume perturbations, and thermal energy changes.</li>
+                        <li>Derive rate law rate expressions for forward and reverse pathways to explain why stoichometric powers ($\Delta n_{\text{gas}}$) determine volume compression shift directions.</li>
+                        <li>Apply Maxwell-Boltzmann distribution curves and differential activation energy barriers ($E_{a,\text{f}}$ vs $E_{a,\text{r}}$) to explain thermal shifts at the molecular level.</li>
+                        <li>Investigate the effect of catalysts on reversible reactions, proving why catalysts accelerate rate of attainment of equilibrium without altering equilibrium position, yield, or $K_{\mathrm{eq}}$.</li>
+                        <li>Construct and interpret comprehensive rate-time ($r\text{ vs }t$) graphs for all four disturbance types.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECTION 1: RECONCILING THERMODYNAMICS & KINETICS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>1. The Grand Synthesis: Reconciling Thermodynamics with Kinetics</h2>
+                    <span class="pill-badge">Core Theoretical Framework</span>
+                </div>
+
+                <p>
+                    In secondary chemistry, students are frequently taught two separate frameworks for analyzing reversible reactions:
+                </p>
+                <ul>
+                    <li><strong>Le Chatelier's Principle (Thermodynamic Viewpoint):</strong> A phenomenological, macro-level rule that predicts <em>what direction</em> a system shifts to partially counteract an imposed disturbance.</li>
+                    <li><strong>Collision Theory (Kinetic Viewpoint):</strong> A sub-microscopic, mechanistic framework that explains <em>why and how</em> rate changes occur at the molecular particle level.</li>
+                </ul>
+
+                <p>
+                    To achieve Band 6 excellence in NESA HSC Chemistry, you must be able to seamlessly bridge these two views. Le Chatelier's Principle is not a mystical force; it is the direct physical consequence of <strong>differential rate responses in forward ($r_{\mathrm{f}}$) and reverse ($r_{\mathrm{r}}$) reaction pathways</strong>!
+                </p>
+
+                <div class="info-box purple">
+                    <h3>The Sub-Microscopic Definition of Dynamic Equilibrium</h3>
+                    <p>
+                        A system is at dynamic equilibrium when the rate of the forward reaction ($r_{\mathrm{f}}$) equals the rate of the reverse reaction ($r_{\mathrm{r}}$):
+                        $$r_{\mathrm{f}} = r_{\mathrm{r}}$$
+                        <br>
+                        • Any disturbance that alters $r_{\mathrm{f}}$ and $r_{\mathrm{r}}$ <strong>UNEQUALLY</strong> creates an instantaneous rate imbalance ($r_{\mathrm{f}} \neq r_{\mathrm{r}}$).
+                        <br>
+                        • If $r_{\mathrm{f}} > r_{\mathrm{r}}$, a <strong>net forward shift ($\to$)</strong> occurs. Reactants are converted into products faster than products decompose back into reactants.
+                        <br>
+                        • If $r_{\mathrm{r}} > r_{\mathrm{f}}$, a <strong>net reverse shift ($\leftarrow$)</strong> occurs. Products decompose faster than they are formed.
+                        <br>
+                        • Net shift continues until concentration changes cause $r_{\mathrm{f}}$ and $r_{\mathrm{r}}$ to gradually re-equalise at a new equal rate ($r_{\mathrm{f}}' = r_{\mathrm{r}}'$).
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 2: KINETIC MECHANISM OF CONCENTRATION DISTURBANCES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>2. Kinetic Mechanism of Concentration Disturbances</h2>
+                    <span class="pill-badge cyan">Molecular Kinetics</span>
+                </div>
+
+                <p>
+                    According to Collision Theory, the rate of a chemical reaction ($r$) is directly proportional to the frequency of successful collisions per unit time ($Z_{\text{eff}}$):
+                </p>
+                $$r = Z \times f \times p$$
+
+                <p>
+                    Where $Z$ is total collision frequency per unit volume, $f$ is the fraction of collisions with kinetic energy $E \ge E_a$, and $p$ is the steric (orientation) factor.
+                </p>
+
+                <h3>1. Adding Reactant Species (e.g., Increasing $[\text{Reactant}]$)</h3>
+                <div class="grid-2col">
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-cyan);">
+                        <h3>Sub-Microscopic Step 1: Instantaneous Rate Jump</h3>
+                        <p>
+                            • Adding reactant molecules increases particle number density in the container.
+                            <br>• The collision frequency between reactant particles ($Z_{\mathrm{f}}$) increases immediately.
+                            <br>• Consequently, the forward reaction rate jumps instantly: $r_{\mathrm{f}} > r_{\mathrm{r}}$.
+                            <br>• Because product concentrations have not yet changed, $r_{\mathrm{r}}$ remains initially unchanged at $t_1$.
+                        </p>
+                    </div>
+
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-emerald);">
+                        <h3>Sub-Microscopic Step 2: Rate Re-equalisation</h3>
+                        <p>
+                            • Because $r_{\mathrm{f}} > r_{\mathrm{r}}$, reactant molecules are consumed faster than they are formed, so $[\text{Reactants}]$ gradually decreases, causing $r_{\mathrm{f}}$ to drop.
+                            <br>• Simultaneously, product molecules accumulate, increasing product collision frequency ($Z_{\mathrm{r}}$), so $r_{\mathrm{r}}$ gradually rises.
+                            <br>• Shift ceases when $r_{\mathrm{f}}$ drops and $r_{\mathrm{r}}$ rises until $r_{\mathrm{f}}' = r_{\mathrm{r}}'$.
+                        </p>
+                    </div>
+                </div>
+
+                <h3>2. Removing Product Species (e.g., Decreasing $[\text{Product}]$)</h3>
+                <p>
+                    Removing product molecules decreases product particle number density, causing product collision frequency ($Z_{\mathrm{r}}$) to drop instantly.
+                    <br>This creates an immediate rate gap where $r_{\mathrm{f}} > r_{\mathrm{r}}$. As a result, a <strong>net forward shift ($\to$)</strong> occurs until reactant consumption lowers $r_{\mathrm{f}}$ and product regeneration raises $r_{\mathrm{r}}$ back into balance!
+                </p>
+            </section>
+
+            <!-- SECTION 3: KINETIC MECHANISM OF VOLUME & PRESSURE DISTURBANCES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>3. Kinetic Mechanism of Volume & Pressure Disturbances</h2>
+                    <span class="pill-badge purple">Collision Frequency Scaling</span>
+                </div>
+
+                <p>
+                    Why does compressing a gas container shift equilibrium towards the side with fewer gas moles? Le Chatelier's Principle states it reduces pressure. Collision Theory explains this through <strong>differential concentration scaling in rate laws</strong>.
+                </p>
+
+                <h3>Mathematical Proof via Rate Law Orders</h3>
+                <p>
+                    Consider the general gas equilibrium:
+                </p>
+                $$\mathrm{a A_{(g)} \rightleftharpoons b B_{(g)}}$$
+
+                <p>
+                    For elementary gas reactions, collision frequencies depend directly on species concentrations raised to their stoichiometric coefficients:
+                </p>
+                $$r_{\mathrm{f}} = k_{\mathrm{f}} [\mathrm{A}]^a \quad \text{and} \quad r_{\mathrm{r}} = k_{\mathrm{r}} [\mathrm{B}]^b$$
+
+                <p>
+                    Suppose the vessel volume is halved ($V \to \frac{1}{2}V$). The concentrations of ALL gas species instantly double ($[\mathrm{A}]_i = 2[\mathrm{A}]_0$ and $[\mathrm{B}]_i = 2[\mathrm{B}]_0$).
+                </p>
+
+                <p>
+                    Substituting doubled concentrations into the forward and reverse rate laws:
+                </p>
+                $$r_{\mathrm{f},i} = k_{\mathrm{f}} (2[\mathrm{A}]_0)^a = 2^a \cdot k_{\mathrm{f}} [\mathrm{A}]_0^a = 2^a \cdot r_{\mathrm{f},0}$$
+
+                $$r_{\mathrm{r},i} = k_{\mathrm{r}} (2[\mathrm{B}]_0)^b = 2^b \cdot k_{\mathrm{r}} [\mathrm{B}]_0^b = 2^b \cdot r_{\mathrm{r},0}$$
+
+                <div class="info-box amber">
+                    <h3>The Kinetic Power Law Rule for Gas Compression</h3>
+                    <p>
+                        Compare the amplification factors $2^a$ and $2^b$:
+                        <br><br>
+                        • If $a > b$ (more gas moles on reactant side), then $2^a > 2^b$.
+                        <br>
+                        Compression increases the forward rate by a larger factor than the reverse rate ($r_{\mathrm{f},i} > r_{\mathrm{r},i}$), causing a <strong>NET FORWARD SHIFT ($\to$)</strong> towards the side with fewer gas moles!
+                        <br><br>
+                        • If $b > a$ (more gas moles on product side), then $2^b > 2^a$.
+                        <br>
+                        Compression increases the reverse rate by a larger factor than the forward rate ($r_{\mathrm{r},i} > r_{\mathrm{f},i}$), causing a <strong>NET REVERSE SHIFT ($\leftarrow$)</strong> towards the side with fewer gas moles!
+                        <br><br>
+                        • If $a = b$ ($\Delta n_{\text{gas}} = 0$), then $2^a = 2^b$.
+                        <br>
+                        Both rates jump by the EXACT SAME FACTOR! Therefore, $r_{\mathrm{f},i} = r_{\mathrm{r},i}$ and <strong>NO SHIFT OCCURS</strong>!
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 4: KINETIC MECHANISM OF TEMPERATURE DISTURBANCES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>4. Kinetic Mechanism of Temperature Disturbances</h2>
+                    <span class="pill-badge rose">Thermal Barrier Mechanics</span>
+                </div>
+
+                <p>
+                    Temperature changes alter the thermal kinetic energy distribution of particles, described by Maxwell-Boltzmann curves.
+                </p>
+
+                <h3>Arrhenius Rate Constant Dependence</h3>
+                <p>
+                    The rate constants for forward ($k_{\mathrm{f}}$) and reverse ($k_{\mathrm{r}}$) pathways depend exponentially on temperature ($T$) and activation energy ($E_a$) according to the Arrhenius equation:
+                </p>
+                $$k = A e^{-\frac{E_a}{RT}}$$
+
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Thermochemical Pathway</th>
+                                <th>Activation Energy Hierarchy</th>
+                                <th>Effect of Temperature Increase ($T \uparrow$)</th>
+                                <th>Rate Imbalance Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background: rgba(52, 211, 153, 0.12); border-left: 3px solid var(--accent-emerald);">
+                                <td><strong>Endothermic Forward ($\Delta H > 0$)</strong></td>
+                                <td>$E_{a,\text{f}} > E_{a,\text{r}}$</td>
+                                <td>$r_{\mathrm{f}}$ increases by a <strong>larger percentage factor</strong> than $r_{\mathrm{r}}$</td>
+                                <td>$r_{\mathrm{f}} > r_{\mathrm{r}} \implies$ <strong>Net Forward Shift ($\to$)</strong></td>
+                            </tr>
+                            <tr style="background: rgba(244, 63, 94, 0.12); border-left: 3px solid var(--accent-rose);">
+                                <td><strong>Exothermic Forward ($\Delta H < 0$)</strong></td>
+                                <td>$E_{a,\text{r}} > E_{a,\text{f}}$</td>
+                                <td>$r_{\mathrm{r}}$ increases by a <strong>larger percentage factor</strong> than $r_{\mathrm{f}}$</td>
+                                <td>$r_{\mathrm{r}} > r_{\mathrm{f}} \implies$ <strong>Net Reverse Shift ($\leftarrow$)</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box cyan">
+                    <h3>Sub-Microscopic Maxwell-Boltzmann Rule</h3>
+                    <p>
+                        A higher activation energy barrier is more sensitive to temperature changes than a lower activation energy barrier.
+                        <br><br>
+                        • <strong>Heating ($T \uparrow$):</strong> Always disproportionately boosts the rate of the pathway with the <strong>HIGHER activation energy barrier</strong> (the endothermic direction).
+                        <br>
+                        • <strong>Cooling ($T \downarrow$):</strong> Always disproportionately reduces the rate of the pathway with the <strong>HIGHER activation energy barrier</strong>, leaving the pathway with the lower activation energy barrier (the exothermic direction) relatively favoured!
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 5: KINETIC MECHANISM OF CATALYSTS IN EQUILIBRIUM -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>5. Kinetic Mechanism of Catalysts on Reversible Systems</h2>
+                    <span class="pill-badge emerald">Catalytic Kinetics</span>
+                </div>
+
+                <p>
+                    A catalyst is a chemical substance that increases the rate of a reaction without being consumed in the overall process. It operates by providing an alternative reaction pathway with a lower activation energy ($E_a'$).
+                </p>
+
+                <!-- SVG Graph 1: Catalysed Reaction Energy Profile -->
+                <div class="graph-wrapper">
+                    <div class="graph-title">NESA Enthalpy Profile: Catalyst Lowers Forward ($E_{a,\text{f}}$) and Reverse ($E_{a,\text{r}}$) Barriers by the EXACT SAME Energy Amount ($\Delta E_a$)</div>
+                    <div class="svg-graph-container">
+                        <svg viewBox="0 0 700 340" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="700" height="340" fill="#0b1329" rx="10"/>
+                            <line x1="70" y1="300" x2="650" y2="300" stroke="#64748b" stroke-width="2"/>
+                            <line x1="70" y1="40" x2="70" y2="300" stroke="#64748b" stroke-width="2"/>
+
+                            <!-- Axes Labels -->
+                            <text x="360" y="328" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle">Reaction Progress ($\to$)</text>
+                            <text x="25" y="170" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle" transform="rotate(-90 25 170)">Potential Energy, $H$ ($\text{kJ mol}^{-1}$)</text>
+
+                            <!-- Energy Levels -->
+                            <line x1="90" y1="200" x2="210" y2="200" stroke="#38bdf8" stroke-width="3.5"/>
+                            <line x1="490" y1="260" x2="610" y2="260" stroke="#34d399" stroke-width="3.5"/>
+
+                            <!-- Uncatalysed Path (Rose): High Peak y=60 -->
+                            <path d="M 210 200 C 280 200, 310 60, 350 60 C 390 60, 420 260, 490 260" fill="none" stroke="#f43f5e" stroke-width="3"/>
+
+                            <!-- Catalysed Path (Emerald Dashed): Lower Peak y=130 -->
+                            <path d="M 210 200 C 280 200, 310 130, 350 130 C 390 130, 420 260, 490 260" fill="none" stroke="#34d399" stroke-width="3" stroke-dasharray="5,5"/>
+
+                            <!-- Labels -->
+                            <text x="150" y="190" fill="#38bdf8" font-size="13" font-weight="700" text-anchor="middle">Reactants</text>
+                            <text x="550" y="250" fill="#34d399" font-size="13" font-weight="700" text-anchor="middle">Products</text>
+                            <text x="350" y="45" fill="#f43f5e" font-size="12" font-weight="700" text-anchor="middle">Uncatalysed Barrier ($E_a$)</text>
+                            <text x="350" y="115" fill="#34d399" font-size="12" font-weight="700" text-anchor="middle">Catalysed Barrier ($E_a'$)</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <h3>Why Catalysts Do NOT Shift Equilibrium Position</h3>
+                <div class="features-grid">
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-emerald);">
+                        <div class="feature-icon">⚡</div>
+                        <h3>1. Equal Energy Reduction ($\Delta E_a$)</h3>
+                        <p>
+                            A catalyst lowers the transition state energy for BOTH forward and reverse pathways by the exact same amount ($\Delta E_a$).
+                            <br>• $E_{a,\text{f}}' = E_{a,\text{f}} - \Delta E_a$
+                            <br>• $E_{a,\text{r}}' = E_{a,\text{r}} - \Delta E_a$
+                        </p>
+                    </div>
+
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-cyan);">
+                        <div class="feature-icon">⚖️</div>
+                        <h3>2. Proportional Rate Acceleration</h3>
+                        <p>
+                            Because the energy barrier reduction is identical in both directions, the forward ($r_{\mathrm{f}}$) and reverse ($r_{\mathrm{r}}$) reaction rates increase by the <strong>EXACT SAME PROPORTIONAL FACTOR</strong>!
+                            <br>• $r_{\mathrm{f},\text{cat}} = \alpha \cdot r_{\mathrm{f},0}$
+                            <br>• $r_{\mathrm{r},\text{cat}} = \alpha \cdot r_{\mathrm{r},0}$
+                        </p>
+                    </div>
+                </div>
+
+                <div class="info-box emerald">
+                    <h3>HSC Conclusion for Catalysts</h3>
+                    <p>
+                        Because $r_{\mathrm{f}}$ and $r_{\mathrm{r}}$ increase equally ($\Delta r_{\mathrm{f}} = \Delta r_{\mathrm{r}}$), <strong>NO RATE IMBALANCE IS CREATED ($r_{\mathrm{f}} = r_{\mathrm{r}}$ at all times)</strong>!
+                        <br><br>
+                        • <strong>Equilibrium Position:</strong> Unchanged (no shift occurs).
+                        <br>
+                        • <strong>Equilibrium Yield:</strong> Unchanged (product yield is identical).
+                        <br>
+                        • <strong>Equilibrium Constant ($K_{\mathrm{eq}}$):</strong> Unchanged.
+                        <br>
+                        • <strong>Time to Reach Equilibrium:</strong> <strong>DRAMATICALLY REDUCED</strong>! The system reaches dynamic equilibrium much faster.
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 6: MASTER COMPARATIVE MATRIX -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>6. Master Comparative Matrix: LCP vs Kinetic Collision Theory vs $Q_c$ Proofs</h2>
+                    <span class="pill-badge amber">Complete Triangulation</span>
+                </div>
+
+                <p>
+                    Use this master comparative table to construct Band 6 responses that integrate all three explanatory frameworks for any equilibrium disturbance.
+                </p>
+
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Disturbance Imposed</th>
+                                <th>Le Chatelier's Principle (Macro View)</th>
+                                <th>Kinetic Collision Theory (Micro View)</th>
+                                <th>$Q_c$ Mathematical Proof</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Add Reactant Gas</strong></td>
+                                <td>Shifts <strong>Forward ($\to$)</strong> to consume added reactant</td>
+                                <td>Reactant collision frequency rises ($Z_{\mathrm{f}} \uparrow$), causing $r_{\mathrm{f}} > r_{\mathrm{r}}$</td>
+                                <td>Denominator rises $\implies Q_c < K_{\mathrm{eq}} \implies$ Shifts $\to$</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Add Product Gas</strong></td>
+                                <td>Shifts <strong>Reverse ($\leftarrow$)</strong> to consume added product</td>
+                                <td>Product collision frequency rises ($Z_{\mathrm{r}} \uparrow$), causing $r_{\mathrm{r}} > r_{\mathrm{f}}$</td>
+                                <td>Numerator rises $\implies Q_c > K_{\mathrm{eq}} \implies$ Shifts $\leftarrow$</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Compress Volume ($V \downarrow$)</strong></td>
+                                <td>Shifts towards <strong>fewer gas moles</strong> to reduce pressure</td>
+                                <td>Rates scale by $2^n$. Reaction with higher gas moles jumps more, creating rate gap</td>
+                                <td>Concentration power imbalance yields $Q_c \neq K_{\mathrm{eq}}$</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Increase Temp ($T \uparrow$)</strong></td>
+                                <td>Shifts in <strong>endothermic direction</strong> to absorb heat</td>
+                                <td>Both rates rise. Higher $E_a$ pathway rises by larger percentage factor</td>
+                                <td>$K_{\mathrm{eq}}$ value changes numerically! $Q_c \neq \text{New } K_{\mathrm{eq}}$</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Add Catalyst</strong></td>
+                                <td><strong>NO SHIFT</strong>. Equilibrium position unchanged</td>
+                                <td>Both $E_{a,\text{f}}$ and $E_{a,\text{r}}$ lowered by $\Delta E_a$. Both rates rise equally ($\Delta r_{\mathrm{f}} = \Delta r_{\mathrm{r}}$)</td>
+                                <td>$Q_c = K_{\mathrm{eq}}$ remains unchanged at all times</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION 7: RATE-TIME GRAPHICAL SIGNATURE GALLERY -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>7. Comprehensive Rate-Time ($r\text{ vs }t$) Graphical Signature Gallery</h2>
+                    <span class="pill-badge emerald">Graph Interpretation</span>
+                </div>
+
+                <p>
+                    Rate-time graphs ($r\text{ vs }t$) depict the forward rate ($r_{\mathrm{f}}$, blue) and reverse rate ($r_{\mathrm{r}}$, red) on a single axis. Learn to recognize each disturbance type instantaneously by its graphic pattern.
+                </p>
+
+                <!-- SVG Graph 2: Four Quad Rate-Time Graphs -->
+                <div class="graph-wrapper">
+                    <div class="graph-title">NESA Rate-Time ($r\text{ vs }t$) Signatures Across All 4 Disturbance Types</div>
+                    <div class="svg-graph-container">
+                        <svg viewBox="0 0 700 500" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="700" height="500" fill="#0b1329" rx="10"/>
+
+                            <!-- Quad 1: Concentration Change (Add Reactant) -->
+                            <g transform="translate(20, 20)">
+                                <rect width="310" height="210" fill="rgba(15, 23, 42, 0.7)" rx="6" stroke="#334155"/>
+                                <text x="155" y="22" fill="#a78bfa" font-size="12" font-weight="700" text-anchor="middle">1. Reagent Addition (Add Reactant)</text>
+                                <line x1="40" y1="180" x2="290" y2="180" stroke="#64748b"/>
+                                <line x1="40" y1="35" x2="40" y2="180" stroke="#64748b"/>
+                                <!-- Eq 1 -->
+                                <line x1="40" y1="130" x2="120" y2="130" stroke="#a78bfa" stroke-width="2.5"/>
+                                <!-- Single Spike Forward Rate -->
+                                <line x1="120" y1="130" x2="120" y2="50" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="2,2"/>
+                                <path d="M 120 50 C 160 70, 220 100, 260 100" fill="none" stroke="#38bdf8" stroke-width="2.5"/>
+                                <path d="M 120 130 C 160 120, 220 100, 260 100" fill="none" stroke="#f43f5e" stroke-width="2.5"/>
+                                <line x1="260" y1="100" x2="290" y2="100" stroke="#34d399" stroke-width="2.5"/>
+                                <text x="125" y="45" fill="#38bdf8" font-size="10" font-weight="700">Single Spike ($r_{\mathrm{f}}$ jumps)</text>
+                            </g>
+
+                            <!-- Quad 2: Volume Compression -->
+                            <g transform="translate(360, 20)">
+                                <rect width="310" height="210" fill="rgba(15, 23, 42, 0.7)" rx="6" stroke="#334155"/>
+                                <text x="155" y="22" fill="#a78bfa" font-size="12" font-weight="700" text-anchor="middle">2. Volume Compression ($V \downarrow$)</text>
+                                <line x1="40" y1="180" x2="290" y2="180" stroke="#64748b"/>
+                                <line x1="40" y1="35" x2="40" y2="180" stroke="#64748b"/>
+                                <!-- Eq 1 -->
+                                <line x1="40" y1="140" x2="120" y2="140" stroke="#a78bfa" stroke-width="2.5"/>
+                                <!-- Both Spike UP to different heights -->
+                                <line x1="120" y1="140" x2="120" y2="45" stroke="#38bdf8" stroke-width="2" stroke-dasharray="2,2"/>
+                                <line x1="120" y1="140" x2="120" y2="90" stroke="#f43f5e" stroke-width="2" stroke-dasharray="2,2"/>
+                                <path d="M 120 45 C 160 65, 220 80, 260 80" fill="none" stroke="#38bdf8" stroke-width="2.5"/>
+                                <path d="M 120 90 C 160 85, 220 80, 260 80" fill="none" stroke="#f43f5e" stroke-width="2.5"/>
+                                <line x1="260" y1="80" x2="290" y2="80" stroke="#34d399" stroke-width="2.5"/>
+                                <text x="125" y="40" fill="#fbbf24" font-size="10" font-weight="700">BOTH Spike UP ($r_{\mathrm{f}}$ jumps higher)</text>
+                            </g>
+
+                            <!-- Quad 3: Heating Endothermic -->
+                            <g transform="translate(20, 260)">
+                                <rect width="310" height="210" fill="rgba(15, 23, 42, 0.7)" rx="6" stroke="#334155"/>
+                                <text x="155" y="22" fill="#a78bfa" font-size="12" font-weight="700" text-anchor="middle">3. Temperature Increase ($T \uparrow$)</text>
+                                <line x1="40" y1="180" x2="290" y2="180" stroke="#64748b"/>
+                                <line x1="40" y1="35" x2="40" y2="180" stroke="#64748b"/>
+                                <!-- Eq 1 -->
+                                <line x1="40" y1="150" x2="120" y2="150" stroke="#a78bfa" stroke-width="2.5"/>
+                                <!-- Both Jump UP -->
+                                <line x1="120" y1="150" x2="120" y2="55" stroke="#38bdf8" stroke-width="2" stroke-dasharray="2,2"/>
+                                <line x1="120" y1="150" x2="120" y2="110" stroke="#f43f5e" stroke-width="2" stroke-dasharray="2,2"/>
+                                <path d="M 120 55 C 160 75, 220 90, 260 90" fill="none" stroke="#38bdf8" stroke-width="2.5"/>
+                                <path d="M 120 110 C 160 100, 220 90, 260 90" fill="none" stroke="#f43f5e" stroke-width="2.5"/>
+                                <line x1="260" y1="90" x2="290" y2="90" stroke="#34d399" stroke-width="2.5"/>
+                                <text x="125" y="50" fill="#fbbf24" font-size="10" font-weight="700">BOTH Jump UP ($E_{a,\text{f}} > E_{a,\text{r}}$)</text>
+                            </g>
+
+                            <!-- Quad 4: Adding Catalyst -->
+                            <g transform="translate(360, 260)">
+                                <rect width="310" height="210" fill="rgba(15, 23, 42, 0.7)" rx="6" stroke="#334155"/>
+                                <text x="155" y="22" fill="#a78bfa" font-size="12" font-weight="700" text-anchor="middle">4. Catalyst Addition</text>
+                                <line x1="40" y1="180" x2="290" y2="180" stroke="#64748b"/>
+                                <line x1="40" y1="35" x2="40" y2="180" stroke="#64748b"/>
+                                <!-- Eq 1 -->
+                                <line x1="40" y1="140" x2="120" y2="140" stroke="#a78bfa" stroke-width="2.5"/>
+                                <!-- Both Jump instantly to EXACT SAME NEW HIGHER EQUAL RATE -->
+                                <line x1="120" y1="140" x2="120" y2="70" stroke="#34d399" stroke-width="3" stroke-dasharray="2,2"/>
+                                <line x1="120" y1="70" x2="290" y2="70" stroke="#34d399" stroke-width="3"/>
+                                <text x="125" y="62" fill="#34d399" font-size="10" font-weight="700">BOTH Jump to SAME Rate (No Shift!)</text>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 8: INTERACTIVE COLLISION THEORY & RATE IMBALANCE ENGINE -->
+            <section class="card glass-card demo-card">
+                <div class="card-header">
+                    <h2>8. Interactive Collision Theory & Rate Imbalance Visualiser</h2>
+                    <span class="pill-badge demo-pill">Virtual Particle Physics Lab</span>
+                </div>
+                <p>Select a disturbance type below to observe live moving particle collisions, forward ($r_{\mathrm{f}}$) vs reverse ($r_{\mathrm{r}}$) rate law meters, and animated rate re-equalisation in real time.</p>
+
+                <div class="sim-container">
+                    <div class="sim-controls">
+                        <div class="control-group">
+                            <label>Disturbance Type:</label>
+                            <select id="sim-ct-disturbance" class="btn btn-outline" style="width: 100%; color: #fff; background: rgba(30,41,59,0.9);" onchange="runCTSim()">
+                                <option value="add_reactant">1. Add Reactant Concentration ([Reactant] ↑)</option>
+                                <option value="compress_vol">2. Compress Volume (Halve Volume, V → ½V)</option>
+                                <option value="heat_temp">3. Heat Temperature (T → +50 K)</option>
+                                <option value="add_catalyst">4. Add Catalyst (Lower Ea by 25 kJ/mol)</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <label>Simulation Step Control:</label>
+                            <button class="btn btn-ethereal" onclick="triggerDisturbance()">⚡ Apply Disturbance Event</button>
+                        </div>
+                    </div>
+
+                    <div class="sim-viewports">
+                        <div class="sim-box">
+                            <h4 style="font-size: 0.85rem; color: var(--accent-cyan); margin-bottom: 0.5rem;">PARTICLE COLLISION CHAMBER</h4>
+                            <canvas id="canvas-ct-particles" class="sim-canvas-el" width="340" height="260"></canvas>
+                        </div>
+
+                        <div class="sim-box">
+                            <h4 style="font-size: 0.85rem; color: var(--accent-cyan); margin-bottom: 0.5rem;">LIVE RATE-TIME GRAPH ($r_{\mathrm{f}}$ vs $r_{\mathrm{r}}$)</h4>
+                            <canvas id="canvas-ct-graph" class="sim-canvas-el" width="340" height="260"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="telemetry-panel">
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Forward Rate $r_{\mathrm{f}}$</span>
+                            <span class="telemetry-value" id="tel-rf-val" style="color: var(--accent-cyan);">10.0 units</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Reverse Rate $r_{\mathrm{r}}$</span>
+                            <span class="telemetry-value" id="tel-rr-val" style="color: var(--accent-rose);">10.0 units</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Rate Imbalance Gap</span>
+                            <span class="telemetry-value" id="tel-rate-gap" style="color: var(--accent-amber);">0.0 (Balanced)</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Kinetic Shift State</span>
+                            <span class="telemetry-value" id="tel-ct-shift" style="color: var(--accent-emerald);">EQUILIBRIUM ($r_{\mathrm{f}} = r_{\mathrm{r}}$)</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 9: WORKED EXAMPLES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>9. Scaffolded Worked Examples</h2>
+                    <span class="pill-badge">HSC Step-by-Step Solutions</span>
+                </div>
+
+                <!-- Example 1: Easy -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 1 (Easy): Kinetic Explanation of Reagent Addition</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Explain, using Collision Theory, why adding additional $\mathrm{N_{2(g)}}$ gas to an equilibrium mixture of $\mathrm{N_{2(g)} + 3H_{2(g)} \rightleftharpoons 2NH_{3(g)}}$ causes a net forward shift.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Collision Frequency Increase:</strong> Adding $\mathrm{N_{2(g)}}$ increases the particle number density of nitrogen molecules in the container, increasing the collision frequency ($Z_{\mathrm{f}}$) between $\mathrm{N_2}$ and $\mathrm{H_2}$ molecules.</p>
+                        <p><strong>2. Rate Imbalance & Shift:</strong> The forward reaction rate jumps instantly ($r_{\mathrm{f}} > r_{\mathrm{r}}$). Because $r_{\mathrm{f}} > r_{\mathrm{r}}$, reactants are converted into ammonia faster than ammonia decomposes, resulting in a <strong>net forward shift ($\to$)</strong> until product accumulation increases $r_{\mathrm{r}}$ to match $r_{\mathrm{f}}'$.</p>
+                    </div>
+                </div>
+
+                <!-- Example 2: Medium -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 2 (Medium): Catalyst Impact on Equilibrium & Yield</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        An industrial process uses a vanadium(V) oxide catalyst for the oxidation of sulfur dioxide: $\mathrm{2SO_{2(g)} + O_{2(g)} \rightleftharpoons 2SO_{3(g)}}$.
+                        <br>Explain why adding the catalyst increases the rate of reaction but does NOT alter the equilibrium yield of $\mathrm{SO_3}$.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Mechanism of Catalyst:</strong> The catalyst provides an alternative pathway with a lower activation energy ($E_a'$) for BOTH forward and reverse reactions.</p>
+                        <p><strong>2. Equal Energy Barrier Lowering:</strong> Because the energy barrier is lowered by the exact same amount ($\Delta E_a$) in both directions, the forward ($r_{\mathrm{f}}$) and reverse ($r_{\mathrm{r}}$) rates increase by the <strong>exact same proportional factor</strong>.</p>
+                        <p><strong>3. Conclusion:</strong> No rate imbalance is created ($r_{\mathrm{f}} = r_{\mathrm{r}}$ at all times). Thus, the equilibrium position, $K_{\mathrm{eq}}$, and final product yield remain completely unchanged, although dynamic equilibrium is reached much faster.</p>
+                    </div>
+                </div>
+
+                <!-- Example 3: Hard -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 3 (Hard): Kinetic Explanation of Volume Compression</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Using rate laws and Collision Theory, prove why compressing the volume of the reaction container causes a net forward shift in the equilibrium system:
+                        $$\mathrm{2NO_{(g)} + O_{2(g)} \rightleftharpoons 2NO_{2(g)}}$$
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Rate Expressions:</strong>
+                        <br>• Forward rate: $r_{\mathrm{f}} = k_{\mathrm{f}} [\mathrm{NO}]^2 [\mathrm{O_2}]$ ($3\text{rd order}$).
+                        <br>• Reverse rate: $r_{\mathrm{r}} = k_{\mathrm{r}} [\mathrm{NO_2}]^2$ ($2\text{nd order}$).</p>
+                        <p><strong>2. Compression Concentration Effect:</strong> Halving container volume ($V \to \frac{1}{2}V$) doubles all molar concentrations instantly ($2\times$).</p>
+                        <p><strong>3. Rate Imbalance Proof:</strong>
+                        <br>• New $r_{\mathrm{f},i} = k_{\mathrm{f}} (2[\mathrm{NO}])^2 (2[\mathrm{O_2}]) = 2^3 \cdot r_{\mathrm{f},0} = 8 \cdot r_{\mathrm{f},0}$ ($8\times$ increase).
+                        <br>• New $r_{\mathrm{r},i} = k_{\mathrm{r}} (2[\mathrm{NO_2}])^2 = 2^2 \cdot r_{\mathrm{r},0} = 4 \cdot r_{\mathrm{r},0}$ ($4\times$ increase).</p>
+                        <p><strong>4. Conclusion:</strong> Because $r_{\mathrm{f}}$ increases by $8\times$ while $r_{\mathrm{r}}$ increases by only $4\times$, we get $r_{\mathrm{f},i} > r_{\mathrm{r},i}$. This rate gap forces a <strong>net forward shift ($\to$)</strong> towards the side with fewer gas moles ($2 < 3$)!</p>
+                    </div>
+                </div>
+
+                <!-- Example 4: Extension -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 4 (Extension): Synthesis of Maxwell-Boltzmann Curves & Thermal Shifts</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A gas system $\mathrm{X_{(g)} \rightleftharpoons Y_{(g)} + Z_{(g)}}$ has $\Delta H = +85\text{ kJ mol}^{-1}$.
+                        <br>Construct a comprehensive sub-microscopic kinetic justification, supported by activation energy relationships, explaining why cooling this system causes a net reverse shift.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Activation Energy Hierarchy:</strong> For an endothermic forward reaction ($\Delta H = +85\text{ kJ mol}^{-1}$), $E_{a,\text{f}} > E_{a,\text{r}}$. The forward activation energy barrier is significantly higher than the reverse barrier.</p>
+                        <p><strong>2. Maxwell-Boltzmann Shift:</strong> Cooling reduces the average kinetic energy of all particles, shifting the Maxwell-Boltzmann distribution curve left and contracting the high-energy tail ($E \ge E_a$).</p>
+                        <p><strong>3. Absolute vs Proportional Rate Reduction:</strong> Because $E_{a,\text{f}}$ is higher, cooling reduces the fraction of collisions with $E \ge E_{a,\text{f}}$ by a <strong>larger percentage factor</strong> than those with $E \ge E_{a,\text{r}}$.</p>
+                        <p><strong>4. Differential Rate Drop:</strong> Although BOTH forward ($r_{\mathrm{f}}$) and reverse ($r_{\mathrm{r}}$) rates drop upon cooling, $r_{\mathrm{f}}$ drops much more severely than $r_{\mathrm{r}}$.</p>
+                        <p><strong>5. Conclusion:</strong> Consequently, $r_{\mathrm{r}} > r_{\mathrm{f}}$, producing a <strong>net reverse shift ($\leftarrow$)</strong> until reactant accumulation restores rate equality at a lower equal rate.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 10: PRACTICE QUESTIONS WITH RUBRICS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>10. NESA Examination Practice Questions</h2>
+                    <span class="pill-badge demo-pill">Self-Marking Engine</span>
+                </div>
+                <p>Solve the questions below, then toggle hints and model solutions to verify your answers against NESA marking rubrics.</p>
+
+                <!-- Practice Q1 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 1 (Easy): Identifying Rate Imbalances</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        State the relationship between $r_{\mathrm{f}}$ and $r_{\mathrm{r}}$ immediately after product gas is removed from an equilibrium container, and predict the resulting shift direction.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq1-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq1-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq1-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Removing product lowers product collision frequency ($Z_{\mathrm{r}}$). What happens to $r_{\mathrm{r}}$ relative to $r_{\mathrm{f}}$?</p>
+                    </div>
+
+                    <div id="pq1-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong> Immediately after product removal, $r_{\mathrm{f}} > r_{\mathrm{r}}$ (the forward rate exceeds the reverse rate). This rate imbalance results in a <strong>net forward shift ($\to$)</strong> to produce more product.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Correctly states $r_{\mathrm{f}} > r_{\mathrm{r}}$.</li>
+                                <li><strong>1 Mark:</strong> Correctly identifies net forward shift ($\to$).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q2 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 2 (Medium): Interpreting Rate-Time Graphs</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        On a rate-time graph for $\mathrm{A_{(g)} \rightleftharpoons B_{(g)}}$, a disturbance at $t_1$ causes BOTH $r_{\mathrm{f}}$ and $r_{\mathrm{r}}$ to jump instantaneously to the exact same higher value, remaining constant thereafter.
+                        <br>Identify the disturbance at $t_1$ and explain why no equilibrium shift occurred.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq2-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq2-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq2-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Which disturbance accelerates both rates equally without creating a rate gap?</p>
+                    </div>
+
+                    <div id="pq2-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>• <strong>Disturbance at $t_1$:</strong> Addition of a <strong>catalyst</strong>.
+                            <br>• <strong>Reason for No Shift:</strong> A catalyst lowers the activation energy ($E_a$) for both forward and reverse reactions by the exact same amount ($\Delta E_a$). Consequently, $r_{\mathrm{f}}$ and $r_{\mathrm{r}}$ increase by the exact same factor, maintaining $r_{\mathrm{f}} = r_{\mathrm{r}}$ at all times. Because no rate gap is created, the equilibrium position does not shift.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Identifies the disturbance as adding a catalyst.</li>
+                                <li><strong>1 Mark:</strong> Explains catalyst lowers $E_a$ equally in both directions ($\Delta E_a$).</li>
+                                <li><strong>1 Mark:</strong> Concludes $r_{\mathrm{f}} = r_{\mathrm{r}}$ remains balanced, preventing any shift.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q3 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 3 (Hard): Kinetic Analysis of Equal Gas Moles</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Using rate laws and Collision Theory, explain why compressing the volume of a container containing $\mathrm{H_{2(g)} + I_{2(g)} \rightleftharpoons 2HI_{(g)}}$ causes NO equilibrium shift.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq3-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq3-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq3-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Compare the rate laws $r_{\mathrm{f}} = k_{\mathrm{f}} [\mathrm{H_2}][\mathrm{I_2}]$ and $r_{\mathrm{r}} = k_{\mathrm{r}} [\mathrm{HI}]^2$ when concentrations double.</p>
+                    </div>
+
+                    <div id="pq3-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>• <strong>Rate Laws:</strong> $r_{\mathrm{f}} = k_{\mathrm{f}} [\mathrm{H_2}][\mathrm{I_2}]$ ($2\text{nd order}$) and $r_{\mathrm{r}} = k_{\mathrm{r}} [\mathrm{HI}]^2$ ($2\text{nd order}$).
+                            <br>• <strong>Compression Effect:</strong> Halving volume doubles all gas concentrations ($2\times$).
+                            <br>• <strong>Rate Calculations:</strong>
+                            <br>  - New $r_{\mathrm{f},i} = k_{\mathrm{f}} (2[\mathrm{H_2}]) (2[\mathrm{I_2}]) = 4 \cdot r_{\mathrm{f},0}$.
+                            <br>  - New $r_{\mathrm{r},i} = k_{\mathrm{r}} (2[\mathrm{HI}])^2 = 4 \cdot r_{\mathrm{r},0}$.
+                            <br>• <strong>Conclusion:</strong> BOTH forward and reverse rates increase by the <strong>EXACT SAME FACTOR OF 4 ($4\times$)</strong>! Because $r_{\mathrm{f},i} = r_{\mathrm{r},i}$, no rate imbalance is created, and <strong>NO EQUILIBRIUM SHIFT OCCURS</strong>.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Writes rate laws for forward and reverse pathways ($2\text{nd order}$ both).</li>
+                                <li><strong>1 Mark:</strong> States halving volume doubles all concentrations.</li>
+                                <li><strong>1 Mark:</strong> Proves mathematically that both $r_{\mathrm{f}}$ and $r_{\mathrm{r}}$ increase by $4\times$.</li>
+                                <li><strong>1 Mark:</strong> Concludes $r_{\mathrm{f}} = r_{\mathrm{r}}$ remains balanced, resulting in no shift.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q4 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 4 (Extension): Evaluating Temperature Imbalance Mechanisms</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Explain, using Collision Theory and Arrhenius activation energy concepts, why heating an exothermic reaction ($\mathrm{2A_{(g)} \rightleftharpoons B_{(g)}}, \, \Delta H = -40\text{ kJ mol}^{-1}$) decreases product yield, whereas compressing the container increases product yield.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq4-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq4-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq4-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Heating affects activation energies ($E_{a,\text{r}} > E_{a,\text{f}}$). Compression affects concentration orders ($2\text{nd order } r_{\mathrm{f}}$ vs $1\text{st order } r_{\mathrm{r}}$).</p>
+                    </div>
+
+                    <div id="pq4-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br><strong>1. Heating Effect (Decreases Yield):</strong>
+                            <br>• For an exothermic reaction ($\Delta H = -40\text{ kJ mol}^{-1}$), $E_{a,\text{r}} > E_{a,\text{f}}$.
+                            <br>• Heating increases the fraction of collisions with $E \ge E_{a,\text{r}}$ by a larger percentage factor than $E \ge E_{a,\text{f}}$.
+                            <br>• Thus, $r_{\mathrm{r}}$ increases more than $r_{\mathrm{f}}$ ($r_{\mathrm{r}} > r_{\mathrm{f}}$), causing a <strong>net reverse shift ($\leftarrow$)</strong> and decreasing product yield.
+                            <br><br><strong>2. Compression Effect (Increases Yield):</strong>
+                            <br>• Forward rate is $2\text{nd order}$ ($r_{\mathrm{f}} = k_{\mathrm{f}} [\mathrm{A}]^2$), while reverse rate is $1\text{st order}$ ($r_{\mathrm{r}} = k_{\mathrm{r}} [\mathrm{B}]$).
+                            <br>• Doubling concentrations increases $r_{\mathrm{f}}$ by $4\times$ ($2^2$), but $r_{\mathrm{r}}$ by only $2\times$ ($2^1$).
+                            <br>• Thus, $r_{\mathrm{f}} > r_{\mathrm{r}}$, causing a <strong>net forward shift ($\to$)</strong> and increasing product yield!</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Identifies $E_{a,\text{r}} > E_{a,\text{f}}$ for exothermic reaction.</li>
+                                <li><strong>1 Mark:</strong> Explains heating increases $r_{\mathrm{r}}$ by a larger percentage factor, driving net reverse shift ($\leftarrow$).</li>
+                                <li><strong>1 Mark:</strong> Identifies rate orders ($2\text{nd order } r_{\mathrm{f}}$ vs $1\text{st order } r_{\mathrm{r}}$).</li>
+                                <li><strong>1 Mark:</strong> Explains compression increases $r_{\mathrm{f}}$ by $4\times$ vs $r_{\mathrm{r}}$ by $2\times$, driving net forward shift ($\to$).</li>
+                                <li><strong>1 Mark:</strong> Explicitly links shifts to product yield changes.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation Footer -->
+            <footer class="content-footer">
+                <a href="09-effect-of-temperature.html" class="btn btn-outline">&larr; Back to Lesson 09</a>
+                <a href="11-activation-energy-equilibrium.html" class="btn btn-ethereal">
+                    Proceed to Lesson 11: Activation Energy & $\Delta H$ &rarr;
+                </a>
+            </footer>
+        </main>
+    </div>
+
+    <!-- INTERACTIVE COLLISION THEORY & RATE ENGINE JAVASCRIPT -->
+    <script>
+        let rf = 10.0;
+        let rr = 10.0;
+        let animationFrameId = null;
+
+        let particles = [];
+        const numParticles = 24;
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < numParticles; i++) {
+                particles.push({
+                    x: Math.random() * 300 + 20,
+                    y: Math.random() * 220 + 20,
+                    vx: (Math.random() - 0.5) * 3,
+                    vy: (Math.random() - 0.5) * 3,
+                    type: i < 12 ? 'reactant' : 'product'
+                });
+            }
+        }
+
+        function runCTSim() {
+            rf = 10.0;
+            rr = 10.0;
+            updateTelemetry("EQUILIBRIUM (r_f = r_r)", "#34d399", 0.0);
+            renderCTGraph();
+        }
+
+        function triggerDisturbance() {
+            const mode = document.getElementById('sim-ct-disturbance').value;
+
+            if (mode === 'add_reactant') {
+                rf = 25.0; rr = 10.0;
+                updateTelemetry("NET FORWARD (r_f > r_r)", "#38bdf8", 15.0);
+            } else if (mode === 'compress_vol') {
+                rf = 30.0; rr = 18.0;
+                updateTelemetry("NET FORWARD (r_f > r_r)", "#38bdf8", 12.0);
+            } else if (mode === 'heat_temp') {
+                rf = 28.0; rr = 16.0;
+                updateTelemetry("NET FORWARD (r_f > r_r)", "#a78bfa", 12.0);
+            } else if (mode === 'add_catalyst') {
+                rf = 25.0; rr = 25.0;
+                updateTelemetry("CATALYSED EQUILIBRIUM (r_f = r_r)", "#34d399", 0.0);
+            }
+
+            renderCTGraph();
+        }
+
+        function updateTelemetry(shiftText, color, gap) {
+            document.getElementById('tel-rf-val').innerText = `${rf.toFixed(1)} units`;
+            document.getElementById('tel-rr-val').innerText = `${rr.toFixed(1)} units`;
+            document.getElementById('tel-rate-gap').innerText = `${gap.toFixed(1)}`;
+            const shiftEl = document.getElementById('tel-ct-shift');
+            shiftEl.innerText = shiftText;
+            shiftEl.style.color = color;
+        }
+
+        function animateParticles() {
+            const canvas = document.getElementById('canvas-ct-particles');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Update & Draw Particles
+            for (let p of particles) {
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 10 || p.x > canvas.width - 10) p.vx *= -1;
+                if (p.y < 10 || p.y > canvas.height - 10) p.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.type === 'reactant' ? 6 : 8, 0, Math.PI * 2);
+                ctx.fillStyle = p.type === 'reactant' ? '#38bdf8' : '#f43f5e';
+                ctx.fill();
+            }
+
+            requestAnimationFrame(animateParticles);
+        }
+
+        function renderCTGraph() {
+            const canvas = document.getElementById('canvas-ct-graph');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Axes
+            ctx.strokeStyle = "rgba(255,255,255,0.15)";
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(35, 15); ctx.lineTo(35, 230);
+            ctx.moveTo(35, 230); ctx.lineTo(320, 230);
+            ctx.stroke();
+
+            ctx.fillStyle = "#94a3b8";
+            ctx.font = "10px Inter, sans-serif";
+            ctx.fillText("Rate (r)", 5, 12);
+            ctx.fillText("Time (t)", 280, 245);
+
+            const t1 = 120;
+            const t2 = 240;
+
+            // Marker
+            ctx.strokeStyle = "rgba(251, 191, 36, 0.4)";
+            ctx.setLineDash([3, 3]);
+            ctx.beginPath();
+            ctx.moveTo(t1, 15); ctx.lineTo(t1, 230);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Plot Curves
+            const y0 = 170; // initial equal rate
+            const yRf_sp = 230 - (rf * 5);
+            const yRr_sp = 230 - (rr * 5);
+            const yEq2 = 230 - (((rf + rr) / 2) * 5);
+
+            // Forward Rate Blue
+            ctx.strokeStyle = "#38bdf8"; ctx.lineWidth = 2.5;
+            ctx.beginPath();
+            ctx.moveTo(35, y0); ctx.lineTo(t1, y0);
+            ctx.lineTo(t1, yRf_sp);
+            ctx.bezierCurveTo(t1 + 40, yRf_sp, t2 - 30, yEq2, t2, yEq2);
+            ctx.lineTo(320, yEq2);
+            ctx.stroke();
+
+            // Reverse Rate Red
+            ctx.strokeStyle = "#f43f5e"; ctx.lineWidth = 2.5;
+            ctx.beginPath();
+            ctx.moveTo(35, y0); ctx.lineTo(t1, y0);
+            ctx.lineTo(t1, yRr_sp);
+            ctx.bezierCurveTo(t1 + 40, yRr_sp, t2 - 30, yEq2, t2, yEq2);
+            ctx.lineTo(320, yEq2);
+            ctx.stroke();
+        }
+
+        function toggleElement(id) {
+            const el = document.getElementById(id);
+            if (el.style.display === 'none' || el.style.display === '') {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            initParticles();
+            runCTSim();
+            animateParticles();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1800 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07 Effect of Concentration Changes | Module 5 Chemistry</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- MathJax 3 Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <style>
+        /* Modern Ethereal Glassmorphism Styling */
+        :root {
+            --bg-dark: #080c14;
+            --bg-card: rgba(15, 23, 42, 0.75);
+            --bg-card-hover: rgba(30, 41, 59, 0.85);
+            --border-glow: rgba(124, 58, 237, 0.3);
+            --border-light: rgba(255, 255, 255, 0.08);
+            --border-cyan: rgba(6, 182, 212, 0.35);
+            --border-emerald: rgba(16, 185, 129, 0.35);
+            --accent-purple: #a78bfa;
+            --accent-cyan: #38bdf8;
+            --accent-emerald: #34d399;
+            --accent-amber: #fbbf24;
+            --accent-rose: #f43f5e;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-secondary: #cbd5e1;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'Fira Code', 'Cascadia Code', Consolas, monospace;
+            --shadow-glow: 0 0 30px rgba(124, 58, 237, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(124, 58, 237, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 90% 85%, rgba(6, 182, 212, 0.1) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.95) 0%, var(--bg-dark) 100%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.8;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 320px;
+            background: rgba(11, 15, 25, 0.92);
+            border-right: 1px solid var(--border-light);
+            backdrop-filter: blur(16px);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 2rem 1.5rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .badge-glow {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            color: var(--accent-purple);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.4rem;
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .sidebar-header .subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+
+        .progress-container {
+            margin-top: 1.25rem;
+            background: rgba(255, 255, 255, 0.06);
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            border-radius: 3px;
+        }
+
+        .score-card {
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav-menu {
+            padding: 1.25rem 1rem;
+        }
+
+        .nav-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            padding: 0 0.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 0.65rem 0.75rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            margin-bottom: 0.25rem;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            transform: translateX(3px);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(90deg, rgba(124, 58, 237, 0.25), rgba(6, 182, 212, 0.1));
+            border-left: 3px solid var(--accent-purple);
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+
+        .nav-num {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            margin-right: 0.75rem;
+            opacity: 0.7;
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            margin-left: 320px;
+            flex: 1;
+            padding: 2.5rem 3rem;
+            max-width: 1250px;
+        }
+
+        .hero-banner {
+            position: relative;
+            background: linear-gradient(135deg, rgba(24, 16, 48, 0.85) 0%, rgba(15, 23, 42, 0.95) 100%);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2.5rem;
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .ethereal-tag {
+            font-family: var(--font-mono);
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .ethereal-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin: 0.5rem 0 1rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ethereal-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 880px;
+        }
+
+        /* Content Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 2.25rem;
+            margin-bottom: 2.5rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            transition: border-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(124, 58, 237, 0.35);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.75rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .card-header h2 {
+            font-size: 1.6rem;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .pill-badge {
+            padding: 0.35rem 0.85rem;
+            background: rgba(124, 58, 237, 0.12);
+            border: 1px solid var(--border-glow);
+            color: var(--accent-purple);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pill-badge.emerald {
+            background: rgba(16, 185, 129, 0.12);
+            border-color: var(--border-emerald);
+            color: var(--accent-emerald);
+        }
+
+        .pill-badge.cyan {
+            background: rgba(56, 189, 248, 0.12);
+            border-color: var(--border-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .pill-badge.rose {
+            background: rgba(244, 63, 94, 0.12);
+            border-color: rgba(244, 63, 94, 0.35);
+            color: var(--accent-rose);
+        }
+
+        /* Typography & Paragraphs */
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        strong {
+            color: #fff;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: var(--accent-purple);
+            margin: 1.85rem 0 0.85rem;
+            font-weight: 700;
+        }
+
+        h4 {
+            font-size: 1.12rem;
+            color: #fff;
+            margin: 1.35rem 0 0.55rem;
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin: 0 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.75rem;
+            padding-left: 0.25rem;
+        }
+
+        /* Grids & Feature Layouts */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-glow);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card h3 {
+            margin: 0 0 0.5rem 0;
+            color: #fff;
+        }
+
+        /* Callout Boxes */
+        .info-box {
+            background: rgba(124, 58, 237, 0.08);
+            border-left: 4px solid var(--accent-purple);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 1.35rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-box.cyan {
+            background: rgba(56, 189, 248, 0.08);
+            border-left-color: var(--accent-cyan);
+        }
+
+        .info-box.emerald {
+            background: rgba(52, 211, 153, 0.08);
+            border-left-color: var(--accent-emerald);
+        }
+
+        .info-box.amber {
+            background: rgba(251, 191, 36, 0.08);
+            border-left-color: var(--accent-amber);
+        }
+
+        .info-box.rose {
+            background: rgba(244, 63, 94, 0.08);
+            border-left-color: var(--accent-rose);
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+        }
+
+        /* Data & Comparison Tables */
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            margin: 1.75rem 0;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        table.comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            background: rgba(15, 23, 42, 0.7);
+            font-size: 0.95rem;
+        }
+
+        table.comparison-table th {
+            background: rgba(30, 41, 59, 0.9);
+            color: var(--accent-purple);
+            padding: 1rem 1.25rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border-light);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        table.comparison-table td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-secondary);
+            vertical-align: top;
+        }
+
+        table.comparison-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+            color: #fff;
+        }
+
+        /* SVG Graph Containers */
+        .graph-wrapper {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1.75rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .graph-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .svg-graph-container {
+            width: 100%;
+            max-width: 720px;
+            height: auto;
+        }
+
+        /* Interactive Visualiser Module */
+        .sim-container {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            box-shadow: 0 0 35px rgba(124, 58, 237, 0.12);
+        }
+
+        .sim-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+            background: rgba(30, 41, 59, 0.5);
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-group label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .control-group input[type="range"] {
+            width: 100%;
+            accent-color: var(--accent-purple);
+            cursor: pointer;
+        }
+
+        .sim-viewports {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .sim-viewports {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sim-box {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        canvas.sim-canvas-el {
+            background: #050811;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm);
+            width: 100%;
+            height: 260px;
+        }
+
+        .telemetry-panel {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+
+        .telemetry-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .telemetry-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .telemetry-value {
+            font-family: var(--font-mono);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--accent-purple);
+            margin-top: 0.25rem;
+        }
+
+        /* Buttons & Actions */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-ethereal {
+            background: linear-gradient(135deg, #7c3aed, #06b6d4);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-ethereal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.45);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--border-light);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        /* Questions & Rubrics */
+        .question-container {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .marks-badge {
+            background: rgba(244, 63, 94, 0.15);
+            border: 1px solid rgba(244, 63, 94, 0.4);
+            color: var(--accent-rose);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .action-bar {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .drawer {
+            margin-top: 1rem;
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .drawer-hint {
+            background: rgba(251, 191, 36, 0.08);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            color: #fef08a;
+        }
+
+        .drawer-solution {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-glow);
+        }
+
+        .rubric-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--accent-purple);
+        }
+
+        .rubric-box h5 {
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .content-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; padding: 1.5rem; }
+            .grid-2col { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="ethereal-theme">
+    <div class="app-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="badge-glow">NESA Stage 6</span>
+                <h2>Module 5</h2>
+                <p class="subtitle">EQUILIBRIUM & ACID REACTIONS</p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="module-progress" style="width: 28%;"></div>
+                </div>
+                <div class="score-card">
+                    Total Mastery: <span id="total-marks">28</span> / 100 Marks
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-section">
+                    <span class="section-title">INTRODUCTION</span>
+                    <a href="index.html" class="nav-item">
+                        <span class="nav-num">—</span> Home & Guide
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE A: FOUNDATIONS OF EQUILIBRIUM</span>
+                    <a href="01-reversible-reactions.html" class="nav-item"><span class="nav-num">01</span> Reversible vs Irreversible</a>
+                    <a href="02-open-closed-systems.html" class="nav-item"><span class="nav-num">02</span> Open vs Closed Systems</a>
+                    <a href="03-static-dynamic-equilibrium.html" class="nav-item"><span class="nav-num">03</span> Static vs Dynamic Eq</a>
+                    <a href="04-non-equilibrium-systems.html" class="nav-item"><span class="nav-num">04</span> Non-Equilibrium Systems</a>
+                    <a href="05-collision-theory-equilibrium.html" class="nav-item"><span class="nav-num">05</span> Collision Theory in Eq</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE B: FACTORS AFFECTING EQUILIBRIUM</span>
+                    <a href="06-intro-le-chatelier.html" class="nav-item"><span class="nav-num">06</span> Le Chatelier's Principle</a>
+                    <a href="07-effect-of-concentration.html" class="nav-item active"><span class="nav-num">07</span> Concentration Changes</a>
+                    <a href="08-effect-of-pressure-volume.html" class="nav-item"><span class="nav-num">08</span> Pressure & Volume</a>
+                    <a href="09-effect-of-temperature.html" class="nav-item"><span class="nav-num">09</span> Temperature Effects</a>
+                    <a href="10-collision-theory-lcp.html" class="nav-item"><span class="nav-num">10</span> Collision Theory & LCP</a>
+                    <a href="11-activation-energy-equilibrium.html" class="nav-item"><span class="nav-num">11</span> Activation Energy & $\Delta H$</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE C: THE EQUILIBRIUM CONSTANT</span>
+                    <a href="12-keq-expression.html" class="nav-item"><span class="nav-num">12</span> The $K_{\mathrm{eq}}$ Expression</a>
+                    <a href="13-keq-calculations-basic.html" class="nav-item"><span class="nav-num">13</span> Basic $K_{\mathrm{eq}}$ Calculations</a>
+                    <a href="14-keq-calculations-advanced.html" class="nav-item"><span class="nav-num">14</span> Advanced $K_{\mathrm{eq}}$ & $Q$</a>
+                    <a href="15-temperature-and-keq.html" class="nav-item"><span class="nav-num">15</span> Temperature & $K_{\mathrm{eq}}$</a>
+                    <a href="16-determining-keq-experiment.html" class="nav-item"><span class="nav-num">16</span> Practical Determination</a>
+                    <a href="17-keq-acid-base-dissociation.html" class="nav-item"><span class="nav-num">17</span> Dissociation Systems</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE D: SOLUTION EQUILIBRIA</span>
+                    <a href="18-dissolution-ionic-compounds.html" class="nav-item"><span class="nav-num">18</span> Ionic Dissolution</a>
+                    <a href="19-indigenous-solubility-cycads.html" class="nav-item"><span class="nav-num">19</span> Indigenous Detoxification</a>
+                    <a href="20-solubility-rules.html" class="nav-item"><span class="nav-num">20</span> Solubility Rules</a>
+                    <a href="21-solubility-product-ksp.html" class="nav-item"><span class="nav-num">21</span> Solubility Product ($K_{\mathrm{sp}}$)</a>
+                    <a href="22-molar-solubility-calcs.html" class="nav-item"><span class="nav-num">22</span> Molar Solubility Calcs</a>
+                    <a href="23-predicting-precipitation.html" class="nav-item"><span class="nav-num">23</span> Predicting Precipitation</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE E: ASSESSMENT & REVIEW</span>
+                    <a href="24-formula-summary.html" class="nav-item"><span class="nav-num">24</span> Formula & Concept Guide</a>
+                    <a href="25-final-exam.html" class="nav-item"><span class="nav-num">25</span> Final Examination</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="hero-banner">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <span class="ethereal-tag">LESSON 07 • PHASE B: FACTORS AFFECTING EQUILIBRIUM</span>
+                    <h1 class="ethereal-title">Effect of Concentration Changes</h1>
+                </div>
+            </header>
+
+            <!-- SYLLABUS ALIGNMENT CARD -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>NESA Syllabus Inquiry Focus</h2>
+                    <span class="pill-badge">Stage 6 Chemistry</span>
+                </div>
+                <p>
+                    <strong>Inquiry Question 2:</strong> <em>What factors affect equilibrium and how?</em>
+                </p>
+                <div class="info-box cyan" style="margin-top: 1rem;">
+                    <h3>Syllabus Outcomes Addressed (Outcome CH-12-01):</h3>
+                    <ul>
+                        <li>Conduct a practical investigation to analyse the effect of concentration changes on an equilibrium system.</li>
+                        <li>Investigate the interaction between iron(III) nitrate and potassium thiocyanate ($\mathrm{Fe^{3+}/SCN^-/FeSCN^{2+}}$) under varying concentration perturbations.</li>
+                        <li>Analyse ion removal mechanisms including precipitation ($\mathrm{Ag^+}$, $\mathrm{OH^-}$) and complexation ($\mathrm{HPO_4^{2-}}$, $\mathrm{F^-}$) using Le Chatelier's Principle and net ionic equations.</li>
+                        <li>Explain concentration-induced shifts at the sub-microscopic level using Collision Theory (forward vs reverse collision frequencies, $Z_{\mathrm{f}}$ vs $Z_{\mathrm{r}}$).</li>
+                        <li>Mathematical analysis of concentration shifts by comparing the Reaction Quotient ($Q_c$) to the Equilibrium Constant ($K_{\mathrm{eq}}$).</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECTION 1: FUNDAMENTALS OF CONCENTRATION DISTURBANCES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>1. Fundamentals of Concentration Disturbances & Collision Dynamics</h2>
+                    <span class="pill-badge">Microscopic Kinetics</span>
+                </div>
+
+                <p>
+                    In Lesson 06, we introduced <strong>Le Chatelier's Principle</strong> as a qualitative predictive model for dynamic equilibrium systems. In this lesson, we perform a deep kinetic and empirical investigation into <strong>concentration changes</strong>—one of the most fundamental disturbances tested in Stage 6 Chemistry.
+                </p>
+
+                <p>
+                    A concentration disturbance occurs whenever the molarity ($C = n/V$) of an individual dissolved aqueous ion or gas particle in a closed system is altered. This can happen via direct addition of a chemical reagent, indirect removal of a species through precipitation or complex formation, or solvent dilution.
+                </p>
+
+                <h3>Le Chatelier Prediction vs Collision Theory Mechanism</h3>
+                <div class="grid-2col">
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-purple);">
+                        <h3>1. Le Chatelier's Qualitative Prediction</h3>
+                        <p>
+                            • <strong>Adding a Species ($+[\text{Species}]$):</strong> The system shifts in a direction that <strong>consumes</strong> the added species to lower its concentration.
+                            <br>
+                            • <strong>Removing a Species ($-[\text{Species}]$):</strong> The system shifts in a direction that <strong>produces</strong> the removed species to replenish its concentration.
+                        </p>
+                    </div>
+
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-cyan);">
+                        <h3>2. Collision Theory Physical Cause</h3>
+                        <p>
+                            • Increasing $[\text{Reactant}]$ raises the number of reactant particles per unit volume.
+                            <br>
+                            • This increases the frequency of collisions between reactant molecules per second ($Z_{\mathrm{f}} \uparrow$), instantly making the forward reaction rate greater than the reverse rate ($r_{\mathrm{f}} > r_{\mathrm{r}}$).
+                            <br>
+                            • Net forward reaction proceeds until product accumulation elevates reverse rate ($r_{\mathrm{r}} \uparrow$) to re-equalise rates ($r_{\mathrm{f}}' = r_{\mathrm{r}}'$).
+                        </p>
+                    </div>
+                </div>
+
+                <div class="info-box amber">
+                    <h3>The Partial Counteraction Rule for Concentration Spikes</h3>
+                    <p>
+                        When a species concentration is abruptly spiked by adding a reagent, the net shift consumes part of the added species. However, at the new dynamic equilibrium state, the final concentration of the spiked species will remain <strong>higher than its pre-spike baseline</strong>, but lower than the maximum height of the instantaneous spike!
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 2: BENCHMARK PRACTICAL SYSTEM: IRON(III) THIOCYANATE -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>2. The Benchmark Practical System: Iron(III) Thiocyanate Equilibrium</h2>
+                    <span class="pill-badge emerald">Syllabus Mandatory Experiment</span>
+                </div>
+
+                <p>
+                    The NESA Stage 6 Chemistry syllabus specifically mandates the practical investigation of the equilibrium between iron(III) ions ($\mathrm{Fe^{3+}}$), thiocyanate ions ($\mathrm{SCN^-}$), and the thiocyanatoiron(III) complex ion ($\mathrm{FeSCN^{2+}}$).
+                </p>
+
+                <h3>Net Ionic Chemical Equation & Optical Characteristics</h3>
+                <p>
+                    When iron(III) nitrate ($\mathrm{Fe(NO_3)_3}$) is mixed with potassium thiocyanate ($\mathrm{KSCN}$) in aqueous solution, an equilibrium is established:
+                </p>
+                $$\mathrm{\underset{\text{Pale Yellow / Amber}}{Fe^{3+}(aq)} + \underset{\text{Colourless}}{SCN^-(aq)} \rightleftharpoons \underset{\text{Deep Blood-Red}}{FeSCN^{2+}(aq)}} \quad \Delta H < 0$$
+
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Chemical Species</th>
+                                <th>System Role</th>
+                                <th>Solution Appearance / Spectrophotometric Colour</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Iron(III) Ion ($\mathrm{Fe^{3+}}$)</strong></td>
+                                <td>Aqueous Reactant Cation</td>
+                                <td><strong>Pale Yellow / Amber</strong> (at high concentrations) or nearly colourless when dilute.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Thiocyanate Ion ($\mathrm{SCN^-}$)</strong></td>
+                                <td>Aqueous Reactant Anion</td>
+                                <td><strong>Colourless</strong>.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Thiocyanatoiron(III) Ion ($\mathrm{FeSCN^{2+}}$)</strong></td>
+                                <td>Aqueous Complex Product</td>
+                                <td><strong>Deep Blood-Red</strong> (absorbs strongly at $\lambda_{\text{max}} \approx 447\text{ nm}$).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Spectator Ions ($\mathrm{K^+}$, $\mathrm{NO_3^-}$)</strong></td>
+                                <td>Inert Spectators</td>
+                                <td><strong>Colourless</strong>; do not participate in collision mechanics.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box cyan">
+                    <h3>Visual Indicator for Shift Directions</h3>
+                    <p>
+                        Because the product complex ion $\mathrm{FeSCN^{2+}}$ is intensely blood-red while reactants are pale yellow/colourless, the solution's colour intensity acts as a built-in optical indicator:
+                        <br>
+                        • <strong>Darker Blood-Red Colour:</strong> Indicates a <strong>net forward shift ($\to$)</strong> (product $\mathrm{FeSCN^{2+}}$ increases).
+                        <br>
+                        • <strong>Paler / Lighter Red or Yellow Colour:</strong> Indicates a <strong>net reverse shift ($\leftarrow$)</strong> (product $\mathrm{FeSCN^{2+}}$ decreases).
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 3: DIRECT ION ADDITIONS (FE3+, SCN-, FESCN2+) -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>3. Perturbing the Benchmark System: Direct Ion Additions</h2>
+                    <span class="pill-badge purple">Reagent Additions</span>
+                </div>
+
+                <p>
+                    Let us systematically examine the effects of injecting additional reactant or product ions into the benchmark iron(III) thiocyanate equilibrium mixture.
+                </p>
+
+                <h3>Case A: Adding Iron(III) Nitrate Solution ($\mathrm{Fe(NO_3)_3} \to +\mathrm{Fe^{3+}}$)</h3>
+                <ul>
+                    <li><strong>Disturbance:</strong> Concentration of reactant $[\mathrm{Fe^{3+}}]$ is abruptly increased.</li>
+                    <li><strong>Le Chatelier Prediction:</strong> System shifts to consume added $\mathrm{Fe^{3+}}$.</li>
+                    <li><strong>Shift Direction:</strong> <strong>Net Forward Shift ($\to$)</strong>.</li>
+                    <li><strong>Observable Change:</strong> Solution turns significantly <strong>darker blood-red</strong> due to the accumulation of $\mathrm{FeSCN^{2+}}$.</li>
+                    <li><strong>Collision Theory:</strong> Higher $[\mathrm{Fe^{3+}}]$ elevates forward collision frequency ($Z_{\mathrm{f}} \uparrow$), making $r_{\mathrm{f}} > r_{\mathrm{r}}$ until products build up.</li>
+                </ul>
+
+                <h3>Case B: Adding Potassium Thiocyanate Solution ($\mathrm{KSCN} \to +\mathrm{SCN^-}$)</h3>
+                <ul>
+                    <li><strong>Disturbance:</strong> Concentration of reactant $[\mathrm{SCN^-}]$ is abruptly increased.</li>
+                    <li><strong>Le Chatelier Prediction:</strong> System shifts to consume added $\mathrm{SCN^-}$.</li>
+                    <li><strong>Shift Direction:</strong> <strong>Net Forward Shift ($\to$)</strong>.</li>
+                    <li><strong>Observable Change:</strong> Solution turns <strong>darker blood-red</strong> as $[\mathrm{FeSCN^{2+}}]$ rises.</li>
+                    <li><strong>Collision Theory:</strong> Higher $[\mathrm{SCN^-}]$ increases forward collision frequency ($Z_{\mathrm{f}} \uparrow$), driving $r_{\mathrm{f}} > r_{\mathrm{r}}$.</li>
+                </ul>
+
+                <h3>Case C: Adding Pure Complex Salt ($\mathrm{FeSCN^{2+}}$)</h3>
+                <ul>
+                    <li><strong>Disturbance:</strong> Concentration of product $[\mathrm{FeSCN^{2+}}]$ is increased.</li>
+                    <li><strong>Le Chatelier Prediction:</strong> System shifts to consume excess product $\mathrm{FeSCN^{2+}}$.</li>
+                    <li><strong>Shift Direction:</strong> <strong>Net Reverse Shift ($\leftarrow$)</strong>.</li>
+                    <li><strong>Collision Theory:</strong> Higher $[\mathrm{FeSCN^{2+}}]$ raises reverse decomposition collision frequency ($Z_{\mathrm{r}} \uparrow$), driving $r_{\mathrm{r}} > r_{\mathrm{f}}$.</li>
+                </ul>
+            </section>
+
+            <!-- SECTION 4: REMOVING IONS VIA PRECIPITATION AND COMPLEXATION -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>4. Perturbing the Benchmark System: Removing Ions via Precipitation & Complexation</h2>
+                    <span class="pill-badge rose">High-Frequency Exam Traps</span>
+                </div>
+
+                <p>
+                    Examiners frequently test indirect concentration removal pathways where a added chemical reagent reacts with $\mathrm{Fe^{3+}}$ or $\mathrm{SCN^-}$, binding them into insoluble precipitates or highly stable secondary complex ions.
+                </p>
+
+                <div class="features-grid">
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-rose);">
+                        <h3>1. Adding Silver Nitrate ($\mathrm{AgNO_3} \to -\mathrm{SCN^-}$)</h3>
+                        <p>
+                            • <strong>Chemical Mechanism:</strong> Silver ions ($\mathrm{Ag^+}$) combine with thiocyanate ions ($\mathrm{SCN^-}$) to precipitate solid white silver thiocyanate ($\mathrm{AgSCN_{(s)}}$):
+                            $$\mathrm{Ag^+(aq) + SCN^-(aq) \to AgSCN(s)} \quad (\text{White Precipitate})$$
+                            • <strong>Disturbance:</strong> $[\mathrm{SCN^-}]$ is precipitously lowered (removed from solution).
+                            <br>• <strong>LCP Shift:</strong> System undergoes a <strong>net reverse shift ($\leftarrow$)</strong> to replace lost $\mathrm{SCN^-}$.
+                            <br>• <strong>Observable Change:</strong> The blood-red colour <strong>fades to pale yellow</strong>, and a white milky suspension forms.
+                        </p>
+                    </div>
+
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-amber);">
+                        <h3>2. Adding Disodium Hydrogen Phosphate ($\mathrm{Na_2HPO_4} \to -\mathrm{Fe^{3+}}$)</h3>
+                        <p>
+                            • <strong>Chemical Mechanism:</strong> Hydrogen phosphate ions ($\mathrm{HPO_4^{2-}}$) bind iron(III) ions into a stable, colourless phosphatoiron(III) complex ion:
+                            $$\mathrm{Fe^{3+}(aq) + HPO_4^{2-}(aq) \rightleftharpoons [Fe(HPO_4)]^+(aq)} \quad (\text{Colourless Complex})$$
+                            • <strong>Disturbance:</strong> Free $[\mathrm{Fe^{3+}}]$ is removed from the primary equilibrium.
+                            <br>• <strong>LCP Shift:</strong> System undergoes a <strong>net reverse shift ($\leftarrow$)</strong> to replace lost $\mathrm{Fe^{3+}}$.
+                            <br>• <strong>Observable Change:</strong> The blood-red colour <strong>fades completely to colourless</strong>.
+                        </p>
+                    </div>
+
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-cyan);">
+                        <h3>3. Adding Sodium Fluoride ($\mathrm{NaF} \to -\mathrm{Fe^{3+}}$)</h3>
+                        <p>
+                            • <strong>Chemical Mechanism:</strong> Fluoride ions ($\mathrm{F^-}$) form an extremely stable, colourless hexafluoroferrate(III) complex ion:
+                            $$\mathrm{Fe^{3+}(aq) + 6F^-(aq) \rightleftharpoons [FeF_6]^{3-}(aq)} \quad (\text{Colourless Complex})$$
+                            • <strong>Disturbance:</strong> Free $[\mathrm{Fe^{3+}}]$ is strongly sequestered.
+                            <br>• <strong>LCP Shift:</strong> System undergoes a <strong>net reverse shift ($\leftarrow$)</strong>.
+                            <br>• <strong>Observable Change:</strong> Blood-red solution rapidly <strong>decolourises to clear/colourless</strong>.
+                        </p>
+                    </div>
+
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-emerald);">
+                        <h3>4. Adding Sodium Hydroxide ($\mathrm{NaOH} \to -\mathrm{Fe^{3+}}$)</h3>
+                        <p>
+                            • <strong>Chemical Mechanism:</strong> Hydroxide ions ($\mathrm{OH^-}$) react with $\mathrm{Fe^{3+}}$ to precipitate iron(III) hydroxide:
+                            $$\mathrm{Fe^{3+}(aq) + 3OH^-(aq) \to Fe(OH)_3(s)} \quad (\text{Red-Brown Precipitate})$$
+                            • <strong>Disturbance:</strong> $[\mathrm{Fe^{3+}}]$ is precipitated out of solution.
+                            <br>• <strong>LCP Shift:</strong> System undergoes a <strong>net reverse shift ($\leftarrow$)</strong>.
+                            <br>• <strong>Observable Change:</strong> Blood-red solution fades, and a rusty red-brown solid precipitates.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 5: AQUEOUS DILUTION & THE VOLUME-CONCENTRATION PARADOX -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>5. Aqueous Dilution & The Volume-Concentration Paradox</h2>
+                    <span class="pill-badge cyan">Solution Dynamics</span>
+                </div>
+
+                <p>
+                    What happens when distilled water is added to the benchmark $\mathrm{Fe^{3+}/SCN^-/FeSCN^{2+}}$ solution?
+                </p>
+
+                <h3>Mathematical Count of Dissolved Species</h3>
+                $$\mathrm{\underset{1\text{ Aq Mole}}{Fe^{3+}(aq)} + \underset{1\text{ Aq Mole}}{SCN^-(aq)} \rightleftharpoons \underset{1\text{ Aq Mole}}{FeSCN^{2+}(aq)}}$$
+                <p>
+                    • <strong>Reactant Side:</strong> $1 + 1 = 2\text{ moles of dissolved ions}$.
+                    <br>
+                    • <strong>Product Side:</strong> $1\text{ mole of dissolved complex ion}$.
+                </p>
+
+                <div class="info-box cyan">
+                    <h3>Application of Le Chatelier's Dilution Principle</h3>
+                    <p>
+                        <strong>Disturbance:</strong> Adding water doubles solution volume ($V \uparrow$), instantly halving the concentrations ($C = n/V$) of all dissolved species ($\mathrm{Fe^{3+}}, \mathrm{SCN^-}, \mathrm{FeSCN^{2+}}$).
+                        <br><br>
+                        <strong>LCP Rule:</strong> To counteract the overall drop in ion concentration, the system shifts towards the side with the <strong>GREATER number of dissolved aqueous particles ($\sum \text{aq moles}$)</strong>.
+                        <br><br>
+                        <strong>Outcome:</strong> Shifts in reverse ($\leftarrow$) towards the reactant side ($2\text{ aq moles} > 1\text{ aq mole}$) to produce more total dissolved ions. Blood-red $\mathrm{FeSCN^{2+}}$ dissociates into $\mathrm{Fe^{3+}}$ and $\mathrm{SCN^-}$, fading the red intensity beyond the simple optical dilution effect!
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 6: MATHEMATICAL ANALYSIS: REACTION QUOTIENT QC VS KEQ -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>6. Mathematical Analysis: Reaction Quotient ($Q_c$) vs Equilibrium Constant ($K_{\mathrm{eq}}$)</h2>
+                    <span class="pill-badge emerald">Quantitative Proof</span>
+                </div>
+
+                <p>
+                    While Le Chatelier's Principle provides qualitative predictions, the <strong>Reaction Quotient ($Q_c$)</strong> provides rigorous mathematical proof of concentration-induced shifts.
+                </p>
+
+                <p>
+                    For the equilibrium $\mathrm{Fe^{3+}(aq) + SCN^-(aq) \rightleftharpoons FeSCN^{2+}(aq)}$, the equilibrium expression is:
+                </p>
+                $$K_{\mathrm{eq}} = \frac{[\mathrm{FeSCN^{2+}}]_{\text{eq}}}{[\mathrm{Fe^{3+}}]_{\text{eq}}[\mathrm{SCN^-}]_{\text{eq}}}$$
+
+                <p>
+                    When a concentration disturbance is imposed, we substitute the new instantaneous concentrations $[\text{Species}]_i$ into the same expression to calculate the instantaneous Reaction Quotient ($Q_c$):
+                </p>
+                $$Q_c = \frac{[\mathrm{FeSCN^{2+}}]_i}{[\mathrm{Fe^{3+}}]_i[\mathrm{SCN^-}]_i}$$
+
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Comparison Condition</th>
+                                <th>Mathematical Relationship</th>
+                                <th>System Equilibrium Status</th>
+                                <th>Net Shift Direction</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>$Q_c < K_{\mathrm{eq}}$</strong></td>
+                                <td>Denominator is too large (too many reactants) or numerator is too small.</td>
+                                <td>System is NOT at equilibrium.</td>
+                                <td>Shifts <strong>FORWARD ($\to$)</strong> to form more product.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>$Q_c = K_{\mathrm{eq}}$</strong></td>
+                                <td>Instantaneous concentrations match equilibrium ratio.</td>
+                                <td>System IS at dynamic equilibrium.</td>
+                                <td><strong>NO SHIFT</strong> ($r_{\mathrm{f}} = r_{\mathrm{r}}$).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>$Q_c > K_{\mathrm{eq}}$</strong></td>
+                                <td>Numerator is too large (too many products) or denominator is too small.</td>
+                                <td>System is NOT at equilibrium.</td>
+                                <td>Shifts <strong>REVERSE ($\leftarrow$)</strong> to reform reactants.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Mathematical Proof for Adding Reactant $\mathrm{Fe^{3+}}$</h3>
+                <p>
+                    If extra $\mathrm{Fe^{3+}}$ is injected into an equilibrium system, $[\mathrm{Fe^{3+}}]_i > [\mathrm{Fe^{3+}}]_{\text{eq}}$.
+                    <br>
+                    Because $[\mathrm{Fe^{3+}}]_i$ sits in the denominator of $Q_c$, increasing the denominator causes the fraction value to drop:
+                </p>
+                $$Q_c = \frac{[\mathrm{FeSCN^{2+}}]_{\text{eq}}}{([\mathrm{Fe^{3+}}]_{\text{eq}} + \text{spike})[\mathrm{SCN^-}]_{\text{eq}}} < K_{\mathrm{eq}}$$
+                <p>
+                    Since $Q_c < K_{\mathrm{eq}}$, the system mathematically MUST shift forward ($\to$) to convert reactants into products until $Q_c$ rises back up to equal $K_{\mathrm{eq}}$!
+                </p>
+            </section>
+
+            <!-- SECTION 7: GRAPHICAL SIGNATURES OF CONCENTRATION DISTURBANCES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>7. Graphical Signatures of Concentration Disturbances ($c\text{ vs }t$ and $r\text{ vs }t$)</h2>
+                    <span class="pill-badge emerald">Graph Interpretation</span>
+                </div>
+
+                <p>
+                    NESA examination questions frequently require students to interpret concentration-time ($c\text{ vs }t$) and rate-time ($r\text{ vs }t$) graphs for concentration perturbations.
+                </p>
+
+                <!-- SVG Graph 1: Concentration-Time Graph for Adding SCN- -->
+                <div class="graph-wrapper">
+                    <div class="graph-title">NESA Concentration-Time Graph: Response to Adding Reactant $\mathrm{SCN^-}$</div>
+                    <div class="svg-graph-container">
+                        <svg viewBox="0 0 700 360" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="700" height="360" fill="#0b1329" rx="10"/>
+                            <line x1="70" y1="310" x2="650" y2="310" stroke="#64748b" stroke-width="2"/>
+                            <line x1="70" y1="40" x2="70" y2="310" stroke="#64748b" stroke-width="2"/>
+
+                            <!-- Dashed Time Markers -->
+                            <line x1="250" y1="40" x2="250" y2="310" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4,4"/>
+                            <line x1="500" y1="40" x2="500" y2="310" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4,4"/>
+
+                            <!-- Axes Labels -->
+                            <text x="360" y="342" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle">Time, $t$</text>
+                            <text x="25" y="175" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle" transform="rotate(-90 25 175)">Concentration ($\text{mol L}^{-1}$)</text>
+
+                            <!-- Domain Text Labels -->
+                            <text x="160" y="25" fill="#cbd5e1" font-size="12" font-weight="700" text-anchor="middle">Initial Eq 1</text>
+                            <text x="250" y="25" fill="#fbbf24" font-size="12" font-weight="700" text-anchor="middle">$t_1$ (+SCN- Spike)</text>
+                            <text x="375" y="25" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">Transition Shift ($\to$)</text>
+                            <text x="575" y="25" fill="#34d399" font-size="12" font-weight="700" text-anchor="middle">New Eq 2</text>
+
+                            <!-- [Fe3+] Curve (Cyan): Start 190, NO SPIKE at t1, smooth decay to 230 -->
+                            <line x1="70" y1="190" x2="250" y2="190" stroke="#38bdf8" stroke-width="3"/>
+                            <path d="M 250 190 C 310 210, 420 230, 500 230" fill="none" stroke="#38bdf8" stroke-width="3"/>
+                            <line x1="500" y1="230" x2="650" y2="230" stroke="#38bdf8" stroke-width="3"/>
+
+                            <!-- [SCN-] Curve (Rose): Start 210, SPIKE UP to 80 at t1, decay to 140 -->
+                            <line x1="70" y1="210" x2="250" y2="210" stroke="#f43f5e" stroke-width="3"/>
+                            <line x1="250" y1="210" x2="250" y2="80" stroke="#f43f5e" stroke-width="3" stroke-dasharray="2,2"/>
+                            <path d="M 250 80 C 310 110, 420 140, 500 140" fill="none" stroke="#f43f5e" stroke-width="3"/>
+                            <line x1="500" y1="140" x2="650" y2="140" stroke="#f43f5e" stroke-width="3"/>
+
+                            <!-- [FeSCN2+] Curve (Emerald): Start 160, NO SPIKE at t1, smooth rise to 100 -->
+                            <line x1="70" y1="160" x2="250" y2="160" stroke="#34d399" stroke-width="3"/>
+                            <path d="M 250 160 C 310 130, 420 100, 500 100" fill="none" stroke="#34d399" stroke-width="3"/>
+                            <line x1="500" y1="100" x2="650" y2="100" stroke="#34d399" stroke-width="3"/>
+
+                            <!-- Labels -->
+                            <text x="655" y="235" fill="#38bdf8" font-size="13" font-weight="700">$[\mathrm{Fe^{3+}}]$</text>
+                            <text x="655" y="145" fill="#f43f5e" font-size="13" font-weight="700">$[\mathrm{SCN^-}]$</text>
+                            <text x="655" y="105" fill="#34d399" font-size="13" font-weight="700">$[\mathrm{FeSCN^{2+}}]$</text>
+
+                            <!-- Spike Highlight -->
+                            <circle cx="250" cy="80" r="5" fill="#fbbf24"/>
+                            <text x="260" y="75" fill="#fbbf24" font-size="11" font-weight="700">Single Vertical Spike (+SCN-)</text>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 8: INTERACTIVE IRON(III) THIOCYANATE CHAMBER & SPECTROPHOTOMETER -->
+            <section class="card glass-card demo-card">
+                <div class="card-header">
+                    <h2>8. Interactive Iron(III) Thiocyanate Chamber & Spectrophotometer Modeller</h2>
+                    <span class="pill-badge demo-pill">Virtual Chemistry Lab</span>
+                </div>
+                <p>Test reagent additions ($\mathrm{Fe^{3+}}, \mathrm{SCN^-}$), ion removing agents ($\mathrm{Ag^+}, \mathrm{Na_2HPO_4}, \mathrm{NaOH}$), and aqueous dilution on the virtual test tube. Observe real-time solution colour shifts, precipitate formation, $Q_c$ calculation, and live concentration graphs.</p>
+
+                <div class="sim-container">
+                    <div class="sim-controls">
+                        <div class="control-group">
+                            <label>Select Reagent Perturbation:</label>
+                            <select id="sim-reagent-select" class="btn btn-outline" style="width: 100%; color: #fff; background: rgba(30,41,59,0.9);" onchange="runLabSim()">
+                                <option value="add_fe">1. Add Fe(NO₃)₃ (+Fe³⁺ Reactant)</option>
+                                <option value="add_scn">2. Add KSCN (+SCN⁻ Reactant)</option>
+                                <option value="add_fescn">3. Add FeSCN²⁺ (+Complex Product)</option>
+                                <option value="add_ag">4. Add AgNO₃ (Precipitates White AgSCN solid)</option>
+                                <option value="add_hpo4">5. Add Na₂HPO₄ (Forms Colourless Fe-Phosphate complex)</option>
+                                <option value="add_oh">6. Add NaOH (Precipitates Red-Brown Fe(OH)₃ solid)</option>
+                                <option value="add_h2o">7. Add Distilled Water (Aqueous Dilution)</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <label>Reagent Dosage Volume: <span id="lbl-dosage" style="color: var(--accent-purple);">2.0 mL</span></label>
+                            <input type="range" id="slider-dosage" min="1" max="5" step="1" value="2" oninput="runLabSim()">
+                        </div>
+                    </div>
+
+                    <div class="sim-viewports">
+                        <div class="sim-box">
+                            <h4 style="font-size: 0.85rem; color: var(--accent-cyan); margin-bottom: 0.5rem;">BEAKER & SPECTROPHOTOMETRIC COLOUR VIEW</h4>
+                            <canvas id="canvas-beaker" class="sim-canvas-el" width="340" height="260"></canvas>
+                        </div>
+
+                        <div class="sim-box">
+                            <h4 style="font-size: 0.85rem; color: var(--accent-cyan); margin-bottom: 0.5rem;">LIVE CONCENTRATION-TIME PROFILE ($c\text{ vs }t$)</h4>
+                            <canvas id="canvas-graph" class="sim-canvas-el" width="340" height="260"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="telemetry-panel">
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">[Fe³⁺] Reactant</span>
+                            <span class="telemetry-value" id="tel-fe" style="color: var(--accent-cyan);">0.010 M</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">[SCN⁻] Reactant</span>
+                            <span class="telemetry-value" id="tel-scn" style="color: var(--accent-rose);">0.010 M</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">[FeSCN²⁺] Complex</span>
+                            <span class="telemetry-value" id="tel-fescn" style="color: var(--accent-emerald);">0.015 M</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Reaction Quotient $Q_c$</span>
+                            <span class="telemetry-value" id="tel-qc" style="color: var(--accent-amber);">150.0</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">LCP Shift Direction</span>
+                            <span class="telemetry-value" id="tel-shift" style="color: var(--accent-purple);">DYNAMIC EQUILIBRIUM</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 9: WORKED EXAMPLES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>9. Scaffolded Worked Examples</h2>
+                    <span class="pill-badge">HSC Step-by-Step Solutions</span>
+                </div>
+
+                <!-- Example 1: Easy -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 1 (Easy): Qualitative Reagent Addition Prediction</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A student adds a few drops of concentrated potassium thiocyanate ($\mathrm{KSCN}$) solution to an equilibrium mixture of $\mathrm{Fe^{3+}(aq) + SCN^-(aq) \rightleftharpoons FeSCN^{2+}(aq)}$.
+                        <br>Predict the shift direction and describe the observable colour change.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Identify Disturbance:</strong> Adding $\mathrm{KSCN}$ increases the concentration of reactant thiocyanate ions ($[\mathrm{SCN^-}]$).</p>
+                        <p><strong>2. Apply LCP:</strong> To counteract the increase in $[\mathrm{SCN^-}]$, the system shifts in the direction that consumes $\mathrm{SCN^-}$.</p>
+                        <p><strong>3. Conclusion:</strong> The system undergoes a <strong>net forward shift ($\to$)</strong>. The solution turns a <strong>darker blood-red</strong> due to the increased concentration of product $\mathrm{FeSCN^{2+}}$.</p>
+                    </div>
+                </div>
+
+                <!-- Example 2: Medium -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 2 (Medium): Explaining Ion Removal via Precipitation</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A solution of silver nitrate ($\mathrm{AgNO_3}$) is added to the equilibrium system $\mathrm{Fe^{3+}(aq) + SCN^-(aq) \rightleftharpoons FeSCN^{2+}(aq)}$.
+                        <br>Explain, using net ionic equations and Le Chatelier's Principle, why the solution colour fades and a white precipitate forms.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Net Ionic Precipitation Equation:</strong> Silver ions ($\mathrm{Ag^+}$) react with thiocyanate ions ($\mathrm{SCN^-}$) to precipitate insoluble silver thiocyanate:
+                        $$\mathrm{Ag^+(aq) + SCN^-(aq) \to AgSCN(s)} \quad (\text{White Solid})$$</p>
+                        <p><strong>2. LCP Explanation:</strong> Precipitation removes free reactant ions $[\mathrm{SCN^-}]$ from solution. According to Le Chatelier's Principle, the system shifts in the reverse direction ($\leftarrow$) to replace the lost $\mathrm{SCN^-}$.</p>
+                        <p><strong>3. Observable Change:</strong> As $\mathrm{FeSCN^{2+}}$ decomposes to replace $\mathrm{SCN^-}$, the blood-red colour fades to pale yellow, and a cloudy white precipitate ($\mathrm{AgSCN_{(s)}}$) is observed.</p>
+                    </div>
+                </div>
+
+                <!-- Example 3: Hard -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 3 (Hard): Collision Theory Mechanism for Concentration Shifts</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Explain, using Collision Theory at the sub-microscopic level, why adding $\mathrm{Fe(NO_3)_3}$ to the $\mathrm{Fe^{3+}/SCN^-/FeSCN^{2+}}$ system causes a net forward shift.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Initial State:</strong> Prior to addition, the system is at dynamic equilibrium where forward collision frequency equals reverse collision frequency ($Z_{\mathrm{f}} = Z_{\mathrm{r}}$ and $r_{\mathrm{f}} = r_{\mathrm{r}}$).</p>
+                        <p><strong>2. Disturbance Mechanics:</strong> Injecting $\mathrm{Fe(NO_3)_3}$ increases the concentration of $\mathrm{Fe^{3+}}$ particles per unit volume. This increases the collision frequency between reactant $\mathrm{Fe^{3+}}$ and $\mathrm{SCN^-}$ ions per second ($Z_{\mathrm{f}} \uparrow$).</p>
+                        <p><strong>3. Rate Imbalance:</strong> Because reactant collision frequency rises while product concentration is initially unchanged, the forward reaction rate instantly exceeds the reverse reaction rate ($r_{\mathrm{f}} > r_{\mathrm{r}}$).</p>
+                        <p><strong>4. Re-establishing Equilibrium:</strong> More $\mathrm{FeSCN^{2+}}$ complex ions are synthesized per second than decompose. As $\mathrm{FeSCN^{2+}}$ accumulates, reverse collision frequency increases ($Z_{\mathrm{r}} \uparrow$) until forward and reverse rates re-equalise ($r_{\mathrm{f}}' = r_{\mathrm{r}}'$) at a higher $[\mathrm{FeSCN^{2+}}]$.</p>
+                    </div>
+                </div>
+
+                <!-- Example 4: Extension -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 4 (Extension): Quantitative Reaction Quotient ($Q_c$) Proof</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        An equilibrium solution at $25^\circ\text{C}$ contains $[\mathrm{Fe^{3+}}] = 0.020\text{ M}$, $[\mathrm{SCN^-}] = 0.015\text{ M}$, and $[\mathrm{FeSCN^{2+}}] = 0.045\text{ M}$.
+                        <br>a) Calculate the equilibrium constant $K_{\mathrm{eq}}$.
+                        <br>b) Solid $\mathrm{Na_2HPO_4}$ is dissolved in the mixture, binding $\mathrm{Fe^{3+}}$ into a complex and instantly reducing free $[\mathrm{Fe^{3+}}]$ to $0.005\text{ M}$. Calculate the instantaneous Reaction Quotient ($Q_c$) and mathematically prove the shift direction.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>a) Calculate $K_{\mathrm{eq}}$:</strong></p>
+                        $$K_{\mathrm{eq}} = \frac{[\mathrm{FeSCN^{2+}}]}{[\mathrm{Fe^{3+}}][\mathrm{SCN^-}]} = \frac{0.045}{0.020 \times 0.015} = \frac{0.045}{0.00030} = 150\text{ M}^{-1}$$
+
+                        <p><strong>b) Calculate $Q_c$ and Prove Shift Direction:</strong></p>
+                        <p>Instantaneous concentrations after $\mathrm{Fe^{3+}}$ sequestration: $[\mathrm{Fe^{3+}}]_i = 0.005\text{ M}$, $[\mathrm{SCN^-}]_i = 0.015\text{ M}$, $[\mathrm{FeSCN^{2+}}]_i = 0.045\text{ M}$.</p>
+                        $$Q_c = \frac{[\mathrm{FeSCN^{2+}}]_i}{[\mathrm{Fe^{3+}}]_i[\mathrm{SCN^-}]_i} = \frac{0.045}{0.005 \times 0.015} = \frac{0.045}{0.000075} = 600\text{ M}^{-1}$$
+                        <p><strong>Mathematical Comparison:</strong> $Q_c (600) > K_{\mathrm{eq}} (150)$.</p>
+                        <p>Because $Q_c > K_{\mathrm{eq}}$, the numerator (product concentration) is too large relative to the denominator. The system <strong>must shift in REVERSE ($\leftarrow$)</strong> to convert products back into reactants until $Q_c$ decreases back to $150$.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 10: PRACTICE QUESTIONS WITH RUBRICS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>10. NESA Examination Practice Questions</h2>
+                    <span class="pill-badge demo-pill">Self-Marking Engine</span>
+                </div>
+                <p>Solve the questions below, then toggle hints and model solutions to verify your answers against NESA marking rubrics.</p>
+
+                <!-- Practice Q1 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 1 (Easy): Colour Change Identification</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        State the observation when solid potassium thiocyanate ($\mathrm{KSCN}$) is dissolved in an equilibrium solution of $\mathrm{Fe^{3+}/SCN^-/FeSCN^{2+}}$ and justify using Le Chatelier's Principle.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq1-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq1-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq1-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> What ion does $\mathrm{KSCN}$ supply, and which species is responsible for the deep red colour?</p>
+                    </div>
+
+                    <div id="pq1-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong> The solution turns a darker blood-red colour. Dissolving $\mathrm{KSCN}$ increases reactant $[\mathrm{SCN^-}]$. According to Le Chatelier's Principle, the system shifts forward ($\to$) to consume added $\mathrm{SCN^-}$, synthesising more blood-red $\mathrm{FeSCN^{2+}}$ product.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Correctly states observation (darker blood-red colour).</li>
+                                <li><strong>1 Mark:</strong> Justifies forward shift using Le Chatelier's Principle.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q2 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 2 (Medium): Sequestering Agents & Complexation</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A student adds sodium fluoride ($\mathrm{NaF}$) to the blood-red equilibrium mixture $\mathrm{Fe^{3+}(aq) + SCN^-(aq) \rightleftharpoons FeSCN^{2+}(aq)}$.
+                        <br>Explain why the blood-red colour decolourises to clear, identifying the secondary reaction involved.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq2-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq2-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq2-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Fluoride ions ($\mathrm{F^-}$) react with $\mathrm{Fe^{3+}}$ to form a very stable, colourless complex ion $[\mathrm{FeF_6}]^{3-}$.</p>
+                    </div>
+
+                    <div id="pq2-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>• <strong>Secondary Complexation Reaction:</strong> Fluoride ions ($\mathrm{F^-}$) react with iron(III) ions to form the colourless complex ion $[\mathrm{FeF_6}]^{3-}$:
+                            $$\mathrm{Fe^{3+}(aq) + 6F^-(aq) \rightleftharpoons [FeF_6]^{3-}(aq)}$$
+                            <br>• <strong>Disturbance & Shift:</strong> Formation of $[\mathrm{FeF_6}]^{3-}$ removes free reactant $\mathrm{Fe^{3+}}$ from the primary equilibrium. According to Le Chatelier's Principle, the primary system shifts in reverse ($\leftarrow$) to replace $\mathrm{Fe^{3+}}$.
+                            <br>• <strong>Observation:</strong> Blood-red $\mathrm{FeSCN^{2+}}$ decomposes into reactants, decolourising the solution to clear/colourless.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Identifies secondary complexation reaction forming colourless $[\mathrm{FeF_6}]^{3-}$.</li>
+                                <li><strong>1 Mark:</strong> Explains that free $[\mathrm{Fe^{3+}}]$ is removed from solution.</li>
+                                <li><strong>1 Mark:</strong> Connects reverse shift via LCP to the fading/decolourisation of red $\mathrm{FeSCN^{2+}}$.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q3 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 3 (Hard): Graph Construction & Partial Counteraction</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Sketch and describe the concentration-time ($c\text{ vs }t$) graph for all species in $\mathrm{Fe^{3+}(aq) + SCN^-(aq) \rightleftharpoons FeSCN^{2+}(aq)}$ when additional $\mathrm{Fe(NO_3)_3}$ is injected at time $t_1$.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq3-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq3-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq3-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Which species exhibits a single vertical spike upward at $t_1$? What happens to the other two species curves?</p>
+                    </div>
+
+                    <div id="pq3-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>• <strong>At $t_1$:</strong> $[\mathrm{Fe^{3+}}]$ shows an instantaneous vertical spike upwards. $[\mathrm{SCN^-}]$ and $[\mathrm{FeSCN^{2+}}]$ show NO vertical steps (curves are continuous at $t_1$).
+                            <br>• <strong>Between $t_1$ and $t_2$:</strong> $[\mathrm{Fe^{3+}}]$ decays smoothly from its spike height; $[\mathrm{SCN^-}]$ decays smoothly; $[\mathrm{FeSCN^{2+}}]$ rises smoothly.
+                            <br>• <strong>At $t_2$:</strong> All three curves level off into horizontal plateaus at the new equilibrium state.
+                            <br>• <strong>Partial Counteraction:</strong> $[\mathrm{Fe^{3+}}]$ at $t_2$ remains higher than its pre-spike initial baseline.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Correctly draws single vertical spike for $[\mathrm{Fe^{3+}}]$ at $t_1$.</li>
+                                <li><strong>1 Mark:</strong> Draws continuous smooth curves for $[\mathrm{SCN^-}]$ (decay) and $[\mathrm{FeSCN^{2+}}]$ (growth).</li>
+                                <li><strong>1 Mark:</strong> Shows all curves leveling off at new equilibrium plateaus at $t_2$.</li>
+                                <li><strong>1 Mark:</strong> Demonstrates partial counteraction ($[\mathrm{Fe^{3+}}]_{t2} > [\mathrm{Fe^{3+}}]_{t0}$).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q4 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 4 (Extension): Synthesis of Dilution & Reaction Quotient</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        An aqueous equilibrium system $\mathrm{A(aq) + B(aq) \rightleftharpoons C(aq)}$ has $K_{\mathrm{eq}} = 100\text{ M}^{-1}$ at $25^\circ\text{C}$. At equilibrium, $[\mathrm{A}] = 0.10\text{ M}$, $[\mathrm{B}] = 0.10\text{ M}$, and $[\mathrm{C}] = 1.00\text{ M}$.
+                        <br>Distilled water is added to double the total solution volume ($V \times 2$).
+                        <br>a) Calculate instantaneous concentrations immediately after water addition.
+                        <br>b) Calculate $Q_c$ and prove mathematically which direction the system must shift to restore equilibrium.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq4-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq4-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq4-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Doubling volume halves all concentrations: $[\text{Species}]_i = \frac{1}{2}[\text{Species}]_{\text{eq}}$. Substitute these halved values into $Q_c$.</p>
+                    </div>
+
+                    <div id="pq4-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>a) Instantaneous Concentrations:</strong>
+                            $$\text{Doubling volume halves all concentrations: } [\mathrm{A}]_i = 0.050\text{ M}, \, [\mathrm{B}]_i = 0.050\text{ M}, \, [\mathrm{C}]_i = 0.50\text{ M}$$
+
+                            <p><strong>b) Calculate $Q_c$ and Prove Shift Direction:</strong></p>
+                            $$Q_c = \frac{[\mathrm{C}]_i}{[\mathrm{A}]_i[\mathrm{B}]_i} = \frac{0.50}{0.050 \times 0.050} = \frac{0.50}{0.0025} = 200\text{ M}^{-1}$$
+                            <p><strong>Comparison:</strong> $Q_c (200) > K_{\mathrm{eq}} (100)$.</p>
+                            <p>Because $Q_c > K_{\mathrm{eq}}$, the numerator (product concentration) is too high relative to the denominator. The system <strong>must shift in REVERSE ($\leftarrow$)</strong> to convert products back into reactants until $Q_c$ falls back to $100$. This rigorously proves the LCP dilution rule: shifting towards the side with more aqueous species ($2\text{ aq moles} > 1\text{ aq mole}$)!</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Correctly calculates halved instantaneous concentrations ($0.05\text{ M}, 0.05\text{ M}, 0.50\text{ M}$).</li>
+                                <li><strong>2 Marks:</strong> Correctly calculates $Q_c = 200\text{ M}^{-1}$.</li>
+                                <li><strong>1 Mark:</strong> Compares $Q_c (200) > K_{\mathrm{eq}} (100)$.</li>
+                                <li><strong>1 Mark:</strong> Proves net reverse shift ($\leftarrow$) and connects to LCP aqueous dilution rule.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation Footer -->
+            <footer class="content-footer">
+                <a href="06-intro-le-chatelier.html" class="btn btn-outline">&larr; Back to Lesson 06</a>
+                <a href="08-effect-of-pressure-volume.html" class="btn btn-ethereal">
+                    Proceed to Lesson 08: Pressure & Volume Effects &rarr;
+                </a>
+            </footer>
+        </main>
+    </div>
+
+    <!-- INTERACTIVE LAB SIMULATOR JAVASCRIPT ENGINE -->
+    <script>
+        // Lab Engine State Variables
+        let concFe = 0.010;
+        let concSCN = 0.010;
+        let concFeSCN = 0.015;
+
+        let precipAgSCN = 0; // Solid white
+        let precipFeOH3 = 0; // Solid red-brown
+
+        const Keq = 150.0;
+
+        function runLabSim() {
+            const reagent = document.getElementById('sim-reagent-select').value;
+            const dosage = parseFloat(document.getElementById('slider-dosage').value);
+            document.getElementById('lbl-dosage').innerText = `${dosage.toFixed(1)} mL`;
+
+            // Reset base values
+            let fe = 0.010;
+            let scn = 0.010;
+            let fescn = 0.015;
+            precipAgSCN = 0;
+            precipFeOH3 = 0;
+
+            let shiftText = "DYNAMIC EQUILIBRIUM";
+            let shiftColor = "#34d399";
+
+            if (reagent === 'add_fe') {
+                fe += (dosage * 0.008);
+                // Shift Right -> consume Fe and SCN, make FeSCN
+                const shift = dosage * 0.003;
+                fe -= shift;
+                scn -= shift;
+                fescn += shift;
+                shiftText = "NET FORWARD (→)";
+                shiftColor = "#38bdf8";
+            } else if (reagent === 'add_scn') {
+                scn += (dosage * 0.008);
+                const shift = dosage * 0.003;
+                fe -= shift;
+                scn -= shift;
+                fescn += shift;
+                shiftText = "NET FORWARD (→)";
+                shiftColor = "#38bdf8";
+            } else if (reagent === 'add_fescn') {
+                fescn += (dosage * 0.010);
+                const shift = dosage * 0.002;
+                fescn -= shift;
+                fe += shift;
+                scn += shift;
+                shiftText = "NET REVERSE (←)";
+                shiftColor = "#f43f5e";
+            } else if (reagent === 'add_ag') {
+                // Precipitates SCN
+                const removed = Math.min(scn, dosage * 0.0025);
+                scn -= removed;
+                precipAgSCN = removed * 100;
+                // Shift Reverse -> decompose FeSCN
+                const shift = Math.min(fescn, dosage * 0.002);
+                fescn -= shift;
+                fe += shift;
+                scn += shift;
+                shiftText = "NET REVERSE (←)";
+                shiftColor = "#f43f5e";
+            } else if (reagent === 'add_hpo4') {
+                // Complexation removes Fe3+
+                const removed = Math.min(fe, dosage * 0.0025);
+                fe -= removed;
+                // Shift Reverse
+                const shift = Math.min(fescn, dosage * 0.002);
+                fescn -= shift;
+                fe += shift;
+                scn += shift;
+                shiftText = "NET REVERSE (←)";
+                shiftColor = "#f43f5e";
+            } else if (reagent === 'add_oh') {
+                // Precipitates Fe(OH)3
+                const removed = Math.min(fe, dosage * 0.0025);
+                fe -= removed;
+                precipFeOH3 = removed * 100;
+                // Shift Reverse
+                const shift = Math.min(fescn, dosage * 0.002);
+                fescn -= shift;
+                fe += shift;
+                scn += shift;
+                shiftText = "NET REVERSE (←)";
+                shiftColor = "#f43f5e";
+            } else if (reagent === 'add_h2o') {
+                // Dilution halves/lowers concentrations
+                const factor = 1.0 / (1.0 + dosage * 0.25);
+                fe *= factor;
+                scn *= factor;
+                fescn *= factor;
+                // Shift Reverse
+                const shift = dosage * 0.001;
+                fescn -= shift;
+                fe += shift;
+                scn += shift;
+                shiftText = "NET REVERSE (←)";
+                shiftColor = "#f43f5e";
+            }
+
+            // Ensure non-negative
+            concFe = Math.max(0.0005, fe);
+            concSCN = Math.max(0.0005, scn);
+            concFeSCN = Math.max(0.0005, fescn);
+
+            const Qc = concFeSCN / (concFe * concSCN);
+
+            // Update Telemetry
+            document.getElementById('tel-fe').innerText = `${concFe.toFixed(4)} M`;
+            document.getElementById('tel-scn').innerText = `${concSCN.toFixed(4)} M`;
+            document.getElementById('tel-fescn').innerText = `${concFeSCN.toFixed(4)} M`;
+            document.getElementById('tel-qc').innerText = Qc.toFixed(1);
+
+            const shiftEl = document.getElementById('tel-shift');
+            shiftEl.innerText = shiftText;
+            shiftEl.style.color = shiftColor;
+
+            renderBeakerCanvas();
+            renderGraphCanvas();
+        }
+
+        function renderBeakerCanvas() {
+            const canvas = document.getElementById('canvas-beaker');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Beaker Outline
+            ctx.strokeStyle = "rgba(255,255,255,0.4)";
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(90, 40);
+            ctx.lineTo(90, 220);
+            ctx.quadraticCurveTo(90, 240, 110, 240);
+            ctx.lineTo(230, 240);
+            ctx.quadraticCurveTo(250, 240, 250, 220);
+            ctx.lineTo(250, 40);
+            ctx.stroke();
+
+            // Calculate Liquid Colour based on [FeSCN2+] (Blood Red) and [Fe3+] (Yellow)
+            const redAlpha = Math.min(0.9, concFeSCN * 35.0);
+            const yellowAlpha = Math.min(0.6, concFe * 20.0);
+
+            // Interpolate RGB
+            const r = Math.round(180 + 75 * redAlpha);
+            const g = Math.round(140 * yellowAlpha * (1 - redAlpha));
+            const b = Math.round(20 * (1 - redAlpha));
+
+            ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${Math.max(0.2, redAlpha + yellowAlpha * 0.3)})`;
+            ctx.beginPath();
+            ctx.rect(93, 70, 154, 167);
+            ctx.fill();
+
+            // Liquid Surface Line
+            ctx.strokeStyle = "rgba(255,255,255,0.6)";
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.ellipse(172, 70, 77, 8, 0, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // Render Precipitates if present
+            if (precipAgSCN > 0) {
+                // White precipitate particles at bottom
+                ctx.fillStyle = "rgba(255,255,255,0.85)";
+                for (let i = 0; i < 40; i++) {
+                    const px = 100 + (i * 3.5) % 140;
+                    const py = 230 - (i % 4) * 3;
+                    ctx.beginPath();
+                    ctx.arc(px, py, 2.5, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                ctx.fillStyle = "#ffffff";
+                ctx.font = "bold 11px Inter, sans-serif";
+                ctx.fillText("AgSCN(s) White Precipitate", 100, 215);
+            }
+
+            if (precipFeOH3 > 0) {
+                // Red-brown precipitate particles
+                ctx.fillStyle = "rgba(180, 60, 20, 0.9)";
+                for (let i = 0; i < 45; i++) {
+                    const px = 100 + (i * 3.2) % 140;
+                    const py = 232 - (i % 5) * 3;
+                    ctx.beginPath();
+                    ctx.arc(px, py, 3, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                ctx.fillStyle = "#fbbf24";
+                ctx.font = "bold 11px Inter, sans-serif";
+                ctx.fillText("Fe(OH)₃(s) Red-Brown Solid", 100, 215);
+            }
+
+            // Text Label
+            ctx.fillStyle = "#cbd5e1";
+            ctx.font = "12px Inter, sans-serif";
+            ctx.fillText("Optical Spectrophotometric View", 70, 255);
+        }
+
+        function renderGraphCanvas() {
+            const canvas = document.getElementById('canvas-graph');
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Axes
+            ctx.strokeStyle = "rgba(255,255,255,0.15)";
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(35, 15); ctx.lineTo(35, 230);
+            ctx.moveTo(35, 230); ctx.lineTo(320, 230);
+            ctx.stroke();
+
+            // Labels
+            ctx.fillStyle = "#94a3b8";
+            ctx.font = "10px Inter, sans-serif";
+            ctx.fillText("Conc (M)", 5, 12);
+            ctx.fillText("Time (t)", 280, 245);
+
+            const t1 = 120;
+            const t2 = 240;
+
+            // Dashed Time Line t1
+            ctx.strokeStyle = "rgba(251, 191, 36, 0.4)";
+            ctx.setLineDash([3, 3]);
+            ctx.beginPath();
+            ctx.moveTo(t1, 15); ctx.lineTo(t1, 230);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            // Curves
+            // Base Y positions
+            const yFe0 = 170;
+            const ySCN0 = 170;
+            const yFeSCN0 = 130;
+
+            // Target Y positions based on state
+            const yFe_target = 230 - (concFe * 8000);
+            const ySCN_target = 230 - (concSCN * 8000);
+            const yFeSCN_target = 230 - (concFeSCN * 6000);
+
+            // Draw [Fe3+] Cyan
+            drawSimCurve(ctx, "#38bdf8", yFe0, yFe_target, t1, t2);
+            // Draw [SCN-] Rose
+            drawSimCurve(ctx, "#f43f5e", ySCN0, ySCN_target, t1, t2);
+            // Draw [FeSCN2+] Emerald
+            drawSimCurve(ctx, "#34d399", yFeSCN0, yFeSCN_target, t1, t2);
+
+            // Legend
+            ctx.font = "bold 10px Inter, sans-serif";
+            ctx.fillStyle = "#38bdf8"; ctx.fillText("[Fe³⁺]", 270, Math.max(30, yFe_target));
+            ctx.fillStyle = "#f43f5e"; ctx.fillText("[SCN⁻]", 270, Math.max(45, ySCN_target));
+            ctx.fillStyle = "#34d399"; ctx.fillText("[FeSCN²⁺]", 270, Math.max(20, yFeSCN_target));
+        }
+
+        function drawSimCurve(ctx, color, y0, yTarget, t1, t2) {
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 2.5;
+
+            // t0 to t1
+            ctx.beginPath();
+            ctx.moveTo(35, y0);
+            ctx.lineTo(t1, y0);
+            ctx.stroke();
+
+            // Transition t1 to t2
+            ctx.beginPath();
+            ctx.moveTo(t1, y0);
+            ctx.bezierCurveTo(t1 + 40, y0, t2 - 30, yTarget, t2, yTarget);
+            ctx.lineTo(320, yTarget);
+            ctx.stroke();
+        }
+
+        function toggleElement(id) {
+            const el = document.getElementById(id);
+            if (el.style.display === 'none' || el.style.display === '') {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            runLabSim();
+        });
+    </script>
+</body>
+</html>

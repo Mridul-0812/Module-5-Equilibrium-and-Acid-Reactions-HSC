@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23 Predicting Precipitate Formation | Module 5 Chemistry</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- MathJax 3 Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <style>
+        /* Ethereal Glassmorphism Custom UI Extensions */
+        :root {
+            --bg-dark: #080c14;
+            --bg-card: rgba(15, 23, 42, 0.75);
+            --bg-card-hover: rgba(30, 41, 59, 0.85);
+            --border-glow: rgba(124, 58, 237, 0.3);
+            --border-light: rgba(255, 255, 255, 0.08);
+            --border-cyan: rgba(6, 182, 212, 0.35);
+            --border-emerald: rgba(16, 185, 129, 0.35);
+            --accent-purple: #a78bfa;
+            --accent-cyan: #38bdf8;
+            --accent-emerald: #34d399;
+            --accent-amber: #fbbf24;
+            --accent-rose: #f43f5e;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-secondary: #cbd5e1;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'Fira Code', 'Cascadia Code', Consolas, monospace;
+            --shadow-glow: 0 0 30px rgba(124, 58, 237, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(124, 58, 237, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 90% 85%, rgba(6, 182, 212, 0.1) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.95) 0%, var(--bg-dark) 100%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.8;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 320px;
+            background: rgba(11, 15, 25, 0.92);
+            border-right: 1px solid var(--border-light);
+            backdrop-filter: blur(16px);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 2rem 1.5rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .badge-glow {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            color: var(--accent-purple);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.4rem;
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .sidebar-header .subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+
+        .progress-container {
+            margin-top: 1.25rem;
+            background: rgba(255, 255, 255, 0.06);
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            border-radius: 3px;
+        }
+
+        .score-card {
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav-menu {
+            padding: 1.25rem 1rem;
+        }
+
+        .nav-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            padding: 0 0.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 0.65rem 0.75rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            margin-bottom: 0.25rem;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            transform: translateX(3px);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(90deg, rgba(124, 58, 237, 0.25), rgba(6, 182, 212, 0.1));
+            border-left: 3px solid var(--accent-purple);
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+
+        .nav-num {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            margin-right: 0.75rem;
+            opacity: 0.7;
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            margin-left: 320px;
+            flex: 1;
+            padding: 2.5rem 3rem;
+            max-width: 1250px;
+        }
+
+        .hero-banner {
+            position: relative;
+            background: linear-gradient(135deg, rgba(24, 16, 48, 0.85) 0%, rgba(15, 23, 42, 0.95) 100%);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2.5rem;
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .ethereal-tag {
+            font-family: var(--font-mono);
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .ethereal-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin: 0.5rem 0 1rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ethereal-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 880px;
+        }
+
+        /* Content Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 2.25rem;
+            margin-bottom: 2.5rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            transition: border-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(124, 58, 237, 0.35);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.75rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .card-header h2 {
+            font-size: 1.6rem;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .pill-badge {
+            padding: 0.35rem 0.85rem;
+            background: rgba(124, 58, 237, 0.12);
+            border: 1px solid var(--border-glow);
+            color: var(--accent-purple);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pill-badge.emerald {
+            background: rgba(16, 185, 129, 0.12);
+            border-color: var(--border-emerald);
+            color: var(--accent-emerald);
+        }
+
+        .pill-badge.cyan {
+            background: rgba(56, 189, 248, 0.12);
+            border-color: var(--border-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .pill-badge.amber {
+            background: rgba(251, 191, 36, 0.12);
+            border-color: rgba(251, 191, 36, 0.35);
+            color: var(--accent-amber);
+        }
+
+        .pill-badge.rose {
+            background: rgba(244, 63, 94, 0.12);
+            border-color: rgba(244, 63, 94, 0.35);
+            color: var(--accent-rose);
+        }
+
+        /* Typography & Paragraphs */
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        strong {
+            color: #fff;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: var(--accent-purple);
+            margin: 1.85rem 0 0.85rem;
+            font-weight: 700;
+        }
+
+        h4 {
+            font-size: 1.12rem;
+            color: #fff;
+            margin: 1.35rem 0 0.55rem;
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin: 0 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.75rem;
+            padding-left: 0.25rem;
+        }
+
+        /* Grids & Feature Layouts */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-glow);
+        }
+
+        .feature-card h3 {
+            margin: 0 0 0.5rem 0;
+            color: #fff;
+        }
+
+        /* Callout Boxes */
+        .info-box {
+            background: rgba(124, 58, 237, 0.08);
+            border-left: 4px solid var(--accent-purple);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 1.35rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-box.cyan {
+            background: rgba(56, 189, 248, 0.08);
+            border-left-color: var(--accent-cyan);
+        }
+
+        .info-box.emerald {
+            background: rgba(52, 211, 153, 0.08);
+            border-left-color: var(--accent-emerald);
+        }
+
+        .info-box.amber {
+            background: rgba(251, 191, 36, 0.08);
+            border-left-color: var(--accent-amber);
+        }
+
+        .info-box.rose {
+            background: rgba(244, 63, 94, 0.08);
+            border-left-color: var(--accent-rose);
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+        }
+
+        /* Tables */
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            margin: 1.75rem 0;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-glow);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        table.comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            background: rgba(15, 23, 42, 0.85);
+            font-size: 0.95rem;
+        }
+
+        table.comparison-table th {
+            background: rgba(30, 41, 59, 0.95);
+            color: var(--accent-cyan);
+            padding: 1rem 1.25rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border-glow);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+
+        table.comparison-table td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-main);
+            vertical-align: top;
+        }
+
+        /* SVG Graph Containers */
+        .graph-wrapper {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1.75rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .graph-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .svg-graph-container {
+            width: 100%;
+            max-width: 760px;
+            height: auto;
+        }
+
+        /* Interactive Simulator Module */
+        .sim-container {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            box-shadow: 0 0 35px rgba(124, 58, 237, 0.12);
+        }
+
+        .sim-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+            background: rgba(30, 41, 59, 0.5);
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-group label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .control-group select, .control-group input[type="range"], .control-group input[type="number"] {
+            width: 100%;
+            padding: 0.55rem 0.75rem;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            font-size: 0.9rem;
+            accent-color: var(--accent-purple);
+        }
+
+        .sim-display-box {
+            background: rgba(10, 15, 28, 0.85);
+            border: 1px solid var(--border-cyan);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .telemetry-panel {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+
+        .telemetry-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .telemetry-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .telemetry-value {
+            font-family: var(--font-mono);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--accent-purple);
+            margin-top: 0.25rem;
+        }
+
+        /* Buttons & Actions */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-ethereal {
+            background: linear-gradient(135deg, #7c3aed, #06b6d4);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-ethereal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.45);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--border-light);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        /* Questions & Rubrics */
+        .question-container {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .marks-badge {
+            background: rgba(244, 63, 94, 0.15);
+            border: 1px solid rgba(244, 63, 94, 0.4);
+            color: var(--accent-rose);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .action-bar {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .drawer {
+            margin-top: 1rem;
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .drawer-hint {
+            background: rgba(251, 191, 36, 0.08);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            color: #fef08a;
+        }
+
+        .drawer-solution {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-glow);
+        }
+
+        .rubric-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--accent-purple);
+        }
+
+        .rubric-box h5 {
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .content-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; padding: 1.5rem; }
+            .grid-2col { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="ethereal-theme">
+    <div class="app-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="badge-glow">NESA Stage 6</span>
+                <h2>Module 5</h2>
+                <p class="subtitle">EQUILIBRIUM & ACID REACTIONS</p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="module-progress" style="width: 92%;"></div>
+                </div>
+                <div class="score-card">
+                    Total Mastery: <span id="total-marks">92</span> / 100 Marks
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-section">
+                    <span class="section-title">INTRODUCTION</span>
+                    <a href="index.html" class="nav-item">
+                        <span class="nav-num">—</span> Home & Guide
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE A: FOUNDATIONS OF EQUILIBRIUM</span>
+                    <a href="01-reversible-reactions.html" class="nav-item"><span class="nav-num">01</span> Reversible vs Irreversible</a>
+                    <a href="02-open-closed-systems.html" class="nav-item"><span class="nav-num">02</span> Open vs Closed Systems</a>
+                    <a href="03-static-dynamic-equilibrium.html" class="nav-item"><span class="nav-num">03</span> Static vs Dynamic Eq</a>
+                    <a href="04-non-equilibrium-systems.html" class="nav-item"><span class="nav-num">04</span> Non-Equilibrium Systems</a>
+                    <a href="05-collision-theory-equilibrium.html" class="nav-item"><span class="nav-num">05</span> Collision Theory in Eq</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE B: FACTORS AFFECTING EQUILIBRIUM</span>
+                    <a href="06-intro-le-chatelier.html" class="nav-item"><span class="nav-num">06</span> Le Chatelier's Principle</a>
+                    <a href="07-effect-of-concentration.html" class="nav-item"><span class="nav-num">07</span> Concentration Changes</a>
+                    <a href="08-effect-of-pressure-volume.html" class="nav-item"><span class="nav-num">08</span> Pressure & Volume</a>
+                    <a href="09-effect-of-temperature.html" class="nav-item"><span class="nav-num">09</span> Temperature Effects</a>
+                    <a href="10-collision-theory-lcp.html" class="nav-item"><span class="nav-num">10</span> Collision Theory & LCP</a>
+                    <a href="11-activation-energy-equilibrium.html" class="nav-item"><span class="nav-num">11</span> Activation Energy & $\Delta H$</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE C: THE EQUILIBRIUM CONSTANT</span>
+                    <a href="12-keq-expression.html" class="nav-item"><span class="nav-num">12</span> The $K_{\mathrm{eq}}$ Expression</a>
+                    <a href="13-keq-calculations-basic.html" class="nav-item"><span class="nav-num">13</span> Basic $K_{\mathrm{eq}}$ Calculations</a>
+                    <a href="14-keq-calculations-advanced.html" class="nav-item"><span class="nav-num">14</span> Advanced $K_{\mathrm{eq}}$ & $Q$</a>
+                    <a href="15-temperature-and-keq.html" class="nav-item"><span class="nav-num">15</span> Temperature & $K_{\mathrm{eq}}$</a>
+                    <a href="16-determining-keq-experiment.html" class="nav-item"><span class="nav-num">16</span> Practical Determination</a>
+                    <a href="17-keq-acid-base-dissociation.html" class="nav-item"><span class="nav-num">17</span> Dissociation Systems</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE D: SOLUTION EQUILIBRIA</span>
+                    <a href="18-dissolution-ionic-compounds.html" class="nav-item"><span class="nav-num">18</span> Ionic Dissolution</a>
+                    <a href="19-indigenous-solubility-cycads.html" class="nav-item"><span class="nav-num">19</span> Indigenous Detoxification</a>
+                    <a href="20-solubility-rules.html" class="nav-item"><span class="nav-num">20</span> Solubility Rules</a>
+                    <a href="21-solubility-product-ksp.html" class="nav-item"><span class="nav-num">21</span> Solubility Product ($K_{\mathrm{sp}}$)</a>
+                    <a href="22-molar-solubility-calcs.html" class="nav-item"><span class="nav-num">22</span> Molar Solubility Calcs</a>
+                    <a href="23-predicting-precipitation.html" class="nav-item active"><span class="nav-num">23</span> Predicting Precipitation</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE E: ASSESSMENT & REVIEW</span>
+                    <a href="24-formula-summary.html" class="nav-item"><span class="nav-num">24</span> Formula & Concept Guide</a>
+                    <a href="25-final-exam.html" class="nav-item"><span class="nav-num">25</span> Final Examination</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="hero-banner">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <span class="ethereal-tag">LESSON 23 • PHASE D: SOLUTION EQUILIBRIA & SOLUBILITY</span>
+                    <h1 class="ethereal-title">Predicting Precipitate Formation ($Q_{\mathrm{sp}}$ vs $K_{\mathrm{sp}}$)</h1>
+                    <p class="ethereal-subtitle">Master the thermodynamic principles, reaction quotient ($Q_{\mathrm{sp}}$ or $Q$) evaluations, dilution mechanics ($c_1 V_1 = c_2 V_2$), and threshold boundary calculations used to predict whether mixing aqueous solutions will yield a solid precipitate under NESA Stage 6 Chemistry guidelines.</p>
+                </div>
+            </header>
+
+            <!-- SYLLABUS ALIGNMENT CARD -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>NESA Syllabus Inquiry Focus</h2>
+                    <span class="pill-badge">Stage 6 Chemistry</span>
+                </div>
+                <p>
+                    <strong>Inquiry Question 4:</strong> <em>How does solubility relate to chemical equilibrium?</em>
+                </p>
+                <div class="info-box cyan" style="margin-top: 1rem;">
+                    <h3>Syllabus Outcomes Addressed (Outcome CH-12-01):</h3>
+                    <ul>
+                        <li>Define and evaluate the Ionic Product or Reaction Quotient ($Q_{\mathrm{sp}}$ or $Q$) for a sparingly soluble ionic compound at non-equilibrium conditions.</li>
+                        <li>Predict whether a precipitate will form when two aqueous electrolyte solutions are mixed by comparing $Q_{\mathrm{sp}}$ with $K_{\mathrm{sp}}$.</li>
+                        <li>Apply dilution corrections ($c_2 = \frac{c_1 V_1}{V_{\mathrm{total}}}$) to accurately calculate initial diluted ion concentrations prior to $Q_{\mathrm{sp}}$ evaluation.</li>
+                        <li>Classify aqueous solution systems as unsaturated ($Q_{\mathrm{sp}} < K_{\mathrm{sp}}$), saturated at dynamic equilibrium ($Q_{\mathrm{sp}} = K_{\mathrm{sp}}$), or supersaturated / precipitating ($Q_{\mathrm{sp}} > K_{\mathrm{sp}}$).</li>
+                        <li>Determine threshold concentrations and minimum volumes required to initiate precipitation in analytical separation procedures.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECTION 1: THE REACTION QUOTIENT Qsp DEFINITION & CONCEPT -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>1. The Reaction Quotient ($Q_{\mathrm{sp}}$) for Heterogeneous Dissolution</h2>
+                    <span class="pill-badge">Thermodynamic State Variable</span>
+                </div>
+
+                <p>
+                    In Phase C (Lesson 14), we defined the general Reaction Quotient ($Q$) as a mathematical expression showing the ratio of product concentrations to reactant concentrations at <strong>any arbitrary instantaneous moment</strong> during a chemical reaction, whether at equilibrium or not.
+                </p>
+
+                <p>
+                    When applied to the heterogeneous dissolution of a sparingly soluble ionic salt $A_x B_{y(s)}$:
+                    $$A_x B_{y(s)} \rightleftharpoons x A^{m+}_{(aq)} + y B^{n-}_{(aq)}$$
+                    the <strong>Solubility Reaction Quotient</strong> (commonly designated as $Q_{\mathrm{sp}}$ or simply $Q$) is formulated using the exact same stoichiometric algebraic expression as $K_{\mathrm{sp}}$:
+                </p>
+
+                <div class="info-box purple" style="text-align: center;">
+                    <h3 style="font-size: 1.3rem;">Mathematical Definition of $Q_{\mathrm{sp}}$</h3>
+                    $$Q_{\mathrm{sp}} = [A^{m+}]_i^x [B^{n-}]_i^y$$
+                    <p style="margin-top: 0.5rem; color: #cbd5e1;">
+                        where $[A^{m+}]_i$ and $[B^{n-}]_i$ represent the <strong>INSTANTANEOUS, INITIAL DILUTED CONCENTRATIONS</strong> ($\text{mol L}^{-1}$) of the constituent ions present in the mixture immediately upon combining solutions, <em>before any precipitation or dissolution has taken place</em>.
+                    </p>
+                </div>
+
+                <h3>Key Distinction: $Q_{\mathrm{sp}}$ versus $K_{\mathrm{sp}}$</h3>
+                <p>
+                    Understanding the fundamental thermodynamic distinction between $Q_{\mathrm{sp}}$ and $K_{\mathrm{sp}}$ is paramount for HSC examination success:
+                </p>
+
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Solubility Product Constant ($K_{\mathrm{sp}}$)</th>
+                                <th>Solubility Reaction Quotient ($Q_{\mathrm{sp}}$)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Thermodynamic Nature</strong></td>
+                                <td>Fixed thermodynamic constant for a specific salt at a given temperature.</td>
+                                <td>Variable state quantity that changes continuously as reaction progresses.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>System State Requirement</strong></td>
+                                <td>Applies <strong>ONLY</strong> when the solution is saturated and in true dynamic equilibrium with undissolved solid.</td>
+                                <td>Applies to <strong>ANY</strong> arbitrary non-equilibrium state, including initial mixing moments.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Concentrations Used</strong></td>
+                                <td>Equilibrium concentrations $[A^{m+}]_{\mathrm{eq}}$ and $[B^{n-}]_{\mathrm{eq}}$.</td>
+                                <td>Initial diluted non-equilibrium concentrations $[A^{m+}]_i$ and $[B^{n-}]_i$.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Predictive Capability</strong></td>
+                                <td>Represents the upper limit of dissolved ion activity before solid formation occurs.</td>
+                                <td>Compared against $K_{\mathrm{sp}}$ to determine the direction of spontaneous shift.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION 2: THE THREE THERMODYNAMIC STATES & PRECIPITATION VERDICTS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>2. The Three Thermodynamic States & Precipitation Verdicts</h2>
+                    <span class="pill-badge emerald">Core Decision Matrix</span>
+                </div>
+
+                <p>
+                    Comparing the numerical value of $Q_{\mathrm{sp}}$ calculated immediately after mixing against the published $K_{\mathrm{sp}}$ constant yields one of three mutually exclusive thermodynamic outcomes:
+                </p>
+
+                <div class="features-grid">
+                    <!-- State 1: Qsp < Ksp -->
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-cyan);">
+                        <h3>1. Unsaturated Solution ($Q_{\mathrm{sp}} < K_{\mathrm{sp}}$)</h3>
+                        <p>
+                            • <strong>Condition:</strong> $[A^{m+}]_i^x [B^{n-}]_i^y < K_{\mathrm{sp}}$
+                            <br>
+                            • <strong>Physical State:</strong> The ion product is below the thermodynamic saturation limit.
+                            <br>
+                            • <strong>Precipitation Verdict:</strong> <strong style="color: var(--accent-cyan);">NO PRECIPITATE FORMS!</strong>
+                            <br>
+                            • <strong>System Behaviour:</strong> The solution remains a clear, homogenous liquid. If solid precipitate were added, it would spontaneously dissolve ($\to$) until $Q_{\mathrm{sp}} = K_{\mathrm{sp}}$.
+                        </p>
+                    </div>
+
+                    <!-- State 2: Qsp = Ksp -->
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-emerald);">
+                        <h3>2. Saturated Solution ($Q_{\mathrm{sp}} = K_{\mathrm{sp}}$)</h3>
+                        <p>
+                            • <strong>Condition:</strong> $[A^{m+}]_i^x [B^{n-}]_i^y = K_{\mathrm{sp}}$
+                            <br>
+                            • <strong>Physical State:</strong> The solution holds the maximum possible concentration of dissolved ions in dynamic equilibrium.
+                            <br>
+                            • <strong>Precipitation Verdict:</strong> <strong style="color: var(--accent-emerald);">AT EQUILIBRIUM (Threshold)</strong>
+                            <br>
+                            • <strong>System Behaviour:</strong> The solution is exactly saturated. No net precipitation occurs ($\text{Rate}_{\mathrm{dissolution}} = \text{Rate}_{\mathrm{crystallisation}}$).
+                        </p>
+                    </div>
+
+                    <!-- State 3: Qsp > Ksp -->
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-rose);">
+                        <h3>3. Precipitating System ($Q_{\mathrm{sp}} > K_{\mathrm{sp}}$)</h3>
+                        <p>
+                            • <strong>Condition:</strong> $[A^{m+}]_i^x [B^{n-}]_i^y > K_{\mathrm{sp}}$
+                            <br>
+                            • <strong>Physical State:</strong> The solution is temporarily supersaturated and thermodynamically unstable.
+                            <br>
+                            • <strong>Precipitation Verdict:</strong> <strong style="color: var(--accent-rose);">A PRECIPITATE FORMS!</strong>
+                            <br>
+                            • <strong>System Behaviour:</strong> Excess ions rapidly combine and crystallise out of solution, shifting the equilibrium to the <strong>LEFT ($\leftarrow$)</strong> until ion concentrations drop back down to satisfy $Q_{\mathrm{sp}} = K_{\mathrm{sp}}$.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- SVG Diagram 1: Qsp vs Ksp Spectrum & Thermodynamic Driving Force -->
+                <div class="graph-wrapper">
+                    <div class="graph-title">Figure 23.1: Thermodynamic Spectrum of $Q_{\mathrm{sp}}$ Relative to Equilibrium Threshold Constant $K_{\mathrm{sp}}$</div>
+                    <div class="svg-graph-container">
+                        <svg viewBox="0 0 720 250" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="720" height="250" fill="#0b1329" rx="10"/>
+
+                            <!-- Main Spectrum Axis Line -->
+                            <line x1="60" y1="130" x2="660" y2="130" stroke="#94a3b8" stroke-width="4"/>
+                            
+                            <!-- Arrow Heads -->
+                            <polygon points="660,123 675,130 660,137" fill="#94a3b8"/>
+
+                            <!-- Region 1: Qsp < Ksp (Cyan) -->
+                            <rect x="60" y="60" width="260" height="50" fill="rgba(56, 189, 248, 0.12)" stroke="#38bdf8" stroke-width="1.5" rx="6"/>
+                            <text x="190" y="82" fill="#38bdf8" font-size="12" font-weight="800" text-anchor="middle">UNSATURATED REGION</text>
+                            <text x="190" y="100" fill="#cbd5e1" font-size="10" text-anchor="middle">Qsp &lt; Ksp • No Precipitate Forms</text>
+                            
+                            <!-- Forward Shift Arrow below line -->
+                            <line x1="120" y1="160" x2="280" y2="160" stroke="#38bdf8" stroke-width="2.5"/>
+                            <polygon points="280,155 292,160 280,165" fill="#38bdf8"/>
+                            <text x="200" y="180" fill="#38bdf8" font-size="10" font-weight="700" text-anchor="middle">Spontaneous Dissolution (Shift Right →)</text>
+
+                            <!-- Equilibrium Point Marker (Ksp) -->
+                            <circle cx="360" cy="130" r="12" fill="#34d399" stroke="#fff" stroke-width="2"/>
+                            <line x1="360" y1="30" x2="360" y2="130" stroke="#34d399" stroke-width="2" stroke-dasharray="4,3"/>
+                            <text x="360" y="22" fill="#34d399" font-size="13" font-weight="800" text-anchor="middle">Ksp Threshold</text>
+                            <text x="360" y="215" fill="#34d399" font-size="11" font-weight="700" text-anchor="middle">Dynamic Equilibrium (Qsp = Ksp)</text>
+
+                            <!-- Region 3: Qsp > Ksp (Rose) -->
+                            <rect x="400" y="60" width="260" height="50" fill="rgba(244, 63, 94, 0.12)" stroke="#f43f5e" stroke-width="1.5" rx="6"/>
+                            <text x="530" y="82" fill="#f43f5e" font-size="12" font-weight="800" text-anchor="middle">PRECIPITATING REGION</text>
+                            <text x="530" y="100" fill="#cbd5e1" font-size="10" text-anchor="middle">Qsp &gt; Ksp • Solid Precipitate Forms!</text>
+
+                            <!-- Reverse Shift Arrow below line -->
+                            <line x1="600" y1="160" x2="440" y2="160" stroke="#f43f5e" stroke-width="2.5"/>
+                            <polygon points="440,155 428,160 440,165" fill="#f43f5e"/>
+                            <text x="520" y="180" fill="#f43f5e" font-size="10" font-weight="700" text-anchor="middle">Spontaneous Precipitation (Shift Left ←)</text>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: THE DILUTION EFFECT ON MIXING SOLUTIONS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>3. The Dilution Effect on Mixing Solutions ($c_1 V_1 = c_2 V_2$)</h2>
+                    <span class="pill-badge cyan">Essential Pre-Calculation Step</span>
+                </div>
+
+                <p>
+                    In HSC Chemistry examination questions, predicting precipitation almost always involves pouring two separate aqueous salt solutions together (for example, mixing $100\text{ mL}$ of aqueous $\mathrm{AgNO_3}$ with $400\text{ mL}$ of aqueous $\mathrm{NaCl}$).
+                </p>
+
+                <div class="info-box rose">
+                    <h3>THE #1 STUDENT ERROR IN MODULE 5 EXAMS!</h3>
+                    <p>
+                        <strong>NEVER substitute the starting stock solution concentrations directly into the $Q_{\mathrm{sp}}$ expression!</strong>
+                        <br><br>
+                        When two liquid solutions are mixed, the total liquid volume increases ($V_{\mathrm{total}} = V_1 + V_2$). Because volume increases, the initial concentration of every ion present in the mixture is immediately <strong>DILUTED</strong> before any precipitation reaction occurs!
+                        <br><br>
+                        Failing to calculate diluted concentrations before evaluating $Q_{\mathrm{sp}}$ results in an artificially inflated $Q_{\mathrm{sp}}$ value and zero marks awarded for the calculation!
+                    </p>
+                </div>
+
+                <h3>The Dilution Formula for Mixing Solutions</h3>
+                <p>
+                    For each individual solution being combined, apply the standard conservation of mass dilution equation:
+                </p>
+                $$c_1 V_1 = c_2 V_2 \implies c_2 = \frac{c_1 V_1}{V_2} = \frac{c_1 V_1}{V_{\mathrm{total}}}$$
+
+                <div class="info-box cyan">
+                    <h3>Step-by-Step Dilution Protocol</h3>
+                    <ol>
+                        <li><strong>1. Calculate Total Solution Volume ($V_{\mathrm{total}}$):</strong>
+                            $$V_{\mathrm{total}} = V_1 + V_2$$
+                            <em>(Ensure volumes are in matching units, typically $\text{mL}$ or $\text{L}$).</em>
+                        </li>
+                        <li><strong>2. Calculate Diluted Cation Concentration ($[A^{m+}]_i$):</strong>
+                            $$[A^{m+}]_i = \frac{c(\text{stock cation}) \times V(\text{cation solution})}{V_{\mathrm{total}}}$$
+                        </li>
+                        <li><strong>3. Calculate Diluted Anion Concentration ($[B^{n-}]_i$):</strong>
+                            $$[B^{n-}]_i = \frac{c(\text{stock anion}) \times V(\text{anion solution})}{V_{\mathrm{total}}}$$
+                        </li>
+                    </ol>
+                </div>
+
+                <!-- SVG Diagram 2: Solution Mixing & Dilution Visualiser -->
+                <div class="graph-wrapper">
+                    <div class="graph-title">Figure 23.2: Physical Mechanics of Solution Mixing: Volume Expansion and Ion Dilution</div>
+                    <div class="svg-graph-container">
+                        <svg viewBox="0 0 720 220" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="720" height="220" fill="#0b1329" rx="10"/>
+
+                            <!-- Beaker 1: Cation Solution -->
+                            <g transform="translate(40, 40)">
+                                <rect x="10" y="20" width="100" height="120" fill="rgba(167, 139, 250, 0.15)" stroke="#a78bfa" stroke-width="2" rx="4"/>
+                                <text x="60" y="15" fill="#a78bfa" font-size="11" font-weight="700" text-anchor="middle">Beaker 1: V1</text>
+                                <!-- Ions -->
+                                <circle cx="40" cy="60" r="8" fill="#a78bfa"/><circle cx="80" cy="90" r="8" fill="#a78bfa"/><circle cx="50" cy="110" r="8" fill="#a78bfa"/>
+                                <text x="60" y="155" fill="#cbd5e1" font-size="10" text-anchor="middle">[Cation]₁ = High</text>
+                            </g>
+
+                            <!-- Plus Sign -->
+                            <text x="175" y="110" fill="#fff" font-size="24" font-weight="800" text-anchor="middle">+</text>
+
+                            <!-- Beaker 2: Anion Solution -->
+                            <g transform="translate(200, 40)">
+                                <rect x="10" y="20" width="100" height="120" fill="rgba(56, 189, 248, 0.15)" stroke="#38bdf8" stroke-width="2" rx="4"/>
+                                <text x="60" y="15" fill="#38bdf8" font-size="11" font-weight="700" text-anchor="middle">Beaker 2: V2</text>
+                                <!-- Ions -->
+                                <circle cx="40" cy="80" r="8" fill="#38bdf8"/><circle cx="80" cy="50" r="8" fill="#38bdf8"/><circle cx="70" cy="110" r="8" fill="#38bdf8"/>
+                                <text x="60" y="155" fill="#cbd5e1" font-size="10" text-anchor="middle">[Anion]₁ = High</text>
+                            </g>
+
+                            <!-- Arrow -->
+                            <g transform="translate(330, 100)">
+                                <line x1="0" y1="0" x2="60" y2="0" stroke="#34d399" stroke-width="3"/>
+                                <polygon points="60,-5 72,0 60,5" fill="#34d399"/>
+                                <text x="36" y="-12" fill="#34d399" font-size="10" font-weight="700" text-anchor="middle">Pour & Mix</text>
+                            </g>
+
+                            <!-- Combined Beaker 3 -->
+                            <g transform="translate(430, 20)">
+                                <rect x="10" y="20" width="220" height="140" fill="rgba(15, 23, 42, 0.85)" stroke="#34d399" stroke-width="2" rx="6"/>
+                                <text x="120" y="15" fill="#34d399" font-size="12" font-weight="700" text-anchor="middle">Combined Mixture: Vtotal = V1 + V2</text>
+
+                                <!-- Diluted Ions spread far apart -->
+                                <circle cx="40" cy="60" r="8" fill="#a78bfa"/>
+                                <circle cx="120" cy="110" r="8" fill="#a78bfa"/>
+                                <circle cx="180" cy="50" r="8" fill="#a78bfa"/>
+
+                                <circle cx="80" cy="80" r="8" fill="#38bdf8"/>
+                                <circle cx="150" cy="130" r="8" fill="#38bdf8"/>
+                                <circle cx="200" cy="90" r="8" fill="#38bdf8"/>
+
+                                <text x="120" y="180" fill="#34d399" font-size="10" font-weight="700" text-anchor="middle">Diluted Concentrations: c₂ = (c₁ × V₁) / Vtotal</text>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: STEP-BY-STEP ALGORITHM FOR PREDICTING PRECIPITATION -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>4. Standardised NESA Algorithm for Precipitation Questions</h2>
+                    <span class="pill-badge amber">Master Examination Scaffold</span>
+                </div>
+
+                <p>
+                    When responding to a NESA examination question asking whether a precipitate will form upon mixing solutions, structure your answer using the following 5-step master algorithm to guarantee full marks:
+                </p>
+
+                <div class="info-box amber">
+                    <h3>The 5-Step Precipitation Scaffold</h3>
+
+                    <h4>Step 1: Identify Potential Precipitate & Write Equilibrium Equation</h4>
+                    <p>
+                        Identify the cation-anion pair that forms a sparingly soluble salt using solubility rules (Lesson 20). Write the balanced ionic dissociation equation:
+                        $$\mathrm{Salt_{(s)} \rightleftharpoons x Cation^{m+}_{(aq)} + y Anion^{n-}_{(aq)}}$$
+                    </p>
+
+                    <h4>Step 2: Calculate Diluted Ion Concentrations ($c_1 V_1 = c_2 V_2$)</h4>
+                    <p>
+                        Determine $V_{\mathrm{total}} = V_1 + V_2$. Calculate the initial diluted concentrations $[A^{m+}]_i$ and $[B^{n-}]_i$ in the total mixture volume.
+                    </p>
+
+                    <h4>Step 3: State the $Q_{\mathrm{sp}}$ Mathematical Expression</h4>
+                    <p>
+                        Formulate $Q_{\mathrm{sp}}$ matching the salt's stoichiometry:
+                        $$Q_{\mathrm{sp}} = [A^{m+}]_i^x [B^{n-}]_i^y$$
+                    </p>
+
+                    <h4>Step 4: Substitute Diluted Concentrations & Calculate $Q_{\mathrm{sp}}$</h4>
+                    <p>
+                        Substitute the diluted ion concentrations from Step 2 into the $Q_{\mathrm{sp}}$ expression and compute the numerical value using correct powers.
+                    </p>
+
+                    <h4>Step 5: Compare $Q_{\mathrm{sp}}$ with $K_{\mathrm{sp}}$ & Write Final Verdict</h4>
+                    <p>
+                        State the explicit inequality comparison ($Q_{\mathrm{sp}} > K_{\mathrm{sp}}$, $Q_{\mathrm{sp}} < K_{\mathrm{sp}}$, or $Q_{\mathrm{sp}} = K_{\mathrm{sp}}$) and give a definitive written conclusion:
+                        <br>
+                        <em>"Since $Q_{\mathrm{sp}} > K_{\mathrm{sp}}$, the system is supersaturated. A solid precipitate of [Formula] WILL form."</em>
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 5: INTERACTIVE Qsp VS Ksp PRECIPITATION PREDICTOR SIMULATOR -->
+            <section class="card glass-card demo-card">
+                <div class="card-header">
+                    <h2>5. Interactive $Q_{\mathrm{sp}}$ vs $K_{\mathrm{sp}}$ Precipitation Predictor Engine</h2>
+                    <span class="pill-badge demo-pill">Virtual Mixing Laboratory</span>
+                </div>
+                <p>Configure the volumes and concentrations of two aqueous electrolyte solutions to simulate mixing. The engine automatically computes total volume, evaluates dilution via $c_1 V_1 = c_2 V_2$, calculates $Q_{\mathrm{sp}}$, compares with published $K_{\mathrm{sp}}$ values, and provides a real-time thermodynamic precipitation verdict.</p>
+
+                <div class="sim-container">
+                    <div class="sim-controls">
+                        <!-- Solution 1: Cation -->
+                        <div class="control-group">
+                            <label>Solution 1 (Cation Source):</label>
+                            <select id="sim-cat-salt" onchange="runPrecipitationPredictor()">
+                                <option value="AgNO3">Silver Nitrate [AgNO3]</option>
+                                <option value="Pb(NO3)2">Lead(II) Nitrate [Pb(NO3)2]</option>
+                                <option value="Ba(NO3)2">Barium Nitrate [Ba(NO3)2]</option>
+                                <option value="Ca(NO3)2">Calcium Nitrate [Ca(NO3)2]</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <label>Volume 1 ($V_1$ in mL): <span id="lbl-v1-val" style="color:var(--accent-purple);">100 mL</span></label>
+                            <input type="range" id="sim-v1" min="10" max="500" step="10" value="100" oninput="runPrecipitationPredictor()">
+                        </div>
+
+                        <div class="control-group">
+                            <label>Concentration 1 ($c_1$ in M):</label>
+                            <input type="number" id="sim-c1" min="0.0001" max="1.0" step="0.001" value="0.010" oninput="runPrecipitationPredictor()">
+                        </div>
+
+                        <!-- Solution 2: Anion -->
+                        <div class="control-group">
+                            <label>Solution 2 (Anion Source):</label>
+                            <select id="sim-ani-salt" onchange="runPrecipitationPredictor()">
+                                <option value="NaCl">Sodium Chloride [NaCl]</option>
+                                <option value="KI">Potassium Iodide [KI]</option>
+                                <option value="Na2SO4">Sodium Sulfate [Na2SO4]</option>
+                                <option value="NaF">Sodium Fluoride [NaF]</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <label>Volume 2 ($V_2$ in mL): <span id="lbl-v2-val" style="color:var(--accent-cyan);">400 mL</span></label>
+                            <input type="range" id="sim-v2" min="10" max="500" step="10" value="400" oninput="runPrecipitationPredictor()">
+                        </div>
+
+                        <div class="control-group">
+                            <label>Concentration 2 ($c_2$ in M):</label>
+                            <input type="number" id="sim-c2" min="0.0001" max="1.0" step="0.001" value="0.005" oninput="runPrecipitationPredictor()">
+                        </div>
+                    </div>
+
+                    <div class="sim-display-box">
+                        <h4 style="font-size: 0.9rem; color: var(--accent-cyan); text-transform: uppercase; margin-bottom: 0.75rem;">Predictor Engine Thermodynamic Evaluation</h4>
+                        <div id="sim-verdict-banner" style="font-size: 1.25rem; font-weight: 800; text-align: center; color: var(--accent-purple); margin-bottom: 1rem;">
+                            <!-- Dynamic Verdict Banner -->
+                        </div>
+
+                        <div id="sim-derivation-output" style="background: rgba(15, 23, 42, 0.9); padding: 1.25rem; border-radius: var(--radius-sm); border: 1px solid var(--border-light); font-family: var(--font-mono); font-size: 1.02rem;">
+                            <!-- Dynamic MathJax Equations -->
+                        </div>
+                    </div>
+
+                    <div class="telemetry-panel">
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Total Volume ($V_{\mathrm{total}}$)</span>
+                            <span class="telemetry-value" id="tel-vtotal" style="color: var(--accent-purple);">500 mL</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Diluted Cation $[Cat]_i$</span>
+                            <span class="telemetry-value" id="tel-cat-dil" style="color: var(--accent-cyan);">2.00 × 10⁻³ M</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Diluted Anion $[Ani]_i$</span>
+                            <span class="telemetry-value" id="tel-ani-dil" style="color: var(--accent-cyan);">4.00 × 10⁻³ M</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Calculated $Q_{\mathrm{sp}}$</span>
+                            <span class="telemetry-value" id="tel-qsp" style="color: var(--accent-amber);">8.00 × 10⁻⁶</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Reference $K_{\mathrm{sp}}$</span>
+                            <span class="telemetry-value" id="tel-ksp" style="color: var(--accent-rose);">1.77 × 10⁻¹⁰</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 6: SCAFFOLDED WORKED EXAMPLES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>6. Scaffolded Worked Examples</h2>
+                    <span class="pill-badge">HSC Step-by-Step Solutions</span>
+                </div>
+
+                <!-- Example 1: Easy -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 1 (Easy): Direct $Q_{\mathrm{sp}}$ Evaluation in a Single Vessel</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A laboratory solution is prepared such that the concentration of calcium ions is $[\mathrm{Ca^{2+}}] = 1.0 \times 10^{-3}\text{ mol L}^{-1}$ and the concentration of fluoride ions is $[\mathrm{F^-}] = 2.0 \times 10^{-4}\text{ mol L}^{-1}$.
+                        <br><br>
+                        Given $K_{\mathrm{sp}}(\mathrm{CaF_2}) = 3.45 \times 10^{-11}$ at $25^\circ\text{C}$, determine whether a precipitate of calcium fluoride ($\mathrm{CaF_2}$) will form.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Write the equilibrium equation & $Q_{\mathrm{sp}}$ expression:</strong>
+                        $$\mathrm{CaF_{2(s)} \rightleftharpoons Ca^{2+}_{(aq)} + 2F^-_{(aq)}}$$
+                        $$Q_{\mathrm{sp}} = [\mathrm{Ca^{2+}}]_i [\mathrm{F^-}]_i^2$$</p>
+
+                        <p><strong>2. Substitute initial concentrations and calculate $Q_{\mathrm{sp}}$:</strong>
+                        $$Q_{\mathrm{sp}} = (1.0 \times 10^{-3}) \times (2.0 \times 10^{-4})^2$$
+                        $$Q_{\mathrm{sp}} = (1.0 \times 10^{-3}) \times (4.0 \times 10^{-8}) = \mathbf{4.0 \times 10^{-11}}$$</p>
+
+                        <p><strong>3. Compare $Q_{\mathrm{sp}}$ with $K_{\mathrm{sp}}$ & state verdict:</strong>
+                        <br>Since $Q_{\mathrm{sp}} (4.0 \times 10^{-11}) > K_{\mathrm{sp}} (3.45 \times 10^{-11})$, $Q_{\mathrm{sp}} > K_{\mathrm{sp}}$.
+                        <br><strong>Verdict:</strong> The solution is supersaturated. A white precipitate of $\mathrm{CaF_2}$ **WILL form**. (2 Marks)</p>
+                    </div>
+                </div>
+
+                <!-- Example 2: Medium -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 2 (Medium): Mixing Two Solutions ($1:1$ Salt $\mathrm{AgCl}$)</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A student mixes $100.0\text{ mL}$ of $0.010\text{ M}$ silver nitrate solution ($\mathrm{AgNO_{3(aq)}}$) with $400.0\text{ mL}$ of $0.0050\text{ M}$ sodium chloride solution ($\mathrm{NaCl_{(aq)}}$).
+                        <br><br>
+                        Given $K_{\mathrm{sp}}(\mathrm{AgCl}) = 1.77 \times 10^{-10}$ at $25^\circ\text{C}$, perform a quantitative calculation to predict whether a precipitate of silver chloride ($\mathrm{AgCl}$) will form.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Calculate total final volume $V_{\mathrm{total}}$:</strong>
+                        $$V_{\mathrm{total}} = 100.0\text{ mL} + 400.0\text{ mL} = 500.0\text{ mL} = 0.5000\text{ L}$$</p>
+
+                        <p><strong>2. Calculate diluted initial ion concentrations ($c_1 V_1 = c_2 V_2$):</strong>
+                        $$[\mathrm{Ag^+}]_i = \frac{0.010\text{ M} \times 100.0\text{ mL}}{500.0\text{ mL}} = 2.0 \times 10^{-3}\text{ mol L}^{-1}$$
+                        $$[\mathrm{Cl^-}]_i = \frac{0.0050\text{ M} \times 400.0\text{ mL}}{500.0\text{ mL}} = 4.0 \times 10^{-3}\text{ mol L}^{-1}$$</p>
+
+                        <p><strong>3. Formulate $Q_{\mathrm{sp}}$ and compute:</strong>
+                        $$\mathrm{AgCl_{(s)} \rightleftharpoons Ag^+_{(aq)} + Cl^-_{(aq)}}$$
+                        $$Q_{\mathrm{sp}} = [\mathrm{Ag^+}]_i [\mathrm{Cl^-}]_i = (2.0 \times 10^{-3}) \times (4.0 \times 10^{-3}) = \mathbf{8.0 \times 10^{-6}}$$</p>
+
+                        <p><strong>4. Compare $Q_{\mathrm{sp}}$ with $K_{\mathrm{sp}}$ & conclusion:</strong>
+                        <br>Since $Q_{\mathrm{sp}} (8.0 \times 10^{-6}) \gg K_{\mathrm{sp}} (1.77 \times 10^{-10})$, $Q_{\mathrm{sp}} > K_{\mathrm{sp}}$.
+                        <br><strong>Verdict:</strong> A white precipitate of solid $\mathrm{AgCl_{(s)}}$ **WILL form**. (3 Marks)</p>
+                    </div>
+                </div>
+
+                <!-- Example 3: Hard -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 3 (Hard): Mixing Two Solutions ($1:2$ Salt $\mathrm{PbI_2}$)</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A solution containing $150.0\text{ mL}$ of $0.020\text{ M}$ lead(II) nitrate ($\mathrm{Pb(NO_3)_2}$) is poured into $350.0\text{ mL}$ of $0.010\text{ M}$ potassium iodide ($\mathrm{KI}$).
+                        <br><br>
+                        Given $K_{\mathrm{sp}}(\mathrm{PbI_2}) = 8.79 \times 10^{-9}$ at $25^\circ\text{C}$, determine whether a yellow precipitate of lead(II) iodide ($\mathrm{PbI_2}$) will precipitate out of the mixture.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Calculate total final volume $V_{\mathrm{total}}$:</strong>
+                        $$V_{\mathrm{total}} = 150.0\text{ mL} + 350.0\text{ mL} = 500.0\text{ mL} = 0.5000\text{ L}$$</p>
+
+                        <p><strong>2. Apply dilution formula ($c_2 = \frac{c_1 V_1}{V_{\mathrm{total}}}$):</strong>
+                        $$[\mathrm{Pb^{2+}}]_i = \frac{0.020\text{ M} \times 150.0\text{ mL}}{500.0\text{ mL}} = 6.0 \times 10^{-3}\text{ mol L}^{-1}$$
+                        $$[\mathrm{I^-}]_i = \frac{0.010\text{ M} \times 350.0\text{ mL}}{500.0\text{ mL}} = 7.0 \times 10^{-3}\text{ mol L}^{-1}$$</p>
+
+                        <p><strong>3. Write balanced dissociation equation & $Q_{\mathrm{sp}}$ formula:</strong>
+                        $$\mathrm{PbI_{2(s)} \rightleftharpoons Pb^{2+}_{(aq)} + 2I^-_{(aq)}}$$
+                        $$Q_{\mathrm{sp}} = [\mathrm{Pb^{2+}}]_i [\mathrm{I^-}]_i^2$$</p>
+
+                        <p><strong>4. Substitute diluted values and compute $Q_{\mathrm{sp}}$:</strong>
+                        $$Q_{\mathrm{sp}} = (6.0 \times 10^{-3}) \times (7.0 \times 10^{-3})^2$$
+                        $$Q_{\mathrm{sp}} = (6.0 \times 10^{-3}) \times (4.9 \times 10^{-5}) = \mathbf{2.94 \times 10^{-7}}$$</p>
+
+                        <p><strong>5. Compare $Q_{\mathrm{sp}}$ with $K_{\mathrm{sp}}$ & state verdict:</strong>
+                        <br>Since $Q_{\mathrm{sp}} (2.94 \times 10^{-7}) > K_{\mathrm{sp}} (8.79 \times 10^{-9})$, $Q_{\mathrm{sp}} > K_{\mathrm{sp}}$.
+                        <br><strong>Verdict:</strong> The solution is supersaturated. A bright yellow precipitate of $\mathrm{PbI_{2(s)}}$ **WILL form**. (4 Marks)</p>
+                    </div>
+                </div>
+
+                <!-- Example 4: Extension -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 4 (Extension): Calculating Threshold $\mathrm{pH}$ for Selective Precipitation</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        An industrial wastewater sample contains iron(III) ions at a concentration of $[\mathrm{Fe^{3+}}] = 0.050\text{ mol L}^{-1}$.
+                        <br><br>
+                        Given $K_{\mathrm{sp}}(\mathrm{Fe(OH)_3}) = 2.79 \times 10^{-39}$ at $25^\circ\text{C}$ and $K_{\mathrm{w}} = 1.0 \times 10^{-14}$:
+                        <br>
+                        (a) Calculate the minimum concentration of hydroxide ions $[\mathrm{OH^-}]$ required to initiate the precipitation of solid $\mathrm{Fe(OH)_3}$. (3 Marks)
+                        <br>
+                        (b) Determine the minimum threshold $\mathrm{pH}$ above which $\mathrm{Fe(OH)_3}$ begins precipitating. (2 Marks)
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>(a) Minimum Hydroxide Ion Concentration $[\mathrm{OH^-}]_{\mathrm{min}}$:</strong>
+                        <br>1. Precipitation begins exactly at the boundary where $Q_{\mathrm{sp}} = K_{\mathrm{sp}}$:
+                        $$\mathrm{Fe(OH)_{3(s)} \rightleftharpoons Fe^{3+}_{(aq)} + 3OH^-_{(aq)}}$$
+                        $$Q_{\mathrm{sp}} = [\mathrm{Fe^{3+}}][\mathrm{OH^-}]^3 = K_{\mathrm{sp}}$$
+                        2. Substitute $[\mathrm{Fe^{3+}}] = 0.050\text{ M}$ and $K_{\mathrm{sp}} = 2.79 \times 10^{-39}$:
+                        $$(0.050) \times [\mathrm{OH^-}]^3 = 2.79 \times 10^{-39}$$
+                        $$[\mathrm{OH^-}]^3 = \frac{2.79 \times 10^{-39}}{0.050} = 5.58 \times 10^{-38}$$
+                        $$[\mathrm{OH^-}] = \sqrt[3]{5.58 \times 10^{-38}} = \mathbf{3.82 \times 10^{-13}\text{ mol L}^{-1}} \quad (3\text{ sig. figs.})$$</p>
+
+                        <p><strong>(b) Threshold $\mathrm{pH}$ Calculation:</strong>
+                        <br>1. Calculate $\mathrm{pOH}$:
+                        $$\mathrm{pOH} = -\log_{10}[\mathrm{OH^-}] = -\log_{10}(3.82 \times 10^{-13}) = 12.418$$
+                        2. Calculate $\mathrm{pH}$:
+                        $$\mathrm{pH} = 14.000 - \mathrm{pOH} = 14.000 - 12.418 = \mathbf{1.58}$$
+                        <br><strong>Conclusion:</strong> Iron(III) hydroxide is so extremely insoluble that it begins precipitating out of solution at any $\mathrm{pH}$ above **1.58** (even in strongly acidic solutions!).</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 7: NESA EXAMINATION PRACTICE QUESTIONS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>7. NESA Examination Practice Questions</h2>
+                    <span class="pill-badge demo-pill">Self-Marking Engine</span>
+                </div>
+                <p>Solve the questions below, then toggle hints and model solutions to verify your answers against NESA marking rubrics.</p>
+
+                <!-- Practice Q1 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 1 (Easy): Explaining the $Q_{\mathrm{sp}}$ vs $K_{\mathrm{sp}}$ Condition</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        State the mathematical condition involving $Q_{\mathrm{sp}}$ and $K_{\mathrm{sp}}$ under which a solid precipitate will spontaneously form when two solutions are mixed, and explain the physical meaning of this condition.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq1-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq1-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq1-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Compare $Q_{\mathrm{sp}}$ with $K_{\mathrm{sp}}$ and mention supersaturation.</p>
+                    </div>
+
+                    <div id="pq1-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>• A solid precipitate will form when **$Q_{\mathrm{sp}} > K_{\mathrm{sp}}$**.
+                            <br>• This condition indicates that the product of the initial diluted ion concentrations exceeds the equilibrium saturation constant ($K_{\mathrm{sp}}$). The solution is thermodynamically supersaturated and unstable, driving the reaction in the reverse direction ($\leftarrow$) to precipitate solid salt until $Q_{\mathrm{sp}} = K_{\mathrm{sp}}$.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> States correct inequality $Q_{\mathrm{sp}} > K_{\mathrm{sp}}$.</li>
+                                <li><strong>1 Mark:</strong> Explains that supersaturation drives reverse crystallization to reach equilibrium.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q2 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 2 (Medium): Predicting Barium Sulfate Precipitation</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A student combines $200.0\text{ mL}$ of $1.0 \times 10^{-5}\text{ M}$ barium nitrate solution ($\mathrm{Ba(NO_3)_2}$) with $300.0\text{ mL}$ of $2.0 \times 10^{-5}\text{ M}$ sodium sulfate solution ($\mathrm{Na_2SO_4}$).
+                        <br><br>
+                        Given $K_{\mathrm{sp}}(\mathrm{BaSO_4}) = 1.08 \times 10^{-10}$ at $25^\circ\text{C}$, perform a calculation to determine whether a precipitate of barium sulfate ($\mathrm{BaSO_4}$) will form.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq2-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq2-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq2-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Total volume $V_{\mathrm{total}} = 500.0\text{ mL}$. Calculate diluted $[\mathrm{Ba^{2+}}]$ and $[\mathrm{SO_4^{2-}}]$ first!</p>
+                    </div>
+
+                    <div id="pq2-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>1. Total Volume $V_{\mathrm{total}} = 200.0 + 300.0 = 500.0\text{ mL}$.
+                            <br><br>2. Calculate diluted initial concentrations:
+                            $$[\mathrm{Ba^{2+}}]_i = \frac{(1.0 \times 10^{-5}\text{ M}) \times 200.0\text{ mL}}{500.0\text{ mL}} = 4.0 \times 10^{-6}\text{ mol L}^{-1}$$
+                            $$[\mathrm{SO_4^{2-}}]_i = \frac{(2.0 \times 10^{-5}\text{ M}) \times 300.0\text{ mL}}{500.0\text{ mL}} = 1.2 \times 10^{-5}\text{ mol L}^{-1}$$
+                            <br>3. Calculate $Q_{\mathrm{sp}}$:
+                            $$\mathrm{BaSO_{4(s)} \rightleftharpoons Ba^{2+}_{(aq)} + SO_{4(aq)}^{2-}}$$
+                            $$Q_{\mathrm{sp}} = [\mathrm{Ba^{2+}}]_i [\mathrm{SO_4^{2-}}]_i = (4.0 \times 10^{-6}) \times (1.2 \times 10^{-5}) = \mathbf{4.8 \times 10^{-11}}$$
+                            <br>4. Compare $Q_{\mathrm{sp}}$ with $K_{\mathrm{sp}}$:
+                            <br>Since $Q_{\mathrm{sp}} (4.8 \times 10^{-11}) < K_{\mathrm{sp}} (1.08 \times 10^{-10})$, $Q_{\mathrm{sp}} < K_{\mathrm{sp}}$.
+                            <br><strong>Verdict:</strong> The solution remains unsaturated. **NO PRECIPITATE FORMS**.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Correctly calculates diluted ion concentrations $[\mathrm{Ba^{2+}}] = 4.0 \times 10^{-6}\text{ M}$ and $[\mathrm{SO_4^{2-}}] = 1.2 \times 10^{-5}\text{ M}$.</li>
+                                <li><strong>1 Mark:</strong> Calculates $Q_{\mathrm{sp}} = 4.8 \times 10^{-11}$.</li>
+                                <li><strong>1 Mark:</strong> Correctly compares $Q_{\mathrm{sp}} < K_{\mathrm{sp}}$ and concludes no precipitate forms.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q3 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 3 (Hard): Calcium Fluoride Mixing with Power Term</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A laboratory technician mixes $250.0\text{ mL}$ of $0.0080\text{ M}$ calcium chloride solution ($\mathrm{CaCl_2}$) with $250.0\text{ mL}$ of $0.0040\text{ M}$ sodium fluoride solution ($\mathrm{NaF}$).
+                        <br><br>
+                        Given $K_{\mathrm{sp}}(\mathrm{CaF_2}) = 3.45 \times 10^{-11}$ at $25^\circ\text{C}$, evaluate $Q_{\mathrm{sp}}$ and state whether a precipitate of calcium fluoride ($\mathrm{CaF_2}$) will form.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq3-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq3-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq3-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Mixing equal volumes ($250\text{ mL} + 250\text{ mL} = 500\text{ mL}$) halves both initial concentrations! Don't forget to square $[\mathrm{F^-}]$ in $Q_{\mathrm{sp}}$!</p>
+                    </div>
+
+                    <div id="pq3-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>1. Total Volume $V_{\mathrm{total}} = 250.0 + 250.0 = 500.0\text{ mL}$ (volume doubled, concentrations halved).
+                            <br><br>2. Calculate diluted initial concentrations:
+                            $$[\mathrm{Ca^{2+}}]_i = \frac{0.0080\text{ M}}{2} = 0.0040\text{ mol L}^{-1} = 4.0 \times 10^{-3}\text{ M}$$
+                            $$[\mathrm{F^-}]_i = \frac{0.0040\text{ M}}{2} = 0.0020\text{ mol L}^{-1} = 2.0 \times 10^{-3}\text{ M}$$
+                            <br>3. Formulate $Q_{\mathrm{sp}}$ and compute:
+                            $$\mathrm{CaF_{2(s)} \rightleftharpoons Ca^{2+}_{(aq)} + 2F^-_{(aq)}}$$
+                            $$Q_{\mathrm{sp}} = [\mathrm{Ca^{2+}}]_i [\mathrm{F^-}]_i^2$$
+                            $$Q_{\mathrm{sp}} = (4.0 \times 10^{-3}) \times (2.0 \times 10^{-3})^2$$
+                            $$Q_{\mathrm{sp}} = (4.0 \times 10^{-3}) \times (4.0 \times 10^{-6}) = \mathbf{1.6 \times 10^{-8}}$$
+                            <br>4. Compare $Q_{\mathrm{sp}}$ with $K_{\mathrm{sp}}$:
+                            <br>Since $Q_{\mathrm{sp}} (1.6 \times 10^{-8}) \gg K_{\mathrm{sp}} (3.45 \times 10^{-11})$, $Q_{\mathrm{sp}} > K_{\mathrm{sp}}$.
+                            <br><strong>Verdict:</strong> A white precipitate of solid $\mathrm{CaF_{2(s)}}$ **WILL form**.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Calculates correct diluted concentrations $[\mathrm{Ca^{2+}}] = 4.0 \times 10^{-3}\text{ M}$ and $[\mathrm{F^-}] = 2.0 \times 10^{-3}\text{ M}$.</li>
+                                <li><strong>1 Mark:</strong> States correct $Q_{\mathrm{sp}} = [\mathrm{Ca^{2+}}][\mathrm{F^-}]^2$ expression with square power.</li>
+                                <li><strong>1 Mark:</strong> Calculates $Q_{\mathrm{sp}} = 1.6 \times 10^{-8}$.</li>
+                                <li><strong>1 Mark:</strong> Correctly concludes $Q_{\mathrm{sp}} > K_{\mathrm{sp}}$ and states precipitate forms.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q4 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 4 (Extension): Threshold Addition & Precipitate Mass Calculation</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A $500.0\text{ mL}$ sample of $0.020\text{ M}$ lead(II) nitrate solution ($\mathrm{Pb(NO_3)_2}$) is maintained at $25^\circ\text{C}$.
+                        <br><br>
+                        Given $K_{\mathrm{sp}}(\mathrm{PbSO_4}) = 2.53 \times 10^{-8}$ and $M(\mathrm{PbSO_4}) = 303.26\text{ g mol}^{-1}$:
+                        <br>
+                        (a) Calculate the minimum concentration of sulfate ions $[\mathrm{SO_4^{2-}}]$ required to begin precipitating lead(II) sulfate ($\mathrm{PbSO_4}$). (2 Marks)
+                        <br>
+                        (b) If $0.050\text{ moles}$ of solid sodium sulfate ($\mathrm{Na_2SO_4}$) is dissolved into this solution without changing its $500.0\text{ mL}$ volume, calculate the mass of $\mathrm{PbSO_4}$ precipitate formed at equilibrium. (3 Marks)
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq4-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq4-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq4-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Part (a): Set $Q_{\mathrm{sp}} = K_{\mathrm{sp}}$. Part (b): Identify limiting reagent between $n(\mathrm{Pb^{2+}})$ and $n(\mathrm{SO_4^{2-}})$.</p>
+                    </div>
+
+                    <div id="pq4-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br><strong>(a) Threshold Concentration $[\mathrm{SO_4^{2-}}]_{\mathrm{min}}$:</strong>
+                            $$\mathrm{PbSO_{4(s)} \rightleftharpoons Pb^{2+}_{(aq)} + SO_{4(aq)}^{2-}}$$
+                            $$Q_{\mathrm{sp}} = [\mathrm{Pb^{2+}}][\mathrm{SO_4^{2-}}] = K_{\mathrm{sp}}$$
+                            $$(0.020\text{ M}) \times [\mathrm{SO_4^{2-}}] = 2.53 \times 10^{-8}$$
+                            $$[\mathrm{SO_4^{2-}}]_{\mathrm{min}} = \frac{2.53 \times 10^{-8}}{0.020} = \mathbf{1.27 \times 10^{-6}\text{ mol L}^{-1}}$$
+
+                            <br><strong>(b) Mass of Precipitate Formed:</strong>
+                            <br>1. Calculate initial moles of each ion:
+                            $$n(\mathrm{Pb^{2+}}) = c \times V = 0.020\text{ mol L}^{-1} \times 0.5000\text{ L} = 0.010\text{ mol}$$
+                            $$n(\mathrm{SO_4^{2-}}) = 0.050\text{ mol}$$
+                            <br>2. Identify limiting reagent:
+                            <br>Stoichiometry is $1:1$. Since $0.010\text{ mol } \mathrm{Pb^{2+}} < 0.050\text{ mol } \mathrm{SO_4^{2-}}$, $\mathrm{Pb^{2+}}$ is the **limiting reagent**.
+                            <br><br>3. Because $K_{\mathrm{sp}}$ is extremely small ($10^{-8}$), virtually ALL $0.010\text{ mol}$ of $\mathrm{Pb^{2+}}$ precipitates as solid $\mathrm{PbSO_4}$:
+                            $$n(\mathrm{PbSO_{4(s)}}) \approx 0.010\text{ mol}$$
+                            <br>4. Calculate mass of precipitate $m$:
+                            $$m = n \times M = 0.010\text{ mol} \times 303.26\text{ g mol}^{-1} = \mathbf{3.03\text{ g}} \quad (3\text{ sig. figs.})$$</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Formulates $Q_{\mathrm{sp}} = K_{\mathrm{sp}}$ for threshold addition.</li>
+                                <li><strong>1 Mark:</strong> Solves $[\mathrm{SO_4^{2-}}]_{\mathrm{min}} = 1.27 \times 10^{-6}\text{ M}$.</li>
+                                <li><strong>1 Mark:</strong> Calculates initial moles $n(\mathrm{Pb^{2+}}) = 0.010\text{ mol}$ and identifies $\mathrm{Pb^{2+}}$ as limiting reagent.</li>
+                                <li><strong>1 Mark:</strong> Deduces $0.010\text{ mol}$ of precipitate is formed.</li>
+                                <li><strong>1 Mark:</strong> Calculates correct mass $m = 3.03\text{ g}$ with correct significant figures.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation Footer -->
+            <footer class="content-footer">
+                <a href="22-molar-solubility-calcs.html" class="btn btn-outline">&larr; Back to Lesson 22</a>
+                <a href="24-formula-summary.html" class="btn btn-ethereal">
+                    Proceed to Lesson 24: Formula & Concept Guide &rarr;
+                </a>
+            </footer>
+        </main>
+    </div>
+
+    <!-- INTERACTIVE Qsp PREDICTOR CALCULATOR JAVASCRIPT -->
+    <script>
+        const predictorDb = {
+            "AgNO3+NaCl": { pptName: "Silver Chloride", formula: "AgCl", ksp: 1.77e-10, type: "1:1", catCoeff: 1, aniCoeff: 1, color: "White Solid" },
+            "AgNO3+KI": { pptName: "Silver Iodide", formula: "AgI", ksp: 8.52e-17, type: "1:1", catCoeff: 1, aniCoeff: 1, color: "Yellow Solid" },
+            "AgNO3+Na2SO4": { pptName: "Silver Sulfate", formula: "Ag2SO4", ksp: 1.20e-5, type: "2:1", catCoeff: 2, aniCoeff: 1, color: "White Crystalline Solid" },
+            "AgNO3+NaF": { pptName: "Silver Fluoride", formula: "AgF", ksp: 2.05e1, type: "1:1", catCoeff: 1, aniCoeff: 1, color: "Soluble (No Ppt)" },
+
+            "Pb(NO3)2+NaCl": { pptName: "Lead(II) Chloride", formula: "PbCl2", ksp: 1.70e-5, type: "1:2", catCoeff: 1, aniCoeff: 2, color: "White Solid" },
+            "Pb(NO3)2+KI": { pptName: "Lead(II) Iodide", formula: "PbI2", ksp: 8.79e-9, type: "1:2", catCoeff: 1, aniCoeff: 2, color: "Bright Yellow Solid" },
+            "Pb(NO3)2+Na2SO4": { pptName: "Lead(II) Sulfate", formula: "PbSO4", ksp: 2.53e-8, type: "1:1", catCoeff: 1, aniCoeff: 1, color: "White Solid" },
+            "Pb(NO3)2+NaF": { pptName: "Lead(II) Fluoride", formula: "PbF2", ksp: 3.30e-8, type: "1:2", catCoeff: 1, aniCoeff: 2, color: "White Solid" },
+
+            "Ba(NO3)2+NaCl": { pptName: "Barium Chloride", formula: "BaCl2", ksp: 1.0e2, type: "1:2", catCoeff: 1, aniCoeff: 2, color: "Soluble (No Ppt)" },
+            "Ba(NO3)2+KI": { pptName: "Barium Iodide", formula: "BaI2", ksp: 1.0e2, type: "1:2", catCoeff: 1, aniCoeff: 2, color: "Soluble (No Ppt)" },
+            "Ba(NO3)2+Na2SO4": { pptName: "Barium Sulfate", formula: "BaSO4", ksp: 1.08e-10, type: "1:1", catCoeff: 1, aniCoeff: 1, color: "Dense White Solid" },
+            "Ba(NO3)2+NaF": { pptName: "Barium Fluoride", formula: "BaF2", ksp: 1.84e-7, type: "1:2", catCoeff: 1, aniCoeff: 2, color: "White Solid" },
+
+            "Ca(NO3)2+NaCl": { pptName: "Calcium Chloride", formula: "CaCl2", ksp: 1.0e2, type: "1:2", catCoeff: 1, aniCoeff: 2, color: "Soluble (No Ppt)" },
+            "Ca(NO3)2+KI": { pptName: "Calcium Iodide", formula: "CaI2", ksp: 1.0e2, type: "1:2", catCoeff: 1, aniCoeff: 2, color: "Soluble (No Ppt)" },
+            "Ca(NO3)2+Na2SO4": { pptName: "Calcium Sulfate", formula: "CaSO4", ksp: 4.93e-5, type: "1:1", catCoeff: 1, aniCoeff: 1, color: "White Solid" },
+            "Ca(NO3)2+NaF": { pptName: "Calcium Fluoride", formula: "CaF2", ksp: 3.45e-11, type: "1:2", catCoeff: 1, aniCoeff: 2, color: "White Crystalline Solid" }
+        };
+
+        function runPrecipitationPredictor() {
+            const catSalt = document.getElementById('sim-cat-salt').value;
+            const aniSalt = document.getElementById('sim-ani-salt').value;
+
+            const v1 = parseFloat(document.getElementById('sim-v1').value) || 100.0;
+            const c1 = parseFloat(document.getElementById('sim-c1').value) || 0.010;
+
+            const v2 = parseFloat(document.getElementById('sim-v2').value) || 400.0;
+            const c2 = parseFloat(document.getElementById('sim-c2').value) || 0.005;
+
+            document.getElementById('lbl-v1-val').innerText = `${v1} mL`;
+            document.getElementById('lbl-v2-val').innerText = `${v2} mL`;
+
+            const pairKey = `${catSalt}+${aniSalt}`;
+            const target = predictorDb[pairKey] || { pptName: "Unknown", formula: "Unk", ksp: 1.0e-10, type: "1:1", catCoeff: 1, aniCoeff: 1, color: "Solid" };
+
+            // Dilution Calculations
+            const vTotal = v1 + v2;
+            const catDiluted = (c1 * v1) / vTotal;
+            const aniDiluted = (c2 * v2) / vTotal;
+
+            // Compute Qsp
+            let qsp = 0.0;
+            let qspLatex = "";
+
+            if (target.type === "1:1") {
+                qsp = catDiluted * aniDiluted;
+                qspLatex = `Q_{\\mathrm{sp}} = [Cat][Ani] = (${catDiluted.toExponential(2)}) \\times (${aniDiluted.toExponential(2)}) = \\mathbf{${qsp.toExponential(3)}}`;
+            } else if (target.type === "1:2") {
+                qsp = catDiluted * Math.pow(aniDiluted, 2);
+                qspLatex = `Q_{\\mathrm{sp}} = [Cat][Ani]^2 = (${catDiluted.toExponential(2)}) \\times (${aniDiluted.toExponential(2)})^2 = \\mathbf{${qsp.toExponential(3)}}`;
+            } else if (target.type === "2:1") {
+                qsp = Math.pow(catDiluted, 2) * aniDiluted;
+                qspLatex = `Q_{\\mathrm{sp}} = [Cat]^2 [Ani] = (${catDiluted.toExponential(2)})^2 \\times (${aniDiluted.toExponential(2)}) = \\mathbf{${qsp.toExponential(3)}}`;
+            }
+
+            const isPrecipitate = qsp > target.ksp;
+
+            // Render Banner
+            const banner = document.getElementById('sim-verdict-banner');
+            if (isPrecipitate) {
+                banner.innerHTML = `<span style="color: var(--accent-rose);">PRECIPITATE FORMS! Q_sp (${qsp.toExponential(2)}) &gt; K_sp (${target.ksp.toExponential(2)}) &rarr; Solid ${target.formula} (${target.color}) Precipitates!</span>`;
+            } else {
+                banner.innerHTML = `<span style="color: var(--accent-cyan);">NO PRECIPITATE FORMS. Q_sp (${qsp.toExponential(2)}) &le; K_sp (${target.ksp.toExponential(2)}) &rarr; Solution Remains Clear & Unsaturated.</span>`;
+            }
+
+            // Render MathJax Derivation
+            const derivBox = document.getElementById('sim-derivation-output');
+            derivBox.innerHTML = `
+                <div style="margin-bottom:0.5rem;"><strong style="color:var(--accent-purple);">1. Diluted Concentrations (c₂ = c₁V₁ / Vtotal):</strong></div>
+                <div>$[Cat]_i = \\frac{${c1}\\text{ M} \\times ${v1}\\text{ mL}}{${vTotal}\\text{ mL}} = ${catDiluted.toExponential(3)}\\text{ mol L}^{-1}$</div>
+                <div style="margin-bottom:0.75rem;">$[Ani]_i = \\frac{${c2}\\text{ M} \\times ${v2}\\text{ mL}}{${vTotal}\\text{ mL}} = ${aniDiluted.toExponential(3)}\\text{ mol L}^{-1}$</div>
+                <div style="margin-bottom:0.5rem;"><strong style="color:var(--accent-cyan);">2. Evaluated Reaction Quotient (Q_sp):</strong></div>
+                <div>$$${qspLatex}$$</div>
+                <div><strong style="color:var(--accent-emerald);">3. Thermodynamic Verdict:</strong> $Q_{\\mathrm{sp}} \\; (${qsp.toExponential(2)}) \\; ${isPrecipitate ? '>' : '\\le'} \\; K_{\\mathrm{sp}} \\; (${target.ksp.toExponential(2)})$</div>
+            `;
+
+            // Telemetry updates
+            document.getElementById('tel-vtotal').innerText = `${vTotal} mL`;
+            document.getElementById('tel-cat-dil').innerText = `${catDiluted.toExponential(2)} M`;
+            document.getElementById('tel-ani-dil').innerText = `${aniDiluted.toExponential(2)} M`;
+            document.getElementById('tel-qsp').innerText = qsp.toExponential(2);
+            document.getElementById('tel-ksp').innerText = target.ksp.toExponential(2);
+
+            // MathJax re-typeset
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                if (window.MathJax.typesetClear) {
+                    window.MathJax.typesetClear([derivBox]);
+                }
+                MathJax.typesetPromise([derivBox]).catch(function (err) {
+                    console.warn('MathJax deferred:', err);
+                });
+            }
+        }
+
+        function toggleElement(id) {
+            const el = document.getElementById(id);
+            if (el.style.display === 'none' || el.style.display === '') {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            if (window.MathJax && window.MathJax.startup) {
+                window.MathJax.startup.promise.then(() => {
+                    runPrecipitationPredictor();
+                });
+            } else {
+                runPrecipitationPredictor();
+            }
+        });
+    </script>
+</body>
+</html>

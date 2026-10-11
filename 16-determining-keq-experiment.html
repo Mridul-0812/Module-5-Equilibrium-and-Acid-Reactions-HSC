@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16 Practical Determination of Keq | Module 5 Chemistry</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Corrected MathJax 3 Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <style>
+        /* Ethereal Glassmorphism Custom UI Extensions */
+        :root {
+            --bg-dark: #080c14;
+            --bg-card: rgba(15, 23, 42, 0.75);
+            --bg-card-hover: rgba(30, 41, 59, 0.85);
+            --border-glow: rgba(124, 58, 237, 0.3);
+            --border-light: rgba(255, 255, 255, 0.08);
+            --border-cyan: rgba(6, 182, 212, 0.35);
+            --border-emerald: rgba(16, 185, 129, 0.35);
+            --accent-purple: #a78bfa;
+            --accent-cyan: #38bdf8;
+            --accent-emerald: #34d399;
+            --accent-amber: #fbbf24;
+            --accent-rose: #f43f5e;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-secondary: #cbd5e1;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'Fira Code', 'Cascadia Code', Consolas, monospace;
+            --shadow-glow: 0 0 30px rgba(124, 58, 237, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(124, 58, 237, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 90% 85%, rgba(6, 182, 212, 0.1) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.95) 0%, var(--bg-dark) 100%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.8;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 320px;
+            background: rgba(11, 15, 25, 0.92);
+            border-right: 1px solid var(--border-light);
+            backdrop-filter: blur(16px);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 2rem 1.5rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .badge-glow {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            color: var(--accent-purple);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.4rem;
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .sidebar-header .subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+
+        .progress-container {
+            margin-top: 1.25rem;
+            background: rgba(255, 255, 255, 0.06);
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            border-radius: 3px;
+        }
+
+        .score-card {
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav-menu {
+            padding: 1.25rem 1rem;
+        }
+
+        .nav-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            padding: 0 0.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 0.65rem 0.75rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            margin-bottom: 0.25rem;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            transform: translateX(3px);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(90deg, rgba(124, 58, 237, 0.25), rgba(6, 182, 212, 0.1));
+            border-left: 3px solid var(--accent-purple);
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+
+        .nav-num {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            margin-right: 0.75rem;
+            opacity: 0.7;
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            margin-left: 320px;
+            flex: 1;
+            padding: 2.5rem 3rem;
+            max-width: 1250px;
+        }
+
+        .hero-banner {
+            position: relative;
+            background: linear-gradient(135deg, rgba(24, 16, 48, 0.85) 0%, rgba(15, 23, 42, 0.95) 100%);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2.5rem;
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .ethereal-tag {
+            font-family: var(--font-mono);
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .ethereal-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin: 0.5rem 0 1rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ethereal-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 880px;
+        }
+
+        /* Content Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 2.25rem;
+            margin-bottom: 2.5rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            transition: border-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(124, 58, 237, 0.35);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.75rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .card-header h2 {
+            font-size: 1.6rem;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .pill-badge {
+            padding: 0.35rem 0.85rem;
+            background: rgba(124, 58, 237, 0.12);
+            border: 1px solid var(--border-glow);
+            color: var(--accent-purple);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pill-badge.emerald {
+            background: rgba(16, 185, 129, 0.12);
+            border-color: var(--border-emerald);
+            color: var(--accent-emerald);
+        }
+
+        .pill-badge.cyan {
+            background: rgba(56, 189, 248, 0.12);
+            border-color: var(--border-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .pill-badge.rose {
+            background: rgba(244, 63, 94, 0.12);
+            border-color: rgba(244, 63, 94, 0.35);
+            color: var(--accent-rose);
+        }
+
+        .pill-badge.amber {
+            background: rgba(251, 191, 36, 0.12);
+            border-color: rgba(251, 191, 36, 0.35);
+            color: var(--accent-amber);
+        }
+
+        /* Typography & Paragraphs */
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        strong {
+            color: #fff;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: var(--accent-purple);
+            margin: 1.85rem 0 0.85rem;
+            font-weight: 700;
+        }
+
+        h4 {
+            font-size: 1.12rem;
+            color: #fff;
+            margin: 1.35rem 0 0.55rem;
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin: 0 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.75rem;
+            padding-left: 0.25rem;
+        }
+
+        /* Grids & Feature Layouts */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-glow);
+        }
+
+        .feature-card h3 {
+            margin: 0 0 0.5rem 0;
+            color: #fff;
+        }
+
+        /* Callout Boxes */
+        .info-box {
+            background: rgba(124, 58, 237, 0.08);
+            border-left: 4px solid var(--accent-purple);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 1.35rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-box.cyan {
+            background: rgba(56, 189, 248, 0.08);
+            border-left-color: var(--accent-cyan);
+        }
+
+        .info-box.emerald {
+            background: rgba(52, 211, 153, 0.08);
+            border-left-color: var(--accent-emerald);
+        }
+
+        .info-box.amber {
+            background: rgba(251, 191, 36, 0.08);
+            border-left-color: var(--accent-amber);
+        }
+
+        .info-box.rose {
+            background: rgba(244, 63, 94, 0.08);
+            border-left-color: var(--accent-rose);
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+        }
+
+        /* Comparison & Data Tables */
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            margin: 1.75rem 0;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-glow);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        table.comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            background: rgba(15, 23, 42, 0.85);
+            font-size: 0.95rem;
+        }
+
+        table.comparison-table th {
+            background: rgba(30, 41, 59, 0.95);
+            color: var(--accent-cyan);
+            padding: 1rem 1.25rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border-glow);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+
+        table.comparison-table td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-main);
+            vertical-align: top;
+        }
+
+        /* ICE Tables */
+        table.ice-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            background: rgba(15, 23, 42, 0.85);
+            font-size: 0.95rem;
+            font-family: var(--font-mono);
+        }
+
+        table.ice-table th {
+            background: rgba(30, 41, 59, 0.95);
+            color: var(--accent-cyan);
+            padding: 1rem 1.25rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border-glow);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+
+        table.ice-table th.row-label-col {
+            text-align: left;
+            color: var(--accent-purple);
+            width: 180px;
+        }
+
+        table.ice-table td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-main);
+            vertical-align: middle;
+        }
+
+        table.ice-table td.row-label {
+            text-align: left;
+            font-weight: 700;
+            color: var(--accent-purple);
+            background: rgba(30, 41, 59, 0.4);
+            font-family: var(--font-main);
+        }
+
+        table.ice-table tr.row-initial td {
+            background: rgba(56, 189, 248, 0.05);
+            color: var(--accent-cyan);
+        }
+
+        table.ice-table tr.row-change td {
+            background: rgba(251, 191, 36, 0.05);
+            color: var(--accent-amber);
+            font-weight: 700;
+        }
+
+        table.ice-table tr.row-equilibrium td {
+            background: rgba(52, 211, 153, 0.08);
+            color: var(--accent-emerald);
+            font-weight: 700;
+        }
+
+        /* SVG Graph Containers */
+        .graph-wrapper {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1.75rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .graph-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .svg-graph-container {
+            width: 100%;
+            max-width: 760px;
+            height: auto;
+        }
+
+        /* Interactive Simulator Module */
+        .sim-container {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            box-shadow: 0 0 35px rgba(124, 58, 237, 0.12);
+        }
+
+        .sim-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+            background: rgba(30, 41, 59, 0.5);
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-group label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .control-group select, .control-group input[type="number"], .control-group input[type="range"] {
+            width: 100%;
+            padding: 0.55rem 0.75rem;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            font-size: 0.9rem;
+            accent-color: var(--accent-purple);
+        }
+
+        .sim-display-box {
+            background: rgba(10, 15, 28, 0.85);
+            border: 1px solid var(--border-cyan);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .telemetry-panel {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+
+        .telemetry-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .telemetry-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .telemetry-value {
+            font-family: var(--font-mono);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--accent-purple);
+            margin-top: 0.25rem;
+        }
+
+        /* Buttons & Actions */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-ethereal {
+            background: linear-gradient(135deg, #7c3aed, #06b6d4);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-ethereal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.45);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--border-light);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        /* Questions & Rubrics */
+        .question-container {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .marks-badge {
+            background: rgba(244, 63, 94, 0.15);
+            border: 1px solid rgba(244, 63, 94, 0.4);
+            color: var(--accent-rose);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .action-bar {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .drawer {
+            margin-top: 1rem;
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .drawer-hint {
+            background: rgba(251, 191, 36, 0.08);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            color: #fef08a;
+        }
+
+        .drawer-solution {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-glow);
+        }
+
+        .rubric-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--accent-purple);
+        }
+
+        .rubric-box h5 {
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .content-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; padding: 1.5rem; }
+            .grid-2col { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="ethereal-theme">
+    <div class="app-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="badge-glow">NESA Stage 6</span>
+                <h2>Module 5</h2>
+                <p class="subtitle">EQUILIBRIUM & ACID REACTIONS</p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="module-progress" style="width: 64%;"></div>
+                </div>
+                <div class="score-card">
+                    Total Mastery: <span id="total-marks">64</span> / 100 Marks
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-section">
+                    <span class="section-title">INTRODUCTION</span>
+                    <a href="index.html" class="nav-item">
+                        <span class="nav-num">—</span> Home & Guide
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE A: FOUNDATIONS OF EQUILIBRIUM</span>
+                    <a href="01-reversible-reactions.html" class="nav-item"><span class="nav-num">01</span> Reversible vs Irreversible</a>
+                    <a href="02-open-closed-systems.html" class="nav-item"><span class="nav-num">02</span> Open vs Closed Systems</a>
+                    <a href="03-static-dynamic-equilibrium.html" class="nav-item"><span class="nav-num">03</span> Static vs Dynamic Eq</a>
+                    <a href="04-non-equilibrium-systems.html" class="nav-item"><span class="nav-num">04</span> Non-Equilibrium Systems</a>
+                    <a href="05-collision-theory-equilibrium.html" class="nav-item"><span class="nav-num">05</span> Collision Theory in Eq</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE B: FACTORS AFFECTING EQUILIBRIUM</span>
+                    <a href="06-intro-le-chatelier.html" class="nav-item"><span class="nav-num">06</span> Le Chatelier's Principle</a>
+                    <a href="07-effect-of-concentration.html" class="nav-item"><span class="nav-num">07</span> Concentration Changes</a>
+                    <a href="08-effect-of-pressure-volume.html" class="nav-item"><span class="nav-num">08</span> Pressure & Volume</a>
+                    <a href="09-effect-of-temperature.html" class="nav-item"><span class="nav-num">09</span> Temperature Effects</a>
+                    <a href="10-collision-theory-lcp.html" class="nav-item"><span class="nav-num">10</span> Collision Theory & LCP</a>
+                    <a href="11-activation-energy-equilibrium.html" class="nav-item"><span class="nav-num">11</span> Activation Energy & $\Delta H$</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE C: THE EQUILIBRIUM CONSTANT</span>
+                    <a href="12-keq-expression.html" class="nav-item"><span class="nav-num">12</span> The $K_{\mathrm{eq}}$ Expression</a>
+                    <a href="13-keq-calculations-basic.html" class="nav-item"><span class="nav-num">13</span> Basic $K_{\mathrm{eq}}$ Calculations</a>
+                    <a href="14-keq-calculations-advanced.html" class="nav-item"><span class="nav-num">14</span> Advanced $K_{\mathrm{eq}}$ & $Q$</a>
+                    <a href="15-temperature-and-keq.html" class="nav-item"><span class="nav-num">15</span> Temperature & $K_{\mathrm{eq}}$</a>
+                    <a href="16-determining-keq-experiment.html" class="nav-item active"><span class="nav-num">16</span> Practical Determination</a>
+                    <a href="17-keq-acid-base-dissociation.html" class="nav-item"><span class="nav-num">17</span> Dissociation Systems</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE D: SOLUTION EQUILIBRIA</span>
+                    <a href="18-dissolution-ionic-compounds.html" class="nav-item"><span class="nav-num">18</span> Ionic Dissolution</a>
+                    <a href="19-indigenous-solubility-cycads.html" class="nav-item"><span class="nav-num">19</span> Indigenous Detoxification</a>
+                    <a href="20-solubility-rules.html" class="nav-item"><span class="nav-num">20</span> Solubility Rules</a>
+                    <a href="21-solubility-product-ksp.html" class="nav-item"><span class="nav-num">21</span> Solubility Product ($K_{\mathrm{sp}}$)</a>
+                    <a href="22-molar-solubility-calcs.html" class="nav-item"><span class="nav-num">22</span> Molar Solubility Calcs</a>
+                    <a href="23-predicting-precipitation.html" class="nav-item"><span class="nav-num">23</span> Predicting Precipitation</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE E: ASSESSMENT & REVIEW</span>
+                    <a href="24-formula-summary.html" class="nav-item"><span class="nav-num">24</span> Formula & Concept Guide</a>
+                    <a href="25-final-exam.html" class="nav-item"><span class="nav-num">25</span> Final Examination</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="hero-banner">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <span class="ethereal-tag">LESSON 16 • PHASE C: THE EQUILIBRIUM CONSTANT</span>
+                    <h1 class="ethereal-title">Practical Determination of $K_{\mathrm{eq}}$ via Colourimetry</h1>
+                    <p class="ethereal-subtitle">Master the mandatory NESA Module 5 practical investigation. Learn how to experimentally determine the equilibrium constant ($K_{\mathrm{eq}}$) for the iron(III) thiocyanate system ($\mathrm{Fe^{3+}_{(aq)} + SCN^-_{(aq)} \rightleftharpoons FeSCN^{2+}_{(aq)}}$) using Beer-Lambert colourimetry, Le Chatelier calibration standards, dilution algebra, risk assessments, and error reduction strategies.</p>
+                </div>
+            </header>
+
+            <!-- SYLLABUS ALIGNMENT CARD -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>NESA Syllabus Inquiry Focus</h2>
+                    <span class="pill-badge">Stage 6 Chemistry Practical</span>
+                </div>
+                <p>
+                    <strong>Inquiry Question 3:</strong> <em>How are equilibrium positions expressed quantitatively?</em>
+                </p>
+                <div class="info-box cyan" style="margin-top: 1rem;">
+                    <h3>Syllabus Outcomes Addressed (Outcome CH-12-01 & CH11/12-2, 3, 4, 5):</h3>
+                    <ul>
+                        <li>Perform a practical investigation to determine the value of $K_{\mathrm{eq}}$ for an equilibrium system using colourimetric or spectrophotometric techniques.</li>
+                        <li>Model the complexation equilibrium: $\mathrm{Fe^{3+}_{(aq)} + SCN^-_{(aq)} \rightleftharpoons FeSCN^{2+}_{(aq)}}$.</li>
+                        <li>Apply the Beer-Lambert Law ($A = \varepsilon l c$) to construct a linear calibration curve ($A$ vs $[\mathrm{FeSCN^{2+}}]$) using standard solutions containing a massive excess of $\mathrm{Fe^{3+}}$ to force $100\%$ reaction yield by Le Chatelier's Principle.</li>
+                        <li>Determine unknown equilibrium concentrations of $\mathrm{FeSCN^{2+}}$ in test mixtures, construct ICE tables to deduce equilibrium concentrations of unreacted $\mathrm{Fe^{3+}}$ and $\mathrm{SCN^-}$, and calculate $K_{\mathrm{eq}}$.</li>
+                        <li>Evaluate experimental validity, reliability, accuracy, risk assessment, and systematic errors in colourimetric analysis.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECTION 1: THE IRON(III) THIOCYANATE EQUILIBRIUM SYSTEM -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>1. The Model System: Iron(III) Thiocyanate Complexation</h2>
+                    <span class="pill-badge">Practical Foundation</span>
+                </div>
+
+                <p>
+                    Determining $K_{\mathrm{eq}}$ experimentally requires an equilibrium system where at least one species possesses an intense, distinct optical property (such as visible light absorption) that allows its equilibrium concentration to be measured non-destructively without disturbing the chemical equilibrium.
+                </p>
+
+                <p>
+                    The standard NESA practical investigation utilises the reversible formation of the mono-thiocyanatoiron(III) complex ion:
+                </p>
+                $$\mathrm{\underset{\text{Pale Yellow / Colourless}}{\mathrm{Fe^{3+}_{(aq)}}} + \underset{\text{Colourless}}{\mathrm{SCN^-_{(aq)}}} \rightleftharpoons \underset{\text{Intense Blood-Red}}{\mathrm{FeSCN^{2+}_{(aq)}}}} \quad (\Delta H < 0)$$
+
+                <div class="grid-2col">
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-amber);">
+                        <h3>Optical Characteristics of Species</h3>
+                        <p>
+                            • <strong>Iron(III) Ions ($\mathrm{Fe^{3+}}$):</strong> Pale yellow in acidic aqueous solution (dilute $\mathrm{HNO_3}$).<br>
+                            • <strong>Thiocyanate Ions ($\mathrm{SCN^-}$):</strong> Completely colourless in solution.<br>
+                            • <strong>Thiocyanatoiron(III) Complex ($\mathrm{FeSCN^{2+}}$):</strong> Intense <strong>blood-red / deep orange</strong> complex ion that strongly absorbs blue-green light ($\lambda_{\max} \approx 447\text{ nm}$).
+                        </p>
+                    </div>
+
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-purple);">
+                        <h3>The $K_{\mathrm{eq}}$ Expression</h3>
+                        <p>
+                            Because all reacting species are dissolved aqueous solutes ($\text{aq}$), the homogeneous equilibrium constant expression is:
+                        </p>
+                        $$K_{\mathrm{eq}} = \frac{[\mathrm{FeSCN^{2+}}]_{\text{eq}}}{[\mathrm{Fe^{3+}}]_{\text{eq}} [\mathrm{SCN^-}]_{\text{eq}}}$$
+                        <p>
+                            To evaluate $K_{\mathrm{eq}}$, we must determine the equilibrium molar concentrations of all three aqueous species at constant room temperature ($25^\circ\text{C}$).
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2: PRINCIPLES OF COLOURIMETRY & BEER-LAMBERT LAW -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>2. Theoretical Principles of Colourimetry & Beer-Lambert Law</h2>
+                    <span class="pill-badge cyan">Analytical Technique</span>
+                </div>
+
+                <p>
+                    <strong>Colourimetry</strong> is an analytical technique used to determine the concentration of a coloured solute in solution by measuring the absorption of specific wavelengths of visible light passing through the sample.
+                </p>
+
+                <h3>The Beer-Lambert Law</h3>
+                <p>
+                    When monochromatic light of wavelength $\lambda_{\max} = 447\text{ nm}$ (blue light, the complementary colour of red) passes through a cuvette containing the blood-red $\mathrm{FeSCN^{2+}}$ complex, the absorbance ($A$) is directly proportional to the concentration ($c$) of the complex and the optical path length ($l$):
+                </p>
+                $$A = \varepsilon \cdot l \cdot c$$
+
+                <p>Where:</p>
+                <ul>
+                    <li>$A$ = Absorbance (dimensionless log ratio $\log_{10}(I_0/I)$ measured by the colorimeter).</li>
+                    <li>$\varepsilon$ = Molar absorptivity coefficient of $\mathrm{FeSCN^{2+}}$ at $447\text{ nm}$ ($\text{L mol}^{-1} \text{cm}^{-1}$).</li>
+                    <li>$l$ = Optical path length of the cuvette (standardised at $1.0\text{ cm}$).</li>
+                    <li>$c$ = Molar concentration of $\mathrm{FeSCN^{2+}}$ ($\text{mol L}^{-1}$).</li>
+                </ul>
+
+                <div class="info-box cyan">
+                    <h3>Linearity of Absorbance vs Concentration</h3>
+                    <p>
+                        Because $\varepsilon$ and $l$ remain constant for a given instrument and cuvette, the Beer-Lambert Law simplifies to a direct linear proportionality:
+                        $$A \propto [\mathrm{FeSCN^{2+}}] \implies A = k \cdot [\mathrm{FeSCN^{2+}}]$$
+                        <br>
+                        Plotting Absorbance ($A$) on the y-axis against known concentrations of $\mathrm{FeSCN^{2+}}$ on the x-axis produces a <strong>linear calibration graph passing through the origin $(0,0)$</strong>.
+                    </p>
+                </div>
+
+                <!-- SVG Graph 1: Colorimeter Ray Diagram & Calibration Curve -->
+                <div class="graph-wrapper">
+                    <div class="graph-title">Figure 16.1: (Left) Colorimeter Optical Ray Path at 447 nm; (Right) Beer-Lambert Calibration Curve</div>
+                    <div class="svg-graph-container">
+                        <svg viewBox="0 0 720 300" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="720" height="300" fill="#0b1329" rx="10"/>
+
+                            <!-- Left Optics Diagram -->
+                            <g transform="translate(20, 20)">
+                                <text x="160" y="25" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">Colorimeter Optics ($\lambda = 447\text{ nm}$)</text>
+                                
+                                <!-- Light Source -->
+                                <rect x="20" y="80" width="30" height="40" fill="#fbbf24" rx="4"/>
+                                <text x="35" y="105" fill="#000" font-size="10" font-weight="700" text-anchor="middle">Lamp</text>
+
+                                <!-- Filter -->
+                                <rect x="75" y="60" width="8" height="80" fill="#38bdf8" rx="2"/>
+                                <text x="79" y="155" fill="#38bdf8" font-size="9" text-anchor="middle">Blue Filter (447nm)</text>
+
+                                <!-- Cuvette -->
+                                <rect x="120" y="60" width="50" height="80" fill="rgba(244, 63, 94, 0.35)" stroke="#f43f5e" stroke-width="2" rx="4"/>
+                                <text x="145" y="105" fill="#fff" font-size="10" font-weight="700" text-anchor="middle">FeSCN²⁺</text>
+
+                                <!-- Detector -->
+                                <rect x="210" y="80" width="30" height="40" fill="#34d399" rx="4"/>
+                                <text x="225" y="105" fill="#000" font-size="10" font-weight="700" text-anchor="middle">Sensor</text>
+
+                                <!-- Light Rays -->
+                                <line x1="50" y1="100" x2="75" y2="100" stroke="#fff" stroke-width="3"/>
+                                <line x1="83" y1="100" x2="120" y2="100" stroke="#38bdf8" stroke-width="3"/>
+                                <line x1="170" y1="100" x2="210" y2="100" stroke="#f43f5e" stroke-width="1.5" stroke-dasharray="2,2"/>
+
+                                <text x="145" y="185" fill="#cbd5e1" font-size="10" text-anchor="middle">Transmitted Light $I < I_0$</text>
+                            </g>
+
+                            <!-- Right Calibration Graph -->
+                            <g transform="translate(360, 20)">
+                                <text x="160" y="25" fill="#34d399" font-size="12" font-weight="700" text-anchor="middle">Linear Calibration Curve ($A = k \cdot c$)</text>
+
+                                <line x1="40" y1="230" x2="280" y2="230" stroke="#475569" stroke-width="2"/>
+                                <line x1="40" y1="40" x2="40" y2="230" stroke="#475569" stroke-width="2"/>
+
+                                <text x="160" y="260" fill="#cbd5e1" font-size="11" text-anchor="middle">$[\mathrm{FeSCN^{2+}}]$ ($\times 10^{-4}\text{ M}$)</text>
+                                <text x="15" y="135" fill="#cbd5e1" font-size="11" text-anchor="middle" transform="rotate(-90 15 135)">Absorbance ($A$)</text>
+
+                                <!-- Calibration Trendline -->
+                                <line x1="40" y1="230" x2="260" y2="50" stroke="#34d399" stroke-width="3"/>
+
+                                <!-- Data Points -->
+                                <circle cx="40" cy="230" r="4" fill="#a78bfa"/>
+                                <circle cx="95" cy="185" r="4" fill="#a78bfa"/>
+                                <circle cx="150" cy="140" r="4" fill="#a78bfa"/>
+                                <circle cx="205" cy="95" r="4" fill="#a78bfa"/>
+                                <circle cx="260" cy="50" r="4" fill="#a78bfa"/>
+
+                                <!-- Interpolation Dotted Lines -->
+                                <line x1="40" y1="120" x2="175" y2="120" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3,3"/>
+                                <line x1="175" y1="120" x2="175" y2="230" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="3,3"/>
+                                <circle cx="175" cy="120" r="5" fill="#fbbf24"/>
+
+                                <text x="180" y="115" fill="#fbbf24" font-size="10" font-weight="700">Unknown Test Sample ($A_{\text{unk}} \to c_{\text{eq}}$)</text>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: PREPARING CALIBRATION STANDARDS VIA LE CHATELIER'S TRICK -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>3. Preparing Calibration Standards: The Le Chatelier Forced-Yield Strategy</h2>
+                    <span class="pill-badge rose">Methodological Genius</span>
+                </div>
+
+                <p>
+                    A critical practical challenge arises when constructing the calibration curve: How do you prepare a solution with a KNOWN concentration of $[\mathrm{FeSCN^{2+}}]$ when the system is reversible and does not naturally react to completion?
+                </p>
+
+                <div class="info-box rose">
+                    <h3>The Le Chatelier Forced-Yield Strategy</h3>
+                    <p>
+                        To overcome reversibility, we prepare calibration standard solutions using a <strong>massive excess of iron(III) ions</strong> relative to thiocyanate ions.
+                        <br><br>
+                        • <strong>Standard Solutions Composition:</strong> $[\mathrm{Fe^{3+}}]_{\text{initial}} = 0.200\text{ mol L}^{-1}$ versus $[\mathrm{SCN^-}]_{\text{initial}} = 0.000200\text{ mol L}^{-1}$ (a <strong>1000-fold excess</strong> of $\mathrm{Fe^{3+}}$!).
+                        <br><br>
+                        • <strong>Le Chatelier Drive:</strong> According to Le Chatelier's Principle, adding an overwhelming excess of reactant $\mathrm{Fe^{3+}}$ drives the equilibrium position so far to the <strong>RIGHT ($\to$)</strong> that $100\%$ of the limiting reactant $\mathrm{SCN^-}$ is converted into $\mathrm{FeSCN^{2+}}$.
+                        <br><br>
+                        • <strong>Stoichiometric Equality for Standards:</strong>
+                        $$[\mathrm{FeSCN^{2+}}]_{\text{standard}} \approx [\mathrm{SCN^-}]_{\text{initial}}$$
+                    </p>
+                </div>
+
+                <h3>Serial Dilution Protocol for Calibration Standards</h3>
+                <p>
+                    A standard stock solution of $0.00200\text{ M}$ $\mathrm{KSCN}$ is diluted into volumetric flasks containing $0.200\text{ M}$ $\mathrm{Fe(NO_3)_3}$ in $0.5\text{ M}$ $\mathrm{HNO_3}$ to produce five standard solutions of known $[\mathrm{FeSCN^{2+}}]$:
+                </p>
+
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Standard Flask</th>
+                                <th>Vol of $0.00200\text{ M}$ $\mathrm{KSCN}$ Added ($\text{mL}$)</th>
+                                <th>Vol of $0.200\text{ M}$ $\mathrm{Fe(NO_3)_3}$ Added ($\text{mL}$)</th>
+                                <th>Total Flask Volume ($\text{mL}$)</th>
+                                <th>Assumed $[\mathrm{FeSCN^{2+}}]$ ($\text{mol L}^{-1}$)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Blank (0)</strong></td>
+                                <td>$0.00$</td>
+                                <td>$25.00$</td>
+                                <td>$50.00$</td>
+                                <td>$0.00 \times 10^{-4}$</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Std 1</strong></td>
+                                <td>$1.00$</td>
+                                <td>$25.00$</td>
+                                <td>$50.00$</td>
+                                <td>$0.40 \times 10^{-4}$</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Std 2</strong></td>
+                                <td>$2.00$</td>
+                                <td>$25.00$</td>
+                                <td>$50.00$</td>
+                                <td>$0.80 \times 10^{-4}$</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Std 3</strong></td>
+                                <td>$3.00$</td>
+                                <td>$25.00$</td>
+                                <td>$50.00$</td>
+                                <td>$1.20 \times 10^{-4}$</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Std 4</strong></td>
+                                <td>$4.00$</td>
+                                <td>$25.00$</td>
+                                <td>$50.00$</td>
+                                <td>$1.60 \times 10^{-4}$</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION 4: EQUILIBRIUM TEST SOLUTIONS & ICE TABLE ALGEBRA -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>4. Preparing Equilibrium Test Solutions & ICE Table Deduction</h2>
+                    <span class="pill-badge emerald">Quantitative Deduction</span>
+                </div>
+
+                <p>
+                    Once the calibration curve is established, we prepare <strong>Equilibrium Test Solutions</strong> where the initial concentrations of $\mathrm{Fe^{3+}}$ and $\mathrm{SCN^-}$ are of the <strong>same order of magnitude</strong> (e.g. both approximately $0.00200\text{ M}$). Under these conditions, the reaction does NOT proceed to completion; instead, significant concentrations of all three species co-exist at equilibrium.
+                </p>
+
+                <h3>Algebraic Deduction Protocol:</h3>
+                <ol>
+                    <li><strong>Determine Initial Concentrations ($[\mathrm{Fe^{3+}}]_0$ and $[\mathrm{SCN^-}]_0$):</strong> Use dilution algebra ($c_1 V_1 = c_2 V_2$) to calculate starting concentrations immediately after mixing in the test tube.</li>
+                    <li><strong>Measure Absorbance ($A_{\text{meas}}$) with Colorimeter:</strong> Record absorbance at $447\text{ nm}$.</li>
+                    <li><strong>Read $[\mathrm{FeSCN^{2+}}]_{\text{eq}}$ from Calibration Curve:</strong> Interpolate $A_{\text{meas}}$ on the linear curve to find the true equilibrium complex concentration $x$.</li>
+                    <li><strong>Construct the ICE Table to Deduce Unreacted Species:</strong>
+                    $$\begin{aligned}
+                    [\mathrm{Fe^{3+}}]_{\text{eq}} &= [\mathrm{Fe^{3+}}]_0 - x \\
+                    [\mathrm{SCN^-}]_{\text{eq}} &= [\mathrm{SCN^-}]_0 - x
+                    \end{aligned}$$</li>
+                    <li><strong>Calculate $K_{\mathrm{eq}}$:</strong> Substitute the three equilibrium concentrations into the expression:
+                    $$K_{\mathrm{eq}} = \frac{x}{([\mathrm{Fe^{3+}}]_0 - x)([\mathrm{SCN^-}]_0 - x)}$$</li>
+                </ol>
+
+                <div class="comparison-table-wrapper">
+                    <table class="ice-table">
+                        <thead>
+                            <tr>
+                                <th class="row-label-col">ICE Row</th>
+                                <th>$\mathrm{Fe^{3+}_{(aq)}}$</th>
+                                <th>$\mathrm{SCN^-_{(aq)}}$</th>
+                                <th>$\mathrm{FeSCN^{2+}_{(aq)}}$</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="row-initial">
+                                <td class="row-label">Initial ($\text{M}$)</td>
+                                <td>$[\mathrm{Fe^{3+}}]_0 = \frac{c_1 V_1}{V_{\text{total}}}$</td>
+                                <td>$[\mathrm{SCN^-}]_0 = \frac{c_2 V_2}{V_{\text{total}}}$</td>
+                                <td>$0.00$</td>
+                            </tr>
+                            <tr class="row-change">
+                                <td class="row-label">Change ($\text{M}$)</td>
+                                <td>$-x$</td>
+                                <td>$-x$</td>
+                                <td>$+x$</td>
+                            </tr>
+                            <tr class="row-equilibrium">
+                                <td class="row-label">Equilibrium ($\text{M}$)</td>
+                                <td>$[\mathrm{Fe^{3+}}]_0 - x$</td>
+                                <td>$[\mathrm{SCN^-}]_0 - x$</td>
+                                <td>$x$ (From Calibration)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION 5: RISK ASSESSMENT & EXPERIMENTAL CONTROLS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>5. Risk Assessment, Controls, and Systematic Errors</h2>
+                    <span class="pill-badge amber">Experimental Validity</span>
+                </div>
+
+                <h3>Risk Assessment & Safety Protocol</h3>
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Chemical / Hazard</th>
+                                <th>Specific Risk & Impact</th>
+                                <th>Safety Control Measures</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Iron(III) Nitrate in $\mathrm{HNO_3}$</strong></td>
+                                <td>Corrosive to skin and eyes; causes severe burns and staining.</td>
+                                <td>Wear nitrile gloves, safety goggles, and lab coat at all times. Rinse spills with water immediately.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Potassium Thiocyanate ($\mathrm{KSCN}$)</strong></td>
+                                <td>Toxic if ingested; contacts with acid release toxic hydrogen cyanide ($\mathrm{HCN}$) gas.</td>
+                                <td>Keep solution dilute; maintain acidic pH with dilute $\mathrm{HNO_3}$ in well-ventilated laboratory; wear gloves.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Glassware / Cuvettes</strong></td>
+                                <td>Fragile optical glass can crack/cut skin. Fingerprints smudge cuvette optical face.</td>
+                                <td>Handle cuvettes only by frosted sides; wipe optical faces with lint-free Kimwipes before measurement.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Key Experimental Controls for Validity</h3>
+                <ul>
+                    <li><strong>Acidified Solutions ($0.5\text{ M}$ $\mathrm{HNO_3}$ Solvent):</strong> $\mathrm{Fe^{3+}}$ ions undergo hydrolysis in neutral water to form insoluble brown precipitates ($\mathrm{Fe(OH)_{3(s)}}$). Maintaining acidic conditions prevents precipitate formation and stabilises $\mathrm{Fe^{3+}_{(aq)}}$.</li>
+                    <li><strong>Constant Temperature ($25^\circ\text{C}$):</strong> Since $K_{\mathrm{eq}}$ is highly temperature-dependent (exothermic reaction), all cuvettes and volumetric flasks must be kept in the same temperature bath during colorimetric readings.</li>
+                    <li><strong>Wavelength Selection ($\lambda_{\max} = 447\text{ nm}$):</strong> Using blue light ensures maximum absorbance by red $\mathrm{FeSCN^{2+}}$ while minimising optical interference from pale yellow $\mathrm{Fe^{3+}}$.</li>
+                </ul>
+            </section>
+
+            <!-- SECTION 6: INTERACTIVE VIRTUAL COLORIMETER & Keq SOLVER -->
+            <section class="card glass-card demo-card">
+                <div class="card-header">
+                    <h2>6. Interactive Virtual Colorimeter & Calibration Engine</h2>
+                    <span class="pill-badge demo-pill">Virtual Chemistry Lab</span>
+                </div>
+                <p>Adjust the volume of stock solutions added to test cuvettes, measure optical absorbance, construct the Beer-Lambert calibration curve, and calculate $K_{\mathrm{eq}}$ in real time.</p>
+
+                <div class="sim-container">
+                    <div class="sim-controls">
+                        <div class="control-group">
+                            <label>Test Mode:</label>
+                            <select id="sim-mode" onchange="runColorimeterEngine()">
+                                <option value="calibration">1. Build Calibration Curve (Excess Fe3+)</option>
+                                <option value="test_sample">2. Analyse Equilibrium Test Solution</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <label>Volume $0.00200\text{ M}$ $\mathrm{KSCN}$ ($\text{mL}$): <span id="lbl-kscn-vol" style="color: var(--accent-cyan);">3.0 mL</span></label>
+                            <input type="range" id="sim-kscn-vol" min="1.0" max="5.0" step="0.5" value="3.0" oninput="runColorimeterEngine()">
+                        </div>
+
+                        <div class="control-group">
+                            <label>Volume $0.00200\text{ M}$ $\mathrm{Fe(NO_3)_3}$ ($\text{mL}$): <span id="lbl-fe-vol" style="color: var(--accent-purple);">5.0 mL</span></label>
+                            <input type="range" id="sim-fe-vol" min="1.0" max="10.0" step="0.5" value="5.0" oninput="runColorimeterEngine()">
+                        </div>
+                    </div>
+
+                    <div class="sim-display-box">
+                        <h4 style="font-size: 0.9rem; color: var(--accent-cyan); text-transform: uppercase; margin-bottom: 0.75rem;">Colorimeter Cuvette Optical Response</h4>
+                        
+                        <!-- Dynamic Cuvette Visualizer -->
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 2rem; padding: 1rem;">
+                            <div id="cuvette-color-box" style="width: 80px; height: 120px; border: 3px solid #cbd5e1; border-radius: 8px; background: rgba(244, 63, 94, 0.4); box-shadow: 0 0 20px rgba(244, 63, 94, 0.3); transition: background 0.3s ease;"></div>
+                            <div style="text-align: left;">
+                                <p style="margin-bottom: 0.25rem;"><strong>Wavelength:</strong> $447\text{ nm}$ (Blue Filter)</p>
+                                <p style="margin-bottom: 0.25rem;"><strong>Measured Absorbance ($A$):</strong> <span id="disp-abs" style="font-family: var(--font-mono); color: var(--accent-amber); font-weight:700;">0.450</span></p>
+                                <p style="margin-bottom: 0;"><strong>Interpolated $[\mathrm{FeSCN^{2+}}]_{\text{eq}}$:</strong> <span id="disp-complex-conc" style="font-family: var(--font-mono); color: var(--accent-emerald); font-weight:700;">1.20 × 10⁻⁴ M</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="telemetry-panel">
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Initial $[\mathrm{Fe^{3+}}]_0$</span>
+                            <span class="telemetry-value" id="tel-init-fe" style="color: var(--accent-cyan);">1.00 × 10⁻³ M</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Initial $[\mathrm{SCN^-}]_0$</span>
+                            <span class="telemetry-value" id="tel-init-scn" style="color: var(--accent-purple);">6.00 × 10⁻⁴ M</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Equilibrium $[\mathrm{FeSCN^{2+}}]$</span>
+                            <span class="telemetry-value" id="tel-eq-complex" style="color: var(--accent-amber);">1.20 × 10⁻⁴ M</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Calculated $K_{\mathrm{eq}}$</span>
+                            <span class="telemetry-value" id="tel-calc-keq" style="color: var(--accent-emerald);">284</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 7: SCAFFOLDED WORKED EXAMPLES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>7. Scaffolded Worked Examples</h2>
+                    <span class="pill-badge">HSC Step-by-Step Solutions</span>
+                </div>
+
+                <!-- Example 1: Easy -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 1 (Easy): Beer-Lambert Calibration Curve Interpolation</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A student constructs a Beer-Lambert calibration curve for $[\mathrm{FeSCN^{2+}}]$ at $447\text{ nm}$. The linear regression equation is $A = 3750 \times [\mathrm{FeSCN^{2+}}]$.
+                        <br>An equilibrium test mixture yields an absorbance reading of $A = 0.450$.
+                        <br>Calculate the equilibrium concentration of $[\mathrm{FeSCN^{2+}}]$.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Rearrange linear Beer-Lambert equation:</strong>
+                        $$[\mathrm{FeSCN^{2+}}]_{\text{eq}} = \frac{A}{3750}$$</p>
+
+                        <p><strong>2. Substitute measured absorbance $A = 0.450$:</strong>
+                        $$[\mathrm{FeSCN^{2+}}]_{\text{eq}} = \frac{0.450}{3750} = 1.20 \times 10^{-4}\text{ mol L}^{-1}$$</p>
+                    </div>
+                </div>
+
+                <!-- Example 2: Medium -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 2 (Medium): Initial Concentration Dilution Algebra</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A test solution is prepared by mixing $5.00\text{ mL}$ of $0.00200\text{ M}$ $\mathrm{Fe(NO_3)_3}$, $3.00\text{ mL}$ of $0.00200\text{ M}$ $\mathrm{KSCN}$, and $2.00\text{ mL}$ of $0.5\text{ M}$ $\mathrm{HNO_3}$ (total volume $10.00\text{ mL}$).
+                        <br>Calculate the initial concentrations $[\mathrm{Fe^{3+}}]_0$ and $[\mathrm{SCN^-}]_0$ immediately after mixing.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Calculate total volume:</strong>
+                        $$V_{\text{total}} = 5.00 + 3.00 + 2.00 = 10.00\text{ mL}$$</p>
+
+                        <p><strong>2. Apply dilution formula $c_2 = \frac{c_1 V_1}{V_2}$ for $\mathrm{Fe^{3+}}$:</strong>
+                        $$[\mathrm{Fe^{3+}}]_0 = \frac{(0.00200\text{ M}) \times (5.00\text{ mL})}{10.00\text{ mL}} = \mathbf{1.00 \times 10^{-3}\text{ mol L}^{-1}}$$</p>
+
+                        <p><strong>3. Apply dilution formula for $\mathrm{SCN^-}$:</strong>
+                        $$[\mathrm{SCN^-}]_0 = \frac{(0.00200\text{ M}) \times (3.00\text{ mL})}{10.00\text{ mL}} = \mathbf{6.00 \times 10^{-4}\text{ mol L}^{-1}}$$</p>
+                    </div>
+                </div>
+
+                <!-- Example 3: Hard -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 3 (Hard): Complete Practical $K_{\mathrm{eq}}$ ICE Table Calculation</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Using the initial concentrations from Example 2 ($[\mathrm{Fe^{3+}}]_0 = 1.00 \times 10^{-3}\text{ M}$, $[\mathrm{SCN^-}]_0 = 6.00 \times 10^{-4}\text{ M}$), colourimetric analysis of the equilibrium mixture reveals $[\mathrm{FeSCN^{2+}}]_{\text{eq}} = 1.20 \times 10^{-4}\text{ M}$.
+                        <br>Construct an ICE table, calculate equilibrium concentrations of unreacted $\mathrm{Fe^{3+}}$ and $\mathrm{SCN^-}$, and determine $K_{\mathrm{eq}}$.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Construct the ICE Table ($x = 1.20 \times 10^{-4}\text{ M}$):</strong></p>
+                        <div class="comparison-table-wrapper">
+                            <table class="ice-table">
+                                <thead>
+                                    <tr>
+                                        <th class="row-label-col">ICE Row</th>
+                                        <th>$\mathrm{Fe^{3+}_{(aq)}}$</th>
+                                        <th>$\mathrm{SCN^-_{(aq)}}$</th>
+                                        <th>$\mathrm{FeSCN^{2+}_{(aq)}}$</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="row-initial">
+                                        <td class="row-label">Initial ($\text{M}$)</td>
+                                        <td>$1.00 \times 10^{-3}$</td>
+                                        <td>$6.00 \times 10^{-4}$</td>
+                                        <td>$0.00$</td>
+                                    </tr>
+                                    <tr class="row-change">
+                                        <td class="row-label">Change ($\text{M}$)</td>
+                                        <td>$-1.20 \times 10^{-4}$</td>
+                                        <td>$-1.20 \times 10^{-4}$</td>
+                                        <td>$+1.20 \times 10^{-4}$</td>
+                                    </tr>
+                                    <tr class="row-equilibrium">
+                                        <td class="row-label">Equilibrium ($\text{M}$)</td>
+                                        <td>$8.80 \times 10^{-4}$</td>
+                                        <td>$4.80 \times 10^{-4}$</td>
+                                        <td>$1.20 \times 10^{-4}$</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p><strong>2. Substitute into $K_{\mathrm{eq}}$ expression:</strong>
+                        $$K_{\mathrm{eq}} = \frac{[\mathrm{FeSCN^{2+}}]}{[\mathrm{Fe^{3+}}][\mathrm{SCN^-}]} = \frac{1.20 \times 10^{-4}}{(8.80 \times 10^{-4})(4.80 \times 10^{-4})} = \frac{1.20 \times 10^{-4}}{4.224 \times 10^{-7}} = \mathbf{284} \quad (3\text{ sig. figs.})$$</p>
+                    </div>
+                </div>
+
+                <!-- Example 4: Extension -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 4 (Extension): Evaluating Systematic Error in Le Chatelier Standard Assumption</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        In preparing calibration standards, students assume $100\%$ conversion of $[\mathrm{SCN^-}]_0$ into $[\mathrm{FeSCN^{2+}}]$ due to the $1000$-fold excess of $\mathrm{Fe^{3+}}$ ($0.200\text{ M}$).
+                        <br>Using $K_{\mathrm{eq}} = 280$, calculate the TRUE equilibrium $[\mathrm{FeSCN^{2+}}]$ in a standard prepared with $[\mathrm{Fe^{3+}}]_0 = 0.200\text{ M}$ and $[\mathrm{SCN^-}]_0 = 1.00 \times 10^{-4}\text{ M}$, and determine the percentage error in the $100\%$ conversion assumption.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Set up equilibrium expression with $x = [\mathrm{FeSCN^{2+}}]_{\text{eq}}$:</strong>
+                        $$K_{\mathrm{eq}} = \frac{x}{(0.200 - x)(1.00 \times 10^{-4} - x)} = 280$$</p>
+
+                        <p><strong>2. Because $[\mathrm{Fe^{3+}}]_0 = 0.200\text{ M} \gg x$, approximate $(0.200 - x) \approx 0.200$:</strong>
+                        $$\frac{x}{0.200(1.00 \times 10^{-4} - x)} = 280 \implies \frac{x}{1.00 \times 10^{-4} - x} = 280 \times 0.200 = 56$$
+                        $$x = 56(1.00 \times 10^{-4} - x) = 5.60 \times 10^{-3} - 56x \implies 57x = 5.60 \times 10^{-3}$$
+                        $$x = \frac{5.60 \times 10^{-3}}{57} = 9.825 \times 10^{-5}\text{ mol L}^{-1}$$</p>
+
+                        <p><strong>3. Calculate percentage conversion and assumption error:</strong>
+                        <br>• True conversion = $\frac{9.825 \times 10^{-5}}{1.00 \times 10^{-4}} \times 100\% = 98.25\%$
+                        <br>• Percentage error = $\frac{|1.00 \times 10^{-4} - 9.825 \times 10^{-5}|}{9.825 \times 10^{-5}} \times 100\% = \mathbf{1.78\%}$
+                        <br><br>This confirms that the Le Chatelier assumption introduces an extremely small systematic error ($< 2\%$), making it highly valid for school laboratory determination!</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 8: PRACTICE QUESTIONS WITH RUBRICS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>8. NESA Examination Practice Questions</h2>
+                    <span class="pill-badge demo-pill">Self-Marking Engine</span>
+                </div>
+                <p>Solve the questions below, then toggle hints and model solutions to verify your answers against NESA marking rubrics.</p>
+
+                <!-- Practice Q1 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 1 (Easy): Justifying Wavelength Selection</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Explain why a blue filter ($\lambda = 447\text{ nm}$) is selected when measuring the absorbance of the blood-red $\mathrm{FeSCN^{2+}}$ complex ion in a colorimeter.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq1-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq1-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq1-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Think about complementary colours in the visible spectrum (red absorbs blue).</p>
+                    </div>
+
+                    <div id="pq1-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>• Blood-red solutions absorb blue light ($\approx 447\text{ nm}$), which is the complementary colour of red.
+                            <br>• Using $447\text{ nm}$ maximises sensitivity (molar absorptivity $\varepsilon$) for $\mathrm{FeSCN^{2+}}$ while ensuring pale yellow $\mathrm{Fe^{3+}}$ ions do not interfere with absorbance readings.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Identifies blue light as the complementary wavelength strongly absorbed by red $\mathrm{FeSCN^{2+}}$.</li>
+                                <li><strong>1 Mark:</strong> Explains that this maximises analytical sensitivity and avoids optical interference.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q2 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 2 (Medium): Practical Role of Nitric Acid Solvent</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        In this practical investigation, all stock solutions are prepared in $0.5\text{ M}$ $\mathrm{HNO_3}$ rather than distilled water.
+                        <br>Explain the chemical necessity of using nitric acid as the solvent.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq2-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq2-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq2-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Consider what happens when $\mathrm{Fe^{3+}}$ reacts with water ($\mathrm{OH^-}$) to form insoluble precipitates.</p>
+                    </div>
+
+                    <div id="pq2-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>• In neutral aqueous solution, $\mathrm{Fe^{3+}}$ undergoes hydrolysis to form insoluble iron(III) hydroxide precipitate: $\mathrm{Fe^{3+}_{(aq)} + 3H_2O_{(l)} \rightleftharpoons Fe(OH)_{3(s)} + 3H^+_{(aq)}}$.
+                            <br>• Precipitates cause light scattering in cuvettes, invalidating Beer-Lambert absorbance readings.
+                            <br>• High $\mathrm{H^+}$ concentration from $0.5\text{ M}$ $\mathrm{HNO_3}$ shifts hydrolysis equilibrium left by Le Chatelier's Principle, keeping $\mathrm{Fe^{3+}}$ fully dissolved and preventing precipitate formation.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Identifies potential formation of $\mathrm{Fe(OH)_3}$ precipitate in neutral water.</li>
+                                <li><strong>1 Mark:</strong> Explains that high $[\mathrm{H^+}]$ shifts hydrolysis equilibrium left to suppress precipitation.</li>
+                                <li><strong>1 Mark:</strong> Connects precipitate prevention to maintaining solution clarity for valid colourimetry.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q3 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 3 (Hard): Practical Calculation from Experimental Absorbance</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A test solution is prepared by mixing $4.00\text{ mL}$ of $0.00200\text{ M}$ $\mathrm{Fe(NO_3)_3}$ and $4.00\text{ mL}$ of $0.00200\text{ M}$ $\mathrm{KSCN}$ with $2.00\text{ mL}$ of dilute acid ($V_{\text{total}} = 10.00\text{ mL}$).
+                        <br>Colorimetric measurement at $447\text{ nm}$ yields $A = 0.300$. The calibration curve slope is $k = 2500\text{ L mol}^{-1}$.
+                        <br>Calculate $K_{\mathrm{eq}}$ for this system.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq3-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq3-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq3-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Initial $[\mathrm{Fe^{3+}}]_0 = \frac{4 \times 0.002}{10} = 8.0 \times 10^{-4}\text{ M}$, $[\mathrm{SCN^-}]_0 = 8.0 \times 10^{-4}\text{ M}$. $[\mathrm{FeSCN^{2+}}]_{\text{eq}} = \frac{0.300}{2500} = 1.20 \times 10^{-4}\text{ M}$.</p>
+                    </div>
+
+                    <div id="pq3-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>1. Initial Concentrations:
+                            <br>• $[\mathrm{Fe^{3+}}]_0 = \frac{0.00200 \times 4.00}{10.00} = 8.00 \times 10^{-4}\text{ M}$
+                            <br>• $[\mathrm{SCN^-}]_0 = \frac{0.00200 \times 4.00}{10.00} = 8.00 \times 10^{-4}\text{ M}$
+                            <br>2. Equilibrium $[\mathrm{FeSCN^{2+}}]$:
+                            <br>• $[\mathrm{FeSCN^{2+}}]_{\text{eq}} = \frac{A}{k} = \frac{0.300}{2500} = 1.20 \times 10^{-4}\text{ M}$
+                            <br>3. Unreacted Species at Equilibrium:
+                            <br>• $[\mathrm{Fe^{3+}}]_{\text{eq}} = 8.00 \times 10^{-4} - 1.20 \times 10^{-4} = 6.80 \times 10^{-4}\text{ M}$
+                            <br>• $[\mathrm{SCN^-}]_{\text{eq}} = 8.00 \times 10^{-4} - 1.20 \times 10^{-4} = 6.80 \times 10^{-4}\text{ M}$
+                            <br>4. Calculate $K_{\mathrm{eq}}$:
+                            $$K_{\mathrm{eq}} = \frac{1.20 \times 10^{-4}}{(6.80 \times 10^{-4})(6.80 \times 10^{-4})} = \frac{1.20 \times 10^{-4}}{4.624 \times 10^{-7}} = \mathbf{260}$$</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Calculates initial concentrations $[\mathrm{Fe^{3+}}]_0 = [\mathrm{SCN^-}]_0 = 8.00 \times 10^{-4}\text{ M}$.</li>
+                                <li><strong>1 Mark:</strong> Calculates $[\mathrm{FeSCN^{2+}}]_{\text{eq}} = 1.20 \times 10^{-4}\text{ M}$ from Beer-Lambert equation.</li>
+                                <li><strong>1 Mark:</strong> Deduces unreacted equilibrium concentrations ($6.80 \times 10^{-4}\text{ M}$).</li>
+                                <li><strong>1 Mark:</strong> Obtains correct final value of $260$ (or $2.6 \times 10^2$).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q4 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 4 (Extension): Evaluating Validity & Reliability in Colorimetric Determination</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Evaluate the validity and reliability of using a school colorimeter to determine $K_{\mathrm{eq}}$ for the $\mathrm{FeSCN^{2+}}$ equilibrium system, suggesting two specific experimental improvements.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq4-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq4-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq4-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Address validity (does it measure what it claims?), reliability (consistency of trials), and temperature/cuvette controls.</p>
+                    </div>
+
+                    <div id="pq4-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>• <strong>Validity Evaluation:</strong> HIGH VALIDITY. The method directly measures equilibrium complex concentration using a non-destructive optical technique governed by the Beer-Lambert Law. Using excess $\mathrm{Fe^{3+}}$ for calibration standards effectively forces complete reaction by Le Chatelier's Principle.
+                            <br>• <strong>Reliability Evaluation:</strong> MODERATE RELIABILITY. Reliability depends on repeatable absorbance readings across multiple trials. Temperature fluctuations during measurements cause shifts in $K_{\mathrm{eq}}$, reducing reliability.
+                            <br>• <strong>Improvement 1 (Thermostatic Control):</strong> Place cuvettes in a constant-temperature water bath ($25^\circ\text{C}$) prior to reading to eliminate thermal $K_{\mathrm{eq}}$ drift.
+                            <br>• <strong>Improvement 2 (Cuvette Standardisation & Matched Optics):</strong> Use matched quartz cuvettes and ensure optical faces are consistently wiped with lint-free wipes to eliminate light scattering from fingerprints.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Accurately defines and evaluates validity in context of Beer-Lambert Law and Le Chatelier calibration.</li>
+                                <li><strong>1 Mark:</strong> Accurately evaluates reliability in terms of repeatable trial readings.</li>
+                                <li><strong>1 Mark:</strong> Identifies temperature variation as a key source of experimental instability.</li>
+                                <li><strong>1 Mark:</strong> Proposes thermostatic temperature control as a valid improvement.</li>
+                                <li><strong>1 Mark:</strong> Proposes optical face handling / matched cuvette control as a valid improvement.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation Footer -->
+            <footer class="content-footer">
+                <a href="15-temperature-and-keq.html" class="btn btn-outline">&larr; Back to Lesson 15</a>
+                <a href="17-keq-acid-base-dissociation.html" class="btn btn-ethereal">
+                    Proceed to Lesson 17: Dissociation Systems &rarr;
+                </a>
+            </footer>
+        </main>
+    </div>
+
+    <!-- INTERACTIVE VIRTUAL COLORIMETER JAVASCRIPT -->
+    <script>
+        function runColorimeterEngine() {
+            const mode = document.getElementById('sim-mode').value;
+            const kscnVol = parseFloat(document.getElementById('sim-kscn-vol').value);
+            const feVol = parseFloat(document.getElementById('sim-fe-vol').value);
+
+            document.getElementById('lbl-kscn-vol').innerText = `${kscnVol.toFixed(1)} mL`;
+            document.getElementById('lbl-fe-vol').innerText = `${feVol.toFixed(1)} mL`;
+
+            const vTotal = 10.0; // Standardised test tube volume
+
+            let initFe = 0;
+            let initScn = 0;
+            let eqComplex = 0;
+            let abs = 0;
+            let calcKeq = 0;
+
+            if (mode === 'calibration') {
+                // Excess Fe3+ mode (100% reaction yield assumed)
+                // Fe stock is 0.200 M
+                initFe = (0.200 * feVol) / vTotal;
+                initScn = (0.00200 * kscnVol) / vTotal;
+                eqComplex = initScn; // 100% conversion
+                abs = eqComplex * 3750; // Calibration slope = 3750
+                calcKeq = 9999; // Forced yield
+            } else {
+                // Test Sample Mode (Reversible equilibrium)
+                // Both stocks 0.00200 M
+                initFe = (0.00200 * feVol) / vTotal;
+                initScn = (0.00200 * kscnVol) / vTotal;
+
+                // Solve quadratic for true equilibrium with Keq = 280
+                // Keq = x / ((initFe - x)(initScn - x)) = 280
+                // 280 x^2 - (280*(initFe + initScn) + 1) x + 280*initFe*initScn = 0
+                const K = 280;
+                const a = K;
+                const b = -(K * (initFe + initScn) + 1);
+                const c = K * initFe * initScn;
+
+                const disc = b * b - 4 * a * c;
+                eqComplex = (-b - Math.sqrt(disc)) / (2 * a);
+                abs = eqComplex * 3750;
+
+                const eqFe = initFe - eqComplex;
+                const eqScn = initScn - eqComplex;
+                calcKeq = eqComplex / (eqFe * eqScn);
+            }
+
+            // Visual Cuvette Red Intensity Scaling
+            const redAlpha = Math.min(1.0, Math.max(0.1, abs * 1.2));
+            const cuvetteBox = document.getElementById('cuvette-color-box');
+            cuvetteBox.style.background = `rgba(244, 63, 94, ${redAlpha})`;
+            cuvetteBox.style.boxShadow = `0 0 25px rgba(244, 63, 94, ${redAlpha * 0.8})`;
+
+            // Telemetry updates
+            document.getElementById('disp-abs').innerText = abs.toFixed(3);
+            document.getElementById('disp-complex-conc').innerText = `${(eqComplex * 1e4).toFixed(2)} × 10⁻⁴ M`;
+
+            document.getElementById('tel-init-fe').innerText = `${(initFe * 1e3).toFixed(2)} × 10⁻³ M`;
+            document.getElementById('tel-init-scn').innerText = `${(initScn * 1e4).toFixed(2)} × 10⁻⁴ M`;
+            document.getElementById('tel-eq-complex').innerText = `${(eqComplex * 1e4).toFixed(2)} × 10⁻⁴ M`;
+            document.getElementById('tel-calc-keq').innerText = mode === 'calibration' ? "N/A (100% Yield)" : Math.round(calcKeq);
+        }
+
+        function toggleElement(id) {
+            const el = document.getElementById(id);
+            if (el.style.display === 'none' || el.style.display === '') {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            if (window.MathJax && window.MathJax.startup) {
+                window.MathJax.startup.promise.then(() => {
+                    runColorimeterEngine();
+                });
+            } else {
+                runColorimeterEngine();
+            }
+        });
+    </script>
+</body>
+</html>

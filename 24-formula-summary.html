@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24 Formula & Concept Summary | Module 5 Chemistry Data Sheet</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- MathJax 3 Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <style>
+        /* Ethereal Glassmorphism Custom UI Extensions */
+        :root {
+            --bg-dark: #080c14;
+            --bg-card: rgba(15, 23, 42, 0.75);
+            --bg-card-hover: rgba(30, 41, 59, 0.85);
+            --border-glow: rgba(124, 58, 237, 0.3);
+            --border-light: rgba(255, 255, 255, 0.08);
+            --border-cyan: rgba(6, 182, 212, 0.35);
+            --border-emerald: rgba(16, 185, 129, 0.35);
+            --accent-purple: #a78bfa;
+            --accent-cyan: #38bdf8;
+            --accent-emerald: #34d399;
+            --accent-amber: #fbbf24;
+            --accent-rose: #f43f5e;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-secondary: #cbd5e1;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'Fira Code', 'Cascadia Code', Consolas, monospace;
+            --shadow-glow: 0 0 30px rgba(124, 58, 237, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(124, 58, 237, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 90% 85%, rgba(6, 182, 212, 0.1) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.95) 0%, var(--bg-dark) 100%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.8;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 320px;
+            background: rgba(11, 15, 25, 0.92);
+            border-right: 1px solid var(--border-light);
+            backdrop-filter: blur(16px);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 2rem 1.5rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .badge-glow {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            color: var(--accent-purple);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.4rem;
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .sidebar-header .subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+
+        .progress-container {
+            margin-top: 1.25rem;
+            background: rgba(255, 255, 255, 0.06);
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            border-radius: 3px;
+        }
+
+        .score-card {
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav-menu {
+            padding: 1.25rem 1rem;
+        }
+
+        .nav-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            padding: 0 0.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 0.65rem 0.75rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            margin-bottom: 0.25rem;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            transform: translateX(3px);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(90deg, rgba(124, 58, 237, 0.25), rgba(6, 182, 212, 0.1));
+            border-left: 3px solid var(--accent-purple);
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+
+        .nav-num {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            margin-right: 0.75rem;
+            opacity: 0.7;
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            margin-left: 320px;
+            flex: 1;
+            padding: 2.5rem 3rem;
+            max-width: 1250px;
+        }
+
+        .hero-banner {
+            position: relative;
+            background: linear-gradient(135deg, rgba(24, 16, 48, 0.85) 0%, rgba(15, 23, 42, 0.95) 100%);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2.5rem;
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .ethereal-tag {
+            font-family: var(--font-mono);
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .ethereal-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin: 0.5rem 0 1rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ethereal-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 880px;
+        }
+
+        /* Content Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 2.25rem;
+            margin-bottom: 2.5rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            transition: border-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(124, 58, 237, 0.35);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.75rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .card-header h2 {
+            font-size: 1.6rem;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .pill-badge {
+            padding: 0.35rem 0.85rem;
+            background: rgba(124, 58, 237, 0.12);
+            border: 1px solid var(--border-glow);
+            color: var(--accent-purple);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pill-badge.emerald {
+            background: rgba(16, 185, 129, 0.12);
+            border-color: var(--border-emerald);
+            color: var(--accent-emerald);
+        }
+
+        .pill-badge.cyan {
+            background: rgba(56, 189, 248, 0.12);
+            border-color: var(--border-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .pill-badge.amber {
+            background: rgba(251, 191, 36, 0.12);
+            border-color: rgba(251, 191, 36, 0.35);
+            color: var(--accent-amber);
+        }
+
+        .pill-badge.rose {
+            background: rgba(244, 63, 94, 0.12);
+            border-color: rgba(244, 63, 94, 0.35);
+            color: var(--accent-rose);
+        }
+
+        /* Typography & Paragraphs */
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        strong {
+            color: #fff;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: var(--accent-purple);
+            margin: 1.85rem 0 0.85rem;
+            font-weight: 700;
+        }
+
+        h4 {
+            font-size: 1.12rem;
+            color: #fff;
+            margin: 1.35rem 0 0.55rem;
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin: 0 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.75rem;
+            padding-left: 0.25rem;
+        }
+
+        /* Grids & Feature Layouts */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-glow);
+        }
+
+        .feature-card h3 {
+            margin: 0 0 0.5rem 0;
+            color: #fff;
+        }
+
+        /* Callout Boxes */
+        .info-box {
+            background: rgba(124, 58, 237, 0.08);
+            border-left: 4px solid var(--accent-purple);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 1.35rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-box.cyan {
+            background: rgba(56, 189, 248, 0.08);
+            border-left-color: var(--accent-cyan);
+        }
+
+        .info-box.emerald {
+            background: rgba(52, 211, 153, 0.08);
+            border-left-color: var(--accent-emerald);
+        }
+
+        .info-box.amber {
+            background: rgba(251, 191, 36, 0.08);
+            border-left-color: var(--accent-amber);
+        }
+
+        .info-box.rose {
+            background: rgba(244, 63, 94, 0.08);
+            border-left-color: var(--accent-rose);
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+        }
+
+        /* Tables */
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            margin: 1.75rem 0;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-glow);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        table.comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            background: rgba(15, 23, 42, 0.85);
+            font-size: 0.95rem;
+        }
+
+        table.comparison-table th {
+            background: rgba(30, 41, 59, 0.95);
+            color: var(--accent-cyan);
+            padding: 1rem 1.25rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border-glow);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+
+        table.comparison-table td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-main);
+            vertical-align: top;
+        }
+
+        /* Interactive Simulator Module */
+        .sim-container {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            box-shadow: 0 0 35px rgba(124, 58, 237, 0.12);
+        }
+
+        .sim-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+            background: rgba(30, 41, 59, 0.5);
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-group label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .control-group select, .control-group input[type="range"], .control-group input[type="number"] {
+            width: 100%;
+            padding: 0.55rem 0.75rem;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            font-size: 0.9rem;
+            accent-color: var(--accent-purple);
+        }
+
+        .sim-display-box {
+            background: rgba(10, 15, 28, 0.85);
+            border: 1px solid var(--border-cyan);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .telemetry-panel {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+
+        .telemetry-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .telemetry-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .telemetry-value {
+            font-family: var(--font-mono);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--accent-purple);
+            margin-top: 0.25rem;
+        }
+
+        /* Buttons & Actions */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-ethereal {
+            background: linear-gradient(135deg, #7c3aed, #06b6d4);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-ethereal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.45);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--border-light);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        /* PERIODIC TABLE STYLING */
+        .ptable-container {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            background: rgba(11, 15, 25, 0.95);
+            padding: 1.25rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-glow);
+        }
+
+        .ptable-grid {
+            display: grid;
+            grid-template-columns: repeat(18, minmax(52px, 1fr));
+            gap: 4px;
+            min-width: 980px;
+        }
+
+        .ptable-cell {
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            padding: 4px 2px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 62px;
+        }
+
+        .ptable-cell:hover {
+            transform: scale(1.15);
+            z-index: 10;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+        }
+
+        .ptable-cell.empty {
+            background: transparent;
+            border: none;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .ptable-cell .z-num {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            text-anchor: start;
+            line-height: 1;
+        }
+
+        .ptable-cell .sym {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.1;
+        }
+
+        .ptable-cell .mass {
+            font-size: 0.6rem;
+            color: var(--text-secondary);
+            line-height: 1;
+        }
+
+        /* Element Categories Colors */
+        .ptable-cell.alkali { background: rgba(244, 63, 94, 0.25); border-color: rgba(244, 63, 94, 0.5); }
+        .ptable-cell.alkaline { background: rgba(251, 191, 36, 0.25); border-color: rgba(251, 191, 36, 0.5); }
+        .ptable-cell.transition { background: rgba(124, 58, 237, 0.25); border-color: rgba(124, 58, 237, 0.5); }
+        .ptable-cell.post-trans { background: rgba(56, 189, 248, 0.25); border-color: rgba(56, 189, 248, 0.5); }
+        .ptable-cell.metalloid { background: rgba(52, 211, 153, 0.25); border-color: rgba(52, 211, 153, 0.5); }
+        .ptable-cell.nonmetal { background: rgba(167, 139, 250, 0.25); border-color: rgba(167, 139, 250, 0.5); }
+        .ptable-cell.halogen { background: rgba(236, 72, 153, 0.25); border-color: rgba(236, 72, 153, 0.5); }
+        .ptable-cell.noble { background: rgba(14, 165, 233, 0.25); border-color: rgba(14, 165, 233, 0.5); }
+        .ptable-cell.lanthanide { background: rgba(217, 119, 6, 0.25); border-color: rgba(217, 119, 6, 0.5); }
+        .ptable-cell.actinide { background: rgba(190, 18, 60, 0.25); border-color: rgba(190, 18, 60, 0.5); }
+
+        .content-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; padding: 1.5rem; }
+            .grid-2col { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="ethereal-theme">
+    <div class="app-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="badge-glow">NESA Stage 6</span>
+                <h2>Module 5</h2>
+                <p class="subtitle">EQUILIBRIUM & ACID REACTIONS</p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="module-progress" style="width: 96%;"></div>
+                </div>
+                <div class="score-card">
+                    Total Mastery: <span id="total-marks">96</span> / 100 Marks
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-section">
+                    <span class="section-title">INTRODUCTION</span>
+                    <a href="index.html" class="nav-item">
+                        <span class="nav-num">—</span> Home & Guide
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE A: FOUNDATIONS OF EQUILIBRIUM</span>
+                    <a href="01-reversible-reactions.html" class="nav-item"><span class="nav-num">01</span> Reversible vs Irreversible</a>
+                    <a href="02-open-closed-systems.html" class="nav-item"><span class="nav-num">02</span> Open vs Closed Systems</a>
+                    <a href="03-static-dynamic-equilibrium.html" class="nav-item"><span class="nav-num">03</span> Static vs Dynamic Eq</a>
+                    <a href="04-non-equilibrium-systems.html" class="nav-item"><span class="nav-num">04</span> Non-Equilibrium Systems</a>
+                    <a href="05-collision-theory-equilibrium.html" class="nav-item"><span class="nav-num">05</span> Collision Theory in Eq</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE B: FACTORS AFFECTING EQUILIBRIUM</span>
+                    <a href="06-intro-le-chatelier.html" class="nav-item"><span class="nav-num">06</span> Le Chatelier's Principle</a>
+                    <a href="07-effect-of-concentration.html" class="nav-item"><span class="nav-num">07</span> Concentration Changes</a>
+                    <a href="08-effect-of-pressure-volume.html" class="nav-item"><span class="nav-num">08</span> Pressure & Volume</a>
+                    <a href="09-effect-of-temperature.html" class="nav-item"><span class="nav-num">09</span> Temperature Effects</a>
+                    <a href="10-collision-theory-lcp.html" class="nav-item"><span class="nav-num">10</span> Collision Theory & LCP</a>
+                    <a href="11-activation-energy-equilibrium.html" class="nav-item"><span class="nav-num">11</span> Activation Energy & $\Delta H$</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE C: THE EQUILIBRIUM CONSTANT</span>
+                    <a href="12-keq-expression.html" class="nav-item"><span class="nav-num">12</span> The $K_{\mathrm{eq}}$ Expression</a>
+                    <a href="13-keq-calculations-basic.html" class="nav-item"><span class="nav-num">13</span> Basic $K_{\mathrm{eq}}$ Calculations</a>
+                    <a href="14-keq-calculations-advanced.html" class="nav-item"><span class="nav-num">14</span> Advanced $K_{\mathrm{eq}}$ & $Q$</a>
+                    <a href="15-temperature-and-keq.html" class="nav-item"><span class="nav-num">15</span> Temperature & $K_{\mathrm{eq}}$</a>
+                    <a href="16-determining-keq-experiment.html" class="nav-item"><span class="nav-num">16</span> Practical Determination</a>
+                    <a href="17-keq-acid-base-dissociation.html" class="nav-item"><span class="nav-num">17</span> Dissociation Systems</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE D: SOLUTION EQUILIBRIA</span>
+                    <a href="18-dissolution-ionic-compounds.html" class="nav-item"><span class="nav-num">18</span> Ionic Dissolution</a>
+                    <a href="19-indigenous-solubility-cycads.html" class="nav-item"><span class="nav-num">19</span> Indigenous Detoxification</a>
+                    <a href="20-solubility-rules.html" class="nav-item"><span class="nav-num">20</span> Solubility Rules</a>
+                    <a href="21-solubility-product-ksp.html" class="nav-item"><span class="nav-num">21</span> Solubility Product ($K_{\mathrm{sp}}$)</a>
+                    <a href="22-molar-solubility-calcs.html" class="nav-item"><span class="nav-num">22</span> Molar Solubility Calcs</a>
+                    <a href="23-predicting-precipitation.html" class="nav-item"><span class="nav-num">23</span> Predicting Precipitation</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE E: ASSESSMENT & REVIEW</span>
+                    <a href="24-formula-summary.html" class="nav-item active"><span class="nav-num">24</span> Formula & Concept Guide</a>
+                    <a href="25-final-exam.html" class="nav-item"><span class="nav-num">25</span> Final Examination</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="hero-banner">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <span class="ethereal-tag">LESSON 24 • PHASE E: ASSESSMENT & REVISION CHEAT SHEET</span>
+                    <h1 class="ethereal-title">Module 5 Formula & Concept Summary Data Sheet</h1>
+                    <p class="ethereal-subtitle">A comprehensive, NESA-aligned master data sheet and study guide compiling every thermodynamic formula, physical constant, solubility rule, periodic table element data, and core conceptual model across Module 5: Equilibrium and Acid Reactions.</p>
+                </div>
+            </header>
+
+            <!-- SECTION 1: PHYSICAL CONSTANTS & DATA MATRIX -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>1. NESA Standard Physical Constants & Conversion Data</h2>
+                    <span class="pill-badge">HSC Data Sheet Reference</span>
+                </div>
+
+                <p>
+                    Below are the standard fundamental physical constants, molar volumes, and key metric unit equivalences used across Stage 6 NESA Chemistry examinations:
+                </p>
+
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Physical Quantity / Constant</th>
+                                <th>Symbol</th>
+                                <th>NESA Standard Value</th>
+                                <th>SI Units</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Universal Gas Constant</strong></td>
+                                <td>$R$</td>
+                                <td>$8.314$</td>
+                                <td>$\text{J K}^{-1} \text{ mol}^{-1}$</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Avogadro Constant</strong></td>
+                                <td>$N_A$</td>
+                                <td>$6.022 \times 10^{23}$</td>
+                                <td>$\text{mol}^{-1}$</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Molar Volume of Ideal Gas ($0^\circ\text{C}, 100\text{ kPa}$)</strong></td>
+                                <td>$V_m \text{ (STP)}$</td>
+                                <td>$22.71$</td>
+                                <td>$\text{L mol}^{-1}$</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Molar Volume of Ideal Gas ($25^\circ\text{C}, 100\text{ kPa}$)</strong></td>
+                                <td>$V_m \text{ (SATP)}$</td>
+                                <td>$24.79$</td>
+                                <td>$\text{L mol}^{-1}$</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ionisation Constant of Water ($25^\circ\text{C}$)</strong></td>
+                                <td>$K_w$</td>
+                                <td>$1.0 \times 10^{-14}$</td>
+                                <td>Dimensionless</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Specific Heat Capacity of Water</strong></td>
+                                <td>$c$</td>
+                                <td>$4.18 \times 10^3$ (or $4.18$)</td>
+                                <td>$\text{J kg}^{-1} \text{ K}^{-1}$ (or $\text{J g}^{-1} \text{ K}^{-1}$)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Standard Atmospheric Pressure</strong></td>
+                                <td>$P_{\text{std}}$</td>
+                                <td>$100.0$</td>
+                                <td>$\text{kPa}$</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Absolute Zero Temperature</strong></td>
+                                <td>$T_0$</td>
+                                <td>$0\text{ K} = -273.15^\circ\text{C}$</td>
+                                <td>$\text{K}$</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION 2: MODULE 5 MASTER FORMULA SUMMARY TABLE -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>2. Complete Module 5 Mathematical Formula Matrix</h2>
+                    <span class="pill-badge emerald">Formula Cheat Sheet</span>
+                </div>
+
+                <p>
+                    Every equation required for quantitative equilibrium, reaction quotient, and solution solubility calculations in Module 5:
+                </p>
+
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Formula Name / Concept</th>
+                                <th>Mathematical Expression</th>
+                                <th>Variable Definitions & SI Units</th>
+                                <th>Application Context</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Molarity Concentration</strong></td>
+                                <td>$$c = \frac{n}{V}$$</td>
+                                <td>$c$: Conc ($\text{mol L}^{-1}$), $n$: Moles ($\text{mol}$), $V$: Volume ($\text{L}$)</td>
+                                <td>Quantitative solution stoichiometry.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Dilution Formula</strong></td>
+                                <td>$$c_1 V_1 = c_2 V_2$$</td>
+                                <td>$c_1, c_2$: Initial/final conc ($\text{M}$), $V_1, V_2$: Initial/final vol ($\text{L}$ or $\text{mL}$)</td>
+                                <td>Pre-calculation dilution before $Q_{\mathrm{sp}}$ evaluation.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Equilibrium Constant ($K_{\mathrm{eq}}$)</strong></td>
+                                <td>$$K_{\mathrm{eq}} = \frac{[\mathrm{C}]^c [\mathrm{D}]^d}{[\mathrm{A}]^a [\mathrm{B}]^b}$$</td>
+                                <td>$[\mathrm{A}], [\mathrm{B}], [\mathrm{C}], [\mathrm{D}]$: Equilibrium conc ($\text{M}$), lower case: Stoichiometric coefficients</td>
+                                <td>Homogeneous system at dynamic equilibrium (solids/pure liquids omitted).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Reaction Quotient ($Q$ or $Q_{\mathrm{sp}}$)</strong></td>
+                                <td>$$Q = \frac{[\mathrm{C}]_i^c [\mathrm{D}]_i^d}{[\mathrm{A}]_i^a [\mathrm{B}]_i^b}$$</td>
+                                <td>$[\mathrm{X}]_i$: Instantaneous non-equilibrium initial concentrations ($\text{M}$)</td>
+                                <td>Comparing with $K_{\mathrm{eq}}$ or $K_{\mathrm{sp}}$ to predict shift direction.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Solubility Product ($K_{\mathrm{sp}}$)</strong></td>
+                                <td>$$K_{\mathrm{sp}} = [\mathrm{M}^{m+}]^x [\mathrm{A}^{n-}]^y$$</td>
+                                <td>$[\mathrm{M}^{m+}], [\mathrm{A}^{n-}]$: Equilibrium dissolved ion concentrations ($\text{M}$)</td>
+                                <td>Saturated heterogenous dissolution of sparingly soluble salt $\mathrm{M}_x \mathrm{A}_{y(s)}$.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>$1:1$ Salt Molar Solubility ($s$)</strong></td>
+                                <td>$$s = \sqrt{K_{\mathrm{sp}}}$$</td>
+                                <td>$s$: Molar solubility ($\text{mol L}^{-1}$), $K_{\mathrm{sp}} = s^2$</td>
+                                <td>Salts like $\mathrm{AgCl}, \mathrm{BaSO_4}, \mathrm{CaCO_3}$.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>$1:2$ or $2:1$ Salt Solubility ($s$)</strong></td>
+                                <td>$$s = \sqrt[3]{\frac{K_{\mathrm{sp}}}{4}}$$</td>
+                                <td>$s$: Molar solubility ($\text{mol L}^{-1}$), $K_{\mathrm{sp}} = 4s^3$</td>
+                                <td>Salts like $\mathrm{PbCl_2}, \mathrm{CaF_2}, \mathrm{Ag_2CrO_4}$.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>$1:3$ Salt Molar Solubility ($s$)</strong></td>
+                                <td>$$s = \sqrt[4]{\frac{K_{\mathrm{sp}}}{27}}$$</td>
+                                <td>$s$: Molar solubility ($\text{mol L}^{-1}$), $K_{\mathrm{sp}} = 27s^4$</td>
+                                <td>Salts like $\mathrm{Fe(OH)_3}, \mathrm{Al(OH)_3}$.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>$2:3$ Salt Molar Solubility ($s$)</strong></td>
+                                <td>$$s = \sqrt[5]{\frac{K_{\mathrm{sp}}}{108}}$$</td>
+                                <td>$s$: Molar solubility ($\text{mol L}^{-1}$), $K_{\mathrm{sp}} = 108s^5$</td>
+                                <td>Salts like $\mathrm{Ca_3(PO_4)_2}, \mathrm{Bi_2S_3}$.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Mass Solubility ($S_{\text{mass}}$)</strong></td>
+                                <td>$$S_{\text{mass}} = s \times M$$</td>
+                                <td>$S_{\text{mass}}$: Mass solubility ($\text{g L}^{-1}$), $M$: Molar mass ($\text{g mol}^{-1}$)</td>
+                                <td>Converting molar solubility to gravimetric mass per litre.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Maximum Dissolved Mass</strong></td>
+                                <td>$$m_{\text{max}} = s \times V \times M$$</td>
+                                <td>$m_{\text{max}}$: Mass ($\text{g}$), $V$: Volume ($\text{L}$), $M$: Molar mass ($\text{g mol}^{-1}$)</td>
+                                <td>Mass limit before precipitation in volume $V$.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Gibbs Free Energy ($\Delta G^\circ$)</strong></td>
+                                <td>$$\Delta G^\circ = \Delta H^\circ - T \Delta S^\circ$$</td>
+                                <td>$\Delta G^\circ$: Free energy ($\text{kJ mol}^{-1}$), $\Delta H^\circ$: Enthalpy ($\text{kJ mol}^{-1}$), $\Delta S^\circ$: Entropy ($\text{kJ K}^{-1} \text{ mol}^{-1}$), $T$: Temp ($\text{K}$)</td>
+                                <td>Evaluating reaction spontaneity ($\Delta G^\circ < 0$ is spontaneous).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Thermodynamic $K_{\mathrm{eq}}$ & $\Delta G^\circ$</strong></td>
+                                <td>$$\Delta G^\circ = -RT \ln K_{\mathrm{eq}}$$</td>
+                                <td>$R = 8.314\text{ J K}^{-1}\text{mol}^{-1}$, $T$: Temp ($\text{K}$), $K_{\mathrm{eq}}$: Constant</td>
+                                <td>Relating equilibrium position to standard Gibbs free energy.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION 3: FULL NESA-VALIDATED PERIODIC TABLE OF THE ELEMENTS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>3. NESA Periodic Table of the Elements</h2>
+                    <span class="pill-badge cyan">Complete 118 Element Grid</span>
+                </div>
+                <p>Interactive NESA Periodic Table featuring Atomic Numbers ($Z$), Symbols, Names, and Standard Relative Atomic Masses ($M_r$). Click or hover on any element cell to inspect its chemical classification and data.</p>
+
+                <div id="ptable-inspector" class="info-box cyan" style="margin-bottom: 1.25rem; font-family: var(--font-mono);">
+                    Hover over or click an element below to view details...
+                </div>
+
+                <div class="ptable-container">
+                    <div class="ptable-grid" id="ptable-main-grid">
+                        <!-- Periodic table populated dynamically via JavaScript -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: NESA SOLUBILITY RULES & COMMON Ksp REFERENCE DATA -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>4. NESA Soluble Rules & Reference $K_{\mathrm{sp}}$ Database</h2>
+                    <span class="pill-badge amber">Qualitative & Quantitative Solubility Reference</span>
+                </div>
+
+                <h3>1. Master NESA Solubility Rules for Ionic Compounds in Water</h3>
+
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Ion Class</th>
+                                <th>Solubility General Rule</th>
+                                <th>Key Exceptions (Insoluble / Sparingly Soluble)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Group 1 Cations ($\mathrm{Na^+, K^+, Li^+}$, etc.)</strong></td>
+                                <td><strong style="color:var(--accent-emerald);">ALL SOLUBLE</strong></td>
+                                <td>None (No exceptions)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ammonium ($\mathrm{NH_4^+}$)</strong></td>
+                                <td><strong style="color:var(--accent-emerald);">ALL SOLUBLE</strong></td>
+                                <td>None (No exceptions)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Nitrate ($\mathrm{NO_3^-}$) & Acetate ($\mathrm{CH_3COO^-}$)</strong></td>
+                                <td><strong style="color:var(--accent-emerald);">ALL SOLUBLE</strong></td>
+                                <td>$\mathrm{AgCH_3COO}$ is sparingly soluble.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Halides ($\mathrm{Cl^-, Br^-, I^-}$)</strong></td>
+                                <td><strong style="color:var(--accent-emerald);">MOSTLY SOLUBLE</strong></td>
+                                <td><strong style="color:var(--accent-rose);">Insoluble:</strong> $\mathrm{Ag^+}, \mathrm{Pb^{2+}}$ ($\mathrm{PbCl_2, PbI_2, AgCl, AgBr, AgI}$)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sulfate ($\mathrm{SO_4^{2-}}$)</strong></td>
+                                <td><strong style="color:var(--accent-emerald);">MOSTLY SOLUBLE</strong></td>
+                                <td><strong style="color:var(--accent-rose);">Insoluble:</strong> $\mathrm{BaSO_4, PbSO_4, CaSO_4}$ (sparingly), $\mathrm{Ag_2SO_4}$</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Hydroxide ($\mathrm{OH^-}$)</strong></td>
+                                <td><strong style="color:var(--accent-rose);">MOSTLY INSOLUBLE</strong></td>
+                                <td><strong style="color:var(--accent-emerald);">Soluble:</strong> Group 1, $\mathrm{NH_4^+}, \mathrm{Ba(OH)_2}$. ($\mathrm{Ca(OH)_2}$ is slightly soluble).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Carbonate ($\mathrm{CO_3^{2-}}$) & Phosphate ($\mathrm{PO_4^{3-}}$)</strong></td>
+                                <td><strong style="color:var(--accent-rose);">MOSTLY INSOLUBLE</strong></td>
+                                <td><strong style="color:var(--accent-emerald);">Soluble:</strong> Group 1 cations and $\mathrm{NH_4^+}$.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sulfide ($\mathrm{S^{2-}}$)</strong></td>
+                                <td><strong style="color:var(--accent-rose);">MOSTLY INSOLUBLE</strong></td>
+                                <td><strong style="color:var(--accent-emerald);">Soluble:</strong> Group 1, Group 2 cations, and $\mathrm{NH_4^+}$.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>2. Published $K_{\mathrm{sp}}$ Standard Values at $25^\circ\text{C}$ ($298.15\text{ K}$)</h3>
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Salt Formula</th>
+                                <th>Compound Name</th>
+                                <th>Stoichiometry Type</th>
+                                <th>$K_{\mathrm{sp}}$ Value ($25^\circ\text{C}$)</th>
+                                <th>Molar Solubility $s$ ($\text{mol L}^{-1}$)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>$\mathrm{AgCl}$</td>
+                                <td>Silver Chloride</td>
+                                <td>$1:1$</td>
+                                <td>$1.77 \times 10^{-10}$</td>
+                                <td>$1.33 \times 10^{-5}$</td>
+                            </tr>
+                            <tr>
+                                <td>$\mathrm{AgBr}$</td>
+                                <td>Silver Bromide</td>
+                                <td>$1:1$</td>
+                                <td>$5.35 \times 10^{-13}$</td>
+                                <td>$7.31 \times 10^{-7}$</td>
+                            </tr>
+                            <tr>
+                                <td>$\mathrm{AgI}$</td>
+                                <td>Silver Iodide</td>
+                                <td>$1:1$</td>
+                                <td>$8.52 \times 10^{-17}$</td>
+                                <td>$9.23 \times 10^{-9}$</td>
+                            </tr>
+                            <tr>
+                                <td>$\mathrm{BaSO_4}$</td>
+                                <td>Barium Sulfate</td>
+                                <td>$1:1$</td>
+                                <td>$1.08 \times 10^{-10}$</td>
+                                <td>$1.04 \times 10^{-5}$</td>
+                            </tr>
+                            <tr>
+                                <td>$\mathrm{CaCO_3}$</td>
+                                <td>Calcium Carbonate (Calcite)</td>
+                                <td>$1:1$</td>
+                                <td>$3.36 \times 10^{-9}$</td>
+                                <td>$5.80 \times 10^{-5}$</td>
+                            </tr>
+                            <tr>
+                                <td>$\mathrm{PbCl_2}$</td>
+                                <td>Lead(II) Chloride</td>
+                                <td>$1:2$</td>
+                                <td>$1.70 \times 10^{-5}$</td>
+                                <td>$1.62 \times 10^{-2}$</td>
+                            </tr>
+                            <tr>
+                                <td>$\mathrm{PbI_2}$</td>
+                                <td>Lead(II) Iodide</td>
+                                <td>$1:2$</td>
+                                <td>$8.79 \times 10^{-9}$</td>
+                                <td>$1.30 \times 10^{-3}$</td>
+                            </tr>
+                            <tr>
+                                <td>$\mathrm{CaF_2}$</td>
+                                <td>Calcium Fluoride</td>
+                                <td>$1:2$</td>
+                                <td>$3.45 \times 10^{-11}$</td>
+                                <td>$2.05 \times 10^{-4}$</td>
+                            </tr>
+                            <tr>
+                                <td>$\mathrm{Ag_2CrO_4}$</td>
+                                <td>Silver Chromate</td>
+                                <td>$2:1$</td>
+                                <td>$1.12 \times 10^{-12}$</td>
+                                <td>$6.54 \times 10^{-5}$</td>
+                            </tr>
+                            <tr>
+                                <td>$\mathrm{Fe(OH)_3}$</td>
+                                <td>Iron(III) Hydroxide</td>
+                                <td>$1:3$</td>
+                                <td>$2.79 \times 10^{-39}$</td>
+                                <td>$1.01 \times 10^{-10}$</td>
+                            </tr>
+                            <tr>
+                                <td>$\mathrm{Ca_3(PO_4)_2}$</td>
+                                <td>Calcium Phosphate</td>
+                                <td>$2:3$</td>
+                                <td>$2.07 \times 10^{-33}$</td>
+                                <td>$1.14 \times 10^{-7}$</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SECTION 5: PHASE-BY-PHASE CONCEPT BITE-SIZED REVISION NOTES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>5. Bite-Sized Module 5 Core Concept Summaries</h2>
+                    <span class="pill-badge rose">High-Yield Content Review</span>
+                </div>
+
+                <div class="features-grid">
+                    <!-- Phase A -->
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-purple);">
+                        <h3>Phase A: Foundations of Equilibrium</h3>
+                        <p>
+                            • <strong>Reversible Reactions:</strong> Reactants convert to products and products convert back to reactants simultaneously ($\rightleftharpoons$). Occurs when activation energy $E_a$ for both forward and reverse pathways is accessible.
+                            <br>
+                            • <strong>Open vs Closed Systems:</strong> Closed systems exchange energy but NOT matter with surroundings (mandatory for dynamic equilibrium). Open systems exchange both matter and energy.
+                            <br>
+                            • <strong>Dynamic Equilibrium Criteria:</strong> 1. Closed system, 2. Macroscopic properties constant, 3. Microscopic rates equal ($\text{Rate}_{\text{forward}} = \text{Rate}_{\text{reverse}} > 0$), 4. Both reactants and products present.
+                            <br>
+                            • <strong>Non-Equilibrium Systems:</strong> Combustion ($\Delta H \ll 0, \Delta S > 0$) and Photosynthesis are essentially irreversible due to extreme enthalpy changes or continuous open-system mass transfer.
+                        </p>
+                    </div>
+
+                    <!-- Phase B -->
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-cyan);">
+                        <h3>Phase B: Factors Affecting Equilibrium (LCP)</h3>
+                        <p>
+                            • <strong>Le Chatelier's Principle (LCP):</strong> If a dynamic equilibrium is subject to an external change in conditions (concentration, pressure, volume, temperature), the system shifts in a direction that partially counteracts that change.
+                            <br>
+                            • <strong>Concentration Shift:</strong> Adding species shifts AWAY from addition; removing species shifts TOWARDS removal.
+                            <br>
+                            • <strong>Pressure / Volume Shift:</strong> Decreasing volume (increasing pressure) shifts equilibrium towards the side with FEWER moles of gas particles.
+                            <br>
+                            • <strong>Temperature Shift:</strong> Heating an exothermic reaction ($\Delta H < 0$) shifts equilibrium LEFT ($\leftarrow$), decreasing $K_{\mathrm{eq}}$. Heating an endothermic reaction ($\Delta H > 0$) shifts equilibrium RIGHT ($\to$), increasing $K_{\mathrm{eq}}$.
+                            <br>
+                            • <strong>Collision Theory Mechanism:</strong> Concentration/pressure changes alter collision frequencies ($Z$). Temperature changes alter both collision frequency AND energy distribution relative to $E_a$.
+                        </p>
+                    </div>
+
+                    <!-- Phase C -->
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-emerald);">
+                        <h3>Phase C: The Equilibrium Constant ($K_{\mathrm{eq}}$)</h3>
+                        <p>
+                            • <strong>$K_{\mathrm{eq}}$ Significance:</strong> $K_{\mathrm{eq}} \gg 1$ indicates products favoured at equilibrium; $K_{\mathrm{eq}} \ll 1$ indicates reactants favoured.
+                            <br>
+                            • <strong>Pure Solids & Liquids:</strong> Solids ($\text{s}$) and pure solvents ($\text{l}$) have constant effective activity $= 1$ and are omitted from $K_{\mathrm{eq}}$ expressions.
+                            <br>
+                            • <strong>Temperature Dependence:</strong> Temperature is the ONLY variable that alters the numerical value of $K_{\mathrm{eq}}$!
+                            <br>
+                            • <strong>Reaction Quotient $Q$:</strong> Evaluates non-equilibrium states. If $Q < K_{\mathrm{eq}}$, system shifts RIGHT ($\to$). If $Q > K_{\mathrm{eq}}$, system shifts LEFT ($\leftarrow$).
+                        </p>
+                    </div>
+
+                    <!-- Phase D -->
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-amber);">
+                        <h3>Phase D: Solution Equilibria & Solubility</h3>
+                        <p>
+                            • <strong>Dissolution Mechanics:</strong> Ion-dipole forces between polar water molecules and ionic lattice overcome lattice enthalpy ($\Delta H_{\text{lattice}}$) to form hydrated aqueous ions.
+                            <br>
+                            • <strong>Indigenous Cycad Detoxification:</strong> Traditional Aboriginal Peoples use leaching (flowing water) to exploit dynamic solubility equilibrium, washing water-soluble neurotoxins (cycasin) out of crushed cycad seeds.
+                            <br>
+                            • <strong>Precipitation Prediction:</strong> Dilute stock solutions ($c_1 V_1 = c_2 V_2$), calculate $Q_{\mathrm{sp}}$, compare with $K_{\mathrm{sp}}$. If $Q_{\mathrm{sp}} > K_{\mathrm{sp}}$, precipitate forms.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 6: INTERACTIVE MODULE 5 CALCULATOR & DATA LOOKUP ENGINE -->
+            <section class="card glass-card demo-card">
+                <div class="card-header">
+                    <h2>6. Interactive Module 5 Data Sheet & Formula Explorer</h2>
+                    <span class="pill-badge demo-pill">Virtual Reference Assistant</span>
+                </div>
+                <p>Use this interactive tool to perform instant conversions, evaluate equilibrium shift directions, or look up $K_{\mathrm{sp}}$ algebraic solvers on demand.</p>
+
+                <div class="sim-container">
+                    <div class="sim-controls">
+                        <div class="control-group">
+                            <label>Select Explorer Mode:</label>
+                            <select id="sim-mode-select" onchange="switchExplorerMode()">
+                                <option value="keq-dir">1. Q vs Keq Reaction Shift Predictor</option>
+                                <option value="ksp-solver">2. Ksp & Molar Solubility Solver</option>
+                                <option value="dil-calc">3. Dilution (c1V1 = c2V2) Calculator</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Mode 1: Q vs Keq -->
+                    <div id="mode-keq-dir" class="sim-controls" style="grid-template-columns: 1fr 1fr 1fr;">
+                        <div class="control-group">
+                            <label>Equilibrium Constant $K_{\mathrm{eq}}$:</label>
+                            <input type="number" id="input-keq-val" min="1e-15" max="1e15" value="50.0" oninput="updateExplorerOutput()">
+                        </div>
+                        <div class="control-group">
+                            <label>Calculated Quotient $Q$:</label>
+                            <input type="number" id="input-q-val" min="1e-15" max="1e15" value="12.5" oninput="updateExplorerOutput()">
+                        </div>
+                        <div class="control-group">
+                            <label>Reaction Enthalpy $\Delta H$:</label>
+                            <select id="input-dh-type" onchange="updateExplorerOutput()">
+                                <option value="exo">Exothermic (&Delta;H &lt; 0)</option>
+                                <option value="endo">Endothermic (&Delta;H &gt; 0)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Mode 2: Ksp Solver -->
+                    <div id="mode-ksp-solver" class="sim-controls" style="display:none; grid-template-columns: 1fr 1fr;">
+                        <div class="control-group">
+                            <label>Salt Stoichiometry Class:</label>
+                            <select id="input-salt-class" onchange="updateExplorerOutput()">
+                                <option value="1:1">1:1 Salt (Ksp = s²)</option>
+                                <option value="1:2">1:2 or 2:1 Salt (Ksp = 4s³)</option>
+                                <option value="1:3">1:3 Salt (Ksp = 27s⁴)</option>
+                                <option value="2:3">2:3 Salt (Ksp = 108s⁵)</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label>Known $K_{\mathrm{sp}}$ Value:</label>
+                            <input type="number" id="input-ksp-val" min="1e-50" max="1.0" step="1e-10" value="1.77e-10" oninput="updateExplorerOutput()">
+                        </div>
+                    </div>
+
+                    <!-- Mode 3: Dilution Calculator -->
+                    <div id="mode-dil-calc" class="sim-controls" style="display:none; grid-template-columns: 1fr 1fr 1fr 1fr;">
+                        <div class="control-group">
+                            <label>Stock Conc $c_1$ ($\text{M}$):</label>
+                            <input type="number" id="dil-c1" value="0.10" oninput="updateExplorerOutput()">
+                        </div>
+                        <div class="control-group">
+                            <label>Stock Vol $V_1$ ($\text{mL}$):</label>
+                            <input type="number" id="dil-v1" value="25.0" oninput="updateExplorerOutput()">
+                        </div>
+                        <div class="control-group">
+                            <label>Final Vol $V_2$ ($\text{mL}$):</label>
+                            <input type="number" id="dil-v2" value="250.0" oninput="updateExplorerOutput()">
+                        </div>
+                        <div class="control-group">
+                            <label>Target Conc $c_2$ ($\text{M}$):</label>
+                            <input type="text" id="dil-c2-out" readonly style="background: rgba(30,41,59,0.8); color: var(--accent-cyan); font-weight:700;" value="0.010 M">
+                        </div>
+                    </div>
+
+                    <div class="sim-display-box">
+                        <h4 style="font-size: 0.9rem; color: var(--accent-cyan); text-transform: uppercase; margin-bottom: 0.75rem;">Interactive Reference Output</h4>
+                        <div id="explorer-output-box" style="background: rgba(15, 23, 42, 0.9); padding: 1.25rem; border-radius: var(--radius-sm); border: 1px solid var(--border-light); font-family: var(--font-mono); font-size: 1.02rem;">
+                            <!-- Dynamic Content Inserted Here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation Footer -->
+            <footer class="content-footer">
+                <a href="23-predicting-precipitation.html" class="btn btn-outline">&larr; Back to Lesson 23</a>
+                <a href="25-final-exam.html" class="btn btn-ethereal">
+                    Proceed to Lesson 25: Final Module 5 Examination &rarr;
+                </a>
+            </footer>
+        </main>
+    </div>
+
+    <!-- PERIODIC TABLE & EXPLORER JAVASCRIPT -->
+    <script>
+        const elementsData = [
+            {z:1, sym:"H", name:"Hydrogen", mass:1.008, cat:"nonmetal", col:1, row:1},
+            {z:2, sym:"He", name:"Helium", mass:4.003, cat:"noble", col:18, row:1},
+            {z:3, sym:"Li", name:"Lithium", mass:6.941, cat:"alkali", col:1, row:2},
+            {z:4, sym:"Be", name:"Beryllium", mass:9.012, cat:"alkaline", col:2, row:2},
+            {z:5, sym:"B", name:"Boron", mass:10.81, cat:"metalloid", col:13, row:2},
+            {z:6, sym:"C", name:"Carbon", mass:12.01, cat:"nonmetal", col:14, row:2},
+            {z:7, sym:"N", name:"Nitrogen", mass:14.01, cat:"nonmetal", col:15, row:2},
+            {z:8, sym:"O", name:"Oxygen", mass:16.00, cat:"nonmetal", col:16, row:2},
+            {z:9, sym:"F", name:"Fluorine", mass:19.00, cat:"halogen", col:17, row:2},
+            {z:10, sym:"Ne", name:"Neon", mass:20.18, cat:"noble", col:18, row:2},
+            {z:11, sym:"Na", name:"Sodium", mass:22.99, cat:"alkali", col:1, row:3},
+            {z:12, sym:"Mg", name:"Magnesium", mass:24.31, cat:"alkaline", col:2, row:3},
+            {z:13, sym:"Al", name:"Aluminium", mass:26.98, cat:"post-trans", col:13, row:3},
+            {z:14, sym:"Si", name:"Silicon", mass:28.09, cat:"metalloid", col:14, row:3},
+            {z:15, sym:"P", name:"Phosphorus", mass:30.97, cat:"nonmetal", col:15, row:3},
+            {z:16, sym:"S", name:"Sulfur", mass:32.07, cat:"nonmetal", col:16, row:3},
+            {z:17, sym:"Cl", name:"Chlorine", mass:35.45, cat:"halogen", col:17, row:3},
+            {z:18, sym:"Ar", name:"Argon", mass:39.95, cat:"noble", col:18, row:3},
+            {z:19, sym:"K", name:"Potassium", mass:39.10, cat:"alkali", col:1, row:4},
+            {z:20, sym:"Ca", name:"Calcium", mass:40.08, cat:"alkaline", col:2, row:4},
+            {z:21, sym:"Sc", name:"Scandium", mass:44.96, cat:"transition", col:3, row:4},
+            {z:22, sym:"Ti", name:"Titanium", mass:47.87, cat:"transition", col:4, row:4},
+            {z:23, sym:"V", name:"Vanadium", mass:50.94, cat:"transition", col:5, row:4},
+            {z:24, sym:"Cr", name:"Chromium", mass:52.00, cat:"transition", col:6, row:4},
+            {z:25, sym:"Mn", name:"Manganese", mass:54.94, cat:"transition", col:7, row:4},
+            {z:26, sym:"Fe", name:"Iron", mass:55.85, cat:"transition", col:8, row:4},
+            {z:27, sym:"Co", name:"Cobalt", mass:58.93, cat:"transition", col:9, row:4},
+            {z:28, sym:"Ni", name:"Nickel", mass:58.69, cat:"transition", col:10, row:4},
+            {z:29, sym:"Cu", name:"Copper", mass:63.55, cat:"transition", col:11, row:4},
+            {z:30, sym:"Zn", name:"Zinc", mass:65.38, cat:"transition", col:12, row:4},
+            {z:31, sym:"Ga", name:"Gallium", mass:69.72, cat:"post-trans", col:13, row:4},
+            {z:32, sym:"Ge", name:"Germanium", mass:72.63, cat:"metalloid", col:14, row:4},
+            {z:33, sym:"As", name:"Arsenic", mass:74.92, cat:"metalloid", col:15, row:4},
+            {z:34, sym:"Se", name:"Selenium", mass:78.96, cat:"nonmetal", col:16, row:4},
+            {z:35, sym:"Br", name:"Bromine", mass:79.90, cat:"halogen", col:17, row:4},
+            {z:36, sym:"Kr", name:"Krypton", mass:83.80, cat:"noble", col:18, row:4},
+            {z:37, sym:"Rb", name:"Rubidium", mass:85.47, cat:"alkali", col:1, row:5},
+            {z:38, sym:"Sr", name:"Strontium", mass:87.62, cat:"alkaline", col:2, row:5},
+            {z:39, sym:"Y", name:"Yttrium", mass:88.91, cat:"transition", col:3, row:5},
+            {z:40, sym:"Zr", name:"Zirconium", mass:91.22, cat:"transition", col:4, row:5},
+            {z:41, sym:"Nb", name:"Niobium", mass:92.91, cat:"transition", col:5, row:5},
+            {z:42, sym:"Mo", name:"Molybdenum", mass:95.95, cat:"transition", col:6, row:5},
+            {z:43, sym:"Tc", name:"Technetium", mass:98.0, cat:"transition", col:7, row:5},
+            {z:44, sym:"Ru", name:"Ruthenium", mass:101.1, cat:"transition", col:8, row:5},
+            {z:45, sym:"Rh", name:"Rhodium", mass:102.9, cat:"transition", col:9, row:5},
+            {z:46, sym:"Pd", name:"Palladium", mass:106.4, cat:"transition", col:10, row:5},
+            {z:47, sym:"Ag", name:"Silver", mass:107.9, cat:"transition", col:11, row:5},
+            {z:48, sym:"Cd", name:"Cadmium", mass:112.4, cat:"transition", col:12, row:5},
+            {z:49, sym:"In", name:"Indium", mass:114.8, cat:"post-trans", col:13, row:5},
+            {z:50, sym:"Sn", name:"Tin", mass:118.7, cat:"post-trans", col:14, row:5},
+            {z:51, sym:"Sb", name:"Antimony", mass:121.8, cat:"metalloid", col:15, row:5},
+            {z:52, sym:"Te", name:"Tellurium", mass:127.6, cat:"metalloid", col:16, row:5},
+            {z:53, sym:"I", name:"Iodine", mass:126.9, cat:"halogen", col:17, row:5},
+            {z:54, sym:"Xe", name:"Xenon", mass:131.3, cat:"noble", col:18, row:5},
+            {z:55, sym:"Cs", name:"Caesium", mass:132.9, cat:"alkali", col:1, row:6},
+            {z:56, sym:"Ba", name:"Barium", mass:137.3, cat:"alkaline", col:2, row:6},
+            {z:57, sym:"La", name:"Lanthanum", mass:138.9, cat:"lanthanide", col:3, row:8},
+            {z:58, sym:"Ce", name:"Cerium", mass:140.1, cat:"lanthanide", col:4, row:8},
+            {z:59, sym:"Pr", name:"Praseodymium", mass:140.9, cat:"lanthanide", col:5, row:8},
+            {z:60, sym:"Nd", name:"Neodymium", mass:144.2, cat:"lanthanide", col:6, row:8},
+            {z:61, sym:"Pm", name:"Promethium", mass:145.0, cat:"lanthanide", col:7, row:8},
+            {z:62, sym:"Sm", name:"Samarium", mass:150.4, cat:"lanthanide", col:8, row:8},
+            {z:63, sym:"Eu", name:"Europium", mass:152.0, cat:"lanthanide", col:9, row:8},
+            {z:64, sym:"Gd", name:"Gadolinium", mass:157.3, cat:"lanthanide", col:10, row:8},
+            {z:65, sym:"Tb", name:"Terbium", mass:158.9, cat:"lanthanide", col:11, row:8},
+            {z:66, sym:"Dy", name:"Dysprosium", mass:162.5, cat:"lanthanide", col:12, row:8},
+            {z:67, sym:"Ho", name:"Holmium", mass:164.9, cat:"lanthanide", col:13, row:8},
+            {z:68, sym:"Er", name:"Erbium", mass:167.3, cat:"lanthanide", col:14, row:8},
+            {z:69, sym:"Tm", name:"Thulium", mass:168.9, cat:"lanthanide", col:15, row:8},
+            {z:70, sym:"Yb", name:"Ytterbium", mass:173.1, cat:"lanthanide", col:16, row:8},
+            {z:71, sym:"Lu", name:"Lutetium", mass:175.0, cat:"lanthanide", col:17, row:8},
+            {z:72, sym:"Hf", name:"Hafnium", mass:178.5, cat:"transition", col:4, row:6},
+            {z:73, sym:"Ta", name:"Tantalum", mass:180.9, cat:"transition", col:5, row:6},
+            {z:74, sym:"W", name:"Tungsten", mass:183.8, cat:"transition", col:6, row:6},
+            {z:75, sym:"Re", name:"Rhenium", mass:186.2, cat:"transition", col:7, row:6},
+            {z:76, sym:"Os", name:"Osmium", mass:190.2, cat:"transition", col:8, row:6},
+            {z:77, sym:"Ir", name:"Iridium", mass:192.2, cat:"transition", col:9, row:6},
+            {z:78, sym:"Pt", name:"Platinum", mass:195.1, cat:"transition", col:10, row:6},
+            {z:79, sym:"Au", name:"Gold", mass:197.0, cat:"transition", col:11, row:6},
+            {z:80, sym:"Hg", name:"Mercury", mass:200.6, cat:"transition", col:12, row:6},
+            {z:81, sym:"Tl", name:"Thallium", mass:204.4, cat:"post-trans", col:13, row:6},
+            {z:82, sym:"Pb", name:"Lead", mass:207.2, cat:"post-trans", col:14, row:6},
+            {z:83, sym:"Bi", name:"Bismuth", mass:209.0, cat:"post-trans", col:15, row:6},
+            {z:84, sym:"Po", name:"Polonium", mass:209.0, cat:"post-trans", col:16, row:6},
+            {z:85, sym:"At", name:"Astatine", mass:210.0, cat:"halogen", col:17, row:6},
+            {z:86, sym:"Rn", name:"Radon", mass:222.0, cat:"noble", col:18, row:6},
+            {z:87, sym:"Fr", name:"Francium", mass:223.0, cat:"alkali", col:1, row:7},
+            {z:88, sym:"Ra", name:"Radium", mass:226.0, cat:"alkaline", col:2, row:7},
+            {z:89, sym:"Ac", name:"Actinium", mass:227.0, cat:"actinide", col:3, row:9},
+            {z:90, sym:"Th", name:"Thorium", mass:232.0, cat:"actinide", col:4, row:9},
+            {z:91, sym:"Pa", name:"Protactinium", mass:231.0, cat:"actinide", col:5, row:9},
+            {z:92, sym:"U", name:"Uranium", mass:238.0, cat:"actinide", col:6, row:9},
+            {z:93, sym:"Np", name:"Neptunium", mass:237.0, cat:"actinide", col:7, row:9},
+            {z:94, sym:"Pu", name:"Plutonium", mass:244.0, cat:"actinide", col:8, row:9},
+            {z:95, sym:"Am", name:"Americium", mass:243.0, cat:"actinide", col:9, row:9},
+            {z:96, sym:"Cm", name:"Curium", mass:247.0, cat:"actinide", col:10, row:9},
+            {z:97, sym:"Bk", name:"Berkelium", mass:247.0, cat:"actinide", col:11, row:9},
+            {z:98, sym:"Cf", name:"Californium", mass:251.0, cat:"actinide", col:12, row:9},
+            {z:99, sym:"Es", name:"Einsteinium", mass:252.0, cat:"actinide", col:13, row:9},
+            {z:100, sym:"Fm", name:"Fermium", mass:257.0, cat:"actinide", col:14, row:9},
+            {z:101, sym:"Md", name:"Mendelevium", mass:258.0, cat:"actinide", col:15, row:9},
+            {z:102, sym:"No", name:"Nobelium", mass:259.0, cat:"actinide", col:16, row:9},
+            {z:103, sym:"Lr", name:"Lawrencium", mass:262.0, cat:"actinide", col:17, row:9},
+            {z:104, sym:"Rf", name:"Rutherfordium", mass:267.0, cat:"transition", col:4, row:7},
+            {z:105, sym:"Db", name:"Dubnium", mass:268.0, cat:"transition", col:5, row:7},
+            {z:106, sym:"Sg", name:"Seaborgium", mass:269.0, cat:"transition", col:6, row:7},
+            {z:107, sym:"Bh", name:"Bohrium", mass:270.0, cat:"transition", col:7, row:7},
+            {z:108, sym:"Hs", name:"Hassium", mass:277.0, cat:"transition", col:8, row:7},
+            {z:109, sym:"Mt", name:"Meitnerium", mass:278.0, cat:"transition", col:9, row:7},
+            {z:110, sym:"Ds", name:"Darmstadtium", mass:281.0, cat:"transition", col:10, row:7},
+            {z:111, sym:"Rg", name:"Roentgenium", mass:282.0, cat:"transition", col:11, row:7},
+            {z:112, sym:"Cn", name:"Copernicium", mass:285.0, cat:"transition", col:12, row:7},
+            {z:113, sym:"Nh", name:"Nihonium", mass:286.0, cat:"post-trans", col:13, row:7},
+            {z:114, sym:"Fl", name:"Flerovium", mass:289.0, cat:"post-trans", col:14, row:7},
+            {z:115, sym:"Mc", name:"Moscovium", mass:290.0, cat:"post-trans", col:15, row:7},
+            {z:116, sym:"Lv", name:"Livermorium", mass:293.0, cat:"post-trans", col:16, row:7},
+            {z:117, sym:"Ts", name:"Tennessine", mass:294.0, cat:"halogen", col:17, row:7},
+            {z:118, sym:"Og", name:"Oganesson", mass:294.0, cat:"noble", col:18, row:7}
+        ];
+
+        function renderPeriodicTable() {
+            const grid = document.getElementById('ptable-main-grid');
+            grid.innerHTML = "";
+
+            // Create a 9x18 grid matrix
+            const matrix = Array(9).fill(null).map(() => Array(18).fill(null));
+
+            elementsData.forEach(el => {
+                matrix[el.row - 1][el.col - 1] = el;
+            });
+
+            for (let r = 0; r < 9; r++) {
+                for (let c = 0; c < 18; c++) {
+                    const el = matrix[r][c];
+                    const cell = document.createElement('div');
+
+                    if (el) {
+                        cell.className = `ptable-cell ${el.cat}`;
+                        cell.innerHTML = `
+                            <span class="z-num">${el.z}</span>
+                            <span class="sym">${el.sym}</span>
+                            <span class="mass">${typeof el.mass === 'number' ? el.mass.toFixed(el.mass > 100 ? 1 : 2) : el.mass}</span>
+                        `;
+                        cell.onclick = () => inspectElement(el);
+                        cell.onmouseover = () => inspectElement(el);
+                    } else {
+                        cell.className = 'ptable-cell empty';
+                    }
+                    grid.appendChild(cell);
+                }
+            }
+        }
+
+        function inspectElement(el) {
+            const box = document.getElementById('ptable-inspector');
+            box.innerHTML = `
+                <strong style="color:var(--accent-cyan);">${el.name} (${el.sym})</strong> | Atomic Number Z: <strong>${el.z}</strong> | Relative Atomic Mass: <strong>${el.mass} g/mol</strong> | Classification: <span style="text-transform:capitalize;">${el.cat}</span>
+            `;
+        }
+
+        function switchExplorerMode() {
+            const mode = document.getElementById('sim-mode-select').value;
+            document.getElementById('mode-keq-dir').style.display = mode === 'keq-dir' ? 'grid' : 'none';
+            document.getElementById('mode-ksp-solver').style.display = mode === 'ksp-solver' ? 'grid' : 'none';
+            document.getElementById('mode-dil-calc').style.display = mode === 'dil-calc' ? 'grid' : 'none';
+            updateExplorerOutput();
+        }
+
+        function updateExplorerOutput() {
+            const mode = document.getElementById('sim-mode-select').value;
+            const outBox = document.getElementById('explorer-output-box');
+
+            if (mode === 'keq-dir') {
+                const keq = parseFloat(document.getElementById('input-keq-val').value) || 1.0;
+                const q = parseFloat(document.getElementById('input-q-val').value) || 1.0;
+                const dh = document.getElementById('input-dh-type').value;
+
+                let dirText = "";
+                if (Math.abs(q - keq) < 1e-12) {
+                    dirText = `<span style="color:var(--accent-emerald);">System is at dynamic equilibrium (Q = K_eq). Net rates equal!</span>`;
+                } else if (q < keq) {
+                    dirText = `<span style="color:var(--accent-cyan);">Q (${q}) &lt; K_eq (${keq}) &rarr; Spontaneous shift to the RIGHT (&rarr;) to form MORE PRODUCTS.</span>`;
+                } else {
+                    dirText = `<span style="color:var(--accent-rose);">Q (${q}) &gt; K_eq (${keq}) &rarr; Spontaneous shift to the LEFT (&leftarrow;) to form MORE REACTANTS.</span>`;
+                }
+
+                outBox.innerHTML = `
+                    <div style="margin-bottom:0.5rem;"><strong style="color:var(--accent-purple);">Dynamic Reaction Direction Prediction:</strong></div>
+                    <div style="margin-bottom:0.5rem;">${dirText}</div>
+                    <div><strong>Heating Effect (${dh === 'exo' ? 'Exothermic' : 'Endothermic'}):</strong> Heating will shift equilibrium <strong>${dh === 'exo' ? 'LEFT (K_eq decreases)' : 'RIGHT (K_eq increases)'}</strong> according to Le Chatelier's Principle.</div>
+                `;
+            } else if (mode === 'ksp-solver') {
+                const saltType = document.getElementById('input-salt-class').value;
+                const ksp = parseFloat(document.getElementById('input-ksp-val').value) || 1e-10;
+
+                let s = 0;
+                let formula = "";
+                if (saltType === "1:1") { s = Math.sqrt(ksp); formula = "s = \\sqrt{K_{\\mathrm{sp}}}"; }
+                else if (saltType === "1:2") { s = Math.cbrt(ksp / 4); formula = "s = \\sqrt[3]{\\frac{K_{\\mathrm{sp}}}{4}}"; }
+                else if (saltType === "1:3") { s = Math.pow(ksp / 27, 0.25); formula = "s = \\sqrt[4]{\\frac{K_{\\mathrm{sp}}}{27}}"; }
+                else if (saltType === "2:3") { s = Math.pow(ksp / 108, 0.2); formula = "s = \\sqrt[5]{\\frac{K_{\\mathrm{sp}}}{108}}"; }
+
+                outBox.innerHTML = `
+                    <div style="margin-bottom:0.5rem;"><strong style="color:var(--accent-emerald);">${saltType} Salt Solubility Calculation:</strong></div>
+                    <div style="margin-bottom:0.5rem;">Formula: $$${formula}$$</div>
+                    <div>Calculated Molar Solubility: $s = \\mathbf{${s.toExponential(3)}\\text{ mol L}^{-1}}$</div>
+                `;
+            } else if (mode === 'dil-calc') {
+                const c1 = parseFloat(document.getElementById('dil-c1').value) || 0.1;
+                const v1 = parseFloat(document.getElementById('dil-v1').value) || 25;
+                const v2 = parseFloat(document.getElementById('dil-v2').value) || 250;
+
+                const c2 = (c1 * v1) / v2;
+                document.getElementById('dil-c2-out').value = `${c2.toFixed(4)} M`;
+
+                outBox.innerHTML = `
+                    <div><strong style="color:var(--accent-cyan);">Dilution Result:</strong> $c_2 = \\frac{c_1 V_1}{V_2} = \\frac{(${c1}\\text{ M})(${v1}\\text{ mL})}{${v2}\\text{ mL}} = \\mathbf{${c2.toExponential(3)}\\text{ mol L}^{-1}}$</div>
+                `;
+            }
+
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                if (window.MathJax.typesetClear) {
+                    window.MathJax.typesetClear([outBox]);
+                }
+                MathJax.typesetPromise([outBox]).catch(function (err) {
+                    console.warn('MathJax deferred:', err);
+                });
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderPeriodicTable();
+            if (window.MathJax && window.MathJax.startup) {
+                window.MathJax.startup.promise.then(() => {
+                    updateExplorerOutput();
+                });
+            } else {
+                updateExplorerOutput();
+            }
+        });
+    </script>
+</body>
+</html>

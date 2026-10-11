@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06 Intro to Le Chatelier's Principle | Module 5 Chemistry</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- MathJax 3 Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <style>
+        /* Modern Ethereal Glassmorphism Styling */
+        :root {
+            --bg-dark: #080c14;
+            --bg-card: rgba(15, 23, 42, 0.75);
+            --bg-card-hover: rgba(30, 41, 59, 0.85);
+            --border-glow: rgba(124, 58, 237, 0.3);
+            --border-light: rgba(255, 255, 255, 0.08);
+            --border-cyan: rgba(6, 182, 212, 0.35);
+            --border-emerald: rgba(16, 185, 129, 0.35);
+            --accent-purple: #a78bfa;
+            --accent-cyan: #38bdf8;
+            --accent-emerald: #34d399;
+            --accent-amber: #fbbf24;
+            --accent-rose: #f43f5e;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --text-secondary: #cbd5e1;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-mono: 'Fira Code', 'Cascadia Code', Consolas, monospace;
+            --shadow-glow: 0 0 30px rgba(124, 58, 237, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(124, 58, 237, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 90% 85%, rgba(6, 182, 212, 0.1) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.95) 0%, var(--bg-dark) 100%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: var(--font-main);
+            line-height: 1.8;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 320px;
+            background: rgba(11, 15, 25, 0.92);
+            border-right: 1px solid var(--border-light);
+            backdrop-filter: blur(16px);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 2rem 1.5rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .badge-glow {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            color: var(--accent-purple);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.4rem;
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .sidebar-header .subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            margin-top: 0.25rem;
+        }
+
+        .progress-container {
+            margin-top: 1.25rem;
+            background: rgba(255, 255, 255, 0.06);
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));
+            border-radius: 3px;
+        }
+
+        .score-card {
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav-menu {
+            padding: 1.25rem 1rem;
+        }
+
+        .nav-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            padding: 0 0.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 0.65rem 0.75rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            margin-bottom: 0.25rem;
+        }
+
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            transform: translateX(3px);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(90deg, rgba(124, 58, 237, 0.25), rgba(6, 182, 212, 0.1));
+            border-left: 3px solid var(--accent-purple);
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+
+        .nav-num {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            margin-right: 0.75rem;
+            opacity: 0.7;
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            margin-left: 320px;
+            flex: 1;
+            padding: 2.5rem 3rem;
+            max-width: 1250px;
+        }
+
+        .hero-banner {
+            position: relative;
+            background: linear-gradient(135deg, rgba(24, 16, 48, 0.85) 0%, rgba(15, 23, 42, 0.95) 100%);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-lg);
+            padding: 3rem 2.5rem;
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .ethereal-tag {
+            font-family: var(--font-mono);
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .ethereal-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin: 0.5rem 0 1rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ethereal-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 880px;
+        }
+
+        /* Content Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 2.25rem;
+            margin-bottom: 2.5rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            transition: border-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(124, 58, 237, 0.35);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.75rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .card-header h2 {
+            font-size: 1.6rem;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .pill-badge {
+            padding: 0.35rem 0.85rem;
+            background: rgba(124, 58, 237, 0.12);
+            border: 1px solid var(--border-glow);
+            color: var(--accent-purple);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pill-badge.emerald {
+            background: rgba(16, 185, 129, 0.12);
+            border-color: var(--border-emerald);
+            color: var(--accent-emerald);
+        }
+
+        .pill-badge.cyan {
+            background: rgba(56, 189, 248, 0.12);
+            border-color: var(--border-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .pill-badge.rose {
+            background: rgba(244, 63, 94, 0.12);
+            border-color: rgba(244, 63, 94, 0.35);
+            color: var(--accent-rose);
+        }
+
+        /* Typography & Paragraphs */
+        p {
+            margin-bottom: 1.25rem;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        strong {
+            color: #fff;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: var(--accent-purple);
+            margin: 1.85rem 0 0.85rem;
+            font-weight: 700;
+        }
+
+        h4 {
+            font-size: 1.12rem;
+            color: #fff;
+            margin: 1.35rem 0 0.55rem;
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin: 0 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.75rem;
+            padding-left: 0.25rem;
+        }
+
+        /* Grids & Feature Layouts */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.5rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-glow);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card h3 {
+            margin: 0 0 0.5rem 0;
+            color: #fff;
+        }
+
+        /* Callout Boxes */
+        .info-box {
+            background: rgba(124, 58, 237, 0.08);
+            border-left: 4px solid var(--accent-purple);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 1.35rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-box.cyan {
+            background: rgba(56, 189, 248, 0.08);
+            border-left-color: var(--accent-cyan);
+        }
+
+        .info-box.emerald {
+            background: rgba(52, 211, 153, 0.08);
+            border-left-color: var(--accent-emerald);
+        }
+
+        .info-box.amber {
+            background: rgba(251, 191, 36, 0.08);
+            border-left-color: var(--accent-amber);
+        }
+
+        .info-box.rose {
+            background: rgba(244, 63, 94, 0.08);
+            border-left-color: var(--accent-rose);
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+        }
+
+        /* Data & Comparison Tables */
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            margin: 1.75rem 0;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        table.comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            background: rgba(15, 23, 42, 0.7);
+            font-size: 0.95rem;
+        }
+
+        table.comparison-table th {
+            background: rgba(30, 41, 59, 0.9);
+            color: var(--accent-purple);
+            padding: 1rem 1.25rem;
+            font-weight: 700;
+            border-bottom: 2px solid var(--border-light);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        table.comparison-table td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-secondary);
+            vertical-align: top;
+        }
+
+        table.comparison-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+            color: #fff;
+        }
+
+        /* SVG Graph Containers */
+        .graph-wrapper {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin: 1.75rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .graph-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .svg-graph-container {
+            width: 100%;
+            max-width: 720px;
+            height: auto;
+        }
+
+        /* Interactive Visualiser Module */
+        .sim-container {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            box-shadow: 0 0 35px rgba(124, 58, 237, 0.12);
+        }
+
+        .sim-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+            background: rgba(30, 41, 59, 0.5);
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-group label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .control-group input[type="range"] {
+            width: 100%;
+            accent-color: var(--accent-purple);
+            cursor: pointer;
+        }
+
+        .sim-viewports {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .sim-viewports {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sim-box {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        canvas.sim-canvas-el {
+            background: #050811;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-sm);
+            width: 100%;
+            height: 260px;
+        }
+
+        .telemetry-panel {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 1.25rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-top: 1.25rem;
+        }
+
+        .telemetry-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .telemetry-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .telemetry-value {
+            font-family: var(--font-mono);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--accent-purple);
+            margin-top: 0.25rem;
+        }
+
+        /* Buttons & Actions */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-ethereal {
+            background: linear-gradient(135deg, #7c3aed, #06b6d4);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-ethereal:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.45);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--border-light);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        /* Questions & Rubrics */
+        .question-container {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .marks-badge {
+            background: rgba(244, 63, 94, 0.15);
+            border: 1px solid rgba(244, 63, 94, 0.4);
+            color: var(--accent-rose);
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .action-bar {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .drawer {
+            margin-top: 1rem;
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .drawer-hint {
+            background: rgba(251, 191, 36, 0.08);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            color: #fef08a;
+        }
+
+        .drawer-solution {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--border-glow);
+        }
+
+        .rubric-box {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--accent-purple);
+        }
+
+        .rubric-box h5 {
+            color: var(--accent-purple);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .content-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; padding: 1.5rem; }
+            .grid-2col { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body class="ethereal-theme">
+    <div class="app-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="badge-glow">NESA Stage 6</span>
+                <h2>Module 5</h2>
+                <p class="subtitle">EQUILIBRIUM & ACID REACTIONS</p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="module-progress" style="width: 24%;"></div>
+                </div>
+                <div class="score-card">
+                    Total Mastery: <span id="total-marks">24</span> / 100 Marks
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-section">
+                    <span class="section-title">INTRODUCTION</span>
+                    <a href="index.html" class="nav-item">
+                        <span class="nav-num">—</span> Home & Guide
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE A: FOUNDATIONS OF EQUILIBRIUM</span>
+                    <a href="01-reversible-reactions.html" class="nav-item"><span class="nav-num">01</span> Reversible vs Irreversible</a>
+                    <a href="02-open-closed-systems.html" class="nav-item"><span class="nav-num">02</span> Open vs Closed Systems</a>
+                    <a href="03-static-dynamic-equilibrium.html" class="nav-item"><span class="nav-num">03</span> Static vs Dynamic Eq</a>
+                    <a href="04-non-equilibrium-systems.html" class="nav-item"><span class="nav-num">04</span> Non-Equilibrium Systems</a>
+                    <a href="05-collision-theory-equilibrium.html" class="nav-item"><span class="nav-num">05</span> Collision Theory in Eq</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE B: FACTORS AFFECTING EQUILIBRIUM</span>
+                    <a href="06-intro-le-chatelier.html" class="nav-item active"><span class="nav-num">06</span> Le Chatelier's Principle</a>
+                    <a href="07-effect-of-concentration.html" class="nav-item"><span class="nav-num">07</span> Concentration Changes</a>
+                    <a href="08-effect-of-pressure-volume.html" class="nav-item"><span class="nav-num">08</span> Pressure & Volume</a>
+                    <a href="09-effect-of-temperature.html" class="nav-item"><span class="nav-num">09</span> Temperature Effects</a>
+                    <a href="10-collision-theory-lcp.html" class="nav-item"><span class="nav-num">10</span> Collision Theory & LCP</a>
+                    <a href="11-activation-energy-equilibrium.html" class="nav-item"><span class="nav-num">11</span> Activation Energy & $\Delta H$</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE C: THE EQUILIBRIUM CONSTANT</span>
+                    <a href="12-keq-expression.html" class="nav-item"><span class="nav-num">12</span> The $K_{\mathrm{eq}}$ Expression</a>
+                    <a href="13-keq-calculations-basic.html" class="nav-item"><span class="nav-num">13</span> Basic $K_{\mathrm{eq}}$ Calculations</a>
+                    <a href="14-keq-calculations-advanced.html" class="nav-item"><span class="nav-num">14</span> Advanced $K_{\mathrm{eq}}$ & $Q$</a>
+                    <a href="15-temperature-and-keq.html" class="nav-item"><span class="nav-num">15</span> Temperature & $K_{\mathrm{eq}}$</a>
+                    <a href="16-determining-keq-experiment.html" class="nav-item"><span class="nav-num">16</span> Practical Determination</a>
+                    <a href="17-keq-acid-base-dissociation.html" class="nav-item"><span class="nav-num">17</span> Dissociation Systems</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE D: SOLUTION EQUILIBRIA</span>
+                    <a href="18-dissolution-ionic-compounds.html" class="nav-item"><span class="nav-num">18</span> Ionic Dissolution</a>
+                    <a href="19-indigenous-solubility-cycads.html" class="nav-item"><span class="nav-num">19</span> Indigenous Detoxification</a>
+                    <a href="20-solubility-rules.html" class="nav-item"><span class="nav-num">20</span> Solubility Rules</a>
+                    <a href="21-solubility-product-ksp.html" class="nav-item"><span class="nav-num">21</span> Solubility Product ($K_{\mathrm{sp}}$)</a>
+                    <a href="22-molar-solubility-calcs.html" class="nav-item"><span class="nav-num">22</span> Molar Solubility Calcs</a>
+                    <a href="23-predicting-precipitation.html" class="nav-item"><span class="nav-num">23</span> Predicting Precipitation</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE E: ASSESSMENT & REVIEW</span>
+                    <a href="24-formula-summary.html" class="nav-item"><span class="nav-num">24</span> Formula & Concept Guide</a>
+                    <a href="25-final-exam.html" class="nav-item"><span class="nav-num">25</span> Final Examination</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="hero-banner">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <span class="ethereal-tag">LESSON 06 • PHASE B: FACTORS AFFECTING EQUILIBRIUM</span>
+                    <h1 class="ethereal-title">Introduction to Le Chatelier's Principle</h1>
+                    <p class="ethereal-subtitle">Mastering qualitative predictions of equilibrium shifts, system stress counteraction, state transitions, gas/aqueous edge cases, inert gas conditions, catalysts, and graphical concentration-time signatures under NESA Stage 6 Chemistry standards[cite: 22].</p>
+                </div>
+            </header>
+
+            <!-- SYLLABUS ALIGNMENT CARD -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>NESA Syllabus Inquiry Focus</h2>
+                    <span class="pill-badge">Stage 6 Chemistry</span>
+                </div>
+                <p>
+                    <strong>Inquiry Question 2:</strong> <em>What factors affect equilibrium and how?</em>[cite: 22]
+                </p>
+                <div class="info-box cyan" style="margin-top: 1rem;">
+                    <h3>Syllabus Outcomes Addressed (Outcome CH-12-01)[cite: 22]:</h3>
+                    <ul>
+                        <li>Define <strong>Le Chatelier's Principle</strong> as a predictive qualitative model for closed chemical systems at dynamic equilibrium[cite: 22].</li>
+                        <li>Predict qualitatively the direction of equilibrium position shift when a system is subjected to changes in temperature, concentration, volume, or pressure[cite: 22].</li>
+                        <li>Analyse complex edge cases including gas systems with equal moles ($\Delta n_{\text{gas}} = 0$), aqueous dilution, inert gas addition at constant volume versus constant pressure, and catalysts[cite: 22].</li>
+                        <li>Analyse and interpret concentration-time ($c\text{ vs }t$) and rate-time ($r\text{ vs }t$) graphs depicting initial equilibrium, sudden external disturbances, transition shifts, and new equilibrium states[cite: 22].</li>
+                        <li>Differentiate clearly between Le Chatelier's Principle as an empirical predictive tool and collision theory as the underlying sub-microscopic physical mechanism[cite: 22].</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- SECTION 1: HISTORICAL & CONCEPTUAL FOUNDATIONS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>1. Historical & Conceptual Foundations of Le Chatelier's Principle</h2>
+                    <span class="pill-badge">Qualitative Foundations</span>
+                </div>
+
+                <p>
+                    In Phase A, we established that a chemical system in a closed environment reaches <strong>dynamic equilibrium</strong> when the forward reaction rate equals the reverse reaction rate ($r_{\mathrm{f}} = r_{\mathrm{r}} > 0$)[cite: 22]. Under these unperturbed conditions, all macroscopic properties—such as colour intensity, total pressure, pH, and individual species concentrations—remain perfectly constant over time[cite: 22].
+                </p>
+                <p>
+                    However, dynamic equilibrium is not a static or immutable state. In 1884, French chemist Henri Louis Le Chatelier published a generalisation describing how chemical systems at equilibrium respond when disturbed by external changes. This qualitative framework is known as <strong>Le Chatelier's Principle</strong>[cite: 22].
+                </p>
+
+                <div class="info-box amber">
+                    <h3>Formal NESA Definition of Le Chatelier's Principle (LCP)</h3>
+                    <p>
+                        <strong>"If a chemical system at dynamic equilibrium is subjected to a change in conditions (a disturbance or stress), the system will adjust (shift its equilibrium position) in a direction that counteracts that change to partially re-establish equilibrium."</strong>[cite: 22]
+                    </p>
+                </div>
+
+                <h3>Deconstructing the Four Pillars of LCP</h3>
+                <p>
+                    To apply Le Chatelier's Principle with complete accuracy in HSC examinations, you must break the principle down into four distinct conceptual steps[cite: 22]:
+                </p>
+
+                <div class="features-grid">
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-cyan);">
+                        <div class="feature-icon">⚖️</div>
+                        <h3>1. Initial Dynamic Equilibrium</h3>
+                        <p>
+                            The system is initially at a steady state where $r_{\mathrm{f}} = r_{\mathrm{r}}$. The forward and reverse rates are equal, and species concentrations $[\text{Reactants}]$ and $[\text{Products}]$ are constant[cite: 22].
+                        </p>
+                    </div>
+
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-rose);">
+                        <div class="feature-icon">⚡</div>
+                        <h3>2. The External Disturbance (Stress)</h3>
+                        <p>
+                            An external change is deliberately imposed upon the closed system[cite: 22]. This disturbance temporarily breaks the equality of reaction rates ($r_{\mathrm{f}} \neq r_{\mathrm{r}}$), forcing the system out of dynamic equilibrium[cite: 22].
+                        </p>
+                    </div>
+
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-purple);">
+                        <div class="feature-icon">🔄</div>
+                        <h3>3. System Shift Direction</h3>
+                        <p>
+                            The system responds by favouring either the forward reaction ($\to$) or the reverse reaction ($\leftarrow$)[cite: 22].
+                            <br>• If $r_{\mathrm{f}} > r_{\mathrm{r}}$, the system undergoes a <strong>net forward shift</strong> (favouring products)[cite: 22].
+                            <br>• If $r_{\mathrm{r}} > r_{\mathrm{f}}$, the system undergoes a <strong>net reverse shift</strong> (favouring reactants)[cite: 22].
+                        </p>
+                    </div>
+
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-emerald);">
+                        <div class="feature-icon">🎯</div>
+                        <h3>4. Partial Re-establishment</h3>
+                        <p>
+                            The net shift continues until forward and reverse rates become equal once again ($r_{\mathrm{f}}' = r_{\mathrm{r}}'$) at a new dynamic equilibrium state[cite: 22]. Crucially, the system <strong>only partially counteracts</strong> the original stress[cite: 22]!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="info-box rose">
+                    <h3>The Golden Rule of HSC Exam Success: "Partial Counteraction"</h3>
+                    <p>
+                        A frequent source of lost marks in Year 12 Chemistry is assuming that the system completely cancels out or undoes an external disturbance.
+                        <br><br>
+                        • <strong>Example:</strong> If you add extra reactant $\mathrm{A}$ to raise its concentration from $1.0\text{ M}$ to $2.0\text{ M}$ (a disturbance of $+1.0\text{ M}$), the system will shift forward to consume some of species $\mathrm{A}$.
+                        <br>
+                        • <strong>Result at New Equilibrium:</strong> The concentration of $\mathrm{A}$ will fall below $2.0\text{ M}$, but it will <strong>never return all the way back down to $1.0\text{ M}$</strong>!
+                        <br>
+                        • <strong>Takeaway:</strong> The system counteracts the change, but it <em>never over-corrects or completely cancels</em> the disturbance. The final concentration will always remain slightly higher than its original baseline before the spike!
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 2: FOOLPROOF MASTER TABLE OF SYSTEM DISTURBANCES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>2. Master Table of System Disturbances & Qualitative Shifts (Including Edge Cases)</h2>
+                    <span class="pill-badge cyan">System Adjustments</span>
+                </div>
+
+                <p>
+                    Le Chatelier's Principle can be applied systematically across concentration modifications, volume/pressure alterations in gas and aqueous systems, temperature variations, inert gas additions, and catalysts[cite: 22]. The table below incorporates all standard scenarios and high-frequency examination edge cases.
+                </p>
+
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Disturbance Variable</th>
+                                <th>Imposed External Stress</th>
+                                <th>System Objective (LCP)</th>
+                                <th>Equilibrium Shift Direction</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Concentration (Gases / Aq)</strong></td>
+                                <td>Increase $[\text{Species}]$ (Inject species)</td>
+                                <td>Consume the added excess species</td>
+                                <td>Shifts <strong>away</strong> from the added species side[cite: 22]</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Concentration (Gases / Aq)</strong></td>
+                                <td>Decrease $[\text{Species}]$ (Remove species)</td>
+                                <td>Replace the lost species</td>
+                                <td>Shifts <strong>towards</strong> the removed species side[cite: 22]</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pressure / Volume (Unequal Gas Moles)</strong></td>
+                                <td>Decrease Volume ($V \downarrow$) / Increase Pressure ($P \uparrow$)</td>
+                                <td>Reduce overall gas pressure inside vessel</td>
+                                <td>Shifts towards the side with <strong>fewer gas moles ($\Delta n_{\text{gas}}$)</strong>[cite: 22]</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pressure / Volume (Unequal Gas Moles)</strong></td>
+                                <td>Increase Volume ($V \uparrow$) / Decrease Pressure ($P \downarrow$)</td>
+                                <td>Increase overall gas pressure inside vessel</td>
+                                <td>Shifts towards the side with <strong>more gas moles ($\Delta n_{\text{gas}}$)</strong>[cite: 22]</td>
+                            </tr>
+                            <tr style="background: rgba(124, 58, 237, 0.12); border-left: 3px solid var(--accent-purple);">
+                                <td><strong>Pressure / Volume (Equal Gas Moles Edge Case)</strong></td>
+                                <td>Pressure / Volume change when gas moles are equal ($\Delta n_{\text{gas}} = 0$)</td>
+                                <td>None (Neither side reduces or increases pressure more than the other)</td>
+                                <td><strong>NO SHIFT</strong> (Concentrations change equally, but relative ratio remains constant)</td>
+                            </tr>
+                            <tr style="background: rgba(56, 189, 248, 0.12); border-left: 3px solid var(--accent-cyan);">
+                                <td><strong>Dilution (Aqueous Volume Edge Case)</strong></td>
+                                <td>Add water / Increase solvent volume (Aqueous Dilution)</td>
+                                <td>Maximise total dissolved particle concentration to counteract dilution</td>
+                                <td>Shifts towards the side with the <strong>GREATER number of aqueous species ($\sum \text{aq moles}$)</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Temperature</strong></td>
+                                <td>Increase Temperature (Heating vessel)</td>
+                                <td>Absorb excess thermal energy</td>
+                                <td>Shifts in the <strong>endothermic direction ($\Delta H > 0$)</strong>[cite: 22]</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Temperature</strong></td>
+                                <td>Decrease Temperature (Cooling vessel)</td>
+                                <td>Release additional thermal energy</td>
+                                <td>Shifts in the <strong>exothermic direction ($\Delta H < 0$)</strong>[cite: 22]</td>
+                            </tr>
+                            <tr style="background: rgba(251, 191, 36, 0.12); border-left: 3px solid var(--accent-amber);">
+                                <td><strong>Inert Gas Addition (Constant Volume)</strong></td>
+                                <td>Inject inert gas (Argon/Helium) at <strong>constant volume</strong></td>
+                                <td>None (Partial pressures and concentrations of reacting gases remain unchanged)</td>
+                                <td><strong>NO SHIFT</strong> (Total $P$ rises, but reacting species concentrations remain constant)[cite: 22]</td>
+                            </tr>
+                            <tr style="background: rgba(244, 63, 94, 0.12); border-left: 3px solid var(--accent-rose);">
+                                <td><strong>Inert Gas Addition (Constant Pressure Edge Case)</strong></td>
+                                <td>Inject inert gas (Argon/Helium) at <strong>constant pressure</strong></td>
+                                <td>Counteract resulting volume expansion (lowered partial pressures of reacting gases)</td>
+                                <td>Shifts towards the side with <strong>MORE gas moles ($\Delta n_{\text{gas}}$)</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Catalyst Addition</strong></td>
+                                <td>Add a positive catalyst</td>
+                                <td>None (Lowers $E_{a,\text{f}}$ and $E_{a,\text{r}}$ by identical amounts)</td>
+                                <td><strong>NO SHIFT</strong> (System reaches dynamic equilibrium faster)[cite: 22]</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box cyan">
+                    <h3>Defining "Position of Equilibrium"</h3>
+                    <p>
+                        In Stage 6 Chemistry, the phrase <strong>"position of equilibrium"</strong> refers to the relative proportions of reactants and products present in the vessel at dynamic equilibrium[cite: 22].
+                        <br><br>
+                        • <strong>Equilibrium Position Lies to the Left:</strong> Reactants dominate the mixture at equilibrium ($[\text{Reactants}] \gg [\text{Products}]$)[cite: 22].
+                        <br>
+                        • <strong>Equilibrium Position Lies to the Right:</strong> Products dominate the mixture at equilibrium ($[\text{Products}] \gg [\text{Reactants}]$)[cite: 22].
+                        <br>
+                        • <strong>Shift Right ($\to$):</strong> Favours product formation, moving the equilibrium position to the right[cite: 22].
+                        <br>
+                        • <strong>Shift Left ($\leftarrow$):</strong> Favours reactant formation, moving the equilibrium position to the left[cite: 22].
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 3: DEEP DIVE INTO GAS SYSTEM DYNAMICS & PRESSURE/VOLUME EDGE CASES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>3. Deep Dive: Gas Systems, Volume Changes, & The Equal Moles ($\Delta n_{\text{gas}} = 0$) Edge Case</h2>
+                    <span class="pill-badge purple">Gas Phase Mechanics</span>
+                </div>
+
+                <p>
+                    Gas equilibrium systems are highly sensitive to container volume and total pressure changes because the concentration of a gas is directly linked to its volume via the molar concentration relationship[cite: 22]:
+                </p>
+                $$C = \frac{n}{V}$$
+
+                <p>
+                    When the volume of a gas reaction vessel is altered at constant temperature, the concentrations of all gaseous species change simultaneously in inverse proportion to the volume change[cite: 22].
+                </p>
+
+                <h3>1. Unequal Moles of Gas ($\Delta n_{\text{gas}} \neq 0$)</h3>
+                <p>
+                    Consider the synthesis of ammonia gas:
+                </p>
+                $$\mathrm{N_2(g) + 3H_2(g) \rightleftharpoons 2NH_3(g)}$$
+                <p>
+                    The left side contains $1 + 3 = 4\text{ moles of gas}$, while the right side contains $2\text{ moles of gas}$[cite: 22].
+                    <br>
+                    • <strong>Halving Container Volume ($V \downarrow$ to $1/2V$):</strong> Total pressure instantly doubles ($P \uparrow$), and all gas concentrations instantly double[cite: 22]. To counteract this pressure increase, the system shifts forward ($\to$) towards the side with fewer gas moles ($2\text{ moles} < 4\text{ moles}$) to reduce total particle count and lower pressure[cite: 22].
+                    <br>
+                    • <strong>Doubling Container Volume ($V \uparrow$ to $2V$):</strong> Total pressure instantly drops ($P \downarrow$), and all gas concentrations are halved[cite: 22]. To counteract this pressure drop, the system shifts in reverse ($\leftarrow$) towards the side with more gas moles ($4\text{ moles} > 2\text{ moles}$) to increase total particle count[cite: 22].
+                </p>
+
+                <h3>2. The Edge Case: Equal Moles of Gas ($\Delta n_{\text{gas}} = 0$)</h3>
+                <p>
+                    A favourite NESA "trick" question involves gas systems where the total number of stoichiometric gas moles on the reactant side equals the total number of gas moles on the product side. Consider the hydrogen iodide synthesis reaction:
+                </p>
+                $$\mathrm{H_2(g) + I_2(g) \rightleftharpoons 2HI(g)}$$
+                <p>
+                    Here, reactants yield $1 + 1 = 2\text{ gas moles}$, and products yield $2\text{ gas moles}$ ($\Delta n_{\text{gas}} = 2 - 2 = 0$).
+                </p>
+
+                <div class="info-box rose">
+                    <h3>Why Pressure/Volume Changes Cause NO SHIFT when $\Delta n_{\text{gas}} = 0$</h3>
+                    <p>
+                        If the volume of the vessel is halved, the concentrations of $\mathrm{H_2}$, $\mathrm{I_2}$, and $\mathrm{HI}$ all double instantly ($2\times$).
+                        <br><br>
+                        • <strong>Le Chatelier Reasoning:</strong> Shifting forward converts $2\text{ gas moles} \to 2\text{ gas moles}$. Shifting in reverse converts $2\text{ gas moles} \to 2\text{ gas moles}$. Neither direction can reduce or increase the total number of gas particles in the vessel! Therefore, the system <strong>cannot counteract the pressure change by shifting</strong>.
+                        <br>
+                        • <strong>Outcome:</strong> There is <strong>NO EQUILIBRIUM SHIFT</strong>. The concentrations of all species remain doubled at their new values, and the equilibrium position is unchanged!
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 4: DEEP DIVE INTO AQUEOUS SYSTEMS & DILUTION EDGE CASE -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>4. Deep Dive: Aqueous Equilibrium Systems & The Dilution Edge Case</h2>
+                    <span class="pill-badge cyan">Solution Phase Mechanics</span>
+                </div>
+
+                <p>
+                    While textbooks focus almost exclusively on gas volume changes, NESA HSC examinations frequently test volume changes in <strong>aqueous equilibrium systems</strong>[cite: 22]. In aqueous systems, changing volume corresponds to adding or removing solvent water (dilution or concentration)[cite: 22].
+                </p>
+
+                <h3>Understanding Aqueous Dilution (Addition of Water)</h3>
+                <p>
+                    When water is added to an aqueous equilibrium system, the total volume of the solution ($V_{\text{solution}}$) increases. Because $C = n / V_{\text{solution}}$, adding water causes an instantaneous decrease in the concentration of <strong>all dissolved aqueous ions and molecules</strong> simultaneously.
+                </p>
+
+                <p>
+                    Consider the iron(III) thiocyanate equilibrium system:
+                </p>
+                $$\mathrm{\underset{Pale\ yellow}{Fe^{3+}(aq)} + \underset{Colourless}{SCN^-(aq)} \rightleftharpoons \underset{Blood-red}{FeSCN^{2+}(aq)}}$$
+                <p>
+                    Count the dissolved aqueous species on each side:
+                    <br>• <strong>Reactant Side:</strong> $1\text{ mole of }\mathrm{Fe^{3+}(aq)} + 1\text{ mole of }\mathrm{SCN^-(aq)} = 2\text{ moles of aqueous species}$.
+                    <br>• <strong>Product Side:</strong> $1\text{ mole of }\mathrm{FeSCN^{2+}(aq)} = 1\text{ mole of aqueous species}$.
+                </p>
+
+                <div class="info-box cyan">
+                    <h3>The LCP Dilution Rule for Aqueous Systems</h3>
+                    <p>
+                        <strong>Disturbance:</strong> Adding water (dilution) lowers the concentrations of all dissolved aqueous species.
+                        <br>
+                        <strong>System Objective:</strong> The system acts to counteract the decrease in concentration by shifting in the direction that produces the <strong>maximum number of dissolved aqueous particles</strong> ($\sum \text{aq moles}$).
+                        <br>
+                        <strong>Shift Direction:</strong> Shifts in reverse ($\leftarrow$) towards the reactant side ($2\text{ aq moles} > 1\text{ aq mole}$) to produce more dissolved ions and restore overall particle concentration.
+                        <br>
+                        <strong>Color Change:</strong> The solution turns paler red as blood-red $\mathrm{FeSCN^{2+}}$ dissociates into pale yellow $\mathrm{Fe^{3+}}$ and colourless $\mathrm{SCN^-}$.
+                    </p>
+                </div>
+
+                <h3>Summary of Dilution vs Concentration for Aqueous Equilibria</h3>
+                <ul>
+                    <li><strong>Dilution (Add Water / $V_{\text{solution}} \uparrow$):</strong> Concentration of all aqueous species drops. System shifts towards the side with <strong>MORE aqueous particles ($\sum \text{aq moles}$)</strong>.</li>
+                    <li><strong>Evaporation / Removal of Water ($V_{\text{solution}} \downarrow$):</strong> Concentration of all aqueous species rises. System shifts towards the side with <strong>FEWER aqueous particles ($\sum \text{aq moles}$)</strong>.</li>
+                    <li><strong>Pure Solids and Pure Liquids Excluded:</strong> Solid precipitates ($\mathrm{s}$) and liquid solvent ($\mathrm{l}$) do not have variable molar concentrations in solution, so they are excluded when counting aqueous moles!</li>
+                </ul>
+            </section>
+
+            <!-- SECTION 5: DEEP DIVE INTO INERT GAS ADDITION (CONSTANT VOLUME VS CONSTANT PRESSURE) -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>5. Dedicated Focus: Inert Gas Addition (Constant Volume vs Constant Pressure)</h2>
+                    <span class="pill-badge amber">Tricky Exam Scenarios</span>
+                </div>
+
+                <p>
+                    Examiners frequently test whether students truly understand partial pressures versus total pressure by asking about the addition of an <strong>unreactive inert gas</strong> (such as Argon, Helium, or Neon) to a gas reaction mixture at dynamic equilibrium[cite: 22]. The outcome depends strictly on whether the reaction vessel has a <strong>fixed volume</strong> or a <strong>constant pressure (moveable piston)</strong>.
+                </p>
+
+                <div class="grid-2col">
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-amber);">
+                        <h3>Scenario A: Inert Gas Addition at Constant Volume ($V = \text{Constant}$)</h3>
+                        <p><strong>Conditions:</strong> Rigid steel cylinder with a fixed volume $V$.</p>
+                        <p>
+                            • An inert gas (e.g., Argon) is injected into the container[cite: 22].
+                            <br>• The total pressure inside the vessel increases ($P_{\text{total}} \uparrow$) because additional gas molecules are present[cite: 22].
+                            <br>• However, because the container volume $V$ is fixed, the molar concentration of each reacting gas ($C_i = n_i / V$) is <strong>completely unchanged</strong>[cite: 22]!
+                            <br>• According to Dalton's Law of Partial Pressures, the partial pressure of each reacting gas ($P_i = C_i RT$) remains completely identical[cite: 22].
+                        </p>
+                        <p style="color: var(--accent-amber); font-weight: 700;">
+                            ✅ Result: NO EQUILIBRIUM SHIFT! Collision frequencies between reacting gases remain unchanged[cite: 22].
+                        </p>
+                    </div>
+
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-rose);">
+                        <h3>Scenario B: Inert Gas Addition at Constant Pressure ($P = \text{Constant}$)</h3>
+                        <p><strong>Conditions:</strong> Flexible cylinder fitted with a frictionless moveable piston.</p>
+                        <p>
+                            • Argon gas is injected at constant atmospheric pressure.
+                            <br>• To maintain a constant internal pressure ($P_{\text{total}} = \text{Constant}$), the cylinder volume <strong>must expand ($V \uparrow$)</strong> to accommodate the extra gas!
+                            <br>• As the container volume expands ($V \uparrow$), the concentrations of all reacting gases ($C_i = n_i / V$) <strong>decrease simultaneously</strong>!
+                            <br>• The system experiences a effective <em>dilution / volume expansion disturbance</em>.
+                        </p>
+                        <p style="color: var(--accent-rose); font-weight: 700;">
+                            ⚠️ Result: EQUILIBRIUM SHIFTS towards the side with MORE gas moles ($\Delta n_{\text{gas}}$) to counteract the volume expansion!
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 6: DEDICATED FOCUS: CATALYSTS IN EQUILIBRIUM SYSTEMS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>6. Dedicated Focus: Catalysts in Reversible Equilibrium Systems</h2>
+                    <span class="pill-badge emerald">Kinetic Acceleration</span>
+                </div>
+
+                <p>
+                    A <strong>catalyst</strong> is a substance that increases the rate of a chemical reaction without undergoing permanent chemical change itself[cite: 22]. In a reversible system at dynamic equilibrium, a catalyst acts by providing an alternative reaction pathway with a lower activation energy peak for the transition state ($\ddagger$)[cite: 22].
+                </p>
+
+                <h3>Microscopic Action of a Catalyst</h3>
+                <p>
+                    Crucially, a catalyst lowers the forward activation energy ($E_{a,\text{f}}$) and reverse activation energy ($E_{a,\text{r}}$) by the <strong>exact same numerical quantity ($\Delta E_a$)</strong>[cite: 22]:
+                </p>
+                $$E_{a,\text{f}}' = E_{a,\text{f}} - \Delta E_a \quad \text{and} \quad E_{a,\text{r}}' = E_{a,\text{r}} - \Delta E_a$$
+
+                <!-- SVG Graph: Catalyst Energy Profile -->
+                <div class="graph-wrapper">
+                    <div class="graph-title">NESA Energy Profile: Symmetrical Activation Energy Lowering by a Catalyst</div>
+                    <div class="svg-graph-container">
+                        <svg viewBox="0 0 680 320" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="680" height="320" fill="#0b1329" rx="10"/>
+                            <line x1="70" y1="280" x2="630" y2="280" stroke="#64748b" stroke-width="2"/>
+                            <line x1="70" y1="40" x2="70" y2="280" stroke="#64748b" stroke-width="2"/>
+
+                            <!-- Reactants y=160, Products y=220 -->
+                            <line x1="90" y1="160" x2="200" y2="160" stroke="#38bdf8" stroke-width="3"/>
+                            <line x1="500" y1="220" x2="610" y2="220" stroke="#34d399" stroke-width="3"/>
+
+                            <!-- Uncatalysed Path (Solid Purple) Peak y=60 -->
+                            <path d="M 200 160 C 260 160, 280 60, 350 60 C 420 60, 440 220, 500 220" fill="none" stroke="#a78bfa" stroke-width="3"/>
+
+                            <!-- Catalysed Path (Dashed Emerald) Peak y=110 -->
+                            <path d="M 200 160 C 260 160, 280 110, 350 110 C 420 110, 440 220, 500 220" fill="none" stroke="#34d399" stroke-width="3" stroke-dasharray="5,4"/>
+
+                            <!-- Labels -->
+                            <text x="350" y="45" fill="#a78bfa" font-size="12" font-weight="700" text-anchor="middle">Uncatalysed Pathway ($E_a$)</text>
+                            <text x="350" y="130" fill="#34d399" font-size="12" font-weight="700" text-anchor="middle">Catalysed Pathway ($E_a'$)</text>
+                            <text x="145" y="145" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">Reactants</text>
+                            <text x="555" y="240" fill="#34d399" font-size="12" font-weight="700" text-anchor="middle">Products</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <h3>Why Catalysts Cause NO EQUILIBRIUM SHIFT</h3>
+                <p>
+                    According to Maxwell-Boltzmann distribution curves, lowering both activation energies by $\Delta E_a$ increases the fraction of collisions with $E \ge E_a$ by an <strong>identical proportional factor</strong> for both forward and reverse pathways[cite: 22].
+                    <br><br>
+                    • The forward rate ($r_{\mathrm{f}}$) and reverse rate ($r_{\mathrm{r}}$) are <strong>accelerated equally</strong>[cite: 22].
+                    <br>
+                    • Because both rates increase by the exact same factor, the system remains at dynamic equilibrium if already balanced ($r_{\mathrm{f}}' = r_{\mathrm{r}}'$), or reaches dynamic equilibrium much faster if starting from unmixed reactants[cite: 22].
+                    <br>
+                    • A catalyst <strong>does NOT alter species concentrations at equilibrium</strong>, does NOT alter the equilibrium constant ($K_{\mathrm{eq}}$), and does NOT alter reaction yield[cite: 22]!
+                </p>
+            </section>
+
+            <!-- SECTION 7: GRAPHICAL SIGNATURES OF LE CHATELIER SHIFTS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>7. Graphical Signatures of Le Chatelier Shifts</h2>
+                    <span class="pill-badge emerald">Graph Interpretation</span>
+                </div>
+
+                <p>
+                    NESA examination questions frequently require students to interpret concentration-time ($c\text{ vs }t$) and rate-time ($r\text{ vs }t$) graphs depicting dynamic equilibrium disturbances[cite: 22]. Mastering the visual signatures of these graphs is essential for full marks.
+                </p>
+
+                <h3>Visual Signature Guide for Concentration-Time ($c\text{ vs }t$) Graphs</h3>
+
+                <div class="comparison-table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Disturbance Type</th>
+                                <th>Instantaneous Visual Signature at $t_1$</th>
+                                <th>Transition Behavior ($t_1 < t < t_2$)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Adding Single Species (+Reactant/Product)</strong></td>
+                                <td>A <strong>single sharp vertical spike upwards</strong> for that added species only. Other species show no vertical step at $t_1$[cite: 22].</td>
+                                <td>Smooth exponential decay/growth curves following stoichiometric ratios[cite: 22].</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Removing Single Species (-Reactant/Product)</strong></td>
+                                <td>A <strong>single sharp vertical drop downwards</strong> for that removed species only. Other species show no vertical step at $t_1$[cite: 22].</td>
+                                <td>Smooth exponential growth/decay curves following stoichiometric ratios[cite: 22].</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Volume Halving ($V \downarrow$, Gases)</strong></td>
+                                <td><strong>ALL gaseous species show simultaneous vertical spikes upwards</strong> (concentrations double instantly!)[cite: 22].</td>
+                                <td>Smooth curves shifting towards the side with fewer gas moles[cite: 22].</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Aqueous Dilution (Add Water)</strong></td>
+                                <td><strong>ALL dissolved aqueous species show simultaneous vertical drops downwards</strong> (concentrations fall instantly!).</td>
+                                <td>Smooth curves shifting towards the side with more aqueous species.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Temperature Change ($T \uparrow$ or $T \downarrow$)</strong></td>
+                                <td><strong>NO VERTICAL SPIKES OR STEPS AT ALL!</strong> Curves remain perfectly continuous at $t_1$[cite: 22].</td>
+                                <td>Smooth exponential curves beginning directly from $t_1$ towards the new equilibrium state[cite: 22].</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Adding a Catalyst</strong></td>
+                                <td><strong>NO VERTICAL SPIKES AND NO CONCENTRATION CHANGES!</strong> All concentration lines remain perfectly horizontal[cite: 22].</td>
+                                <td>No change (if system is already at equilibrium)[cite: 22].</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- SVG Graph 1: Concentration-Time Profile for Temperature Increase -->
+                <div class="graph-wrapper">
+                    <div class="graph-title">NESA Concentration-Time Graph: Response to Temperature Increase in Exothermic System ($\mathrm{A \rightleftharpoons B + Heat}$)</div>
+                    <div class="svg-graph-container">
+                        <svg viewBox="0 0 700 340" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="700" height="340" fill="#0b1329" rx="10"/>
+                            <line x1="70" y1="300" x2="650" y2="300" stroke="#64748b" stroke-width="2"/>
+                            <line x1="70" y1="40" x2="70" y2="300" stroke="#64748b" stroke-width="2"/>
+
+                            <!-- Dashed Time Markers -->
+                            <line x1="250" y1="40" x2="250" y2="300" stroke="#fbbf24" stroke-width="1.5" stroke-dasharray="4,4"/>
+                            <line x1="500" y1="40" x2="500" y2="300" stroke="#34d399" stroke-width="1.5" stroke-dasharray="4,4"/>
+
+                            <!-- Axes Labels -->
+                            <text x="360" y="328" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle">Time, $t$</text>
+                            <text x="25" y="170" fill="#cbd5e1" font-size="14" font-weight="600" text-anchor="middle" transform="rotate(-90 25 170)">Concentration ($\text{mol L}^{-1}$)</text>
+
+                            <!-- Domain Text Labels -->
+                            <text x="160" y="25" fill="#cbd5e1" font-size="12" font-weight="700" text-anchor="middle">Initial Eq 1</text>
+                            <text x="250" y="25" fill="#fbbf24" font-size="12" font-weight="700" text-anchor="middle">$t_1$ (Temp Rise)</text>
+                            <text x="375" y="25" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">Transition Shift ($\leftarrow$)</text>
+                            <text x="575" y="25" fill="#34d399" font-size="12" font-weight="700" text-anchor="middle">New Eq 2</text>
+
+                            <!-- Reactant A Curve (Cyan): Starts y=200, NO SPIKE at t1, smooth curve UP to y=120 -->
+                            <line x1="70" y1="200" x2="250" y2="200" stroke="#38bdf8" stroke-width="3"/>
+                            <path d="M 250 200 C 310 160, 420 120, 500 120" fill="none" stroke="#38bdf8" stroke-width="3"/>
+                            <line x1="500" y1="120" x2="650" y2="120" stroke="#38bdf8" stroke-width="3"/>
+
+                            <!-- Product B Curve (Rose): Starts y=110, NO SPIKE at t1, smooth curve DOWN to y=190 -->
+                            <line x1="70" y1="110" x2="250" y2="110" stroke="#f43f5e" stroke-width="3"/>
+                            <path d="M 250 110 C 310 150, 420 190, 500 190" fill="none" stroke="#f43f5e" stroke-width="3"/>
+                            <line x1="500" y1="190" x2="650" y2="190" stroke="#f43f5e" stroke-width="3"/>
+
+                            <!-- Labels -->
+                            <text x="655" y="125" fill="#38bdf8" font-size="13" font-weight="700">$[\mathrm{A}]$</text>
+                            <text x="655" y="195" fill="#f43f5e" font-size="13" font-weight="700">$[\mathrm{B}]$</text>
+
+                            <!-- Continuous Curve Annotation -->
+                            <circle cx="250" cy="200" r="5" fill="#fbbf24"/>
+                            <text x="260" y="215" fill="#fbbf24" font-size="11" font-weight="700">No Vertical Step! Continuous curves at $t_1$</text>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 8: PREDICTIVE TOOL VS COLLISION MECHANISM -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>8. Critical Distinction: Predictive Tool vs Sub-Microscopic Mechanism</h2>
+                    <span class="pill-badge rose">NESA Marking Distinction</span>
+                </div>
+
+                <p>
+                    In NESA Stage 6 Chemistry examinations, a major distinction is drawn between <em>predicting</em> a shift and <em>explaining</em> a shift[cite: 22]. Confusing these two concepts is a primary cause of mark deductions in extended response questions.
+                </p>
+
+                <div class="grid-2col">
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-amber);">
+                        <h3>Le Chatelier's Principle (LCP)</h3>
+                        <p><strong>Role: Qualitative Predictive Tool</strong></p>
+                        <p>
+                            LCP is an empirical model that allows chemists to quickly state the <em>direction of a shift</em> without performing mathematical calculations[cite: 22].
+                        </p>
+                        <p>
+                            <em>Example sentence:</em> "According to Le Chatelier's Principle, adding reactant $\mathrm{A}$ shifts the equilibrium forward to counteract the increase in $[\mathrm{A}]$."
+                        </p>
+                        <p style="color: var(--accent-rose); font-size: 0.9rem;">
+                            ⚠️ <strong>HSC Marking Warning:</strong> LCP describes <em>what</em> happens, NOT <em>why</em> it happens! Never state "the reaction shifts because of Le Chatelier's Principle" as a physical explanation.
+                        </p>
+                    </div>
+
+                    <div class="feature-card" style="border-top: 3px solid var(--accent-cyan);">
+                        <h3>Collision Theory</h3>
+                        <p><strong>Role: Sub-Microscopic Physical Mechanism</strong></p>
+                        <p>
+                            Collision theory provides the actual <em>physical cause</em> of the shift by analysing particle collision frequency ($Z$) and activation energy ($E_a$)[cite: 22].
+                        </p>
+                        <p>
+                            <em>Example sentence:</em> "Adding reactant $\mathrm{A}$ increases its concentration, raising forward collision frequency ($Z_{\mathrm{f}}$). Thus, $r_{\mathrm{f}} > r_{\mathrm{r}}$, causing a net forward transformation."
+                        </p>
+                        <p style="color: var(--accent-emerald); font-size: 0.9rem;">
+                            ✅ <strong>Best Practice:</strong> Always use Collision Theory to justify <em>why</em> a shift occurs whenever a question asks you to "explain" or "analyse" an equilibrium adjustment[cite: 22]!
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 9: INTERACTIVE LE CHATELIER SHIFT SIMULATOR -->
+            <section class="card glass-card demo-card">
+                <div class="card-header">
+                    <h2>9. Interactive Le Chatelier Shift Simulator (With Edge Cases)</h2>
+                    <span class="pill-badge demo-pill">Virtual Equilibrium Sandbox</span>
+                </div>
+                <p>Select a disturbance stress below—including gas systems, equal gas moles, aqueous dilution, inert gas conditions, and catalysts—to observe live concentration-time and rate-time profiles[cite: 22].</p>
+
+                <div class="sim-container">
+                    <div class="sim-controls">
+                        <div class="control-group">
+                            <label>Select Disturbance Stress:</label>
+                            <select id="sim-disturbance-select" class="btn btn-outline" style="width: 100%; color: #fff; background: rgba(30,41,59,0.9);" onchange="runLcpSim()">
+                                <option value="add_n2">Inject Extra N₂ Gas (+ Reactant)</option>
+                                <option value="remove_nh3">Remove NH₃ Gas (- Product)</option>
+                                <option value="compress">Halve Container Volume (Compress Pressure)</option>
+                                <option value="compress_equal">Compress Volume on Equal Gas Moles System (Δn = 0)</option>
+                                <option value="dilute_aq">Dilute Aqueous Solution (Add Water to Fe3+ + SCN-)</option>
+                                <option value="heat">Heat Vessel (Raise Temperature)</option>
+                                <option value="argon_v">Inject Argon Gas at Constant Volume (Fixed V)</option>
+                                <option value="argon_p">Inject Argon Gas at Constant Pressure (Moveable Piston)</option>
+                                <option value="catalyst">Add Catalyst (Lower Ea Equally)</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <label>Disturbance Magnitude: <span id="lbl-sim-mag" style="color: var(--accent-purple);">Moderate</span></label>
+                            <input type="range" id="slider-sim-mag" min="1" max="3" step="1" value="2" oninput="runLcpSim()">
+                        </div>
+                    </div>
+
+                    <div class="sim-viewports">
+                        <div class="sim-box">
+                            <h4 style="font-size: 0.85rem; color: var(--accent-cyan); margin-bottom: 0.5rem;">CONCENTRATION-TIME PROFILE ($c\text{ vs }t$)</h4>
+                            <canvas id="sim-canvas-conc" class="sim-canvas-el" width="340" height="260"></canvas>
+                        </div>
+
+                        <div class="sim-box">
+                            <h4 style="font-size: 0.85rem; color: var(--accent-cyan); margin-bottom: 0.5rem;">RATE-TIME PROFILE ($r\text{ vs }t$)</h4>
+                            <canvas id="sim-canvas-rate" class="sim-canvas-el" width="340" height="260"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="telemetry-panel">
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Disturbance Stress</span>
+                            <span class="telemetry-value" id="tel-dist-type" style="color: var(--accent-amber);">ADDED N2</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">LCP Shift Direction</span>
+                            <span class="telemetry-value" id="tel-shift-dir" style="color: var(--accent-emerald);">NET FORWARD (&rarr;)</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Favoured Species</span>
+                            <span class="telemetry-value" id="tel-favoured" style="color: var(--accent-cyan);">NH3 PRODUCTS</span>
+                        </div>
+                        <div class="telemetry-item">
+                            <span class="telemetry-label">Counteraction Rule</span>
+                            <span class="telemetry-value" id="tel-rule" style="color: var(--accent-purple);">CONSUME ADDED N2</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 10: WORKED EXAMPLES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>10. Scaffolded Worked Examples</h2>
+                    <span class="pill-badge">HSC Step-by-Step Solutions</span>
+                </div>
+
+                <!-- Example 1: Easy -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 1 (Easy): Qualitative Shift Prediction</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Predict the direction of the equilibrium shift when additional oxygen gas ($\mathrm{O_2}$) is injected into the following closed system at dynamic equilibrium:
+                        $$\mathrm{2SO_2(g) + O_2(g) \rightleftharpoons 2SO_3(g)}$$
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Identify Disturbance:</strong> The concentration of reactant oxygen gas ($[\mathrm{O_2}]$) is increased[cite: 22].</p>
+                        <p><strong>2. Apply Le Chatelier's Principle:</strong> According to Le Chatelier's Principle, the system will adjust to partially counteract the change by consuming the added $\mathrm{O_2}$[cite: 22].</p>
+                        <p><strong>3. Conclusion:</strong> The system undergoes a <strong>net forward shift ($\to$)</strong> (towards the right), increasing the concentration of $\mathrm{SO_3}$ product while decreasing $[\mathrm{SO_2}]$[cite: 22].</p>
+                    </div>
+                </div>
+
+                <!-- Example 2: Medium -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 2 (Medium): Aqueous Dilution Edge Case</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Distilled water is added to a beaker containing an aqueous solution at dynamic equilibrium:
+                        $$\mathrm{Fe^{3+}(aq) + SCN^-(aq) \rightleftharpoons FeSCN^{2+}(aq)}$$
+                        Predict the direction of the equilibrium shift and explain the observed colour change using Le Chatelier's Principle.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Identify Disturbance:</strong> Adding water increases total solution volume, instantly diluting and lowering the concentrations of all dissolved aqueous ions ($\mathrm{Fe^{3+}}$, $\mathrm{SCN^-}$, and $\mathrm{FeSCN^{2+}}$).</p>
+                        <p><strong>2. Apply LCP Rule for Aqueous Dilution:</strong> According to Le Chatelier's Principle, the system will adjust to counteract dilution by shifting in the direction that produces the greater number of dissolved aqueous particles ($\sum \text{aq moles}$).</p>
+                        <p><strong>3. Shift & Colour Change:</strong> The reactant side has $1 + 1 = 2\text{ aq moles}$, while the product side has $1\text{ aq mole}$. The system undergoes a <strong>net reverse shift ($\leftarrow$)</strong>. Blood-red $\mathrm{FeSCN^{2+}}$ decomposes into pale yellow $\mathrm{Fe^{3+}}$ and colourless $\mathrm{SCN^-}$, turning the solution paler red/orange.</p>
+                    </div>
+                </div>
+
+                <!-- Example 3: Hard -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 3 (Hard): Inert Gas at Constant Volume vs Constant Pressure</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Helium gas is added to the gas equilibrium $\mathrm{N_2O_4(g) \rightleftharpoons 2NO_2(g)}$ under two different conditions:
+                        <br>a) Vessel A has a fixed rigid volume.
+                        <br>b) Vessel B has a moveable piston maintained at constant total pressure.
+                        <br>Contrast the equilibrium response in both vessels.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>a) Vessel A (Fixed Volume):</strong> Injecting Helium raises total pressure, but because volume $V$ is constant, the concentrations ($n/V$) and partial pressures of $\mathrm{N_2O_4}$ and $\mathrm{NO_2}$ remain unchanged[cite: 22]. Collision frequencies between reacting gases are unaltered. <strong>Result: NO SHIFT[cite: 22].</strong></p>
+
+                        <p><strong>b) Vessel B (Constant Pressure):</strong> To maintain constant pressure when Helium is added, the moveable piston expands, increasing vessel volume ($V \uparrow$). This volume expansion dilutes all reacting gases, lowering their partial pressures. To counteract this volume expansion, the system shifts towards the side with more gas moles ($2\text{ moles of }\mathrm{NO_2} > 1\text{ mole of }\mathrm{N_2O_4}$). <strong>Result: NET FORWARD SHIFT ($\to$).</strong></p>
+                    </div>
+                </div>
+
+                <!-- Example 4: Extension -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Worked Example 4 (Extension): Multiple Opposing Disturbances</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        An equilibrium mixture $\mathrm{2A(g) + B(g) \rightleftharpoons C(g)} \quad \Delta H < 0$ is subjected to two simultaneous disturbances at time $t_1$: the container volume is halved AND the temperature is increased[cite: 22].
+                        <br>Analyse whether it is possible to definitively predict the net shift direction without knowing the relative magnitudes of these two disturbances.
+                    </p>
+
+                    <div class="drawer drawer-solution" style="display: block;">
+                        <h4>Model Solution:</h4>
+                        <p><strong>1. Individual Disturbance Analysis:</strong>
+                        <br>• <strong>Volume Halving ($V \downarrow, P \uparrow$):</strong> Increasing total pressure causes the system to shift towards the side with fewer gas moles ($3\text{ gas moles} \to 1\text{ gas mole}$)[cite: 22]. This produces a <strong>net forward shift ($\to$)</strong>.
+                        <br>• <strong>Temperature Increase ($T \uparrow$):</strong> Raising temperature causes the system to shift in the endothermic direction ($\Delta H > 0$)[cite: 22]. Since the forward reaction is exothermic, the endothermic direction is the reverse path, producing a <strong>net reverse shift ($\leftarrow$)</strong>[cite: 22].</p>
+
+                        <p><strong>2. Synthesis & Indeterminacy Evaluation:</strong>
+                        <br>The pressure increase drives a net forward shift while the temperature increase drives a net reverse shift[cite: 22]. Because these two driving forces directly oppose each other, the net shift direction depends entirely upon which disturbance exerts a larger kinetic effect[cite: 22]. Without additional quantitative data, the net shift direction cannot be definitively predicted[cite: 22].</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 11: PRACTICE QUESTIONS WITH RUBRICS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>11. NESA Examination Practice Questions</h2>
+                    <span class="pill-badge demo-pill">Self-Marking Engine</span>
+                </div>
+                <p>Solve the questions below, then toggle hints and model solutions to verify your answers against NESA marking rubrics.</p>
+
+                <!-- Practice Q1 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 1 (Easy): Defining Le Chatelier's Principle</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        State Le Chatelier's Principle and explain what is meant by the concept of "partial counteraction"[cite: 22].
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq1-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq1-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq1-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> State the standard formal definition, then explain why species concentrations never fully return to their exact original pre-disturbance baseline.</p>
+                    </div>
+
+                    <div id="pq1-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong> Le Chatelier's Principle states that if a system at dynamic equilibrium is subjected to a change in conditions, the system will adjust to partially counteract that change and re-establish equilibrium[cite: 22]. "Partial counteraction" means the system shifts to reduce the impact of the disturbance, but species concentrations never return completely to their original pre-disturbance values[cite: 22].</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Accurately states the formal definition of Le Chatelier's Principle[cite: 22].</li>
+                                <li><strong>1 Mark:</strong> Correctly explains that partial counteraction leaves concentrations slightly higher/lower than the initial baseline[cite: 22].</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q2 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 2 (Medium): Gas Compression with Equal Moles Edge Case</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A gas reaction mixture containing $\mathrm{H_2(g) + I_2(g) \rightleftharpoons 2HI(g)}$ is at equilibrium in a $2.0\text{ L}$ container. The volume is suddenly compressed to $1.0\text{ L}$ at constant temperature.
+                        <br>Predict the direction of the equilibrium shift, describe the visual signature on a concentration-time graph, and justify your answer.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq2-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq2-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq2-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Count the stoichiometric moles of gas on reactant side ($1 + 1$) versus product side ($2$).</p>
+                    </div>
+
+                    <div id="pq2-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>• <strong>Shift Prediction:</strong> There is <strong>NO EQUILIBRIUM SHIFT</strong>.
+                            <br>• <strong>Justification:</strong> Both reactant side ($1 + 1 = 2\text{ moles}$) and product side ($2\text{ moles}$) contain equal gas moles ($\Delta n_{\text{gas}} = 0$). Halving the volume doubles the concentrations of $\mathrm{H_2}$, $\mathrm{I_2}$, and $\mathrm{HI}$ simultaneously. Neither a forward nor a reverse shift can alter the total gas mole count to reduce pressure.
+                            <br>• <strong>Graph Signature:</strong> All three gas species ($\mathrm{H_2, I_2, HI}$) show an instantaneous upward vertical spike at $t_1$ (doubling in concentration), followed by flat, horizontal lines for $t > t_1$.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Correctly states NO EQUILIBRIUM SHIFT occurs.</li>
+                                <li><strong>1 Mark:</strong> Justifies using equal gas moles ($\Delta n_{\text{gas}} = 0$).</li>
+                                <li><strong>1 Mark:</strong> Describes simultaneous vertical spikes upwards for all species followed by horizontal lines.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q3 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 3 (Hard): Inert Gas at Constant Pressure</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        An unreactive inert gas (Argon) is pumped at constant pressure into a vessel containing $\mathrm{2SO_2(g) + O_2(g) \rightleftharpoons 2SO_3(g)}$ at dynamic equilibrium.
+                        <br>Predict the direction of the shift, and justify your answer using partial pressures and volume expansion principles.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq3-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq3-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq3-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> To keep total pressure constant when adding extra gas molecules, what must happen to the container volume?</p>
+                    </div>
+
+                    <div id="pq3-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br>• <strong>Shift Prediction:</strong> The system undergoes a <strong>net reverse shift ($\leftarrow$)</strong>.
+                            <br>• <strong>Justification:</strong> Injecting Argon at constant pressure forces the container volume to expand ($V \uparrow$).
+                            <br>• <strong>Concentration Impact:</strong> As volume expands, the concentrations ($C_i = n_i / V$) and partial pressures of all reacting gases ($\mathrm{SO_2, O_2, SO_3}$) decrease simultaneously.
+                            <br>• <strong>LCP Application:</strong> To counteract this effective volume expansion/dilution, the system shifts towards the side with MORE gas moles ($3\text{ gas moles on reactant side} > 2\text{ gas moles on product side}$). Thus, a net reverse shift occurs.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Correctly predicts a net reverse shift ($\leftarrow$).</li>
+                                <li><strong>1 Mark:</strong> Explains that constant pressure forces volume expansion ($V \uparrow$).</li>
+                                <li><strong>1 Mark:</strong> Explains volume expansion lowers reacting gas concentrations/partial pressures.</li>
+                                <li><strong>1 Mark:</strong> Applies LCP rule: shifts towards side with more gas moles ($3 > 2$).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q4 -->
+                <div class="question-container">
+                    <div class="question-header">
+                        <h3>Question 4 (Extension): Industrial Optimization Synthesis</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A chemical engineer seeks to maximize the yield of product $\mathrm{C}$ in the industrial equilibrium:
+                        $$\mathrm{A(g) + 2B(g) \rightleftharpoons 2C(g)} \quad \Delta H = -95\text{ kJ mol}^{-1}$$
+                        Propose and justify the optimal temperature and pressure conditions using Le Chatelier's Principle, and discuss the economic compromises required in real industrial processing plants[cite: 22].
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('pq4-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('pq4-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="pq4-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Balance high yield (LCP equilibrium prediction) against fast reaction rate (collision kinetics) for temperature selection!</p>
+                    </div>
+
+                    <div id="pq4-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Model Answer:</strong>
+                            <br><strong>1. Pressure Optimization:</strong> The forward reaction converts $3\text{ gas moles} \to 2\text{ gas moles}$[cite: 22]. According to LCP, high pressure shifts the system forward to reduce gas moles, increasing $\mathrm{C}$ yield[cite: 22]. High pressure also increases collision frequency, accelerating reaction rate[cite: 22].
+                            <br><strong>2. Temperature Compromise:</strong> Because the reaction is exothermic ($\Delta H < 0$), LCP predicts low temperature favours the forward shift, maximising yield[cite: 22]. However, low temperature severely lowers kinetic collision energy, making the reaction rate impractically slow[cite: 22].
+                            <br><strong>3. Industrial Compromise:</strong> Industrial plants use a <strong>moderate compromise temperature</strong> ($\sim 400\text{--}450^\circ\text{C}$) paired with a catalyst to achieve an economically viable rate while maintaining acceptable yield, alongside high pressure limited by safety and equipment costs[cite: 22].</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>5 Marks:</strong> Complete synthesis: uses LCP to justify high pressure ($3 \to 2$ gas moles) and low temperature ($\Delta H < 0$), identifies rate vs yield conflict, and explains the necessity of compromise conditions in industrial engineering[cite: 22].</li>
+                                <li><strong>3-4 Marks:</strong> Correctly applies LCP for pressure and temperature, but lacks discussion of kinetic rate compromise[cite: 22].</li>
+                                <li><strong>1-2 Marks:</strong> Basic shift prediction without industrial context[cite: 22].</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation Footer -->
+            <footer class="content-footer">
+                <a href="05-collision-theory-equilibrium.html" class="btn btn-outline">&larr; Back to Lesson 05</a>
+                <a href="07-effect-of-concentration.html" class="btn btn-ethereal">
+                    Proceed to Lesson 07: Concentration Changes &rarr;
+                </a>
+            </footer>
+        </main>
+    </div>
+
+    <!-- INTERACTIVE SIMULATOR JAVASCRIPT ENGINE -->
+    <script>
+        function runLcpSim() {
+            const distType = document.getElementById('sim-disturbance-select').value;
+            const mag = parseInt(document.getElementById('slider-sim-mag').value);
+
+            // Canvas 1: Concentration
+            const canvasC = document.getElementById('sim-canvas-conc');
+            const ctxC = canvasC.getContext('2d');
+            ctxC.clearRect(0, 0, canvasC.width, canvasC.height);
+
+            // Canvas 2: Rate
+            const canvasR = document.getElementById('sim-canvas-rate');
+            const ctxR = canvasR.getContext('2d');
+            ctxR.clearRect(0, 0, canvasR.width, canvasR.height);
+
+            // Draw Grids & Axes
+            drawGrid(ctxC, canvasC.width, canvasC.height, "Concentration (mol/L)");
+            drawGrid(ctxR, canvasR.width, canvasR.height, "Reaction Rate (r)");
+
+            // Time Markers
+            const t1 = 110;
+            const t2 = 250;
+
+            drawTimeMarkers(ctxC, t1, t2, canvasC.height);
+            drawTimeMarkers(ctxR, t1, t2, canvasR.height);
+
+            // Telemetry Elements
+            const typeEl = document.getElementById('tel-dist-type');
+            const dirEl = document.getElementById('tel-shift-dir');
+            const favEl = document.getElementById('tel-favoured');
+            const ruleEl = document.getElementById('tel-rule');
+
+            // Default Baselines
+            let yN2_0 = 150, yH2_0 = 110, yNH3_0 = 170;
+            let yN2_sp = yN2_0, yH2_sp = yH2_0, yNH3_sp = yNH3_0;
+            let yN2_eq2 = yN2_0, yH2_eq2 = yH2_0, yNH3_eq2 = yNH3_0;
+
+            let rf_0 = 140, rr_0 = 140;
+            let rf_sp = rf_0, rr_sp = rr_0;
+            let r_eq2 = 140;
+
+            if (distType === 'add_n2') {
+                typeEl.innerText = "INJECTED EXTRA N2";
+                dirEl.innerText = "NET FORWARD (→)";
+                favEl.innerText = "NH3 PRODUCTS";
+                ruleEl.innerText = "CONSUME ADDED N2";
+
+                yN2_sp = yN2_0 - (mag * 22);
+                yN2_eq2 = yN2_sp + (mag * 10);
+                yH2_eq2 = yH2_0 + (mag * 15);
+                yNH3_eq2 = yNH3_0 - (mag * 14);
+
+                rf_sp = rf_0 - (mag * 25);
+                r_eq2 = rf_0 - (mag * 8);
+            } else if (distType === 'remove_nh3') {
+                typeEl.innerText = "REMOVED NH3 GAS";
+                dirEl.innerText = "NET FORWARD (→)";
+                favEl.innerText = "NH3 PRODUCTS";
+                ruleEl.innerText = "REPLACE REMOVED NH3";
+
+                yNH3_sp = yNH3_0 + (mag * 22);
+                yNH3_eq2 = yNH3_sp - (mag * 12);
+                yN2_eq2 = yN2_0 + (mag * 8);
+                yH2_eq2 = yH2_0 + (mag * 12);
+
+                rr_sp = rr_0 + (mag * 25);
+                r_eq2 = rr_0 + (mag * 8);
+            } else if (distType === 'compress') {
+                typeEl.innerText = "HALVED VOLUME (P UP)";
+                dirEl.innerText = "NET FORWARD (→)";
+                favEl.innerText = "FEWER GAS MOLES (NH3)";
+                ruleEl.innerText = "REDUCE TOTAL PRESSURE";
+
+                yN2_sp = yN2_0 - (mag * 18);
+                yH2_sp = yH2_0 - (mag * 18);
+                yNH3_sp = yNH3_0 - (mag * 18);
+
+                yN2_eq2 = yN2_sp + (mag * 6);
+                yH2_eq2 = yH2_sp + (mag * 10);
+                yNH3_eq2 = yNH3_sp - (mag * 12);
+
+                rf_sp = rf_0 - (mag * 30);
+                rr_sp = rr_0 - (mag * 15);
+                r_eq2 = rf_0 - (mag * 12);
+            } else if (distType === 'compress_equal') {
+                typeEl.innerText = "COMPRESS (Δn_gas = 0)";
+                dirEl.innerText = "NO EQUILIBRIUM SHIFT";
+                favEl.innerText = "NEITHER (RATIO SAME)";
+                ruleEl.innerText = "EQUAL GAS MOLES (Δn = 0)";
+
+                yN2_sp = yN2_0 - (mag * 20);
+                yH2_sp = yH2_0 - (mag * 20);
+                yNH3_sp = yNH3_0 - (mag * 20);
+
+                yN2_eq2 = yN2_sp;
+                yH2_eq2 = yH2_sp;
+                yNH3_eq2 = yNH3_sp;
+
+                rf_sp = rf_0 - (mag * 25);
+                rr_sp = rr_0 - (mag * 25);
+                r_eq2 = rf_sp;
+            } else if (distType === 'dilute_aq') {
+                typeEl.innerText = "AQUEOUS DILUTION (+H2O)";
+                dirEl.innerText = "NET REVERSE (←)";
+                favEl.innerText = "MORE AQ MOLES (Fe3+ + SCN-)";
+                ruleEl.innerText = "MAXIMISE AQ PARTICLES";
+
+                yN2_sp = yN2_0 + (mag * 20);
+                yH2_sp = yH2_0 + (mag * 20);
+                yNH3_sp = yNH3_0 + (mag * 20);
+
+                yN2_eq2 = yN2_sp - (mag * 8);
+                yH2_eq2 = yH2_sp - (mag * 8);
+                yNH3_eq2 = yNH3_sp + (mag * 12);
+
+                rf_sp = rf_0 + (mag * 20);
+                rr_sp = rr_0 + (mag * 10);
+                r_eq2 = rf_0 + (mag * 12);
+            } else if (distType === 'heat') {
+                typeEl.innerText = "RAISED TEMPERATURE";
+                dirEl.innerText = "NET REVERSE (←)";
+                favEl.innerText = "N2 & H2 REACTANTS";
+                ruleEl.innerText = "ABSORB ADDED HEAT";
+
+                yN2_eq2 = yN2_0 - (mag * 12);
+                yH2_eq2 = yH2_0 - (mag * 18);
+                yNH3_eq2 = yNH3_0 + (mag * 15);
+
+                rf_sp = rf_0 - (mag * 20);
+                rr_sp = rr_0 - (mag * 35);
+                r_eq2 = rf_0 - (mag * 18);
+            } else if (distType === 'argon_v') {
+                typeEl.innerText = "ARGON AT FIXED VOLUME";
+                dirEl.innerText = "NO EQUILIBRIUM SHIFT";
+                favEl.innerText = "NEITHER (UNCHANGED)";
+                ruleEl.innerText = "CONCENTRATIONS CONSTANT";
+            } else if (distType === 'argon_p') {
+                typeEl.innerText = "ARGON AT CONSTANT P";
+                dirEl.innerText = "NET REVERSE (←)";
+                favEl.innerText = "MORE GAS MOLES (4 > 2)";
+                ruleEl.innerText = "VOLUME EXPANDED (V UP)";
+
+                yN2_sp = yN2_0 + (mag * 18);
+                yH2_sp = yH2_0 + (mag * 18);
+                yNH3_sp = yNH3_0 + (mag * 18);
+
+                yN2_eq2 = yN2_sp - (mag * 6);
+                yH2_eq2 = yH2_sp - (mag * 10);
+                yNH3_eq2 = yNH3_sp + (mag * 12);
+
+                rf_sp = rf_0 + (mag * 25);
+                rr_sp = rr_0 + (mag * 12);
+                r_eq2 = rf_0 + (mag * 15);
+            } else if (distType === 'catalyst') {
+                typeEl.innerText = "ADDED CATALYST";
+                dirEl.innerText = "NO EQUILIBRIUM SHIFT";
+                favEl.innerText = "NEITHER (EQUAL)";
+                ruleEl.innerText = "BOTH RATES ACCELERATED EQUALLY";
+
+                rf_sp = rf_0 - (mag * 25);
+                rr_sp = rr_0 - (mag * 25);
+                r_eq2 = rf_0 - (mag * 25);
+            }
+
+            // Draw Concentration Curves
+            drawCurve(ctxC, "#38bdf8", yN2_0, yN2_sp, yN2_eq2, t1, t2, canvasC.width);
+            drawCurve(ctxC, "#f43f5e", yH2_0, yH2_sp, yH2_eq2, t1, t2, canvasC.width);
+            drawCurve(ctxC, "#34d399", yNH3_0, yNH3_sp, yNH3_eq2, t1, t2, canvasC.width);
+
+            // Draw Rate Curves
+            drawRateCurves(ctxR, rf_0, rf_sp, rr_sp, r_eq2, t1, t2, canvasR.width);
+
+            // Labels
+            ctxC.font = "bold 11px Inter, sans-serif";
+            ctxC.fillStyle = "#38bdf8"; ctxC.fillText("[N2]", 310, yN2_eq2 + 4);
+            ctxC.fillStyle = "#f43f5e"; ctxC.fillText("[H2]", 310, yH2_eq2 + 4);
+            ctxC.fillStyle = "#34d399"; ctxC.fillText("[NH3]", 310, yNH3_eq2 + 4);
+        }
+
+        function drawGrid(ctx, w, h, label) {
+            ctx.strokeStyle = "rgba(255,255,255,0.1)";
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(35, 15); ctx.lineTo(35, h - 25);
+            ctx.moveTo(35, h - 25); ctx.lineTo(w - 15, h - 25);
+            ctx.stroke();
+
+            ctx.fillStyle = "#94a3b8";
+            ctx.font = "10px Inter, sans-serif";
+            ctx.fillText(label, 40, 12);
+            ctx.fillText("Time (t)", w - 50, h - 10);
+        }
+
+        function drawTimeMarkers(ctx, t1, t2, h) {
+            ctx.strokeStyle = "rgba(251, 191, 36, 0.4)";
+            ctx.setLineDash([3, 3]);
+            ctx.beginPath();
+            ctx.moveTo(t1, 15); ctx.lineTo(t1, h - 25);
+            ctx.moveTo(t2, 15); ctx.lineTo(t2, h - 25);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            ctx.fillStyle = "#fbbf24";
+            ctx.font = "9px Inter, sans-serif";
+            ctx.fillText("t1", t1 - 4, h - 12);
+            ctx.fillText("t2", t2 - 4, h - 12);
+        }
+
+        function drawCurve(ctx, color, y0, ySpike, yEq2, t1, t2, w) {
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 2.5;
+
+            ctx.beginPath();
+            ctx.moveTo(35, y0);
+            ctx.lineTo(t1, y0);
+            ctx.stroke();
+
+            if (ySpike !== y0) {
+                ctx.setLineDash([2, 2]);
+                ctx.beginPath();
+                ctx.moveTo(t1, y0);
+                ctx.lineTo(t1, ySpike);
+                ctx.stroke();
+                ctx.setLineDash([]);
+            }
+
+            ctx.beginPath();
+            ctx.moveTo(t1, ySpike);
+            ctx.bezierCurveTo(t1 + 40, ySpike, t2 - 30, yEq2, t2, yEq2);
+            ctx.lineTo(w - 15, yEq2);
+            ctx.stroke();
+        }
+
+        function drawRateCurves(ctx, r0, rfSp, rrSp, rEq2, t1, t2, w) {
+            ctx.strokeStyle = "#a78bfa";
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(35, r0); ctx.lineTo(t1, r0);
+            ctx.stroke();
+
+            ctx.strokeStyle = "#38bdf8";
+            ctx.lineWidth = 2.5;
+            if (rfSp !== r0) {
+                ctx.setLineDash([2, 2]);
+                ctx.beginPath();
+                ctx.moveTo(t1, r0); ctx.lineTo(t1, rfSp);
+                ctx.stroke();
+                ctx.setLineDash([]);
+            }
+            ctx.beginPath();
+            ctx.moveTo(t1, rfSp);
+            ctx.bezierCurveTo(t1 + 40, rfSp, t2 - 30, rEq2, t2, rEq2);
+            ctx.lineTo(w - 15, rEq2);
+            ctx.stroke();
+
+            ctx.strokeStyle = "#f43f5e";
+            if (rrSp !== r0) {
+                ctx.setLineDash([2, 2]);
+                ctx.beginPath();
+                ctx.moveTo(t1, r0); ctx.lineTo(t1, rrSp);
+                ctx.stroke();
+                ctx.setLineDash([]);
+            }
+            ctx.beginPath();
+            ctx.moveTo(t1, rrSp);
+            ctx.bezierCurveTo(t1 + 40, rrSp, t2 - 30, rEq2, t2, rEq2);
+            ctx.lineTo(w - 15, rEq2);
+            ctx.stroke();
+        }
+
+        function toggleElement(id) {
+            const el = document.getElementById(id);
+            if (el.style.display === 'none' || el.style.display === '') {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            runLcpSim();
+        });
+    </script>
+</body>
+</html>

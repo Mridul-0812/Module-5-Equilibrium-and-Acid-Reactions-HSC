@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02 Open vs Closed Systems | Module 5 Chemistry</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- MathJax 3 Configuration -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+    <style>
+        /* Simulator & Telemetry Styling Extensions */
+        .sim-container {
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid var(--border-cyan);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 0 25px rgba(6, 182, 212, 0.15);
+        }
+
+        .sim-controls-toolbar {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .sim-grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            align-items: stretch;
+        }
+
+        @media (max-width: 820px) {
+            .sim-grid-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .flask-viewport {
+            background: radial-gradient(circle at center, #1e1b4b 0%, #0f172a 100%);
+            border-radius: var(--radius-md);
+            border: 2px solid var(--border-glow);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            min-height: 320px;
+            overflow: hidden;
+        }
+
+        .stopper-graphic {
+            width: 80px;
+            height: 22px;
+            background: #64748b;
+            border-radius: 4px;
+            position: absolute;
+            top: 25px;
+            border: 2px solid #94a3b8;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.4s ease;
+            z-index: 10;
+        }
+
+        .stopper-graphic.open {
+            transform: translateY(-35px);
+            background: #ef4444;
+            border-color: #f87171;
+        }
+
+        .escaping-zone {
+            height: 50px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .gas-bubble {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #38bdf8;
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .gas-bubble.active {
+            animation: floatUp 1.8s infinite linear;
+        }
+
+        @keyframes floatUp {
+            0% { opacity: 1; transform: translateY(10px) scale(0.8); }
+            100% { opacity: 0; transform: translateY(-40px) scale(1.2); }
+        }
+
+        .reaction-vessel-body {
+            width: 160px;
+            height: 140px;
+            border: 3px solid rgba(255, 255, 255, 0.45);
+            border-top: none;
+            border-radius: 0 0 40px 40px;
+            background: rgba(30, 41, 59, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0.5rem;
+            position: relative;
+            box-shadow: inset 0 -15px 25px rgba(0,0,0,0.6);
+        }
+
+        .solid-bed-layer {
+            width: 100%;
+            height: 40px;
+            background: #cbd5e1;
+            border-radius: 0 0 35px 35px;
+            transition: height 0.6s ease, background 0.6s ease;
+        }
+
+        .headspace-particles {
+            position: absolute;
+            top: 15px;
+            width: 85%;
+            display: flex;
+            justify-content: space-around;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #f1f5f9;
+        }
+
+        .balance-display-plate {
+            width: 100%;
+            background: #090d16;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 0.5rem;
+            text-align: center;
+            font-family: var(--font-mono, monospace);
+            color: #4ade80;
+            font-size: 1.1rem;
+            margin-top: 0.75rem;
+            box-shadow: 0 0 10px rgba(74, 222, 128, 0.2);
+        }
+
+        .telemetry-card {
+            background: rgba(30, 41, 59, 0.6);
+            padding: 1.25rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-light);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .telemetry-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .worked-example-card {
+            background: rgba(22, 27, 46, 0.7);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .example-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .difficulty-tag {
+            font-size: 0.725rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 0.2rem 0.65rem;
+            border-radius: 20px;
+            letter-spacing: 0.05em;
+        }
+
+        .diff-easy { background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald, #34d399); border: 1px solid rgba(16, 185, 129, 0.3); }
+        .diff-medium { background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan, #38bdf8); border: 1px solid rgba(6, 182, 212, 0.3); }
+        .diff-hard { background: rgba(245, 158, 11, 0.15); color: var(--accent-amber, #fbbf24); border: 1px solid rgba(245, 158, 11, 0.3); }
+        .diff-ext { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+
+        .solution-step {
+            margin-top: 0.85rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--accent-purple, #a78bfa);
+        }
+
+        .step-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent-cyan, #38bdf8);
+            text-transform: uppercase;
+        }
+
+        .svg-chart-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1.5rem 0;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body class="ethereal-theme">
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="badge-glow">NESA Stage 6</span>
+                <h2>Module 5</h2>
+                <p class="subtitle">EQUILIBRIUM & ACID REACTIONS</p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="module-progress" style="width: 8%;"></div>
+                </div>
+                <div class="score-card">
+                    Total Mastery: <span id="total-marks">8</span> / 100 Marks
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <div class="nav-section">
+                    <span class="section-title">INTRODUCTION</span>
+                    <a href="index.html" class="nav-item">
+                        <span class="nav-num">—</span> Home & Guide
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE A: FOUNDATIONS OF EQUILIBRIUM</span>
+                    <a href="01-reversible-reactions.html" class="nav-item"><span class="nav-num">01</span> Reversible vs Irreversible</a>
+                    <a href="02-open-closed-systems.html" class="nav-item active"><span class="nav-num">02</span> Open vs Closed Systems</a>
+                    <a href="03-static-dynamic-equilibrium.html" class="nav-item"><span class="nav-num">03</span> Static vs Dynamic Eq</a>
+                    <a href="04-non-equilibrium-systems.html" class="nav-item"><span class="nav-num">04</span> Non-Equilibrium Systems</a>
+                    <a href="05-collision-theory-equilibrium.html" class="nav-item"><span class="nav-num">05</span> Collision Theory in Eq</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE B: FACTORS AFFECTING EQUILIBRIUM</span>
+                    <a href="06-intro-le-chatelier.html" class="nav-item"><span class="nav-num">06</span> Le Chatelier's Principle</a>
+                    <a href="07-effect-of-concentration.html" class="nav-item"><span class="nav-num">07</span> Concentration Changes</a>
+                    <a href="08-effect-of-pressure-volume.html" class="nav-item"><span class="nav-num">08</span> Pressure & Volume</a>
+                    <a href="09-effect-of-temperature.html" class="nav-item"><span class="nav-num">09</span> Temperature Effects</a>
+                    <a href="10-collision-theory-lcp.html" class="nav-item"><span class="nav-num">10</span> Collision Theory & LCP</a>
+                    <a href="11-activation-energy-equilibrium.html" class="nav-item"><span class="nav-num">11</span> Activation Energy & $\Delta H$</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE C: THE EQUILIBRIUM CONSTANT</span>
+                    <a href="12-keq-expression.html" class="nav-item"><span class="nav-num">12</span> The $K_{\mathrm{eq}}$ Expression</a>
+                    <a href="13-keq-calculations-basic.html" class="nav-item"><span class="nav-num">13</span> Basic $K_{\mathrm{eq}}$ Calculations</a>
+                    <a href="14-keq-calculations-advanced.html" class="nav-item"><span class="nav-num">14</span> Advanced $K_{\mathrm{eq}}$ & $Q$</a>
+                    <a href="15-temperature-and-keq.html" class="nav-item"><span class="nav-num">15</span> Temperature & $K_{\mathrm{eq}}$</a>
+                    <a href="16-determining-keq-experiment.html" class="nav-item"><span class="nav-num">16</span> Practical Determination</a>
+                    <a href="17-keq-acid-base-dissociation.html" class="nav-item"><span class="nav-num">17</span> Dissociation Systems</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE D: SOLUTION EQUILIBRIA</span>
+                    <a href="18-dissolution-ionic-compounds.html" class="nav-item"><span class="nav-num">18</span> Ionic Dissolution</a>
+                    <a href="19-indigenous-solubility-cycads.html" class="nav-item"><span class="nav-num">19</span> Indigenous Detoxification</a>
+                    <a href="20-solubility-rules.html" class="nav-item"><span class="nav-num">20</span> Solubility Rules</a>
+                    <a href="21-solubility-product-ksp.html" class="nav-item"><span class="nav-num">21</span> Solubility Product ($K_{\mathrm{sp}}$)</a>
+                    <a href="22-molar-solubility-calcs.html" class="nav-item"><span class="nav-num">22</span> Molar Solubility Calcs</a>
+                    <a href="23-predicting-precipitation.html" class="nav-item"><span class="nav-num">23</span> Predicting Precipitation</a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="section-title">PHASE E: ASSESSMENT & REVIEW</span>
+                    <a href="24-formula-summary.html" class="nav-item"><span class="nav-num">24</span> Formula & Concept Guide</a>
+                    <a href="25-final-exam.html" class="nav-item"><span class="nav-num">25</span> Final Examination</a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="hero-banner">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <span class="ethereal-tag">LESSON 02 • PHASE A</span>
+                    <h1 class="ethereal-title">Open vs Closed Systems</h1>
+                    <p class="ethereal-subtitle">Analysing system boundaries, energy transfer, matter exchange, Aboriginal cooking processes, and their fundamental role in establishing dynamic equilibrium.</p>
+                </div>
+            </header>
+
+            <!-- SECTION 1: DETAILED THEORETICAL EXPLANATION -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>1. Understanding System Boundaries</h2>
+                    <span class="pill-badge">Thermodynamic Foundations</span>
+                </div>
+                <p>
+                    In physical chemistry, a <strong>system</strong> is defined as the specific region of space or amount of matter under investigation (such as a conical flask containing reacting chemicals). Everything outside this boundary is designated as the <strong>surroundings</strong>. The nature of the boundary separating the system from its surroundings determines whether matter, thermal energy, or work can cross between them.
+                </p>
+
+                <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin-top: 1.5rem;">
+                    <div class="feature-card">
+                        <div class="feature-icon">🔓</div>
+                        <h3>Open Systems</h3>
+                        <p><strong>Exchanges both matter and energy</strong> with surroundings.</p>
+                        <ul>
+                            <li>Gases, vapours, or dissolved ions can enter or leave freely.</li>
+                            <li>Heat ($q$) or radiation moves across the boundary.</li>
+                            <li><strong>Equilibrium Status:</strong> <span style="color: #f87171; font-weight: 700;">Cannot establish dynamic equilibrium</span> if gaseous products escape.</li>
+                            <li><strong>Example:</strong> An open beaker of boiling water, burning magnesium, or calcium carbonate heated in an open crucible.</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h3>Closed Systems</h3>
+                        <p><strong>Exchanges energy, but NOT matter</strong> with surroundings.</p>
+                        <ul>
+                            <li>Total mass inside the system remains strictly constant ($\Delta m = 0$).</li>
+                            <li>Heat transfer (exothermic/endothermic) can still occur freely.</li>
+                            <li><strong>Equilibrium Status:</strong> <span style="color: var(--accent-cyan); font-weight: 700;">Essential requirement</span> for reversible reactions involving gases.</li>
+                            <li><strong>Example:</strong> A stoppered flask containing liquid water and water vapour, or a sealed soda bottle.</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>Isolated Systems</h3>
+                        <p><strong>Exchanges NEITHER energy NOR matter</strong> with surroundings.</p>
+                        <ul>
+                            <li>No mass loss or gain ($\Delta m = 0$).</li>
+                            <li>No thermal transfer across insulated boundaries ($\Delta q = 0$).</li>
+                            <li><strong>Equilibrium Status:</strong> Establishes static or dynamic internal equilibrium under total thermodynamic isolation.</li>
+                            <li><strong>Example:</strong> A perfectly insulated bomb calorimeter or thermos flask over short timeframes.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="info-box" style="margin-top: 1.5rem;">
+                    <h3>Cultural Application: Aboriginal Cooking & System Boundaries</h3>
+                    <p>
+                        Aboriginal Peoples of Australia have utilised principles of open and closed thermal systems for thousands of years in traditional food preparation:
+                    </p>
+                    <ul>
+                        <li><strong>Open Systems (Campfire Coals & Grilling):</strong> Cooking food directly over open campfire coals allows heat transfer to the food while water vapour, volatile aromatic oils, and combustion smoke escape freely into the surrounding atmosphere. This open system drives rapid dehydration and surface searing.</li>
+                        <li><strong>Closed Systems (Enclosed Earth/Pit Ovens - Kup-Murri):</strong> In pit oven cooking, a pit is dug into the earth, lined with fire-heated stones, filled with food wrapped in non-toxic leaves (such as paperbark or banana leaves), and completely covered with soil. The earth and leaf barrier acts as a closed system boundary that traps steam and moisture ($\Delta m = 0$) while retaining thermal energy. The sealed environment creates a high-humidity thermal equilibrium chamber that steams food evenly without charring or moisture loss.</li>
+                    </ul>
+                </div>
+
+                <div class="info-box" style="margin-top: 1.25rem; border-left-color: var(--accent-cyan);">
+                    <h3>The Core Rule for Dynamic Equilibrium</h3>
+                    <p>
+                        For any chemical system involving <strong>gases or volatile liquids</strong>, dynamic chemical equilibrium can <strong>ONLY</strong> be established and maintained in a <strong>closed system</strong>. If gaseous products escape into an open atmosphere, their effective concentration drops toward zero, preventing the reverse collision rate ($r_{\mathrm{reverse}}$) from matching the forward rate ($r_{\mathrm{forward}}$).
+                    </p>
+                </div>
+            </section>
+
+            <!-- SECTION 2: INTERACTIVE PLAYABLE SIMULATOR -->
+            <section class="card glass-card demo-card">
+                <div class="card-header">
+                    <h2>2. Interactive System Boundary & Reaction Simulator</h2>
+                    <span class="pill-badge demo-pill">Virtual Laboratory Module</span>
+                </div>
+                <p>Toggle system boundaries (stopper valve), heat input, and observe real-time particle containment, total system mass telemetry on an electronic balance, and dynamic equilibrium rates.</p>
+
+                <div class="sim-container">
+                    
+                    <!-- Control Toolbar -->
+                    <div class="sim-controls-toolbar">
+                        <button class="btn btn-ethereal" id="btn-toggle-boundary" onclick="toggleBoundary()">🔒 Boundary: Closed System</button>
+                        <button class="btn btn-outline" id="btn-toggle-heat" onclick="toggleHeat()">🔥 Heat Source: OFF</button>
+                        <button class="btn btn-outline" id="btn-reset-sim" onclick="resetSimulation()">🔄 Reset Experiment</button>
+                    </div>
+
+                    <!-- Visual Chamber & Telemetry -->
+                    <div class="sim-grid-layout">
+                        
+                        <!-- Flask Simulation Box -->
+                        <div class="flask-viewport">
+                            
+                            <!-- Stopper Graphic -->
+                            <div id="sim-stopper" class="stopper-graphic">
+                                <span id="stopper-text" style="font-size: 0.65rem; color: #ffffff; display: block; text-align: center; font-weight: 700; line-height: 22px;">SEALED</span>
+                            </div>
+
+                            <!-- Escaping Particles Area -->
+                            <div class="escaping-zone">
+                                <span id="p1" class="gas-bubble">💨 $\mathrm{CO_2}$</span>
+                                <span id="p2" class="gas-bubble">💨 $\mathrm{CO_2}$</span>
+                                <span id="p3" class="gas-bubble">💨 $\mathrm{CO_2}$</span>
+                            </div>
+
+                            <!-- Reaction Flask Body -->
+                            <div class="reaction-vessel-body">
+                                <div id="headspace" class="headspace-particles">
+                                    <span id="particle-gas1" style="opacity: 0.2;">☁️ $\mathrm{CO_2}$</span>
+                                    <span id="particle-gas2" style="opacity: 0.2;">☁️ $\mathrm{CO_2}$</span>
+                                </div>
+                                <div id="solid-bed" class="solid-bed-layer"></div>
+                            </div>
+
+                            <!-- Electronic Scale Readout -->
+                            <div class="balance-display-plate">
+                                Scale Balance: <span id="scale-mass-val">250.00 g</span>
+                            </div>
+
+                            <span id="sim-equation-display" style="font-size: 0.85rem; color: var(--accent-cyan); font-weight: 600; margin-top: 0.5rem;">
+                                $$\mathrm{CaCO_3(s) \rightleftharpoons CaO(s) + CO_2(g)}$$
+                            </span>
+                        </div>
+
+                        <!-- Real-time System Telemetry & Metrics -->
+                        <div class="telemetry-card">
+                            <div>
+                                <h4 style="font-size: 0.9rem; color: var(--accent-cyan); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;">LIVE SYSTEM TELEMETRY</h4>
+                                
+                                <div class="telemetry-row">
+                                    <span>System Boundary Type:</span>
+                                    <strong id="telemetry-boundary" style="color: var(--accent-emerald);">Closed System ($\Delta m = 0$)</strong>
+                                </div>
+                                <div class="telemetry-row">
+                                    <span>Thermal Energy ($\Delta q$):</span>
+                                    <strong id="telemetry-energy" style="color: #facc15;">Heat Exchanged with Surroundings</strong>
+                                </div>
+                                <div class="telemetry-row">
+                                    <span>Forward Rate ($r_f$):</span>
+                                    <strong id="telemetry-rf" style="color: #38bdf8;">0.00 mol/s</strong>
+                                </div>
+                                <div class="telemetry-row">
+                                    <span>Reverse Rate ($r_r$):</span>
+                                    <strong id="telemetry-rr" style="color: #a78bfa;">0.00 mol/s</strong>
+                                </div>
+                                <div class="telemetry-row">
+                                    <span>Equilibrium Status:</span>
+                                    <strong id="telemetry-state" style="color: var(--accent-cyan);">ROOM TEMP (NO REACTION)</strong>
+                                </div>
+                            </div>
+
+                            <div id="sim-status-box" style="background: rgba(15, 23, 42, 0.85); padding: 0.85rem; border-radius: var(--radius-sm); font-size: 0.825rem; color: var(--text-secondary); border-left: 3px solid var(--accent-cyan);">
+                                <strong>System Analysis:</strong> At room temperature, thermal energy is below activation energy. Turn heat ON to begin decomposition.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: DEEP-DIVE MICROSCOPIC & QUANTITATIVE ANALYSIS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>3. Microscopic & Quantitative Analysis of Open vs Closed Systems</h2>
+                    <span class="pill-badge">Collision Dynamics & Mass Loss</span>
+                </div>
+                <p>
+                    To understand why dynamic equilibrium can only exist in a closed system, we must examine chemical collision frequencies and quantitative mass loss profiles.
+                </p>
+
+                <div class="grid-2col">
+                    <div class="info-box">
+                        <h3>In a Closed System ($\Delta m = 0$)</h3>
+                        <p>
+                            Consider the thermal decomposition of calcium carbonate in a sealed, rigid vessel:
+                        </p>
+                        $$\mathrm{CaCO_3(s) \rightleftharpoons CaO(s) + CO_2(g)}$$
+                        <ul>
+                            <li>Initially, heating causes $\mathrm{CaCO_3}$ to decompose at a forward rate $r_{\mathrm{forward}}$.</li>
+                            <li>Gaseous $\mathrm{CO_2}$ molecules are retained within the fixed vessel volume.</li>
+                            <li>As $[\mathrm{CO_2}]$ increases, collisions between gaseous $\mathrm{CO_2}$ and solid $\mathrm{CaO}$ become increasingly frequent.</li>
+                            <li>The reverse reaction rate increases ($r_{\mathrm{reverse}} \uparrow$) until $r_{\mathrm{forward}} = r_{\mathrm{reverse}} > 0$.</li>
+                            <li>A state of <strong>dynamic equilibrium</strong> is established. Total system mass remains $100\%$ constant.</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box">
+                        <h3>In an Open System ($\Delta m < 0$)</h3>
+                        <p>
+                            Consider the exact same reaction occurring in an open crucible:
+                        </p>
+                        $$\mathrm{CaCO_3(s) \rightarrow CaO(s) + CO_2(g)\uparrow}$$
+                        <ul>
+                            <li>Generated $\mathrm{CO_2}$ gas diffuses rapidly into the vast room atmosphere.</li>
+                            <li>The concentration of $\mathrm{CO_2}$ above the solid mixture remains near zero ($[\mathrm{CO_2}] \to 0$).</li>
+                            <li>Without gaseous $\mathrm{CO_2}$ molecules present, reverse collisions cannot occur ($r_{\mathrm{reverse}} \to 0$).</li>
+                            <li>Because $r_{\mathrm{forward}} > 0$ and $r_{\mathrm{reverse}} \approx 0$, the reaction is driven continuously to the right until all $\mathrm{CaCO_3}$ is consumed (going to completion).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- SVG Mass Loss Profile Chart -->
+                <div class="svg-chart-container">
+                    <svg width="620" height="300" viewBox="0 0 620 300" xmlns="http://www.w3.org/2000/svg" style="font-family: sans-serif;">
+                        <defs>
+                            <linearGradient id="chartBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#0f172a"/>
+                                <stop offset="100%" stop-color="#1e293b"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- Background -->
+                        <rect width="620" height="300" rx="10" fill="url(#chartBg)" stroke="#334155" stroke-width="1.5"/>
+                        
+                        <!-- Axes -->
+                        <line x1="70" y1="240" x2="560" y2="240" stroke="#94a3b8" stroke-width="2"/>
+                        <line x1="70" y1="240" x2="70" y2="40" stroke="#94a3b8" stroke-width="2"/>
+                        
+                        <!-- Labels -->
+                        <text x="315" y="278" fill="#38bdf8" font-size="12" font-weight="bold" text-anchor="middle">Reaction Time (t)</text>
+                        <text x="25" y="140" fill="#38bdf8" font-size="12" font-weight="bold" transform="rotate(-90 25 140)" text-anchor="middle">Total Flask Mass (g)</text>
+                        
+                        <!-- Y-Axis Ticks -->
+                        <text x="60" y="65" fill="#f8fafc" font-size="10" text-anchor="end">250.0 g</text>
+                        <text x="60" y="165" fill="#f8fafc" font-size="10" text-anchor="end">239.0 g</text>
+                        <line x1="65" y1="60" x2="70" y2="60" stroke="#94a3b8" stroke-width="1.5"/>
+                        <line x1="65" y1="160" x2="70" y2="160" stroke="#94a3b8" stroke-width="1.5"/>
+
+                        <!-- Closed System Curve (Flat line) -->
+                        <line x1="70" y1="60" x2="540" y2="60" stroke="#4ade80" stroke-width="3.5" stroke-linecap="round"/>
+                        <text x="320" y="50" fill="#4ade80" font-size="12" font-weight="bold">Closed System: Constant Mass (Δm = 0)</text>
+
+                        <!-- Open System Curve (Decreasing curve) -->
+                        <path d="M 70 60 Q 200 60, 320 160 T 540 160" fill="none" stroke="#f87171" stroke-width="3.5" stroke-dasharray="none"/>
+                        <text x="350" y="180" fill="#f87171" font-size="12" font-weight="bold">Open System: Mass Loss (Gas Escapes)</text>
+
+                        <!-- Legend -->
+                        <rect x="380" y="200" width="170" height="30" rx="4" fill="rgba(15,23,42,0.8)" stroke="#334155"/>
+                        <circle cx="395" cy="215" r="5" fill="#4ade80"/>
+                        <text x="405" y="219" fill="#cbd5e1" font-size="10">Closed System</text>
+                        <circle cx="480" cy="215" r="5" fill="#f87171"/>
+                        <text x="490" y="219" fill="#cbd5e1" font-size="10">Open System</text>
+                    </svg>
+                </div>
+            </section>
+
+            <!-- SECTION 4: NESA WORKED EXAMPLES -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>4. NESA Worked Examples (HSC Exam Style)</h2>
+                    <span class="pill-badge">Model Answers</span>
+                </div>
+
+                <!-- Example 1: Easy -->
+                <div class="worked-example-card">
+                    <div class="example-header">
+                        <span class="example-title">Worked Example 1: Classifying System Boundaries</span>
+                        <span class="difficulty-tag diff-easy">Easy • 2 Marks</span>
+                    </div>
+                    <p><strong>Question:</strong> Classify each of the following physical scenarios as an open, closed, or isolated system, and justify your answer:
+                        <br>a) Boiling water in an uncovered saucepan on an electric stove top.
+                        <br>b) A stoppered glass flask containing a mixture of liquid ethanol and ethanol vapour immersed in a water bath.
+                    </p>
+
+                    <div class="solution-step">
+                        <span class="step-label">Step 1: Classify and justify Scenario (a)</span>
+                        <p><strong>Open System:</strong> Steam (water vapour/matter) escapes freely into the atmosphere, while thermal energy (heat) is continuously transferred from the stove through the saucepan walls to the surroundings.</p>
+                    </div>
+
+                    <div class="solution-step">
+                        <span class="step-label">Step 2: Classify and justify Scenario (b)</span>
+                        <p><strong>Closed System:</strong> The rubber stopper prevents ethanol molecules in both liquid and vapour phases from escaping, keeping total mass strictly constant ($\Delta m = 0$). However, thermal energy (heat) readily transfers across the glass walls between the water bath and the system.</p>
+                    </div>
+                </div>
+
+                <!-- Example 2: Medium -->
+                <div class="worked-example-card">
+                    <div class="example-header">
+                        <span class="example-title">Worked Example 2: Mass Loss Curve Analysis</span>
+                        <span class="difficulty-tag diff-medium">Medium • 3 Marks</span>
+                    </div>
+                    <p><strong>Question:</strong> A student reacts excess dilute hydrochloric acid ($\mathrm{HCl}$) with marble chips ($\mathrm{CaCO_3}$) on an electronic balance under two conditions:
+                        <br>• <strong>Flask 1:</strong> An open conical flask.
+                        <br>• <strong>Flask 2:</strong> A sealed flask fitted with a rubber stopper.
+                        <br>Describe and account for the balance reading over time for Flask 1 compared to Flask 2.
+                    </p>
+
+                    <div class="solution-step">
+                        <span class="step-label">Step 1: Write the balanced chemical equation</span>
+                        $$\mathrm{CaCO_3(s) + 2HCl(aq) \rightarrow CaCl_2(aq) + H_2O(l) + CO_2(g)\uparrow}$$
+                    </div>
+
+                    <div class="solution-step">
+                        <span class="step-label">Step 2: Describe and account for Flask 1 (Open System)</span>
+                        <p>In Flask 1, the mass reading decreases steadily over time as carbon dioxide gas ($\mathrm{CO_2}$) escapes from the open vessel into the atmosphere. The mass plateau indicates the reaction has reached completion upon consumption of $\mathrm{CaCO_3}$.</p>
+                    </div>
+
+                    <div class="solution-step">
+                        <span class="step-label">Step 3: Describe and account for Flask 2 (Closed System)</span>
+                        <p>In Flask 2, the mass reading remains completely constant throughout the experiment ($\Delta m = 0$) because all produced $\mathrm{CO_2}$ gas is trapped inside, satisfying mass conservation for a closed system boundary.</p>
+                    </div>
+                </div>
+
+                <!-- Example 3: Hard -->
+                <div class="worked-example-card">
+                    <div class="example-header">
+                        <span class="example-title">Worked Example 3: Quantitative Mass Loss & Gas Volume Calculations</span>
+                        <span class="difficulty-tag diff-hard">Hard • 4 Marks</span>
+                    </div>
+                    <p><strong>Question:</strong> A $25.00\text{ g}$ sample of pure $\mathrm{CaCO_3(s)}$ is placed in a flask with an initial total system mass of $250.00\text{ g}$ and heated to $800^\circ\text{C}$.
+                        $$\mathrm{CaCO_3(s) \rightleftharpoons CaO(s) + CO_2(g)}$$
+                        <br>a) Calculate the final total mass recorded on the balance if the reaction occurs in an open vessel and goes to completion.
+                        <br>b) Calculate the volume of $\mathrm{CO_2(g)}$ produced in part (a) measured at SATP ($25^\circ\text{C}$ and $100\text{ kPa}$, where $V_m = 24.79\text{ L/mol}$).
+                    </p>
+
+                    <div class="solution-step">
+                        <span class="step-label">Step 1: Calculate moles of reactant $\mathrm{CaCO_3}$</span>
+                        $$M(\mathrm{CaCO_3}) = 40.08 + 12.01 + 3(16.00) = 100.09\text{ g/mol}$$
+                        $$n(\mathrm{CaCO_3}) = \frac{m}{M} = \frac{25.00\text{ g}}{100.09\text{ g/mol}} = 0.24978\text{ mol}$$
+                    </div>
+
+                    <div class="solution-step">
+                        <span class="step-label">Step 2: Calculate mass of escaping $\mathrm{CO_2(g)}$ and final system mass</span>
+                        $$\text{By 1:1 stoichiometry, } n(\mathrm{CO_2}) = 0.24978\text{ mol}$$
+                        $$m(\mathrm{CO_2}) = n \times M = 0.24978\text{ mol} \times 44.01\text{ g/mol} = 10.993\text{ g}$$
+                        $$\text{Final Mass (Open Vessel)} = 250.00\text{ g} - 10.993\text{ g} = 239.01\text{ g}$$
+                    </div>
+
+                    <div class="solution-step">
+                        <span class="step-label">Step 3: Calculate volume of gas produced at SATP</span>
+                        $$V(\mathrm{CO_2}) = n \times V_m = 0.24978\text{ mol} \times 24.79\text{ L/mol} = 6.19\text{ L}$$
+                    </div>
+                </div>
+
+                <!-- Example 4: HSC Advanced Challenge -->
+                <div class="worked-example-card">
+                    <div class="example-header">
+                        <span class="example-title">Worked Example 4: Analysing System Boundaries in Aboriginal Earth Ovens and Industrial Equilibrium</span>
+                        <span class="difficulty-tag diff-ext">HSC Advanced • 5 Marks</span>
+                    </div>
+                    <p><strong>Question:</strong> Compare the thermodynamic behavior of heating hydrated copper(II) sulfate ($\mathrm{CuSO_4 \cdot 5H_2O}$) in an open crucible versus a sealed glass tube, and evaluate how Aboriginal earth ovens (Kup-Murri) exploit closed system boundaries to control water vapour loss during food preparation.</p>
+
+                    <div class="solution-step">
+                        <span class="step-label">Step 1: Analyse open crucible heating ($\mathrm{CuSO_4 \cdot 5H_2O}$)</span>
+                        <p>In an open crucible, heating decomposes blue hydrated copper(II) sulfate into white anhydrous solid and steam: $\mathrm{CuSO_4 \cdot 5H_2O(s) \rightarrow CuSO_4(s) + 5H_2O(g)\uparrow}$. Steam escapes freely into the open environment ($\Delta m < 0$). Because $[\mathrm{H_2O(g)}]$ above the solid remains zero, reverse collisions cannot occur ($r_{\mathrm{reverse}} = 0$), driving the reaction to complete dehydration.</p>
+                    </div>
+
+                    <div class="solution-step">
+                        <span class="step-label">Step 2: Analyse sealed tube heating ($\mathrm{CuSO_4 \cdot 5H_2O}$)</span>
+                        <p>In a sealed glass tube (closed system), released water vapour is retained ($\Delta m = 0$). As $[\mathrm{H_2O(g)}]$ builds inside the headspace, the rate of reverse hydration collisions between $\mathrm{CuSO_4(s)}$ and $\mathrm{H_2O(g)}$ increases until $r_{\mathrm{forward}} = r_{\mathrm{reverse}}$, establishing dynamic equilibrium where blue hydrated and white anhydrous crystals coexist.</p>
+                    </div>
+
+                    <div class="solution-step">
+                        <span class="step-label">Step 3: Connect to Aboriginal pit oven technology</span>
+                        <p>Similarly, Aboriginal earth ovens (Kup-Murri) wrap food in leaves and seal it under soil. This closed system boundary retains water vapour released during heating ($\Delta m = 0$). By trapping steam in dynamic equilibrium with moisture in the food, thermal energy is transferred efficiently while preventing dehydration, producing evenly cooked, moist food.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 5: STUDENT PRACTICE EXAMINATION QUESTIONS -->
+            <section class="card glass-card">
+                <div class="card-header">
+                    <h2>5. Student Practice Examination Questions</h2>
+                    <span class="pill-badge demo-pill">Self-Marking Engine</span>
+                </div>
+                <p>Solve these questions independently before revealing model answers and NESA marking rubrics.</p>
+
+                <!-- Practice Q1: Easy -->
+                <div class="question-container" style="margin-bottom: 1.5rem;">
+                    <div class="question-header">
+                        <h3>Question 1: Closed System Definition & Ethanol Vapour Equilibrium</h3>
+                        <span class="marks-badge">2 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Define a closed system and explain why a stoppered flask containing liquid ethanol and ethanol vapour is classified as a closed system.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('q1-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('q1-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="q1-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Consider whether matter and heat can cross the stoppered flask boundary.</p>
+                    </div>
+
+                    <div id="q1-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Definition:</strong> A closed system is one that allows energy transfer across its boundary with the surroundings, but prevents any transfer of matter ($\Delta m = 0$).</p>
+                            <p><strong>Application:</strong> The stopper prevents ethanol molecules in liquid or vapour form from escaping ($\Delta m = 0$), while thermal energy (heat) can freely pass through the glass flask walls.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Defines closed system in terms of energy and matter exchange.</li>
+                                <li><strong>1 Mark:</strong> Applies definition correctly to the stoppered ethanol flask.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q2: Medium -->
+                <div class="question-container" style="margin-bottom: 1.5rem;">
+                    <div class="question-header">
+                        <h3>Question 2: Collision Theory in Open System Decomposition</h3>
+                        <span class="marks-badge">3 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Explain, using collision theory, why heating copper(II) carbonate ($\mathrm{CuCO_3(s) \rightarrow CuO(s) + CO_2(g)}$) in an open test tube fails to establish dynamic equilibrium.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('q2-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('q2-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="q2-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> What happens to $[\mathrm{CO_2}]$ in an open vessel and how does this affect reverse collisions?</p>
+                    </div>
+
+                    <div id="q2-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>1. Matter Loss:</strong> In an open test tube, generated $\mathrm{CO_2(g)}$ escapes into the surrounding atmosphere.</p>
+                            <p><strong>2. Reverse Collision Rate:</strong> The loss of gas keeps $[\mathrm{CO_2}]$ inside the tube near zero, reducing reverse collisions between $\mathrm{CaO}$ and $\mathrm{CO_2}$ to near zero ($r_{\mathrm{reverse}} \approx 0$).</p>
+                            <p><strong>3. Result:</strong> Because $r_{\mathrm{forward}} > r_{\mathrm{reverse}}$, the forward reaction continues until $\mathrm{CuCO_3}$ is completely consumed (going to completion).</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> States that $\mathrm{CO_2}$ gas escapes from the open boundary.</li>
+                                <li><strong>1 Mark:</strong> Explains that gas loss prevents reverse collisions between products.</li>
+                                <li><strong>1 Mark:</strong> Concludes that $r_{\mathrm{forward}} \neq r_{\mathrm{reverse}}$, preventing dynamic equilibrium.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q3: Hard -->
+                <div class="question-container" style="margin-top: 1.5rem;">
+                    <div class="question-header">
+                        <h3>Question 3: Quantitative Decomposition in Open vs Closed Systems</h3>
+                        <span class="marks-badge">4 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        Thermal decomposition of sodium hydrogen carbonate occurs via:
+                        $$\mathrm{2NaHCO_3(s) \rightleftharpoons Na_2CO_3(s) + H_2O(g) + CO_2(g)}$$
+                        A sample of $16.80\text{ g}$ of $\mathrm{NaHCO_3(s)}$ is heated to $200^\circ\text{C}$ in an open vessel and decomposes completely.
+                        <br>a) Calculate the total mass of gaseous products released into the surroundings.
+                        <br>b) Calculate the total volume of gas ($\mathrm{H_2O + CO_2}$) produced at STP ($0^\circ\text{C}, 100\text{ kPa}$ where $V_m = 22.71\text{ L/mol}$).
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('q3-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('q3-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="q3-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Calculate $n(\mathrm{NaHCO_3})$, use stoichiometric ratios ($2:1:1$), then calculate masses and total gas moles.</p>
+                    </div>
+
+                    <div id="q3-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>a) Mass of Gaseous Products:</strong></p>
+                            $$M(\mathrm{NaHCO_3}) = 22.99 + 1.008 + 12.01 + 3(16.00) = 84.008\text{ g/mol}$$
+                            $$n(\mathrm{NaHCO_3}) = \frac{16.80\text{ g}}{84.008\text{ g/mol}} = 0.200\text{ mol}$$
+                            $$\text{By 2:1 stoichiometry: } n(\mathrm{H_2O}) = 0.100\text{ mol}, \quad n(\mathrm{CO_2}) = 0.100\text{ mol}$$
+                            $$m(\mathrm{H_2O}) = 0.100 \times 18.016 = 1.802\text{ g}$$
+                            $$m(\mathrm{CO_2}) = 0.100 \times 44.01 = 4.401\text{ g}$$
+                            $$\text{Total Gas Mass Released} = 1.802 + 4.401 = 6.20\text{ g}$$
+
+                            <p><strong>b) Total Gas Volume at STP:</strong></p>
+                            $$n_{\text{total gas}} = n(\mathrm{H_2O}) + n(\mathrm{CO_2}) = 0.100 + 0.100 = 0.200\text{ mol}$$
+                            $$V_{\text{total}} = n_{\text{total}} \times V_m = 0.200\text{ mol} \times 22.71\text{ L/mol} = 4.54\text{ L}$$
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Correctly calculates moles of $\mathrm{NaHCO_3}$ ($0.200\text{ mol}$).</li>
+                                <li><strong>1 Mark:</strong> Applies stoichiometry to find moles of gas products.</li>
+                                <li><strong>1 Mark:</strong> Calculates total mass of escaping gas ($6.20\text{ g}$).</li>
+                                <li><strong>1 Mark:</strong> Calculates total volume of gas at STP ($4.54\text{ L}$).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Practice Q4: HSC Advanced -->
+                <div class="question-container" style="margin-top: 1.5rem;">
+                    <div class="question-header">
+                        <h3>Question 4: Practical Investigation of Open vs Closed System Reversibility</h3>
+                        <span class="marks-badge">5 Marks</span>
+                    </div>
+                    <p class="question-body">
+                        A student designs an experiment to investigate the reversibility of copper(II) sulfate pentahydrate decomposition ($\mathrm{CuSO_4 \cdot 5H_2O(s) \rightleftharpoons CuSO_4(s) + 5H_2O(g)}$).
+                        <br>Outline a two-part practical procedure (Part A: Open System, Part B: Closed System) and explain how mass measurements and visual observations demonstrate the necessity of a closed system for establishing dynamic equilibrium.
+                    </p>
+
+                    <div class="action-bar">
+                        <button class="btn btn-outline" onclick="toggleElement('q4-hint')">💡 Toggle Hint</button>
+                        <button class="btn btn-ethereal" onclick="toggleElement('q4-sol')">✨ Reveal Model Answer & Rubric</button>
+                    </div>
+
+                    <div id="q4-hint" class="drawer drawer-hint" style="display: none;">
+                        <p><strong>Hint:</strong> Describe open crucible heating (mass loss, blue to white) vs sealed glass tube heating (constant mass, condensation, coexistence).</p>
+                    </div>
+
+                    <div id="q4-sol" class="drawer drawer-solution" style="display: none;">
+                        <h4>Model Answer & Rubric</h4>
+                        <div class="solution-content">
+                            <p><strong>Experimental Procedure:</strong></p>
+                            <p><strong>Part A (Open System):</strong> Heat a weighed sample of blue $\mathrm{CuSO_4 \cdot 5H_2O(s)}$ in an open porcelain crucible over a Bunsen burner. Record mass before and after heating.
+                            <br><em>Observations & Deduction:</em> The solid turns white as steam escapes. The mass decreases significantly ($\Delta m < 0$). Escaping steam prevents reverse hydration collisions, driving the reaction to complete dehydration.</p>
+
+                            <p><strong>Part B (Closed System):</strong> Heat blue $\mathrm{CuSO_4 \cdot 5H_2O(s)}$ inside a sealed glass boiling tube. Record total tube mass throughout.
+                            <br><em>Observations & Deduction:</em> Water vapour condenses on the cool upper walls inside the tube while the solid partially turns white. Total mass remains $100\%$ constant ($\Delta m = 0$). Upon standing, condensed water re-reacts with the white solid to reform blue hydrated crystals, establishing dynamic equilibrium.</p>
+
+                            <p><strong>Conclusion:</strong> Demonstrates that chemical reversibility requires a closed system boundary to retain gaseous components and enable equal forward and reverse rates.</p>
+                        </div>
+                        <div class="rubric-box">
+                            <h5>NESA Marking Schema:</h5>
+                            <ul>
+                                <li><strong>1 Mark:</strong> Outlines a valid procedure for Part A (open crucible) and Part B (sealed tube).</li>
+                                <li><strong>1 Mark:</strong> Includes expected color changes (blue $\rightleftharpoons$ white).</li>
+                                <li><strong>1 Mark:</strong> Connects open system mass loss ($\Delta m < 0$) to complete dehydration.</li>
+                                <li><strong>1 Mark:</strong> Connects closed system mass conservation ($\Delta m = 0$) to steam retention.</li>
+                                <li><strong>1 Mark:</strong> Evaluates how closed boundaries enable reverse collisions required for dynamic equilibrium.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation Footer -->
+            <footer class="content-footer">
+                <a href="01-reversible-reactions.html" class="btn btn-outline">&larr; Back to Lesson 01</a>
+                <a href="03-static-dynamic-equilibrium.html" class="btn btn-next">
+                    Proceed to Lesson 03: Static vs Dynamic Equilibrium &rarr;
+                </a>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Simulator Logic Script -->
+    <script>
+        let isClosed = true;
+        let isHeating = false;
+
+        function toggleBoundary() {
+            isClosed = !isClosed;
+            const btn = document.getElementById('btn-toggle-boundary');
+            const stopper = document.getElementById('sim-stopper');
+            const stopperText = document.getElementById('stopper-text');
+
+            if (isClosed) {
+                btn.className = 'btn btn-ethereal';
+                btn.innerHTML = '🔒 Boundary: Closed System';
+                stopper.classList.remove('open');
+                stopperText.innerText = 'SEALED';
+            } else {
+                btn.className = 'btn btn-outline';
+                btn.innerHTML = '🔓 Boundary: Open System';
+                stopper.classList.add('open');
+                stopperText.innerText = 'OPEN';
+            }
+            updateSimState();
+        }
+
+        function toggleHeat() {
+            isHeating = !isHeating;
+            const btn = document.getElementById('btn-toggle-heat');
+
+            if (isHeating) {
+                btn.className = 'btn btn-ethereal';
+                btn.innerHTML = '🔥 Heat Source: ON (800°C)';
+            } else {
+                btn.className = 'btn btn-outline';
+                btn.innerHTML = '🔥 Heat Source: OFF';
+            }
+            updateSimState();
+        }
+
+        function resetSimulation() {
+            isClosed = true;
+            isHeating = false;
+            
+            const btnB = document.getElementById('btn-toggle-boundary');
+            btnB.className = 'btn btn-ethereal';
+            btnB.innerHTML = '🔒 Boundary: Closed System';
+            
+            const stopper = document.getElementById('sim-stopper');
+            stopper.classList.remove('open');
+            document.getElementById('stopper-text').innerText = 'SEALED';
+
+            const btnH = document.getElementById('btn-toggle-heat');
+            btnH.className = 'btn btn-outline';
+            btnH.innerHTML = '🔥 Heat Source: OFF';
+
+            updateSimState();
+        }
+
+        function updateSimState() {
+            const p1 = document.getElementById('p1');
+            const p2 = document.getElementById('p2');
+            const p3 = document.getElementById('p3');
+            const gasHead1 = document.getElementById('particle-gas1');
+            const gasHead2 = document.getElementById('particle-gas2');
+            const solidBed = document.getElementById('solid-bed');
+            
+            const massScale = document.getElementById('scale-mass-val');
+            const boundaryDisp = document.getElementById('telemetry-boundary');
+            const rfDisp = document.getElementById('telemetry-rf');
+            const rrDisp = document.getElementById('telemetry-rr');
+            const stateDisp = document.getElementById('telemetry-state');
+            const statusBox = document.getElementById('sim-status-box');
+
+            if (isClosed) {
+                boundaryDisp.innerHTML = 'Closed System (Δm = 0)';
+                boundaryDisp.style.color = 'var(--accent-emerald)';
+            } else {
+                boundaryDisp.innerHTML = 'Open System (Δm < 0)';
+                boundaryDisp.style.color = '#f87171';
+            }
+
+            if (isHeating && !isClosed) {
+                // Open + Heating -> Gas Escapes -> Mass Drops
+                p1.classList.add('active');
+                p2.classList.add('active');
+                p3.classList.add('active');
+                gasHead1.style.opacity = '0.1';
+                gasHead2.style.opacity = '0.1';
+                solidBed.style.height = '18px';
+                solidBed.style.background = '#94a3b8';
+
+                massScale.innerText = '239.01 g (Decreasing)';
+                massScale.style.color = '#f87171';
+
+                rfDisp.innerText = '0.45 mol/s';
+                rrDisp.innerText = '0.00 mol/s';
+
+                stateDisp.innerText = 'DRIVEN TO COMPLETION';
+                stateDisp.style.color = '#f87171';
+
+                statusBox.innerHTML = '<strong>System Analysis:</strong> In an open vessel, CO2 gas escapes freely into the atmosphere. Reverse collisions cannot occur (r_reverse = 0), driving the reaction irreversibly to completion until CaCO3 is depleted.';
+            } else if (isHeating && isClosed) {
+                // Closed + Heating -> Gas Trapped -> Dynamic Equilibrium
+                p1.classList.remove('active');
+                p2.classList.remove('active');
+                p3.classList.remove('active');
+                gasHead1.style.opacity = '1';
+                gasHead2.style.opacity = '1';
+                solidBed.style.height = '28px';
+                solidBed.style.background = '#cbd5e1';
+
+                massScale.innerText = '250.00 g (Constant)';
+                massScale.style.color = '#4ade80';
+
+                rfDisp.innerText = '0.35 mol/s';
+                rrDisp.innerText = '0.35 mol/s';
+
+                stateDisp.innerText = 'DYNAMIC EQUILIBRIUM ACHIEVED';
+                stateDisp.style.color = 'var(--accent-cyan)';
+
+                statusBox.innerHTML = '<strong>System Analysis:</strong> In a sealed closed vessel, CO2 gas is trapped. As gas pressure builds, reverse collisions reform CaCO3 at an equal rate (r_forward = r_reverse). Dynamic equilibrium is successfully established!';
+            } else {
+                // Off State
+                p1.classList.remove('active');
+                p2.classList.remove('active');
+                p3.classList.remove('active');
+                gasHead1.style.opacity = '0.2';
+                gasHead2.style.opacity = '0.2';
+                solidBed.style.height = '40px';
+                solidBed.style.background = '#cbd5e1';
+
+                massScale.innerText = '250.00 g (Constant)';
+                massScale.style.color = '#4ade80';
+
+                rfDisp.innerText = '0.00 mol/s';
+                rrDisp.innerText = '0.00 mol/s';
+
+                stateDisp.innerText = 'ROOM TEMP (NO REACTION)';
+                stateDisp.style.color = '#94a3b8';
+
+                statusBox.innerHTML = '<strong>System Analysis:</strong> At room temperature, thermal energy is below activation energy. Turn heat ON to begin decomposition.';
+            }
+        }
+
+        function toggleElement(id) {
+            const el = document.getElementById(id);
+            if (el.style.display === 'none' || el.style.display === '') {
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            updateSimState();
+        });
+    </script>
+</body>
+</html>
